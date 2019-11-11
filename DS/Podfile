@@ -1,0 +1,23 @@
+platform :ios, "9.0"
+inhibit_all_warnings!
+
+target 'DS' do
+    pod "AFNetworking"
+    pod "JJFontFit"
+    pod "ZLPhotoBrowser"
+    pod "MJRefresh"
+    pod "zhPopupController"
+    pod "IQKeyboardManager"
+    pod "NHHUDExtend"
+    pod "YYCache"
+    pod "YYModel"
+    pod "YYText"
+    pod "JXCategoryView"
+    pod "UMCCommon"
+    pod "UMCSecurityPlugins"
+    pod "UMCShare/Social/ReducedWeChat"
+    pod "UMCShare/UI"
+    pod "TYCyclePagerView"
+    pod "ZLCollectionViewFlowLayout"
+    pod "WechatOpenSDK","<1.8.6"
+end
