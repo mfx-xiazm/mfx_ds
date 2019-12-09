@@ -62,12 +62,12 @@ typedef enum{
 /**
  默认滚动到当前时间
  */
--(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock;
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSString *,NSString *))completeBlock;
 
 /**
  滚动到指定的的日期
  */
--(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle scrollToDate:(NSDate *)scrollToDate CompleteBlock:(void(^)(NSDate *))completeBlock;
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle scrollToDate:(NSDate *)scrollToDate CompleteBlock:(void(^)(NSString *,NSString *))completeBlock;
 
 
 -(void)show;

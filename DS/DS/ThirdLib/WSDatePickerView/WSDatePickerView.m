@@ -24,7 +24,7 @@
 #define MAXYEAR 2099
 #define MINYEAR 1900
 
-typedef void(^doneBlock)(NSDate *);
+typedef void(^doneBlock)(NSString *,NSString *);
 
 @interface WSDatePickerView ()<UIPickerViewDelegate,UIPickerViewDataSource,UIGestureRecognizerDelegate> {
     //日期存储数组
@@ -49,6 +49,14 @@ typedef void(^doneBlock)(NSDate *);
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
 @property (weak, nonatomic) IBOutlet UILabel *showYearView;
 @property (weak, nonatomic) IBOutlet UIButton *doneBtn;
+@property (weak, nonatomic) IBOutlet UITextField *startDateTime;
+@property (weak, nonatomic) IBOutlet UITextField *endDateTime;
+@property (weak, nonatomic) IBOutlet UIView *startDateLine;
+@property (weak, nonatomic) IBOutlet UIView *endDateLine;
+@property (weak, nonatomic) IBOutlet UIButton *startDateBtn;
+@property (weak, nonatomic) IBOutlet UIButton *endDateBtn;
+/* 选中的按钮 */
+@property(nonatomic,strong) UIButton *selectBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 - (IBAction)doneAction:(UIButton *)btn;
@@ -66,7 +74,7 @@ typedef void(^doneBlock)(NSDate *);
 /**
  默认滚动到当前时间
  */
--(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSDate *))completeBlock {
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle CompleteBlock:(void(^)(NSString *,NSString *))completeBlock {
     self = [super init];
     if (self) {
         self = [[[NSBundle bundleForClass:[self class]] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];  
@@ -109,8 +117,8 @@ typedef void(^doneBlock)(NSDate *);
         [self defaultConfig];
         
         if (completeBlock) {
-            self.doneBlock = ^(NSDate *selectDate) {
-                completeBlock(selectDate);
+            self.doneBlock = ^(NSString *selectDate,NSString *selectDate1) {
+                completeBlock(selectDate,selectDate1);
             };
         }
     }
@@ -120,7 +128,7 @@ typedef void(^doneBlock)(NSDate *);
 /**
  滚动到指定的的日期
  */
--(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle scrollToDate:(NSDate *)scrollToDate CompleteBlock:(void(^)(NSDate *))completeBlock {
+-(instancetype)initWithDateStyle:(WSDateStyle)datePickerStyle scrollToDate:(NSDate *)scrollToDate CompleteBlock:(void(^)(NSString *,NSString *))completeBlock {
     self = [super init];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];
@@ -165,8 +173,8 @@ typedef void(^doneBlock)(NSDate *);
         [self defaultConfig];
         
         if (completeBlock) {
-            self.doneBlock = ^(NSDate *selectDate) {
-                completeBlock(selectDate);
+            self.doneBlock = ^(NSString *selectDate,NSString *selectDate1) {
+                completeBlock(selectDate,selectDate1);
             };
         }
     }
@@ -188,8 +196,7 @@ typedef void(^doneBlock)(NSDate *);
     self.backgroundColor = RGBA(0, 0, 0, 0);
     [self layoutIfNeeded];
     
-    
-    
+    [self dateTypeClicked:self.startDateBtn];
     
     [[UIApplication sharedApplication].keyWindow bringSubviewToFront:self];
     
@@ -669,6 +676,12 @@ typedef void(^doneBlock)(NSDate *);
     
     _startDate = self.scrollToDate;
     
+    
+    if (self.selectBtn.tag == 0) {
+        self.startDateTime.text = [_startDate stringWithFormat:_dateFormatter];
+    }else{
+        self.endDateTime.text = [_startDate stringWithFormat:_dateFormatter];
+    }
 }
 
 -(void)yearChange:(NSInteger)row {
@@ -718,19 +731,35 @@ typedef void(^doneBlock)(NSDate *);
         self.backgroundColor = RGBA(0, 0, 0, 0);
         [self layoutIfNeeded];
     } completion:^(BOOL finished) {
-        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self removeFromSuperview];
     }];
 }
 
-
-
+- (IBAction)dateTypeClicked:(UIButton *)sender {
+    self.selectBtn = sender;
+    if (sender.tag == 0) {
+        self.startDateTime.textColor = HXControlBg;
+        self.startDateLine.backgroundColor = HXControlBg;
+        
+        self.endDateTime.textColor = UIColorFromRGB(0x1A1A1A);
+        self.endDateLine.backgroundColor = UIColorFromRGB(0x1A1A1A);
+    }else{
+        self.startDateTime.textColor = UIColorFromRGB(0x1A1A1A);
+        self.startDateLine.backgroundColor = UIColorFromRGB(0x1A1A1A);
+        
+        self.endDateTime.textColor = HXControlBg;
+        self.endDateLine.backgroundColor = HXControlBg;
+    }
+}
 
 - (IBAction)doneAction:(UIButton *)btn {
     
-    _startDate = [self.scrollToDate dateWithFormatter:_dateFormatter];
+//    _startDate = [self.scrollToDate dateWithFormatter:_dateFormatter];
+//
+//    self.doneBlock(_startDate);
     
-    self.doneBlock(_startDate);
+    self.doneBlock([self.startDateTime hasText]?self.startDateTime.text:@"", [self.endDateTime hasText]?self.endDateTime.text:@"");
     [self dismiss];
 }
 

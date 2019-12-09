@@ -9,6 +9,8 @@
 #import "AppDelegate+MSAppService.h"
 #import "HXTabBarController.h"
 #import "HXGuideViewController.h"
+#import "HXNavigationController.h"
+#import "DSLoginVC.h"
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
 #import <AlipaySDK/AlipaySDK.h>
@@ -146,7 +148,7 @@
 //    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
     
 //    if ([currentVersion isEqualToString:lastVersion]) { // 版本号相同：这次打开和上次打开的是同一个版本
-            HXTabBarController *tabBarController = [[HXTabBarController alloc] init];
+            HXNavigationController *tabBarController = [[HXNavigationController alloc] initWithRootViewController:[DSLoginVC new]];
             self.window.rootViewController = tabBarController;
 //    } else {   // 这次打开的版本和上一次不一样，显示引导页
 //        // 真实情况改成引导页

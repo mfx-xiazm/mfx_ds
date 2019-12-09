@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSMyOrderVC">
+            <connections>
+                <outlet property="categoryView" destination="WEK-T2-6i6" id="df2-Ft-odu"/>
+                <outlet property="scrollView" destination="IHs-VF-zTz" id="9oH-AY-qvC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEK-T2-6i6" customClass="JXCategoryTitleView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhc-JR-xP4" userLabel="分割线">
+                            <rect key="frame" x="0.0" y="43" width="414" height="1"/>
+                            <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="0.98123899650000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="zel-FX-JPk"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="0i9-e0-M7h"/>
+                        <constraint firstAttribute="bottom" secondItem="fhc-JR-xP4" secondAttribute="bottom" id="PT6-FK-7KF"/>
+                        <constraint firstItem="fhc-JR-xP4" firstAttribute="leading" secondItem="WEK-T2-6i6" secondAttribute="leading" id="cml-q0-eb1"/>
+                        <constraint firstAttribute="trailing" secondItem="fhc-JR-xP4" secondAttribute="trailing" id="z74-EJ-iHp"/>
+                    </constraints>
+                </view>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHs-VF-zTz">
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IHs-VF-zTz" firstAttribute="top" secondItem="WEK-T2-6i6" secondAttribute="bottom" id="9fr-jP-b58"/>
+                <constraint firstItem="IHs-VF-zTz" firstAttribute="top" secondItem="WEK-T2-6i6" secondAttribute="bottom" id="MBs-Ua-sTq"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="IHs-VF-zTz" secondAttribute="trailing" id="Ogx-Ig-vcm"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="IHs-VF-zTz" secondAttribute="leading" id="bM3-kA-Tkt"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="IHs-VF-zTz" secondAttribute="bottom" id="god-QH-dla"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="WEK-T2-6i6" secondAttribute="leading" id="h87-sO-98C"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="WEK-T2-6i6" secondAttribute="top" id="n4V-r6-gCT"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="WEK-T2-6i6" secondAttribute="trailing" id="yWV-kX-hCg"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="139" y="115"/>
+        </view>
+    </objects>
+</document>

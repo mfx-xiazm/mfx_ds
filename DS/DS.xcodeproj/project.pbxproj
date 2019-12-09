@@ -8,6 +8,63 @@
 
 /* Begin PBXBuildFile section */
 		75201D9BC0ADF06CFC84ADF5 /* libPods-DS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F95BF23A4F0097FD6153E581 /* libPods-DS.a */; };
+		9001467B2383E19300275DD9 /* DSChooseClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9001467A2383E19300275DD9 /* DSChooseClassView.m */; };
+		9001467D2383E19A00275DD9 /* DSChooseClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9001467C2383E19A00275DD9 /* DSChooseClassView.xib */; };
+		900146812383E31900275DD9 /* DSChooseClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9001467F2383E31900275DD9 /* DSChooseClassCell.m */; };
+		900146822383E31900275DD9 /* DSChooseClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146802383E31900275DD9 /* DSChooseClassCell.xib */; };
+		900146862383E34900275DD9 /* DSChooseClassHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146842383E34900275DD9 /* DSChooseClassHeader.m */; };
+		900146872383E34900275DD9 /* DSChooseClassHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146852383E34900275DD9 /* DSChooseClassHeader.xib */; };
+		9001468B2383E38800275DD9 /* DSChooseClassFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146892383E38800275DD9 /* DSChooseClassFooter.m */; };
+		9001468C2383E38800275DD9 /* DSChooseClassFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9001468A2383E38800275DD9 /* DSChooseClassFooter.xib */; };
+		9001468F2383E89B00275DD9 /* DSTakeCouponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9001468E2383E89B00275DD9 /* DSTakeCouponView.m */; };
+		900146912383E8AD00275DD9 /* DSTakeCouponView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146902383E8AD00275DD9 /* DSTakeCouponView.xib */; };
+		900146952383EA3800275DD9 /* DSTakeCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146932383EA3800275DD9 /* DSTakeCouponCell.m */; };
+		900146962383EA3800275DD9 /* DSTakeCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146942383EA3800275DD9 /* DSTakeCouponCell.xib */; };
+		9001469A2383F12900275DD9 /* DSVipGoodsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146982383F12900275DD9 /* DSVipGoodsDetailVC.m */; };
+		9001469B2383F12900275DD9 /* DSVipGoodsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146992383F12900275DD9 /* DSVipGoodsDetailVC.xib */; };
+		900146A52384E4AF00275DD9 /* GXSaveImageToPHAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146A32384E4AF00275DD9 /* GXSaveImageToPHAsset.m */; };
+		900146A82384E5A000275DD9 /* DSGoodsPosterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146A72384E5A000275DD9 /* DSGoodsPosterView.m */; };
+		900146AA2384E5A800275DD9 /* DSGoodsPosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */; };
+		903CB55B23927F180053A25B /* WKWebView+TYSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 903CB55223927F180053A25B /* WKWebView+TYSnapshot.m */; };
+		903CB55C23927F180053A25B /* UIScrollView+TYSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 903CB55323927F180053A25B /* UIScrollView+TYSnapshot.m */; };
+		903CB55D23927F180053A25B /* UIView+TYSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 903CB55423927F180053A25B /* UIView+TYSnapshot.m */; };
+		903CB55E23927F180053A25B /* UIImage+TYSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 903CB55523927F180053A25B /* UIImage+TYSnapshot.m */; };
+		903CB55F23927F180053A25B /* TYSnapshotScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 903CB55623927F180053A25B /* TYSnapshotScroll.m */; };
+		903CB56023927F180053A25B /* UIViewController+TYSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 903CB55923927F180053A25B /* UIViewController+TYSnapshot.m */; };
+		903D07E1238378BA001C2E40 /* DSDynamicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D07DF238378BA001C2E40 /* DSDynamicDetailVC.m */; };
+		903D07E2238378BA001C2E40 /* DSDynamicDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D07E0238378BA001C2E40 /* DSDynamicDetailVC.xib */; };
+		903D07E52383792F001C2E40 /* DSDynamicDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D07E42383792F001C2E40 /* DSDynamicDetailHeader.m */; };
+		903D07E723837937001C2E40 /* DSDynamicDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D07E623837937001C2E40 /* DSDynamicDetailHeader.xib */; };
+		903D07EB23837A00001C2E40 /* DSDynamicDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D07E923837A00001C2E40 /* DSDynamicDetailCell.m */; };
+		903D07EC23837A00001C2E40 /* DSDynamicDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D07EA23837A00001C2E40 /* DSDynamicDetailCell.xib */; };
+		903D07EF23837AE7001C2E40 /* DSDynamicDetailFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D07EE23837AE7001C2E40 /* DSDynamicDetailFooter.m */; };
+		903D07F123837AEE001C2E40 /* DSDynamicDetailFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D07F023837AEE001C2E40 /* DSDynamicDetailFooter.xib */; };
+		903D07F523837FD7001C2E40 /* DSOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D07F323837FD7001C2E40 /* DSOrderDetailVC.m */; };
+		903D07F623837FD7001C2E40 /* DSOrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D07F423837FD7001C2E40 /* DSOrderDetailVC.xib */; };
+		903D07F923838097001C2E40 /* DSOrderDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D07F823838097001C2E40 /* DSOrderDetailHeader.m */; };
+		903D07FB2383809D001C2E40 /* DSOrderDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D07FA2383809D001C2E40 /* DSOrderDetailHeader.xib */; };
+		903D07FE2383823B001C2E40 /* DSOrderDetailFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D07FD2383823B001C2E40 /* DSOrderDetailFooter.m */; };
+		903D080023838242001C2E40 /* DSOrderDetailFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D07FF23838242001C2E40 /* DSOrderDetailFooter.xib */; };
+		903D080323838AC6001C2E40 /* DSRefundDetailFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D080223838AC6001C2E40 /* DSRefundDetailFooter.m */; };
+		903D080523838AD3001C2E40 /* DSRefundDetailFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D080423838AD3001C2E40 /* DSRefundDetailFooter.xib */; };
+		903D080923838C4F001C2E40 /* DSExpressDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D080723838C4F001C2E40 /* DSExpressDetailVC.m */; };
+		903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D080823838C4F001C2E40 /* DSExpressDetailVC.xib */; };
+		903D080E23838D03001C2E40 /* DSExpressDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D080C23838D03001C2E40 /* DSExpressDetailCell.m */; };
+		903D080F23838D03001C2E40 /* DSExpressDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D080D23838D03001C2E40 /* DSExpressDetailCell.xib */; };
+		903D081323839166001C2E40 /* DSApplyRefundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D081123839166001C2E40 /* DSApplyRefundVC.m */; };
+		903D081423839166001C2E40 /* DSApplyRefundVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D081223839166001C2E40 /* DSApplyRefundVC.xib */; };
+		903D0818238393ED001C2E40 /* DSApplyRefundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D0816238393ED001C2E40 /* DSApplyRefundCell.m */; };
+		903D0819238393ED001C2E40 /* DSApplyRefundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D0817238393ED001C2E40 /* DSApplyRefundCell.xib */; };
+		903D081D238398F5001C2E40 /* DSUpOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D081B238398F5001C2E40 /* DSUpOrderVC.m */; };
+		903D081E238398F5001C2E40 /* DSUpOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D081C238398F5001C2E40 /* DSUpOrderVC.xib */; };
+		903D082123839918001C2E40 /* DSUpOrderHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D082023839918001C2E40 /* DSUpOrderHeader.m */; };
+		903D08232383991F001C2E40 /* DSUpOrderHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D08222383991F001C2E40 /* DSUpOrderHeader.xib */; };
+		903D082623839A15001C2E40 /* DSUpOrderFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D082523839A15001C2E40 /* DSUpOrderFooter.m */; };
+		903D082823839A1B001C2E40 /* DSUpOrderFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D082723839A1B001C2E40 /* DSUpOrderFooter.xib */; };
+		903D082B23839DFA001C2E40 /* DSPayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D082A23839DFA001C2E40 /* DSPayTypeView.m */; };
+		903D082D23839E05001C2E40 /* DSPayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D082C23839E05001C2E40 /* DSPayTypeView.xib */; };
+		903D08312383C87C001C2E40 /* DSGoodsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 903D082F2383C87C001C2E40 /* DSGoodsDetailVC.m */; };
+		903D08322383C87C001C2E40 /* DSGoodsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903D08302383C87C001C2E40 /* DSGoodsDetailVC.xib */; };
 		906F362D2378ED44000B160A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F362C2378ED44000B160A /* AppDelegate.m */; };
 		906F36382378ED46000B160A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 906F36372378ED46000B160A /* Assets.xcassets */; };
 		906F363B2378ED46000B160A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 906F36392378ED46000B160A /* LaunchScreen.storyboard */; };
@@ -84,6 +141,116 @@
 		906F378B23792FEA000B160A /* DSCartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906F378923792FEA000B160A /* DSCartVC.xib */; };
 		906F378F23792FF7000B160A /* DSMyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F378D23792FF7000B160A /* DSMyVC.m */; };
 		906F379023792FF7000B160A /* DSMyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906F378E23792FF7000B160A /* DSMyVC.xib */; };
+		90AE52C02382777C009F4740 /* DSVipCardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52BE2382777C009F4740 /* DSVipCardDetailVC.m */; };
+		90AE52C12382777C009F4740 /* DSVipCardDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52BF2382777C009F4740 /* DSVipCardDetailVC.xib */; };
+		90AE52C52382802A009F4740 /* DSVipCardDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52C32382802A009F4740 /* DSVipCardDetailCell.m */; };
+		90AE52C62382802A009F4740 /* DSVipCardDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52C42382802A009F4740 /* DSVipCardDetailCell.xib */; };
+		90AE52C923828576009F4740 /* DSDynamic.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52C823828576009F4740 /* DSDynamic.m */; };
+		90AE52CC23828595009F4740 /* DSDynamicLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52CB23828595009F4740 /* DSDynamicLayout.m */; };
+		90AE52CF238285D0009F4740 /* DSDynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52CE238285D0009F4740 /* DSDynamicCell.m */; };
+		90AE52D123828C30009F4740 /* moment2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52D023828C30009F4740 /* moment2.plist */; };
+		90AE52D523829109009F4740 /* DSMyDynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52D323829109009F4740 /* DSMyDynamicVC.m */; };
+		90AE52D623829109009F4740 /* DSMyDynamicVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52D423829109009F4740 /* DSMyDynamicVC.xib */; };
+		90AE52DA238292A0009F4740 /* DSPublishDynamicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52D8238292A0009F4740 /* DSPublishDynamicVC.m */; };
+		90AE52DB238292A0009F4740 /* DSPublishDynamicVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52D9238292A0009F4740 /* DSPublishDynamicVC.xib */; };
+		90AE52DF23829310009F4740 /* DSPublishDynamicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52DD23829310009F4740 /* DSPublishDynamicCell.m */; };
+		90AE52E023829310009F4740 /* DSPublishDynamicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52DE23829310009F4740 /* DSPublishDynamicCell.xib */; };
+		90AE52E323829543009F4740 /* DSPublishDynamicHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52E223829543009F4740 /* DSPublishDynamicHeader.m */; };
+		90AE52E523829548009F4740 /* DSPublishDynamicHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52E423829548009F4740 /* DSPublishDynamicHeader.xib */; };
+		90AE52E823829B45009F4740 /* DSPuslishDynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52E723829B45009F4740 /* DSPuslishDynamicData.m */; };
+		90AE52EB2382A0FE009F4740 /* DSPublishDynamicFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52EA2382A0FE009F4740 /* DSPublishDynamicFooter.m */; };
+		90AE52ED2382A104009F4740 /* DSPublishDynamicFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52EC2382A104009F4740 /* DSPublishDynamicFooter.xib */; };
+		90EC2578237A5D8C005C24C8 /* DSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2576237A5D8C005C24C8 /* DSLoginVC.m */; };
+		90EC2579237A5D8C005C24C8 /* DSLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC2577237A5D8C005C24C8 /* DSLoginVC.xib */; };
+		90EC257D237A5D9B005C24C8 /* DSRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC257B237A5D9B005C24C8 /* DSRegisterVC.m */; };
+		90EC257E237A5D9B005C24C8 /* DSRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC257C237A5D9B005C24C8 /* DSRegisterVC.xib */; };
+		90EC2582237A5DB4005C24C8 /* DSChangePwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2580237A5DB4005C24C8 /* DSChangePwdVC.m */; };
+		90EC2583237A5DB4005C24C8 /* DSChangePwdVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC2581237A5DB4005C24C8 /* DSChangePwdVC.xib */; };
+		90EC2586237A5DC2005C24C8 /* DSWebContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2585237A5DC2005C24C8 /* DSWebContentVC.m */; };
+		90EC258A237A7D18005C24C8 /* DSHomeCateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2588237A7D18005C24C8 /* DSHomeCateCell.m */; };
+		90EC258B237A7D18005C24C8 /* DSHomeCateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC2589237A7D18005C24C8 /* DSHomeCateCell.xib */; };
+		90EC258F237A7D23005C24C8 /* DSShopGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC258D237A7D23005C24C8 /* DSShopGoodsCell.m */; };
+		90EC2590237A7D23005C24C8 /* DSShopGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC258E237A7D23005C24C8 /* DSShopGoodsCell.xib */; };
+		90EC2594237A8EDF005C24C8 /* DSHomeBannerHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2592237A8EDF005C24C8 /* DSHomeBannerHeader.m */; };
+		90EC2595237A8EDF005C24C8 /* DSHomeBannerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC2593237A8EDF005C24C8 /* DSHomeBannerHeader.xib */; };
+		90EC2599237A9061005C24C8 /* DSBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2597237A9061005C24C8 /* DSBannerCell.m */; };
+		90EC259A237A9061005C24C8 /* DSBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC2598237A9061005C24C8 /* DSBannerCell.xib */; };
+		90EC259E237A97DE005C24C8 /* DSHomeCateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC259C237A97DE005C24C8 /* DSHomeCateVC.m */; };
+		90EC259F237A97DE005C24C8 /* DSHomeCateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC259D237A97DE005C24C8 /* DSHomeCateVC.xib */; };
+		90EC25A8237A9806005C24C8 /* DSCateGoodsChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC25A6237A9806005C24C8 /* DSCateGoodsChildVC.m */; };
+		90EC25A9237A9806005C24C8 /* DSCateGoodsChildVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC25A7237A9806005C24C8 /* DSCateGoodsChildVC.xib */; };
+		90EC25AD237A99A8005C24C8 /* DSCateGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC25AB237A99A8005C24C8 /* DSCateGoodsCell.m */; };
+		90EC25AE237A99A8005C24C8 /* DSCateGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC25AC237A99A8005C24C8 /* DSCateGoodsCell.xib */; };
+		90EC25B2237A9BBA005C24C8 /* DSMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC25B0237A9BBA005C24C8 /* DSMessageVC.m */; };
+		90EC25B3237A9BBA005C24C8 /* DSMessageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC25B1237A9BBA005C24C8 /* DSMessageVC.xib */; };
+		90EC25B7237A9BDD005C24C8 /* DSMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC25B5237A9BDD005C24C8 /* DSMessageCell.m */; };
+		90EC25B8237A9BDD005C24C8 /* DSMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC25B6237A9BDD005C24C8 /* DSMessageCell.xib */; };
+		90EC25BC237A9E44005C24C8 /* DSCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC25BA237A9E44005C24C8 /* DSCartCell.m */; };
+		90EC25BD237A9E44005C24C8 /* DSCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC25BB237A9E44005C24C8 /* DSCartCell.xib */; };
+		90F74E2323822762003576B3 /* DSVipHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E2223822762003576B3 /* DSVipHeader.m */; };
+		90F74E2523822769003576B3 /* DSVipHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E2423822769003576B3 /* DSVipHeader.xib */; };
+		90F74E292382291B003576B3 /* DSVipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E272382291B003576B3 /* DSVipCell.m */; };
+		90F74E2A2382291B003576B3 /* DSVipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E282382291B003576B3 /* DSVipCell.xib */; };
+		90F74E2E23822DE6003576B3 /* DSVipCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E2C23822DE6003576B3 /* DSVipCardVC.m */; };
+		90F74E2F23822DE6003576B3 /* DSVipCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E2D23822DE6003576B3 /* DSVipCardVC.xib */; };
+		90F74E3823822E11003576B3 /* DSVipCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E3623822E11003576B3 /* DSVipCardCell.m */; };
+		90F74E3923822E11003576B3 /* DSVipCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E3723822E11003576B3 /* DSVipCardCell.xib */; };
+		90F74E3D2382323A003576B3 /* DSMyBalanceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E3B2382323A003576B3 /* DSMyBalanceVC.m */; };
+		90F74E3E2382323A003576B3 /* DSMyBalanceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E3C2382323A003576B3 /* DSMyBalanceVC.xib */; };
+		90F74E4123823263003576B3 /* DSMyBalanceHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E4023823263003576B3 /* DSMyBalanceHeader.m */; };
+		90F74E432382326C003576B3 /* DSMyBalanceHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E422382326C003576B3 /* DSMyBalanceHeader.xib */; };
+		90F74E472382387F003576B3 /* DSMyBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E452382387F003576B3 /* DSMyBalanceCell.m */; };
+		90F74E482382387F003576B3 /* DSMyBalanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E462382387F003576B3 /* DSMyBalanceCell.xib */; };
+		90F74E4B23823B7D003576B3 /* DSMyBalanceSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E4A23823B7D003576B3 /* DSMyBalanceSectionHeader.m */; };
+		90F74E4D23823B85003576B3 /* DSMyBalanceSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E4C23823B84003576B3 /* DSMyBalanceSectionHeader.xib */; };
+		90F74E5123823DE9003576B3 /* DSUpCashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E4F23823DE9003576B3 /* DSUpCashVC.m */; };
+		90F74E5223823DE9003576B3 /* DSUpCashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E5023823DE9003576B3 /* DSUpCashVC.xib */; };
+		90F74E5623823F1F003576B3 /* DSCashNoteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E5423823F1F003576B3 /* DSCashNoteVC.m */; };
+		90F74E5723823F1F003576B3 /* DSCashNoteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E5523823F1F003576B3 /* DSCashNoteVC.xib */; };
+		90F74E5B23823F37003576B3 /* DSCashNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E5923823F37003576B3 /* DSCashNoteCell.m */; };
+		90F74E5C23823F37003576B3 /* DSCashNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E5A23823F37003576B3 /* DSCashNoteCell.xib */; };
+		90F74E60238241BE003576B3 /* DSCashNoteDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E5E238241BE003576B3 /* DSCashNoteDetailVC.m */; };
+		90F74E61238241BE003576B3 /* DSCashNoteDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E5F238241BE003576B3 /* DSCashNoteDetailVC.xib */; };
+		90F74E652382657A003576B3 /* DSBalanceNoteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E632382657A003576B3 /* DSBalanceNoteVC.m */; };
+		90F74E662382657A003576B3 /* DSBalanceNoteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E642382657A003576B3 /* DSBalanceNoteVC.xib */; };
+		90FD91A6237E378800016EF7 /* DSMyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91A5237E378800016EF7 /* DSMyHeader.m */; };
+		90FD91A8237E379000016EF7 /* DSMyHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91A7237E379000016EF7 /* DSMyHeader.xib */; };
+		90FD91AC237E3B4400016EF7 /* DSMyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91AA237E3B4400016EF7 /* DSMyCell.m */; };
+		90FD91AD237E3B4400016EF7 /* DSMyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91AB237E3B4400016EF7 /* DSMyCell.xib */; };
+		90FD91B1237E3EBE00016EF7 /* DSMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91AF237E3EBE00016EF7 /* DSMyOrderVC.m */; };
+		90FD91B2237E3EBE00016EF7 /* DSMyOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91B0237E3EBE00016EF7 /* DSMyOrderVC.xib */; };
+		90FD91B6237E3ECE00016EF7 /* DSMyOrderChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91B4237E3ECE00016EF7 /* DSMyOrderChildVC.m */; };
+		90FD91B7237E3ECE00016EF7 /* DSMyOrderChildVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91B5237E3ECE00016EF7 /* DSMyOrderChildVC.xib */; };
+		90FD91BA237E3FD300016EF7 /* DSMyOrderHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91B9237E3FD300016EF7 /* DSMyOrderHeader.m */; };
+		90FD91BC237E3FDB00016EF7 /* DSMyOrderHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91BB237E3FDB00016EF7 /* DSMyOrderHeader.xib */; };
+		90FD91BF237E405F00016EF7 /* DSMyOrderFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91BE237E405F00016EF7 /* DSMyOrderFooter.m */; };
+		90FD91C1237E406600016EF7 /* DSMyOrderFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91C0237E406600016EF7 /* DSMyOrderFooter.xib */; };
+		90FD91C5237E40CC00016EF7 /* DSMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91C3237E40CC00016EF7 /* DSMyOrderCell.m */; };
+		90FD91C6237E40CC00016EF7 /* DSMyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91C4237E40CC00016EF7 /* DSMyOrderCell.xib */; };
+		90FD91CA237E446300016EF7 /* DSChangeInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91C8237E446300016EF7 /* DSChangeInfoVC.m */; };
+		90FD91CB237E446300016EF7 /* DSChangeInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91C9237E446300016EF7 /* DSChangeInfoVC.xib */; };
+		90FD91CF237E45A500016EF7 /* DSMySetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91CD237E45A500016EF7 /* DSMySetVC.m */; };
+		90FD91D0237E45A500016EF7 /* DSMySetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91CE237E45A500016EF7 /* DSMySetVC.xib */; };
+		90FD91D4237E471000016EF7 /* DSChangeBindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91D2237E471000016EF7 /* DSChangeBindVC.m */; };
+		90FD91D5237E471000016EF7 /* DSChangeBindVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91D3237E471000016EF7 /* DSChangeBindVC.xib */; };
+		90FD91D9237E48AC00016EF7 /* DSMyTeamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91D7237E48AC00016EF7 /* DSMyTeamVC.m */; };
+		90FD91DA237E48AC00016EF7 /* DSMyTeamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91D8237E48AC00016EF7 /* DSMyTeamVC.xib */; };
+		90FD91DD237E48BD00016EF7 /* DSMyTeamHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91DC237E48BD00016EF7 /* DSMyTeamHeader.m */; };
+		90FD91DF237E48C700016EF7 /* DSMyTeamHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91DE237E48C700016EF7 /* DSMyTeamHeader.xib */; };
+		90FD91E3237E48D300016EF7 /* DSMyTeamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91E1237E48D300016EF7 /* DSMyTeamCell.m */; };
+		90FD91E4237E48D300016EF7 /* DSMyTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91E2237E48D300016EF7 /* DSMyTeamCell.xib */; };
+		90FD91E8237E4F0500016EF7 /* DSMyCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91E6237E4F0500016EF7 /* DSMyCardVC.m */; };
+		90FD91E9237E4F0500016EF7 /* DSMyCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91E7237E4F0500016EF7 /* DSMyCardVC.xib */; };
+		90FD91ED237E4F4F00016EF7 /* DSMyCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91EB237E4F4F00016EF7 /* DSMyCardCell.m */; };
+		90FD91EE237E4F4F00016EF7 /* DSMyCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91EC237E4F4F00016EF7 /* DSMyCardCell.xib */; };
+		90FD91F2237E525A00016EF7 /* DSMyCollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91F0237E525A00016EF7 /* DSMyCollectVC.m */; };
+		90FD91F3237E525A00016EF7 /* DSMyCollectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91F1237E525A00016EF7 /* DSMyCollectVC.xib */; };
+		90FD91F7237E539300016EF7 /* DSMyAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91F5237E539300016EF7 /* DSMyAddressCell.m */; };
+		90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91F6237E539300016EF7 /* DSMyAddressCell.xib */; };
+		90FD91FC237E53AA00016EF7 /* DSMyAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91FA237E53AA00016EF7 /* DSMyAddressVC.m */; };
+		90FD91FD237E53AA00016EF7 /* DSMyAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91FB237E53AA00016EF7 /* DSMyAddressVC.xib */; };
+		90FD9201237E55C500016EF7 /* DSEditAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91FF237E55C500016EF7 /* DSEditAddressVC.m */; };
+		90FD9202237E55C500016EF7 /* DSEditAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD9200237E55C500016EF7 /* DSEditAddressVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,7 +271,96 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		906F36282378ED44000B160A /* 袋鼠.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "袋鼠.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		900146792383E19300275DD9 /* DSChooseClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChooseClassView.h; sourceTree = "<group>"; };
+		9001467A2383E19300275DD9 /* DSChooseClassView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChooseClassView.m; sourceTree = "<group>"; };
+		9001467C2383E19A00275DD9 /* DSChooseClassView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChooseClassView.xib; sourceTree = "<group>"; };
+		9001467E2383E31900275DD9 /* DSChooseClassCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChooseClassCell.h; sourceTree = "<group>"; };
+		9001467F2383E31900275DD9 /* DSChooseClassCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChooseClassCell.m; sourceTree = "<group>"; };
+		900146802383E31900275DD9 /* DSChooseClassCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChooseClassCell.xib; sourceTree = "<group>"; };
+		900146832383E34900275DD9 /* DSChooseClassHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChooseClassHeader.h; sourceTree = "<group>"; };
+		900146842383E34900275DD9 /* DSChooseClassHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChooseClassHeader.m; sourceTree = "<group>"; };
+		900146852383E34900275DD9 /* DSChooseClassHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChooseClassHeader.xib; sourceTree = "<group>"; };
+		900146882383E38800275DD9 /* DSChooseClassFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChooseClassFooter.h; sourceTree = "<group>"; };
+		900146892383E38800275DD9 /* DSChooseClassFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChooseClassFooter.m; sourceTree = "<group>"; };
+		9001468A2383E38800275DD9 /* DSChooseClassFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChooseClassFooter.xib; sourceTree = "<group>"; };
+		9001468D2383E89B00275DD9 /* DSTakeCouponView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTakeCouponView.h; sourceTree = "<group>"; };
+		9001468E2383E89B00275DD9 /* DSTakeCouponView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTakeCouponView.m; sourceTree = "<group>"; };
+		900146902383E8AD00275DD9 /* DSTakeCouponView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTakeCouponView.xib; sourceTree = "<group>"; };
+		900146922383EA3800275DD9 /* DSTakeCouponCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTakeCouponCell.h; sourceTree = "<group>"; };
+		900146932383EA3800275DD9 /* DSTakeCouponCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTakeCouponCell.m; sourceTree = "<group>"; };
+		900146942383EA3800275DD9 /* DSTakeCouponCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTakeCouponCell.xib; sourceTree = "<group>"; };
+		900146972383F12900275DD9 /* DSVipGoodsDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipGoodsDetailVC.h; sourceTree = "<group>"; };
+		900146982383F12900275DD9 /* DSVipGoodsDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipGoodsDetailVC.m; sourceTree = "<group>"; };
+		900146992383F12900275DD9 /* DSVipGoodsDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipGoodsDetailVC.xib; sourceTree = "<group>"; };
+		900146A32384E4AF00275DD9 /* GXSaveImageToPHAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXSaveImageToPHAsset.m; sourceTree = "<group>"; };
+		900146A42384E4AF00275DD9 /* GXSaveImageToPHAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GXSaveImageToPHAsset.h; sourceTree = "<group>"; };
+		900146A62384E5A000275DD9 /* DSGoodsPosterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGoodsPosterView.h; sourceTree = "<group>"; };
+		900146A72384E5A000275DD9 /* DSGoodsPosterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGoodsPosterView.m; sourceTree = "<group>"; };
+		900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSGoodsPosterView.xib; sourceTree = "<group>"; };
+		903CB54F23927F180053A25B /* TYSnapshotScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSnapshotScroll.h; sourceTree = "<group>"; };
+		903CB55023927F180053A25B /* UIImage+TYSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TYSnapshot.h"; sourceTree = "<group>"; };
+		903CB55123927F180053A25B /* UIViewController+TYSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TYSnapshot.h"; sourceTree = "<group>"; };
+		903CB55223927F180053A25B /* WKWebView+TYSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+TYSnapshot.m"; sourceTree = "<group>"; };
+		903CB55323927F180053A25B /* UIScrollView+TYSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TYSnapshot.m"; sourceTree = "<group>"; };
+		903CB55423927F180053A25B /* UIView+TYSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TYSnapshot.m"; sourceTree = "<group>"; };
+		903CB55523927F180053A25B /* UIImage+TYSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TYSnapshot.m"; sourceTree = "<group>"; };
+		903CB55623927F180053A25B /* TYSnapshotScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSnapshotScroll.m; sourceTree = "<group>"; };
+		903CB55723927F180053A25B /* UIScrollView+TYSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TYSnapshot.h"; sourceTree = "<group>"; };
+		903CB55823927F180053A25B /* WKWebView+TYSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+TYSnapshot.h"; sourceTree = "<group>"; };
+		903CB55923927F180053A25B /* UIViewController+TYSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TYSnapshot.m"; sourceTree = "<group>"; };
+		903CB55A23927F180053A25B /* UIView+TYSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TYSnapshot.h"; sourceTree = "<group>"; };
+		903D07DE238378BA001C2E40 /* DSDynamicDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicDetailVC.h; sourceTree = "<group>"; };
+		903D07DF238378BA001C2E40 /* DSDynamicDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicDetailVC.m; sourceTree = "<group>"; };
+		903D07E0238378BA001C2E40 /* DSDynamicDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSDynamicDetailVC.xib; sourceTree = "<group>"; };
+		903D07E32383792F001C2E40 /* DSDynamicDetailHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicDetailHeader.h; sourceTree = "<group>"; };
+		903D07E42383792F001C2E40 /* DSDynamicDetailHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicDetailHeader.m; sourceTree = "<group>"; };
+		903D07E623837937001C2E40 /* DSDynamicDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSDynamicDetailHeader.xib; sourceTree = "<group>"; };
+		903D07E823837A00001C2E40 /* DSDynamicDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicDetailCell.h; sourceTree = "<group>"; };
+		903D07E923837A00001C2E40 /* DSDynamicDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicDetailCell.m; sourceTree = "<group>"; };
+		903D07EA23837A00001C2E40 /* DSDynamicDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSDynamicDetailCell.xib; sourceTree = "<group>"; };
+		903D07ED23837AE7001C2E40 /* DSDynamicDetailFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicDetailFooter.h; sourceTree = "<group>"; };
+		903D07EE23837AE7001C2E40 /* DSDynamicDetailFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicDetailFooter.m; sourceTree = "<group>"; };
+		903D07F023837AEE001C2E40 /* DSDynamicDetailFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSDynamicDetailFooter.xib; sourceTree = "<group>"; };
+		903D07F223837FD7001C2E40 /* DSOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSOrderDetailVC.h; sourceTree = "<group>"; };
+		903D07F323837FD7001C2E40 /* DSOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSOrderDetailVC.m; sourceTree = "<group>"; };
+		903D07F423837FD7001C2E40 /* DSOrderDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSOrderDetailVC.xib; sourceTree = "<group>"; };
+		903D07F723838097001C2E40 /* DSOrderDetailHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSOrderDetailHeader.h; sourceTree = "<group>"; };
+		903D07F823838097001C2E40 /* DSOrderDetailHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSOrderDetailHeader.m; sourceTree = "<group>"; };
+		903D07FA2383809D001C2E40 /* DSOrderDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSOrderDetailHeader.xib; sourceTree = "<group>"; };
+		903D07FC2383823B001C2E40 /* DSOrderDetailFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSOrderDetailFooter.h; sourceTree = "<group>"; };
+		903D07FD2383823B001C2E40 /* DSOrderDetailFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSOrderDetailFooter.m; sourceTree = "<group>"; };
+		903D07FF23838242001C2E40 /* DSOrderDetailFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSOrderDetailFooter.xib; sourceTree = "<group>"; };
+		903D080123838AC6001C2E40 /* DSRefundDetailFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSRefundDetailFooter.h; sourceTree = "<group>"; };
+		903D080223838AC6001C2E40 /* DSRefundDetailFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSRefundDetailFooter.m; sourceTree = "<group>"; };
+		903D080423838AD3001C2E40 /* DSRefundDetailFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSRefundDetailFooter.xib; sourceTree = "<group>"; };
+		903D080623838C4F001C2E40 /* DSExpressDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSExpressDetailVC.h; sourceTree = "<group>"; };
+		903D080723838C4F001C2E40 /* DSExpressDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSExpressDetailVC.m; sourceTree = "<group>"; };
+		903D080823838C4F001C2E40 /* DSExpressDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSExpressDetailVC.xib; sourceTree = "<group>"; };
+		903D080B23838D03001C2E40 /* DSExpressDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSExpressDetailCell.h; sourceTree = "<group>"; };
+		903D080C23838D03001C2E40 /* DSExpressDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSExpressDetailCell.m; sourceTree = "<group>"; };
+		903D080D23838D03001C2E40 /* DSExpressDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSExpressDetailCell.xib; sourceTree = "<group>"; };
+		903D081023839166001C2E40 /* DSApplyRefundVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSApplyRefundVC.h; sourceTree = "<group>"; };
+		903D081123839166001C2E40 /* DSApplyRefundVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSApplyRefundVC.m; sourceTree = "<group>"; };
+		903D081223839166001C2E40 /* DSApplyRefundVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSApplyRefundVC.xib; sourceTree = "<group>"; };
+		903D0815238393ED001C2E40 /* DSApplyRefundCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSApplyRefundCell.h; sourceTree = "<group>"; };
+		903D0816238393ED001C2E40 /* DSApplyRefundCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSApplyRefundCell.m; sourceTree = "<group>"; };
+		903D0817238393ED001C2E40 /* DSApplyRefundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSApplyRefundCell.xib; sourceTree = "<group>"; };
+		903D081A238398F5001C2E40 /* DSUpOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpOrderVC.h; sourceTree = "<group>"; };
+		903D081B238398F5001C2E40 /* DSUpOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpOrderVC.m; sourceTree = "<group>"; };
+		903D081C238398F5001C2E40 /* DSUpOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpOrderVC.xib; sourceTree = "<group>"; };
+		903D081F23839918001C2E40 /* DSUpOrderHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpOrderHeader.h; sourceTree = "<group>"; };
+		903D082023839918001C2E40 /* DSUpOrderHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpOrderHeader.m; sourceTree = "<group>"; };
+		903D08222383991F001C2E40 /* DSUpOrderHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpOrderHeader.xib; sourceTree = "<group>"; };
+		903D082423839A15001C2E40 /* DSUpOrderFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpOrderFooter.h; sourceTree = "<group>"; };
+		903D082523839A15001C2E40 /* DSUpOrderFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpOrderFooter.m; sourceTree = "<group>"; };
+		903D082723839A1B001C2E40 /* DSUpOrderFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpOrderFooter.xib; sourceTree = "<group>"; };
+		903D082923839DFA001C2E40 /* DSPayTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPayTypeView.h; sourceTree = "<group>"; };
+		903D082A23839DFA001C2E40 /* DSPayTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPayTypeView.m; sourceTree = "<group>"; };
+		903D082C23839E05001C2E40 /* DSPayTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPayTypeView.xib; sourceTree = "<group>"; };
+		903D082E2383C87C001C2E40 /* DSGoodsDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGoodsDetailVC.h; sourceTree = "<group>"; };
+		903D082F2383C87C001C2E40 /* DSGoodsDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGoodsDetailVC.m; sourceTree = "<group>"; };
+		903D08302383C87C001C2E40 /* DSGoodsDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSGoodsDetailVC.xib; sourceTree = "<group>"; };
+		906F36282378ED44000B160A /* 袋鼠精选.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "袋鼠精选.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		906F362B2378ED44000B160A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		906F362C2378ED44000B160A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		906F36372378ED46000B160A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -248,6 +504,173 @@
 		906F378D23792FF7000B160A /* DSMyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyVC.m; sourceTree = "<group>"; };
 		906F378E23792FF7000B160A /* DSMyVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyVC.xib; sourceTree = "<group>"; };
 		906F379123793023000B160A /* DSPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPrefixHeader.pch; sourceTree = "<group>"; };
+		90AE52BD2382777C009F4740 /* DSVipCardDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipCardDetailVC.h; sourceTree = "<group>"; };
+		90AE52BE2382777C009F4740 /* DSVipCardDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardDetailVC.m; sourceTree = "<group>"; };
+		90AE52BF2382777C009F4740 /* DSVipCardDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipCardDetailVC.xib; sourceTree = "<group>"; };
+		90AE52C22382802A009F4740 /* DSVipCardDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipCardDetailCell.h; sourceTree = "<group>"; };
+		90AE52C32382802A009F4740 /* DSVipCardDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardDetailCell.m; sourceTree = "<group>"; };
+		90AE52C42382802A009F4740 /* DSVipCardDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipCardDetailCell.xib; sourceTree = "<group>"; };
+		90AE52C723828576009F4740 /* DSDynamic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamic.h; sourceTree = "<group>"; };
+		90AE52C823828576009F4740 /* DSDynamic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamic.m; sourceTree = "<group>"; };
+		90AE52CA23828595009F4740 /* DSDynamicLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicLayout.h; sourceTree = "<group>"; };
+		90AE52CB23828595009F4740 /* DSDynamicLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicLayout.m; sourceTree = "<group>"; };
+		90AE52CD238285D0009F4740 /* DSDynamicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicCell.h; sourceTree = "<group>"; };
+		90AE52CE238285D0009F4740 /* DSDynamicCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicCell.m; sourceTree = "<group>"; };
+		90AE52D023828C30009F4740 /* moment2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = moment2.plist; sourceTree = "<group>"; };
+		90AE52D223829109009F4740 /* DSMyDynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyDynamicVC.h; sourceTree = "<group>"; };
+		90AE52D323829109009F4740 /* DSMyDynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyDynamicVC.m; sourceTree = "<group>"; };
+		90AE52D423829109009F4740 /* DSMyDynamicVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyDynamicVC.xib; sourceTree = "<group>"; };
+		90AE52D7238292A0009F4740 /* DSPublishDynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPublishDynamicVC.h; sourceTree = "<group>"; };
+		90AE52D8238292A0009F4740 /* DSPublishDynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPublishDynamicVC.m; sourceTree = "<group>"; };
+		90AE52D9238292A0009F4740 /* DSPublishDynamicVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPublishDynamicVC.xib; sourceTree = "<group>"; };
+		90AE52DC23829310009F4740 /* DSPublishDynamicCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPublishDynamicCell.h; sourceTree = "<group>"; };
+		90AE52DD23829310009F4740 /* DSPublishDynamicCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPublishDynamicCell.m; sourceTree = "<group>"; };
+		90AE52DE23829310009F4740 /* DSPublishDynamicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPublishDynamicCell.xib; sourceTree = "<group>"; };
+		90AE52E123829543009F4740 /* DSPublishDynamicHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPublishDynamicHeader.h; sourceTree = "<group>"; };
+		90AE52E223829543009F4740 /* DSPublishDynamicHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPublishDynamicHeader.m; sourceTree = "<group>"; };
+		90AE52E423829548009F4740 /* DSPublishDynamicHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPublishDynamicHeader.xib; sourceTree = "<group>"; };
+		90AE52E623829B45009F4740 /* DSPuslishDynamicData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPuslishDynamicData.h; sourceTree = "<group>"; };
+		90AE52E723829B45009F4740 /* DSPuslishDynamicData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPuslishDynamicData.m; sourceTree = "<group>"; };
+		90AE52E92382A0FE009F4740 /* DSPublishDynamicFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPublishDynamicFooter.h; sourceTree = "<group>"; };
+		90AE52EA2382A0FE009F4740 /* DSPublishDynamicFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPublishDynamicFooter.m; sourceTree = "<group>"; };
+		90AE52EC2382A104009F4740 /* DSPublishDynamicFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPublishDynamicFooter.xib; sourceTree = "<group>"; };
+		90EC2575237A5D8C005C24C8 /* DSLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLoginVC.h; sourceTree = "<group>"; };
+		90EC2576237A5D8C005C24C8 /* DSLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLoginVC.m; sourceTree = "<group>"; };
+		90EC2577237A5D8C005C24C8 /* DSLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSLoginVC.xib; sourceTree = "<group>"; };
+		90EC257A237A5D9B005C24C8 /* DSRegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSRegisterVC.h; sourceTree = "<group>"; };
+		90EC257B237A5D9B005C24C8 /* DSRegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSRegisterVC.m; sourceTree = "<group>"; };
+		90EC257C237A5D9B005C24C8 /* DSRegisterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSRegisterVC.xib; sourceTree = "<group>"; };
+		90EC257F237A5DB4005C24C8 /* DSChangePwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChangePwdVC.h; sourceTree = "<group>"; };
+		90EC2580237A5DB4005C24C8 /* DSChangePwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChangePwdVC.m; sourceTree = "<group>"; };
+		90EC2581237A5DB4005C24C8 /* DSChangePwdVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChangePwdVC.xib; sourceTree = "<group>"; };
+		90EC2584237A5DC2005C24C8 /* DSWebContentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSWebContentVC.h; sourceTree = "<group>"; };
+		90EC2585237A5DC2005C24C8 /* DSWebContentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSWebContentVC.m; sourceTree = "<group>"; };
+		90EC2587237A7D18005C24C8 /* DSHomeCateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSHomeCateCell.h; sourceTree = "<group>"; };
+		90EC2588237A7D18005C24C8 /* DSHomeCateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSHomeCateCell.m; sourceTree = "<group>"; };
+		90EC2589237A7D18005C24C8 /* DSHomeCateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSHomeCateCell.xib; sourceTree = "<group>"; };
+		90EC258C237A7D23005C24C8 /* DSShopGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSShopGoodsCell.h; sourceTree = "<group>"; };
+		90EC258D237A7D23005C24C8 /* DSShopGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSShopGoodsCell.m; sourceTree = "<group>"; };
+		90EC258E237A7D23005C24C8 /* DSShopGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSShopGoodsCell.xib; sourceTree = "<group>"; };
+		90EC2591237A8EDF005C24C8 /* DSHomeBannerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSHomeBannerHeader.h; sourceTree = "<group>"; };
+		90EC2592237A8EDF005C24C8 /* DSHomeBannerHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSHomeBannerHeader.m; sourceTree = "<group>"; };
+		90EC2593237A8EDF005C24C8 /* DSHomeBannerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSHomeBannerHeader.xib; sourceTree = "<group>"; };
+		90EC2596237A9061005C24C8 /* DSBannerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSBannerCell.h; sourceTree = "<group>"; };
+		90EC2597237A9061005C24C8 /* DSBannerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSBannerCell.m; sourceTree = "<group>"; };
+		90EC2598237A9061005C24C8 /* DSBannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSBannerCell.xib; sourceTree = "<group>"; };
+		90EC259B237A97DE005C24C8 /* DSHomeCateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSHomeCateVC.h; sourceTree = "<group>"; };
+		90EC259C237A97DE005C24C8 /* DSHomeCateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSHomeCateVC.m; sourceTree = "<group>"; };
+		90EC259D237A97DE005C24C8 /* DSHomeCateVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSHomeCateVC.xib; sourceTree = "<group>"; };
+		90EC25A5237A9806005C24C8 /* DSCateGoodsChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCateGoodsChildVC.h; sourceTree = "<group>"; };
+		90EC25A6237A9806005C24C8 /* DSCateGoodsChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCateGoodsChildVC.m; sourceTree = "<group>"; };
+		90EC25A7237A9806005C24C8 /* DSCateGoodsChildVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSCateGoodsChildVC.xib; sourceTree = "<group>"; };
+		90EC25AA237A99A8005C24C8 /* DSCateGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCateGoodsCell.h; sourceTree = "<group>"; };
+		90EC25AB237A99A8005C24C8 /* DSCateGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCateGoodsCell.m; sourceTree = "<group>"; };
+		90EC25AC237A99A8005C24C8 /* DSCateGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSCateGoodsCell.xib; sourceTree = "<group>"; };
+		90EC25AF237A9BBA005C24C8 /* DSMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMessageVC.h; sourceTree = "<group>"; };
+		90EC25B0237A9BBA005C24C8 /* DSMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMessageVC.m; sourceTree = "<group>"; };
+		90EC25B1237A9BBA005C24C8 /* DSMessageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMessageVC.xib; sourceTree = "<group>"; };
+		90EC25B4237A9BDD005C24C8 /* DSMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMessageCell.h; sourceTree = "<group>"; };
+		90EC25B5237A9BDD005C24C8 /* DSMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMessageCell.m; sourceTree = "<group>"; };
+		90EC25B6237A9BDD005C24C8 /* DSMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMessageCell.xib; sourceTree = "<group>"; };
+		90EC25B9237A9E44005C24C8 /* DSCartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCartCell.h; sourceTree = "<group>"; };
+		90EC25BA237A9E44005C24C8 /* DSCartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCartCell.m; sourceTree = "<group>"; };
+		90EC25BB237A9E44005C24C8 /* DSCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSCartCell.xib; sourceTree = "<group>"; };
+		90F74E2123822762003576B3 /* DSVipHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipHeader.h; sourceTree = "<group>"; };
+		90F74E2223822762003576B3 /* DSVipHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipHeader.m; sourceTree = "<group>"; };
+		90F74E2423822769003576B3 /* DSVipHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipHeader.xib; sourceTree = "<group>"; };
+		90F74E262382291B003576B3 /* DSVipCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipCell.h; sourceTree = "<group>"; };
+		90F74E272382291B003576B3 /* DSVipCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCell.m; sourceTree = "<group>"; };
+		90F74E282382291B003576B3 /* DSVipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipCell.xib; sourceTree = "<group>"; };
+		90F74E2B23822DE6003576B3 /* DSVipCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipCardVC.h; sourceTree = "<group>"; };
+		90F74E2C23822DE6003576B3 /* DSVipCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardVC.m; sourceTree = "<group>"; };
+		90F74E2D23822DE6003576B3 /* DSVipCardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipCardVC.xib; sourceTree = "<group>"; };
+		90F74E3523822E11003576B3 /* DSVipCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipCardCell.h; sourceTree = "<group>"; };
+		90F74E3623822E11003576B3 /* DSVipCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardCell.m; sourceTree = "<group>"; };
+		90F74E3723822E11003576B3 /* DSVipCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipCardCell.xib; sourceTree = "<group>"; };
+		90F74E3A2382323A003576B3 /* DSMyBalanceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyBalanceVC.h; sourceTree = "<group>"; };
+		90F74E3B2382323A003576B3 /* DSMyBalanceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyBalanceVC.m; sourceTree = "<group>"; };
+		90F74E3C2382323A003576B3 /* DSMyBalanceVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyBalanceVC.xib; sourceTree = "<group>"; };
+		90F74E3F23823263003576B3 /* DSMyBalanceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyBalanceHeader.h; sourceTree = "<group>"; };
+		90F74E4023823263003576B3 /* DSMyBalanceHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyBalanceHeader.m; sourceTree = "<group>"; };
+		90F74E422382326C003576B3 /* DSMyBalanceHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyBalanceHeader.xib; sourceTree = "<group>"; };
+		90F74E442382387F003576B3 /* DSMyBalanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyBalanceCell.h; sourceTree = "<group>"; };
+		90F74E452382387F003576B3 /* DSMyBalanceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyBalanceCell.m; sourceTree = "<group>"; };
+		90F74E462382387F003576B3 /* DSMyBalanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyBalanceCell.xib; sourceTree = "<group>"; };
+		90F74E4923823B7D003576B3 /* DSMyBalanceSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyBalanceSectionHeader.h; sourceTree = "<group>"; };
+		90F74E4A23823B7D003576B3 /* DSMyBalanceSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyBalanceSectionHeader.m; sourceTree = "<group>"; };
+		90F74E4C23823B84003576B3 /* DSMyBalanceSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyBalanceSectionHeader.xib; sourceTree = "<group>"; };
+		90F74E4E23823DE9003576B3 /* DSUpCashVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpCashVC.h; sourceTree = "<group>"; };
+		90F74E4F23823DE9003576B3 /* DSUpCashVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpCashVC.m; sourceTree = "<group>"; };
+		90F74E5023823DE9003576B3 /* DSUpCashVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpCashVC.xib; sourceTree = "<group>"; };
+		90F74E5323823F1F003576B3 /* DSCashNoteVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCashNoteVC.h; sourceTree = "<group>"; };
+		90F74E5423823F1F003576B3 /* DSCashNoteVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCashNoteVC.m; sourceTree = "<group>"; };
+		90F74E5523823F1F003576B3 /* DSCashNoteVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSCashNoteVC.xib; sourceTree = "<group>"; };
+		90F74E5823823F37003576B3 /* DSCashNoteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCashNoteCell.h; sourceTree = "<group>"; };
+		90F74E5923823F37003576B3 /* DSCashNoteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCashNoteCell.m; sourceTree = "<group>"; };
+		90F74E5A23823F37003576B3 /* DSCashNoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSCashNoteCell.xib; sourceTree = "<group>"; };
+		90F74E5D238241BE003576B3 /* DSCashNoteDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCashNoteDetailVC.h; sourceTree = "<group>"; };
+		90F74E5E238241BE003576B3 /* DSCashNoteDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCashNoteDetailVC.m; sourceTree = "<group>"; };
+		90F74E5F238241BE003576B3 /* DSCashNoteDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSCashNoteDetailVC.xib; sourceTree = "<group>"; };
+		90F74E622382657A003576B3 /* DSBalanceNoteVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSBalanceNoteVC.h; sourceTree = "<group>"; };
+		90F74E632382657A003576B3 /* DSBalanceNoteVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSBalanceNoteVC.m; sourceTree = "<group>"; };
+		90F74E642382657A003576B3 /* DSBalanceNoteVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSBalanceNoteVC.xib; sourceTree = "<group>"; };
+		90FD91A4237E378800016EF7 /* DSMyHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyHeader.h; sourceTree = "<group>"; };
+		90FD91A5237E378800016EF7 /* DSMyHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyHeader.m; sourceTree = "<group>"; };
+		90FD91A7237E379000016EF7 /* DSMyHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyHeader.xib; sourceTree = "<group>"; };
+		90FD91A9237E3B4400016EF7 /* DSMyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyCell.h; sourceTree = "<group>"; };
+		90FD91AA237E3B4400016EF7 /* DSMyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyCell.m; sourceTree = "<group>"; };
+		90FD91AB237E3B4400016EF7 /* DSMyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyCell.xib; sourceTree = "<group>"; };
+		90FD91AE237E3EBE00016EF7 /* DSMyOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyOrderVC.h; sourceTree = "<group>"; };
+		90FD91AF237E3EBE00016EF7 /* DSMyOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyOrderVC.m; sourceTree = "<group>"; };
+		90FD91B0237E3EBE00016EF7 /* DSMyOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyOrderVC.xib; sourceTree = "<group>"; };
+		90FD91B3237E3ECE00016EF7 /* DSMyOrderChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyOrderChildVC.h; sourceTree = "<group>"; };
+		90FD91B4237E3ECE00016EF7 /* DSMyOrderChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyOrderChildVC.m; sourceTree = "<group>"; };
+		90FD91B5237E3ECE00016EF7 /* DSMyOrderChildVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyOrderChildVC.xib; sourceTree = "<group>"; };
+		90FD91B8237E3FD300016EF7 /* DSMyOrderHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyOrderHeader.h; sourceTree = "<group>"; };
+		90FD91B9237E3FD300016EF7 /* DSMyOrderHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyOrderHeader.m; sourceTree = "<group>"; };
+		90FD91BB237E3FDB00016EF7 /* DSMyOrderHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyOrderHeader.xib; sourceTree = "<group>"; };
+		90FD91BD237E405F00016EF7 /* DSMyOrderFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyOrderFooter.h; sourceTree = "<group>"; };
+		90FD91BE237E405F00016EF7 /* DSMyOrderFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyOrderFooter.m; sourceTree = "<group>"; };
+		90FD91C0237E406600016EF7 /* DSMyOrderFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyOrderFooter.xib; sourceTree = "<group>"; };
+		90FD91C2237E40CC00016EF7 /* DSMyOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyOrderCell.h; sourceTree = "<group>"; };
+		90FD91C3237E40CC00016EF7 /* DSMyOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyOrderCell.m; sourceTree = "<group>"; };
+		90FD91C4237E40CC00016EF7 /* DSMyOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyOrderCell.xib; sourceTree = "<group>"; };
+		90FD91C7237E446300016EF7 /* DSChangeInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChangeInfoVC.h; sourceTree = "<group>"; };
+		90FD91C8237E446300016EF7 /* DSChangeInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChangeInfoVC.m; sourceTree = "<group>"; };
+		90FD91C9237E446300016EF7 /* DSChangeInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChangeInfoVC.xib; sourceTree = "<group>"; };
+		90FD91CC237E45A500016EF7 /* DSMySetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMySetVC.h; sourceTree = "<group>"; };
+		90FD91CD237E45A500016EF7 /* DSMySetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMySetVC.m; sourceTree = "<group>"; };
+		90FD91CE237E45A500016EF7 /* DSMySetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMySetVC.xib; sourceTree = "<group>"; };
+		90FD91D1237E471000016EF7 /* DSChangeBindVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChangeBindVC.h; sourceTree = "<group>"; };
+		90FD91D2237E471000016EF7 /* DSChangeBindVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChangeBindVC.m; sourceTree = "<group>"; };
+		90FD91D3237E471000016EF7 /* DSChangeBindVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChangeBindVC.xib; sourceTree = "<group>"; };
+		90FD91D6237E48AC00016EF7 /* DSMyTeamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyTeamVC.h; sourceTree = "<group>"; };
+		90FD91D7237E48AC00016EF7 /* DSMyTeamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyTeamVC.m; sourceTree = "<group>"; };
+		90FD91D8237E48AC00016EF7 /* DSMyTeamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyTeamVC.xib; sourceTree = "<group>"; };
+		90FD91DB237E48BD00016EF7 /* DSMyTeamHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyTeamHeader.h; sourceTree = "<group>"; };
+		90FD91DC237E48BD00016EF7 /* DSMyTeamHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyTeamHeader.m; sourceTree = "<group>"; };
+		90FD91DE237E48C700016EF7 /* DSMyTeamHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyTeamHeader.xib; sourceTree = "<group>"; };
+		90FD91E0237E48D300016EF7 /* DSMyTeamCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyTeamCell.h; sourceTree = "<group>"; };
+		90FD91E1237E48D300016EF7 /* DSMyTeamCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyTeamCell.m; sourceTree = "<group>"; };
+		90FD91E2237E48D300016EF7 /* DSMyTeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyTeamCell.xib; sourceTree = "<group>"; };
+		90FD91E5237E4F0500016EF7 /* DSMyCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyCardVC.h; sourceTree = "<group>"; };
+		90FD91E6237E4F0500016EF7 /* DSMyCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyCardVC.m; sourceTree = "<group>"; };
+		90FD91E7237E4F0500016EF7 /* DSMyCardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyCardVC.xib; sourceTree = "<group>"; };
+		90FD91EA237E4F4F00016EF7 /* DSMyCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyCardCell.h; sourceTree = "<group>"; };
+		90FD91EB237E4F4F00016EF7 /* DSMyCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyCardCell.m; sourceTree = "<group>"; };
+		90FD91EC237E4F4F00016EF7 /* DSMyCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyCardCell.xib; sourceTree = "<group>"; };
+		90FD91EF237E525A00016EF7 /* DSMyCollectVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyCollectVC.h; sourceTree = "<group>"; };
+		90FD91F0237E525A00016EF7 /* DSMyCollectVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyCollectVC.m; sourceTree = "<group>"; };
+		90FD91F1237E525A00016EF7 /* DSMyCollectVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyCollectVC.xib; sourceTree = "<group>"; };
+		90FD91F4237E539300016EF7 /* DSMyAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyAddressCell.h; sourceTree = "<group>"; };
+		90FD91F5237E539300016EF7 /* DSMyAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyAddressCell.m; sourceTree = "<group>"; };
+		90FD91F6237E539300016EF7 /* DSMyAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyAddressCell.xib; sourceTree = "<group>"; };
+		90FD91F9237E53AA00016EF7 /* DSMyAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyAddressVC.h; sourceTree = "<group>"; };
+		90FD91FA237E53AA00016EF7 /* DSMyAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyAddressVC.m; sourceTree = "<group>"; };
+		90FD91FB237E53AA00016EF7 /* DSMyAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyAddressVC.xib; sourceTree = "<group>"; };
+		90FD91FE237E55C500016EF7 /* DSEditAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSEditAddressVC.h; sourceTree = "<group>"; };
+		90FD91FF237E55C500016EF7 /* DSEditAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSEditAddressVC.m; sourceTree = "<group>"; };
+		90FD9200237E55C500016EF7 /* DSEditAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSEditAddressVC.xib; sourceTree = "<group>"; };
 		A52BDBFE46C9C9000B61D447 /* Pods-DS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DS.release.xcconfig"; path = "Target Support Files/Pods-DS/Pods-DS.release.xcconfig"; sourceTree = "<group>"; };
 		BC4F949048AFF481665335AC /* Pods-DS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DS.debug.xcconfig"; path = "Target Support Files/Pods-DS/Pods-DS.debug.xcconfig"; sourceTree = "<group>"; };
 		F95BF23A4F0097FD6153E581 /* libPods-DS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,6 +720,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		900146A22384E4AF00275DD9 /* GXSaveImageToPHAsset */ = {
+			isa = PBXGroup;
+			children = (
+				900146A42384E4AF00275DD9 /* GXSaveImageToPHAsset.h */,
+				900146A32384E4AF00275DD9 /* GXSaveImageToPHAsset.m */,
+			);
+			path = GXSaveImageToPHAsset;
+			sourceTree = "<group>";
+		};
+		903CB54E23927F180053A25B /* TYSnapshotScroll */ = {
+			isa = PBXGroup;
+			children = (
+				903CB54F23927F180053A25B /* TYSnapshotScroll.h */,
+				903CB55623927F180053A25B /* TYSnapshotScroll.m */,
+				903CB55A23927F180053A25B /* UIView+TYSnapshot.h */,
+				903CB55423927F180053A25B /* UIView+TYSnapshot.m */,
+				903CB55023927F180053A25B /* UIImage+TYSnapshot.h */,
+				903CB55523927F180053A25B /* UIImage+TYSnapshot.m */,
+				903CB55723927F180053A25B /* UIScrollView+TYSnapshot.h */,
+				903CB55323927F180053A25B /* UIScrollView+TYSnapshot.m */,
+				903CB55223927F180053A25B /* WKWebView+TYSnapshot.m */,
+				903CB55823927F180053A25B /* WKWebView+TYSnapshot.h */,
+				903CB55123927F180053A25B /* UIViewController+TYSnapshot.h */,
+				903CB55923927F180053A25B /* UIViewController+TYSnapshot.m */,
+			);
+			path = TYSnapshotScroll;
+			sourceTree = "<group>";
+		};
 		906F361F2378ED44000B160A = {
 			isa = PBXGroup;
 			children = (
@@ -312,7 +763,7 @@
 		906F36292378ED44000B160A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				906F36282378ED44000B160A /* 袋鼠.app */,
+				906F36282378ED44000B160A /* 袋鼠精选.app */,
 				906F36432378ED46000B160A /* DSTests.xctest */,
 				906F364E2378ED46000B160A /* DSUITests.xctest */,
 			);
@@ -427,6 +878,9 @@
 				906F378723792FEA000B160A /* DSCartVC.h */,
 				906F378823792FEA000B160A /* DSCartVC.m */,
 				906F378923792FEA000B160A /* DSCartVC.xib */,
+				903D081A238398F5001C2E40 /* DSUpOrderVC.h */,
+				903D081B238398F5001C2E40 /* DSUpOrderVC.m */,
+				903D081C238398F5001C2E40 /* DSUpOrderVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -441,6 +895,18 @@
 		906F367D23792F5B000B160A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90EC25B9237A9E44005C24C8 /* DSCartCell.h */,
+				90EC25BA237A9E44005C24C8 /* DSCartCell.m */,
+				90EC25BB237A9E44005C24C8 /* DSCartCell.xib */,
+				903D081F23839918001C2E40 /* DSUpOrderHeader.h */,
+				903D082023839918001C2E40 /* DSUpOrderHeader.m */,
+				903D08222383991F001C2E40 /* DSUpOrderHeader.xib */,
+				903D082423839A15001C2E40 /* DSUpOrderFooter.h */,
+				903D082523839A15001C2E40 /* DSUpOrderFooter.m */,
+				903D082723839A1B001C2E40 /* DSUpOrderFooter.xib */,
+				903D082923839DFA001C2E40 /* DSPayTypeView.h */,
+				903D082A23839DFA001C2E40 /* DSPayTypeView.m */,
+				903D082C23839E05001C2E40 /* DSPayTypeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -461,6 +927,18 @@
 				906F377823792FB7000B160A /* DSHomeVC.h */,
 				906F377923792FB7000B160A /* DSHomeVC.m */,
 				906F377A23792FB7000B160A /* DSHomeVC.xib */,
+				90EC259B237A97DE005C24C8 /* DSHomeCateVC.h */,
+				90EC259C237A97DE005C24C8 /* DSHomeCateVC.m */,
+				90EC259D237A97DE005C24C8 /* DSHomeCateVC.xib */,
+				90EC25A5237A9806005C24C8 /* DSCateGoodsChildVC.h */,
+				90EC25A6237A9806005C24C8 /* DSCateGoodsChildVC.m */,
+				90EC25A7237A9806005C24C8 /* DSCateGoodsChildVC.xib */,
+				90EC25AF237A9BBA005C24C8 /* DSMessageVC.h */,
+				90EC25B0237A9BBA005C24C8 /* DSMessageVC.m */,
+				90EC25B1237A9BBA005C24C8 /* DSMessageVC.xib */,
+				903D082E2383C87C001C2E40 /* DSGoodsDetailVC.h */,
+				903D082F2383C87C001C2E40 /* DSGoodsDetailVC.m */,
+				903D08302383C87C001C2E40 /* DSGoodsDetailVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -475,6 +953,45 @@
 		906F368123792F5B000B160A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90EC2591237A8EDF005C24C8 /* DSHomeBannerHeader.h */,
+				90EC2592237A8EDF005C24C8 /* DSHomeBannerHeader.m */,
+				90EC2593237A8EDF005C24C8 /* DSHomeBannerHeader.xib */,
+				90EC2596237A9061005C24C8 /* DSBannerCell.h */,
+				90EC2597237A9061005C24C8 /* DSBannerCell.m */,
+				90EC2598237A9061005C24C8 /* DSBannerCell.xib */,
+				90EC2587237A7D18005C24C8 /* DSHomeCateCell.h */,
+				90EC2588237A7D18005C24C8 /* DSHomeCateCell.m */,
+				90EC2589237A7D18005C24C8 /* DSHomeCateCell.xib */,
+				90EC258C237A7D23005C24C8 /* DSShopGoodsCell.h */,
+				90EC258D237A7D23005C24C8 /* DSShopGoodsCell.m */,
+				90EC258E237A7D23005C24C8 /* DSShopGoodsCell.xib */,
+				90EC25AA237A99A8005C24C8 /* DSCateGoodsCell.h */,
+				90EC25AB237A99A8005C24C8 /* DSCateGoodsCell.m */,
+				90EC25AC237A99A8005C24C8 /* DSCateGoodsCell.xib */,
+				90EC25B4237A9BDD005C24C8 /* DSMessageCell.h */,
+				90EC25B5237A9BDD005C24C8 /* DSMessageCell.m */,
+				90EC25B6237A9BDD005C24C8 /* DSMessageCell.xib */,
+				900146792383E19300275DD9 /* DSChooseClassView.h */,
+				9001467A2383E19300275DD9 /* DSChooseClassView.m */,
+				9001467C2383E19A00275DD9 /* DSChooseClassView.xib */,
+				9001467E2383E31900275DD9 /* DSChooseClassCell.h */,
+				9001467F2383E31900275DD9 /* DSChooseClassCell.m */,
+				900146802383E31900275DD9 /* DSChooseClassCell.xib */,
+				900146832383E34900275DD9 /* DSChooseClassHeader.h */,
+				900146842383E34900275DD9 /* DSChooseClassHeader.m */,
+				900146852383E34900275DD9 /* DSChooseClassHeader.xib */,
+				900146882383E38800275DD9 /* DSChooseClassFooter.h */,
+				900146892383E38800275DD9 /* DSChooseClassFooter.m */,
+				9001468A2383E38800275DD9 /* DSChooseClassFooter.xib */,
+				9001468D2383E89B00275DD9 /* DSTakeCouponView.h */,
+				9001468E2383E89B00275DD9 /* DSTakeCouponView.m */,
+				900146902383E8AD00275DD9 /* DSTakeCouponView.xib */,
+				900146922383EA3800275DD9 /* DSTakeCouponCell.h */,
+				900146932383EA3800275DD9 /* DSTakeCouponCell.m */,
+				900146942383EA3800275DD9 /* DSTakeCouponCell.xib */,
+				900146A62384E5A000275DD9 /* DSGoodsPosterView.h */,
+				900146A72384E5A000275DD9 /* DSGoodsPosterView.m */,
+				900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -495,6 +1012,12 @@
 				906F378223792FDA000B160A /* DSDynamicVC.h */,
 				906F378323792FDA000B160A /* DSDynamicVC.m */,
 				906F378423792FDA000B160A /* DSDynamicVC.xib */,
+				90AE52D7238292A0009F4740 /* DSPublishDynamicVC.h */,
+				90AE52D8238292A0009F4740 /* DSPublishDynamicVC.m */,
+				90AE52D9238292A0009F4740 /* DSPublishDynamicVC.xib */,
+				903D07DE238378BA001C2E40 /* DSDynamicDetailVC.h */,
+				903D07DF238378BA001C2E40 /* DSDynamicDetailVC.m */,
+				903D07E0238378BA001C2E40 /* DSDynamicDetailVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -502,6 +1025,13 @@
 		906F368423792F5B000B160A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				90AE52D023828C30009F4740 /* moment2.plist */,
+				90AE52C723828576009F4740 /* DSDynamic.h */,
+				90AE52C823828576009F4740 /* DSDynamic.m */,
+				90AE52CA23828595009F4740 /* DSDynamicLayout.h */,
+				90AE52CB23828595009F4740 /* DSDynamicLayout.m */,
+				90AE52E623829B45009F4740 /* DSPuslishDynamicData.h */,
+				90AE52E723829B45009F4740 /* DSPuslishDynamicData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,6 +1039,26 @@
 		906F368523792F5B000B160A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90AE52CD238285D0009F4740 /* DSDynamicCell.h */,
+				90AE52CE238285D0009F4740 /* DSDynamicCell.m */,
+				90AE52E123829543009F4740 /* DSPublishDynamicHeader.h */,
+				90AE52E223829543009F4740 /* DSPublishDynamicHeader.m */,
+				90AE52E423829548009F4740 /* DSPublishDynamicHeader.xib */,
+				90AE52DC23829310009F4740 /* DSPublishDynamicCell.h */,
+				90AE52DD23829310009F4740 /* DSPublishDynamicCell.m */,
+				90AE52DE23829310009F4740 /* DSPublishDynamicCell.xib */,
+				90AE52E92382A0FE009F4740 /* DSPublishDynamicFooter.h */,
+				90AE52EA2382A0FE009F4740 /* DSPublishDynamicFooter.m */,
+				90AE52EC2382A104009F4740 /* DSPublishDynamicFooter.xib */,
+				903D07E32383792F001C2E40 /* DSDynamicDetailHeader.h */,
+				903D07E42383792F001C2E40 /* DSDynamicDetailHeader.m */,
+				903D07E623837937001C2E40 /* DSDynamicDetailHeader.xib */,
+				903D07E823837A00001C2E40 /* DSDynamicDetailCell.h */,
+				903D07E923837A00001C2E40 /* DSDynamicDetailCell.m */,
+				903D07EA23837A00001C2E40 /* DSDynamicDetailCell.xib */,
+				903D07ED23837AE7001C2E40 /* DSDynamicDetailFooter.h */,
+				903D07EE23837AE7001C2E40 /* DSDynamicDetailFooter.m */,
+				903D07F023837AEE001C2E40 /* DSDynamicDetailFooter.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -529,6 +1079,63 @@
 				906F378C23792FF7000B160A /* DSMyVC.h */,
 				906F378D23792FF7000B160A /* DSMyVC.m */,
 				906F378E23792FF7000B160A /* DSMyVC.xib */,
+				90FD91CC237E45A500016EF7 /* DSMySetVC.h */,
+				90FD91CD237E45A500016EF7 /* DSMySetVC.m */,
+				90FD91CE237E45A500016EF7 /* DSMySetVC.xib */,
+				90FD91D1237E471000016EF7 /* DSChangeBindVC.h */,
+				90FD91D2237E471000016EF7 /* DSChangeBindVC.m */,
+				90FD91D3237E471000016EF7 /* DSChangeBindVC.xib */,
+				90FD91C7237E446300016EF7 /* DSChangeInfoVC.h */,
+				90FD91C8237E446300016EF7 /* DSChangeInfoVC.m */,
+				90FD91C9237E446300016EF7 /* DSChangeInfoVC.xib */,
+				90FD91AE237E3EBE00016EF7 /* DSMyOrderVC.h */,
+				90FD91AF237E3EBE00016EF7 /* DSMyOrderVC.m */,
+				90FD91B0237E3EBE00016EF7 /* DSMyOrderVC.xib */,
+				90FD91B3237E3ECE00016EF7 /* DSMyOrderChildVC.h */,
+				90FD91B4237E3ECE00016EF7 /* DSMyOrderChildVC.m */,
+				90FD91B5237E3ECE00016EF7 /* DSMyOrderChildVC.xib */,
+				903D07F223837FD7001C2E40 /* DSOrderDetailVC.h */,
+				903D07F323837FD7001C2E40 /* DSOrderDetailVC.m */,
+				903D07F423837FD7001C2E40 /* DSOrderDetailVC.xib */,
+				903D080623838C4F001C2E40 /* DSExpressDetailVC.h */,
+				903D080723838C4F001C2E40 /* DSExpressDetailVC.m */,
+				903D080823838C4F001C2E40 /* DSExpressDetailVC.xib */,
+				903D081023839166001C2E40 /* DSApplyRefundVC.h */,
+				903D081123839166001C2E40 /* DSApplyRefundVC.m */,
+				903D081223839166001C2E40 /* DSApplyRefundVC.xib */,
+				90FD91D6237E48AC00016EF7 /* DSMyTeamVC.h */,
+				90FD91D7237E48AC00016EF7 /* DSMyTeamVC.m */,
+				90FD91D8237E48AC00016EF7 /* DSMyTeamVC.xib */,
+				90F74E3A2382323A003576B3 /* DSMyBalanceVC.h */,
+				90F74E3B2382323A003576B3 /* DSMyBalanceVC.m */,
+				90F74E3C2382323A003576B3 /* DSMyBalanceVC.xib */,
+				90F74E622382657A003576B3 /* DSBalanceNoteVC.h */,
+				90F74E632382657A003576B3 /* DSBalanceNoteVC.m */,
+				90F74E642382657A003576B3 /* DSBalanceNoteVC.xib */,
+				90F74E4E23823DE9003576B3 /* DSUpCashVC.h */,
+				90F74E4F23823DE9003576B3 /* DSUpCashVC.m */,
+				90F74E5023823DE9003576B3 /* DSUpCashVC.xib */,
+				90F74E5323823F1F003576B3 /* DSCashNoteVC.h */,
+				90F74E5423823F1F003576B3 /* DSCashNoteVC.m */,
+				90F74E5523823F1F003576B3 /* DSCashNoteVC.xib */,
+				90F74E5D238241BE003576B3 /* DSCashNoteDetailVC.h */,
+				90F74E5E238241BE003576B3 /* DSCashNoteDetailVC.m */,
+				90F74E5F238241BE003576B3 /* DSCashNoteDetailVC.xib */,
+				90FD91E5237E4F0500016EF7 /* DSMyCardVC.h */,
+				90FD91E6237E4F0500016EF7 /* DSMyCardVC.m */,
+				90FD91E7237E4F0500016EF7 /* DSMyCardVC.xib */,
+				90AE52D223829109009F4740 /* DSMyDynamicVC.h */,
+				90AE52D323829109009F4740 /* DSMyDynamicVC.m */,
+				90AE52D423829109009F4740 /* DSMyDynamicVC.xib */,
+				90FD91EF237E525A00016EF7 /* DSMyCollectVC.h */,
+				90FD91F0237E525A00016EF7 /* DSMyCollectVC.m */,
+				90FD91F1237E525A00016EF7 /* DSMyCollectVC.xib */,
+				90FD91F9237E53AA00016EF7 /* DSMyAddressVC.h */,
+				90FD91FA237E53AA00016EF7 /* DSMyAddressVC.m */,
+				90FD91FB237E53AA00016EF7 /* DSMyAddressVC.xib */,
+				90FD91FE237E55C500016EF7 /* DSEditAddressVC.h */,
+				90FD91FF237E55C500016EF7 /* DSEditAddressVC.m */,
+				90FD9200237E55C500016EF7 /* DSEditAddressVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -543,6 +1150,60 @@
 		906F368923792F5B000B160A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90FD91A4237E378800016EF7 /* DSMyHeader.h */,
+				90FD91A5237E378800016EF7 /* DSMyHeader.m */,
+				90FD91A7237E379000016EF7 /* DSMyHeader.xib */,
+				90FD91A9237E3B4400016EF7 /* DSMyCell.h */,
+				90FD91AA237E3B4400016EF7 /* DSMyCell.m */,
+				90FD91AB237E3B4400016EF7 /* DSMyCell.xib */,
+				90FD91B8237E3FD300016EF7 /* DSMyOrderHeader.h */,
+				90FD91B9237E3FD300016EF7 /* DSMyOrderHeader.m */,
+				90FD91BB237E3FDB00016EF7 /* DSMyOrderHeader.xib */,
+				90FD91C2237E40CC00016EF7 /* DSMyOrderCell.h */,
+				90FD91C3237E40CC00016EF7 /* DSMyOrderCell.m */,
+				90FD91C4237E40CC00016EF7 /* DSMyOrderCell.xib */,
+				90FD91BD237E405F00016EF7 /* DSMyOrderFooter.h */,
+				90FD91BE237E405F00016EF7 /* DSMyOrderFooter.m */,
+				90FD91C0237E406600016EF7 /* DSMyOrderFooter.xib */,
+				903D07F723838097001C2E40 /* DSOrderDetailHeader.h */,
+				903D07F823838097001C2E40 /* DSOrderDetailHeader.m */,
+				903D07FA2383809D001C2E40 /* DSOrderDetailHeader.xib */,
+				903D07FC2383823B001C2E40 /* DSOrderDetailFooter.h */,
+				903D07FD2383823B001C2E40 /* DSOrderDetailFooter.m */,
+				903D07FF23838242001C2E40 /* DSOrderDetailFooter.xib */,
+				903D080123838AC6001C2E40 /* DSRefundDetailFooter.h */,
+				903D080223838AC6001C2E40 /* DSRefundDetailFooter.m */,
+				903D080423838AD3001C2E40 /* DSRefundDetailFooter.xib */,
+				903D0815238393ED001C2E40 /* DSApplyRefundCell.h */,
+				903D0816238393ED001C2E40 /* DSApplyRefundCell.m */,
+				903D0817238393ED001C2E40 /* DSApplyRefundCell.xib */,
+				903D080B23838D03001C2E40 /* DSExpressDetailCell.h */,
+				903D080C23838D03001C2E40 /* DSExpressDetailCell.m */,
+				903D080D23838D03001C2E40 /* DSExpressDetailCell.xib */,
+				90FD91DB237E48BD00016EF7 /* DSMyTeamHeader.h */,
+				90FD91DC237E48BD00016EF7 /* DSMyTeamHeader.m */,
+				90FD91DE237E48C700016EF7 /* DSMyTeamHeader.xib */,
+				90FD91E0237E48D300016EF7 /* DSMyTeamCell.h */,
+				90FD91E1237E48D300016EF7 /* DSMyTeamCell.m */,
+				90FD91E2237E48D300016EF7 /* DSMyTeamCell.xib */,
+				90F74E3F23823263003576B3 /* DSMyBalanceHeader.h */,
+				90F74E4023823263003576B3 /* DSMyBalanceHeader.m */,
+				90F74E422382326C003576B3 /* DSMyBalanceHeader.xib */,
+				90F74E4923823B7D003576B3 /* DSMyBalanceSectionHeader.h */,
+				90F74E4A23823B7D003576B3 /* DSMyBalanceSectionHeader.m */,
+				90F74E4C23823B84003576B3 /* DSMyBalanceSectionHeader.xib */,
+				90F74E442382387F003576B3 /* DSMyBalanceCell.h */,
+				90F74E452382387F003576B3 /* DSMyBalanceCell.m */,
+				90F74E462382387F003576B3 /* DSMyBalanceCell.xib */,
+				90F74E5823823F37003576B3 /* DSCashNoteCell.h */,
+				90F74E5923823F37003576B3 /* DSCashNoteCell.m */,
+				90F74E5A23823F37003576B3 /* DSCashNoteCell.xib */,
+				90FD91EA237E4F4F00016EF7 /* DSMyCardCell.h */,
+				90FD91EB237E4F4F00016EF7 /* DSMyCardCell.m */,
+				90FD91EC237E4F4F00016EF7 /* DSMyCardCell.xib */,
+				90FD91F4237E539300016EF7 /* DSMyAddressCell.h */,
+				90FD91F5237E539300016EF7 /* DSMyAddressCell.m */,
+				90FD91F6237E539300016EF7 /* DSMyAddressCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -560,6 +1221,17 @@
 		906F368B23792F5B000B160A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				90EC2575237A5D8C005C24C8 /* DSLoginVC.h */,
+				90EC2576237A5D8C005C24C8 /* DSLoginVC.m */,
+				90EC2577237A5D8C005C24C8 /* DSLoginVC.xib */,
+				90EC257A237A5D9B005C24C8 /* DSRegisterVC.h */,
+				90EC257B237A5D9B005C24C8 /* DSRegisterVC.m */,
+				90EC257C237A5D9B005C24C8 /* DSRegisterVC.xib */,
+				90EC257F237A5DB4005C24C8 /* DSChangePwdVC.h */,
+				90EC2580237A5DB4005C24C8 /* DSChangePwdVC.m */,
+				90EC2581237A5DB4005C24C8 /* DSChangePwdVC.xib */,
+				90EC2584237A5DC2005C24C8 /* DSWebContentVC.h */,
+				90EC2585237A5DC2005C24C8 /* DSWebContentVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -594,6 +1266,15 @@
 				906F377D23792FC9000B160A /* DSVipVC.h */,
 				906F377E23792FC9000B160A /* DSVipVC.m */,
 				906F377F23792FC9000B160A /* DSVipVC.xib */,
+				90F74E2B23822DE6003576B3 /* DSVipCardVC.h */,
+				90F74E2C23822DE6003576B3 /* DSVipCardVC.m */,
+				90F74E2D23822DE6003576B3 /* DSVipCardVC.xib */,
+				90AE52BD2382777C009F4740 /* DSVipCardDetailVC.h */,
+				90AE52BE2382777C009F4740 /* DSVipCardDetailVC.m */,
+				90AE52BF2382777C009F4740 /* DSVipCardDetailVC.xib */,
+				900146972383F12900275DD9 /* DSVipGoodsDetailVC.h */,
+				900146982383F12900275DD9 /* DSVipGoodsDetailVC.m */,
+				900146992383F12900275DD9 /* DSVipGoodsDetailVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -608,6 +1289,18 @@
 		906F36AA23792F5B000B160A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90F74E2123822762003576B3 /* DSVipHeader.h */,
+				90F74E2223822762003576B3 /* DSVipHeader.m */,
+				90F74E2423822769003576B3 /* DSVipHeader.xib */,
+				90F74E262382291B003576B3 /* DSVipCell.h */,
+				90F74E272382291B003576B3 /* DSVipCell.m */,
+				90F74E282382291B003576B3 /* DSVipCell.xib */,
+				90F74E3523822E11003576B3 /* DSVipCardCell.h */,
+				90F74E3623822E11003576B3 /* DSVipCardCell.m */,
+				90F74E3723822E11003576B3 /* DSVipCardCell.xib */,
+				90AE52C22382802A009F4740 /* DSVipCardDetailCell.h */,
+				90AE52C32382802A009F4740 /* DSVipCardDetailCell.m */,
+				90AE52C42382802A009F4740 /* DSVipCardDetailCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -615,6 +1308,8 @@
 		906F36C123792F64000B160A /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				903CB54E23927F180053A25B /* TYSnapshotScroll */,
+				900146A22384E4AF00275DD9 /* GXSaveImageToPHAsset */,
 				906F36C223792F64000B160A /* Category */,
 				906F36DA23792F64000B160A /* HXLocationTool */,
 				906F36DD23792F64000B160A /* Network */,
@@ -940,7 +1635,7 @@
 			);
 			name = DS;
 			productName = DS;
-			productReference = 906F36282378ED44000B160A /* 袋鼠.app */;
+			productReference = 906F36282378ED44000B160A /* 袋鼠精选.app */;
 			productType = "com.apple.product-type.application";
 		};
 		906F36422378ED46000B160A /* DSTests */ = {
@@ -1027,19 +1722,97 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90FD91E4237E48D300016EF7 /* DSMyTeamCell.xib in Resources */,
 				906F376923792F64000B160A /* SGQRCode.bundle in Resources */,
+				90FD91B7237E3ECE00016EF7 /* DSMyOrderChildVC.xib in Resources */,
+				90EC25AE237A99A8005C24C8 /* DSCateGoodsCell.xib in Resources */,
+				90FD91C6237E40CC00016EF7 /* DSMyOrderCell.xib in Resources */,
 				906F378123792FC9000B160A /* DSVipVC.xib in Resources */,
+				90FD91DA237E48AC00016EF7 /* DSMyTeamVC.xib in Resources */,
 				906F376323792F64000B160A /* FSActionSheet_cancel@3x.png in Resources */,
+				903D08322383C87C001C2E40 /* DSGoodsDetailVC.xib in Resources */,
+				90FD91F3237E525A00016EF7 /* DSMyCollectVC.xib in Resources */,
+				90F74E5723823F1F003576B3 /* DSCashNoteVC.xib in Resources */,
+				90FD91D5237E471000016EF7 /* DSChangeBindVC.xib in Resources */,
+				90EC2583237A5DB4005C24C8 /* DSChangePwdVC.xib in Resources */,
+				90FD91B2237E3EBE00016EF7 /* DSMyOrderVC.xib in Resources */,
+				90EC25B3237A9BBA005C24C8 /* DSMessageVC.xib in Resources */,
+				903D07E723837937001C2E40 /* DSDynamicDetailHeader.xib in Resources */,
+				903D07F623837FD7001C2E40 /* DSOrderDetailVC.xib in Resources */,
+				90FD91AD237E3B4400016EF7 /* DSMyCell.xib in Resources */,
+				90AE52ED2382A104009F4740 /* DSPublishDynamicFooter.xib in Resources */,
+				9001469B2383F12900275DD9 /* DSVipGoodsDetailVC.xib in Resources */,
+				903D080523838AD3001C2E40 /* DSRefundDetailFooter.xib in Resources */,
 				906F363B2378ED46000B160A /* LaunchScreen.storyboard in Resources */,
+				903D080F23838D03001C2E40 /* DSExpressDetailCell.xib in Resources */,
+				90EC257E237A5D9B005C24C8 /* DSRegisterVC.xib in Resources */,
+				90AE52D623829109009F4740 /* DSMyDynamicVC.xib in Resources */,
+				900146912383E8AD00275DD9 /* DSTakeCouponView.xib in Resources */,
+				90FD9202237E55C500016EF7 /* DSEditAddressVC.xib in Resources */,
+				90EC25BD237A9E44005C24C8 /* DSCartCell.xib in Resources */,
+				903D081E238398F5001C2E40 /* DSUpOrderVC.xib in Resources */,
+				903D081423839166001C2E40 /* DSApplyRefundVC.xib in Resources */,
+				90FD91C1237E406600016EF7 /* DSMyOrderFooter.xib in Resources */,
+				900146962383EA3800275DD9 /* DSTakeCouponCell.xib in Resources */,
+				90EC25A9237A9806005C24C8 /* DSCateGoodsChildVC.xib in Resources */,
+				90FD91BC237E3FDB00016EF7 /* DSMyOrderHeader.xib in Resources */,
+				90F74E4D23823B85003576B3 /* DSMyBalanceSectionHeader.xib in Resources */,
+				90FD91DF237E48C700016EF7 /* DSMyTeamHeader.xib in Resources */,
+				90AE52DB238292A0009F4740 /* DSPublishDynamicVC.xib in Resources */,
+				90EC259A237A9061005C24C8 /* DSBannerCell.xib in Resources */,
+				903D0819238393ED001C2E40 /* DSApplyRefundCell.xib in Resources */,
 				906F36382378ED46000B160A /* Assets.xcassets in Resources */,
+				903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */,
+				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
 				906F377C23792FB7000B160A /* DSHomeVC.xib in Resources */,
+				903D07F123837AEE001C2E40 /* DSDynamicDetailFooter.xib in Resources */,
+				903D082D23839E05001C2E40 /* DSPayTypeView.xib in Resources */,
+				90FD91E9237E4F0500016EF7 /* DSMyCardVC.xib in Resources */,
+				90FD91D0237E45A500016EF7 /* DSMySetVC.xib in Resources */,
+				90AE52C12382777C009F4740 /* DSVipCardDetailVC.xib in Resources */,
+				90F74E5223823DE9003576B3 /* DSUpCashVC.xib in Resources */,
+				90FD91EE237E4F4F00016EF7 /* DSMyCardCell.xib in Resources */,
+				90F74E3923822E11003576B3 /* DSVipCardCell.xib in Resources */,
 				906F375723792F64000B160A /* RCFilterCell.xib in Resources */,
 				906F378B23792FEA000B160A /* DSCartVC.xib in Resources */,
 				906F376023792F64000B160A /* AlipaySDK.bundle in Resources */,
+				90EC258B237A7D18005C24C8 /* DSHomeCateCell.xib in Resources */,
+				90F74E432382326C003576B3 /* DSMyBalanceHeader.xib in Resources */,
+				903D080023838242001C2E40 /* DSOrderDetailFooter.xib in Resources */,
+				90F74E482382387F003576B3 /* DSMyBalanceCell.xib in Resources */,
+				9001468C2383E38800275DD9 /* DSChooseClassFooter.xib in Resources */,
+				9001467D2383E19A00275DD9 /* DSChooseClassView.xib in Resources */,
+				90EC259F237A97DE005C24C8 /* DSHomeCateVC.xib in Resources */,
+				903D07FB2383809D001C2E40 /* DSOrderDetailHeader.xib in Resources */,
+				903D082823839A1B001C2E40 /* DSUpOrderFooter.xib in Resources */,
 				906F375923792F64000B160A /* WSDatePickerView.xib in Resources */,
+				903D07E2238378BA001C2E40 /* DSDynamicDetailVC.xib in Resources */,
+				90FD91FD237E53AA00016EF7 /* DSMyAddressVC.xib in Resources */,
+				90AE52C62382802A009F4740 /* DSVipCardDetailCell.xib in Resources */,
+				90FD91CB237E446300016EF7 /* DSChangeInfoVC.xib in Resources */,
+				90F74E3E2382323A003576B3 /* DSMyBalanceVC.xib in Resources */,
+				900146822383E31900275DD9 /* DSChooseClassCell.xib in Resources */,
+				90FD91A8237E379000016EF7 /* DSMyHeader.xib in Resources */,
+				90EC2590237A7D23005C24C8 /* DSShopGoodsCell.xib in Resources */,
+				90AE52D123828C30009F4740 /* moment2.plist in Resources */,
 				906F379023792FF7000B160A /* DSMyVC.xib in Resources */,
+				90EC2579237A5D8C005C24C8 /* DSLoginVC.xib in Resources */,
+				90F74E662382657A003576B3 /* DSBalanceNoteVC.xib in Resources */,
+				90F74E2F23822DE6003576B3 /* DSVipCardVC.xib in Resources */,
 				906F376423792F64000B160A /* FSActionSheet_cancel@2x.png in Resources */,
+				903D08232383991F001C2E40 /* DSUpOrderHeader.xib in Resources */,
+				90EC25B8237A9BDD005C24C8 /* DSMessageCell.xib in Resources */,
 				906F378623792FDA000B160A /* DSDynamicVC.xib in Resources */,
+				90F74E2A2382291B003576B3 /* DSVipCell.xib in Resources */,
+				903D07EC23837A00001C2E40 /* DSDynamicDetailCell.xib in Resources */,
+				90EC2595237A8EDF005C24C8 /* DSHomeBannerHeader.xib in Resources */,
+				90AE52E023829310009F4740 /* DSPublishDynamicCell.xib in Resources */,
+				900146872383E34900275DD9 /* DSChooseClassHeader.xib in Resources */,
+				90AE52E523829548009F4740 /* DSPublishDynamicHeader.xib in Resources */,
+				90F74E2523822769003576B3 /* DSVipHeader.xib in Resources */,
+				90F74E5C23823F37003576B3 /* DSCashNoteCell.xib in Resources */,
+				900146AA2384E5A800275DD9 /* DSGoodsPosterView.xib in Resources */,
+				90F74E61238241BE003576B3 /* DSCashNoteDetailVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1106,64 +1879,153 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EC2578237A5D8C005C24C8 /* DSLoginVC.m in Sources */,
+				900146862383E34900275DD9 /* DSChooseClassHeader.m in Sources */,
+				903D07EF23837AE7001C2E40 /* DSDynamicDetailFooter.m in Sources */,
+				90F74E2E23822DE6003576B3 /* DSVipCardVC.m in Sources */,
+				903D081D238398F5001C2E40 /* DSUpOrderVC.m in Sources */,
 				906F375C23792F64000B160A /* UIView+Extension.m in Sources */,
 				906F376223792F64000B160A /* HXPlaceholderTextView.m in Sources */,
+				90F74E60238241BE003576B3 /* DSCashNoteDetailVC.m in Sources */,
+				903D082623839A15001C2E40 /* DSUpOrderFooter.m in Sources */,
+				90AE52D523829109009F4740 /* DSMyDynamicVC.m in Sources */,
 				906F374623792F64000B160A /* Foundation+Log.m in Sources */,
+				90F74E3823822E11003576B3 /* DSVipCardCell.m in Sources */,
+				90FD91BF237E405F00016EF7 /* DSMyOrderFooter.m in Sources */,
+				90F74E5B23823F37003576B3 /* DSCashNoteCell.m in Sources */,
 				906F36AE23792F5B000B160A /* HXNavigationController.m in Sources */,
+				90FD91D9237E48AC00016EF7 /* DSMyTeamVC.m in Sources */,
+				90EC259E237A97DE005C24C8 /* DSHomeCateVC.m in Sources */,
 				906F376C23792F64000B160A /* SGQRCodeScanView.m in Sources */,
+				9001467B2383E19300275DD9 /* DSChooseClassView.m in Sources */,
+				90AE52DF23829310009F4740 /* DSPublishDynamicCell.m in Sources */,
+				90FD91E3237E48D300016EF7 /* DSMyTeamCell.m in Sources */,
+				90EC25B7237A9BDD005C24C8 /* DSMessageCell.m in Sources */,
+				903D07F923838097001C2E40 /* DSOrderDetailHeader.m in Sources */,
+				90FD91F7237E539300016EF7 /* DSMyAddressCell.m in Sources */,
 				906F374423792F64000B160A /* UIImage+HXNExtension.m in Sources */,
+				9001468F2383E89B00275DD9 /* DSTakeCouponView.m in Sources */,
+				90FD91F2237E525A00016EF7 /* DSMyCollectVC.m in Sources */,
 				906F376B23792F64000B160A /* SGQRCodeObtain.m in Sources */,
+				90FD91CA237E446300016EF7 /* DSChangeInfoVC.m in Sources */,
+				90FD91AC237E3B4400016EF7 /* DSMyCell.m in Sources */,
+				90EC25BC237A9E44005C24C8 /* DSCartCell.m in Sources */,
+				90AE52CC23828595009F4740 /* DSDynamicLayout.m in Sources */,
+				90EC257D237A5D9B005C24C8 /* DSRegisterVC.m in Sources */,
 				906F374223792F64000B160A /* UIButton+HXCode.m in Sources */,
 				906F378023792FC9000B160A /* DSVipVC.m in Sources */,
+				90F74E472382387F003576B3 /* DSMyBalanceCell.m in Sources */,
+				903CB55B23927F180053A25B /* WKWebView+TYSnapshot.m in Sources */,
 				906F362D2378ED44000B160A /* AppDelegate.m in Sources */,
 				906F374A23792F64000B160A /* UILabel+HXNExtension.m in Sources */,
 				906F374723792F64000B160A /* HXConst.m in Sources */,
 				906F378523792FDA000B160A /* DSDynamicVC.m in Sources */,
 				906F374323792F64000B160A /* XTimer.m in Sources */,
 				906F377723792F64000B160A /* UINavigation+SXFixSpace.m in Sources */,
+				903D08312383C87C001C2E40 /* DSGoodsDetailVC.m in Sources */,
 				906F378A23792FEA000B160A /* DSCartVC.m in Sources */,
+				90FD91CF237E45A500016EF7 /* DSMySetVC.m in Sources */,
+				90FD91DD237E48BD00016EF7 /* DSMyTeamHeader.m in Sources */,
 				906F375223792F64000B160A /* MSUserInfo.m in Sources */,
+				90FD91ED237E4F4F00016EF7 /* DSMyCardCell.m in Sources */,
 				906F36AC23792F5B000B160A /* HXTabBarController.m in Sources */,
+				90EC2586237A5DC2005C24C8 /* DSWebContentVC.m in Sources */,
+				90AE52C02382777C009F4740 /* DSVipCardDetailVC.m in Sources */,
+				90FD91BA237E3FD300016EF7 /* DSMyOrderHeader.m in Sources */,
 				906F377223792F64000B160A /* LMJHorizontalScrollText.m in Sources */,
 				906F375D23792F64000B160A /* SPButton.m in Sources */,
+				900146812383E31900275DD9 /* DSChooseClassCell.m in Sources */,
+				90EC2594237A8EDF005C24C8 /* DSHomeBannerHeader.m in Sources */,
+				90AE52E823829B45009F4740 /* DSPuslishDynamicData.m in Sources */,
 				906F375F23792F64000B160A /* FBShimmeringView.m in Sources */,
 				906F377023792F64000B160A /* LMJVerticalScrollText.m in Sources */,
 				906F374923792F64000B160A /* UINavigationBar+ChangeColor.m in Sources */,
 				906F375623792F64000B160A /* RCFilterCell.m in Sources */,
+				90FD91E8237E4F0500016EF7 /* DSMyCardVC.m in Sources */,
+				90AE52E323829543009F4740 /* DSPublishDynamicHeader.m in Sources */,
 				906F376D23792F64000B160A /* HXSearchBar.m in Sources */,
+				903D0818238393ED001C2E40 /* DSApplyRefundCell.m in Sources */,
+				90F74E5123823DE9003576B3 /* DSUpCashVC.m in Sources */,
+				903CB55D23927F180053A25B /* UIView+TYSnapshot.m in Sources */,
+				90F74E4B23823B7D003576B3 /* DSMyBalanceSectionHeader.m in Sources */,
+				90FD91C5237E40CC00016EF7 /* DSMyOrderCell.m in Sources */,
+				903D07E1238378BA001C2E40 /* DSDynamicDetailVC.m in Sources */,
+				90AE52C923828576009F4740 /* DSDynamic.m in Sources */,
+				90EC25A8237A9806005C24C8 /* DSCateGoodsChildVC.m in Sources */,
+				90F74E5623823F1F003576B3 /* DSCashNoteVC.m in Sources */,
+				903D080E23838D03001C2E40 /* DSExpressDetailCell.m in Sources */,
+				903D082B23839DFA001C2E40 /* DSPayTypeView.m in Sources */,
+				90FD91FC237E53AA00016EF7 /* DSMyAddressVC.m in Sources */,
 				906F374823792F64000B160A /* NSDate+HXNExtension.m in Sources */,
+				90AE52CF238285D0009F4740 /* DSDynamicCell.m in Sources */,
+				90FD91B6237E3ECE00016EF7 /* DSMyOrderChildVC.m in Sources */,
+				90FD9201237E55C500016EF7 /* DSEditAddressVC.m in Sources */,
+				903D081323839166001C2E40 /* DSApplyRefundVC.m in Sources */,
 				906F375823792F64000B160A /* HXDropMenuView.m in Sources */,
 				906F376723792F64000B160A /* FSActionSheetCell.m in Sources */,
 				906F377423792F64000B160A /* UIView+WZLBadge.m in Sources */,
+				90AE52DA238292A0009F4740 /* DSPublishDynamicVC.m in Sources */,
+				903D080923838C4F001C2E40 /* DSExpressDetailVC.m in Sources */,
+				903D07EB23837A00001C2E40 /* DSDynamicDetailCell.m in Sources */,
 				906F377B23792FB7000B160A /* DSHomeVC.m in Sources */,
 				906F375123792F64000B160A /* HXTopWindow.m in Sources */,
+				903D080323838AC6001C2E40 /* DSRefundDetailFooter.m in Sources */,
 				906F375B23792F64000B160A /* NSDate+Extension.m in Sources */,
 				906F376623792F64000B160A /* FSActionSheet.m in Sources */,
+				903D07F523837FD7001C2E40 /* DSOrderDetailVC.m in Sources */,
+				900146A82384E5A000275DD9 /* DSGoodsPosterView.m in Sources */,
+				903D082123839918001C2E40 /* DSUpOrderHeader.m in Sources */,
 				906F374B23792F64000B160A /* ContactDataHelper.m in Sources */,
+				90AE52C52382802A009F4740 /* DSVipCardDetailCell.m in Sources */,
 				906F366723792F50000B160A /* AppDelegate+MSAppService.m in Sources */,
 				906F374523792F64000B160A /* NSString+HXNExtension.m in Sources */,
+				900146A52384E4AF00275DD9 /* GXSaveImageToPHAsset.m in Sources */,
+				90EC258F237A7D23005C24C8 /* DSShopGoodsCell.m in Sources */,
+				90FD91A6237E378800016EF7 /* DSMyHeader.m in Sources */,
 				906F376523792F64000B160A /* FSActionSheetConfig.m in Sources */,
 				906F375A23792F64000B160A /* WSDatePickerView.m in Sources */,
 				906F374C23792F64000B160A /* UIBarButtonItem+HXNExtension.m in Sources */,
 				906F374F23792F64000B160A /* HXNetworkTool.m in Sources */,
 				906F377323792F64000B160A /* CAAnimation+WAnimation.m in Sources */,
 				906F377623792F64000B160A /* NSObject+LMRuntime.m in Sources */,
+				903CB55F23927F180053A25B /* TYSnapshotScroll.m in Sources */,
+				90FD91B1237E3EBE00016EF7 /* DSMyOrderVC.m in Sources */,
 				906F375423792F64000B160A /* HXCacheTool.m in Sources */,
 				906F366823792F50000B160A /* AppDelegate+MSPushService.m in Sources */,
+				90F74E292382291B003576B3 /* DSVipCell.m in Sources */,
+				90F74E652382657A003576B3 /* DSBalanceNoteVC.m in Sources */,
+				90EC258A237A7D18005C24C8 /* DSHomeCateCell.m in Sources */,
+				90EC2582237A5DB4005C24C8 /* DSChangePwdVC.m in Sources */,
+				90EC25B2237A9BBA005C24C8 /* DSMessageVC.m in Sources */,
+				903D07E52383792F001C2E40 /* DSDynamicDetailHeader.m in Sources */,
 				906F375323792F64000B160A /* MSUserManager.m in Sources */,
+				903D07FE2383823B001C2E40 /* DSOrderDetailFooter.m in Sources */,
+				90F74E2323822762003576B3 /* DSVipHeader.m in Sources */,
+				9001469A2383F12900275DD9 /* DSVipGoodsDetailVC.m in Sources */,
+				903CB55C23927F180053A25B /* UIScrollView+TYSnapshot.m in Sources */,
+				90FD91D4237E471000016EF7 /* DSChangeBindVC.m in Sources */,
+				9001468B2383E38800275DD9 /* DSChooseClassFooter.m in Sources */,
 				906F363E2378ED46000B160A /* main.m in Sources */,
 				906F376A23792F64000B160A /* SGQRCodeObtainConfigure.m in Sources */,
 				906F378F23792FF7000B160A /* DSMyVC.m in Sources */,
 				906F36AB23792F5B000B160A /* HXBaseViewController.m in Sources */,
+				90F74E3D2382323A003576B3 /* DSMyBalanceVC.m in Sources */,
 				906F376E23792F64000B160A /* zhAlertView.m in Sources */,
+				900146952383EA3800275DD9 /* DSTakeCouponCell.m in Sources */,
+				903CB55E23927F180053A25B /* UIImage+TYSnapshot.m in Sources */,
 				906F377123792F64000B160A /* UILabel+ForLMJVerticalScrollText.m in Sources */,
 				906F377523792F64000B160A /* ZJPickerView.m in Sources */,
 				906F375523792F64000B160A /* SDWeiXinPhotoContainerView.m in Sources */,
 				906F376F23792F64000B160A /* UIView+ForLMJVerticalScrollText.m in Sources */,
 				906F374E23792F64000B160A /* HXLocationTool_.m in Sources */,
+				90F74E4123823263003576B3 /* DSMyBalanceHeader.m in Sources */,
+				90AE52EB2382A0FE009F4740 /* DSPublishDynamicFooter.m in Sources */,
+				90EC2599237A9061005C24C8 /* DSBannerCell.m in Sources */,
+				903CB56023927F180053A25B /* UIViewController+TYSnapshot.m in Sources */,
 				906F375E23792F64000B160A /* FBShimmeringLayer.m in Sources */,
 				906F36AD23792F5B000B160A /* HXGuideViewController.m in Sources */,
 				906F375023792F64000B160A /* HXNetworkCache.m in Sources */,
+				90EC25AD237A99A8005C24C8 /* DSCateGoodsCell.m in Sources */,
 				906F374D23792F64000B160A /* UIView+HXNExtension.m in Sources */,
 				906F376823792F64000B160A /* FSActionSheetItem.m in Sources */,
 			);
@@ -1327,8 +2189,9 @@
 			baseConfigurationReference = BC4F949048AFF481665335AC /* Pods-DS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FR552NGM74;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = A2V85YL4T5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
@@ -1339,8 +2202,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mfx.ds.com;
-				PRODUCT_NAME = "袋鼠";
+				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
+				PRODUCT_NAME = "袋鼠精选";
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_1207;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1350,8 +2214,9 @@
 			baseConfigurationReference = A52BDBFE46C9C9000B61D447 /* Pods-DS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FR552NGM74;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = A2V85YL4T5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
@@ -1362,8 +2227,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = mfx.ds.com;
-				PRODUCT_NAME = "袋鼠";
+				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
+				PRODUCT_NAME = "袋鼠精选";
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_1207;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
