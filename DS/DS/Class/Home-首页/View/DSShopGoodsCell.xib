@@ -93,6 +93,13 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="369" height="117"/>
+            <connections>
+                <outlet property="bankPrice" destination="fOb-hN-uKa" id="aIG-ZH-qa5"/>
+                <outlet property="coverImg" destination="4fB-Hg-BY6" id="vaW-So-bAV"/>
+                <outlet property="goodName" destination="x9N-ho-JKa" id="pEV-RT-1No"/>
+                <outlet property="marketPrice" destination="jm0-JP-Gsc" id="wgP-R8-ymp"/>
+                <outlet property="price" destination="Aoq-3t-u4n" id="j3e-ob-3XB"/>
+            </connections>
             <point key="canvasLocation" x="-109" y="99"/>
         </collectionViewCell>
     </objects>

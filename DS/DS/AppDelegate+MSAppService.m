@@ -148,8 +148,13 @@
 //    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
     
 //    if ([currentVersion isEqualToString:lastVersion]) { // 版本号相同：这次打开和上次打开的是同一个版本
-            HXNavigationController *tabBarController = [[HXNavigationController alloc] initWithRootViewController:[DSLoginVC new]];
-            self.window.rootViewController = tabBarController;
+            if ([[MSUserManager sharedInstance] loadUserInfo]) {
+                HXTabBarController *tabBarController = [[HXTabBarController alloc] init];
+                self.window.rootViewController = tabBarController;
+            }else{
+                HXNavigationController *tabBarController = [[HXNavigationController alloc] initWithRootViewController:[DSLoginVC new]];
+                self.window.rootViewController = tabBarController;
+            }
 //    } else {   // 这次打开的版本和上一次不一样，显示引导页
 //        // 真实情况改成引导页
 //        HXGuideViewController *gvc = [[HXGuideViewController alloc] init];

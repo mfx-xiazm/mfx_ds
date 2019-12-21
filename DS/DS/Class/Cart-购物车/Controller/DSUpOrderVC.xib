@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSUpOrderVC">
             <connections>
+                <outlet property="pay_amount" destination="KJs-vh-b0y" id="qDh-Ui-ESw"/>
                 <outlet property="tableView" destination="BxZ-4W-ZgB" id="yUI-Mq-inz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

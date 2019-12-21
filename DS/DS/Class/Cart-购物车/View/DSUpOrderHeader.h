@@ -10,9 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyAddress;
+typedef void(^addressClickedCall)(void);
 @interface DSUpOrderHeader : UIView
 @property (weak, nonatomic) IBOutlet UIView *noAddressView;
 @property (weak, nonatomic) IBOutlet UIView *addressView;
+/* 地址 */
+@property(nonatomic,strong) DSMyAddress *defaultAddress;
+/* 点击 */
+@property(nonatomic,copy) addressClickedCall addressClickedCall;
 @end
 
 NS_ASSUME_NONNULL_END

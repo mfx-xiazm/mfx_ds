@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSShopGoods;
 @interface DSCateGoodsCell : UICollectionViewCell
-
+/* 商品 */
+@property(nonatomic,strong) DSShopGoods *goods;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -14,14 +14,29 @@
 #import <WXApi.h>
 #import "DSPayTypeView.h"
 #import <zhPopupController.h>
+#import "DSMyAddressVC.h"
+#import "DSConfirmOrder.h"
+#import "DSMyAddress.h"
+#import "DSMyOrderVC.h"
+#import "APOrderInfo.h"
+#import "APRSASigner.h"
 
 static NSString *const UpOrderCell = @"UpOrderCell";
 @interface DSUpOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *pay_amount;
 /* 头视图 */
 @property(nonatomic,strong) DSUpOrderHeader *header;
 /* 尾视图 */
 @property(nonatomic,strong) DSUpOrderFooter *footer;
+/* 初始化订单信息 */
+@property(nonatomic,strong) DSConfirmOrder *confirmOrder;
+/* 订单号 */
+@property(nonatomic,copy) NSString *order_no;
+/* 订单id */
+@property(nonatomic,copy) NSString *oid;
+/* 是否要调起支付 */
+@property(nonatomic,assign) BOOL isOrderPay;
 @end
 
 @implementation DSUpOrderVC
@@ -32,7 +47,8 @@ static NSString *const UpOrderCell = @"UpOrderCell";
     //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
     [self setUpTableView];
-//    [self getConfirmOrderDataRequest];
+    [self startShimmer];
+    [self getOrderDataInitRequest];
 }
 -(void)viewDidLayoutSubviews
 {
@@ -45,16 +61,16 @@ static NSString *const UpOrderCell = @"UpOrderCell";
     if (_header == nil) {
         _header = [DSUpOrderHeader loadXibView];
         _header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 90.f);
-//        hx_weakify(self);
-//        _header.addressClickedCall = ^{
-//            hx_strongify(weakSelf);
-//            GYMyAddressVC *avc = [GYMyAddressVC new];
-//            avc.getAddressCall = ^(GYConfirmAddress * _Nonnull address) {
-//                strongSelf.confirmOrder.defaultAddress = address;
-//                [strongSelf handleConfirmOrderData];
-//            };
-//            [strongSelf.navigationController pushViewController:avc animated:YES];
-//        };
+        hx_weakify(self);
+        _header.addressClickedCall = ^{
+            hx_strongify(weakSelf);
+            DSMyAddressVC *avc = [DSMyAddressVC new];
+            avc.getAddressCall = ^(DSMyAddress * _Nonnull address) {
+                strongSelf.confirmOrder.address = address;
+                [strongSelf handleConfirmOrderData];
+            };
+            [strongSelf.navigationController pushViewController:avc animated:YES];
+        };
     }
     return _header;
 }
@@ -63,18 +79,6 @@ static NSString *const UpOrderCell = @"UpOrderCell";
     if (_footer == nil) {
         _footer = [DSUpOrderFooter loadXibView];
         _footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 200.f);
-//        hx_weakify(self);
-//        _footer.faPiaoClickedCall = ^{
-//            hx_strongify(weakSelf);
-//            GYInvoiceVC *ivc = [GYInvoiceVC new];
-//            if (strongSelf.confirmOrder.userInvoice) {
-//                ivc.userInvoice = strongSelf.confirmOrder.userInvoice;
-//            }
-//            ivc.saveInvoiceCall = ^{
-//                [strongSelf getConfirmOrderDataRequest];
-//            };
-//            [strongSelf.navigationController pushViewController:ivc animated:YES];
-//        };
     }
     return _footer;
 }
@@ -111,132 +115,89 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 }
 #pragma mark -- 点击事件
 - (IBAction)upOrderClicked:(UIButton *)sender {
-    [self showPayTypeView];
-//    if (!self.confirmOrder.defaultAddress) {
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择地址"];
-//        return;
-//    }
-//    if (self.footer.openPiao.isSelected && !self.confirmOrder.userInvoice) {
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请填写开票信息"];
-//        return;
-//    }
-//
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//
-//    if (self.isCartPush) {
-//        parameters[@"cart_ids"] = self.cart_ids;//商品id
-//        parameters[@"address_id"] = self.confirmOrder.defaultAddress.address_id;//收货地址id
-//        NSMutableString *order_note = [NSMutableString string];
-//        for (GYConfirmGoodsDetail *goodsDetail in self.confirmOrder.goodsData.goodsDetail) {
-//            if (goodsDetail.remark && goodsDetail.remark.length) {
-//                if (order_note.length) {
-//                    [order_note appendFormat:@"_%@",goodsDetail.remark];
-//                }else{
-//                    [order_note appendFormat:@"%@",goodsDetail.remark];
-//                }
-//            }
-//        }
-//        parameters[@"order_note"] = order_note;//下单时候的备注说明 多个商品备注之间用"_"隔开有的商品没填备注用空字符串
-//        parameters[@"order_invoice"] = @(self.footer.openPiao.isSelected);//订单是否开发票 为开发票 0为不开发票
-//    }else{
-//        parameters[@"goods_id"] = self.goods_id;//商品id
-//        parameters[@"address_id"] = self.confirmOrder.defaultAddress.address_id;//收货地址id
-//        NSMutableString *order_note = [NSMutableString string];
-//        for (GYConfirmGoodsDetail *goodsDetail in self.confirmOrder.goodsData.goodsDetail) {
-//            if (goodsDetail.remark && goodsDetail.remark.length) {
-//                if (order_note.length) {
-//                    [order_note appendFormat:@"_%@",goodsDetail.remark];
-//                }else{
-//                    [order_note appendFormat:@"%@",goodsDetail.remark];
-//                }
-//            }
-//        }
-//        parameters[@"order_note"] = order_note;//下单时候的备注说明 多个商品备注之间用"_"隔开有的商品没填备注用空字符串
-//        parameters[@"order_invoice"] = @(self.footer.openPiao.isSelected);//订单是否开发票 为开发票 0为不开发票
-//        parameters[@"goods_num"] = self.goods_num;//商品数量
-//        parameters[@"spec_values"] = self.spec_values;//商品规格
-//    }
-//
-//    hx_weakify(self);
-//    [HXNetworkTool POST:HXRC_M_URL action:self.isCartPush?@"saveOrder":@"saveOderData" parameters:parameters success:^(id responseObject) {
-//        hx_strongify(weakSelf);
-//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            if (strongSelf.upOrderSuccessCall) {
-//                strongSelf.upOrderSuccessCall();
-//            }
-//            strongSelf.orderPay = [GYOrderPay yy_modelWithDictionary:responseObject[@"data"]];
-//            [strongSelf showPayTypeView];
-//        }else{
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//        }
-//    } failure:^(NSError *error) {
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-//    }];
+    if (!self.confirmOrder.address || [self.confirmOrder.address.address_id isEqualToString:@"0"]) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择地址"];
+        return;
+    }
+
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_data"] = self.goods_data;//商品
+    parameters[@"is_cart"] = self.isCartPush?@"1":@"0";//是否购物车下单，0不是，1是
+    parameters[@"address_id"] = self.confirmOrder.address.address_id;//地址id
+    parameters[@"remarks"] = (self.confirmOrder.remark && self.confirmOrder.remark.length)?self.confirmOrder.remark:@"";//订单备注
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"order_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            if (strongSelf.upOrderSuccessCall) {
+                strongSelf.upOrderSuccessCall();
+            }
+            strongSelf.order_no = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"order_no"]];
+            strongSelf.oid = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"oid"]];
+            [strongSelf showPayTypeView];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
 }
 -(void)showPayTypeView
 {
     DSPayTypeView *payType = [DSPayTypeView loadXibView];
     payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 285.f);
-//    payType.orderPay = self.orderPay;
-//    hx_weakify(self);
-//    payType.confirmPayCall = ^(NSInteger type) {
-//        hx_strongify(weakSelf);
-//        strongSelf.isOrderPay = YES;//调起支付
-//        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-//        [strongSelf orderPayRequest:type];
-//    };
+    payType.pay_amount = self.confirmOrder.pay_amount;
+    hx_weakify(self);
+    payType.confirmPayCall = ^(NSInteger type) {
+        hx_strongify(weakSelf);
+        strongSelf.isOrderPay = YES;//调起支付
+        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
+        [strongSelf orderPayRequest:type];
+    };
     self.zh_popupController = [[zhPopupController alloc] init];
     self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
-//    self.zh_popupController.didDismiss = ^(zhPopupController * _Nonnull popupController) {
-//        hx_strongify(weakSelf);
-//        if (!strongSelf.isOrderPay) {// 未吊起支付
-//            // 直接跳转到订单列表
-//            GYMyOrderVC *ovc = [GYMyOrderVC new];
-//            ovc.isPushOrder = YES;
-//            [strongSelf.navigationController pushViewController:ovc animated:YES];
-//        }
-//    };
+    self.zh_popupController.didDismiss = ^(zhPopupController * _Nonnull popupController) {
+        hx_strongify(weakSelf);
+        if (!strongSelf.isOrderPay) {// 未吊起支付
+            // 直接跳转到订单列表
+            DSMyOrderVC *ovc = [DSMyOrderVC new];
+            [strongSelf.navigationController pushViewController:ovc animated:YES];
+        }
+    };
     [self.zh_popupController presentContentView:payType duration:0.25 springAnimated:NO];
 }
 #pragma mark -- 调起支付
 // 拉取支付信息
 -(void)orderPayRequest:(NSInteger)type
 {
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    parameters[@"order_no"] = self.orderPay.order_no;//商品订单id
-//    parameters[@"pay_type"] = @(type);//支付方式：1支付宝；2微信支付；3线下支付(后台审核)
-//
-//    hx_weakify(self);
-//    [HXNetworkTool POST:HXRC_M_URL action:@"orderPay" parameters:parameters success:^(id responseObject) {
-//        hx_strongify(weakSelf);
-//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            //pay_type 支付方式：1支付宝；2微信支付；3线下支付(后台审核)
-//            if (type == 1) {
-//                [strongSelf doAliPay:responseObject[@"data"]];
-//            }else if (type == 2){
-//                [strongSelf doWXPay:[responseObject[@"data"] dictionaryWithJsonString]];
-//            }else{
-//                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//                // 跳转订单列表
-//                GYMyOrderVC *ovc = [GYMyOrderVC new];
-//                ovc.isPushOrder = YES;
-//                [strongSelf.navigationController pushViewController:ovc animated:YES];
-//            }
-//        }else{
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//        }
-//    } failure:^(NSError *error) {
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-//    }];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"order_no"] = self.order_no;//商品订单id
+    parameters[@"pay_type"] = @(type);//支付方式：1支付宝；2微信支付；3线下支付(后台审核)
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"payinfo_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            //pay_type 支付方式：1支付宝；2微信支付；
+            if (type == 1) {
+                [strongSelf doAliPay:responseObject[@"result"]];
+            }else {
+                [strongSelf doWXPay:responseObject[@"result"]];
+            }
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
     
 }
 // 支付宝支付
--(void)doAliPay:(NSString *)parameters
+-(void)doAliPay:(NSDictionary *)parameters
 {
-    NSString *appScheme = @"GYAliPay";
-    // NOTE: 将签名成功字符串格式化为订单字符串,请严格按照该格式
-    NSString *orderString = parameters;
-    
+    NSString *appScheme = @"DSAliPay";
+    NSString *orderString = parameters[@"alipay_param"];
     // NOTE: 调用支付结果开始支付
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
         if ([resultDic[@"resultStatus"] intValue] == 9000) {
@@ -254,7 +215,6 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 -(void)doWXPay:(NSDictionary *)dict
 {
     if([WXApi isWXAppInstalled]) { // 判断 用户是否安装微信
-
         //需要创建这个支付对象
         PayReq *req   = [[PayReq alloc] init];
         //由用户微信号和AppID组成的唯一标识，用于校验微信用户
@@ -296,72 +256,66 @@ static NSString *const UpOrderCell = @"UpOrderCell";
     }else{
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"支付失败"];
     }
+    // 直接跳转到订单列表
+    DSMyOrderVC *ovc = [DSMyOrderVC new];
+    [self.navigationController pushViewController:ovc animated:YES];
 }
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 #pragma mark -- 接口请求
--(void)getConfirmOrderDataRequest
+-(void)getOrderDataInitRequest
 {
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    if (self.isCartPush) {
-//        parameters[@"cart_ids"] = self.cart_ids;//商品id
-//    }else{
-//        parameters[@"goods_id"] = self.goods_id;//商品id
-//        parameters[@"goods_num"] = self.goods_num;//商品数量
-//        parameters[@"spec_values"] = self.spec_values;//商品规格
-//    }
-//
-//    hx_weakify(self);
-//    [HXNetworkTool POST:HXRC_M_URL action:self.isCartPush?@"getConfirmOrderData":@"getConfirmData" parameters:parameters success:^(id responseObject) {
-//        hx_strongify(weakSelf);
-//        [strongSelf stopShimmer];
-//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            strongSelf.confirmOrder = [GYConfirmOrder yy_modelWithDictionary:responseObject[@"data"]];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                strongSelf.tableView.hidden = NO;
-//                [strongSelf handleConfirmOrderData];
-//            });
-//        }else{
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//        }
-//    } failure:^(NSError *error) {
-//        hx_strongify(weakSelf);
-//        [strongSelf stopShimmer];
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-//    }];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_data"] = self.goods_data;//商品id
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"order_init_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            strongSelf.confirmOrder = [DSConfirmOrder yy_modelWithDictionary:responseObject[@"result"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.tableView.hidden = NO;
+                [strongSelf handleConfirmOrderData];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
 }
 -(void)handleConfirmOrderData
 {
-//    if (self.confirmOrder.defaultAddress) {
-//        self.header.noAddressView.hidden = YES;
-//        self.header.addressView.hidden = NO;
-//        self.header.defaultAddress = self.confirmOrder.defaultAddress;
-//    }else{
-//        self.header.noAddressView.hidden = NO;
-//        self.header.addressView.hidden = YES;
-//    }
-//
-//    if (self.confirmOrder.userInvoice) {
-//        self.footer.userInvoice = self.confirmOrder.userInvoice;
-//    }
-//
-//    [self.tableView reloadData];
-//
-//    self.total_pay_orice.text = [NSString stringWithFormat:@"%@元",self.confirmOrder.goodsData.totalPayAmount];
+    if (self.confirmOrder.address && ![self.confirmOrder.address.address_id isEqualToString:@"0"]) {
+        self.header.noAddressView.hidden = YES;
+        self.header.addressView.hidden = NO;
+        self.header.defaultAddress = self.confirmOrder.address;
+    }else{
+        self.header.noAddressView.hidden = NO;
+        self.header.addressView.hidden = YES;
+    }
+    self.footer.confirmOrder = self.confirmOrder;
+
+    [self.tableView reloadData];
+
+    self.pay_amount.text = [NSString stringWithFormat:@"%@元",self.confirmOrder.pay_amount];
 }
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.confirmOrder.list.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSMyOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:UpOrderCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    GYConfirmGoodsDetail *goods = self.confirmOrder.goodsData.goodsDetail[indexPath.row];
-//    cell.goods = goods;
+    DSConfirmGoods *goods = self.confirmOrder.list[indexPath.row];
+    cell.goods = goods;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

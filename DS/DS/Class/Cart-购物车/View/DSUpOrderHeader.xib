@@ -88,6 +88,9 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnT-Bg-gx2">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+                            <connections>
+                                <action selector="addressClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="C7L-oc-S0f"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,6 +118,13 @@
                 <constraint firstItem="Yyk-dv-9vw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fTi-Xd-PDr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="address" destination="MtJ-11-KcY" id="etk-1D-bO4"/>
+                <outlet property="addressView" destination="oT7-7s-1ql" id="5lB-nw-Kan"/>
+                <outlet property="noAddressView" destination="df3-kb-QQb" id="D1D-FB-SPl"/>
+                <outlet property="receiver" destination="h2C-OU-Lcc" id="3MP-l7-qUY"/>
+                <outlet property="receiver_phone" destination="KUU-2v-M2m" id="Xsk-xO-FWH"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="380.35714285714283"/>
         </view>
     </objects>

@@ -1,0 +1,13 @@
+//
+//  DSCashNote.m
+//  DS
+//
+//  Created by 夏增明 on 2019/12/16.
+//  Copyright © 2019 夏增明. All rights reserved.
+//
+
+#import "DSCashNote.h"
+
+@implementation DSCashNote
+
+@end

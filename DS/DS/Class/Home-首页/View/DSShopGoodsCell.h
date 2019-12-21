@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSHomeRecommend;
 @interface DSShopGoodsCell : UICollectionViewCell
-
+/* 推荐商品 */
+@property(nonatomic,strong) DSHomeRecommend *recommend;
 @end
 
 NS_ASSUME_NONNULL_END

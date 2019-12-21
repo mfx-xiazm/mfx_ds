@@ -10,6 +10,11 @@
 
 @interface DSMyHeader ()
 @property (weak, nonatomic) IBOutlet UIImageView *head_pic;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIImageView *sex;
+@property (weak, nonatomic) IBOutlet UIImageView *vip;
+@property (weak, nonatomic) IBOutlet UILabel *shareCode;
+@property (weak, nonatomic) IBOutlet UILabel *phone;
 
 @end
 @implementation DSMyHeader
@@ -20,6 +25,24 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headClicked)];
     [self.head_pic addGestureRecognizer:tap];
+    
+    [self showUserInfo];
+}
+-(void)setIsReload:(BOOL)isReload
+{
+    _isReload = isReload;
+    if (_isReload) {
+        [self showUserInfo];
+    }
+}
+-(void)showUserInfo
+{
+    [self.head_pic sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar]];
+    self.name.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
+    self.sex.image = [[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"1"]?HXGetImage(@"男"):HXGetImage(@"女");
+    self.vip.hidden = ([MSUserManager sharedInstance].curUserInfo.ulevel != 0)?NO:YES;
+    self.shareCode.text = [NSString stringWithFormat:@"邀请码：%@",[MSUserManager sharedInstance].curUserInfo.share_code];
+    self.phone.text = [MSUserManager sharedInstance].curUserInfo.phone;
 }
 -(void)headClicked
 {

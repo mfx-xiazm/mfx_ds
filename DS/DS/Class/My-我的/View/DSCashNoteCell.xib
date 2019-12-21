@@ -126,6 +126,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="apply_amount" destination="mz7-X8-eFf" id="XgM-Ff-SP7"/>
+                <outlet property="apply_desc" destination="kek-Cm-2kL" id="Qr6-Sz-BWA"/>
+                <outlet property="apply_no" destination="8qD-oj-wZ9" id="q55-0u-Kln"/>
+                <outlet property="apply_status" destination="ynB-ZD-Cun" id="S3L-lz-jn6"/>
+                <outlet property="create_time" destination="9b9-8V-N7h" id="PCM-UF-0SZ"/>
+            </connections>
             <point key="canvasLocation" x="257.97101449275362" y="80.022321428571431"/>
         </tableViewCell>
     </objects>

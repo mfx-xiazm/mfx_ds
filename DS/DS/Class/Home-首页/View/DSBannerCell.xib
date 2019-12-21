@@ -34,6 +34,9 @@
                 <constraint firstAttribute="bottom" secondItem="w3h-cg-XAB" secondAttribute="bottom" id="tcY-UA-GGt"/>
             </constraints>
             <size key="customSize" width="315" height="112"/>
+            <connections>
+                <outlet property="bannerImg" destination="w3h-cg-XAB" id="ITw-ej-9B5"/>
+            </connections>
             <point key="canvasLocation" x="165.94202898550725" y="116.51785714285714"/>
         </collectionViewCell>
     </objects>

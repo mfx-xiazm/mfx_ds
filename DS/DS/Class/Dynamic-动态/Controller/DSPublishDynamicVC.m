@@ -12,11 +12,13 @@
 #import "DSPuslishDynamicData.h"
 #import "DSPublishDynamicFooter.h"
 #import <ZLPhotoActionSheet.h>
+#import <AFNetworking.h>
 
 static NSString *const PublishDynamicCell = @"PublishDynamicCell";
 @interface DSPublishDynamicVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 /** tableView */
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 /** 发布数据 */
 @property (nonatomic,strong) NSMutableArray *publishData;
 /* 头视图 */
@@ -142,7 +144,7 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
         _footer = [DSPublishDynamicFooter loadXibView];
         _footer.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 130.f);
         hx_weakify(self);
-        _footer.footerHandleCall = ^(NSInteger index) {
+        _footer.footerHandleCall = ^(NSInteger index,UIButton *btn) {
             hx_strongify(weakSelf);
             if (index == 1) {
                 DSPuslishDynamicData *pt = [[DSPuslishDynamicData alloc] init];
@@ -153,7 +155,30 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
                 ZLPhotoActionSheet *a = [strongSelf getPas];
                 [a showPhotoLibrary];
             }else{
-                HXLog(@"发布");
+                [btn BindingBtnJudgeBlock:^BOOL{
+                    if (![strongSelf.header.dynamicTitle hasText]){
+                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入标题"];
+                        return NO;
+                    }
+                    if (!strongSelf.publishData.count) {
+                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
+                        return NO;
+                    }
+                    NSMutableArray *tempData = [NSMutableArray arrayWithArray:strongSelf.publishData];
+                    [strongSelf.publishData enumerateObjectsUsingBlock:^(DSPuslishDynamicData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if (obj.uiStyle == DSPuslishDynamicWord && !obj.word.length) {
+                            [tempData removeObject:obj];
+                        }
+                    }];
+                    if (!tempData.count) {
+                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
+                        return NO;
+                    }
+                    return YES;
+                } ActionBlock:^(UIButton * _Nullable button) {
+                    hx_strongify(weakSelf);
+                    [strongSelf publishClicked:button];
+                }];
             }
         };
     }
@@ -199,6 +224,149 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
     
     self.tableView.tableHeaderView = self.header;
     self.tableView.tableFooterView = self.footer;
+}
+#pragma mark --  点击
+-(void)publishClicked:(UIButton *)btn
+{
+    NSMutableArray *images = [NSMutableArray array];
+    [self.publishData enumerateObjectsUsingBlock:^(DSPuslishDynamicData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.uiStyle == DSPuslishDynamicPicture && obj.picture) {
+            [images addObject:obj];
+        }
+    }];
+    if (images.count) {
+        hx_weakify(self);
+        [self runUpLoadImages:images handle:^{
+            hx_strongify(weakSelf);
+            [strongSelf publishRequest:^(BOOL isSuccess) {
+                [btn stopLoading:@"发布" image:nil textColor:nil backgroundColor:nil];
+                if (isSuccess) {
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }];
+    }else{
+        hx_weakify(self);
+        [self publishRequest:^(BOOL isSuccess) {
+            hx_strongify(weakSelf);
+            [btn stopLoading:@"发布" image:nil textColor:nil backgroundColor:nil];
+            if (isSuccess) {
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            }
+        }];
+    }
+}
+#pragma mark -- 业务逻辑
+/**
+ *  图片批量上传方法
+ */
+- (void)runUpLoadImages:(NSMutableArray *)imageArr handle:(void(^)(void))completeandle
+{
+    // 准备保存结果的数组，元素个数与上传的图片个数相同，先用 NSNull 占位
+    NSMutableArray* result = [NSMutableArray array];
+    for (int i=0;i<imageArr.count;i++) {
+        [result addObject:[NSNull null]];
+    }
+    
+    // 生成一个请求组
+    dispatch_group_t group = dispatch_group_create();
+    for (NSInteger i = 0; i < imageArr.count; i++) {
+        DSPuslishDynamicData *pt = imageArr[i];
+        dispatch_group_enter(group);
+        NSURLSessionUploadTask* uploadTask = [self uploadTaskWithImage:pt.picture completion:^(NSURLResponse *response, NSDictionary* responseObject, NSError *error) {
+            if (error) {
+                //HXLog(@"第 %d 张图片上传失败: %@", (int)i + 1, error);
+                dispatch_group_leave(group);
+            } else {
+                //HXLog(@"第 %d 张图片上传成功: %@", (int)i + 1, responseObject);
+                @synchronized (result) { // NSMutableArray 是线程不安全的，所以加个同步锁
+                    NSString *state = [NSString stringWithFormat:@"%@",responseObject[@"status"]];
+                    if ([state isEqualToString:@"1"]){
+                        // 将上传完成返回的图片链接存入数组
+                        NSDictionary *dict = ((NSArray *)responseObject[@"result"]).firstObject;
+                        pt.word = [NSString stringWithFormat:@"%@",dict[@"relative_url"]];
+                    }else{
+                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+                    }
+                }
+                dispatch_group_leave(group);
+            }
+        }];
+        [uploadTask resume];
+    }
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        //HXLog(@"上传完成!");
+        completeandle();// 完成回调
+    });
+}
+/**
+ *  生成图片批量上传的上传请求方法
+ *
+ *  @param image           上传的图片
+ *  @param completionBlock 包装成的请求回调
+ *
+ *  @return 上传请求
+ */
+
+- (NSURLSessionUploadTask*)uploadTaskWithImage:(UIImage*)image completion:(void (^)(NSURLResponse *response, id responseObject, NSError *error))completionBlock {
+    // 上传接口参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"token"] = [MSUserManager sharedInstance].curUserInfo.token;
+
+    // 构造 NSURLRequest
+    NSError* error = NULL;
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@%@",HXRC_M_URL,@"multifileupload"] parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        //把本地的图片转换为NSData类型的数据
+        NSData* imageData = UIImageJPEGRepresentation(image, 0.6);
+        [formData appendPartWithFileData:imageData name:@"filename" fileName:@"file.jpg" mimeType:@"image/jpeg"];
+    } error:&error];
+    
+    // 可在此处配置验证信息
+    // 将 NSURLRequest 与 completionBlock 包装为 NSURLSessionUploadTask
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:^(NSProgress * _Nonnull uploadProgress) {
+    } completionHandler:completionBlock];
+    
+    return uploadTask;
+}
+-(void)publishRequest:(void(^)(BOOL))completedCall
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"treads_title"] = self.header.dynamicTitle.text;//帖子标题
+    
+    NSMutableArray *uploadArr = [NSMutableArray arrayWithCapacity:0];
+    for (DSPuslishDynamicData *pt in self.publishData){
+        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithCapacity:0];
+        if(pt.word.length) {
+            if (pt.uiStyle == DSPuslishDynamicWord){
+                [tempDict setObject:@"1" forKey:@"type"];
+                [tempDict setObject:pt.word forKey:@"content"];
+            }else{
+                [tempDict setObject:@"2" forKey:@"type"];
+                [tempDict setObject:pt.word forKey:@"content"];
+            }
+            [uploadArr addObject:tempDict];
+        }
+    }
+    if (uploadArr != nil){
+        NSError *parseError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:uploadArr options:NSJSONWritingPrettyPrinted error:&parseError];
+        parameters[@"treads_content"] = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }else{
+        parameters[@"treads_content"] = @"";
+    }
+    
+    [HXNetworkTool POST:HXRC_M_URL action:@"treads_set" parameters:parameters success:^(id responseObject) {
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"发布成功"];
+            completedCall(YES);
+        }else{
+            completedCall(NO);
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
 }
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

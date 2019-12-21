@@ -14,6 +14,11 @@
     [super awakeFromNib];
     // Initialization code
 }
+- (IBAction)getClicked:(UIButton *)sender {
+    if (self.getCouponCall) {
+        self.getCouponCall();
+    }
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

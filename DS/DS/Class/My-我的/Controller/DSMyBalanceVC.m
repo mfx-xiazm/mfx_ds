@@ -12,13 +12,15 @@
 #import "DSMyBalanceSectionHeader.h"
 #import "DSUpCashVC.h"
 #import "DSBalanceNoteVC.h"
+#import "DSBalanceNote.h"
 
 static NSString *const MyBalanceCell = @"MyBalanceCell";
 @interface DSMyBalanceVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /* 头视图 */
 @property(nonatomic,strong) DSMyBalanceHeader *header;
-
+/* 最近记录 */
+@property(nonatomic,strong) NSArray *notes;
 @end
 
 @implementation DSMyBalanceVC
@@ -27,6 +29,8 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的余额"];
     [self setUpTableView];
+    [self startShimmer];
+    [self getMyBalanceRequest];
 }
 - (void)viewDidLayoutSubviews
 {
@@ -46,6 +50,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
                 [strongSelf.navigationController pushViewController:cvc animated:YES];
             }else{
                 DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
+                nvc.reward_type = index;
                 [strongSelf.navigationController pushViewController:nvc animated:YES];
             }
         };
@@ -79,15 +84,43 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     
     self.tableView.tableHeaderView = self.header;
 }
+#pragma mark -- 接口请求
+-(void)getMyBalanceRequest
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"mybalance_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            strongSelf.notes = [NSArray yy_modelArrayWithClass:[DSBalanceNote class] json:responseObject[@"result"][@"log_list"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.header.balance.text = NSStringFormat(@"%@",responseObject[@"result"][@"balance"]);
+                strongSelf.header.upgrade_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"upgrade_reward"]);
+                strongSelf.header.gift_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"gift_reward"]);
+                strongSelf.header.goods_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"goods_reward"]);
+                strongSelf.header.share_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"share_reward"]);
+                [strongSelf.tableView reloadData];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.notes.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSMyBalanceCell *cell = [tableView dequeueReusableCellWithIdentifier:MyBalanceCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    DSBalanceNote *note = self.notes[indexPath.row];
+    cell.note = note;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -107,7 +140,12 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 125.f;
+    DSBalanceNote *note = self.notes[indexPath.row];
+    if ([note.finance_log_type isEqualToString:@"2"] || [note.finance_log_type isEqualToString:@"3"] || [note.finance_log_type isEqualToString:@"4"] || [note.finance_log_type isEqualToString:@"5"]) {
+        return 125.f;
+    }else{
+        return 90.f;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -10,8 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^applyRefundActionCall)(void);
 @interface DSApplyRefundVC : HXBaseViewController
-
+/* 订单id */
+@property(nonatomic,copy) NSString *oid;
+/* 单击 */
+@property(nonatomic,copy) applyRefundActionCall applyRefundActionCall;
 @end
 
 NS_ASSUME_NONNULL_END

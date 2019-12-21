@@ -14,6 +14,8 @@ typedef void(^myHeaderBtnClickedCall)(NSInteger index);
 @interface DSMyHeader : UIView
 /* 点击 */
 @property(nonatomic,copy) myHeaderBtnClickedCall myHeaderBtnClickedCall;
+/* readLoad */
+@property(nonatomic,assign) BOOL isReload;
 @end
 
 NS_ASSUME_NONNULL_END

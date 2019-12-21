@@ -53,6 +53,9 @@
                                 <constraint firstAttribute="width" constant="22" id="zCw-72-JWb"/>
                             </constraints>
                             <state key="normal" image="关闭"/>
+                            <connections>
+                                <action selector="goodHandleClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="pAR-Wl-qaR"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原价:￥234.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrI-Fj-ALf">
                             <rect key="frame" x="122" y="34" width="81" height="18"/>
@@ -92,6 +95,9 @@
                                     <state key="normal" title="确定">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="goodHandleClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="ld0-yx-b7w"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,6 +146,10 @@
             <viewLayoutGuide key="safeArea" id="ypo-zz-Gns"/>
             <connections>
                 <outlet property="collectionView" destination="X0S-kL-wny" id="Pa2-Xj-3bx"/>
+                <outlet property="cover_img" destination="uXT-C6-NrA" id="bJb-1h-vRA"/>
+                <outlet property="market_price" destination="NrI-Fj-ALf" id="AZy-hL-P4v"/>
+                <outlet property="price" destination="l0r-5j-UB1" id="tjV-RM-mao"/>
+                <outlet property="stock_num" destination="a74-Jd-nzI" id="qKE-l1-o4l"/>
             </connections>
             <point key="canvasLocation" x="102.89855072463769" y="284.26339285714283"/>
         </view>

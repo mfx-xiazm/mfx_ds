@@ -11,13 +11,18 @@
 #import "DSVipCell.h"
 #import "DSVipCardVC.h"
 #import "DSVipGoodsDetailVC.h"
+#import "DSVipGoods.h"
+#import "DSWebContentVC.h"
 
 static NSString *const VipCell = @"VipCell";
 @interface DSVipVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /* 头视图 */
 @property(nonatomic,strong) DSVipHeader *header;
-
+/* 页码 */
+@property (nonatomic,assign) NSInteger pagenum;
+/* 列表 */
+@property(nonatomic,strong) NSMutableArray *vipGoods;
 @end
 
 @implementation DSVipVC
@@ -26,11 +31,21 @@ static NSString *const VipCell = @"VipCell";
     [super viewDidLoad];
     [self setUpNavBar];
     [self setUpTableView];
+    [self setUpRefresh];
+    [self startShimmer];
+    [self getMemberGoodsDataRequest:YES];
 }
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     self.header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 135.f+(HX_SCREEN_WIDTH-10.f*3)/2.0*9/17.f+60.f);
+}
+-(NSMutableArray *)vipGoods
+{
+    if (_vipGoods == nil) {
+        _vipGoods = [NSMutableArray array];
+    }
+    return _vipGoods;
 }
 -(DSVipHeader *)header
 {
@@ -41,7 +56,11 @@ static NSString *const VipCell = @"VipCell";
         _header.vipHeaderBtnClickedCall = ^(NSInteger index) {
             hx_strongify(weakSelf);
             if (index == 0) {
-                
+                DSWebContentVC *wvc = [DSWebContentVC new];
+                wvc.navTitle = @"自购省钱";
+                wvc.isNeedRequest = YES;
+                wvc.requestType = 4;
+                [strongSelf.navigationController pushViewController:wvc animated:YES];
             }else{
                 DSVipCardVC *ovc = [DSVipCardVC new];
                 [strongSelf.navigationController pushViewController:ovc animated:YES];
@@ -90,22 +109,100 @@ static NSString *const VipCell = @"VipCell";
     imageView.layer.masksToBounds = YES;
     self.tableView.backgroundView = imageView;
 }
+/** 添加刷新控件 */
+-(void)setUpRefresh
+{
+    hx_weakify(self);
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf.tableView.mj_footer resetNoMoreData];
+        [strongSelf getMemberGoodsDataRequest:YES];
+    }];
+    //追加尾部刷新
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf getMemberGoodsDataRequest:NO];
+    }];
+}
 #pragma mark -- 点击
 -(void)vipQestionClicked
 {
-    
+    DSWebContentVC *wvc = [DSWebContentVC new];
+    wvc.navTitle = @"会员权益说明";
+    wvc.isNeedRequest = YES;
+    wvc.requestType = 3;
+    [self.navigationController pushViewController:wvc animated:YES];
 }
-#pragma mark -- 业务逻辑
+#pragma mark -- 接口请求
+/** 列表请求 */
+-(void)getMemberGoodsDataRequest:(BOOL)isRefresh
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (isRefresh) {
+        parameters[@"page"] = @(1);//第几页
+    }else{
+        NSInteger pagenum = self.pagenum+1;
+        parameters[@"page"] = @(pagenum);//第几页
+    }
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"member_goods_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            if (isRefresh) {
+                [strongSelf.tableView.mj_header endRefreshing];
+                strongSelf.pagenum = 1;
+                [strongSelf.vipGoods removeAllObjects];
+                NSArray *arrt = [NSArray yy_modelArrayWithClass:[DSVipGoods class] json:responseObject[@"result"][@"list"]];
+                [strongSelf.vipGoods addObjectsFromArray:arrt];
+            }else{
+                [strongSelf.tableView.mj_footer endRefreshing];
+                strongSelf.pagenum ++;
+                if ([responseObject[@"result"][@"list"] isKindOfClass:[NSArray class]] && ((NSArray *)responseObject[@"result"][@"list"]).count){
+                    NSArray *arrt = [NSArray yy_modelArrayWithClass:[DSVipGoods class] json:responseObject[@"result"][@"list"]];
+                    [strongSelf.vipGoods addObjectsFromArray:arrt];
+                }else{// 提示没有更多数据
+                    [strongSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.tableView reloadData];
+                if (strongSelf.vipGoods.count) {
+                    [strongSelf.tableView ly_hideEmptyView];
+                }else{
+                    [strongSelf.tableView ly_showEmptyView];
+                }
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return self.vipGoods.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSVipCell *cell = [tableView dequeueReusableCellWithIdentifier:VipCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    DSVipGoods *goods = self.vipGoods[indexPath.row];
+    cell.goods = goods;
+    hx_weakify(self);
+    cell.buyClickCall = ^{
+        hx_strongify(weakSelf);
+        DSVipGoodsDetailVC *dvc = [DSVipGoodsDetailVC new];
+        dvc.goods_id = goods.goods_id;
+        [strongSelf.navigationController pushViewController:dvc animated:YES];
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -114,7 +211,9 @@ static NSString *const VipCell = @"VipCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DSVipGoods *goods = self.vipGoods[indexPath.row];
     DSVipGoodsDetailVC *dvc = [DSVipGoodsDetailVC new];
+    dvc.goods_id = goods.goods_id;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 

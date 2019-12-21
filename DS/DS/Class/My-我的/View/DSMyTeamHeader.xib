@@ -86,6 +86,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="teamNum" destination="Xeg-9P-lJe" id="0uj-TW-cHE"/>
                 <outlet property="topTitleView" destination="SDM-Pv-4qx" id="Npj-1a-eky"/>
             </connections>
             <point key="canvasLocation" x="143.47826086956522" y="257.14285714285711"/>

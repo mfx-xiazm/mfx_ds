@@ -7,12 +7,23 @@
 //
 
 #import "DSVipCardCell.h"
+#import "DSVipCard.h"
 
+@interface DSVipCardCell ()
+@property (weak, nonatomic) IBOutlet UILabel *cardName;
+@property (weak, nonatomic) IBOutlet UIImageView *card_logo;
+
+@end
 @implementation DSVipCardCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)setCard:(DSVipCard *)card
+{
+    _card = card;
+    self.cardName.text = _card.type_name;
+    [self.card_logo sd_setImageWithURL:[NSURL URLWithString:_card.logo_img]];
+}
 @end

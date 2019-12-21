@@ -11,6 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSVipGoodsDetailVC">
             <connections>
                 <outlet property="cyclePagerView" destination="pIr-XQ-tT3" id="5ZT-tm-SuX"/>
+                <outlet property="freight" destination="ywC-9S-Sbv" id="2Vj-Ou-3Yl"/>
+                <outlet property="goodsName" destination="bhH-gd-E2R" id="8XT-Au-gKa"/>
+                <outlet property="price" destination="oNq-aD-4l8" id="z4g-Lm-AI7"/>
+                <outlet property="saleNum" destination="lgw-U8-L6t" id="wHi-V2-uQp"/>
+                <outlet property="stockNum" destination="e0Q-63-UCX" id="g9g-Ca-fMY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webContentView" destination="1oX-Vk-JyQ" id="HfN-5p-cwG"/>
                 <outlet property="webContentViewHeight" destination="kUZ-ax-8ga" id="F4z-9g-n94"/>
@@ -252,6 +257,9 @@
                             <state key="normal" title="立即购买">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="buyClicked:" destination="-1" eventType="touchUpInside" id="yJZ-3Z-7Np"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

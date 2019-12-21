@@ -7,14 +7,27 @@
 //
 
 #import "DSMessageCell.h"
+#import "DSMessage.h"
 
+@interface DSMessageCell ()
+@property (weak, nonatomic) IBOutlet UIView *msgState;
+@property (weak, nonatomic) IBOutlet UILabel *msgTitle;
+@property (weak, nonatomic) IBOutlet UILabel *msgTime;
+
+@end
 @implementation DSMessageCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)setMsg:(DSMessage *)msg
+{
+    _msg = msg;
+    self.msgState.hidden = [_msg.is_read isEqualToString:@"1"]?YES:NO;
+    self.msgTitle.text = _msg.msg_title;
+    self.msgTime.text = _msg.create_time;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

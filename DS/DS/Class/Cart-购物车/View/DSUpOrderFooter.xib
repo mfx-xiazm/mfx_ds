@@ -145,6 +145,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="cmm_amount" destination="kbt-H1-Wqo" id="hrm-FF-6gS"/>
+                <outlet property="freight_amount" destination="umn-F2-Awa" id="wsY-oD-mmg"/>
+                <outlet property="price_amount" destination="tpf-o5-Fus" id="kbI-oy-U65"/>
                 <outlet property="remark_view" destination="wWR-eP-KNY" id="jFa-vO-YlI"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="363.61607142857139"/>

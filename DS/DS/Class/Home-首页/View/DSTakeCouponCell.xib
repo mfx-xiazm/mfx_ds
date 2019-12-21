@@ -70,6 +70,9 @@
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="getClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l1e-ue-llO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -99,6 +102,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="discount" destination="LkC-qd-3qf" id="8Xv-Ad-llD"/>
+                <outlet property="discoutName" destination="tFe-1Q-sfq" id="mjl-wL-oUk"/>
+                <outlet property="validDay" destination="0tO-pw-jTl" id="JJb-Sb-YVg"/>
+            </connections>
             <point key="canvasLocation" x="-81.159420289855078" y="77.678571428571431"/>
         </tableViewCell>
     </objects>

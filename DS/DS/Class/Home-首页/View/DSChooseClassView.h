@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSGoodsDetail;
+typedef void(^goodsHandleCall)(NSInteger index);
 @interface DSChooseClassView : UIView
-
+/** 商品详情 */
+@property(nonatomic,strong) DSGoodsDetail *goodsDetail;
+/* 操作点击 */
+@property(nonatomic,copy) goodsHandleCall goodsHandleCall;
 @end
 
 NS_ASSUME_NONNULL_END

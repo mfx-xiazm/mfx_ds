@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSLoginVC">
             <connections>
+                <outlet property="code" destination="NBW-Jp-c6M" id="7tU-pT-yjT"/>
                 <outlet property="codeView" destination="VIX-lt-xZZ" id="nYg-UM-gMy"/>
                 <outlet property="loginBtn" destination="j4f-Uf-Bcr" id="7Hq-Ma-BDI"/>
                 <outlet property="loginType" destination="b3E-0x-Vcu" id="Drv-pB-5AO"/>
@@ -113,6 +114,9 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="getCodeRequest:" destination="-1" eventType="touchUpInside" id="r0Y-uw-ySw"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-Ni-cWK" userLabel="分割线">
                                             <rect key="frame" x="0.0" y="43" width="354" height="1"/>
@@ -228,9 +232,6 @@
                                             <real key="value" value="6"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="loginClicked:" destination="-1" eventType="touchUpInside" id="70f-Xv-mjF"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HF-7d-7ia">
                                     <rect key="frame" x="324" y="467" width="60" height="28"/>

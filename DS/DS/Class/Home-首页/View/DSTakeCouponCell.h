@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^getCouponCall)(void);
 @interface DSTakeCouponCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *discount;
+@property (weak, nonatomic) IBOutlet UILabel *discoutName;
+@property (weak, nonatomic) IBOutlet UILabel *validDay;
+/* 点击 */
+@property(nonatomic,copy) getCouponCall getCouponCall;
 @end
 
 NS_ASSUME_NONNULL_END

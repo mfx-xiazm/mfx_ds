@@ -18,6 +18,7 @@
 #import "DSMyAddressVC.h"
 #import "DSMyBalanceVC.h"
 #import "DSMyDynamicVC.h"
+#import "DSMyAfterOrderVC.h"
 
 static NSString *const ProfileCell = @"ProfileCell";
 @interface DSMyVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -39,7 +40,9 @@ static NSString *const ProfileCell = @"ProfileCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self getMemberRequest];
+    if (self.header) {
+        self.header.isReload = YES;
+    }
 }
 - (void)viewDidLayoutSubviews
 {
@@ -57,6 +60,9 @@ static NSString *const ProfileCell = @"ProfileCell";
             if (index == 6) {
                 DSChangeInfoVC *ivc = [DSChangeInfoVC new];
                 [strongSelf.navigationController pushViewController:ivc animated:YES];
+            }else if (index == 5){
+                DSMyAfterOrderVC *dvc = [DSMyAfterOrderVC new];
+                [strongSelf.navigationController pushViewController:dvc animated:YES];
             }else{
                 DSMyOrderVC *ovc = [DSMyOrderVC new];
                 ovc.selectIndex = index;
@@ -121,25 +127,8 @@ static NSString *const ProfileCell = @"ProfileCell";
     [self.navigationController pushViewController:svc animated:YES];
 }
 #pragma mark -- 业务逻辑
--(void)getMemberRequest
-{
-//    hx_weakify(self);
-//    [HXNetworkTool POST:HXRC_M_URL action:@"getMineData" parameters:@{} success:^(id responseObject) {
-//        hx_strongify(weakSelf);
-//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            NSArray *data = [NSArray arrayWithArray:responseObject[@"data"]];
-//            NSDictionary *dict = data.firstObject;
-//            strongSelf.mineData = [GYMineData yy_modelWithDictionary:dict];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                strongSelf.header.mineData = strongSelf.mineData;
-//            });
-//        }else{
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//        }
-//    } failure:^(NSError *error) {
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-//    }];
-}
+
+
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

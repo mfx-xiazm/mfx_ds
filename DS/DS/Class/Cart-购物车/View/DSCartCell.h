@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSCartData;
+typedef void(^cartHandleCall)(NSInteger index);
 @interface DSCartCell : UITableViewCell
-
+/* 商品 */
+@property(nonatomic,strong) DSCartData *cart;
+/* 点击 */
+@property(nonatomic,copy) cartHandleCall cartHandleCall;
 @end
 
 NS_ASSUME_NONNULL_END

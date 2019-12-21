@@ -80,18 +80,17 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *action = nil;
     if (self.requestType == 1) {
-        parameters[@"type"] = self.type;//为1 表示查看买家服务协议 为3表示查看技工服务协议
-        action = @"getAgreement";
+        parameters[@"adv_id"] = self.adv_id;
+        action = @"adv_detail_get";
     }else if (self.requestType == 2) {
-        parameters[@"notice_id"] = self.notice_id;//公告id
-        action = @"getNoticeDetail";
+        parameters[@"msg_id"] = self.msg_id;
+        action = @"message_detail_get";
     }else if (self.requestType == 3) {
-        parameters[@"cart_ids"] = self.cart_ids;//选择多个用逗号隔开
-        parameters[@"order_note"] = self.order_note;//下单时候的备注说明 多个商品备注之间用"_"隔开有的商品没填备注用空字符串
-        action = @"contractPreviewFromCart";
+        parameters[@"set_type"] = @"member_rights_desc";
+        action = @"license_config_get";
     }else if (self.requestType == 4) {
-        parameters[@"orderId"] = self.order_id;
-        action = @"getOrderContract";
+        parameters[@"set_type"] = @"member_self_buy";
+        action = @"license_config_get";
     }
     
     hx_weakify(self);
@@ -99,15 +98,17 @@
         hx_strongify(weakSelf);
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             if (strongSelf.requestType == 1) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"data"][@"agreement"][@"agreement"]];
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"adv_content"]];
                 [strongSelf.webView loadHTMLString:h5 baseURL:nil];
             }else if (strongSelf.requestType == 2) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"data"][@"notice_content"]];
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"msg_content"]];
                 [strongSelf.webView loadHTMLString:h5 baseURL:nil];
             }else if (strongSelf.requestType == 3) {
-                [strongSelf.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[responseObject[@"data"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]]];
-            }else if (self.requestType == 4) {
-                [strongSelf.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[responseObject[@"data"] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]]];
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
+            }else if (strongSelf.requestType == 4) {
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
             }
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];

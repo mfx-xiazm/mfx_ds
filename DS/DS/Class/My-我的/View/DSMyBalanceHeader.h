@@ -14,6 +14,12 @@ typedef void(^balanceBtnCall)(NSInteger index);
 @interface DSMyBalanceHeader : UIView
 /* 点击 */
 @property(nonatomic,copy) balanceBtnCall balanceBtnCall;
+@property (weak, nonatomic) IBOutlet UILabel *balance;
+@property (weak, nonatomic) IBOutlet UILabel *gift_reward;
+@property (weak, nonatomic) IBOutlet UILabel *upgrade_reward;
+@property (weak, nonatomic) IBOutlet UILabel *goods_reward;
+@property (weak, nonatomic) IBOutlet UILabel *share_reward;
+
 @end
 
 NS_ASSUME_NONNULL_END

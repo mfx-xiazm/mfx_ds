@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSVipGoods;
+typedef void(^buyClickCall)(void);
 @interface DSVipCell : UITableViewCell
-
+/* 商品 */
+@property(nonatomic,strong) DSVipGoods *goods;
+/* 点击 */
+@property(nonatomic,copy) buyClickCall buyClickCall;
 @end
 
 NS_ASSUME_NONNULL_END

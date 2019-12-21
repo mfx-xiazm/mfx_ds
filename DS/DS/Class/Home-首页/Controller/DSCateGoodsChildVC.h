@@ -11,7 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSCateGoodsChildVC : HXBaseViewController
-
+/* 二级分类id */
+@property(nonatomic,copy) NSString *cate_id;
+/* 分类方式 */
+@property(nonatomic,copy) NSString *cate_mode;
 @end
 
 NS_ASSUME_NONNULL_END

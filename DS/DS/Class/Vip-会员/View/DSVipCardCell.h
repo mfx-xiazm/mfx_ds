@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSVipCard;
 @interface DSVipCardCell : UICollectionViewCell
-
+/* 黑卡 */
+@property(nonatomic,strong) DSVipCard *card;
 @end
 
 NS_ASSUME_NONNULL_END

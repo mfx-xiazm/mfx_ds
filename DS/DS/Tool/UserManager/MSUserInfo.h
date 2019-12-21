@@ -11,11 +11,13 @@
 @interface MSUserInfo : NSObject
 
 @property (nonatomic, strong) NSString * uid;
-@property (nonatomic, strong) NSString * nick_name;
+@property (nonatomic, strong) NSString * phone;
+@property (nonatomic, strong) NSString * sex;
+@property (nonatomic, strong) NSString * share_code;
 @property (nonatomic, strong) NSString * token;
 @property (nonatomic, strong) NSString * avatar;
-/** 1买家 2经销商 3技工 */
-@property (nonatomic, assign) NSInteger utype;
+@property (nonatomic, strong) NSString * nick_name;
+@property (nonatomic, assign) NSInteger ulevel;
 
 @end
 

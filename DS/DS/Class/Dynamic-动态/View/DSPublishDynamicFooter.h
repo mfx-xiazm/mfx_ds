@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^footerHandleCall)(NSInteger index);
+typedef void(^footerHandleCall)(NSInteger index,UIButton *btn);
 @interface DSPublishDynamicFooter : UIView
 /* 点击 */
 @property(nonatomic,copy) footerHandleCall footerHandleCall;

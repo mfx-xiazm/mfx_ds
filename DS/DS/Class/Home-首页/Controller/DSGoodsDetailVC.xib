@@ -10,7 +10,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSGoodsDetailVC">
             <connections>
+                <outlet property="backPrice" destination="SrI-C4-ryP" id="Vi0-qs-F7Q"/>
+                <outlet property="collentBtn" destination="ubh-Hb-OpR" id="bMn-q8-yCE"/>
+                <outlet property="coupon" destination="TFS-nU-Ub8" id="A2U-p9-BIp"/>
                 <outlet property="cyclePagerView" destination="ZyD-0M-RrK" id="Om9-4i-uCz"/>
+                <outlet property="freight" destination="mwv-1b-Gzl" id="zzy-I7-ca7"/>
+                <outlet property="goodsName" destination="fGM-zA-KYG" id="Njy-da-DEp"/>
+                <outlet property="marketPrice" destination="I8q-Oe-Iop" id="7Zk-QF-ch2"/>
+                <outlet property="price" destination="Scv-mF-f8s" id="eji-Ue-4cw"/>
+                <outlet property="provider" destination="bOe-8Q-oKf" id="HDn-ns-GR5"/>
+                <outlet property="saleNum" destination="IDt-87-fVB" id="H38-vu-Gp7"/>
+                <outlet property="stockNum" destination="O55-fC-Hn8" id="UIH-d5-R97"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webContentView" destination="i1x-0P-mSj" id="cZv-Ly-LR0"/>
                 <outlet property="webContentViewHeight" destination="7ig-vi-2L8" id="MsO-zu-858"/>
@@ -405,6 +415,7 @@
                             <state key="normal" image="未收藏">
                                 <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <state key="selected" image="已收藏"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="imagePosition">
                                     <integer key="value" value="2"/>
@@ -413,6 +424,9 @@
                                     <real key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="collectGoodsClicked:" destination="-1" eventType="touchUpInside" id="xJ1-De-YYp"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y0y-VG-Z1Z" customClass="SPButton">
                             <rect key="frame" x="120" y="1" width="60" height="49"/>
@@ -431,6 +445,9 @@
                                     <real key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="cartClicked:" destination="-1" eventType="touchUpInside" id="Mj1-yt-aPs"/>
+                            </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liZ-Z6-Wap">
                             <rect key="frame" x="180" y="0.0" width="117" height="50"/>
@@ -495,6 +512,7 @@
     </objects>
     <resources>
         <image name="客服灰" width="22" height="22"/>
+        <image name="已收藏" width="20" height="19"/>
         <image name="星星 (1)" width="16" height="16"/>
         <image name="未收藏" width="20" height="19"/>
         <image name="标题" width="288.5" height="41"/>

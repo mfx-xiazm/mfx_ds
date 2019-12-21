@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -129,16 +129,10 @@
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BX8-pw-f7c">
                             <rect key="frame" x="10" y="10" width="394" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOA-8g-EEc">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注是备注这里是备注这里是备注" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOA-8g-EEc">
                                     <rect key="frame" x="5" y="5" width="384" height="40"/>
-                                    <attributedString key="attributedText">
-                                        <fragment content="这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注这里是备注是备注这里是备注这里是备注">
-                                            <attributes>
-                                                <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                                    <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -225,6 +219,9 @@
                                     <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="orderNoCopy:" destination="iN0-l3-epB" eventType="touchUpInside" id="7ub-Dg-1MH"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -254,7 +251,17 @@
                 <constraint firstItem="qnr-na-3Lv" firstAttribute="top" secondItem="GqI-v7-phV" secondAttribute="bottom" id="qBr-eA-DpK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="47.826086956521742" y="336.83035714285711"/>
+            <connections>
+                <outlet property="freight_amount" destination="EMO-zn-eE0" id="Bel-L4-B6t"/>
+                <outlet property="normalView" destination="GqI-v7-phV" id="t9D-zC-db8"/>
+                <outlet property="normalViewHeight" destination="pyf-pW-Etm" id="qU9-Rs-vIx"/>
+                <outlet property="order_no" destination="R2M-iA-esF" id="s3o-Zs-g6h"/>
+                <outlet property="order_self_commission" destination="hez-rN-UAE" id="g8v-c8-uLs"/>
+                <outlet property="pay_amount" destination="xOA-a8-bA4" id="9Yf-3I-0S4"/>
+                <outlet property="remarkViewHeight" destination="Tvm-it-yMT" id="Jei-rG-m4l"/>
+                <outlet property="remarks" destination="zOA-8g-EEc" id="e86-gQ-PBr"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="339.17410714285711"/>
         </view>
     </objects>
 </document>

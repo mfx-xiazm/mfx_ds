@@ -19,10 +19,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *portrait;
 /** 时间 */
 @property(nonatomic,copy)NSString *creatTime;
-/** 分享数量 */
-@property(nonatomic,copy)NSString *shareNum;
 /** 照片数组 */
 @property(nonatomic,strong)NSArray *photos;
+/** 用户id */
+@property(nonatomic,copy)NSString *uid;
+/** 点赞数量 */
+@property(nonatomic,copy)NSString *praise_num;
+/** 是否点赞 */
+@property(nonatomic,assign) BOOL is_praise;
+/** 动态id */
+@property(nonatomic,copy)NSString *treads_id;
+/** 照片数组 */
+@property(nonatomic,strong)NSArray *list_content;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

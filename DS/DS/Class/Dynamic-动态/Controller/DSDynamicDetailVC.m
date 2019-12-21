@@ -10,6 +10,9 @@
 #import "DSDynamicDetailHeader.h"
 #import "DSDynamicDetailCell.h"
 #import "DSDynamicDetailFooter.h"
+#import "DSDynamicDetail.h"
+#import "zhAlertView.h"
+#import <zhPopupController.h>
 
 static NSString *const DynamicDetailCell = @"DynamicDetailCell";
 @interface DSDynamicDetailVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -19,7 +22,8 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
 @property(nonatomic,strong) DSDynamicDetailHeader *header;
 /* 尾视图 */
 @property(nonatomic,strong) DSDynamicDetailFooter *footer;
-
+/* 动态详情 */
+@property(nonatomic,strong) DSDynamicDetail *detail;
 @end
 
 @implementation DSDynamicDetailVC
@@ -28,6 +32,8 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
     [super viewDidLoad];
     [self.navigationItem setTitle:@"动态详情"];
     [self setUpTableView];
+    [self startShimmer];
+    [self getDynamicDetialRequest];
 }
 -(void)viewDidLayoutSubviews
 {
@@ -48,6 +54,43 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
     if (_footer == nil) {
         _footer = [DSDynamicDetailFooter loadXibView];
         _footer.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 50.f);
+        hx_weakify(self);
+        _footer.footerTypeCall = ^(NSInteger index, UIButton * _Nonnull btn) {
+            hx_strongify(weakSelf);
+            if (index == 1) {
+                zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要删除该条动态吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
+                zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
+                    [strongSelf.zh_popupController dismiss];
+                }];
+                zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"删除" handler:^(zhAlertButton * _Nonnull button) {
+                    [strongSelf.zh_popupController dismiss];
+                    [strongSelf setDynamicDeleteRequest:strongSelf.detail.treads.treads_id completedCall:^{
+                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"删除成功"];
+                        if (weakSelf.dynamicDetailCall) {
+                            weakSelf.dynamicDetailCall(2);
+                        }
+                        [weakSelf.navigationController popViewControllerAnimated:YES];
+                    }];
+                }];
+                cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+                okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+                [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
+                strongSelf.zh_popupController = [[zhPopupController alloc] init];
+                [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+            }else if (index == 2) {
+                [strongSelf setDynamicPraiseRequest:strongSelf.detail.treads.treads_id isPraise:strongSelf.detail.treads.is_praise?@"0":@"1" completedCall:^{
+                    weakSelf.detail.treads.is_praise = !weakSelf.detail.treads.is_praise;
+                    btn.selected = weakSelf.detail.treads.is_praise;
+                    if (weakSelf.dynamicDetailCall) {
+                        weakSelf.dynamicDetailCall(1);
+                    }
+                }];
+            }else{
+                HXLog(@"分享");
+            }
+        };
     }
     return _footer;
 }
@@ -83,30 +126,93 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
     self.tableView.tableHeaderView = self.header;
     self.tableView.tableFooterView = self.footer;
 }
+#pragma mark -- 接口请求
+-(void)getDynamicDetialRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"treads_id"] = self.treads_id;
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"treads_detail_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            strongSelf.detail = [DSDynamicDetail yy_modelWithDictionary:responseObject[@"result"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf handleDynamicDetailData];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)handleDynamicDetailData
+{
+    self.header.info = self.detail.treads;
+    self.footer.info = self.detail.treads;
+    
+    [self.tableView reloadData];
+}
+-(void)setDynamicPraiseRequest:(NSString *)treads_id isPraise:(NSString *)is_praise completedCall:(void(^)(void))completedCall
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"treads_id"] = treads_id;//动态id
+    parameters[@"is_praise"] = is_praise;//是否点赞，1点赞，0取消点赞
+
+    [HXNetworkTool POST:HXRC_M_URL action:@"treads_praise_set" parameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"status"] integerValue] == 1) {
+            if (completedCall) {
+                completedCall();
+            }
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)setDynamicDeleteRequest:(NSString *)treads_id completedCall:(void(^)(void))completedCall
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"treads_id"] = treads_id;//动态id
+
+    [HXNetworkTool POST:HXRC_M_URL action:@"treads_delete_set" parameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+            if (completedCall) {
+                completedCall();
+            }
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return self.detail.list_content.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSDynamicDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:DynamicDetailCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (indexPath.row %2) {
-        cell.content_img.hidden = NO;
-        cell.content_text.hidden = YES;
-    }else{
-        cell.content_img.hidden = YES;
-        cell.content_text.hidden = NO;
-    }
+    DSDynamicContent *content = self.detail.list_content[indexPath.row];
+    cell.content = content;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回这个模型对应的cell高度
-    if (indexPath.row %2) {
+    DSDynamicContent *content = self.detail.list_content[indexPath.row];
+    if ([content.content_type isEqualToString:@"2"]) {
         return 180.f;
     }else{
         return UITableViewAutomaticDimension;

@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMessage;
 @interface DSMessageCell : UITableViewCell
-
+/* 消息 */
+@property(nonatomic,strong) DSMessage *msg;
 @end
 
 NS_ASSUME_NONNULL_END

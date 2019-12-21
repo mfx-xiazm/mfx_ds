@@ -10,8 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^couponClickedCall)(NSInteger index);
 @interface DSTakeCouponView : UIView
-
+@property(nonatomic,copy) NSString *valid_days;
+@property(nonatomic,copy) NSString *discount;
+/* 点击 */
+@property(nonatomic,copy) couponClickedCall couponClickedCall;
 @end
 
 NS_ASSUME_NONNULL_END

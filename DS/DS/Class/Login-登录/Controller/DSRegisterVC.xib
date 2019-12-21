@@ -10,6 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSRegisterVC">
             <connections>
+                <outlet property="code" destination="BkQ-jg-rvu" id="9xG-Hu-uUg"/>
+                <outlet property="inviteCode" destination="clS-dU-gjf" id="TPG-wJ-5Dn"/>
+                <outlet property="phone" destination="1t6-Il-zZX" id="L1k-gi-I4P"/>
+                <outlet property="pwd" destination="qBC-PB-0bA" id="rek-B2-1bX"/>
+                <outlet property="registerBtn" destination="o2b-Yb-Xgn" id="NSa-AN-YFB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -101,6 +106,9 @@
                                             </constraints>
                                             <state key="normal" image="隐藏"/>
                                             <state key="selected" image="显示"/>
+                                            <connections>
+                                                <action selector="pwdStatusClicked:" destination="-1" eventType="touchUpInside" id="NuR-RF-ecR"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89t-wb-wub" userLabel="分割线">
                                             <rect key="frame" x="0.0" y="49" width="354" height="1"/>
@@ -159,6 +167,9 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="getCodeRequest:" destination="-1" eventType="touchUpInside" id="tCR-sp-W4v"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPG-cY-Ge8" userLabel="分割线">
                                             <rect key="frame" x="0.0" y="49" width="354" height="1"/>
@@ -230,6 +241,9 @@
                                     <state key="normal" title="已有账号？立即登录">
                                         <color key="titleColor" red="1" green="0.73725490199999999" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="backLoginVC:" destination="-1" eventType="touchUpInside" id="p6K-nl-g3e"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2b-Yb-Xgn">
                                     <rect key="frame" x="30" y="455" width="354" height="44"/>
@@ -238,7 +252,7 @@
                                         <constraint firstAttribute="height" constant="44" id="SCG-67-VbT"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                    <state key="normal" title="确定">
+                                    <state key="normal" title="注册">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>

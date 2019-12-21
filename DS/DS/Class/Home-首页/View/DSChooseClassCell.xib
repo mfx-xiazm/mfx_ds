@@ -44,6 +44,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="186" height="59"/>
+            <connections>
+                <outlet property="spec_name" destination="KPf-Pe-fWC" id="Ika-Mc-GIt"/>
+            </connections>
             <point key="canvasLocation" x="-17.39130434782609" y="116.85267857142857"/>
         </collectionViewCell>
     </objects>

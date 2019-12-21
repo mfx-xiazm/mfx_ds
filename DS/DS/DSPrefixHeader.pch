@@ -25,6 +25,7 @@
 #import <MBProgressHUD+NHAdd.h>
 #import "NSString+HXNExtension.h"
 #import <YYText.h>
+#import "LYEmptyViewHeader.h"
 
 /**
  调试阶段，用HXLog代替NSLog
@@ -38,6 +39,8 @@
 #endif
 /**宏定义方法的打印方式*/
 #define HXLogFunc HXLog(@"%s", __func__)
+
+#define NSStringFormat(format,...) [NSString stringWithFormat:format,##__VA_ARGS__]
 
 /**宏定义RGB颜色的调用方式*/
 #define HXRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
@@ -71,8 +74,8 @@
 /**获取图片资源*/
 #define HXGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 
-#define HXRC_M_URL @"http://gongliujie.mfxapp.com/api/admin/"
+#define HXRC_M_URL @"http://daishu.mfxapp.com:8180/daishupub/mfxapi/"
 
-#define HXRC_URL_HEADER @"http://gongliujie.mfxapp.com/api/admin/"
+#define HXRC_URL_HEADER @"http://daishu.mfxapp.com:8180/daishupub/mfxapi/"
 
 #endif /* DSPrefixHeader_pch */

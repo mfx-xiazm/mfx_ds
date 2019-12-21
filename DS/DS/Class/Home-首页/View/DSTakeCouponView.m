@@ -41,15 +41,31 @@ static NSString *const TakeCouponCell = @"TakeCouponCell";
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DSTakeCouponCell class]) bundle:nil] forCellReuseIdentifier:TakeCouponCell];
 }
+- (IBAction)closeClicked:(UIButton *)sender {
+    if (self.couponClickedCall) {
+        self.couponClickedCall(0);
+    }
+}
+
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSTakeCouponCell *cell = [tableView dequeueReusableCellWithIdentifier:TakeCouponCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.discount.text = [NSString stringWithFormat:@"%@折",self.discount];
+    cell.discoutName.text = [NSString stringWithFormat:@"%@折券",self.discount];
+    cell.validDay.text = [NSString stringWithFormat:@"有效期：%@天",self.valid_days];
+    hx_weakify(self);
+    cell.getCouponCall = ^{
+        hx_strongify(weakSelf);
+        if (strongSelf.couponClickedCall) {
+            strongSelf.couponClickedCall(1);
+        }
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

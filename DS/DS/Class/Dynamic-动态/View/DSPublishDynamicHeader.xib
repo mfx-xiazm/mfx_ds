@@ -75,6 +75,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="dynamicTitle" destination="KZ2-78-zOW" id="fjm-X8-V2R"/>
+            </connections>
             <point key="canvasLocation" x="-22" y="357"/>
         </view>
     </objects>

@@ -9,9 +9,11 @@
 #import "HXBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class DSMyAddress;
+typedef void(^getAddressCall)(DSMyAddress *address);
 @interface DSMyAddressVC : HXBaseViewController
-
+/* 选择 */
+@property(nonatomic,copy) getAddressCall getAddressCall;
 @end
 
 NS_ASSUME_NONNULL_END

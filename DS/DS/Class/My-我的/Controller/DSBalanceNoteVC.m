@@ -10,12 +10,22 @@
 #import "DSMyBalanceCell.h"
 #import "HXSearchBar.h"
 #import "WSDatePickerView.h"
+#import "DSBalanceNote.h"
 
 static NSString *const MyBalanceCell = @"MyBalanceCell";
 @interface DSBalanceNoteVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /* 时间筛选 */
 @property(nonatomic,strong) WSDatePickerView *datePicker;
+/* 页码 */
+@property (nonatomic,assign) NSInteger pagenum;
+/* 列表 */
+@property(nonatomic,strong) NSMutableArray *notes;
+/* 开始时间 */
+@property(nonatomic,copy) NSString *begin_date;
+/* 结束日期 */
+@property(nonatomic,copy) NSString *end_date;
+
 @end
 
 @implementation DSBalanceNoteVC
@@ -24,20 +34,32 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     [super viewDidLoad];
     [self setUpNavBar];
     [self setUpTableView];
+    [self setUpEmptyView];
+    [self setUpRefresh];
+    [self startShimmer];
+    [self getNoteListDataRequest:YES];
 }
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
 }
+-(NSMutableArray *)notes
+{
+    if (_notes == nil) {
+        _notes = [NSMutableArray array];
+    }
+    return _notes;
+}
 -(WSDatePickerView *)datePicker
 {
     if (_datePicker == nil) {
-//        hx_weakify(self);
+        hx_weakify(self);
         _datePicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDay CompleteBlock:^(NSString *start, NSString *end) {
-//            hx_strongify(weakSelf);
-            HXLog(@"%@  %@",start,end);
+            hx_strongify(weakSelf);
+            strongSelf.begin_date = start;
+            strongSelf.end_date = end;
+            [strongSelf getNoteListDataRequest:YES];
         }];
-        _datePicker.maxLimitDate = [NSDate date];
         _datePicker.dateLabelColor = HXControlBg;//年-月-日 颜色
         _datePicker.datePickerColor = [UIColor blackColor];//滚轮日期颜色
         _datePicker.doneButtonColor = HXControlBg;//确定按钮的颜色
@@ -92,26 +114,116 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DSMyBalanceCell class]) bundle:nil] forCellReuseIdentifier:MyBalanceCell];
 }
+-(void)setUpEmptyView
+{
+    LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
+    emptyView.contentViewOffset = -(self.HXNavBarHeight);
+    emptyView.subViewMargin = 20.f;
+    emptyView.detailLabTextColor = UIColorFromRGB(0x131D2D);
+    emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
+    emptyView.autoShowEmptyView = NO;
+    self.tableView.ly_emptyView = emptyView;
+}
+/** 添加刷新控件 */
+-(void)setUpRefresh
+{
+    hx_weakify(self);
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf.tableView.mj_footer resetNoMoreData];
+        [strongSelf getNoteListDataRequest:YES];
+    }];
+    //追加尾部刷新
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf getNoteListDataRequest:NO];
+    }];
+}
+#pragma mark -- 接口请求
+/** 列表请求 */
+-(void)getNoteListDataRequest:(BOOL)isRefresh
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"reward_type"] = @(self.reward_type);
+    if (self.begin_date && self.begin_date.length) {
+        parameters[@"begin_date"] = self.begin_date;//开始日期
+    }
+    if (self.end_date && self.end_date.length) {
+        parameters[@"end_date"] = self.end_date;//结束日期
+    }
+    if (isRefresh) {
+        parameters[@"page"] = @(1);//第几页
+    }else{
+        NSInteger pagenum = self.pagenum+1;
+        parameters[@"page"] = @(pagenum);//第几页
+    }
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"reward_list_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            if (isRefresh) {
+                [strongSelf.tableView.mj_header endRefreshing];
+                strongSelf.pagenum = 1;
+                [strongSelf.notes removeAllObjects];
+                NSArray *arrt = [NSArray yy_modelArrayWithClass:[DSBalanceNote class] json:responseObject[@"result"][@"list"]];
+                [strongSelf.notes addObjectsFromArray:arrt];
+            }else{
+                [strongSelf.tableView.mj_footer endRefreshing];
+                strongSelf.pagenum ++;
+                if ([responseObject[@"result"][@"list"] isKindOfClass:[NSArray class]] && ((NSArray *)responseObject[@"result"][@"list"]).count){
+                    NSArray *arrt = [NSArray yy_modelArrayWithClass:[DSBalanceNote class] json:responseObject[@"result"][@"list"]];
+                    [strongSelf.notes addObjectsFromArray:arrt];
+                }else{// 提示没有更多数据
+                    [strongSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.tableView reloadData];
+                if (strongSelf.notes.count) {
+                    [strongSelf.tableView ly_hideEmptyView];
+                }else{
+                    [strongSelf.tableView ly_showEmptyView];
+                }
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+#pragma mark -- 点击事件
 -(void)filterClicked
 {
-    HXLog(@"筛选");
     //年-月-日
     [self.datePicker show];
 }
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.notes.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSMyBalanceCell *cell = [tableView dequeueReusableCellWithIdentifier:MyBalanceCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    DSBalanceNote *note = self.notes[indexPath.row];
+    cell.note = note;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 125.f;
+    DSBalanceNote *note = self.notes[indexPath.row];
+    if ([note.finance_log_type isEqualToString:@"2"] || [note.finance_log_type isEqualToString:@"3"] || [note.finance_log_type isEqualToString:@"4"] || [note.finance_log_type isEqualToString:@"5"]) {
+        return 125.f;
+    }else{
+        return 90.f;
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

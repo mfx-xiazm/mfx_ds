@@ -11,6 +11,8 @@
 #import <zhPopupController.h>
 #import "DSChangePwdVC.h"
 #import "DSChangeBindVC.h"
+#import "DSLoginVC.h"
+#import "HXNavigationController.h"
 
 @interface DSMySetVC ()
 
@@ -25,12 +27,10 @@
 - (IBAction)setBtnClicked:(UIButton *)sender {
     if (sender.tag == 1) {
         DSChangeBindVC *bvc = [DSChangeBindVC new];
-//        bvc.phoneStr = self.mineData.phone;
         [self.navigationController pushViewController:bvc animated:YES];
     }else if (sender.tag == 2) {
         DSChangePwdVC *pvc = [DSChangePwdVC new];
         pvc.dataType = 2;
-//        pvc.phoneStr = self.mineData.phone;
         [self.navigationController pushViewController:pvc animated:YES];
     }else{
         zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录？" constantWidth:HX_SCREEN_WIDTH - 50*2];
@@ -42,17 +42,7 @@
         zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"退出" handler:^(zhAlertButton * _Nonnull button) {
             hx_strongify(weakSelf);
             [strongSelf.zh_popupController dismiss];
-            
-//            [[MSUserManager sharedInstance] logout:nil];//清空登录数据
-//
-//            HXTabBarController *tab = [[HXTabBarController alloc] init];
-//            [UIApplication sharedApplication].keyWindow.rootViewController = tab;
-//
-//            //推出主界面出来
-//            CATransition *ca = [CATransition animation];
-//            ca.type = @"movein";
-//            ca.duration = 0.5;
-//            [[UIApplication sharedApplication].keyWindow.layer addAnimation:ca forKey:nil];
+            [strongSelf setLoginOutRequest];
         }];
         cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
         [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
@@ -63,5 +53,25 @@
         [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
     }
 }
-
+-(void)setLoginOutRequest
+{
+    [HXNetworkTool POST:HXRC_M_URL action:@"login_out_set" parameters:@{} success:^(id responseObject) {
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            [[MSUserManager sharedInstance] logout:nil];//清空登录数据
+            
+            HXNavigationController *nav = [[HXNavigationController alloc] initWithRootViewController:[DSLoginVC new]];
+            [UIApplication sharedApplication].keyWindow.rootViewController = nav;
+            
+            //推出主界面出来
+            CATransition *ca = [CATransition animation];
+            ca.type = @"movein";
+            ca.duration = 0.5;
+            [[UIApplication sharedApplication].keyWindow.layer addAnimation:ca forKey:nil];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 @end

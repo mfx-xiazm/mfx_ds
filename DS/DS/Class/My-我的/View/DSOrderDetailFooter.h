@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyOrderDetail;
 @interface DSOrderDetailFooter : UIView
-
+/* 订单详情 */
+@property(nonatomic,strong) DSMyOrderDetail *orderDetail;
 @end
 
 NS_ASSUME_NONNULL_END

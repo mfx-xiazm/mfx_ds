@@ -10,13 +10,16 @@
 #import "DSMyOrderChildVC.h"
 #import <JXCategoryTitleView.h>
 #import <JXCategoryIndicatorLineView.h>
+#import "DSUpOrderVC.h"
+#import "DSVipUpOrderVC.h"
 
 @interface DSMyOrderVC ()<JXCategoryViewDelegate,UIScrollViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet JXCategoryTitleView *categoryView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 /** 子控制器数组 */
 @property (nonatomic,strong) NSArray *childVCs;
-
+/** vc控制器 */
+@property (nonatomic,strong) NSMutableArray *controllers;
 @end
 
 @implementation DSMyOrderVC
@@ -24,7 +27,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的订单"];
+    hx_weakify(self);
+    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[DSUpOrderVC class]] || [obj isKindOfClass:[DSVipUpOrderVC class]]) {
+            hx_strongify(weakSelf);
+            [strongSelf.controllers removeObjectAtIndex:idx];
+            *stop = YES;
+        }
+    }];
+    [self.navigationController setViewControllers:self.controllers];
     [self setUpCategoryView];
+}
+- (NSMutableArray *)controllers {
+    if (!_controllers) {
+        _controllers = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
+    }
+    return _controllers;
 }
 -(NSArray *)childVCs
 {
@@ -32,6 +50,7 @@
         NSMutableArray *vcs = [NSMutableArray array];
         for (int i=0;i<self.categoryView.titles.count;i++) {
             DSMyOrderChildVC *cvc0 = [DSMyOrderChildVC new];
+            cvc0.orderType = i;
             [self addChildViewController:cvc0];
             [vcs addObject:cvc0];
         }
@@ -43,7 +62,7 @@
 {
     _categoryView.backgroundColor = [UIColor whiteColor];
     _categoryView.titleLabelZoomEnabled = NO;
-    _categoryView.titles = @[@"全部", @"待付款", @"待发货",@"待收货", @"已完成", @"售后退款"];
+    _categoryView.titles = @[@"全部", @"待付款", @"待发货",@"待收货", @"已完成"];
     _categoryView.titleFont = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
     _categoryView.titleColor = [UIColor blackColor];
     _categoryView.titleSelectedColor = HXControlBg;

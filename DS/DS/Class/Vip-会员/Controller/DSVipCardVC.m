@@ -10,11 +10,13 @@
 #import "DSVipCardCell.h"
 #import <ZLCollectionViewVerticalLayout.h>
 #import "DSVipCardDetailVC.h"
+#import "DSVipCard.h"
 
 static NSString *const VipCardCell = @"VipCardCell";
 @interface DSVipCardVC ()<UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+/* 黑卡 */
+@property(nonatomic,strong) NSArray *cards;
 @end
 
 @implementation DSVipCardVC
@@ -23,6 +25,9 @@ static NSString *const VipCardCell = @"VipCardCell";
     [super viewDidLoad];
     [self.navigationItem setTitle:@"黑卡权益"];
     [self setUpCollectionView];
+    [self setUpEmptyView];
+    [self startShimmer];
+    [self getCardListDataRequest];
 }
 -(void)viewDidLayoutSubviews
 {
@@ -40,13 +45,47 @@ static NSString *const VipCardCell = @"VipCardCell";
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSVipCardCell class]) bundle:nil] forCellWithReuseIdentifier:VipCardCell];
 }
+-(void)setUpEmptyView
+{
+    LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
+    emptyView.contentViewOffset = -(self.HXNavBarHeight);
+    emptyView.subViewMargin = 20.f;
+    emptyView.detailLabTextColor = UIColorFromRGB(0x131D2D);
+    emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
+    emptyView.autoShowEmptyView = NO;
+    self.collectionView.ly_emptyView = emptyView;
+}
 #pragma mark -- 数据请求
-
+-(void)getCardListDataRequest
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"card_type_list_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            strongSelf.cards = [NSArray yy_modelArrayWithClass:[DSVipCard class] json:responseObject[@"result"][@"list"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.collectionView reloadData];
+                if (strongSelf.cards.count) {
+                    [strongSelf.collectionView ly_hideEmptyView];
+                }else{
+                    [strongSelf.collectionView ly_showEmptyView];
+                }
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- 点击事件
 
 #pragma mark -- UICollectionView 数据源和代理
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 8;
+    return self.cards.count;
 }
 - (ZLLayoutType)collectionView:(UICollectionView *)collectionView layout:(ZLCollectionViewBaseFlowLayout *)collectionViewLayout typeOfLayout:(NSInteger)section {
     return ClosedLayout;
@@ -57,11 +96,14 @@ static NSString *const VipCardCell = @"VipCardCell";
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DSVipCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:VipCardCell forIndexPath:indexPath];
-    
+    DSVipCard *card = self.cards[indexPath.item];
+    cell.card = card;
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     DSVipCardDetailVC *dvc = [DSVipCardDetailVC new];
+    DSVipCard *card = self.cards[indexPath.item];
+    dvc.card_type_id  = card.card_type_id;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

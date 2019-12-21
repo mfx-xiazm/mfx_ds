@@ -16,7 +16,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfa-nM-4NL">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="69"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emp-3c-RkA">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="emp-3c-RkA">
                             <rect key="frame" x="174" y="19.5" width="70" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="MGW-gZ-t2h"/>
@@ -27,8 +27,11 @@
                             <state key="normal" title="删除">
                                 <color key="titleColor" red="0.91764705879999997" green="0.2901960784" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="detailTypeClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="0pf-Uc-bsj"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moZ-0c-nGv">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moZ-0c-nGv">
                             <rect key="frame" x="254" y="19.5" width="70" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="fHr-v4-bRl"/>
@@ -39,8 +42,12 @@
                             <state key="normal" title="26" image="未点赞">
                                 <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <state key="selected" image="已点赞"/>
+                            <connections>
+                                <action selector="detailTypeClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="3aX-xU-yLQ"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-6e-NsT">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-6e-NsT">
                             <rect key="frame" x="334" y="19.5" width="70" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="b6N-B1-KaW"/>
@@ -51,6 +58,9 @@
                             <state key="normal" title="分享" image="分享">
                                 <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="detailTypeClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="b8b-Kh-mkt"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -72,11 +82,17 @@
                 <constraint firstAttribute="trailing" secondItem="Jfa-nM-4NL" secondAttribute="trailing" id="yU6-5O-qyN"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="delete" destination="emp-3c-RkA" id="dEN-uS-ZIv"/>
+                <outlet property="share" destination="Dgl-6e-NsT" id="9jC-qp-5BW"/>
+                <outlet property="thumb" destination="moZ-0c-nGv" id="7pc-Ch-swa"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="391.40625"/>
         </view>
     </objects>
     <resources>
         <image name="分享" width="11" height="10.5"/>
+        <image name="已点赞" width="14" height="12"/>
         <image name="未点赞" width="14" height="12"/>
     </resources>
 </document>

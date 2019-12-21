@@ -7,12 +7,31 @@
 //
 
 #import "DSVipCell.h"
+#import "DSVipGoods.h"
 
+@interface DSVipCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *cover_img;
+@property (weak, nonatomic) IBOutlet UILabel *goodsName;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+
+@end
 @implementation DSVipCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+-(void)setGoods:(DSVipGoods *)goods
+{
+    _goods = goods;
+    [self.cover_img sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
+    self.goodsName.text = _goods.goods_name;
+    self.price.text = [NSString stringWithFormat:@"￥%@",_goods.price];
+}
+- (IBAction)buyClicked:(UIButton *)sender {
+    if (self.buyClickCall) {
+        self.buyClickCall();
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

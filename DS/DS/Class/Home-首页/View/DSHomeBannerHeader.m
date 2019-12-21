@@ -11,6 +11,7 @@
 #import "DSBannerCell.h"
 #import <TYCyclePagerView.h>
 #import <TYPageControl.h>
+#import "DSHomeData.h"
 
 @interface DSHomeBannerHeader ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
@@ -45,16 +46,22 @@
 {
     [super layoutSubviews];
     self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 30, CGRectGetWidth(self.cyclePagerView.frame), 15);
+}
+-(void)setAdv:(NSArray<DSHomeBanner *> *)adv
+{
+    _adv = adv;
+    self.pageControl.numberOfPages = _adv.count;
     [self.cyclePagerView reloadData];
 }
 #pragma mark -- TYCyclePagerView代理
 - (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView {
-    return 4;
+    return self.adv.count;
 }
 
 - (UICollectionViewCell *)pagerView:(TYCyclePagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
     DSBannerCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"TopBannerCell" forIndex:index];
-   
+    DSHomeBanner *banner = self.adv[index];
+    cell.banner = banner;
     return cell;
 }
 
@@ -73,6 +80,8 @@
 
 - (void)pagerView:(TYCyclePagerView *)pageView didSelectedItemCell:(__kindof UICollectionViewCell *)cell atIndex:(NSInteger)index
 {
-    
+    if (self.bannerClickCall) {
+        self.bannerClickCall(index);
+    }
 }
 @end

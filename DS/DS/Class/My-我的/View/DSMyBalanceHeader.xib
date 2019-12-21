@@ -241,6 +241,13 @@
                 <constraint firstAttribute="trailing" secondItem="xWc-hp-Alf" secondAttribute="trailing" id="xXf-wZ-c39"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="balance" destination="TZ5-p0-1Zn" id="kcW-vx-cYP"/>
+                <outlet property="gift_reward" destination="NCy-IX-BcV" id="uLr-Tu-JbM"/>
+                <outlet property="goods_reward" destination="XCH-kX-d4v" id="TQN-27-vxg"/>
+                <outlet property="share_reward" destination="My4-zw-t42" id="L4d-Qw-YDj"/>
+                <outlet property="upgrade_reward" destination="2TN-xb-gYY" id="94d-Ug-rNm"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="359.93303571428572"/>
         </view>
     </objects>

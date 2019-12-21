@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyCard;
 @interface DSMyCardCell : UITableViewCell
-
+/* 卡包 */
+@property(nonatomic,strong) DSMyCard *card;
 @end
 
 NS_ASSUME_NONNULL_END

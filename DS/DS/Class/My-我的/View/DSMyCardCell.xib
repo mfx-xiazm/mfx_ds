@@ -17,17 +17,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="328" height="145"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzJ-C5-M4Q">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzJ-C5-M4Q">
                         <rect key="frame" x="10" y="5" width="308" height="135"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NRm-dq-Gv3">
-                                <rect key="frame" x="0.0" y="0.0" width="308" height="135"/>
-                                <color key="backgroundColor" red="1" green="0.73725490199999999" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <rect key="frame" x="203" y="20" width="95" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NRm-dq-Gv3" secondAttribute="height" multiplier="1:1" id="BM4-HC-6k7"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="京东E卡这里是名称名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLf-7e-gnb">
                                 <rect key="frame" x="15" y="15" width="162" height="18"/>
@@ -54,19 +51,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="1" green="0.80392156862745101" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NRm-dq-Gv3" firstAttribute="top" secondItem="tzJ-C5-M4Q" secondAttribute="top" id="0pP-wj-CNf"/>
+                            <constraint firstItem="NRm-dq-Gv3" firstAttribute="top" secondItem="tzJ-C5-M4Q" secondAttribute="top" constant="20" id="0pP-wj-CNf"/>
                             <constraint firstItem="sLf-7e-gnb" firstAttribute="leading" secondItem="tzJ-C5-M4Q" secondAttribute="leading" constant="15" id="4QM-on-4V3"/>
                             <constraint firstItem="aWt-Gl-T3z" firstAttribute="leading" secondItem="tzJ-C5-M4Q" secondAttribute="leading" constant="15" id="AVa-ve-eFp"/>
                             <constraint firstItem="Ne3-xW-6iI" firstAttribute="leading" secondItem="tzJ-C5-M4Q" secondAttribute="leading" constant="15" id="BNR-ee-BPd"/>
                             <constraint firstItem="sLf-7e-gnb" firstAttribute="top" secondItem="tzJ-C5-M4Q" secondAttribute="top" constant="15" id="EOE-pG-jWb"/>
                             <constraint firstAttribute="bottom" secondItem="nc6-BV-6wx" secondAttribute="bottom" constant="15" id="MXU-w8-WZ8"/>
-                            <constraint firstAttribute="bottom" secondItem="NRm-dq-Gv3" secondAttribute="bottom" id="MtQ-D0-HEt"/>
-                            <constraint firstItem="NRm-dq-Gv3" firstAttribute="leading" secondItem="tzJ-C5-M4Q" secondAttribute="leading" id="Q7U-lJ-Tze"/>
+                            <constraint firstAttribute="bottom" secondItem="NRm-dq-Gv3" secondAttribute="bottom" constant="20" id="MtQ-D0-HEt"/>
                             <constraint firstItem="nc6-BV-6wx" firstAttribute="leading" secondItem="tzJ-C5-M4Q" secondAttribute="leading" constant="15" id="eiL-dq-3hI"/>
                             <constraint firstItem="aWt-Gl-T3z" firstAttribute="top" secondItem="Ne3-xW-6iI" secondAttribute="bottom" constant="8" id="kwP-de-l31"/>
-                            <constraint firstAttribute="trailing" secondItem="NRm-dq-Gv3" secondAttribute="trailing" id="oIc-ex-oXM"/>
+                            <constraint firstAttribute="trailing" secondItem="NRm-dq-Gv3" secondAttribute="trailing" constant="10" id="oIc-ex-oXM"/>
                             <constraint firstItem="nc6-BV-6wx" firstAttribute="top" secondItem="aWt-Gl-T3z" secondAttribute="bottom" constant="15" id="rVw-cJ-tRd"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -96,6 +92,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="card_code" destination="Ne3-xW-6iI" id="mcZ-Qt-FJT"/>
+                <outlet property="deadline" destination="aWt-Gl-T3z" id="ZtK-O0-Dit"/>
+                <outlet property="logo_img" destination="NRm-dq-Gv3" id="ZOy-Gg-emG"/>
+                <outlet property="order_no" destination="nc6-BV-6wx" id="oaO-pO-q6M"/>
+                <outlet property="product_name" destination="sLf-7e-gnb" id="E5U-gl-dAG"/>
+            </connections>
             <point key="canvasLocation" x="-13.043478260869566" y="114.17410714285714"/>
         </tableViewCell>
     </objects>

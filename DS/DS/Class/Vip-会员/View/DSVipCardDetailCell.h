@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSVipCardPrice;
 @interface DSVipCardDetailCell : UICollectionViewCell
-
+/* 卡面值 */
+@property(nonatomic,strong) DSVipCardPrice *price;
 @end
 
 NS_ASSUME_NONNULL_END

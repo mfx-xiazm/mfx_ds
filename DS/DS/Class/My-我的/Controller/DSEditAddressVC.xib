@@ -11,6 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSEditAddressVC">
             <connections>
                 <outlet property="addressDetailView" destination="IbR-ZA-jzX" id="LAj-oc-XSh"/>
+                <outlet property="area_name" destination="DsF-Zj-yfS" id="KJB-De-sN3"/>
+                <outlet property="is_defalt" destination="VNI-TJ-QlK" id="Hb0-fR-VKj"/>
+                <outlet property="receiver" destination="Pdx-yI-atR" id="aAt-31-PvJ"/>
+                <outlet property="receiver_phone" destination="onU-3D-8gQ" id="iZK-Xc-tjl"/>
+                <outlet property="sureBtn" destination="Y4G-C3-tjd" id="1e7-7i-nth"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -216,6 +221,9 @@
                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="selected" image="地址选中"/>
+                                    <connections>
+                                        <action selector="setDefaultClicked:" destination="-1" eventType="touchUpInside" id="rus-kS-nlg"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

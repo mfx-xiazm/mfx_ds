@@ -10,6 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSUpCashVC">
             <connections>
+                <outlet property="ableLabel" destination="WCf-Po-qz9" id="3Qg-NM-lSe"/>
+                <outlet property="apply_amount" destination="VbK-i1-Zvz" id="VZd-Pr-bSz"/>
+                <outlet property="bank_name" destination="7Mc-CQ-PdA" id="YAB-Nd-iRS"/>
+                <outlet property="card_no" destination="J1M-XU-v4c" id="OCj-bz-Pqn"/>
+                <outlet property="card_owner" destination="Kat-GR-hzh" id="AbJ-f2-NB2"/>
+                <outlet property="sureBtn" destination="qYY-s9-eZf" id="1G5-uM-lG6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -192,8 +198,8 @@
                                         <constraint firstAttribute="height" constant="50" id="vg2-l7-m2J"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可提现金额：268" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCf-Po-qz9">
-                                    <rect key="frame" x="15" y="210" width="104" height="16"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可提现金额：268" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCf-Po-qz9">
+                                    <rect key="frame" x="15" y="210" width="384" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -206,6 +212,7 @@
                                 <constraint firstItem="ssh-M1-eHP" firstAttribute="top" secondItem="SnI-d6-g6U" secondAttribute="top" id="KmG-uX-M9B"/>
                                 <constraint firstItem="dzA-ZS-oOy" firstAttribute="leading" secondItem="SnI-d6-g6U" secondAttribute="leading" id="KuF-NW-24d"/>
                                 <constraint firstItem="RNN-L0-s6g" firstAttribute="leading" secondItem="SnI-d6-g6U" secondAttribute="leading" id="NyM-kW-oTd"/>
+                                <constraint firstAttribute="trailing" secondItem="WCf-Po-qz9" secondAttribute="trailing" constant="15" id="Rco-BA-chW"/>
                                 <constraint firstItem="VQ2-nY-7Xs" firstAttribute="leading" secondItem="SnI-d6-g6U" secondAttribute="leading" id="SFC-8a-fOh"/>
                                 <constraint firstItem="dzA-ZS-oOy" firstAttribute="top" secondItem="VQ2-nY-7Xs" secondAttribute="bottom" id="VLg-WO-c4N"/>
                                 <constraint firstAttribute="trailing" secondItem="dzA-ZS-oOy" secondAttribute="trailing" id="Wyy-SD-1nI"/>

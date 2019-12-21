@@ -291,7 +291,7 @@
 }
 - (NSString *)getTimeFromTimestamp:(NSString *)formatterStr{
     
-    //将对象类型的时间转换为NSDate类型
+    //将时间戳类型的时间转换为NSDate类型
     
     NSInteger time = [self integerValue];
     
@@ -309,5 +309,12 @@
     
     return timeStr;
     
+}
+
+- (NSDate *)dateWithFormatter:(NSString *)formatterStr
+{
+    NSDateFormatter *formatter =[[NSDateFormatter alloc]init];
+    [formatter setDateFormat:formatterStr];
+    return [formatter dateFromString:self];
 }
 @end

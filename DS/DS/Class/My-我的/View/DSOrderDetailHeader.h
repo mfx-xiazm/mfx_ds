@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyOrderDetail;
+typedef void(^lookLogisCall)(void);
 @interface DSOrderDetailHeader : UIView
-
+/* 订单详情 */
+@property(nonatomic,strong) DSMyOrderDetail *orderDetail;
+/* 查看物流 */
+@property(nonatomic,copy) lookLogisCall lookLogisCall;
 @end
 
 NS_ASSUME_NONNULL_END

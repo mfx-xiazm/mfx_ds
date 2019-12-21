@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSPublishDynamicHeader : UIView
+@property (weak, nonatomic) IBOutlet UITextField *dynamicTitle;
 
 @end
 

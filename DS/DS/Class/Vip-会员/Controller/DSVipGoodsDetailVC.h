@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSVipGoodsDetailVC : HXBaseViewController
-
+/* 商品id */
+@property(nonatomic,copy) NSString *goods_id;
 @end
 
 NS_ASSUME_NONNULL_END

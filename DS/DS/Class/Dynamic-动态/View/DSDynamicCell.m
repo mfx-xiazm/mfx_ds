@@ -25,6 +25,8 @@
 @property (nonatomic , strong) UIButton *thumb;
 /** 分享 */
 @property (nonatomic , strong) UIButton *share;
+/** 删除 */
+@property (nonatomic , strong) UIButton *delete;
 /** 分割线 */
 @property (nonatomic , strong) UIView *dividingLine;
 @end
@@ -65,6 +67,7 @@
     [self.contentView addSubview:self.picContainerView];
     [self.contentView addSubview:self.thumb];
     [self.contentView addSubview:self.share];
+    [self.contentView addSubview:self.delete];
     [self.contentView addSubview:self.dividingLine];
 }
 -(UIImageView *)avatarView
@@ -125,9 +128,11 @@
         _thumb = [UIButton buttonWithType:UIButtonTypeCustom];
         [_thumb setTitleColor:UIColorFromRGB(0x1A1A1A) forState:UIControlStateNormal];
         [_thumb setImage:HXGetImage(@"未点赞") forState:UIControlStateNormal];
+        [_thumb setImage:HXGetImage(@"已点赞") forState:UIControlStateSelected];
         [_thumb setTitle:@"23" forState:UIControlStateNormal];
         _thumb.titleLabel.font = [UIFont systemFontOfSize:13];
-        _thumb.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 5);
+        _thumb.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 4);
+        _thumb.titleEdgeInsets = UIEdgeInsetsMake(0, 4, 0, 0);
         [_thumb addTarget:self action:@selector(thumbClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _thumb;
@@ -144,6 +149,17 @@
         [_share addTarget:self action:@selector(shareClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _share;
+}
+-(UIButton *)delete
+{
+    if (!_delete) {
+        _delete = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_delete setTitleColor:UIColorFromRGB(0xFF0000) forState:UIControlStateNormal];
+        [_delete setTitle:@"删除" forState:UIControlStateNormal];
+        _delete.titleLabel.font = [UIFont systemFontOfSize:13];
+        [_delete addTarget:self action:@selector(deleteClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _delete;
 }
 -(UIView *)dividingLine
 {
@@ -224,7 +240,15 @@
     _thumb.hxn_x = HX_SCREEN_WIDTH - 70*2 - 10*2;
     _thumb.hxn_width = 70;
     _thumb.hxn_height = kMomentHandleButtonHeight;
+    [_thumb setTitle:dynamic.praise_num forState:UIControlStateNormal];
+    _thumb.selected = dynamic.is_praise;
     
+    //删除
+    _delete.hxn_y = lastView.hxn_bottom + kMomentMarginPadding;
+    _delete.hxn_x = HX_SCREEN_WIDTH - 70*3 - 10*3;
+    _delete.hxn_width = 70;
+    _delete.hxn_height = kMomentHandleButtonHeight;
+    _delete.hidden = [[MSUserManager sharedInstance].curUserInfo.uid isEqualToString:dynamic.uid]?NO:YES;
     //分割线
     _dividingLine.hxn_x = 0;
     _dividingLine.hxn_height = .5;
@@ -242,6 +266,12 @@
 {
     if ([self.delegate respondsToSelector:@selector(didClickShareInCell:)]) {
         [self.delegate didClickShareInCell:self];
+    }
+}
+-(void)deleteClicked:(UIButton *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(didClickDeleteInCell:)]) {
+        [self.delegate didClickDeleteInCell:self];
     }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -7,14 +7,27 @@
 //
 
 #import "DSMyTeamCell.h"
+#import "DSMyTeam.h"
 
+@interface DSMyTeamCell ()
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *phone;
+
+@end
 @implementation DSMyTeamCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)setTeam:(DSMyTeam *)team
+{
+    _team = team;
+    self.name.text = _team.nick_name;
+    self.time.text = _team.create_time;
+    self.phone.text = _team.phone;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

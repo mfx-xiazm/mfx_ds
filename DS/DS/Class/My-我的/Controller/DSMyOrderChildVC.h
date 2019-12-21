@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSMyOrderChildVC : HXBaseViewController
-
+/* 订单类型 0-5*/
+@property(nonatomic,assign) NSInteger orderType;
 @end
 
 NS_ASSUME_NONNULL_END

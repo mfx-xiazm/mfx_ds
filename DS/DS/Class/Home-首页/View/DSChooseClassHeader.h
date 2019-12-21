@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSChooseClassHeader : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UILabel *spec_name;
 
 @end
 

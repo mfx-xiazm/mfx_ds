@@ -9,9 +9,13 @@
 #import "ZLCollectionReusableView.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class DSHomeBanner;
+typedef void(^bannerClickCall)(NSInteger index);
 @interface DSHomeBannerHeader : ZLCollectionReusableView
-
+/* benner */
+@property(nonatomic,strong) NSArray<DSHomeBanner *> *adv;
+/* 点击 */
+@property(nonatomic,copy) bannerClickCall bannerClickCall;
 @end
 
 NS_ASSUME_NONNULL_END

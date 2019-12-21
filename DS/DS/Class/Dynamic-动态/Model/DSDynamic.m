@@ -9,5 +9,26 @@
 #import "DSDynamic.h"
 
 @implementation DSDynamic
++ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{@"portrait":@"avatar",
+             @"nick":@"nick_name",
+             @"dsp":@"treads_title",
+             @"creatTime":@"create_time"
+    };
+}
+-(void)setList_content:(NSArray *)list_content
+{
+    _list_content = list_content;
+    if (_list_content.count) {
+        NSMutableArray *temp = [NSMutableArray array];
+        for (NSDictionary *dict in _list_content) {
+            [temp addObject:dict[@"content"]];
+        }
+        _photos = [NSArray arrayWithArray:temp];
+    }else{
+        _photos = @[];
+    }
+}
 
 @end

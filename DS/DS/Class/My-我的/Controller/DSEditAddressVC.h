@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyAddress;
+typedef void(^editSuccessCall)(void);
 @interface DSEditAddressVC : HXBaseViewController
-
+/* 地址 */
+@property(nonatomic,strong) DSMyAddress *address;
+/* 点击 */
+@property(nonatomic,copy) editSuccessCall editSuccessCall;
 @end
 
 NS_ASSUME_NONNULL_END

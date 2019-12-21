@@ -42,6 +42,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                     <state key="normal" image="付款选中"/>
+                                    <connections>
+                                        <action selector="payTypeClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="ViE-kp-2yy"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3m9-eH-5MB" userLabel="分割线">
                                     <rect key="frame" x="10" y="44" width="394" height="1"/>
@@ -81,6 +84,9 @@
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMG-4p-nk5">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                    <connections>
+                                        <action selector="payTypeClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="mCy-Cp-L16"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ah6-dC-dx7" userLabel="分割线">
                                     <rect key="frame" x="10" y="44" width="394" height="1"/>
@@ -134,6 +140,9 @@
                             <real key="value" value="6"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmPayClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="pbI-4Q-sm2"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -150,6 +159,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="44z-Lp-1Ph"/>
+            <connections>
+                <outlet property="aliPay" destination="xMG-4p-nk5" id="A0i-5i-irw"/>
+                <outlet property="payPrice" destination="q4l-bS-GFb" id="NDF-8u-RDd"/>
+                <outlet property="wxPay" destination="ts5-j1-hYq" id="zVp-Ie-FV8"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="336.83035714285711"/>
         </view>
     </objects>

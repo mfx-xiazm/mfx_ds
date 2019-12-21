@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSCashNoteDetailVC : HXBaseViewController
+@property (nonatomic, copy) NSString *finance_apply_id;
 
 @end
 

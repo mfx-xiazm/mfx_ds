@@ -714,7 +714,6 @@ typedef void(^doneBlock)(NSString *,NSString *);
 }
 
 
-
 #pragma mark - Action
 -(void)show {
     
@@ -744,12 +743,24 @@ typedef void(^doneBlock)(NSString *,NSString *);
         
         self.endDateTime.textColor = UIColorFromRGB(0x1A1A1A);
         self.endDateLine.backgroundColor = UIColorFromRGB(0x1A1A1A);
+        
+        if ([self.endDateTime hasText]) {
+            self.maxLimitDate = [NSDate date:self.endDateTime.text WithFormat:_dateFormatter];
+        }else{
+            self.maxLimitDate = [NSDate date];
+        }
+        
     }else{
         self.startDateTime.textColor = UIColorFromRGB(0x1A1A1A);
         self.startDateLine.backgroundColor = UIColorFromRGB(0x1A1A1A);
         
         self.endDateTime.textColor = HXControlBg;
         self.endDateLine.backgroundColor = HXControlBg;
+        
+        if ([self.startDateTime hasText]) {
+            self.minLimitDate = [NSDate date:self.startDateTime.text WithFormat:_dateFormatter];
+        }
+        self.maxLimitDate = [NSDate date];
     }
 }
 
@@ -761,6 +772,11 @@ typedef void(^doneBlock)(NSString *,NSString *);
     
     self.doneBlock([self.startDateTime hasText]?self.startDateTime.text:@"", [self.endDateTime hasText]?self.endDateTime.text:@"");
     [self dismiss];
+}
+- (IBAction)resetAction:(UIButton *)sender {
+    self.startDateTime.text = @"";
+    self.endDateTime.text = @"";
+    [self dateTypeClicked:self.selectBtn];
 }
 
 #pragma mark - tools

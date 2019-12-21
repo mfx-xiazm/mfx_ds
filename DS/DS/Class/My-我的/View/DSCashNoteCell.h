@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSCashNote;
 @interface DSCashNoteCell : UITableViewCell
-
+/* 记录 */
+@property(nonatomic,strong) DSCashNote *note;
 @end
 
 NS_ASSUME_NONNULL_END

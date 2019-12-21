@@ -16,16 +16,30 @@
 #import "DSTakeCouponView.h"
 #import "zhAlertView.h"
 #import "DSGoodsPosterView.h"
-#import "GXSaveImageToPHAsset.h"
+#import "DSGoodsDetail.h"
+#import "DSUpOrderVC.h"
+#import "DSCartVC.h"
 
 @interface DSGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
 @property (nonatomic,strong) TYPageControl *pageControl;
-@property (nonatomic, strong) WKWebView  *webView;
 @property (weak, nonatomic) IBOutlet UIView *webContentView;
+@property (nonatomic, strong) WKWebView  *webView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webContentViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *goodsName;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel *marketPrice;
+@property (weak, nonatomic) IBOutlet UILabel *saleNum;
+@property (weak, nonatomic) IBOutlet UILabel *backPrice;
+@property (weak, nonatomic) IBOutlet UILabel *provider;
+@property (weak, nonatomic) IBOutlet UILabel *stockNum;
+@property (weak, nonatomic) IBOutlet UILabel *freight;
+@property (weak, nonatomic) IBOutlet UILabel *coupon;
+@property (weak, nonatomic) IBOutlet SPButton *collentBtn;
 /** 商品规格视图 */
 @property(nonatomic,strong) DSChooseClassView *chooseClassView;
+/** 商品详情 */
+@property(nonatomic,strong) DSGoodsDetail *goodsDetail;
 @end
 
 @implementation DSGoodsDetailVC
@@ -45,8 +59,8 @@
     }
     
     [self.webContentView addSubview:self.webView];
-    
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.jianshu.com/p/65b083e77e20"]]];
+    [self startShimmer];
+    [self getGoodsDetailRequest];
 }
 -(void)viewDidLayoutSubviews
 {
@@ -101,8 +115,12 @@
 #pragma mark -- 点击事件
 - (void)shareClicked
 {
+    if (!self.goodsDetail) {
+        return;
+    }
     DSGoodsPosterView *pv = [DSGoodsPosterView loadXibView];
     pv.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, HX_SCREEN_HEIGHT);
+    pv.goodsDetail = self.goodsDetail;
     hx_weakify(self);
     pv.posterTypeCall = ^(NSInteger index, UIImage * _Nullable snapShotImage) {
         hx_strongify(weakSelf);
@@ -120,15 +138,27 @@
     [self.zh_popupController presentContentView:pv duration:0.25 springAnimated:NO];
 }
 - (IBAction)takeCouponClicked:(UIButton *)sender {
+    if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
+        return;
+    }
     DSTakeCouponView *couponView = [DSTakeCouponView loadXibView];
     couponView.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 280.f);
-    
+    couponView.discount = self.goodsDetail.discount;
+    couponView.valid_days = self.goodsDetail.valid_days;
+    hx_weakify(self);
+    couponView.couponClickedCall = ^(NSInteger index) {
+        hx_strongify(weakSelf);
+        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
+        if (index) {
+            [strongSelf setGoodsDiscountRequest];
+        }
+    };
     self.zh_popupController = [[zhPopupController alloc] init];
     self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
     [self.zh_popupController presentContentView:couponView duration:0.25 springAnimated:NO];
 }
 - (IBAction)shareToMoneyClicked:(UIButton *)sender {
-    zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"分享赚说明" message:@"分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明分享赚说明。" constantWidth:HX_SCREEN_WIDTH - 50*2];
+    zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"分享赚说明" message:self.goodsDetail.share_make_money constantWidth:HX_SCREEN_WIDTH - 50*2];
     hx_weakify(self);
     zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"我知道了" handler:^(zhAlertButton * _Nonnull button) {
         hx_strongify(weakSelf);
@@ -140,40 +170,175 @@
     self.zh_popupController = [[zhPopupController alloc] init];
     [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
 }
+- (IBAction)collectGoodsClicked:(SPButton *)sender {
+    [self setGoodsCollectRequest];
+}
+- (IBAction)cartClicked:(SPButton *)sender {
+    DSCartVC *cvc = [DSCartVC new];
+    [self.navigationController pushViewController:cvc animated:YES];
+}
 
 - (IBAction)chooseGoodsClassClicked:(UIButton *)sender {
-//    self.chooseClassView.goodsDetail = self.goodsDetail;
-//    hx_weakify(self);
-//    self.chooseClassView.goodsHandleCall = ^(NSInteger type) {
-//        hx_strongify(weakSelf);
-//        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-//        if (type) {
-//            if (type == 1) {
-//                [strongSelf addOrderCartRequest];
-//            }else{
-//                GYUpOrderVC *ovc = [GYUpOrderVC new];
-//                ovc.goods_id = strongSelf.goods_id;//商品id
-//                ovc.goods_num = [NSString stringWithFormat:@"%ld",(long)strongSelf.goodsDetail.buyNum];//商品数量
-//                if (strongSelf.goodsDetail.spec && strongSelf.goodsDetail.spec.count) {
-//                    NSMutableString *spec_values = [NSMutableString string];
-//                    for (GYGoodSpec *spec in strongSelf.goodsDetail.spec) {
-//                        if (spec_values.length) {
-//                            [spec_values appendFormat:@" %@",spec.selectSpec.spec_value];
-//                        }else{
-//                            [spec_values appendFormat:@"%@",spec.selectSpec.spec_value];
-//                        }
-//                    }
-//                    ovc.spec_values = spec_values;//商品规格
-//                }else{
-//                    ovc.spec_values = @"";//商品规格
-//                }
-//                [strongSelf.navigationController pushViewController:ovc animated:YES];
-//            }
-//        }
-//    };
+    self.chooseClassView.goodsDetail = self.goodsDetail;
+    hx_weakify(self);
+    self.chooseClassView.goodsHandleCall = ^(NSInteger index) {
+        hx_strongify(weakSelf);
+        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
+        if (index) {
+            if (sender.tag == 1) {
+                [strongSelf addOrderCartRequest];
+            }else{
+                DSUpOrderVC *ovc = [DSUpOrderVC new];
+                ovc.isCartPush = NO;
+                NSString *goods_data = [NSString stringWithFormat:@"[{\"goods_id\":\"%@\",\"sku_id\":\"%@\",\"num\":\"%@\",\"share_uid\":\"0\"}]",strongSelf.goods_id,strongSelf.goodsDetail.selectSku.sku_id,@(strongSelf.goodsDetail.buyNum)];
+                ovc.goods_data = goods_data;
+                [strongSelf.navigationController pushViewController:ovc animated:YES];
+            }
+        }
+    };
     self.zh_popupController = [[zhPopupController alloc] init];
     self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
     [self.zh_popupController presentContentView:self.chooseClassView duration:0.25 springAnimated:NO];
+}
+#pragma mark -- 接口请求
+-(void)getGoodsDetailRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_id"] = self.goods_id;//商品id
+    parameters[@"is_member_goods"] = @(0);//是否会员商品，0常规商品，1会员礼包商品
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"goods_detail_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            strongSelf.goodsDetail = [DSGoodsDetail yy_modelWithDictionary:responseObject[@"result"][@"goods_detail"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf handleGoodsDetailData];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)handleGoodsDetailData
+{
+    self.pageControl.numberOfPages = self.goodsDetail.goods_adv.count;
+    [self.cyclePagerView reloadData];
+    
+    self.goodsName.text = self.goodsDetail.goods_name;
+    self.price.text = [NSString stringWithFormat:@"折扣价￥%@",self.goodsDetail.discount_price];
+    self.marketPrice.text = [NSString stringWithFormat:@"原价￥%@",self.goodsDetail.price];
+    self.saleNum.text = [NSString stringWithFormat:@"销量：￥%@",self.goodsDetail.sale_num];
+    self.backPrice.text = [NSString stringWithFormat:@"返佣金额：%@",self.goodsDetail.cmm_price];
+    self.provider.text = [NSString stringWithFormat:@"  供应商：%@  ",self.goodsDetail.provider];
+    self.stockNum.text = self.goodsDetail.stock;
+    if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
+        self.coupon.text = [NSString stringWithFormat:@"已领取%@折券",self.goodsDetail.discount];
+    }else{
+        self.coupon.text = [NSString stringWithFormat:@"可领取%@折券",self.goodsDetail.discount];
+    }
+    
+    if (HX_SCREEN_WIDTH > 375.f) {
+        [self.webView loadHTMLString:self.goodsDetail.goods_desc baseURL:nil];
+    }else{
+        NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
+        [self.webView loadHTMLString:h5 baseURL:nil];
+    }
+    
+    self.collentBtn.selected = [self.goodsDetail.is_collect isEqualToString:@"1"]?YES:NO;
+}
+/// 领取优惠券
+-(void)setGoodsDiscountRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_id"] = self.goods_id;//商品id
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"goods_discount_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"领取成功"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.goodsDetail.is_discount = @"1";
+                strongSelf.coupon.text = [NSString stringWithFormat:@"已领取%@折券",strongSelf.goodsDetail.discount];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+/// 收藏商品
+-(void)setGoodsCollectRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_id"] = self.goods_id;//商品id
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"collect_goods_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([strongSelf.goodsDetail.is_collect isEqualToString:@"0"]) {
+                    strongSelf.goodsDetail.is_collect = @"1";
+                }else{
+                    strongSelf.goodsDetail.is_collect = @"0";
+                }
+                strongSelf.collentBtn.selected = [strongSelf.goodsDetail.is_collect isEqualToString:@"1"]?YES:NO;
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+
+/// 加入购物车
+-(void)addOrderCartRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_id"] = self.goods_id;//商品id
+    
+    NSMutableString *attr_id = [NSMutableString string];
+    for (DSGoodsSpecs *specs in self.goodsDetail.list_specs) {
+        if (attr_id.length) {
+            [attr_id appendFormat:@",%@",specs.selectAttrs.attr_id];
+        }else{
+            [attr_id appendFormat:@"%@",specs.selectAttrs.attr_id];
+        }
+    }
+    NSString *sku_id = nil;
+    for (DSGoodsSku *sku in self.goodsDetail.goods_sku) {
+        if ([sku.specs_attr_ids isEqualToString:attr_id]) {
+            sku_id = sku.sku_id;
+        }
+    }
+    parameters[@"sku_id"] = sku_id;
+    parameters[@"num"] = @(self.goodsDetail.buyNum);
+    
+    [HXNetworkTool POST:HXRC_M_URL action:@"add_cart_set" parameters:parameters success:^(id responseObject) {
+        if ([responseObject[@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
 }
 #pragma mark -- 事件监听
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
@@ -197,12 +362,13 @@
 }
 #pragma mark -- TYCyclePagerView代理
 - (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView {
-    return 4;
+    return self.goodsDetail.goods_adv.count;
 }
 
 - (UICollectionViewCell *)pagerView:(TYCyclePagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
     DSBannerCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"TopBannerCell" forIndex:index];
-   
+    DSGoodsAdv *adv = self.goodsDetail.goods_adv[index];
+    cell.adv = adv;
     return cell;
 }
 

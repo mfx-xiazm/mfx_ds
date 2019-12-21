@@ -370,6 +370,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="head_pic" destination="KqG-mM-Swl" id="2CF-pd-HEh"/>
+                <outlet property="name" destination="RdB-Jw-2Zy" id="l69-er-Xmq"/>
+                <outlet property="phone" destination="nNh-MB-nIk" id="Bef-mS-WWc"/>
+                <outlet property="sex" destination="5Ar-GN-piV" id="Gns-87-aKg"/>
+                <outlet property="shareCode" destination="aqI-GW-6FR" id="HdT-RM-e84"/>
+                <outlet property="vip" destination="wAg-fQ-ImT" id="0wq-pp-dOa"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="327.45535714285711"/>
         </view>

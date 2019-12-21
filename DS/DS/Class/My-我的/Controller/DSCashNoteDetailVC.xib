@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSCashNoteDetailVC">
             <connections>
+                <outlet property="apply_amount" destination="C7V-nG-PPe" id="BuT-9T-fRH"/>
+                <outlet property="apply_status" destination="YrT-9J-XDf" id="AdQ-T4-DVl"/>
+                <outlet property="deail_info" destination="Mpu-cZ-LxN" id="nLW-HY-8m7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,8 +36,9 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bb6-rW-lNj">
                     <rect key="frame" x="10" y="159" width="52" height="96"/>
                     <attributedString key="attributedText">
-                        <fragment content="订单编号">
+                        <fragment content="申请编号">
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -44,12 +48,14 @@
 Cg
 </string>
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" metaFont="system"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                         <fragment content="申请日期">
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -59,12 +65,14 @@ Cg
 Cg
 </string>
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" metaFont="system"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                         <fragment content="银行名称">
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -74,12 +82,14 @@ Cg
 Cg
 </string>
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" metaFont="system"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                         <fragment content="银行卡号">
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
@@ -89,12 +99,14 @@ Cg
 Cg
 </string>
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" metaFont="system"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                         <fragment content="持卡人">
                             <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                             </attributes>

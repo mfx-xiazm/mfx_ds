@@ -8,9 +8,13 @@
 
 #import "DSUpOrderFooter.h"
 #import "HXPlaceholderTextView.h"
+#import "DSConfirmOrder.h"
 
 @interface DSUpOrderFooter ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *remark_view;
+@property (weak, nonatomic) IBOutlet UILabel *cmm_amount;
+@property (weak, nonatomic) IBOutlet UILabel *price_amount;
+@property (weak, nonatomic) IBOutlet UILabel *freight_amount;
 @property (strong, nonatomic) HXPlaceholderTextView *remark;
 @end
 @implementation DSUpOrderFooter
@@ -25,6 +29,23 @@
     self.remark.delegate = self;
     self.remark.backgroundColor = UIColorFromRGB(0xf2f2f2);
     [self.remark_view addSubview:self.remark];
+}
+-(void)setConfirmOrder:(DSConfirmOrder *)confirmOrder
+{
+    _confirmOrder = confirmOrder;
+    self.price_amount.text = [NSString stringWithFormat:@"￥%@",_confirmOrder.price_amount];
+    self.cmm_amount.text = [NSString stringWithFormat:@"￥%@",_confirmOrder.cmm_amount];
+    if (_confirmOrder.remark && _confirmOrder.remark.length) {
+        self.remark.text = _confirmOrder.remark;
+    }
+}
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView hasText]) {
+        _confirmOrder.remark = textView.text;
+    }else{
+        _confirmOrder.remark = @"";
+    }
 }
 -(void)layoutSubviews
 {

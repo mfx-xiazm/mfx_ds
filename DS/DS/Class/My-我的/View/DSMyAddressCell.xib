@@ -53,6 +53,9 @@
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="selected" image="地址选中"/>
+                                        <connections>
+                                            <action selector="editClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cAf-gg-Ci3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkm-MW-2ND">
                                         <rect key="frame" x="209" y="0.0" width="60" height="35"/>
@@ -65,6 +68,9 @@
                                         <state key="normal" title="删除" image="删除">
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="editClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bcs-mQ-a6F"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7r-1G-jjG">
                                         <rect key="frame" x="269" y="0.0" width="60" height="35"/>
@@ -77,6 +83,9 @@
                                         <state key="normal" title="编辑" image="编辑">
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="editClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9cD-Ln-nga"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0r-Vk-fop" userLabel="分割线">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="1"/>
@@ -145,12 +154,18 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="addressLabel" destination="GPc-EX-N7F" id="j9L-KE-a1N"/>
+                <outlet property="is_defalt" destination="tZT-aq-JhF" id="aCt-wN-ITr"/>
+                <outlet property="receiver" destination="8h7-8m-gt4" id="nlr-3P-LVt"/>
+                <outlet property="receiver_phone" destination="1qm-ad-e6w" id="AbG-ar-a44"/>
+            </connections>
             <point key="canvasLocation" x="158.69565217391306" y="134.26339285714286"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="删除" width="15" height="15"/>
-        <image name="地址未选" width="16" height="16"/>
+        <image name="删除" width="14.5" height="15.5"/>
+        <image name="地址未选" width="15.5" height="15.5"/>
         <image name="地址选中" width="15" height="15"/>
         <image name="编辑" width="12" height="15"/>
     </resources>

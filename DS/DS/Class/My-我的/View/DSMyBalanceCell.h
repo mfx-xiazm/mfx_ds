@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSBalanceNote;
 @interface DSMyBalanceCell : UITableViewCell
-
+/* 记录 */
+@property(nonatomic,strong) DSBalanceNote *note;
 @end
 
 NS_ASSUME_NONNULL_END

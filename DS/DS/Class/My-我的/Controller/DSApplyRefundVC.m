@@ -16,6 +16,8 @@
 static NSString *const ApplyRefundCell = @"ApplyRefundCell";
 @interface DSApplyRefundVC ()<UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITextField *refund_reason;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 /** 已选择的数组 */
 @property (nonatomic,strong) NSMutableArray *selectedAssets;
 /** 已选择的数组 */
@@ -32,6 +34,22 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
     [super viewDidLoad];
     [self.navigationItem setTitle:@"申请退款"];
     [self setUpCollectionView];
+    hx_weakify(self);
+    [self.submitBtn BindingBtnJudgeBlock:^BOOL{
+        hx_strongify(weakSelf);
+        if (![strongSelf.refund_reason hasText]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入退款原因"];
+            return NO;
+        }
+        if (!strongSelf.showData.count) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请上传订单有关图片"];
+            return NO;
+        }
+        return YES;
+    } ActionBlock:^(UIButton * _Nullable button) {
+        hx_strongify(weakSelf);
+        [strongSelf submitBtnClicked:button];
+    }];
 }
 -(NSMutableArray *)showData
 {
@@ -158,7 +176,7 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
 }
 -(void)submitBtnClicked:(UIButton *)btn
 {
-    if (self.showData.count >1) {
+    if (self.showData.count > 0) {
         hx_weakify(self);
         [self runUpLoadImages:self.showData completedCall:^(NSMutableArray *result) {
             hx_strongify(weakSelf);
@@ -171,49 +189,32 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
 #pragma mark -- 接口
 -(void)submitSuggestRequest:(UIButton *)btn imageUrls:(NSArray *)imageUrls
 {
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    parameters[@"suggestion_type"] = self.selectType.suggestion_type;//反馈类型
-//    parameters[@"suggestion_content"] = self.remarkText.text;//反馈内容
-//    if (imageUrls) {
-//        parameters[@"suggestion_imgs"] = [imageUrls componentsJoinedByString:@","];//建议图片多个用逗号隔开
-//    }else{
-//        parameters[@"suggestion_imgs"] = @"";//建议图片多个用逗号隔开
-//    }
-//
-//    hx_weakify(self);
-//    [HXNetworkTool POST:HXRC_M_URL action:@"admin/submitSuggest" parameters:parameters success:^(id responseObject) {
-//        hx_strongify(weakSelf);
-//        [btn stopLoading:@"提交" image:nil textColor:nil backgroundColor:nil];
-//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//            [strongSelf.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//        }
-//    } failure:^(NSError *error) {
-//        [btn stopLoading:@"提交" image:nil textColor:nil backgroundColor:nil];
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-//    }];
-}
--(void)getSuggestTypeRequest
-{
-//    hx_weakify(self);
-//    [HXNetworkTool POST:HXRC_M_URL action:@"admin/getSuggestType" parameters:@{} success:^(id responseObject) {
-//        hx_strongify(weakSelf);
-//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            strongSelf.suggestionTypes = [NSArray yy_modelArrayWithClass:[GXSuggestionType class] json:responseObject[@"data"]];
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [strongSelf.typeCollectionView reloadData];
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    strongSelf.typeViewHeight.constant = 35.f + strongSelf.typeCollectionView.contentSize.height;
-//                });
-//            });
-//        }else{
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//        }
-//    } failure:^(NSError *error) {
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-//    }];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"refund_reason"] = self.refund_reason.text;//用户退款原因，长度100
+    parameters[@"oid"] = self.oid;//订单oid
+    if (imageUrls) {
+        parameters[@"refund_imgs"] = [imageUrls componentsJoinedByString:@","];//退款原因图片
+    }else{
+        parameters[@"refund_imgs"] = @"";//退款原因图片
+    }
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"order_refund_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [btn stopLoading:@"提交" image:nil textColor:nil backgroundColor:nil];
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+            if (strongSelf.applyRefundActionCall) {
+                strongSelf.applyRefundActionCall();
+            }
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [btn stopLoading:@"提交" image:nil textColor:nil backgroundColor:nil];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
 }
 /**
  *  图片批量上传方法
@@ -239,7 +240,8 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
                 @synchronized (result) { // NSMutableArray 是线程不安全的，所以加个同步锁
                     if ([responseObject[@"status"] boolValue]){
                         // 将上传完成返回的图片链接存入数组
-                        result[i] = responseObject[@"data"][@"path"];
+                        NSDictionary *dict = ((NSArray *)responseObject[@"result"]).firstObject;
+                        result[i] = [NSString stringWithFormat:@"%@",dict[@"relative_url"]];
                     }else{
                         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
                     }
@@ -272,10 +274,10 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
     
     AFHTTPSessionManager *HTTPmanager = [AFHTTPSessionManager manager];
     //    HTTPmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/plain", @"text/javascript", @"text/xml", @"image/*", nil];
-    NSMutableURLRequest *request = [HTTPmanager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@admin/uploadFile",HXRC_M_URL]  parameters:@{} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    NSMutableURLRequest *request = [HTTPmanager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@multifileupload",HXRC_M_URL]  parameters:@{} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         //把本地的图片转换为NSData类型的数据
         NSData* imageData = UIImageJPEGRepresentation(image, 0.8);
-        [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        [formData appendPartWithFileData:imageData name:@"filename" fileName:@"file.png" mimeType:@"image/png"];
     } error:&error];
     
     // 可在此处配置验证信息

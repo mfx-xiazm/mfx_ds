@@ -11,6 +11,8 @@
 #import <TYCyclePagerView.h>
 #import <TYPageControl.h>
 #import <WebKit/WebKit.h>
+#import "DSGoodsDetail.h"
+#import "DSVipUpOrderVC.h"
 
 @interface DSVipGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
@@ -18,7 +20,13 @@
 @property (nonatomic, strong) WKWebView  *webView;
 @property (weak, nonatomic) IBOutlet UIView *webContentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webContentViewHeight;
-
+@property (weak, nonatomic) IBOutlet UILabel *goodsName;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel *saleNum;
+@property (weak, nonatomic) IBOutlet UILabel *stockNum;
+@property (weak, nonatomic) IBOutlet UILabel *freight;
+/** 商品详情 */
+@property(nonatomic,strong) DSGoodsDetail *goodsDetail;
 @end
 
 @implementation DSVipGoodsDetailVC
@@ -40,7 +48,8 @@
     
     [self.webContentView addSubview:self.webView];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.jianshu.com/p/65b083e77e20"]]];
+    [self startShimmer];
+    [self getGoodsDetailRequest];
 }
 -(void)viewDidLayoutSubviews
 {
@@ -78,6 +87,54 @@
     self.pageControl = pageControl;
     [self.cyclePagerView addSubview:pageControl];
 }
+#pragma mark -- 接口请求
+-(void)getGoodsDetailRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_id"] = self.goods_id;//商品id
+    parameters[@"is_member_goods"] = @(1);//是否会员商品，0常规商品，1会员礼包商品
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"goods_detail_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            strongSelf.goodsDetail = [DSGoodsDetail yy_modelWithDictionary:responseObject[@"result"][@"goods_detail"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf handleGoodsDetailData];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)handleGoodsDetailData
+{
+    self.pageControl.numberOfPages = self.goodsDetail.goods_adv.count;
+    [self.cyclePagerView reloadData];
+    
+    self.goodsName.text = self.goodsDetail.goods_name;
+    self.price.text = [NSString stringWithFormat:@"￥%@",self.goodsDetail.price];
+    self.saleNum.text = [NSString stringWithFormat:@"销量：￥%@",self.goodsDetail.sale_num];
+    self.stockNum.text = self.goodsDetail.stock;
+    
+    if (HX_SCREEN_WIDTH > 375.f) {
+        [self.webView loadHTMLString:self.goodsDetail.goods_desc baseURL:nil];
+    }else{
+        NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
+        [self.webView loadHTMLString:h5 baseURL:nil];
+    }
+}
+#pragma mark -- 点击事件
+- (IBAction)buyClicked:(UIButton *)sender {
+    DSVipUpOrderVC *ovc = [DSVipUpOrderVC new];
+    ovc.goods_id = self.goods_id;
+    [self.navigationController pushViewController:ovc animated:YES];
+}
 #pragma mark -- 事件监听
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
@@ -100,12 +157,13 @@
 }
 #pragma mark -- TYCyclePagerView代理
 - (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView {
-    return 4;
+    return self.goodsDetail.goods_adv.count;
 }
 
 - (UICollectionViewCell *)pagerView:(TYCyclePagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
     DSBannerCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"TopBannerCell" forIndex:index];
-   
+    DSGoodsAdv *adv = self.goodsDetail.goods_adv[index];
+    cell.adv = adv;
     return cell;
 }
 

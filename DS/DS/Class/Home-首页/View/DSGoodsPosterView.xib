@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJy-0q-BvX">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJy-0q-BvX">
                     <rect key="frame" x="35" y="64" width="305" height="468"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6o-cP-IUp">
@@ -269,8 +269,14 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="advart" destination="HU1-Vk-wYJ" id="RZ7-Av-M7e"/>
+                <outlet property="codeImg" destination="RYE-gG-K9P" id="lNl-e3-v5K"/>
                 <outlet property="contentBgView" destination="dJy-0q-BvX" id="ozR-oG-t4j"/>
+                <outlet property="discount_price" destination="lXQ-bf-5eN" id="hNn-iY-Lfh"/>
+                <outlet property="goodsName" destination="dX8-aJ-DWf" id="w3s-Vl-yTq"/>
                 <outlet property="goods_img" destination="2Mb-2n-Gfd" id="obB-vZ-LrO"/>
+                <outlet property="name" destination="Ky3-Iw-zjT" id="ItV-5O-pKH"/>
+                <outlet property="price" destination="Atc-rt-9Ck" id="2QV-h1-TD9"/>
             </connections>
             <point key="canvasLocation" x="-31.884057971014496" y="319.75446428571428"/>
         </view>

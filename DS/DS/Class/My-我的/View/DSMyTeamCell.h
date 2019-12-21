@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyTeam;
 @interface DSMyTeamCell : UITableViewCell
-
+/* 团队 */
+@property(nonatomic,strong) DSMyTeam *team;
 @end
 
 NS_ASSUME_NONNULL_END

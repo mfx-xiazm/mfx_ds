@@ -10,10 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSDynamicContent;
 @interface DSDynamicDetailCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *content_img;
 @property (weak, nonatomic) IBOutlet UILabel *content_text;
-
+/* 动态 */
+@property(nonatomic,strong) DSDynamicContent *content;
 @end
 
 NS_ASSUME_NONNULL_END

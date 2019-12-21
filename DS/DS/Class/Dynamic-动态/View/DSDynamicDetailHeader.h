@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSDynamicInfo;
 @interface DSDynamicDetailHeader : UIView
-
+/* info */
+@property(nonatomic,strong) DSDynamicInfo *info;
 @end
 
 NS_ASSUME_NONNULL_END

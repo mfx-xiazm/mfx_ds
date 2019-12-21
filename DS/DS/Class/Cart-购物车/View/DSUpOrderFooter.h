@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSConfirmOrder;
 @interface DSUpOrderFooter : UIView
-
+/* 初始化订单信息 */
+@property(nonatomic,strong) DSConfirmOrder *confirmOrder;
 @end
 
 NS_ASSUME_NONNULL_END

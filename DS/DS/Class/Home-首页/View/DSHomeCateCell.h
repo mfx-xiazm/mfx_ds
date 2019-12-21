@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSHomeCate;
 @interface DSHomeCateCell : UICollectionViewCell
-
+/* 分类 */
+@property(nonatomic,strong) DSHomeCate *cate;
 @end
 
 NS_ASSUME_NONNULL_END

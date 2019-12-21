@@ -9,10 +9,8 @@
 #import "HXNetworkTool.h"
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
-//#import "DSLoginVC.h"
-//#import "HXNavigationController.h"
-
-#define NSStringFormat(format,...) [NSString stringWithFormat:format,##__VA_ARGS__]
+#import "DSLoginVC.h"
+#import "HXNavigationController.h"
 
 @implementation HXNetworkTool
 
@@ -189,31 +187,31 @@ static NSArray *_filtrationCacheKey;
         if (_isOpenLog) {HXLog(@"responseObject = %@",responseObject);}
         [[self allSessionTask] removeObject:task];
         
-//        if ([responseObject[@"status"] integerValue] == 2) {// 登录状态失效
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"登录状态已过期，请重新登录"];
-//            });
-//
-//            [[MSUserManager sharedInstance] logout:nil];//退出
-//
-//            DSLoginVC *lvc = [DSLoginVC new];
-//            HXNavigationController *nav = [[HXNavigationController alloc] initWithRootViewController:lvc];
-//            if (@available(iOS 13.0, *)) {
-//                nav.modalPresentationStyle = UIModalPresentationFullScreen;
-//                /*当该属性为 false 时，用户下拉可以 dismiss 控制器，为 true 时，下拉不可以 dismiss控制器*/
-//                nav.modalInPresentation = YES;
-//            }
-//            [UIApplication sharedApplication].keyWindow.rootViewController = nav;
-//            //推出主界面出来
-//            CATransition *ca = [CATransition animation];
-//            ca.type = @"movein";
-//            ca.duration = 0.25;
-//            [[UIApplication sharedApplication].keyWindow.layer addAnimation:ca forKey:nil];
-//        }else{
+        if ([responseObject[@"status"] integerValue] == 2) {// 登录状态失效
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"登录状态已过期，请重新登录"];
+            });
+
+            [[MSUserManager sharedInstance] logout:nil];//退出
+
+            DSLoginVC *lvc = [DSLoginVC new];
+            HXNavigationController *nav = [[HXNavigationController alloc] initWithRootViewController:lvc];
+            if (@available(iOS 13.0, *)) {
+                nav.modalPresentationStyle = UIModalPresentationFullScreen;
+                /*当该属性为 false 时，用户下拉可以 dismiss 控制器，为 true 时，下拉不可以 dismiss控制器*/
+                nav.modalInPresentation = YES;
+            }
+            [UIApplication sharedApplication].keyWindow.rootViewController = nav;
+            //推出主界面出来
+            CATransition *ca = [CATransition animation];
+            ca.type = @"movein";
+            ca.duration = 0.25;
+            [[UIApplication sharedApplication].keyWindow.layer addAnimation:ca forKey:nil];
+        }else{
             success ? success(responseObject) : nil;
             //对数据进行异步缓存
             responseCache!=nil ? [HXNetworkCache setHttpCache:responseObject URL:URL parameters:parameters filtrationCacheKey:_filtrationCacheKey] : nil;
-//        }
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

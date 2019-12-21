@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSChangeInfoVC">
             <connections>
+                <outlet property="headPic" destination="6fv-Hz-DE2" id="HGP-bv-G1k"/>
+                <outlet property="nick" destination="85X-XU-PlF" id="d52-h6-SNM"/>
+                <outlet property="sex" destination="dAi-5m-Dd5" id="tve-MP-Br9"/>
+                <outlet property="sureBtn" destination="VPH-gg-FgP" id="1KH-nU-Hyi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -49,6 +53,9 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOr-n5-jYq">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                            <connections>
+                                <action selector="changeHeadPic:" destination="-1" eventType="touchUpInside" id="QeK-Nc-8RK"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -134,6 +141,9 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUD-gv-Uv0">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <connections>
+                                <action selector="changeSex:" destination="-1" eventType="touchUpInside" id="s6y-ly-Ng9"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

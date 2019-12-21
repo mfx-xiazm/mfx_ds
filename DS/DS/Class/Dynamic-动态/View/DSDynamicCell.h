@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)didClickThumbInCell:(DSDynamicCell *)Cell;
 /** 分享 */
 - (void)didClickShareInCell:(DSDynamicCell *)Cell;
+/** 删除 */
+- (void)didClickDeleteInCell:(DSDynamicCell *)Cell;
 @end
 
 @interface DSDynamicCell : UITableViewCell

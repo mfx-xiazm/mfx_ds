@@ -16,7 +16,7 @@
 }
 - (IBAction)footerClicked:(UIButton *)sender {
     if (self.footerHandleCall) {
-        self.footerHandleCall(sender.tag);
+        self.footerHandleCall(sender.tag,sender);
     }
 }
 

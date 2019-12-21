@@ -19,6 +19,9 @@
 #import "DSGoodsPosterView.h"
 #import <zhPopupController.h>
 #import "GXSaveImageToPHAsset.h"
+#import "DSHomeData.h"
+#import "DSWebContentVC.h"
+#import "DSSearchGoodsVC.h"
 
 static NSString *const HomeCateCell = @"HomeCateCell";
 static NSString *const ShopGoodsCell = @"ShopGoodsCell";
@@ -31,6 +34,8 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 @property(nonatomic,strong) HXSearchBar *searchBar;
 /* 消息 */
 @property(nonatomic,strong) SPButton *msgBtn;
+/* 首页数据 */
+@property(nonatomic,strong) DSHomeData *homeData;
 @end
 
 @implementation DSHomeVC
@@ -39,6 +44,8 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [super viewDidLoad];
     [self setUpNavBar];
     [self setUpCollectionView];
+    [self startShimmer];
+    [self getHomeDataRequest];
 }
 -(void)setUpNavBar
 {
@@ -89,16 +96,32 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     DSMessageVC *mvc = [DSMessageVC new];
     [self.navigationController pushViewController:mvc animated:YES];
 }
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if ([textField hasText]) {
-//        GYSearchGoodsVC *gvc = [GYSearchGoodsVC new];
-//        gvc.keyword = textField.text;
-//        [self.navigationController pushViewController:gvc animated:YES];
-        return YES;
-    }else{
-        return NO;
-    }
+    DSSearchGoodsVC *svc = [DSSearchGoodsVC new];
+    [self.navigationController pushViewController:svc animated:YES];
+    return NO;
+}
+#pragma mark -- 接口请求
+-(void)getHomeDataRequest
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"home_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            strongSelf.homeData = [DSHomeData yy_modelWithDictionary:responseObject[@"result"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.collectionView reloadData];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
 }
 #pragma mark -- UICollectionView 数据源和代理
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -107,9 +130,9 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 0) {//分类
-        return 8;
+        return self.homeData.cate.count;
     }else{//推荐商品分组
-        return 8;
+        return self.homeData.recommend_goods.count;
     }
 }
 - (ZLLayoutType)collectionView:(UICollectionView *)collectionView layout:(ZLCollectionViewBaseFlowLayout *)collectionViewLayout typeOfLayout:(NSInteger)section {
@@ -126,9 +149,13 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {//分类
         DSHomeCateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:HomeCateCell forIndexPath:indexPath];
+        DSHomeCate *cate = self.homeData.cate[indexPath.item];
+        cell.cate = cate;
         return cell;
     }else{//推荐商品分组
-        DSShopGoodsCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:ShopGoodsCell forIndexPath:indexPath];
+        DSShopGoodsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ShopGoodsCell forIndexPath:indexPath];
+        DSHomeRecommend *recommend = self.homeData.recommend_goods[indexPath.item];
+        cell.recommend = recommend;
         return cell;
     }
 }
@@ -146,6 +173,33 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
         if (indexPath.section == 0) {
             DSHomeBannerHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomeBannerHeader forIndexPath:indexPath];
             header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH,HX_SCREEN_WIDTH*3/5);
+            header.adv = self.homeData.adv;
+            hx_weakify(self);
+            header.bannerClickCall = ^(NSInteger index) {
+                hx_strongify(weakSelf);
+                DSHomeBanner *banner = strongSelf.homeData.adv[index];
+                /**1仅图片；2链接；3html内容；4商品详情，类型未html时不返回adv_content，通过详情接口获取*/
+                if ([banner.adv_type isEqualToString:@"1"]) {
+                    
+                }else if ([banner.adv_type isEqualToString:@"2"]) {
+                    DSWebContentVC *wvc = [DSWebContentVC new];
+                    wvc.navTitle = banner.adv_name;
+                    wvc.isNeedRequest = NO;
+                    wvc.url = banner.adv_content;
+                    [strongSelf.navigationController pushViewController:wvc animated:YES];
+                }else if ([banner.adv_type isEqualToString:@"3"]) {
+                    DSWebContentVC *wvc = [DSWebContentVC new];
+                    wvc.navTitle = banner.adv_name;
+                    wvc.isNeedRequest = YES;
+                    wvc.requestType = 1;
+                    wvc.adv_id = banner.adv_id;
+                    [strongSelf.navigationController pushViewController:wvc animated:YES];
+                }else{
+                    DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
+                    dvc.goods_id = banner.adv_content;
+                    [strongSelf.navigationController pushViewController:dvc animated:YES];
+                }
+            };
             return header;
         }else{
             UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomeSectionHeader forIndexPath:indexPath];
@@ -159,9 +213,14 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {//分类
         DSHomeCateVC *cvc = [DSHomeCateVC new];
+        DSHomeCate *cate = self.homeData.cate[indexPath.item];
+        cvc.cate_id = cate.cate_id;
+        cvc.cate_mode = cate.cate_mode;
         [self.navigationController pushViewController:cvc animated:YES];
     }else{//推荐商品分组
         DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
+        DSHomeRecommend *recommend = self.homeData.recommend_goods[indexPath.item];
+        dvc.goods_id = recommend.goods_id;
         [self.navigationController pushViewController:dvc animated:YES];
     }
 }

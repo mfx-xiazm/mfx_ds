@@ -71,6 +71,11 @@
                 <constraint firstAttribute="trailing" secondItem="M07-A3-NBZ" secondAttribute="trailing" id="mey-xT-H14"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headPic" destination="kbu-Vr-aXa" id="81H-oH-9KS"/>
+                <outlet property="nick" destination="I8A-U0-C1x" id="xX3-sh-trC"/>
+                <outlet property="time" destination="1Cl-XK-SUj" id="GKY-gt-bAx"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="393.08035714285711"/>
         </view>
     </objects>

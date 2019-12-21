@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSOrderDetailVC">
             <connections>
+                <outlet property="firstHandleBtn" destination="981-BO-R9Q" id="NGC-i0-JOn"/>
+                <outlet property="handleView" destination="CQg-Yt-Oxz" id="O1k-zS-07P"/>
+                <outlet property="handleViewHeight" destination="wRG-2n-rBd" id="IBQ-l6-kmd"/>
+                <outlet property="secondHandleBtn" destination="x64-CU-uPm" id="Gh1-8M-2Fc"/>
                 <outlet property="tableView" destination="QbL-5O-A5n" id="3oe-PD-lyP"/>
+                <outlet property="thirdHandleBtn" destination="qff-5T-Vs5" id="uLh-R6-m2Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

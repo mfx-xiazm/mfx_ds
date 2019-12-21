@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyOrder;
 @interface DSMyOrderHeader : UIView
-
+/* 订单 */
+@property(nonatomic,strong) DSMyOrder *order;
 @end
 
 NS_ASSUME_NONNULL_END

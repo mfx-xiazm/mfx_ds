@@ -10,8 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSMyAddress;
+typedef void(^addressClickedCall)(NSInteger index);
 @interface DSMyAddressCell : UITableViewCell
-
+/* 地址 */
+@property(nonatomic,strong) DSMyAddress *address;
+/* 点击 */
+@property(nonatomic,copy) addressClickedCall addressClickedCall;
 @end
 
 NS_ASSUME_NONNULL_END

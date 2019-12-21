@@ -27,8 +27,11 @@
                                 </constraints>
                                 <state key="normal" image="未勾选"/>
                                 <state key="selected" image="勾选"/>
+                                <connections>
+                                    <action selector="checkClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o99-6b-Kbd"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uX-Yh-xlY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2uX-Yh-xlY">
                                 <rect key="frame" x="35" y="10" width="100" height="100"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -81,7 +84,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF5-jI-FdO">
-                                <rect key="frame" x="334" y="85" width="80" height="30"/>
+                                <rect key="frame" x="324" y="85" width="90" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4L-q0-W1K">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -89,18 +92,24 @@
                                             <constraint firstAttribute="width" constant="30" id="gzr-yG-gMt"/>
                                         </constraints>
                                         <state key="normal" image="减"/>
+                                        <connections>
+                                            <action selector="numChangeClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CMR-ZS-RGr"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRw-oH-ebw">
-                                        <rect key="frame" x="30" y="0.0" width="20" height="30"/>
+                                        <rect key="frame" x="30" y="0.0" width="30" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vi4-sD-H4c">
-                                        <rect key="frame" x="50" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="60" y="0.0" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="Pzm-Un-a3o"/>
                                         </constraints>
                                         <state key="normal" image="加"/>
+                                        <connections>
+                                            <action selector="numChangeClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pzx-0L-kYm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,7 +124,7 @@
                                     <constraint firstAttribute="height" constant="30" id="S1e-Ri-GzR"/>
                                     <constraint firstAttribute="trailing" secondItem="Vi4-sD-H4c" secondAttribute="trailing" id="TcJ-XX-2X6"/>
                                     <constraint firstItem="Vi4-sD-H4c" firstAttribute="leading" secondItem="ZRw-oH-ebw" secondAttribute="trailing" id="YA9-El-UuV"/>
-                                    <constraint firstAttribute="width" constant="80" id="cFY-Oj-0aG"/>
+                                    <constraint firstAttribute="width" constant="90" id="cFY-Oj-0aG"/>
                                     <constraint firstAttribute="bottom" secondItem="Z4L-q0-W1K" secondAttribute="bottom" id="evG-3l-XKZ"/>
                                 </constraints>
                             </view>
@@ -168,6 +177,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="back_price" destination="zHy-7h-KzV" id="MT5-P2-Ysa"/>
+                <outlet property="cart_num" destination="ZRw-oH-ebw" id="8VE-e0-oJ9"/>
+                <outlet property="checkBtn" destination="0fB-Dv-jLq" id="GwO-Zq-SeJ"/>
+                <outlet property="cover_img" destination="2uX-Yh-xlY" id="mQh-Di-fHb"/>
+                <outlet property="goods_name" destination="Ifz-nM-3GE" id="uQa-Up-Cq3"/>
+                <outlet property="market_price" destination="Q4d-Mz-5E6" id="PPi-7E-RNi"/>
+                <outlet property="price" destination="5TC-0J-jWv" id="S49-G8-kLS"/>
+                <outlet property="spec_value" destination="8dk-IL-NKh" id="dmJ-EJ-58o"/>
+            </connections>
             <point key="canvasLocation" x="213.04347826086959" y="145.3125"/>
         </tableViewCell>
     </objects>

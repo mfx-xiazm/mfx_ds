@@ -58,6 +58,9 @@
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buyClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="i5b-OD-k70"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCN-Y0-roK" userLabel="分割线">
                                 <rect key="frame" x="10" y="99" width="335" height="1"/>
@@ -95,6 +98,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="cover_img" destination="7QH-gv-HHN" id="uQR-Qn-G8J"/>
+                <outlet property="goodsName" destination="IN9-3L-jep" id="Wug-8o-5kI"/>
+                <outlet property="price" destination="tRV-Di-0m1" id="iWU-vQ-Upv"/>
+            </connections>
             <point key="canvasLocation" x="160.1449275362319" y="129.91071428571428"/>
         </tableViewCell>
     </objects>
