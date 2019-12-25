@@ -25,6 +25,8 @@
 		900146A52384E4AF00275DD9 /* GXSaveImageToPHAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146A32384E4AF00275DD9 /* GXSaveImageToPHAsset.m */; };
 		900146A82384E5A000275DD9 /* DSGoodsPosterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900146A72384E5A000275DD9 /* DSGoodsPosterView.m */; };
 		900146AA2384E5A800275DD9 /* DSGoodsPosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */; };
+		900736CF23B303EE00339BC3 /* DSShareDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900736CE23B303EE00339BC3 /* DSShareDynamicView.m */; };
+		900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900736D023B303F500339BC3 /* DSShareDynamicView.xib */; };
 		9028AA4123AC756F0015E06D /* DSVipUpOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA3F23AC756F0015E06D /* DSVipUpOrderVC.m */; };
 		9028AA4223AC756F0015E06D /* DSVipUpOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9028AA4023AC756F0015E06D /* DSVipUpOrderVC.xib */; };
 		9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA4423AC7A480015E06D /* DSVipConfirmOrder.m */; };
@@ -208,6 +210,8 @@
 		90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4323A4937C00CD19FB /* DSVipCard.m */; };
 		90C94C4723A4B31F00CD19FB /* DSVipCardDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4623A4B31F00CD19FB /* DSVipCardDetail.m */; };
 		90C94C4A23A4CDC000CD19FB /* DSDynamicDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4923A4CDC000CD19FB /* DSDynamicDetail.m */; };
+		90E447EB23B05ABA005BE8B9 /* DSPosterContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */; };
+		90E447ED23B05AC0005BE8B9 /* DSPosterContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */; };
 		90EC2578237A5D8C005C24C8 /* DSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2576237A5D8C005C24C8 /* DSLoginVC.m */; };
 		90EC2579237A5D8C005C24C8 /* DSLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC2577237A5D8C005C24C8 /* DSLoginVC.xib */; };
 		90EC257D237A5D9B005C24C8 /* DSRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC257B237A5D9B005C24C8 /* DSRegisterVC.m */; };
@@ -345,6 +349,9 @@
 		900146A62384E5A000275DD9 /* DSGoodsPosterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGoodsPosterView.h; sourceTree = "<group>"; };
 		900146A72384E5A000275DD9 /* DSGoodsPosterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGoodsPosterView.m; sourceTree = "<group>"; };
 		900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSGoodsPosterView.xib; sourceTree = "<group>"; };
+		900736CD23B303EE00339BC3 /* DSShareDynamicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSShareDynamicView.h; sourceTree = "<group>"; };
+		900736CE23B303EE00339BC3 /* DSShareDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSShareDynamicView.m; sourceTree = "<group>"; };
+		900736D023B303F500339BC3 /* DSShareDynamicView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSShareDynamicView.xib; sourceTree = "<group>"; };
 		9028AA3E23AC756F0015E06D /* DSVipUpOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipUpOrderVC.h; sourceTree = "<group>"; };
 		9028AA3F23AC756F0015E06D /* DSVipUpOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipUpOrderVC.m; sourceTree = "<group>"; };
 		9028AA4023AC756F0015E06D /* DSVipUpOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipUpOrderVC.xib; sourceTree = "<group>"; };
@@ -743,6 +750,9 @@
 		90C94C4623A4B31F00CD19FB /* DSVipCardDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardDetail.m; sourceTree = "<group>"; };
 		90C94C4823A4CDC000CD19FB /* DSDynamicDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicDetail.h; sourceTree = "<group>"; };
 		90C94C4923A4CDC000CD19FB /* DSDynamicDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicDetail.m; sourceTree = "<group>"; };
+		90E447E923B05ABA005BE8B9 /* DSPosterContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPosterContentView.h; sourceTree = "<group>"; };
+		90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPosterContentView.m; sourceTree = "<group>"; };
+		90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPosterContentView.xib; sourceTree = "<group>"; };
 		90EC2575237A5D8C005C24C8 /* DSLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLoginVC.h; sourceTree = "<group>"; };
 		90EC2576237A5D8C005C24C8 /* DSLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLoginVC.m; sourceTree = "<group>"; };
 		90EC2577237A5D8C005C24C8 /* DSLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSLoginVC.xib; sourceTree = "<group>"; };
@@ -1243,6 +1253,9 @@
 				900146A62384E5A000275DD9 /* DSGoodsPosterView.h */,
 				900146A72384E5A000275DD9 /* DSGoodsPosterView.m */,
 				900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */,
+				90E447E923B05ABA005BE8B9 /* DSPosterContentView.h */,
+				90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */,
+				90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1315,6 +1328,9 @@
 				903D07ED23837AE7001C2E40 /* DSDynamicDetailFooter.h */,
 				903D07EE23837AE7001C2E40 /* DSDynamicDetailFooter.m */,
 				903D07F023837AEE001C2E40 /* DSDynamicDetailFooter.xib */,
+				900736CD23B303EE00339BC3 /* DSShareDynamicView.h */,
+				900736CE23B303EE00339BC3 /* DSShareDynamicView.m */,
+				900736D023B303F500339BC3 /* DSShareDynamicView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1620,6 +1636,7 @@
 				906F36C423792F64000B160A /* UIButton+HXCode.m */,
 				906F36C523792F64000B160A /* XTimer.m */,
 				906F36C623792F64000B160A /* UILabel+HXNExtension.h */,
+				906F36D523792F64000B160A /* UILabel+HXNExtension.m */,
 				906F36C723792F64000B160A /* UINavigationBar+ChangeColor.h */,
 				906F36C823792F64000B160A /* NSDate+HXNExtension.h */,
 				906F36C923792F64000B160A /* HXConst.h */,
@@ -1633,7 +1650,6 @@
 				906F36D223792F64000B160A /* HXConst.m */,
 				906F36D323792F64000B160A /* NSDate+HXNExtension.m */,
 				906F36D423792F64000B160A /* UINavigationBar+ChangeColor.m */,
-				906F36D523792F64000B160A /* UILabel+HXNExtension.m */,
 				906F36D623792F64000B160A /* XTimer.h */,
 				906F36D723792F64000B160A /* ContactDataHelper.m */,
 				906F36D823792F64000B160A /* UIBarButtonItem+HXNExtension.m */,
@@ -2147,6 +2163,7 @@
 				90EC257E237A5D9B005C24C8 /* DSRegisterVC.xib in Resources */,
 				90AE52D623829109009F4740 /* DSMyDynamicVC.xib in Resources */,
 				900146912383E8AD00275DD9 /* DSTakeCouponView.xib in Resources */,
+				90E447ED23B05AC0005BE8B9 /* DSPosterContentView.xib in Resources */,
 				90FD9202237E55C500016EF7 /* DSEditAddressVC.xib in Resources */,
 				90EC25BD237A9E44005C24C8 /* DSCartCell.xib in Resources */,
 				903D081E238398F5001C2E40 /* DSUpOrderVC.xib in Resources */,
@@ -2160,6 +2177,7 @@
 				90AE52DB238292A0009F4740 /* DSPublishDynamicVC.xib in Resources */,
 				90EC259A237A9061005C24C8 /* DSBannerCell.xib in Resources */,
 				903D0819238393ED001C2E40 /* DSApplyRefundCell.xib in Resources */,
+				900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */,
 				906F36382378ED46000B160A /* Assets.xcassets in Resources */,
 				903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */,
 				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
@@ -2347,6 +2365,7 @@
 				90FD91ED237E4F4F00016EF7 /* DSMyCardCell.m in Sources */,
 				906F36AC23792F5B000B160A /* HXTabBarController.m in Sources */,
 				903A95C723A2123B00AD68CF /* UIScrollView+Empty.m in Sources */,
+				90E447EB23B05ABA005BE8B9 /* DSPosterContentView.m in Sources */,
 				903A95D723A2283500AD68CF /* DSGoodsDetail.m in Sources */,
 				90EC2586237A5DC2005C24C8 /* DSWebContentVC.m in Sources */,
 				9086947223A7656E00451D8B /* DSCashNote.m in Sources */,
@@ -2448,6 +2467,7 @@
 				906F36AB23792F5B000B160A /* HXBaseViewController.m in Sources */,
 				9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */,
 				9065881E23ADC074001E57ED /* DSMyOrder.m in Sources */,
+				900736CF23B303EE00339BC3 /* DSShareDynamicView.m in Sources */,
 				90F74E3D2382323A003576B3 /* DSMyBalanceVC.m in Sources */,
 				906F376E23792F64000B160A /* zhAlertView.m in Sources */,
 				900146952383EA3800275DD9 /* DSTakeCouponCell.m in Sources */,
@@ -2670,6 +2690,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "袋鼠精选";
 				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_1207;
@@ -2721,6 +2742,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "袋鼠精选";
 				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_1207;

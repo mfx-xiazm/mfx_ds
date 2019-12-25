@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *navTitle;
 /** 是否需要请求 */
 @property(nonatomic,assign) BOOL isNeedRequest;
-/** 1banner详情 2消息详情 3会员权益说明 4会员自购省钱说明*/
+/** 1banner详情 2消息详情 3会员权益说明 4会员自购省钱说明 5用户注册协议 6用户隐私协议 7京东商品获取链接*/
 @property(nonatomic,assign) NSInteger requestType;
 /** banner_id */
 @property(nonatomic,copy) NSString *adv_id;

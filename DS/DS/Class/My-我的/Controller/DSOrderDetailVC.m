@@ -121,7 +121,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 }
 -(void)handleOrderDetailData
 {
-    if ([self.orderDetail.refund_status isEqualToString:@"0"]) {// 正常订单
+    if (!self.isAfterSale) {// 正常订单
         if ([self.orderDetail.status isEqualToString:@"待付款"]) {
             self.handleView.hidden = NO;
             self.handleViewHeight.constant = 50.f;
@@ -218,6 +218,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             self.footer.orderDetail = self.orderDetail;// 退款地址
         }
     }
+    self.header.isAfterSale = self.isAfterSale;
     self.header.orderDetail = self.orderDetail;
     hx_weakify(self);
     self.header.lookLogisCall = ^{
@@ -388,7 +389,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 - (IBAction)orderHandleBtnClicked:(UIButton *)sender {
     /**待付款-取消订单、立即支付  待发货-申请退款(vip订单不可退款) 待收货-申请退款(vip订单不可退款)、查看物流、确认收货*/
     hx_weakify(self);
-    if ([self.orderDetail.refund_status isEqualToString:@"0"]) {// 正常订单
+    if (!self.isAfterSale) {// 正常订单
         if (sender.tag == 1) {
             //HXLog(@"申请退款");
             DSApplyRefundVC *rvc = [DSApplyRefundVC new];
@@ -404,7 +405,23 @@ static NSString *const MyOrderCell = @"MyOrderCell";
         }else if (sender.tag == 2) {
             if ([self.orderDetail.status isEqualToString:@"待付款"]) {
                 //HXLog(@"取消订单");
-                [self cancelOrderRequest];
+                zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要取消该订单吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
+                zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
+                    hx_strongify(weakSelf);
+                    [strongSelf.zh_popupController dismiss];
+                }];
+                zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"确认" handler:^(zhAlertButton * _Nonnull button) {
+                    hx_strongify(weakSelf);
+                    [strongSelf.zh_popupController dismiss];
+                    [strongSelf cancelOrderRequest];
+                }];
+                cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+                okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+                [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
+                self.zh_popupController = [[zhPopupController alloc] init];
+                [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
             }else if ([self.orderDetail.status isEqualToString:@"待收货"]) {
                 //HXLog(@"查看物流");
                 DSExpressDetailVC *evc = [DSExpressDetailVC new];

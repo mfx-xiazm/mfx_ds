@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *msg_title;
 @property(nonatomic,copy) NSString *msg_type;
 @property(nonatomic,copy) NSString *msg_id;
+@property(nonatomic,copy) NSString *ref_id;
 
 @end
 

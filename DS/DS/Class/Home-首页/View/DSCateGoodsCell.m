@@ -27,8 +27,14 @@
     _goods = goods;
     [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
     self.goodName.text = _goods.goods_name;
-    self.price.text = [NSString stringWithFormat:@"￥%@",_goods.price];
-    self.marketPrice.text = [NSString stringWithFormat:@"￥%@",_goods.discount_price];
-    self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%@",_goods.cmm_price];
+    self.price.text = [NSString stringWithFormat:@"￥%.2f",[_goods.price floatValue]];
+    [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[_goods.discount_price floatValue]]];
+    self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_goods.cmm_price floatValue]];
 }
+- (IBAction)collectClicked:(UIButton *)sender {
+    if (self.collectActionCall) {
+        self.collectActionCall();
+    }
+}
+
 @end

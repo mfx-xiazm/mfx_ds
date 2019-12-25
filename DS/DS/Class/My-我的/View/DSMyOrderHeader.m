@@ -23,6 +23,18 @@
 {
     _order = order;
     self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_order.order_no];
-    self.order_state.text = _order.status;
+    if (self.isAfterSale) {
+        if ([_order.refund_status isEqualToString:@"1"]) {
+            self.order_state.text = @"申请中";
+        }else if ([_order.refund_status isEqualToString:@"2"]) {
+            self.order_state.text = @"退款中";
+        }else if ([_order.refund_status isEqualToString:@"2"]) {
+            self.order_state.text = @"退款完成";
+        }else{
+            self.order_state.text = @"退款失败";
+        }
+    }else{
+        self.order_state.text = _order.status;
+    }
 }
 @end

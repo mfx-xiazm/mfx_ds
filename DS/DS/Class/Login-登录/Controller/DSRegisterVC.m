@@ -9,13 +9,18 @@
 #import "DSRegisterVC.h"
 #import "UITextField+GYExpand.h"
 #import "HXTabBarController.h"
+#import "DSWebContentVC.h"
 
-@interface DSRegisterVC ()
+@interface DSRegisterVC ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UITextField *pwd;
 @property (weak, nonatomic) IBOutlet UITextField *code;
 @property (weak, nonatomic) IBOutlet UITextField *inviteCode;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UITextView *agreeMentTV;
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
+
 /* 验证码id */
 @property(nonatomic,copy) NSString *codeId;
 @end
@@ -26,6 +31,9 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"注册"];
     
+    [self.loginBtn setAttributedTitle:[self setColorAttributedText:@"已有账号？立即登录" andChangeStr:@"已有账号？" andColor:[UIColor blackColor]] forState:UIControlStateNormal];
+    [self setAgreeMentProtocol];
+
     hx_weakify(self);
     [self.phone lengthLimit:^{
         hx_strongify(weakSelf);
@@ -55,12 +63,33 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入验证码"];
             return NO;
         }
+        if (!strongSelf.agreeBtn.isSelected) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"未勾选协议"];
+            return NO;
+        }
         return YES;
     } ActionBlock:^(UIButton * _Nullable button) {
         hx_strongify(weakSelf);
         [strongSelf regidterUserRequest:button];
     }];
 }
+-(void)setAgreeMentProtocol
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"我已阅读并同意《用户协议》和《隐私政策》"];
+    [attributedString addAttribute:NSLinkAttributeName value:@"yhxy://" range:[[attributedString string] rangeOfString:@"《用户协议》"]];
+    [attributedString addAttribute:NSLinkAttributeName value:@"ysxy://" range:[[attributedString string] rangeOfString:@"《隐私政策》"]];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0x000000) range:NSMakeRange(0, attributedString.length)];
+    
+    _agreeMentTV.attributedText = attributedString;
+    _agreeMentTV.linkTextAttributes = @{NSForegroundColorAttributeName: HXControlBg,NSUnderlineColorAttributeName: HXControlBg,NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+    _agreeMentTV.delegate = self;
+    _agreeMentTV.editable = NO;        //必须禁止输入，否则点击将弹出输入键盘
+    _agreeMentTV.scrollEnabled = NO;
+}
+- (IBAction)agreeBtnClicked:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+
 - (IBAction)backLoginVC:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -127,5 +156,36 @@
         [btn stopLoading:@"注册" image:nil textColor:nil backgroundColor:nil];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
+}
+// 改变某些文字大小和颜色
+-(NSMutableAttributedString *)setColorAttributedText:(NSString *)allStr andChangeStr:(NSString *)changeStr andColor:(UIColor *)color
+{
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:allStr];
+    NSRange range = [allStr rangeOfString:@"已有账号?"];
+    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];
+    NSRange range1 = [allStr rangeOfString:@"立即登录"];
+    [attStr addAttribute:NSForegroundColorAttributeName value:HXControlBg range:range1];
+
+    return attStr;
+}
+
+#pragma mark -- UITextView代理
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    if ([[URL scheme] isEqualToString:@"yhxy"]) {
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"用户协议";
+        wvc.requestType = 5;
+        wvc.isNeedRequest = YES;
+        [self.navigationController pushViewController:wvc animated:YES];
+        return NO;
+    }else if ([[URL scheme] isEqualToString:@"ysxy"]) {
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"隐私政策";
+        wvc.requestType = 6;
+        wvc.isNeedRequest = YES;
+        [self.navigationController pushViewController:wvc animated:YES];
+        return NO;
+    }
+    return YES;
 }
 @end

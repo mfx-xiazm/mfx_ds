@@ -25,7 +25,7 @@
 {
     _info = info;
     
-    [self.headPic sd_setImageWithURL:[NSURL URLWithString:_info.avatar]];
+    [self.headPic sd_setImageWithURL:[NSURL URLWithString:_info.avatar] placeholderImage:HXGetImage(@"avatar")];
     self.nick.text = _info.nick_name;
     self.time.text = _info.create_time;
 }

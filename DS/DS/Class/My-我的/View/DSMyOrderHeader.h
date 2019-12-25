@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class DSMyOrder;
 @interface DSMyOrderHeader : UIView
+/* 是否是售后 */
+@property(nonatomic,assign) BOOL isAfterSale;
 /* 订单 */
 @property(nonatomic,strong) DSMyOrder *order;
 @end

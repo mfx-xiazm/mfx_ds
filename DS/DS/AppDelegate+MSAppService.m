@@ -19,11 +19,11 @@
 
 #pragma mark ————— 初始化服务 —————
 -(void)initService{
-//    /* ————— 友盟 初始化 ————— */
-//    [[UMSocialManager defaultManager] openLog:NO];
-//    [UMConfigure initWithAppkey:HXUMengKey channel:@"App Store"];
-//    
-//    [self configUSharePlatforms];
+    /* ————— 友盟 初始化 ————— */
+    [[UMSocialManager defaultManager] openLog:NO];
+    [UMConfigure initWithAppkey:HXUMengKey channel:@"App Store"];
+    
+    [self configUSharePlatforms];
     
     //->微信支付相关//
     [WXApi registerApp:HXWXKey];

@@ -147,8 +147,9 @@
     paraStyle.alignment = NSTextAlignmentLeft;
     paraStyle.lineSpacing = lineSpace;//行间距
     
+    CGFloat jj_rate = HX_SCREEN_WIDTH/375.0;
     // NSKernAttributeName 字间距
-    NSDictionary *dic = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paraStyle};
+    NSDictionary *dic = @{NSFontAttributeName:(jj_rate ==1)?font:[UIFont fontWithDescriptor:font.fontDescriptor size:font.pointSize*jj_rate], NSParagraphStyleAttributeName:paraStyle};
     
     CGFloat textH = [self boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size.height;
     return textH;

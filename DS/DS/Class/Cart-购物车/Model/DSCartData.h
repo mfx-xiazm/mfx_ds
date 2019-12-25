@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *cover_img;
 @property(nonatomic,copy) NSString *cart_num;
 @property(nonatomic,copy) NSString *stock;
+@property(nonatomic,copy) NSString *is_discount;
+
 @end
 
 NS_ASSUME_NONNULL_END

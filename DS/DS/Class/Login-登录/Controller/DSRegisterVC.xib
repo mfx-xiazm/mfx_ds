@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSRegisterVC">
             <connections>
+                <outlet property="agreeBtn" destination="dO4-4C-E2h" id="uYL-qN-dk3"/>
+                <outlet property="agreeMentTV" destination="R2m-JK-svc" id="6Qv-rr-3ii"/>
                 <outlet property="code" destination="BkQ-jg-rvu" id="9xG-Hu-uUg"/>
                 <outlet property="inviteCode" destination="clS-dU-gjf" id="TPG-wJ-5Dn"/>
+                <outlet property="loginBtn" destination="25s-CL-Geb" id="agl-yD-DBH"/>
                 <outlet property="phone" destination="1t6-Il-zZX" id="L1k-gi-I4P"/>
                 <outlet property="pwd" destination="qBC-PB-0bA" id="rek-B2-1bX"/>
                 <outlet property="registerBtn" destination="o2b-Yb-Xgn" id="NSa-AN-YFB"/>
@@ -212,7 +215,7 @@
                                                 <constraint firstAttribute="height" constant="40" id="hO3-Ri-T8b"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r29-Zr-o8V" userLabel="分割线">
                                             <rect key="frame" x="0.0" y="49" width="354" height="1"/>
@@ -293,11 +296,38 @@
                         <constraint firstAttribute="trailing" secondItem="lF7-aE-jPE" secondAttribute="trailing" id="jxQ-T0-TwP"/>
                     </constraints>
                 </scrollView>
+                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dO4-4C-E2h">
+                    <rect key="frame" x="20" y="817" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="gAw-Nn-GJs"/>
+                        <constraint firstAttribute="width" constant="30" id="hbc-q1-COE"/>
+                    </constraints>
+                    <state key="normal" image="勾选框灰"/>
+                    <state key="selected" image="勾选框选中"/>
+                    <connections>
+                        <action selector="agreeBtnClicked:" destination="-1" eventType="touchUpInside" id="Zpp-0l-HSJ"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="我已阅读并同意《用户协议》和《隐私政策》" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="R2m-JK-svc">
+                    <rect key="frame" x="50" y="816" width="329" height="32"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="IJl-EK-kds"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="R2m-JK-svc" firstAttribute="leading" secondItem="dO4-4C-E2h" secondAttribute="trailing" id="4cL-M8-33N"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="dO4-4C-E2h" secondAttribute="bottom" constant="15" id="Amc-Fj-Moz"/>
+                <constraint firstItem="R2m-JK-svc" firstAttribute="centerY" secondItem="dO4-4C-E2h" secondAttribute="centerY" id="B6j-vd-Hsk"/>
+                <constraint firstItem="dO4-4C-E2h" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="D7s-08-muT"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="Szj-yx-tT2" secondAttribute="leading" id="HNN-yC-miy"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Szj-yx-tT2" secondAttribute="trailing" id="Qh1-hS-ROt"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="R2m-JK-svc" secondAttribute="trailing" constant="35" id="rpV-bQ-laC"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="Szj-yx-tT2" secondAttribute="top" constant="46" id="tJG-Wx-JJD"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Szj-yx-tT2" secondAttribute="bottom" constant="46" id="uab-fm-GTZ"/>
             </constraints>
@@ -306,6 +336,8 @@
         </view>
     </objects>
     <resources>
+        <image name="勾选框灰" width="12" height="13"/>
+        <image name="勾选框选中" width="12" height="13"/>
         <image name="显示" width="19" height="12"/>
         <image name="隐藏" width="19" height="18"/>
     </resources>

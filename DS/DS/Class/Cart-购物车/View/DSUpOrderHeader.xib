@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -58,6 +58,18 @@
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 默认 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xL-Ua-yaO">
+                                    <rect key="frame" x="163" y="10.5" width="32" height="15"/>
+                                    <color key="backgroundColor" red="0.92549019610000005" green="0.078431372550000003" blue="0.1764705882" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.92549019610000005" green="0.078431372550000003" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖北省 武汉市 青山区 红钢城街道 工业四路  红钢城街道 工业四路 利加..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtJ-11-KcY">
                                     <rect key="frame" x="37" y="30.5" width="347" height="29"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -75,8 +87,10 @@
                             <constraints>
                                 <constraint firstItem="JGY-qn-4mx" firstAttribute="leading" secondItem="MtJ-11-KcY" secondAttribute="trailing" constant="10" id="17F-IT-rhh"/>
                                 <constraint firstAttribute="trailing" secondItem="JGY-qn-4mx" secondAttribute="trailing" constant="10" id="7iK-2V-fuD"/>
+                                <constraint firstItem="7xL-Ua-yaO" firstAttribute="leading" secondItem="KUU-2v-M2m" secondAttribute="trailing" constant="10" id="A2l-M1-Fnl"/>
                                 <constraint firstItem="JGY-qn-4mx" firstAttribute="centerY" secondItem="oT7-7s-1ql" secondAttribute="centerY" id="HcW-6K-OtO"/>
                                 <constraint firstItem="MtJ-11-KcY" firstAttribute="leading" secondItem="GSk-NO-0d5" secondAttribute="trailing" constant="5" id="Ojw-0v-7Vx"/>
+                                <constraint firstItem="7xL-Ua-yaO" firstAttribute="centerY" secondItem="KUU-2v-M2m" secondAttribute="centerY" id="Qv6-cN-IQW"/>
                                 <constraint firstItem="h2C-OU-Lcc" firstAttribute="leading" secondItem="GSk-NO-0d5" secondAttribute="trailing" constant="5" id="Wcu-an-sJZ"/>
                                 <constraint firstItem="GSk-NO-0d5" firstAttribute="leading" secondItem="oT7-7s-1ql" secondAttribute="leading" constant="10" id="df8-QD-iD9"/>
                                 <constraint firstItem="GSk-NO-0d5" firstAttribute="centerY" secondItem="oT7-7s-1ql" secondAttribute="centerY" id="fUt-y0-jCb"/>
@@ -121,6 +135,7 @@
             <connections>
                 <outlet property="address" destination="MtJ-11-KcY" id="etk-1D-bO4"/>
                 <outlet property="addressView" destination="oT7-7s-1ql" id="5lB-nw-Kan"/>
+                <outlet property="is_default" destination="7xL-Ua-yaO" id="Qmg-Dt-9aO"/>
                 <outlet property="noAddressView" destination="df3-kb-QQb" id="D1D-FB-SPl"/>
                 <outlet property="receiver" destination="h2C-OU-Lcc" id="3MP-l7-qUY"/>
                 <outlet property="receiver_phone" destination="KUU-2v-M2m" id="Xsk-xO-FWH"/>

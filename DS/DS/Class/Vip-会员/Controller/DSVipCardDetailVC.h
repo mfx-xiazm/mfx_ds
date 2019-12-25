@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSVipCardDetailVC : HXBaseViewController
+/* 标题 */
+@property(nonatomic,copy) NSString *navTitle;
 /* 黑卡id */
 @property(nonatomic,copy) NSString *card_type_id;
 @end

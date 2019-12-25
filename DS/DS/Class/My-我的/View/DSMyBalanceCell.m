@@ -41,18 +41,22 @@
         self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_note.order_no];
         self.create_time.text = _note.create_time;
         self.order_title.text = _note.order_title;
-        self.pay_amount.text = [NSString stringWithFormat:@"￥%@",_note.pay_amount];
-        self.amount.text = [NSString stringWithFormat:@"+%@",_note.amount];
-        self.receiver.text = [NSString stringWithFormat:@"购买人：￥%@",_note.receiver];
+        self.pay_amount.text = [NSString stringWithFormat:@"￥%.2f",[_note.pay_amount floatValue]];
+        self.amount.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
+        self.receiver.text = [NSString stringWithFormat:@"购买人：%@",_note.receiver];
     }else{
         self.orderView.hidden = YES;
         self.otherView.hidden = NO;
         self.finance_log_desc.text = _note.finance_log_desc;
         self.time.text = _note.create_time;
-        if ([_note.amount containsString:@"-"]) {
-            self.amount1.text = [NSString stringWithFormat:@"%@",_note.amount];
+        if ([_note.amount floatValue] == 0) {
+            self.amount1.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
         }else{
-            self.amount1.text = [NSString stringWithFormat:@"+%@",_note.amount];
+            if ([_note.amount containsString:@"-"]) {
+                self.amount1.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
+            }else{
+                self.amount1.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
+            }
         }
     }
 }

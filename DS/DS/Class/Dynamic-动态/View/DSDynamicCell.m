@@ -189,7 +189,7 @@
     _avatarView.hxn_x = kMomentMarginPadding;
     _avatarView.hxn_y = kMomentTopPadding;
     _avatarView.hxn_size = CGSizeMake(kMomentPortraitWidthAndHeight, kMomentPortraitWidthAndHeight);
-    [_avatarView sd_setImageWithURL:[NSURL URLWithString:dynamic.portrait]];
+    [_avatarView sd_setImageWithURL:[NSURL URLWithString:dynamic.portrait] placeholderImage:HXGetImage(@"avatar")];
     
     //昵称
     _nickName.text = dynamic.nick;

@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *codeView;
 @property (weak, nonatomic) IBOutlet UITextField *code;
 @property (weak, nonatomic) IBOutlet UIButton *loginType;
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 /* 验证码id */
 @property(nonatomic,copy) NSString *codeId;
 @end
@@ -30,6 +31,7 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"登录"];
 
+    [self.registerBtn setAttributedTitle:[self setColorAttributedText:@"没有账号？立即注册" andChangeStr:@"没有账号？" andColor:[UIColor blackColor]] forState:UIControlStateNormal];
     hx_weakify(self);
     [self.phone lengthLimit:^{
         hx_strongify(weakSelf);
@@ -48,7 +50,7 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"手机号格式不对"];
             return NO;
         }
-        if (strongSelf.loginBtn.isSelected) {
+        if (strongSelf.loginType.isSelected) {
             if (!strongSelf.codeId) {
                 [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请获取验证码"];
                 return NO;
@@ -69,6 +71,18 @@
         [strongSelf loginClicked:button];
     }];
     
+}
+// 改变某些文字大小和颜色
+-(NSMutableAttributedString *)setColorAttributedText:(NSString *)allStr andChangeStr:(NSString *)changeStr andColor:(UIColor *)color
+{
+    
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:allStr];
+    NSRange range = [allStr rangeOfString:@"没有账号?"];
+    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];
+    NSRange range1 = [allStr rangeOfString:@"立即注册"];
+    [attStr addAttribute:NSForegroundColorAttributeName value:HXControlBg range:range1];
+
+    return attStr;
 }
 - (IBAction)registerClicked:(UIButton *)sender {
     DSRegisterVC *rvc = [DSRegisterVC new];

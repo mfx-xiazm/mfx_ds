@@ -39,8 +39,8 @@
     }
     self.remarkViewHeight.constant = _orderDetail.remarkTextHeight;
     
-    self.pay_amount.text = [NSString stringWithFormat:@"￥%@",_orderDetail.pay_amount];
-    self.order_self_commission.text = [NSString stringWithFormat:@"￥%@",_orderDetail.order_self_commission];
+    self.pay_amount.text = [NSString stringWithFormat:@"￥%.2f",[_orderDetail.pay_amount floatValue]];
+    self.order_self_commission.text = [NSString stringWithFormat:@"￥%.2f",[_orderDetail.order_self_commission floatValue]];
     [self.remarks setTextWithLineSpace:5.f withString:_orderDetail.remarks withFont:[UIFont systemFontOfSize:13]];
     [self.order_no setTextWithLineSpace:5.f withString:[NSString stringWithFormat:@"订单编号：%@\n下单时间：%@",_orderDetail.order_no,_orderDetail.create_time] withFont:[UIFont systemFontOfSize:13]];
 }

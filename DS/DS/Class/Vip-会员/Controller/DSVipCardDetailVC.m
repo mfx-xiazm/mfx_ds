@@ -27,6 +27,8 @@ static NSString *const VipCardDetailCell = @"VipCardDetailCell";
 @property (weak, nonatomic) IBOutlet UIImageView *show_img;
 @property (weak, nonatomic) IBOutlet UILabel *member_price;
 @property (weak, nonatomic) IBOutlet UILabel *original_price;
+@property (weak, nonatomic) IBOutlet UILabel *pro_name;
+
 /* 黑卡详情 */
 @property(nonatomic,strong) DSVipCardDetail *cardDetail;
 /* 当前选中黑卡的面值 */
@@ -41,6 +43,8 @@ static NSString *const VipCardDetailCell = @"VipCardDetailCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationItem setTitle:self.navTitle];
+
     //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
     [self setUpCollectionView];
@@ -110,16 +114,15 @@ static NSString *const VipCardDetailCell = @"VipCardDetailCell";
 }
 -(void)handleCardDetaiData
 {
-    [self.navigationItem setTitle:self.cardDetail.card_type.product_name];
-
     [self.show_img sd_setImageWithURL:[NSURL URLWithString:self.cardDetail.card_type.show_img]];
    
     DSVipCardPrice *price = self.cardDetail.list.firstObject;
     price.isSelected = YES;
     self.selectPrice = price;
     
-    self.member_price.text = [NSString stringWithFormat:@"￥%@",price.member_price];
-    self.original_price.text = [NSString stringWithFormat:@"原价￥%@",price.original_price];
+    self.member_price.text = [NSString stringWithFormat:@"￥%.2f",[price.member_price floatValue]];
+    self.original_price.text = [NSString stringWithFormat:@"原价￥%.2f",[price.original_price floatValue]];
+    self.pro_name.text = self.cardDetail.card_type.product_name;
     
     [self.collectionView reloadData];
     

@@ -11,6 +11,7 @@
 #import <ZLCollectionViewVerticalLayout.h>
 #import "DSShopGoods.h"
 #import "DSGoodsDetailVC.h"
+#import "DSWebContentVC.h"
 
 static NSString *const CateGoodsCell = @"CateGoodsCell";
 @interface DSCateGoodsChildVC ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>

@@ -65,4 +65,6 @@ typedef BOOL (^HXN_JudgeBlock)(void);
  **/
 @property(nonatomic,strong)UIColor * _Nullable startColorTwo;
 
+
+
 @end

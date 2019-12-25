@@ -193,7 +193,17 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
     parameters[@"refund_reason"] = self.refund_reason.text;//用户退款原因，长度100
     parameters[@"oid"] = self.oid;//订单oid
     if (imageUrls) {
-        parameters[@"refund_imgs"] = [imageUrls componentsJoinedByString:@","];//退款原因图片
+        NSMutableString *refund_imgs = [NSMutableString string];
+        [refund_imgs appendString:@"["];
+        for (NSString *imageUrl in imageUrls) {
+            if (refund_imgs.length > 1) {
+                [refund_imgs appendFormat:@",{\"content\":\"%@\"}",imageUrl];
+            }else{
+                [refund_imgs appendFormat:@"{\"content\":\"%@\"}",imageUrl];
+            }
+        }
+        [refund_imgs appendString:@"]"];
+        parameters[@"refund_imgs"] = refund_imgs;//退款原因图片
     }else{
         parameters[@"refund_imgs"] = @"";//退款原因图片
     }

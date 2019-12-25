@@ -44,8 +44,14 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [super viewDidLoad];
     [self setUpNavBar];
     [self setUpCollectionView];
+    [self setUpRefresh];
     [self startShimmer];
     [self getHomeDataRequest];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self getUnreadMsgRequest];
 }
 -(void)setUpNavBar
 {
@@ -69,6 +75,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [msg setTitle:@"消息" forState:UIControlStateNormal];
     [msg addTarget:self action:@selector(msgClicked) forControlEvents:UIControlEventTouchUpInside];
     [msg setTitleColor:UIColorFromRGB(0XFFFFFF) forState:UIControlStateNormal];
+    msg.badgeBgColor  = [UIColor whiteColor];
     msg.badgeCenterOffset = CGPointMake(-10, 5);
     self.msgBtn = msg;
     
@@ -90,6 +97,17 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomeSectionHeader];
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSHomeBannerHeader class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomeBannerHeader];
 }
+/** 添加刷新控件 */
+-(void)setUpRefresh
+{
+    hx_weakify(self);
+    self.collectionView.mj_header.automaticallyChangeAlpha = YES;
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf.collectionView.mj_footer resetNoMoreData];
+        [strongSelf getHomeDataRequest];
+    }];
+}
 #pragma mark -- 点击事件
 -(void)msgClicked
 {
@@ -110,6 +128,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
         if ([responseObject[@"status"] integerValue] == 1) {
+            [strongSelf.collectionView.mj_header endRefreshing];
             strongSelf.homeData = [DSHomeData yy_modelWithDictionary:responseObject[@"result"]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [strongSelf.collectionView reloadData];
@@ -120,6 +139,27 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     } failure:^(NSError *error) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [strongSelf.collectionView.mj_header endRefreshing];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)getUnreadMsgRequest
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"message_unread_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if ([responseObject[@"status"] integerValue] == 1) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (responseObject[@"result"][@"unread_msg_num"] && [responseObject[@"result"][@"unread_msg_num"] integerValue] != 0) {
+                    [strongSelf.msgBtn showBadgeWithStyle:WBadgeStyleRedDot value:1 animationType:WBadgeAnimTypeNone];
+                }else{
+                    [strongSelf.msgBtn clearBadge];
+                }
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }
@@ -162,7 +202,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return CGSizeMake(HX_SCREEN_WIDTH,HX_SCREEN_WIDTH*3/5);
+        return CGSizeMake(HX_SCREEN_WIDTH,(HX_SCREEN_WIDTH-12.f*2)*2/5.0+20.f);
     }else{
         return CGSizeMake(HX_SCREEN_WIDTH,10.f);
     }
@@ -172,7 +212,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         if (indexPath.section == 0) {
             DSHomeBannerHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomeBannerHeader forIndexPath:indexPath];
-            header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH,HX_SCREEN_WIDTH*3/5);
+            header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH,(HX_SCREEN_WIDTH-12.f*2)*2/5.0+20.f);
             header.adv = self.homeData.adv;
             hx_weakify(self);
             header.bannerClickCall = ^(NSInteger index) {
@@ -212,11 +252,19 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {//分类
-        DSHomeCateVC *cvc = [DSHomeCateVC new];
         DSHomeCate *cate = self.homeData.cate[indexPath.item];
-        cvc.cate_id = cate.cate_id;
-        cvc.cate_mode = cate.cate_mode;
-        [self.navigationController pushViewController:cvc animated:YES];
+        if ([cate.cate_mode isEqualToString:@"2"] || [cate.cate_mode isEqualToString:@"3"]) {
+            DSWebContentVC *wvc = [DSWebContentVC new];
+            wvc.navTitle = @"商品列表";
+            wvc.isNeedRequest = YES;
+            wvc.requestType = 7;
+            [self.navigationController pushViewController:wvc animated:YES];
+        }else{
+            DSHomeCateVC *cvc = [DSHomeCateVC new];
+            cvc.cate_id = cate.cate_id;
+            cvc.cate_mode = cate.cate_mode;
+            [self.navigationController pushViewController:cvc animated:YES];
+        }
     }else{//推荐商品分组
         DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
         DSHomeRecommend *recommend = self.homeData.recommend_goods[indexPath.item];

@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -139,7 +139,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>访问相机，进行二维码扫描或完善个人信息</string>
+	<string>访问相机，完成动态投稿或用于完善个人信息</string>
 	<key>NSContactsUsageDescription</key>
 	<string>App需要您的同意,才能访问通讯录联系人</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -149,9 +149,9 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>App需要您的同意,才能访问麦克风</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>访问相册，完善个人信息或文章投搞</string>
+	<string>访问相册，完成动态投稿或用于完善个人信息</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>访问相册，完善个人信息或文章投搞</string>
+	<string>访问相册，完成动态投稿或用于完善个人信息</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

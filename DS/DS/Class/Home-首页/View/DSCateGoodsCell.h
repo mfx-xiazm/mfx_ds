@@ -11,9 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class DSShopGoods;
+typedef void(^collectActionCall)(void);
 @interface DSCateGoodsCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIButton *collectBtn;
 /* 商品 */
 @property(nonatomic,strong) DSShopGoods *goods;
+/* 点击 */
+@property(nonatomic,copy) collectActionCall collectActionCall;
 @end
 
 NS_ASSUME_NONNULL_END

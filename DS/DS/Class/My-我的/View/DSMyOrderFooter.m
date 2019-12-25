@@ -26,7 +26,7 @@
 {
     /**待付款-取消订单、立即支付  待发货-申请退款(vip订单不可退款) 待收货-申请退款(vip订单不可退款)、查看物流、确认收货*/
     _order = order;
-    self.total_price.text = [NSString stringWithFormat:@"￥%@",_order.pay_amount];
+    self.total_price.text = [NSString stringWithFormat:@"￥%.2f",[_order.pay_amount floatValue]];
     if ([_order.status isEqualToString:@"待付款"]) {
         self.firstHandleBtn.hidden = YES;
         

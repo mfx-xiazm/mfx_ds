@@ -31,7 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *treads_id;
 /** 照片数组 */
 @property(nonatomic,strong)NSArray *list_content;
-
+/** 分享链接 */
+@property(nonatomic,strong)NSString *share_url;
 
 @end
 

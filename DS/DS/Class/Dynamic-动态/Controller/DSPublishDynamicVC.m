@@ -241,6 +241,9 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
             [strongSelf publishRequest:^(BOOL isSuccess) {
                 [btn stopLoading:@"发布" image:nil textColor:nil backgroundColor:nil];
                 if (isSuccess) {
+                    if (strongSelf.publishActionCall) {
+                        strongSelf.publishActionCall();
+                    }
                     [strongSelf.navigationController popViewControllerAnimated:YES];
                 }
             }];
@@ -251,6 +254,9 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
             hx_strongify(weakSelf);
             [btn stopLoading:@"发布" image:nil textColor:nil backgroundColor:nil];
             if (isSuccess) {
+                if (strongSelf.publishActionCall) {
+                    strongSelf.publishActionCall();
+                }
                 [strongSelf.navigationController popViewControllerAnimated:YES];
             }
         }];

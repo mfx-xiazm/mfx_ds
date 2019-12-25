@@ -10,81 +10,64 @@
 #import "TYSnapshotScroll.h"
 #import "DSGoodsDetail.h"
 #import "SGQRCode.h"
+#import "DSPosterContentView.h"
 
 @interface DSGoodsPosterView ()
-@property (weak, nonatomic) IBOutlet UIScrollView *contentBgView;
-@property (weak, nonatomic) IBOutlet UIImageView *advart;
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UIImageView *goods_img;
-@property (weak, nonatomic) IBOutlet UILabel *goodsName;
-@property (weak, nonatomic) IBOutlet UILabel *discount_price;
-@property (weak, nonatomic) IBOutlet UILabel *price;
-@property (weak, nonatomic) IBOutlet UIImageView *codeImg;
-
+@property (weak, nonatomic) IBOutlet UIView *contentBgView;
+/* 内容视图 */
+@property(nonatomic,strong) DSPosterContentView *contentView;
 @end
 @implementation DSGoodsPosterView
 
 -(void)awakeFromNib
 {
     [super awakeFromNib];
+    [self.contentBgView insertSubview:self.contentView atIndex:0];
+}
+-(DSPosterContentView *)contentView
+{
+    if (_contentView == nil) {
+        _contentView = [DSPosterContentView loadXibView];
+        _contentView.frame = self.contentBgView.bounds;
+        _contentView.showsHorizontalScrollIndicator = NO;
+        _contentView.showsVerticalScrollIndicator = NO;
+    }
+    return _contentView;
+}
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.contentView.frame = self.contentBgView.bounds;
 }
 -(void)setGoodsDetail:(DSGoodsDetail *)goodsDetail
 {
     _goodsDetail = goodsDetail;
-    
-    [self.advart sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar]];
-    self.name.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
-    
-    [self.goods_img sd_setImageWithURL:[NSURL URLWithString:_goodsDetail.cover_img]];
-    [self.goodsName setTextWithLineSpace:5.f withString:_goodsDetail.goods_name withFont:[UIFont systemFontOfSize:14]];
-    self.discount_price.text = [NSString stringWithFormat:@"￥%@",_goodsDetail.discount_price];
-    [self.price setLabelUnderline:[NSString stringWithFormat:@"￥%@",_goodsDetail.price]];
-    self.codeImg.image = [SGQRCodeObtain generateQRCodeWithData:_goodsDetail.share_url size:self.codeImg.hxn_width];
+    self.contentView.goodsDetail = _goodsDetail;
 }
 - (IBAction)posterTypeClicked:(UIButton *)sender {
     if (sender.tag) {
-//        hx_weakify(self);
-//        UIImage* image = nil;
-//        UIGraphicsBeginImageContext(_contentBgView.contentSize);
-//        {
-//            CGPoint savedContentOffset = _contentBgView.contentOffset;
-//            CGRect savedFrame = _contentBgView.frame;
-//
-//            _contentBgView.contentOffset = CGPointZero;
-//            _contentBgView.frame = CGRectMake(0, 0, _contentBgView.contentSize.width, _contentBgView.contentSize.height);
-//
-//            [_contentBgView.layer renderInContext: UIGraphicsGetCurrentContext()];
-//            image = UIGraphicsGetImageFromCurrentImageContext();
-//
-//            _contentBgView.contentOffset = savedContentOffset;
-//            _contentBgView.frame = savedFrame;
-//        }
-//        UIGraphicsEndImageContext();
-//
-//        if (image != nil) {
-//            self.goods_img.image = image;
-//        }
-    
-//        if (@available(iOS 13.0, *)) {
-//            //因iOS13在使用AutoLayout的情况下，手动修改contentSize失效，并且因AutoLayout的布局情况太多，不能一一判断你，故相关操作以block处理,iOS12之前用老方法效率高，新方法会有递归
-//            CGFloat oldTableViewHeight = self.contentLayoutHeight.constant;
-//
-//            [TYSnapshotScroll screenSnapshotWithMultipleScroll:self.contentBgView modifyLayoutBlock:^(CGFloat extraHeight) {
-//                weakSelf.tableViewLayoutHeight.constant +=extraHeight;
-//                [weakSelf.view layoutIfNeeded];
-//            } finishBlock:^(UIImage *snapShotImage) {
-//                weakSelf.tableViewLayoutHeight.constant = oldTableViewHeight;
-//            }];
-//        } else {
-//            [TYSnapshotScroll screenSnapshot:self.contentBgView finishBlock:^(UIImage *snapShotImage) {
-//                weakSelf.goods_img.image = snapShotImage;
-//            }];
-//        }
-        
-//        hx_strongify(weakSelf);
-//        if (strongSelf.posterTypeCall) {
-//            strongSelf.posterTypeCall(sender.tag, snapShotImage);
-//        }
+        UIImage* image = nil;
+        UIGraphicsBeginImageContext(_contentView.contentSize);
+
+        CGPoint savedContentOffset = _contentView.contentOffset;
+        CGRect savedFrame = _contentView.frame;
+
+        _contentView.contentOffset = CGPointZero;
+        _contentView.frame = CGRectMake(0, 0, _contentView.contentSize.width, _contentView.contentSize.height);
+
+        [_contentView.layer renderInContext: UIGraphicsGetCurrentContext()];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+
+        _contentView.contentOffset = savedContentOffset;
+        _contentView.frame = savedFrame;
+
+        UIGraphicsEndImageContext();
+
+        if (image != nil) {
+            if (self.posterTypeCall) {
+                self.posterTypeCall(sender.tag, image);
+            }
+        }
     }else{
         if (self.posterTypeCall) {
             self.posterTypeCall(sender.tag, nil);

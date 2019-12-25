@@ -73,6 +73,10 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请填写收货人电话"];
             return NO;
         }
+        if (strongSelf.receiver_phone.text.length != 11) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"手机号格式有误"];
+            return NO;
+        }
         if (![strongSelf.receiver hasText]) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请填写收货人"];
             return NO;

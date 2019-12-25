@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,6 +51,13 @@
                                 <color key="textColor" red="1" green="0.73725490199999999" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSd-bq-JkR">
+                                <rect key="frame" x="133" y="15" width="20" height="22"/>
+                                <state key="normal" image="已收藏"/>
+                                <connections>
+                                    <action selector="collectClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="9Cm-l7-Wsw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -60,10 +67,12 @@
                             <constraint firstItem="RxW-K9-s8v" firstAttribute="leading" secondItem="CBY-SR-dsV" secondAttribute="leading" constant="10" id="K2d-l0-gjg"/>
                             <constraint firstItem="WRl-ej-Wle" firstAttribute="top" secondItem="P3w-yf-BIi" secondAttribute="bottom" constant="5" id="KpL-uY-DLG"/>
                             <constraint firstAttribute="trailing" secondItem="P3w-yf-BIi" secondAttribute="trailing" constant="10" id="MgE-sQ-l7y"/>
+                            <constraint firstItem="lSd-bq-JkR" firstAttribute="trailing" secondItem="P3w-yf-BIi" secondAttribute="trailing" constant="-5" id="SdQ-AG-5dg"/>
                             <constraint firstAttribute="trailing" secondItem="WRl-ej-Wle" secondAttribute="trailing" constant="10" id="UGR-TH-rDk"/>
                             <constraint firstItem="Go0-Op-ntW" firstAttribute="leading" secondItem="CBY-SR-dsV" secondAttribute="leading" constant="10" id="Y1x-qk-CtH"/>
                             <constraint firstItem="P3w-yf-BIi" firstAttribute="top" secondItem="CBY-SR-dsV" secondAttribute="top" constant="10" id="Yrm-yf-Nhg"/>
                             <constraint firstItem="Go0-Op-ntW" firstAttribute="top" secondItem="RxW-K9-s8v" secondAttribute="bottom" constant="5" id="fbn-c9-Kie"/>
+                            <constraint firstItem="lSd-bq-JkR" firstAttribute="top" secondItem="P3w-yf-BIi" secondAttribute="top" constant="5" id="fm4-xn-fH2"/>
                             <constraint firstItem="Pwn-dz-NcO" firstAttribute="centerY" secondItem="RxW-K9-s8v" secondAttribute="centerY" id="tkZ-MJ-f7Y"/>
                             <constraint firstAttribute="bottom" secondItem="Go0-Op-ntW" secondAttribute="bottom" constant="10" id="vq5-zc-Qr4"/>
                         </constraints>
@@ -98,6 +107,7 @@
             <size key="customSize" width="178" height="264"/>
             <connections>
                 <outlet property="bankPrice" destination="Go0-Op-ntW" id="iAU-eo-BnY"/>
+                <outlet property="collectBtn" destination="lSd-bq-JkR" id="F2o-X9-F8j"/>
                 <outlet property="coverImg" destination="P3w-yf-BIi" id="zi8-dO-bRM"/>
                 <outlet property="goodName" destination="WRl-ej-Wle" id="T9P-WH-4pR"/>
                 <outlet property="marketPrice" destination="Pwn-dz-NcO" id="AjD-pK-9t8"/>
@@ -106,4 +116,7 @@
             <point key="canvasLocation" x="-27.536231884057973" y="123.21428571428571"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="已收藏" width="20" height="19"/>
+    </resources>
 </document>

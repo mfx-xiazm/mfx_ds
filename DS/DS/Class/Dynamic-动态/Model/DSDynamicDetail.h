@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *praise_num;
 @property(nonatomic,copy) NSString *avatar;
 @property(nonatomic,copy) NSString *treads_id;
+@property(nonatomic,strong)NSString *share_url;
 @property(nonatomic,assign) BOOL is_praise;
 
 @end

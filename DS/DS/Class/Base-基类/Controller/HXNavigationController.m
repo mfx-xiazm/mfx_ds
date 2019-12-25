@@ -8,6 +8,7 @@
 
 #import "HXNavigationController.h"
 #import "UIImage+HXNExtension.h"
+#import "DSWebContentVC.h"
 
 @interface HXNavigationController ()<UIGestureRecognizerDelegate>
 /** 手势 */
@@ -67,7 +68,9 @@
     if (translation.x <= 0) {
         return NO;
     }
-    
+    if ([self.visibleViewController isKindOfClass:[DSWebContentVC class]]) {
+        return NO;
+    }
     return self.childViewControllers.count == 1 ? NO : YES;
 }
 /**

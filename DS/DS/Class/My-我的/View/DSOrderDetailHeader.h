@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class DSMyOrderDetail;
 typedef void(^lookLogisCall)(void);
 @interface DSOrderDetailHeader : UIView
+/* 是否是售后 */
+@property(nonatomic,assign) BOOL isAfterSale;
 /* 订单详情 */
 @property(nonatomic,strong) DSMyOrderDetail *orderDetail;
 /* 查看物流 */

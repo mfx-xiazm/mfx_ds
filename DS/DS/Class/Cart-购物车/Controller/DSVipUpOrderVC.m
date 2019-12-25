@@ -23,12 +23,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *receiver;
 @property (weak, nonatomic) IBOutlet UILabel *receiver_phone;
 @property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *is_default;
 @property (weak, nonatomic) IBOutlet UIImageView *cover_img;
 @property (weak, nonatomic) IBOutlet UILabel *goods_name;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *num;
 @property (weak, nonatomic) IBOutlet UILabel *price_amount;
-@property (strong, nonatomic) HXPlaceholderTextView *remark;
+@property (weak, nonatomic) IBOutlet HXPlaceholderTextView *remark;
 @property (weak, nonatomic) IBOutlet UILabel *pay_amount;
 /* 订单号 */
 @property(nonatomic,copy) NSString *order_no;
@@ -47,6 +48,7 @@
     [self.navigationItem setTitle:@"提交订单"];
     //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
+    self.remark.placeholder = @"备注：";
     [self startShimmer];
     [self getOrderDataInitRequest];
 }
@@ -244,6 +246,7 @@
         self.receiver.text = self.confirmOrder.address.receiver;
         self.receiver_phone.text = self.confirmOrder.address.receiver_phone;
         self.address.text = [NSString stringWithFormat:@"%@%@",self.confirmOrder.address.area_name,self.confirmOrder.address.address_detail];
+        self.is_default.hidden = self.confirmOrder.address.is_default?NO:YES;
     }else{
         self.noAddressView.hidden = NO;
         self.addressView.hidden = YES;

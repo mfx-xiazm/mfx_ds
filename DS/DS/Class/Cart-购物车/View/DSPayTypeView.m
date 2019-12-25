@@ -25,7 +25,7 @@
 -(void)setPay_amount:(NSString *)pay_amount
 {
     _pay_amount = pay_amount;
-    self.payPrice.text = _pay_amount;
+    self.payPrice.text = [NSString stringWithFormat:@"%.2f",[_pay_amount floatValue]];
 }
 - (IBAction)payTypeClicked:(UIButton *)sender {
     if (sender.tag == 1) {

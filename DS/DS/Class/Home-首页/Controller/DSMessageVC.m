@@ -10,6 +10,7 @@
 #import "DSMessageCell.h"
 #import "DSMessage.h"
 #import "DSWebContentVC.h"
+#import "DSDynamicDetailVC.h"
 
 static NSString *const MessageCell = @"MessageCell";
 @interface DSMessageVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -167,12 +168,18 @@ static NSString *const MessageCell = @"MessageCell";
 {
     // 要判断消息类型进行跳转
     DSMessage *msg = self.msgs[indexPath.row];
-    DSWebContentVC *wvc = [DSWebContentVC new];
-    wvc.navTitle = msg.msg_title;
-    wvc.isNeedRequest = YES;
-    wvc.requestType = 2;
-    wvc.msg_id = msg.msg_id;
-    [self.navigationController pushViewController:wvc animated:YES];
+    if ([msg.msg_type isEqualToString:@"1"]) {
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"消息详情";
+        wvc.isNeedRequest = YES;
+        wvc.requestType = 2;
+        wvc.msg_id = msg.msg_id;
+        [self.navigationController pushViewController:wvc animated:YES];
+    }else{
+        DSDynamicDetailVC *dvc = [DSDynamicDetailVC new];
+        dvc.treads_id = msg.ref_id;
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
 }
 
 @end

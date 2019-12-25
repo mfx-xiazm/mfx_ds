@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUpNavBar];
     // 针对 11.0 以上的iOS系统进行处理
     if (@available(iOS 11.0, *)) {
         self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -35,6 +36,7 @@
         [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
     }
     if (self.isNeedRequest) {
+        [self startShimmer];
         [self loadWebDataRequest];
     }else{
         if (self.url && self.url.length) {
@@ -75,6 +77,27 @@
     
     return _webView;
 }
+-(void)setUpNavBar
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setImage:[UIImage imageNamed:@"返回白色"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"返回白色"] forState:UIControlStateHighlighted];
+    button.hxn_size = CGSizeMake(44, 44);
+    // 让按钮内部的所有内容左对齐
+    //        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
+    [button addTarget:self action:@selector(backActionClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+-(void)backActionClicked
+{
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 -(void)loadWebDataRequest
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -91,17 +114,26 @@
     }else if (self.requestType == 4) {
         parameters[@"set_type"] = @"member_self_buy";
         action = @"license_config_get";
+    }else if (self.requestType == 5) {
+        parameters[@"set_type"] = @"user_license";
+        action = @"license_config_get";
+    }else if (self.requestType == 6) {
+        parameters[@"set_type"] = @"private_license";
+        action = @"license_config_get";
+    }else if (self.requestType == 7) {
+        action = @"jd_url_get";
     }
     
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:action parameters:parameters success:^(id responseObject) {
         hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             if (strongSelf.requestType == 1) {
                 NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"adv_content"]];
                 [strongSelf.webView loadHTMLString:h5 baseURL:nil];
             }else if (strongSelf.requestType == 2) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"msg_content"]];
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body><div style=\"font-size:15px;font-weight:600;\">%@</div><div style=\"font-size:12px;color:#CCCCCC\">%@</div>%@</body></html>",responseObject[@"result"][@"msg_title"],responseObject[@"result"][@"create_time"],responseObject[@"result"][@"msg_content"]];
                 [strongSelf.webView loadHTMLString:h5 baseURL:nil];
             }else if (strongSelf.requestType == 3) {
                 NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
@@ -109,11 +141,21 @@
             }else if (strongSelf.requestType == 4) {
                 NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
                 [strongSelf.webView loadHTMLString:h5 baseURL:nil];
+            }else if (strongSelf.requestType == 5) {
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
+            }else if (strongSelf.requestType == 6) {
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
+            }else if (strongSelf.requestType == 7) {
+                [strongSelf.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:responseObject[@"result"][@"jd_url"]]]];
             }
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
         }
     } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }

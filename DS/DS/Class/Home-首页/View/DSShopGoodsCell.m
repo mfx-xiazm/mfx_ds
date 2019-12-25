@@ -28,8 +28,8 @@
     _recommend = recommend;
     [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_recommend.cover_img]];
     self.goodName.text = _recommend.goods_name;
-    self.price.text = [NSString stringWithFormat:@"￥%@",_recommend.price];
-    self.marketPrice.text = [NSString stringWithFormat:@"￥%@",_recommend.discount_price];
-    self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%@",_recommend.cmm_price];
+    self.price.text = [NSString stringWithFormat:@"￥%.2f",[_recommend.discount_price floatValue]];
+    [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[_recommend.price floatValue]]];
+    self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_recommend.cmm_price floatValue]];
 }
 @end

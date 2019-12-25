@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *bank_name;
 @property (nonatomic, copy) NSString *card_owner;
 @property (nonatomic, copy) NSString *apply_amount;
+@property (nonatomic, copy) NSString *reject_reason;
 @property (nonatomic, copy) NSString *apply_desc;
 @end
 

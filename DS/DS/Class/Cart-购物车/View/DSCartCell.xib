@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,7 +76,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="规格：600ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dk-IL-NKh">
-                                <rect key="frame" x="145" y="95" width="73" height="15"/>
+                                <rect key="frame" x="145" y="95" width="179" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="7bc-lg-MP6"/>
                                 </constraints>
@@ -157,6 +157,7 @@
                             <constraint firstAttribute="trailing" secondItem="Ifz-nM-3GE" secondAttribute="trailing" constant="10" id="USI-PW-WbN"/>
                             <constraint firstItem="zHy-7h-KzV" firstAttribute="centerY" secondItem="Q4d-Mz-5E6" secondAttribute="centerY" id="eXO-6b-UAY"/>
                             <constraint firstItem="Q4d-Mz-5E6" firstAttribute="leading" secondItem="2uX-Yh-xlY" secondAttribute="trailing" constant="10" id="gMz-ch-LsH"/>
+                            <constraint firstItem="bF5-jI-FdO" firstAttribute="leading" secondItem="8dk-IL-NKh" secondAttribute="trailing" id="iUV-7f-eCd"/>
                             <constraint firstItem="zHy-7h-KzV" firstAttribute="leading" secondItem="Q4d-Mz-5E6" secondAttribute="trailing" constant="10" id="jvR-te-LWe"/>
                             <constraint firstItem="5TC-0J-jWv" firstAttribute="leading" secondItem="2uX-Yh-xlY" secondAttribute="trailing" constant="10" id="leL-xC-cNF"/>
                             <constraint firstAttribute="bottom" secondItem="Qgr-3e-bk4" secondAttribute="bottom" id="naQ-cy-q4s"/>

@@ -384,6 +384,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     DSMyOrderHeader *header = [DSMyOrderHeader loadXibView];
     header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 44.f);
     DSMyOrder *order = self.orders[section];
+    header.isAfterSale = NO;
     header.order = order;
     return header;
 }
@@ -444,7 +445,21 @@ static NSString *const MyOrderCell = @"MyOrderCell";
         }else if (index == 2) {
             if ([order.status isEqualToString:@"待付款"]) {
                 //HXLog(@"取消订单");
-                [strongSelf cancelOrderRequest];
+                zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要取消该订单吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
+                zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
+                    [strongSelf.zh_popupController dismiss];
+                }];
+                zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"确认" handler:^(zhAlertButton * _Nonnull button) {
+                    [strongSelf.zh_popupController dismiss];
+                    [strongSelf cancelOrderRequest];
+                }];
+                cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+                okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+                [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
+                strongSelf.zh_popupController = [[zhPopupController alloc] init];
+                [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
             }else if ([order.status isEqualToString:@"待收货"]) {
                 //HXLog(@"查看物流");
                 DSExpressDetailVC *evc = [DSExpressDetailVC new];
@@ -489,6 +504,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 {
     DSMyOrder *order = self.orders[indexPath.section];
     DSOrderDetailVC *dvc = [DSOrderDetailVC new];
+    dvc.isAfterSale = NO;
     dvc.oid = order.oid;
     hx_weakify(self);
     dvc.orderHandleCall = ^(NSInteger type) {

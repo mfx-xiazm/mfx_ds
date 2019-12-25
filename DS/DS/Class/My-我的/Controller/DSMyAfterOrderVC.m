@@ -179,6 +179,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     DSMyOrderHeader *header = [DSMyOrderHeader loadXibView];
     header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 44.f);
     DSMyOrder *order = self.orders[section];
+    header.isAfterSale = YES;
     header.order = order;
     return header;
 }

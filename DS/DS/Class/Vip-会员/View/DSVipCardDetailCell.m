@@ -22,7 +22,7 @@
 -(void)setPrice:(DSVipCardPrice *)price
 {
     _price = price;
-    self.priceText.text = [NSString stringWithFormat:@"%@元",_price.face_value];
+    self.priceText.text = [NSString stringWithFormat:@"%.2f元",[_price.face_value floatValue]];
     if (_price.isSelected) {
         self.priceText.backgroundColor = UIColorFromRGB(0xFFBC66);
         self.priceText.layer.borderColor = [UIColor clearColor].CGColor;

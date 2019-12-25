@@ -33,8 +33,8 @@
 -(void)setConfirmOrder:(DSConfirmOrder *)confirmOrder
 {
     _confirmOrder = confirmOrder;
-    self.price_amount.text = [NSString stringWithFormat:@"￥%@",_confirmOrder.price_amount];
-    self.cmm_amount.text = [NSString stringWithFormat:@"￥%@",_confirmOrder.cmm_amount];
+    self.price_amount.text = [NSString stringWithFormat:@"￥%.2f",[_confirmOrder.price_amount floatValue]];
+    self.cmm_amount.text = [NSString stringWithFormat:@"￥%.2f",[_confirmOrder.cmm_amount floatValue]];
     if (_confirmOrder.remark && _confirmOrder.remark.length) {
         self.remark.text = _confirmOrder.remark;
     }

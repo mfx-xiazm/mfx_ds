@@ -118,8 +118,8 @@
     [self.cyclePagerView reloadData];
     
     self.goodsName.text = self.goodsDetail.goods_name;
-    self.price.text = [NSString stringWithFormat:@"￥%@",self.goodsDetail.price];
-    self.saleNum.text = [NSString stringWithFormat:@"销量：￥%@",self.goodsDetail.sale_num];
+    self.price.text = [NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]];
+    self.saleNum.text = [NSString stringWithFormat:@"销量：%@",self.goodsDetail.sale_num];
     self.stockNum.text = self.goodsDetail.stock;
     
     if (HX_SCREEN_WIDTH > 375.f) {

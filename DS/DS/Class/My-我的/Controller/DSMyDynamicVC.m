@@ -12,6 +12,8 @@
 #import "zhAlertView.h"
 #import <zhPopupController.h>
 #import "DSDynamicDetailVC.h"
+#import "DSShareDynamicView.h"
+#import <UMShare/UMShare.h>
 
 @interface DSMyDynamicVC ()<UITableViewDelegate,UITableViewDataSource,DSDynamicCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -233,7 +235,30 @@
 /** 分享 */
 - (void)didClickShareInCell:(DSDynamicCell *)Cell
 {
-    HXLog(@"分享");
+    DSDynamicLayout *layout = Cell.dynamicLayout;
+    DSDynamic *dynamic = layout.dynamic;
+    
+    id thumImage = nil;
+    if (dynamic.photos && dynamic.photos.count) {
+        thumImage = dynamic.photos.firstObject;
+    }else{
+        thumImage = HXGetImage(@"Icon-share");
+    }
+    DSShareDynamicView *shareView = [DSShareDynamicView loadXibView];
+    shareView.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 135.f);
+    hx_weakify(self);
+    shareView.shareTypeActionCall = ^(NSInteger index) {
+        hx_strongify(weakSelf);
+        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
+        if (index == 1) {
+            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine desc:dynamic.dsp thumImage:thumImage webpageUrl:dynamic.share_url];
+        }else{
+            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatSession desc:dynamic.dsp thumImage:thumImage webpageUrl:dynamic.share_url];
+        }
+    };
+    self.zh_popupController = [[zhPopupController alloc] init];
+    self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
+    [self.zh_popupController presentContentView:shareView duration:0.25 springAnimated:NO];
 }
 /** 删除 */
 - (void)didClickDeleteInCell:(DSDynamicCell *)Cell
@@ -262,5 +287,31 @@
     [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
     self.zh_popupController = [[zhPopupController alloc] init];
     [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+}
+#pragma mark -- 分享处理
+-(void)shareToProgramObject:(UMSocialPlatformType)platformType desc:(NSString *)desc thumImage:(id)thumImage webpageUrl:(NSString *)webpageUrl
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"鲸品库-好物分享" descr:desc thumImage:thumImage];
+    shareObject.webpageUrl = webpageUrl;
+    messageObject.shareObject = shareObject;
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+            }
+        }
+    }];
 }
 @end

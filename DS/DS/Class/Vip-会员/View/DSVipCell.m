@@ -26,7 +26,7 @@
     _goods = goods;
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
     self.goodsName.text = _goods.goods_name;
-    self.price.text = [NSString stringWithFormat:@"￥%@",_goods.price];
+    self.price.text = [NSString stringWithFormat:@"￥%.2f",[_goods.price floatValue]];
 }
 - (IBAction)buyClicked:(UIButton *)sender {
     if (self.buyClickCall) {

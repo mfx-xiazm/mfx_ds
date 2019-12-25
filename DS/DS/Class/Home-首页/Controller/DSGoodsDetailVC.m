@@ -19,6 +19,8 @@
 #import "DSGoodsDetail.h"
 #import "DSUpOrderVC.h"
 #import "DSCartVC.h"
+#import "GXSaveImageToPHAsset.h"
+#import <UMShare/UMShare.h>
 
 @interface DSGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
@@ -126,11 +128,11 @@
         hx_strongify(weakSelf);
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
         if (snapShotImage) {
-//            GXSaveImageToPHAsset *save = [GXSaveImageToPHAsset new];
-//            save.targetVC = strongSelf;
-//            [save saveImages:@[snapShotImage] comletedCall:^{
-//                HXLog(@"图片保存成功");
-//            }];
+            if (index == 1) {
+                [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine contentImg:snapShotImage];
+            }else{
+                [strongSelf shareToProgramObject:UMSocialPlatformType_WechatSession contentImg:snapShotImage];
+            }
         }
     };
     self.zh_popupController = [[zhPopupController alloc] init];
@@ -138,9 +140,9 @@
     [self.zh_popupController presentContentView:pv duration:0.25 springAnimated:NO];
 }
 - (IBAction)takeCouponClicked:(UIButton *)sender {
-    if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
-        return;
-    }
+//    if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
+//        return;
+//    }
     DSTakeCouponView *couponView = [DSTakeCouponView loadXibView];
     couponView.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 280.f);
     couponView.discount = self.goodsDetail.discount;
@@ -200,6 +202,32 @@
     self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
     [self.zh_popupController presentContentView:self.chooseClassView duration:0.25 springAnimated:NO];
 }
+#pragma mark -- 分享处理
+-(void)shareToProgramObject:(UMSocialPlatformType)platformType contentImg:(UIImage *)image
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    UMShareImageObject *shareObject = [UMShareImageObject shareObjectWithTitle:@"鲸品库-好物分享" descr:self.goodsDetail.goods_name thumImage:image];
+    shareObject.shareImage = image;
+    messageObject.shareObject = shareObject;
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+            }
+        }
+    }];
+}
 #pragma mark -- 接口请求
 -(void)getGoodsDetailRequest
 {
@@ -231,10 +259,10 @@
     [self.cyclePagerView reloadData];
     
     self.goodsName.text = self.goodsDetail.goods_name;
-    self.price.text = [NSString stringWithFormat:@"折扣价￥%@",self.goodsDetail.discount_price];
-    self.marketPrice.text = [NSString stringWithFormat:@"原价￥%@",self.goodsDetail.price];
-    self.saleNum.text = [NSString stringWithFormat:@"销量：￥%@",self.goodsDetail.sale_num];
-    self.backPrice.text = [NSString stringWithFormat:@"返佣金额：%@",self.goodsDetail.cmm_price];
+    self.price.text = [NSString stringWithFormat:@"折扣价￥%.2f",[self.goodsDetail.discount_price floatValue]];
+    self.marketPrice.text = [NSString stringWithFormat:@"原价￥%.2f",[self.goodsDetail.price floatValue]];
+    self.saleNum.text = [NSString stringWithFormat:@"销量：%@",self.goodsDetail.sale_num];
+    self.backPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[self.goodsDetail.cmm_price floatValue]];
     self.provider.text = [NSString stringWithFormat:@"  供应商：%@  ",self.goodsDetail.provider];
     self.stockNum.text = self.goodsDetail.stock;
     if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {

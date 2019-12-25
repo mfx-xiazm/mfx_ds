@@ -133,6 +133,33 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }
+/// 收藏商品
+-(void)setGoodsCollectRequest:(DSShopGoods *)goods
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_id"] = goods.goods_id;//商品id
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"collect_goods_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if ([responseObject[@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+            [strongSelf.goods removeObject:goods];
+            dispatch_async(dispatch_get_main_queue(), ^{
+               [strongSelf.collectionView reloadData];
+               if (strongSelf.goods.count) {
+                   [strongSelf.collectionView ly_hideEmptyView];
+               }else{
+                   [strongSelf.collectionView ly_showEmptyView];
+               }
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- 点击事件
 
 #pragma mark -- UICollectionView 数据源和代理
@@ -148,8 +175,14 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DSCateGoodsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CateGoodsCell forIndexPath:indexPath];
+    cell.collectBtn.hidden = NO;
     DSShopGoods *goods = self.goods[indexPath.row];
     cell.goods = goods;
+    hx_weakify(self);
+    cell.collectActionCall = ^{
+        hx_strongify(weakSelf);
+        [strongSelf setGoodsCollectRequest:goods];
+    };
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

@@ -147,7 +147,7 @@ replacementString:(NSString *)string
             strongSelf.free_amount = [responseObject[@"result"][@"free_amount"] floatValue];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf.ableLabel.text = [NSString stringWithFormat:@"可提现金额：%.2f，起提金额：%.2f，提现服务费率：%.2f，免除手续费的提现金额：%.2f",strongSelf.balance,strongSelf.base_amount,strongSelf.fee_percent,strongSelf.free_amount];
+                strongSelf.ableLabel.text = [NSString stringWithFormat:@"可提现金额：%.2f元，起提金额：%.2f元，提现服务费率：%.2f%%，免除手续费的提现金额：%.2f元",strongSelf.balance,strongSelf.base_amount,strongSelf.fee_percent,strongSelf.free_amount];
             });
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];

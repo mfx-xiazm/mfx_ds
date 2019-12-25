@@ -57,9 +57,10 @@
     }else if ([self.noteDetail.apply_status isEqualToString:@"2"]) {
         self.apply_status.text = @"已通过";
     }else{
-        self.apply_status.text = @"未通过";
+        self.apply_status.text = [NSString stringWithFormat:@"未通过\n拒绝原因：%@",self.noteDetail.reject_reason];
     }
     
+    self.deail_info.textAlignment = NSTextAlignmentRight;
     [self.deail_info setTextWithLineSpace:5.f withString:[NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@",self.noteDetail.apply_no,self.noteDetail.create_time,self.noteDetail.bank_name,self.noteDetail.card_no,self.noteDetail.card_owner] withFont:[UIFont systemFontOfSize:13]];
 }
 @end

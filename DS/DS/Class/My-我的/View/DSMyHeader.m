@@ -37,10 +37,16 @@
 }
 -(void)showUserInfo
 {
-    [self.head_pic sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar]];
+    [self.head_pic sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar] placeholderImage:HXGetImage(@"avatar")];
     self.name.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
-    self.sex.image = [[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"1"]?HXGetImage(@"男"):HXGetImage(@"女");
-    self.vip.hidden = ([MSUserManager sharedInstance].curUserInfo.ulevel != 0)?NO:YES;
+    
+    if ([[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"0"]) {
+        self.sex.hidden = YES;
+    }else{
+        self.sex.hidden = NO;
+        self.sex.image = [[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"1"]?HXGetImage(@"男"):HXGetImage(@"女");
+    }
+    self.vip.hidden = ([MSUserManager sharedInstance].curUserInfo.ulevel != 1)?NO:YES;
     self.shareCode.text = [NSString stringWithFormat:@"邀请码：%@",[MSUserManager sharedInstance].curUserInfo.share_code];
     self.phone.text = [MSUserManager sharedInstance].curUserInfo.phone;
 }

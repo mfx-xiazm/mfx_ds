@@ -43,6 +43,13 @@ static NSString *const CartCell = @"CartCell";
     [self startShimmer];
     [self getOrderCartListRequest];
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([self isViewLoaded]) {
+        [self getOrderCartListRequest];
+    }
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -72,6 +79,8 @@ static NSString *const CartCell = @"CartCell";
 #pragma mark -- 视图相关
 -(void)setUpNavBar
 {
+    [self.navigationItem setTitle:@"购物车"];
+    
     UIButton *edit = [UIButton buttonWithType:UIButtonTypeCustom];
     edit.hxn_size = CGSizeMake(40, 44);
     edit.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -288,7 +297,11 @@ static NSString *const CartCell = @"CartCell";
     __block CGFloat price = 0;
     [self.cartDataArr enumerateObjectsUsingBlock:^(DSCartData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.is_checked) {
-            price += ([obj.discount_price floatValue])*[obj.cart_num integerValue];
+            if ([obj.is_discount isEqualToString:@"1"]) {
+                price += ([obj.discount_price floatValue])*[obj.cart_num integerValue];
+            }else{
+                price += ([obj.price floatValue])*[obj.cart_num integerValue];
+            }
         }
     }];
     self.totalPrice.text = [NSString stringWithFormat:@"%.2f元",fabs(price)];

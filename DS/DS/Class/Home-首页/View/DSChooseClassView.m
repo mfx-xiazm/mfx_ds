@@ -48,13 +48,14 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
     
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:_goodsDetail.cover_img]];
     if (_goodsDetail.selectSku) {
-        self.price.text = [NSString stringWithFormat:@"折扣价%@",_goodsDetail.selectSku.price];
+        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.selectSku.discount_price floatValue]];
+        self.market_price.text = [NSString stringWithFormat:@"原价：%.2f",[_goodsDetail.selectSku.price floatValue]];
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.selectSku.stock];
     }else{
-        self.price.text = [NSString stringWithFormat:@"折扣价%@",_goodsDetail.discount_price];
+        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.discount_price floatValue]];
+        self.market_price.text = [NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.price floatValue]];
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.stock];
     }
-    [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：￥%@",_goodsDetail.price]];
 
     [self.collectionView reloadData];
 }
@@ -70,7 +71,7 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
             }
         }
         if (!isChooseed) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择商品规则"];
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择商品规格"];
             return;
         }
         
@@ -126,10 +127,12 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
     }
     
     if (_goodsDetail.selectSku) {
-        self.price.text = [NSString stringWithFormat:@"折扣价%@",_goodsDetail.selectSku.price];
+        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.selectSku.discount_price floatValue]];
+        self.market_price.text = [NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.selectSku.price floatValue]];
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.selectSku.stock];
     }else{
-        self.price.text = [NSString stringWithFormat:@"折扣价%@",self.goodsDetail.discount_price];
+        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.discount_price floatValue]];
+        self.market_price.text = [NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.price floatValue]];
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",@"0"];
     }
 }
@@ -226,7 +229,9 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
    if (self.goodsDetail.list_specs && self.goodsDetail.list_specs.count) {
         DSGoodsSpecs *spec = self.goodsDetail.list_specs[indexPath.section];
         DSGoodsAttrs *attrs = spec.list_attrs[indexPath.item];
-        return CGSizeMake([attrs.attr_name boundingRectWithSize:CGSizeMake(1000000, 30) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]} context:nil].size.width + 20, 30);
+        CGFloat jj_rate = HX_SCREEN_WIDTH/375.0;
+        UIFont *font = [UIFont systemFontOfSize:14];
+        return CGSizeMake([attrs.attr_name boundingRectWithSize:CGSizeMake(1000000, 30) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:(jj_rate ==1)?font:[UIFont fontWithDescriptor:font.fontDescriptor size:font.pointSize*jj_rate]} context:nil].size.width + 20, 30);
     }else{
         return CGSizeZero;
     }

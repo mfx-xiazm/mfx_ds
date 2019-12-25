@@ -103,6 +103,7 @@ static NSString *const VipCardCell = @"VipCardCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     DSVipCardDetailVC *dvc = [DSVipCardDetailVC new];
     DSVipCard *card = self.cards[indexPath.item];
+    dvc.navTitle = card.type_name;
     dvc.card_type_id  = card.card_type_id;
     [self.navigationController pushViewController:dvc animated:YES];
 }

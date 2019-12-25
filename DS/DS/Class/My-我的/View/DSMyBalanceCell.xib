@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,7 +59,7 @@
                                 <rect key="frame" x="0.0" y="35" width="322" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某磨订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFM-VR-kUf">
-                                        <rect key="frame" x="10" y="10" width="66.5" height="16"/>
+                                        <rect key="frame" x="10" y="10" width="302" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -89,6 +89,7 @@
                                     <constraint firstItem="WHe-lW-IRz" firstAttribute="leading" secondItem="cx4-ZS-Upj" secondAttribute="leading" constant="10" id="ErK-bl-82L"/>
                                     <constraint firstAttribute="height" constant="80" id="U20-hR-f3l"/>
                                     <constraint firstItem="B06-hM-3Bv" firstAttribute="leading" secondItem="cx4-ZS-Upj" secondAttribute="leading" constant="10" id="UGP-El-ClQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="IFM-VR-kUf" secondAttribute="trailing" constant="10" id="ZFc-Xg-zz5"/>
                                     <constraint firstItem="IFM-VR-kUf" firstAttribute="top" secondItem="cx4-ZS-Upj" secondAttribute="top" constant="10" id="hkB-3H-gcq"/>
                                     <constraint firstItem="eQ7-Sj-A6C" firstAttribute="centerY" secondItem="cx4-ZS-Upj" secondAttribute="centerY" id="lfU-Bm-GPs"/>
                                     <constraint firstAttribute="bottom" secondItem="B06-hM-3Bv" secondAttribute="bottom" constant="10" id="rLK-7A-E6A"/>
@@ -129,7 +130,7 @@
                         <rect key="frame" x="10" y="5" width="322" height="115"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某磨订单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGp-J2-7Ek">
-                                <rect key="frame" x="10" y="10" width="66.5" height="16"/>
+                                <rect key="frame" x="10" y="10" width="302" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -149,6 +150,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FGp-J2-7Ek" secondAttribute="trailing" constant="10" id="0Io-2N-KTk"/>
                             <constraint firstItem="FGp-J2-7Ek" firstAttribute="leading" secondItem="uSL-QS-7mb" secondAttribute="leading" constant="10" id="6xO-xD-jwN"/>
                             <constraint firstAttribute="trailing" secondItem="wYh-l9-IBH" secondAttribute="trailing" constant="10" id="M4o-ti-glU"/>
                             <constraint firstItem="wYh-l9-IBH" firstAttribute="centerY" secondItem="uSL-QS-7mb" secondAttribute="centerY" id="TgR-hj-bHA"/>
