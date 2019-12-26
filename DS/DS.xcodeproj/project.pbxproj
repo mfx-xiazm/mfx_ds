@@ -193,6 +193,7 @@
 		90AE52E823829B45009F4740 /* DSPuslishDynamicData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52E723829B45009F4740 /* DSPuslishDynamicData.m */; };
 		90AE52EB2382A0FE009F4740 /* DSPublishDynamicFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52EA2382A0FE009F4740 /* DSPublishDynamicFooter.m */; };
 		90AE52ED2382A104009F4740 /* DSPublishDynamicFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52EC2382A104009F4740 /* DSPublishDynamicFooter.xib */; };
+		90B1AA6A23B4A20B00674FE1 /* DSGoodsShortCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B1AA6923B4A20B00674FE1 /* DSGoodsShortCode.m */; };
 		90C6C30A239E1C5F00A531CC /* UITextField+GYExpand.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C308239E1C5F00A531CC /* UITextField+GYExpand.m */; };
 		90C6C30D239E27E000A531CC /* DSHomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C30C239E27E000A531CC /* DSHomeData.m */; };
 		90C94C2223A4716400CD19FB /* DSCartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C2123A4716400CD19FB /* DSCartData.m */; };
@@ -719,6 +720,8 @@
 		90AE52E92382A0FE009F4740 /* DSPublishDynamicFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPublishDynamicFooter.h; sourceTree = "<group>"; };
 		90AE52EA2382A0FE009F4740 /* DSPublishDynamicFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPublishDynamicFooter.m; sourceTree = "<group>"; };
 		90AE52EC2382A104009F4740 /* DSPublishDynamicFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPublishDynamicFooter.xib; sourceTree = "<group>"; };
+		90B1AA6823B4A20B00674FE1 /* DSGoodsShortCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGoodsShortCode.h; sourceTree = "<group>"; };
+		90B1AA6923B4A20B00674FE1 /* DSGoodsShortCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGoodsShortCode.m; sourceTree = "<group>"; };
 		90C6C308239E1C5F00A531CC /* UITextField+GYExpand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+GYExpand.m"; sourceTree = "<group>"; };
 		90C6C309239E1C5F00A531CC /* UITextField+GYExpand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+GYExpand.h"; sourceTree = "<group>"; };
 		90C6C30B239E27E000A531CC /* DSHomeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSHomeData.h; sourceTree = "<group>"; };
@@ -1616,6 +1619,7 @@
 		906F36C123792F64000B160A /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				90B1AA6723B4A1D600674FE1 /* DSGoodsShortCode */,
 				903CB54E23927F180053A25B /* TYSnapshotScroll */,
 				900146A22384E4AF00275DD9 /* GXSaveImageToPHAsset */,
 				906F36C223792F64000B160A /* Category */,
@@ -2017,6 +2021,15 @@
 				908F948B23AB7E3F007E6C27 /* lhash.h */,
 			);
 			path = openssl;
+			sourceTree = "<group>";
+		};
+		90B1AA6723B4A1D600674FE1 /* DSGoodsShortCode */ = {
+			isa = PBXGroup;
+			children = (
+				90B1AA6823B4A20B00674FE1 /* DSGoodsShortCode.h */,
+				90B1AA6923B4A20B00674FE1 /* DSGoodsShortCode.m */,
+			);
+			path = DSGoodsShortCode;
 			sourceTree = "<group>";
 		};
 		90C94C2F23A47DC900CD19FB /* SPPickerView */ = {
@@ -2439,6 +2452,7 @@
 				906F374F23792F64000B160A /* HXNetworkTool.m in Sources */,
 				906F377323792F64000B160A /* CAAnimation+WAnimation.m in Sources */,
 				906F377623792F64000B160A /* NSObject+LMRuntime.m in Sources */,
+				90B1AA6A23B4A20B00674FE1 /* DSGoodsShortCode.m in Sources */,
 				903CB55F23927F180053A25B /* TYSnapshotScroll.m in Sources */,
 				90FD91B1237E3EBE00016EF7 /* DSMyOrderVC.m in Sources */,
 				906F375423792F64000B160A /* HXCacheTool.m in Sources */,

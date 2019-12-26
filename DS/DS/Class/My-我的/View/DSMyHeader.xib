@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,9 +35,18 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="男" translatesAutoresizingMaskIntoConstraints="NO" id="5Ar-GN-piV">
                             <rect key="frame" x="241" y="93.5" width="9" height="10.5"/>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="等级" translatesAutoresizingMaskIntoConstraints="NO" id="wAg-fQ-ImT">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" VIP " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5o4-1o-Uvt">
                             <rect key="frame" x="255" y="92.5" width="22" height="12"/>
-                        </imageView>
+                            <color key="backgroundColor" red="1" green="0.92549019610000005" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小名小名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdB-Jw-2Zy">
                             <rect key="frame" x="178.5" y="90" width="57.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
@@ -69,18 +78,18 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="wAg-fQ-ImT" firstAttribute="leading" secondItem="5Ar-GN-piV" secondAttribute="trailing" constant="5" id="2Ks-eT-g9e"/>
                         <constraint firstItem="KqG-mM-Swl" firstAttribute="centerX" secondItem="da8-3u-Xnl" secondAttribute="centerX" id="6Cb-lT-e0V"/>
+                        <constraint firstItem="5o4-1o-Uvt" firstAttribute="leading" secondItem="5Ar-GN-piV" secondAttribute="trailing" constant="5" id="Bmi-3q-eWJ"/>
                         <constraint firstItem="5Ar-GN-piV" firstAttribute="leading" secondItem="RdB-Jw-2Zy" secondAttribute="trailing" constant="5" id="DUQ-gh-zeL"/>
                         <constraint firstItem="nNh-MB-nIk" firstAttribute="centerX" secondItem="da8-3u-Xnl" secondAttribute="centerX" id="EgF-oV-RqS"/>
                         <constraint firstAttribute="bottom" secondItem="kcn-w5-qJs" secondAttribute="bottom" id="FQo-Wj-ybC"/>
                         <constraint firstItem="nNh-MB-nIk" firstAttribute="top" secondItem="aqI-GW-6FR" secondAttribute="bottom" constant="10" id="J4V-jO-eWu"/>
+                        <constraint firstItem="5o4-1o-Uvt" firstAttribute="centerY" secondItem="5Ar-GN-piV" secondAttribute="centerY" id="NhK-Ku-Dy1"/>
                         <constraint firstItem="5Ar-GN-piV" firstAttribute="centerY" secondItem="RdB-Jw-2Zy" secondAttribute="centerY" id="SRV-Yi-xrq"/>
                         <constraint firstItem="RdB-Jw-2Zy" firstAttribute="centerX" secondItem="da8-3u-Xnl" secondAttribute="centerX" id="TS9-f0-ab7"/>
                         <constraint firstItem="aqI-GW-6FR" firstAttribute="top" secondItem="RdB-Jw-2Zy" secondAttribute="bottom" constant="10" id="WgP-Nq-2Rq"/>
                         <constraint firstItem="aqI-GW-6FR" firstAttribute="centerX" secondItem="da8-3u-Xnl" secondAttribute="centerX" id="ZCF-w6-swl"/>
                         <constraint firstItem="kcn-w5-qJs" firstAttribute="top" secondItem="da8-3u-Xnl" secondAttribute="top" id="bHY-m9-AWD"/>
-                        <constraint firstItem="wAg-fQ-ImT" firstAttribute="centerY" secondItem="5Ar-GN-piV" secondAttribute="centerY" id="bZj-YU-TMb"/>
                         <constraint firstItem="KqG-mM-Swl" firstAttribute="top" secondItem="da8-3u-Xnl" secondAttribute="top" constant="20" id="cgH-Pc-ItF"/>
                         <constraint firstItem="RdB-Jw-2Zy" firstAttribute="top" secondItem="KqG-mM-Swl" secondAttribute="bottom" constant="10" id="fPk-Sl-TTD"/>
                         <constraint firstItem="kcn-w5-qJs" firstAttribute="leading" secondItem="da8-3u-Xnl" secondAttribute="leading" id="glu-gl-tBr"/>
@@ -374,7 +383,7 @@
                 <outlet property="phone" destination="nNh-MB-nIk" id="Bef-mS-WWc"/>
                 <outlet property="sex" destination="5Ar-GN-piV" id="Gns-87-aKg"/>
                 <outlet property="shareCode" destination="aqI-GW-6FR" id="HdT-RM-e84"/>
-                <outlet property="vip" destination="wAg-fQ-ImT" id="0wq-pp-dOa"/>
+                <outlet property="vip" destination="5o4-1o-Uvt" id="fCJ-Q7-kix"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="327.45535714285711"/>
         </view>
@@ -387,6 +396,5 @@
         <image name="待收货" width="20" height="16"/>
         <image name="椭圆 3" width="375" height="263"/>
         <image name="男" width="9" height="10.5"/>
-        <image name="等级" width="22" height="12"/>
     </resources>
 </document>

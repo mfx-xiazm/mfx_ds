@@ -57,6 +57,10 @@
     shimmerLabel.backgroundColor = [UIColor whiteColor];
     self.shimmer.contentView = shimmerLabel;
 }
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 -(void)reloadDataRequest
 {
     

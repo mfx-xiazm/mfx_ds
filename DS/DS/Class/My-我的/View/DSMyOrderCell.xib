@@ -32,6 +32,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiX-0z-Ke9">
+                                <rect key="frame" x="10" y="10" width="36" height="18"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="5XF-Ez-ckZ"/>
+                                    <constraint firstAttribute="width" constant="36" id="lfX-Vd-VeO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZm-k3-24J">
                                 <rect key="frame" x="120" y="10" width="256" height="35"/>
                                 <attributedString key="attributedText">
@@ -105,6 +121,8 @@
                             <constraint firstItem="Log-fZ-70t" firstAttribute="leading" secondItem="cmI-j6-MbK" secondAttribute="trailing" constant="10" id="Ml7-Rq-204"/>
                             <constraint firstItem="sll-S6-Sfm" firstAttribute="centerY" secondItem="Log-fZ-70t" secondAttribute="centerY" id="Srk-at-0Ro"/>
                             <constraint firstAttribute="bottom" secondItem="aUr-ni-4oG" secondAttribute="bottom" constant="10" id="V3x-g5-4g0"/>
+                            <constraint firstItem="JiX-0z-Ke9" firstAttribute="top" secondItem="cmI-j6-MbK" secondAttribute="top" id="b0c-oK-G2B"/>
+                            <constraint firstItem="JiX-0z-Ke9" firstAttribute="leading" secondItem="cmI-j6-MbK" secondAttribute="leading" id="eXP-Fr-gbU"/>
                             <constraint firstAttribute="bottom" secondItem="nba-cu-yqa" secondAttribute="bottom" id="fOq-jZ-303"/>
                             <constraint firstItem="aUr-ni-4oG" firstAttribute="top" secondItem="Log-fZ-70t" secondAttribute="bottom" constant="5" id="fUE-DZ-cn8"/>
                             <constraint firstAttribute="trailing" secondItem="nba-cu-yqa" secondAttribute="trailing" id="hxk-Lw-AYl"/>
@@ -207,6 +225,7 @@
             <connections>
                 <outlet property="bankPrice" destination="sll-S6-Sfm" id="zh7-dP-KJI"/>
                 <outlet property="coverImg" destination="cmI-j6-MbK" id="w5D-St-X9h"/>
+                <outlet property="flag" destination="JiX-0z-Ke9" id="YVh-Ub-Nee"/>
                 <outlet property="goodName" destination="HZm-k3-24J" id="p2j-Vy-acc"/>
                 <outlet property="goodsView" destination="UuT-xT-1jY" id="A2p-g7-i5H"/>
                 <outlet property="goods_num" destination="VO3-Sd-Iyy" id="kaq-1d-85g"/>

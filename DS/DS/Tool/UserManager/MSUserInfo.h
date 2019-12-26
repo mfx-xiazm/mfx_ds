@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString * token;
 @property (nonatomic, strong) NSString * avatar;
 @property (nonatomic, strong) NSString * nick_name;
+@property (nonatomic, strong) NSString * ulevel_name;
 @property (nonatomic, assign) NSInteger ulevel;
 
 @end

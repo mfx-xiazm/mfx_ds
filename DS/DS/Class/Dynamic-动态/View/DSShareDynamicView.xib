@@ -20,11 +20,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIv-ri-Yo1">
                             <rect key="frame" x="0.0" y="0.0" width="196" height="130"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="朋友圈" translatesAutoresizingMaskIntoConstraints="NO" id="Fch-GY-40d">
-                                    <rect key="frame" x="77.5" y="15" width="41" height="41"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="微信" translatesAutoresizingMaskIntoConstraints="NO" id="Fch-GY-40d">
+                                    <rect key="frame" x="78" y="15" width="40" height="40"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友圈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEa-oy-0E5">
-                                    <rect key="frame" x="79.5" y="66" width="37" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEa-oy-0E5">
+                                    <rect key="frame" x="85.5" y="65" width="25" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -51,11 +51,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7b-Jo-qhn">
                             <rect key="frame" x="196" y="0.0" width="196" height="130"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="微信" translatesAutoresizingMaskIntoConstraints="NO" id="ssZ-X2-Ztx">
-                                    <rect key="frame" x="78" y="15" width="40" height="40"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="朋友圈" translatesAutoresizingMaskIntoConstraints="NO" id="ssZ-X2-Ztx">
+                                    <rect key="frame" x="77.5" y="15" width="41" height="41"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-wi-rpr">
-                                    <rect key="frame" x="85.5" y="65" width="25" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朋友圈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gs-wi-rpr">
+                                    <rect key="frame" x="79.5" y="66" width="37" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

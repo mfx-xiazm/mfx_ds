@@ -129,9 +129,9 @@
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
         if (snapShotImage) {
             if (index == 1) {
-                [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine contentImg:snapShotImage];
-            }else{
                 [strongSelf shareToProgramObject:UMSocialPlatformType_WechatSession contentImg:snapShotImage];
+            }else{
+                [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine contentImg:snapShotImage];
             }
         }
     };
@@ -192,7 +192,7 @@
             }else{
                 DSUpOrderVC *ovc = [DSUpOrderVC new];
                 ovc.isCartPush = NO;
-                NSString *goods_data = [NSString stringWithFormat:@"[{\"goods_id\":\"%@\",\"sku_id\":\"%@\",\"num\":\"%@\",\"share_uid\":\"0\"}]",strongSelf.goods_id,strongSelf.goodsDetail.selectSku.sku_id,@(strongSelf.goodsDetail.buyNum)];
+                NSString *goods_data = [NSString stringWithFormat:@"[{\"goods_id\":\"%@\",\"sku_id\":\"%@\",\"num\":\"%@\",\"share_uid\":\"%@\"}]",strongSelf.goods_id,strongSelf.goodsDetail.selectSku.sku_id,@(strongSelf.goodsDetail.buyNum),(strongSelf.share_uid && strongSelf.share_uid.length)?strongSelf.share_uid:@"0"];
                 ovc.goods_data = goods_data;
                 [strongSelf.navigationController pushViewController:ovc animated:YES];
             }

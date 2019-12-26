@@ -21,5 +21,12 @@
 @end
 
 @implementation DSDynamicContent
-
+-(CGFloat)textHeight
+{
+    if ([_content_type isEqualToString:@"1"]) {
+        CGFloat textHeight = [_content textHeightSize:CGSizeMake(HX_SCREEN_WIDTH-10.f*2, CGFLOAT_MAX) font:[UIFont systemFontOfSize:14] lineSpacing:5.f];
+        return 5.f+textHeight+5.f;
+    }
+    return 0.f;
+}
 @end

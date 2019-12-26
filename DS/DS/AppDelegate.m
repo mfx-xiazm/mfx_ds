@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AppDelegate+MSAppService.h"
 #import "AppDelegate+MSPushService.h"
+#import "DSGoodsShortCode.h"
 
 @interface AppDelegate ()
 
@@ -30,15 +31,21 @@
     //初始化用户系统(根据自己的业务判断如何展示)
     [self initUserManager];
     
-    //    // 注册推送
-    //    [self initPushService:launchOptions];
-    //
-    //    // 通知点击检测
-    //    [self checkPushNotification:launchOptions];
+    // 注册推送
+    //[self initPushService:launchOptions];
     
+    // 通知点击检测
+    //[self checkPushNotification:launchOptions];
+    
+    // 检查有没有获取的袋鼠分享口令
+    [[DSGoodsShortCode sharedInstance] checkShortCodePush];
     return YES;
 }
-
+-(void)applicationWillEnterForeground:(UIApplication *)application
+{
+    // 检查有没有获取的袋鼠分享口令
+    [[DSGoodsShortCode sharedInstance] checkShortCodePush];
+}
 #pragma mark - UISceneSession lifecycle
 
 /*

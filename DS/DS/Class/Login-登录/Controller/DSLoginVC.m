@@ -70,7 +70,6 @@
         hx_strongify(weakSelf);
         [strongSelf loginClicked:button];
     }];
-    
 }
 // 改变某些文字大小和颜色
 -(NSMutableAttributedString *)setColorAttributedText:(NSString *)allStr andChangeStr:(NSString *)changeStr andColor:(UIColor *)color

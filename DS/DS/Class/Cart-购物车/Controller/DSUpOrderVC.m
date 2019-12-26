@@ -315,6 +315,7 @@ static NSString *const UpOrderCell = @"UpOrderCell";
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DSConfirmGoods *goods = self.confirmOrder.list[indexPath.row];
+    cell.flag.hidden = [goods.is_discount isEqualToString:@"1"]?NO:YES;
     cell.goods = goods;
     return cell;
 }

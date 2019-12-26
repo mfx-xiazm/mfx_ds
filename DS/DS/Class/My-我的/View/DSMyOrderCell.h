@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class DSConfirmGoods,DSMyOrderGoods,DSMyOrderDetailGoods;
 @interface DSMyOrderCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *flag;
 /* 商品 */
 @property(nonatomic,strong) DSConfirmGoods *goods;
 /* 商品 */

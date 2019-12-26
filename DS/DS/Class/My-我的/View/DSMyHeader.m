@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *head_pic;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UIImageView *sex;
-@property (weak, nonatomic) IBOutlet UIImageView *vip;
+@property (weak, nonatomic) IBOutlet UILabel *vip;
 @property (weak, nonatomic) IBOutlet UILabel *shareCode;
 @property (weak, nonatomic) IBOutlet UILabel *phone;
 
@@ -46,7 +46,12 @@
         self.sex.hidden = NO;
         self.sex.image = [[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"1"]?HXGetImage(@"男"):HXGetImage(@"女");
     }
-    self.vip.hidden = ([MSUserManager sharedInstance].curUserInfo.ulevel != 1)?NO:YES;
+    if ([MSUserManager sharedInstance].curUserInfo.ulevel != 1) {
+        self.vip.hidden = NO;
+        self.vip.text = [NSString stringWithFormat:@" %@ ",[MSUserManager sharedInstance].curUserInfo.ulevel_name];
+    }else{
+        self.vip.hidden = YES;
+    }
     self.shareCode.text = [NSString stringWithFormat:@"邀请码：%@",[MSUserManager sharedInstance].curUserInfo.share_code];
     self.phone.text = [MSUserManager sharedInstance].curUserInfo.phone;
 }

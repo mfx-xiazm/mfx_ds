@@ -47,6 +47,9 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
             hx_strongify(weakSelf);
             if (index == 0) {
                 DSUpCashVC *cvc = [DSUpCashVC new];
+                cvc.upCashActionCall = ^{
+                    [strongSelf getMyBalanceRequest];
+                };
                 [strongSelf.navigationController pushViewController:cvc animated:YES];
             }else{
                 DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
@@ -94,11 +97,11 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             strongSelf.notes = [NSArray yy_modelArrayWithClass:[DSBalanceNote class] json:responseObject[@"result"][@"log_list"]];
             dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf.header.balance.text = NSStringFormat(@"%@",responseObject[@"result"][@"balance"]);
-                strongSelf.header.upgrade_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"upgrade_reward"]);
-                strongSelf.header.gift_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"gift_reward"]);
-                strongSelf.header.goods_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"goods_reward"]);
-                strongSelf.header.share_reward.text = NSStringFormat(@"%@",responseObject[@"result"][@"share_reward"]);
+                strongSelf.header.balance.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"balance"] floatValue]);
+                strongSelf.header.upgrade_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"upgrade_reward"] floatValue]);
+                strongSelf.header.gift_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"gift_reward"] floatValue]);
+                strongSelf.header.goods_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"goods_reward"] floatValue]);
+                strongSelf.header.share_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"share_reward"] floatValue]);
                 [strongSelf.tableView reloadData];
             });
         }else{

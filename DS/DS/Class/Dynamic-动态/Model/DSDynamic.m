@@ -25,7 +25,7 @@
         for (NSDictionary *dict in _list_content) {
             [temp addObject:dict[@"content"]];
         }
-        _photos = [NSArray arrayWithArray:temp];
+        _photos = [NSArray arrayWithArray:temp.count>9?[temp subarrayWithRange:NSMakeRange(0, 9)]:temp];
     }else{
         _photos = @[];
     }

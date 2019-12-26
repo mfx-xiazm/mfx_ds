@@ -162,6 +162,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     DSMyOrder *order = self.orders[indexPath.section];
     cell.order_type = order.order_type;
     DSMyOrderGoods *goods = order.list_goods[indexPath.row];
+    cell.flag.hidden = [goods.is_discount isEqualToString:@"1"]?NO:YES;
     cell.orderGoods = goods;
     return cell;
 }

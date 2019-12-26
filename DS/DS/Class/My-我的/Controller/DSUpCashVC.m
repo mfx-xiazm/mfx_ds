@@ -93,7 +93,10 @@
         hx_strongify(weakSelf);
         [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"提交成功，请等待审核"]];
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"提交成功，请等待审核"];
+            if (strongSelf.upCashActionCall) {
+                strongSelf.upCashActionCall();
+            }
             [strongSelf.navigationController popViewControllerAnimated:YES];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
@@ -147,7 +150,7 @@ replacementString:(NSString *)string
             strongSelf.free_amount = [responseObject[@"result"][@"free_amount"] floatValue];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf.ableLabel.text = [NSString stringWithFormat:@"可提现金额：%.2f元，起提金额：%.2f元，提现服务费率：%.2f%%，免除手续费的提现金额：%.2f元",strongSelf.balance,strongSelf.base_amount,strongSelf.fee_percent,strongSelf.free_amount];
+                strongSelf.ableLabel.text = [NSString stringWithFormat:@"可提现金额：%.2f元，起提金额：%.2f元，提现服务费率：%.2f‰，免除手续费的提现金额：%.2f元",strongSelf.balance,strongSelf.base_amount,strongSelf.fee_percent,strongSelf.free_amount];
             });
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];

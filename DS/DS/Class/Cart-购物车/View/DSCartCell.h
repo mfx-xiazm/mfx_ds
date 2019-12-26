@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class DSCartData;
 typedef void(^cartHandleCall)(NSInteger index);
 @interface DSCartCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *flag;
 /* 商品 */
 @property(nonatomic,strong) DSCartData *cart;
 /* 点击 */

@@ -25,6 +25,7 @@ static NSString *const VipCardCell = @"VipCardCell";
     [super viewDidLoad];
     [self.navigationItem setTitle:@"黑卡权益"];
     [self setUpCollectionView];
+    [self setUpRefresh];
     [self setUpEmptyView];
     [self startShimmer];
     [self getCardListDataRequest];
@@ -54,6 +55,17 @@ static NSString *const VipCardCell = @"VipCardCell";
     emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
     emptyView.autoShowEmptyView = NO;
     self.collectionView.ly_emptyView = emptyView;
+}
+/** 添加刷新控件 */
+-(void)setUpRefresh
+{
+    hx_weakify(self);
+    self.collectionView.mj_header.automaticallyChangeAlpha = YES;
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf.collectionView.mj_footer resetNoMoreData];
+        [strongSelf getCardListDataRequest];
+    }];
 }
 #pragma mark -- 数据请求
 -(void)getCardListDataRequest

@@ -141,6 +141,22 @@
                                 <color key="textColor" red="1" green="0.73725490199999999" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BH-uQ-wPU">
+                                <rect key="frame" x="35" y="10" width="36" height="18"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="5fr-uM-0I3"/>
+                                    <constraint firstAttribute="width" constant="36" id="emm-Ar-LhX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -149,6 +165,7 @@
                             <constraint firstItem="Ifz-nM-3GE" firstAttribute="leading" secondItem="2uX-Yh-xlY" secondAttribute="trailing" constant="10" id="CZ0-Bg-Lh9"/>
                             <constraint firstAttribute="trailing" secondItem="Qgr-3e-bk4" secondAttribute="trailing" id="EHp-ee-W3f"/>
                             <constraint firstItem="0fB-Dv-jLq" firstAttribute="top" secondItem="5SY-IN-kZx" secondAttribute="top" id="FkP-Rd-cx8"/>
+                            <constraint firstItem="1BH-uQ-wPU" firstAttribute="leading" secondItem="2uX-Yh-xlY" secondAttribute="leading" id="I4S-zo-Rli"/>
                             <constraint firstAttribute="trailing" secondItem="bF5-jI-FdO" secondAttribute="trailing" constant="10" id="J8r-dh-j5m"/>
                             <constraint firstAttribute="bottom" secondItem="bF5-jI-FdO" secondAttribute="bottom" constant="5" id="KTo-Gb-k9T"/>
                             <constraint firstItem="Qgr-3e-bk4" firstAttribute="top" secondItem="0fB-Dv-jLq" secondAttribute="bottom" id="Mey-Ug-8pX"/>
@@ -163,6 +180,7 @@
                             <constraint firstAttribute="bottom" secondItem="Qgr-3e-bk4" secondAttribute="bottom" id="naQ-cy-q4s"/>
                             <constraint firstAttribute="bottom" secondItem="8dk-IL-NKh" secondAttribute="bottom" constant="10" id="pQf-Rd-c1G"/>
                             <constraint firstItem="8dk-IL-NKh" firstAttribute="top" secondItem="Q4d-Mz-5E6" secondAttribute="bottom" constant="5" id="rLK-TB-SMD"/>
+                            <constraint firstItem="1BH-uQ-wPU" firstAttribute="top" secondItem="2uX-Yh-xlY" secondAttribute="top" id="sRp-qV-szy"/>
                             <constraint firstItem="2uX-Yh-xlY" firstAttribute="top" secondItem="5SY-IN-kZx" secondAttribute="top" constant="10" id="tep-pl-o5a"/>
                             <constraint firstItem="Q4d-Mz-5E6" firstAttribute="top" secondItem="5TC-0J-jWv" secondAttribute="bottom" constant="5" id="vVP-ls-FMC"/>
                             <constraint firstItem="8dk-IL-NKh" firstAttribute="leading" secondItem="2uX-Yh-xlY" secondAttribute="trailing" constant="10" id="vmv-44-qiK"/>
@@ -183,6 +201,7 @@
                 <outlet property="cart_num" destination="ZRw-oH-ebw" id="8VE-e0-oJ9"/>
                 <outlet property="checkBtn" destination="0fB-Dv-jLq" id="GwO-Zq-SeJ"/>
                 <outlet property="cover_img" destination="2uX-Yh-xlY" id="mQh-Di-fHb"/>
+                <outlet property="flag" destination="1BH-uQ-wPU" id="Jln-C2-111"/>
                 <outlet property="goods_name" destination="Ifz-nM-3GE" id="uQa-Up-Cq3"/>
                 <outlet property="market_price" destination="Q4d-Mz-5E6" id="PPi-7E-RNi"/>
                 <outlet property="price" destination="5TC-0J-jWv" id="S49-G8-kLS"/>

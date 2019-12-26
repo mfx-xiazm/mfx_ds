@@ -28,7 +28,7 @@
             self.order_state.text = @"申请中";
         }else if ([_order.refund_status isEqualToString:@"2"]) {
             self.order_state.text = @"退款中";
-        }else if ([_order.refund_status isEqualToString:@"2"]) {
+        }else if ([_order.refund_status isEqualToString:@"3"]) {
             self.order_state.text = @"退款完成";
         }else{
             self.order_state.text = @"退款失败";

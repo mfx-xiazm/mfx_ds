@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DSDynamicDetail : NSObject
 @property(nonatomic,strong) DSDynamicInfo *treads;
 @property(nonatomic,strong) NSArray<DSDynamicContent *> *list_content;
-
+/* 处理过的图片数组 */
+@property(nonatomic,strong) NSArray *imageUrls;
 @end
 
 @interface DSDynamicInfo : NSObject
@@ -32,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DSDynamicContent : NSObject
 @property(nonatomic,copy) NSString *content_type;
 @property(nonatomic,copy) NSString *content;
-
+@property(nonatomic,assign) NSInteger content_index;
+/* 文字高度 */
+@property(nonatomic,assign) CGFloat textHeight;
 @end
 NS_ASSUME_NONNULL_END

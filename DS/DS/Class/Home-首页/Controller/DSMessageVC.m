@@ -180,6 +180,8 @@ static NSString *const MessageCell = @"MessageCell";
         dvc.treads_id = msg.ref_id;
         [self.navigationController pushViewController:dvc animated:YES];
     }
+    msg.is_read = @"1";
+    [tableView reloadData];
 }
 
 @end

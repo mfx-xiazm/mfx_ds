@@ -212,6 +212,7 @@
         hx_strongify(weakSelf);
         if (type == 1) {
             layout.dynamic.is_praise = !layout.dynamic.is_praise;
+            layout.dynamic.praise_num = layout.dynamic.is_praise?[NSString stringWithFormat:@"%zd",[layout.dynamic.praise_num integerValue]+1]:[NSString stringWithFormat:@"%zd",[layout.dynamic.praise_num integerValue]-1];
         }else{
             [strongSelf.layoutsArr removeObject:layout];
         }
@@ -229,6 +230,7 @@
     [self setDynamicPraiseRequest:dynamic.treads_id isPraise:dynamic.is_praise?@"0":@"1" completedCall:^{
         hx_strongify(weakSelf);
         dynamic.is_praise = !dynamic.is_praise;
+        dynamic.praise_num = dynamic.is_praise?[NSString stringWithFormat:@"%zd",[dynamic.praise_num integerValue]+1]:[NSString stringWithFormat:@"%zd",[dynamic.praise_num integerValue]-1];
         [strongSelf.tableView reloadData];
     }];
 }
@@ -251,9 +253,9 @@
         hx_strongify(weakSelf);
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
         if (index == 1) {
-            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine desc:dynamic.dsp thumImage:thumImage webpageUrl:dynamic.share_url];
-        }else{
             [strongSelf shareToProgramObject:UMSocialPlatformType_WechatSession desc:dynamic.dsp thumImage:thumImage webpageUrl:dynamic.share_url];
+        }else{
+            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine desc:dynamic.dsp thumImage:thumImage webpageUrl:dynamic.share_url];
         }
     };
     self.zh_popupController = [[zhPopupController alloc] init];

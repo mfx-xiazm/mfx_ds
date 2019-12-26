@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^upCashActionCall)(void);
 @interface DSUpCashVC : HXBaseViewController
-
+/* 点击 */
+@property(nonatomic,copy) upCashActionCall upCashActionCall;
 @end
 
 NS_ASSUME_NONNULL_END

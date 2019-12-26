@@ -15,6 +15,7 @@
 #import <zhPopupController.h>
 #import "DSShareDynamicView.h"
 #import <UMShare/UMShare.h>
+#import <ZLPhotoActionSheet.h>
 
 static NSString *const DynamicDetailCell = @"DynamicDetailCell";
 @interface DSDynamicDetailVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
@@ -103,9 +104,9 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
                 shareView.shareTypeActionCall = ^(NSInteger index) {
                     [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
                     if (index == 1) {
-                        [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine desc:strongSelf.detail.treads.treads_title thumImage:HXGetImage(@"Icon-share") webpageUrl:strongSelf.detail.treads.share_url];
-                    }else{
                         [strongSelf shareToProgramObject:UMSocialPlatformType_WechatSession desc:strongSelf.detail.treads.treads_title thumImage:HXGetImage(@"Icon-share") webpageUrl:strongSelf.detail.treads.share_url];
+                    }else{
+                        [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine desc:strongSelf.detail.treads.treads_title thumImage:HXGetImage(@"Icon-share") webpageUrl:strongSelf.detail.treads.share_url];
                     }
                 };
                 strongSelf.zh_popupController = [[zhPopupController alloc] init];
@@ -130,8 +131,8 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
         // 不要自动调整inset
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 120;
+//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
@@ -186,6 +187,17 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
         [strongSelf stopShimmer];
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.detail = [DSDynamicDetail yy_modelWithDictionary:responseObject[@"result"]];
+            NSMutableArray *temp = [NSMutableArray array];
+            NSInteger imgIndex = 0;
+            for (int i=0; i<strongSelf.detail.list_content.count; i++) {
+                DSDynamicContent *content = strongSelf.detail.list_content[i];
+                if ([content.content_type isEqualToString:@"2"]) {
+                    content.content_index = imgIndex;
+                    [temp addObject:content.content];
+                    imgIndex ++;
+                }
+            }
+            strongSelf.detail.imageUrls = [NSArray arrayWithArray:temp];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [strongSelf handleDynamicDetailData];
             });
@@ -263,13 +275,30 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
     if ([content.content_type isEqualToString:@"2"]) {
         return 180.f;
     }else{
-        return UITableViewAutomaticDimension;
+        return content.textHeight;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    DSDynamicContent *content = self.detail.list_content[indexPath.row];
+    if ([content.content_type isEqualToString:@"2"]) {
+        NSMutableArray *items = [NSMutableArray array];
+        for (int i = 0; i < self.detail.imageUrls.count; i++) {
+            NSMutableDictionary *temp = [NSMutableDictionary dictionary];
+            temp[ZLPreviewPhotoObj] = [self.detail.imageUrls[i] hasPrefix:@"http"]?[NSURL URLWithString:self.detail.imageUrls[i]]:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HXRC_URL_HEADER,self.detail.imageUrls[i]]];
+            temp[ZLPreviewPhotoTyp] = @(ZLPreviewPhotoTypeURLImage);
+            [items addObject:temp];
+        }
+
+        ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
+        actionSheet.configuration.navBarColor = [UIColor clearColor];
+        actionSheet.configuration.statusBarStyle = UIStatusBarStyleLightContent;
+        actionSheet.sender = self;
+        [actionSheet previewPhotos:items index:content.content_index hideToolBar:YES complete:^(NSArray * _Nonnull photos) {
+            
+        }];
+    }
 }
 
 @end

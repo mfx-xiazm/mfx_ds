@@ -25,7 +25,8 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 @property(nonatomic,copy) NSString *begin_date;
 /* 结束日期 */
 @property(nonatomic,copy) NSString *end_date;
-
+/* 关键ci */
+@property(nonatomic,copy) NSString *keyword;
 @end
 
 @implementation DSBalanceNoteVC
@@ -75,7 +76,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     searchBar.layer.cornerRadius = 6;
     searchBar.layer.masksToBounds = YES;
     searchBar.delegate = self;
-    searchBar.placeholder = @"请输入商品名称查询";
+    searchBar.placeholder = @"请输入关键词查询";
     self.navigationItem.titleView = searchBar;
     
     SPButton *msg = [SPButton buttonWithType:UIButtonTypeCustom];
@@ -140,6 +141,12 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         [strongSelf getNoteListDataRequest:NO];
     }];
 }
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    self.keyword = [textField hasText]?textField.text:@"";
+    [self getNoteListDataRequest:YES];
+    return YES;
+}
 #pragma mark -- 接口请求
 /** 列表请求 */
 -(void)getNoteListDataRequest:(BOOL)isRefresh
@@ -152,6 +159,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     if (self.end_date && self.end_date.length) {
         parameters[@"end_date"] = self.end_date;//结束日期
     }
+    parameters[@"keywords"] = (self.keyword&&self.keyword.length)?self.keyword:@"";
     if (isRefresh) {
         parameters[@"page"] = @(1);//第几页
     }else{
