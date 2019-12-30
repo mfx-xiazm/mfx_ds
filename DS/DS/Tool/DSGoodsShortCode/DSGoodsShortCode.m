@@ -74,7 +74,7 @@ static DSGoodsShortCode *_instance = nil;
         zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
             [weakNav.zh_popupController dismiss];
         }];
-        zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"查看" handler:^(zhAlertButton * _Nonnull button) {
+        zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"查看商品" handler:^(zhAlertButton * _Nonnull button) {
             [nav.zh_popupController dismiss];
             DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
             dvc.goods_id = goods_id;

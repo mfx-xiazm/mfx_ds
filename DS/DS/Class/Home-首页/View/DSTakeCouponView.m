@@ -56,8 +56,8 @@ static NSString *const TakeCouponCell = @"TakeCouponCell";
     DSTakeCouponCell *cell = [tableView dequeueReusableCellWithIdentifier:TakeCouponCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.discount.text = [NSString stringWithFormat:@"%@折",self.discount];
-    cell.discoutName.text = [NSString stringWithFormat:@"%@折券",self.discount];
+    cell.discount.text = [NSString stringWithFormat:@"%.1f折",[self.discount floatValue]];
+    cell.discoutName.text = [NSString stringWithFormat:@"%.1f折券",[self.discount floatValue]];
     cell.validDay.text = [NSString stringWithFormat:@"有效期：%@天",self.valid_days];
     hx_weakify(self);
     cell.getCouponCall = ^{

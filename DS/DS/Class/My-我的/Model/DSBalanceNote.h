@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *create_time;
 @property (nonatomic, copy) NSString *finance_log_id;
 @property (nonatomic, copy) NSString *pay_amount;
+/* 内容高度 */
+@property(nonatomic,assign) CGFloat textHeight;
 @end
 
 NS_ASSUME_NONNULL_END

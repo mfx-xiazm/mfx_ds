@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *refund_status;
 /** 1常规商品 100vip商品 */
 @property(nonatomic,copy) NSString *order_type;
+@property(nonatomic,copy) NSString *logistics_url;
 @property(nonatomic,strong) NSArray<DSMyOrderGoods *> *list_goods;
 
 @end
@@ -35,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *order_goods_id;
 @property(nonatomic,copy) NSString *cover_img;
 @property(nonatomic,copy) NSString *is_discount;
+@property(nonatomic,copy) NSString *cmm_price;
 
 @end
 

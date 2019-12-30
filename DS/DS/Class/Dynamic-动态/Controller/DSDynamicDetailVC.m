@@ -89,7 +89,9 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
                 }
                 [strongSelf setDynamicPraiseRequest:strongSelf.detail.treads.treads_id isPraise:strongSelf.detail.treads.is_praise?@"0":@"1" completedCall:^{
                     weakSelf.detail.treads.is_praise = !weakSelf.detail.treads.is_praise;
+                    weakSelf.detail.treads.praise_num = weakSelf.detail.treads.is_praise?[NSString stringWithFormat:@"%zd",[weakSelf.detail.treads.praise_num integerValue]+1]:[NSString stringWithFormat:@"%zd",[weakSelf.detail.treads.praise_num integerValue]-1];
                     btn.selected = weakSelf.detail.treads.is_praise;
+                    [btn setTitle:weakSelf.detail.treads.praise_num forState:UIControlStateNormal];
                     if (weakSelf.dynamicDetailCall) {
                         weakSelf.dynamicDetailCall(1);
                     }
@@ -154,7 +156,7 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
 {
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"鲸品库-好物分享" descr:desc thumImage:thumImage];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"鲸品库-动态分享" descr:desc thumImage:thumImage];
     shareObject.webpageUrl = webpageUrl;
     messageObject.shareObject = shareObject;
     //调用分享接口
@@ -179,6 +181,9 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
 -(void)getDynamicDetialRequest
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (self.msg_id) {
+        parameters[@"msg_id"] = self.msg_id;
+    }
     parameters[@"treads_id"] = self.treads_id;
     
     hx_weakify(self);

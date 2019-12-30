@@ -744,6 +744,7 @@ typedef void(^doneBlock)(NSString *,NSString *);
         self.endDateTime.textColor = UIColorFromRGB(0x1A1A1A);
         self.endDateLine.backgroundColor = UIColorFromRGB(0x1A1A1A);
         
+        self.minLimitDate = nil;
         if ([self.endDateTime hasText]) {
             self.maxLimitDate = [NSDate date:self.endDateTime.text WithFormat:_dateFormatter];
         }else{

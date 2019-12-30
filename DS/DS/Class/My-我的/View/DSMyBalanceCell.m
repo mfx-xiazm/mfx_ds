@@ -40,7 +40,11 @@
         
         self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_note.order_no];
         self.create_time.text = _note.create_time;
-        self.order_title.text = _note.order_title;
+        if (_note.finance_log_desc && _note.finance_log_desc.length) {
+            [self.order_title setTextWithLineSpace:3.f withString:[NSString stringWithFormat:@"%@-%@",_note.finance_log_desc,_note.order_title] withFont:[UIFont systemFontOfSize:13]];
+        }else{
+            [self.order_title setTextWithLineSpace:3.f withString:_note.order_title withFont:[UIFont systemFontOfSize:13]];
+        }
         self.pay_amount.text = [NSString stringWithFormat:@"￥%.2f",[_note.pay_amount floatValue]];
         self.amount.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
         self.receiver.text = [NSString stringWithFormat:@"购买人：%@",_note.receiver];

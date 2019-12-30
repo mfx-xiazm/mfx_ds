@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,copy) NSString *logistics_no;
 @property(nonatomic,copy) NSString *logistics_com_name;
+@property(nonatomic,copy) NSString *logistics_url;
 
 @property(nonatomic,copy) NSString *reject_reason;
 @property(nonatomic,copy) NSString *refund_time;
@@ -55,6 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *order_goods_id;
 @property(nonatomic,copy) NSString *cover_img;
 @property(nonatomic,copy) NSString *is_discount;
+@property(nonatomic,copy) NSString *cmm_price;
 
 @end
 

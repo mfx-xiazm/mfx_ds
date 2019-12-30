@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^dynamicDetailCall)(NSUInteger type);
 @interface DSDynamicDetailVC : HXBaseViewController
+/* 消息id */
+@property(nonatomic,copy) NSString *msg_id;
 /* 动态id */
 @property(nonatomic,copy) NSString *treads_id;
 /* 1点赞 2删除 */

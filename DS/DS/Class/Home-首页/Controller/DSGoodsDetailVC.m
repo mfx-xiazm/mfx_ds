@@ -266,9 +266,9 @@
     self.provider.text = [NSString stringWithFormat:@"  供应商：%@  ",self.goodsDetail.provider];
     self.stockNum.text = self.goodsDetail.stock;
     if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
-        self.coupon.text = [NSString stringWithFormat:@"已领取%@折券",self.goodsDetail.discount];
+        self.coupon.text = [NSString stringWithFormat:@"已领取%.1f折券",[self.goodsDetail.discount floatValue]];
     }else{
-        self.coupon.text = [NSString stringWithFormat:@"可领取%@折券",self.goodsDetail.discount];
+        self.coupon.text = [NSString stringWithFormat:@"可领取%.1f折券",[self.goodsDetail.discount floatValue]];
     }
     
     if (HX_SCREEN_WIDTH > 375.f) {

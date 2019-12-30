@@ -59,9 +59,9 @@
         
         [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_orderGoods.cover_img]];
         self.goodName.text = _orderGoods.goods_name;
-        self.price.text = [NSString stringWithFormat:@"折扣价￥%.2f",[_orderGoods.discount_amount floatValue]];
+        self.price.text = [NSString stringWithFormat:@"折扣价￥%.2f",[_orderGoods.discount_price floatValue]];
         self.marketPrice.text = [NSString stringWithFormat:@"原价￥%.2f",[_orderGoods.price floatValue]];
-        self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_orderGoods.self_commission floatValue]];
+        self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_orderGoods.cmm_price floatValue]];
         self.specs_attrs.text = [NSString stringWithFormat:@"规格：%@",_orderGoods.specs_attrs];
         self.goods_num.text = [NSString stringWithFormat:@"数量：%@",_orderGoods.goods_num];
     }else{
@@ -70,7 +70,7 @@
         
         [self.vipCoverImg sd_setImageWithURL:[NSURL URLWithString:_orderGoods.cover_img]];
         self.vipGoodName.text = _orderGoods.goods_name;
-        self.vipPrice.text = [NSString stringWithFormat:@"￥%.2f",[_orderGoods.discount_amount floatValue]];
+        self.vipPrice.text = [NSString stringWithFormat:@"￥%.2f",[_orderGoods.price floatValue]];
         self.vip_goods_num.text = [NSString stringWithFormat:@"数量：%@",_orderGoods.goods_num];
     }
 }
@@ -83,9 +83,9 @@
         
         [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_detailGoods.cover_img]];
         self.goodName.text = _detailGoods.goods_name;
-        self.price.text = [NSString stringWithFormat:@"折扣价￥%.2f",[_detailGoods.discount_amount floatValue]];
+        self.price.text = [NSString stringWithFormat:@"折扣价￥%.2f",[_detailGoods.discount_price floatValue]];
         self.marketPrice.text = [NSString stringWithFormat:@"原价￥%.2f",[_detailGoods.price floatValue]];
-        self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_detailGoods.self_commission floatValue]];
+        self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_detailGoods.cmm_price floatValue]];
         self.specs_attrs.text = [NSString stringWithFormat:@"规格：%@",_detailGoods.specs_attrs];
         self.goods_num.text = [NSString stringWithFormat:@"数量：%@",_detailGoods.goods_num];
     }else{
@@ -94,7 +94,7 @@
         
         [self.vipCoverImg sd_setImageWithURL:[NSURL URLWithString:_detailGoods.cover_img]];
         self.vipGoodName.text = _detailGoods.goods_name;
-        self.vipPrice.text = [NSString stringWithFormat:@"￥%.2f",[_detailGoods.discount_amount floatValue]];
+        self.vipPrice.text = [NSString stringWithFormat:@"￥%.2f",[_detailGoods.price floatValue]];
         self.vip_goods_num.text = [NSString stringWithFormat:@"数量：%@",_detailGoods.goods_num];
     }
 }

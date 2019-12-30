@@ -74,6 +74,7 @@ static NSString *const VipCardCell = @"VipCardCell";
     [HXNetworkTool POST:HXRC_M_URL action:@"card_type_list_get" parameters:@{} success:^(id responseObject) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [strongSelf.collectionView.mj_header endRefreshing];
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.cards = [NSArray yy_modelArrayWithClass:[DSVipCard class] json:responseObject[@"result"][@"list"]];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -90,6 +91,7 @@ static NSString *const VipCardCell = @"VipCardCell";
     } failure:^(NSError *error) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [strongSelf.collectionView.mj_header endRefreshing];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }

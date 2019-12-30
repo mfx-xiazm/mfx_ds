@@ -293,12 +293,6 @@
     DSDynamicLayout *layout = Cell.dynamicLayout;
     DSDynamic *dynamic = layout.dynamic;
     
-    id thumImage = nil;
-    if (dynamic.photos && dynamic.photos.count) {
-        thumImage = dynamic.photos.firstObject;
-    }else{
-        thumImage = HXGetImage(@"Icon-share");
-    }
     DSShareDynamicView *shareView = [DSShareDynamicView loadXibView];
     shareView.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 135.f);
     hx_weakify(self);
@@ -306,9 +300,9 @@
         hx_strongify(weakSelf);
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
         if (index == 1) {
-            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatSession desc:dynamic.dsp thumImage:thumImage webpageUrl:dynamic.share_url];
+            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatSession desc:dynamic.dsp thumImage:HXGetImage(@"Icon-share") webpageUrl:dynamic.share_url];
         }else{
-            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine desc:dynamic.dsp thumImage:thumImage webpageUrl:dynamic.share_url];
+            [strongSelf shareToProgramObject:UMSocialPlatformType_WechatTimeLine desc:dynamic.dsp thumImage:HXGetImage(@"Icon-share") webpageUrl:dynamic.share_url];
         }
     };
     self.zh_popupController = [[zhPopupController alloc] init];
@@ -348,7 +342,7 @@
 {
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"鲸品库-好物分享" descr:desc thumImage:thumImage];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"鲸品库-动态分享" descr:desc thumImage:thumImage];
     shareObject.webpageUrl = webpageUrl;
     messageObject.shareObject = shareObject;
     //调用分享接口

@@ -11,6 +11,7 @@
 #import "DSMyOrderHeader.h"
 #import "DSMyOrderFooter.h"
 #import "DSOrderDetailVC.h"
+#import "DSWebContentVC.h"
 #import "DSMyOrder.h"
 #import "zhAlertView.h"
 #import <zhPopupController.h>
@@ -463,8 +464,11 @@ static NSString *const MyOrderCell = @"MyOrderCell";
                 [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
             }else if ([order.status isEqualToString:@"待收货"]) {
                 //HXLog(@"查看物流");
-                DSExpressDetailVC *evc = [DSExpressDetailVC new];
-                [strongSelf.navigationController pushViewController:evc animated:YES];
+                DSWebContentVC *wvc = [DSWebContentVC new];
+                wvc.navTitle = @"物流详情";
+                wvc.isNeedRequest = NO;
+                wvc.url = order.logistics_url;
+                [strongSelf.navigationController pushViewController:wvc animated:YES];
             }
         }else{
             if ([order.status isEqualToString:@"待付款"]) {

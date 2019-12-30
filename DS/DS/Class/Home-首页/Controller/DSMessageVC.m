@@ -177,6 +177,7 @@ static NSString *const MessageCell = @"MessageCell";
         [self.navigationController pushViewController:wvc animated:YES];
     }else{
         DSDynamicDetailVC *dvc = [DSDynamicDetailVC new];
+        dvc.msg_id = msg.msg_id;
         dvc.treads_id = msg.ref_id;
         [self.navigationController pushViewController:dvc animated:YES];
     }

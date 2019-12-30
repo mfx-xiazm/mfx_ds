@@ -92,11 +92,11 @@
 }
 -(void)backActionClicked
 {
-    if ([self.webView canGoBack]) {
-        [self.webView goBack];
-    }else{
+//    if ([self.webView canGoBack]) {
+//        [self.webView goBack];
+//    }else{
         [self.navigationController popViewControllerAnimated:YES];
-    }
+//    }
 }
 -(void)loadWebDataRequest
 {

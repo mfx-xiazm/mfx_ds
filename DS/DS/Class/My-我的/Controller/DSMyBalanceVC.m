@@ -145,7 +145,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 {
     DSBalanceNote *note = self.notes[indexPath.row];
     if ([note.finance_log_type isEqualToString:@"2"] || [note.finance_log_type isEqualToString:@"3"] || [note.finance_log_type isEqualToString:@"4"] || [note.finance_log_type isEqualToString:@"5"]) {
-        return 125.f;
+        return note.textHeight + 110.f;
     }else{
         return 90.f;
     }

@@ -14,6 +14,7 @@
 #import "DSExpressDetailVC.h"
 #import "DSApplyRefundVC.h"
 #import "DSMyOrderDetail.h"
+#import "DSWebContentVC.h"
 #import "zhAlertView.h"
 #import <zhPopupController.h>
 #import "DSPayTypeView.h"
@@ -224,8 +225,11 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     self.header.lookLogisCall = ^{
         hx_strongify(weakSelf);
         //HXLog(@"查看物流");
-        DSExpressDetailVC *dvc = [DSExpressDetailVC new];
-        [strongSelf.navigationController pushViewController:dvc animated:YES];
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"物流详情";
+        wvc.isNeedRequest = NO;
+        wvc.url = strongSelf.orderDetail.logistics_url;
+        [strongSelf.navigationController pushViewController:wvc animated:YES];
     };
 
     [self.tableView reloadData];
@@ -424,8 +428,11 @@ static NSString *const MyOrderCell = @"MyOrderCell";
                 [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
             }else if ([self.orderDetail.status isEqualToString:@"待收货"]) {
                 //HXLog(@"查看物流");
-                DSExpressDetailVC *evc = [DSExpressDetailVC new];
-                [self.navigationController pushViewController:evc animated:YES];
+                DSWebContentVC *wvc = [DSWebContentVC new];
+                wvc.navTitle = @"物流详情";
+                wvc.isNeedRequest = NO;
+                wvc.url = self.orderDetail.logistics_url;
+                [self.navigationController pushViewController:wvc animated:YES];
             }
         }else{
             if ([self.orderDetail.status isEqualToString:@"待付款"]) {

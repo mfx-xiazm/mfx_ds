@@ -274,7 +274,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {//分类
-        CGFloat width = (HX_SCREEN_WIDTH-25.0*2.0-30*3.0)/4.0;
+        CGFloat width = (HX_SCREEN_WIDTH-25.0*2.0-25*3.0)/4.0;
         CGFloat height = width+30.f;
         return CGSizeMake(width, height);
     }else{//推荐商品分组
@@ -285,7 +285,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
     if (section == 0) {//分类
-        return 30.f;
+        return 25.f;
     }else{//推荐商品分组
         return 0.f;
     }
