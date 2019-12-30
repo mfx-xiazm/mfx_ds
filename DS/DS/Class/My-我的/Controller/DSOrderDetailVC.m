@@ -396,16 +396,21 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     if (!self.isAfterSale) {// 正常订单
         if (sender.tag == 1) {
             //HXLog(@"申请退款");
-            DSApplyRefundVC *rvc = [DSApplyRefundVC new];
-            rvc.oid = self.oid;
-            rvc.applyRefundActionCall = ^{
-                hx_strongify(weakSelf);
-                if (strongSelf.orderHandleCall) {
-                    strongSelf.orderHandleCall(2);
-                }
-                [strongSelf getOrderInfoRequest];
-            };
-            [self.navigationController pushViewController:rvc animated:YES];
+            if ([self.orderDetail.refund_status isEqualToString:@"0"]||[self.orderDetail.refund_status isEqualToString:@"4"]) {
+                DSApplyRefundVC *rvc = [DSApplyRefundVC new];
+                rvc.oid = self.oid;
+                rvc.applyRefundActionCall = ^{
+                    hx_strongify(weakSelf);
+                    if (strongSelf.orderHandleCall) {
+                        strongSelf.orderHandleCall(2);
+                    }
+                    strongSelf.isAfterSale = YES;
+                    [strongSelf getOrderInfoRequest];
+                };
+                [self.navigationController pushViewController:rvc animated:YES];
+            }else{
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"该订单正在申请退款"];
+            }
         }else if (sender.tag == 2) {
             if ([self.orderDetail.status isEqualToString:@"待付款"]) {
                 //HXLog(@"取消订单");
@@ -440,35 +445,44 @@ static NSString *const MyOrderCell = @"MyOrderCell";
                 [self showPayTypeView];
             }else if ([self.orderDetail.status isEqualToString:@"待发货"]) {
                 //HXLog(@"申请退款");
-                DSApplyRefundVC *rvc = [DSApplyRefundVC new];
-                rvc.oid = self.oid;
-                rvc.applyRefundActionCall = ^{
-                    hx_strongify(weakSelf);
-                    if (strongSelf.orderHandleCall) {
-                        strongSelf.orderHandleCall(2);
-                    }
-                    [strongSelf getOrderInfoRequest];
-                };
-                [self.navigationController pushViewController:rvc animated:YES];
+                if ([self.orderDetail.refund_status isEqualToString:@"0"]||[self.orderDetail.refund_status isEqualToString:@"4"]) {
+                    DSApplyRefundVC *rvc = [DSApplyRefundVC new];
+                    rvc.oid = self.oid;
+                    rvc.applyRefundActionCall = ^{
+                        hx_strongify(weakSelf);
+                        if (strongSelf.orderHandleCall) {
+                            strongSelf.orderHandleCall(2);
+                        }
+                        strongSelf.isAfterSale = YES;
+                        [strongSelf getOrderInfoRequest];
+                    };
+                    [self.navigationController pushViewController:rvc animated:YES];
+                }else{
+                    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"该订单正在申请退款"];
+                }
             }else if ([self.orderDetail.status isEqualToString:@"待收货"]) {
                 //HXLog(@"确认收货");
-                zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要确认收货吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
-                zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
-                    hx_strongify(weakSelf);
-                    [strongSelf.zh_popupController dismiss];
-                }];
-                zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"确认" handler:^(zhAlertButton * _Nonnull button) {
-                    hx_strongify(weakSelf);
-                    [strongSelf.zh_popupController dismiss];
-                    [strongSelf confirmReceiveGoodRequest];
-                }];
-                cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
-                [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
-                okButton.lineColor = UIColorFromRGB(0xDDDDDD);
-                [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
-                [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
-                self.zh_popupController = [[zhPopupController alloc] init];
-                [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+                if ([self.orderDetail.refund_status isEqualToString:@"0"]||[self.orderDetail.refund_status isEqualToString:@"4"]) {
+                    zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要确认收货吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
+                    zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
+                        hx_strongify(weakSelf);
+                        [strongSelf.zh_popupController dismiss];
+                    }];
+                    zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"确认" handler:^(zhAlertButton * _Nonnull button) {
+                        hx_strongify(weakSelf);
+                        [strongSelf.zh_popupController dismiss];
+                        [strongSelf confirmReceiveGoodRequest];
+                    }];
+                    cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                    [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+                    okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                    [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+                    [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
+                    self.zh_popupController = [[zhPopupController alloc] init];
+                    [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+                }else{
+                    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"该订单正在申请退款"];
+                }
             }
         }
     }else{

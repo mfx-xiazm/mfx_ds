@@ -14,16 +14,23 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - AliAuthSDK (2.0.0.3)
+  - AlibcTradeSDK (4.0.0.8)
+  - AliLinkPartnerSDK (4.0.0.24)
+  - BCUserTrack (5.2.0.11-appkeys):
+    - UTDID
   - IQKeyboardManager (6.5.3)
   - JJFontFit (1.0.1)
   - JXCategoryView (1.5.2)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.2.0)
+  - mtopSDK (3.0.0.4)
   - NHHUDExtend (1.0.2):
     - MBProgressHUD
   - SDWebImage (5.3.1):
     - SDWebImage/Core (= 5.3.1)
   - SDWebImage/Core (5.3.1)
+  - securityGuard (5.4.173)
   - TYCyclePagerView (1.2.0)
   - UMCCommon (2.1.1)
   - UMCSecurityPlugins (1.0.6)
@@ -35,6 +42,7 @@ PODS:
   - UMCShare/UI (6.9.6):
     - UMCCommon
     - UMCShare/Core
+  - UTDID (1.1.0.16)
   - WechatOpenSDK (1.8.5)
   - YYCache (1.0.4)
   - YYModel (1.0.4)
@@ -46,16 +54,23 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AliAuthSDK (= 2.0.0.3)
+  - AlibcTradeSDK (= 4.0.0.8)
+  - AliLinkPartnerSDK (= 4.0.0.24)
+  - BCUserTrack (= 5.2.0.11-appkeys)
   - IQKeyboardManager
   - JJFontFit
   - JXCategoryView
   - MJRefresh
+  - mtopSDK (= 3.0.0.4)
   - NHHUDExtend
+  - securityGuard (= 5.4.173)
   - TYCyclePagerView
   - UMCCommon
   - UMCSecurityPlugins
   - UMCShare/Social/ReducedWeChat
   - UMCShare/UI
+  - UTDID (= 1.1.0.16)
   - WechatOpenSDK (< 1.8.6)
   - YYCache
   - YYModel
@@ -65,6 +80,14 @@ DEPENDENCIES:
   - ZLPhotoBrowser
 
 SPEC REPOS:
+  http://repo.baichuan-ios.taobao.com/baichuanSDK/AliBCSpecs.git:
+    - AliAuthSDK
+    - AlibcTradeSDK
+    - AliLinkPartnerSDK
+    - BCUserTrack
+    - mtopSDK
+    - securityGuard
+    - UTDID
   trunk:
     - AFNetworking
     - IQKeyboardManager
@@ -88,17 +111,24 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  AliAuthSDK: be6caff0bb645ad663c75f311170b2a3b069780e
+  AlibcTradeSDK: 72d36e433ecfbd4c78b5199f0db4f70fd4be374b
+  AliLinkPartnerSDK: c5778cdfdcee7bfe342238d39a77766184d36a46
+  BCUserTrack: f267dfb52a6e67603c33668f2e9384ee01b68a88
   IQKeyboardManager: c2f901164d56807a35788483584d09fa69192e8e
   JJFontFit: 1332e4bf5b5d55d335ec1d6dd585d7f4da21c348
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  mtopSDK: bf447d4361b0199790e2a2829a1cc0299df71716
   NHHUDExtend: 1fd914b12b93ac61c1cfdb04485c25db59f27627
   SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
+  securityGuard: 35d3a1b5877bb2de4698a78089eb8906fa3ad27b
   TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
   UMCCommon: 971f324a5a99c9d662ae040a815e7e3d7ef8b2a8
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   UMCShare: e0cef55c0fd6051254c8cda1d0630eb578b27bad
+  UTDID: c28855683c5ea2e77e597cb14609328f7d470d6e
   WechatOpenSDK: 9b15110aba1d502456d8e83677357e6437f2e751
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
@@ -107,6 +137,6 @@ SPEC CHECKSUMS:
   ZLCollectionViewFlowLayout: 105020fbab88e3dc66ceebc307b36f2c363a8c1f
   ZLPhotoBrowser: 7e88434918366af98f8ebbaf5b94206985812ed6
 
-PODFILE CHECKSUM: 9ffe539eb9d4ef8bdaaf6ea7fd9f8f4623ef3173
+PODFILE CHECKSUM: b34932ada3dd6e05af4527fbd4ed3f25650653b8
 
 COCOAPODS: 1.8.4

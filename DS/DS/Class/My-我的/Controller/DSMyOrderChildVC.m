@@ -437,13 +437,18 @@ static NSString *const MyOrderCell = @"MyOrderCell";
         /**待付款-取消订单、立即支付  待发货-申请退款(vip订单不可退款) 待收货-申请退款(vip订单不可退款)、查看物流、确认收货*/
         if (index == 1) {
             //HXLog(@"申请退款");
-            DSApplyRefundVC *rvc = [DSApplyRefundVC new];
-            rvc.oid = order.oid;
-            rvc.applyRefundActionCall = ^{
-                [strongSelf.orders removeObject:order];
-                [tableView reloadData];
-            };
-            [strongSelf.navigationController pushViewController:rvc animated:YES];
+            if ([order.refund_status isEqualToString:@"0"]||[order.refund_status isEqualToString:@"4"]) {
+                DSApplyRefundVC *rvc = [DSApplyRefundVC new];
+                rvc.oid = order.oid;
+                rvc.applyRefundActionCall = ^{
+                    order.refund_status = @"1";
+                    //                [strongSelf.orders removeObject:order];
+                    //                [tableView reloadData];
+                };
+                [strongSelf.navigationController pushViewController:rvc animated:YES];
+            }else{
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"该订单正在申请退款"];
+            }
         }else if (index == 2) {
             if ([order.status isEqualToString:@"待付款"]) {
                 //HXLog(@"取消订单");
@@ -476,30 +481,39 @@ static NSString *const MyOrderCell = @"MyOrderCell";
                 [strongSelf showPayTypeView];
             }else if ([order.status isEqualToString:@"待发货"]) {
                 //HXLog(@"申请退款");
-                DSApplyRefundVC *rvc = [DSApplyRefundVC new];
-                rvc.oid = order.oid;
-                rvc.applyRefundActionCall = ^{
-                    [strongSelf.orders removeObject:order];
-                    [tableView reloadData];
-                };
-                [strongSelf.navigationController pushViewController:rvc animated:YES];
+                if ([order.refund_status isEqualToString:@"0"]||[order.refund_status isEqualToString:@"4"]) {
+                    DSApplyRefundVC *rvc = [DSApplyRefundVC new];
+                    rvc.oid = order.oid;
+                    rvc.applyRefundActionCall = ^{
+                        order.refund_status = @"1";
+                        //                    [strongSelf.orders removeObject:order];
+                        //                    [tableView reloadData];
+                    };
+                    [strongSelf.navigationController pushViewController:rvc animated:YES];
+                }else{
+                    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"该订单正在申请退款"];
+                }
             }else if ([order.status isEqualToString:@"待收货"]) {
                 //HXLog(@"确认收货");
-                zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要确认收货吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
-                zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
-                    [strongSelf.zh_popupController dismiss];
-                }];
-                zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"确认" handler:^(zhAlertButton * _Nonnull button) {
-                    [strongSelf.zh_popupController dismiss];
-                    [strongSelf confirmReceiveGoodRequest];
-                }];
-                cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
-                [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
-                okButton.lineColor = UIColorFromRGB(0xDDDDDD);
-                [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
-                [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
-                strongSelf.zh_popupController = [[zhPopupController alloc] init];
-                [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+                if ([order.refund_status isEqualToString:@"0"]||[order.refund_status isEqualToString:@"4"]) {
+                    zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要确认收货吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
+                    zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
+                        [strongSelf.zh_popupController dismiss];
+                    }];
+                    zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"确认" handler:^(zhAlertButton * _Nonnull button) {
+                        [strongSelf.zh_popupController dismiss];
+                        [strongSelf confirmReceiveGoodRequest];
+                    }];
+                    cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                    [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+                    okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+                    [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+                    [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
+                    strongSelf.zh_popupController = [[zhPopupController alloc] init];
+                    [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+                }else{
+                    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"该订单正在申请退款"];
+                }
             }
         }
     };
@@ -521,12 +535,14 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             }else if (type == 1) {
                 order.status = @"待发货";
             }else if (type == 2) {
-                [strongSelf.orders removeObject:order];
+//                [strongSelf.orders removeObject:order];
             }else{
                 order.status = @"已完成";
             }
         }else{
-            [strongSelf.orders removeObject:order];
+            if (strongSelf.orderType != 2 && strongSelf.orderType != 3) {
+                [strongSelf.orders removeObject:order];
+            }
         }
         [tableView reloadData];
     };

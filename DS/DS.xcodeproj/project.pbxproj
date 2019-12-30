@@ -240,6 +240,8 @@
 		90EC25B8237A9BDD005C24C8 /* DSMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC25B6237A9BDD005C24C8 /* DSMessageCell.xib */; };
 		90EC25BC237A9E44005C24C8 /* DSCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC25BA237A9E44005C24C8 /* DSCartCell.m */; };
 		90EC25BD237A9E44005C24C8 /* DSCartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90EC25BB237A9E44005C24C8 /* DSCartCell.xib */; };
+		90ED68E223BA05B60035988E /* SZUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90ED68DF23BA05B50035988E /* SZUpdateView.m */; };
+		90ED68E323BA05B60035988E /* SZUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90ED68E123BA05B60035988E /* SZUpdateView.xib */; };
 		90F74E2323822762003576B3 /* DSVipHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E2223822762003576B3 /* DSVipHeader.m */; };
 		90F74E2523822769003576B3 /* DSVipHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F74E2423822769003576B3 /* DSVipHeader.xib */; };
 		90F74E292382291B003576B3 /* DSVipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F74E272382291B003576B3 /* DSVipCell.m */; };
@@ -797,6 +799,9 @@
 		90EC25B9237A9E44005C24C8 /* DSCartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCartCell.h; sourceTree = "<group>"; };
 		90EC25BA237A9E44005C24C8 /* DSCartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCartCell.m; sourceTree = "<group>"; };
 		90EC25BB237A9E44005C24C8 /* DSCartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSCartCell.xib; sourceTree = "<group>"; };
+		90ED68DF23BA05B50035988E /* SZUpdateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZUpdateView.m; sourceTree = "<group>"; };
+		90ED68E023BA05B60035988E /* SZUpdateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZUpdateView.h; sourceTree = "<group>"; };
+		90ED68E123BA05B60035988E /* SZUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SZUpdateView.xib; sourceTree = "<group>"; };
 		90F74E2123822762003576B3 /* DSVipHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipHeader.h; sourceTree = "<group>"; };
 		90F74E2223822762003576B3 /* DSVipHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipHeader.m; sourceTree = "<group>"; };
 		90F74E2423822769003576B3 /* DSVipHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipHeader.xib; sourceTree = "<group>"; };
@@ -1259,6 +1264,9 @@
 				90E447E923B05ABA005BE8B9 /* DSPosterContentView.h */,
 				90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */,
 				90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */,
+				90ED68E023BA05B60035988E /* SZUpdateView.h */,
+				90ED68DF23BA05B50035988E /* SZUpdateView.m */,
+				90ED68E123BA05B60035988E /* SZUpdateView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2192,6 +2200,7 @@
 				903D0819238393ED001C2E40 /* DSApplyRefundCell.xib in Resources */,
 				900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */,
 				906F36382378ED46000B160A /* Assets.xcassets in Resources */,
+				90ED68E323BA05B60035988E /* SZUpdateView.xib in Resources */,
 				903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */,
 				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
 				906F377C23792FB7000B160A /* DSHomeVC.xib in Resources */,
@@ -2487,6 +2496,7 @@
 				900146952383EA3800275DD9 /* DSTakeCouponCell.m in Sources */,
 				903CB55E23927F180053A25B /* UIImage+TYSnapshot.m in Sources */,
 				906F377123792F64000B160A /* UILabel+ForLMJVerticalScrollText.m in Sources */,
+				90ED68E223BA05B60035988E /* SZUpdateView.m in Sources */,
 				906F377523792F64000B160A /* ZJPickerView.m in Sources */,
 				906F375523792F64000B160A /* SDWeiXinPhotoContainerView.m in Sources */,
 				906F376F23792F64000B160A /* UIView+ForLMJVerticalScrollText.m in Sources */,
@@ -2668,6 +2678,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = A2V85YL4T5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
@@ -2720,6 +2731,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = A2V85YL4T5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
