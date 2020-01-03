@@ -233,7 +233,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"goods_id"] = self.goods_id;//商品id
-    parameters[@"is_member_goods"] = @(0);//是否会员商品，0常规商品，1会员礼包商品
+    parameters[@"is_member_goods"] = @(0);//是否会员商品，0常规商品，1会员礼包商品，2淘宝商品
 
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"goods_detail_get" parameters:parameters success:^(id responseObject) {

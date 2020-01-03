@@ -13,6 +13,7 @@
 #import <WebKit/WebKit.h>
 #import "DSGoodsDetail.h"
 #import "DSVipUpOrderVC.h"
+#import <AlibcTradeSDK/AlibcTradeSDK.h>
 
 @interface DSVipGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
@@ -27,14 +28,42 @@
 @property (weak, nonatomic) IBOutlet UILabel *freight;
 /** 商品详情 */
 @property(nonatomic,strong) DSGoodsDetail *goodsDetail;
+
+/** 淘宝商品详情 */
+@property (nonatomic, strong) AlibcTradeProcessSuccessCallback onTradeSuccess;
+@property (nonatomic, strong) AlibcTradeProcessFailedCallback onTradeFailure;
 @end
 
 @implementation DSVipGoodsDetailVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"礼包详情"];
+    [self.navigationItem setTitle:self.isTaoke?@"商品详情":@"礼包详情"];
     
+    if (self.isTaoke) {
+        _onTradeSuccess = ^(AlibcTradeResult *tradeProcessResult){
+            if(tradeProcessResult.result == AlibcTradeResultTypePaySuccess){
+                NSString *tip=[NSString stringWithFormat:@"交易成功:成功的订单%@\n，失败的订单%@\n",[tradeProcessResult payResult].paySuccessOrders,[tradeProcessResult payResult].payFailedOrders];
+                HXLog(@"%@",tip);
+            }else if(tradeProcessResult.result == AlibcTradeResultTypeAddCard){
+                HXLog(@"成功添加到购物车");
+            }
+        };
+        _onTradeFailure=^(NSError *error){
+            // 退出交易流程 /** 交易链路中用户取消了操作 */
+            if (error.code == AlibcErrorCancelled) {
+                return ;
+            }
+            if (error.code == AlibcErrorInvalidItemID) {
+                HXLog(@"itemId无效");
+                return ;
+            }
+            NSDictionary *infor=[error userInfo];
+            NSArray*  orderid=[infor objectForKey:@"orderIdList"];
+            NSString *tip=[NSString stringWithFormat:@"交易失败:\n订单号\n%@",orderid];
+            HXLog(@"%@",tip);
+        };
+    }
     [self setUpCyclePagerView];
     
     // 针对 11.0 以上的iOS系统进行处理
@@ -92,7 +121,7 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"goods_id"] = self.goods_id;//商品id
-    parameters[@"is_member_goods"] = @(1);//是否会员商品，0常规商品，1会员礼包商品
+    parameters[@"is_member_goods"] = self.isTaoke?@(2):@(1);//是否会员商品，0常规商品，1会员礼包商品，2淘宝商品
 
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"goods_detail_get" parameters:parameters success:^(id responseObject) {
@@ -120,7 +149,11 @@
     self.goodsName.text = self.goodsDetail.goods_name;
     self.price.text = [NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]];
     self.saleNum.text = [NSString stringWithFormat:@"销量：%@",self.goodsDetail.sale_num];
-    self.stockNum.text = self.goodsDetail.stock;
+    if (self.isTaoke) {
+        self.stockNum.text = @"999";
+    }else{
+        self.stockNum.text = self.goodsDetail.stock;
+    }
     
     if (HX_SCREEN_WIDTH > 375.f) {
         [self.webView loadHTMLString:self.goodsDetail.goods_desc baseURL:nil];
@@ -131,9 +164,42 @@
 }
 #pragma mark -- 点击事件
 - (IBAction)buyClicked:(UIButton *)sender {
-    DSVipUpOrderVC *ovc = [DSVipUpOrderVC new];
-    ovc.goods_id = self.goods_id;
-    [self.navigationController pushViewController:ovc animated:YES];
+    if (self.isTaoke) {
+        // 根据商品id创建一个商品详情页对象
+        id<AlibcTradePage> page = [AlibcTradePageFactory itemDetailPage:self.goodsDetail.taobao_item_id];
+        
+        // 阿里百川电商参数组装
+        AlibcTradeShowParams *showParam = [[AlibcTradeShowParams alloc] init];
+        // 打开页面的方式 有智能判断和强制拉端(手淘/天猫)两种方式；默认智能判断
+        showParam.openType = AlibcOpenTypeAuto;
+        // 是否为push方式打开新页面 NO:在当前view controller上present新页面/YES:在传入的UINavigationController中push新页面
+        showParam.isNeedPush = YES;
+        // 是否需要自定义处理跳手淘/天猫失败后的处理策略，默认未无需自定义
+        showParam.isNeedCustomNativeFailMode = YES;
+        // 当isNeedCustomNativeFailMode == YES时生效 跳手淘/天猫失败后的处理策略, 默认值为: AlibcNativeFailModeJumpH5
+        showParam.nativeFailMode = AlibcNativeFailModeJumpDownloadPage;
+        // 优先拉起的linkKey，手淘：@"taobao" 天猫:@"tmall"
+        showParam.linkKey = @"taobao";
+        
+        // 淘客参数
+        AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
+        taokeParams.pid = self.goodsDetail.taobao_pid;//淘宝联盟pid
+
+        // 返回值 仅一种情况需要媒体处理 即当AlibcTradeShowParams 中 isNeedPush 为YES时.此时需要媒体根据API返回值为1时（应用內H5打开），在传入的UINavigationController中push新页面。
+        AlibcWebViewController *webVC =[[AlibcWebViewController alloc] init];
+        NSInteger res = [[AlibcTradeSDK sharedInstance].tradeService openByBizCode:@"detail" page:page webView:webVC.webView parentController:self.navigationController showParams:showParam taoKeParams:taokeParams trackParam:nil tradeProcessSuccessCallback:self.onTradeSuccess tradeProcessFailedCallback:self.onTradeFailure];
+        if (res == 1) {
+            [self.navigationController pushViewController:webVC animated:YES];
+        }
+    }else{
+        if ([self.goodsDetail.stock integerValue] <= 0) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"库存不足"];
+            return;
+        }
+        DSVipUpOrderVC *ovc = [DSVipUpOrderVC new];
+        ovc.goods_id = self.goods_id;
+        [self.navigationController pushViewController:ovc animated:YES];
+    }
 }
 #pragma mark -- 事件监听
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context

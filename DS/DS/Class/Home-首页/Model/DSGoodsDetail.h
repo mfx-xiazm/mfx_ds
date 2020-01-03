@@ -34,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *stock;
 @property(nonatomic,copy) NSString *cover_img;
 @property(nonatomic,copy) NSString *is_upgrade_ulevel;
+
+@property(nonatomic,copy) NSString *taobao_item_id;
+@property(nonatomic,copy) NSString *taobao_pid;
+
 /** 购买的数量 */
 @property(nonatomic,assign) NSInteger buyNum;
 /** 选中的综合规格 */

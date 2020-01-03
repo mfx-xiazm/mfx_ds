@@ -30,7 +30,11 @@
     
     [self.headPic sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar] placeholderImage:HXGetImage(@"avatar")];
     self.nick.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
-    self.sex.text = [[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"1"]?@"男":@"女";
+    if ([[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"0"]) {
+        self.sex.text = @"";
+    }else{
+        self.sex.text = [[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"1"]?@"男":@"女";
+    }
 
     hx_weakify(self);
     [self.sureBtn BindingBtnJudgeBlock:^BOOL{

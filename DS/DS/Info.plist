@@ -34,11 +34,21 @@
 				<string>wxc1a03952e7141f00</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tbopen28259550</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>tbopen</string>
+		<string>tmall</string>
 		<string>uppaysdk</string>
 		<string>uppaywallet</string>
 		<string>uppayx1</string>

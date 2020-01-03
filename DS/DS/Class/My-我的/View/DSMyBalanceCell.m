@@ -47,7 +47,7 @@
         }
         self.pay_amount.text = [NSString stringWithFormat:@"￥%.2f",[_note.pay_amount floatValue]];
         self.amount.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
-        self.receiver.text = [NSString stringWithFormat:@"购买人：%@",_note.receiver];
+        self.receiver.text = [NSString stringWithFormat:@"购买人：%@",_note.nick_name];
     }else{
         self.orderView.hidden = YES;
         self.otherView.hidden = NO;

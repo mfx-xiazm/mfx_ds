@@ -48,7 +48,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [self setUpRefresh];
     [self startShimmer];
     [self getHomeDataRequest];
-//    [self updateVersionRequest];//版本升级
+    [self updateVersionRequest];//版本升级
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -172,9 +172,9 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     // 当前软件的版本号（从Info.plist中获得）
     NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
     
-    [HXNetworkTool POST:HXRC_M_URL action:@"isNewVersions" parameters:@{@"sys":@"2",@"versions":currentVersion} success:^(id responseObject) {
+    [HXNetworkTool POST:HXRC_M_URL action:@"version_update_get" parameters:@{@"app_type":@"2",@"app_version":currentVersion} success:^(id responseObject) {
         hx_strongify(weakSelf);
-        if([[responseObject objectForKey:@"status"] boolValue]) {
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             if ([responseObject[@"result"] isKindOfClass:[NSDictionary class]]) {
                 [strongSelf updateAlert:responseObject[@"result"]];
             }

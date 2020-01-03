@@ -14,6 +14,7 @@
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
 #import <AlipaySDK/AlipaySDK.h>
+#import <AlibcTradeSDK/AlibcTradeSDK.h>
 
 @implementation AppDelegate (MSAppService)
 
@@ -27,11 +28,24 @@
     
     //->微信支付相关//
     [WXApi registerApp:HXWXKey];
+    
+    [self configAlibcTradeSDK];
 }
 -(void)configUSharePlatforms
 {
     /* 设置微信的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:HXWXKey appSecret:HXWXSecret redirectURL:@"http://mobile.umeng.com/social"];
+}
+-(void)configAlibcTradeSDK
+{
+    // 百川平台基础SDK初始化，加载并初始化各个业务能力插件
+    [[AlibcTradeSDK sharedInstance] setDebugLogOpen:YES];//开发阶段打开日志开关，方便排查错误信息
+    [[AlibcTradeSDK sharedInstance] setIsvAppName:@"daiShuApp"];
+    [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
+        HXLog(@"百川SDK初始化成功");
+    } failure:^(NSError *error) {
+        HXLog(@"百川SDK初始化失败");
+    }];
 }
 /*
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
@@ -86,8 +100,11 @@
 // NOTE: 9.0以后使用新API接口
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
-    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url options:options];
-    if (!result) {
+    // 如果被友盟处理过，返回YES
+    BOOL umResult = [[UMSocialManager defaultManager] handleOpenURL:url options:options];
+    // 如果被百川电商处理过，返回YES
+    BOOL bcResult = [[AlibcTradeSDK sharedInstance] application:app openURL:url options:options];
+    if (!umResult || !bcResult) {// 没有被友盟或者百川电商处理过
         // 其他如支付等SDK的回调
         if ([url.host isEqualToString:@"safepay"]) {
             //跳转支付宝钱包进行支付，处理支付结果
@@ -105,7 +122,7 @@
             return [WXApi handleOpenURL:url delegate:self];
         }
     }
-    return result;
+    return YES;
 }
 #pragma mark ————— 微信支付回调 —————
 //微信SDK自带的方法，处理从微信客户端完成操作后返回程序之后的回调方法,显示支付结果的

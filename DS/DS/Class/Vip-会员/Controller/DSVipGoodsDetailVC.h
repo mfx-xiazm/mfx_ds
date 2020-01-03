@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DSVipGoodsDetailVC : HXBaseViewController
 /* 商品id */
 @property(nonatomic,copy) NSString *goods_id;
+/* 是否是淘宝自营 */
+@property(nonatomic,assign) BOOL isTaoke;
 @end
 
 NS_ASSUME_NONNULL_END

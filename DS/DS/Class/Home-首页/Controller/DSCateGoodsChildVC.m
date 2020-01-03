@@ -11,6 +11,7 @@
 #import <ZLCollectionViewVerticalLayout.h>
 #import "DSShopGoods.h"
 #import "DSGoodsDetailVC.h"
+#import "DSVipGoodsDetailVC.h"
 #import "DSWebContentVC.h"
 
 static NSString *const CateGoodsCell = @"CateGoodsCell";
@@ -152,10 +153,17 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
     DSShopGoods *goods = self.goods[indexPath.row];
-    dvc.goods_id = goods.goods_id;
-    [self.navigationController pushViewController:dvc animated:YES];
+    if ([self.cate_mode isEqualToString:@"4"]) {
+        DSVipGoodsDetailVC *dvc = [DSVipGoodsDetailVC new];
+        dvc.goods_id = goods.goods_id;
+        dvc.isTaoke = YES;
+        [self.navigationController pushViewController:dvc animated:YES];
+    }else{
+        DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
+        dvc.goods_id = goods.goods_id;
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = (HX_SCREEN_WIDTH-10.f*3)/2.0;

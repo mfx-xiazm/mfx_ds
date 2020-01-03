@@ -18,8 +18,6 @@
 #import "DSConfirmOrder.h"
 #import "DSMyAddress.h"
 #import "DSMyOrderVC.h"
-#import "APOrderInfo.h"
-#import "APRSASigner.h"
 
 static NSString *const UpOrderCell = @"UpOrderCell";
 @interface DSUpOrderVC ()<UITableViewDelegate,UITableViewDataSource>
