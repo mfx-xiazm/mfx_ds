@@ -40,9 +40,7 @@ static NSString *const ProfileCell = @"ProfileCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (self.header) {
-        self.header.isReload = YES;
-    }
+    [self getUserInfoRequest];
 }
 - (void)viewDidLayoutSubviews
 {
@@ -57,7 +55,11 @@ static NSString *const ProfileCell = @"ProfileCell";
         hx_weakify(self);
         _header.myHeaderBtnClickedCall = ^(NSInteger index) {
             hx_strongify(weakSelf);
-            if (index == 6) {
+            if (index == 7) {
+                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+                pasteboard.string = [MSUserManager sharedInstance].curUserInfo.share_code;
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"复制成功"];
+            }else if (index == 6) {
                 DSChangeInfoVC *ivc = [DSChangeInfoVC new];
                 [strongSelf.navigationController pushViewController:ivc animated:YES];
             }else if (index == 5){
@@ -127,7 +129,26 @@ static NSString *const ProfileCell = @"ProfileCell";
     [self.navigationController pushViewController:svc animated:YES];
 }
 #pragma mark -- 业务逻辑
-
+-(void)getUserInfoRequest
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"user_info_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            [MSUserManager sharedInstance].curUserInfo = [MSUserInfo yy_modelWithDictionary:responseObject[@"result"]];
+            [[MSUserManager sharedInstance] saveUserInfo];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (strongSelf.header) {
+                    strongSelf.header.isReload = YES;
+                }
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

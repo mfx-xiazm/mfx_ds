@@ -254,11 +254,6 @@
 /** 点赞 */
 - (void)didClickThumbInCell:(DSDynamicCell *)Cell
 {
-    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法点赞"];
-        return;
-    }
-    
     DSDynamic *dynamic = Cell.dynamicLayout.dynamic;
     
     hx_weakify(self);
@@ -272,10 +267,6 @@
 /** 分享 */
 - (void)didClickShareInCell:(DSDynamicCell *)Cell
 {
-    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法分享"];
-        return;
-    }
     DSDynamicLayout *layout = Cell.dynamicLayout;
     DSDynamic *dynamic = layout.dynamic;
     

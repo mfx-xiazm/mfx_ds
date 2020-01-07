@@ -83,10 +83,6 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
                 strongSelf.zh_popupController = [[zhPopupController alloc] init];
                 [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
             }else if (index == 2) {
-                if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-                    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法点赞"];
-                    return;
-                }
                 [strongSelf setDynamicPraiseRequest:strongSelf.detail.treads.treads_id isPraise:strongSelf.detail.treads.is_praise?@"0":@"1" completedCall:^{
                     weakSelf.detail.treads.is_praise = !weakSelf.detail.treads.is_praise;
                     weakSelf.detail.treads.praise_num = weakSelf.detail.treads.is_praise?[NSString stringWithFormat:@"%zd",[weakSelf.detail.treads.praise_num integerValue]+1]:[NSString stringWithFormat:@"%zd",[weakSelf.detail.treads.praise_num integerValue]-1];
@@ -97,10 +93,6 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
                     }
                 }];
             }else{
-                if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-                    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法分享"];
-                    return;
-                }
                 DSShareDynamicView *shareView = [DSShareDynamicView loadXibView];
                 shareView.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 135.f);
                 shareView.shareTypeActionCall = ^(NSInteger index) {

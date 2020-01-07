@@ -8,6 +8,7 @@
 
 #import "DSWebContentVC.h"
 #import <WebKit/WebKit.h>
+#import "DSWebChatPayH5View.h"
 
 @interface DSWebContentVC ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic, strong) WKWebView     *webView;
@@ -160,7 +161,28 @@
     }];
 }
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    decisionHandler(WKNavigationActionPolicyAllow);
+    if (self.requestType == 7) {
+        NSString *urlStr = navigationAction.request.URL.absoluteString;
+
+        if ([urlStr rangeOfString:@"https://wx.tenpay.com"].location != NSNotFound) {
+            NSString *redirectUrl = urlStr;
+            // 微信支付链接不要拼接redirect_url，如果拼接了还是会返回到浏览器的
+            if ([urlStr containsString:@"&redirect_url="]) {
+                NSRange redirectRange = [urlStr rangeOfString:@"&redirect_url"];
+                redirectUrl = [urlStr stringByReplacingOccurrencesOfString:[urlStr substringFromIndex:redirectRange.location] withString:@""];
+            }
+            //这里把webView设置成一个像素点，主要是不影响操作和界面，主要的作用是设置referer和调起微信
+            DSWebChatPayH5View *h5View = [[DSWebChatPayH5View alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+            //url是没有拼接redirect_url微信h5支付链接
+            [h5View loadingURL:redirectUrl withIsWebChatURL:NO];
+            [self.view addSubview:h5View];
+            decisionHandler(WKNavigationActionPolicyCancel);
+        }else{
+            decisionHandler(WKNavigationActionPolicyAllow);
+        }
+    }else{
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
 }
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {

@@ -74,7 +74,6 @@
 // 改变某些文字大小和颜色
 -(NSMutableAttributedString *)setColorAttributedText:(NSString *)allStr andChangeStr:(NSString *)changeStr andColor:(UIColor *)color
 {
-    
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:allStr];
     NSRange range = [allStr rangeOfString:@"没有账号?"];
     [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:range];

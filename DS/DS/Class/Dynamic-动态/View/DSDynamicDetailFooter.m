@@ -29,18 +29,6 @@
     self.thumb.selected = _info.is_praise;
 }
 - (IBAction)detailTypeClicked:(UIButton *)sender {
-    if (sender.tag == 2) {
-        if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法点赞"];
-            return;
-        }
-    }
-    if (sender.tag == 3) {
-        if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法分享"];
-            return;
-        }
-    }
     if (self.footerTypeCall) {
         self.footerTypeCall(sender.tag,sender);
     }

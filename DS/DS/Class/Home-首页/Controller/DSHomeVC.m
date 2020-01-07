@@ -92,6 +92,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     self.collectionView.collectionViewLayout = flowLayout;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSHomeCateCell class]) bundle:nil] forCellWithReuseIdentifier:HomeCateCell];

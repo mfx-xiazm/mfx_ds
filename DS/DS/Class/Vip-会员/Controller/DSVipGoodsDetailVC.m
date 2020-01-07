@@ -17,6 +17,8 @@
 
 @interface DSVipGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cyclePagerAspect;
+
 @property (nonatomic,strong) TYPageControl *pageControl;
 @property (nonatomic, strong) WKWebView  *webView;
 @property (weak, nonatomic) IBOutlet UIView *webContentView;
@@ -58,9 +60,9 @@
                 HXLog(@"itemId无效");
                 return ;
             }
-            NSDictionary *infor=[error userInfo];
-            NSArray*  orderid=[infor objectForKey:@"orderIdList"];
-            NSString *tip=[NSString stringWithFormat:@"交易失败:\n订单号\n%@",orderid];
+            NSDictionary *infor = [error userInfo];
+            NSArray *orderid = [infor objectForKey:@"orderIdList"];
+            NSString *tip = [NSString stringWithFormat:@"交易失败:\n订单号\n%@",orderid];
             HXLog(@"%@",tip);
         };
     }
@@ -184,10 +186,10 @@
         // 淘客参数
         AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
         taokeParams.pid = self.goodsDetail.taobao_pid;//淘宝联盟pid
-
+        taokeParams.extParams = @{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid};
         // 返回值 仅一种情况需要媒体处理 即当AlibcTradeShowParams 中 isNeedPush 为YES时.此时需要媒体根据API返回值为1时（应用內H5打开），在传入的UINavigationController中push新页面。
         AlibcWebViewController *webVC =[[AlibcWebViewController alloc] init];
-        NSInteger res = [[AlibcTradeSDK sharedInstance].tradeService openByBizCode:@"detail" page:page webView:webVC.webView parentController:self.navigationController showParams:showParam taoKeParams:taokeParams trackParam:nil tradeProcessSuccessCallback:self.onTradeSuccess tradeProcessFailedCallback:self.onTradeFailure];
+        NSInteger res = [[AlibcTradeSDK sharedInstance].tradeService openByBizCode:@"detail" page:page webView:webVC.webView parentController:self.navigationController showParams:showParam taoKeParams:taokeParams trackParam:@{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid,@"isv_code":[MSUserManager sharedInstance].curUserInfo.phone} tradeProcessSuccessCallback:self.onTradeSuccess tradeProcessFailedCallback:self.onTradeFailure];
         if (res == 1) {
             [self.navigationController pushViewController:webVC animated:YES];
         }

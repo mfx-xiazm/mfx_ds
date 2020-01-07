@@ -62,8 +62,13 @@ static NSString *const VipCell = @"VipCell";
                 wvc.requestType = 4;
                 [strongSelf.navigationController pushViewController:wvc animated:YES];
             }else{
-                DSVipCardVC *ovc = [DSVipCardVC new];
-                [strongSelf.navigationController pushViewController:ovc animated:YES];
+                //DSVipCardVC *ovc = [DSVipCardVC new];
+                //[strongSelf.navigationController pushViewController:ovc animated:YES];
+                DSWebContentVC *wvc = [DSWebContentVC new];
+                wvc.navTitle = @"商品列表";
+                wvc.isNeedRequest = YES;
+                wvc.requestType = 7;
+                [strongSelf.navigationController pushViewController:wvc animated:YES];
             }
         };
     }

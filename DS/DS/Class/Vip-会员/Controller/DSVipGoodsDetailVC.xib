@@ -30,17 +30,17 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAZ-uC-3Qq">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="859"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pIr-XQ-tT3" customClass="TYCyclePagerView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="219"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="pIr-XQ-tT3" secondAttribute="height" multiplier="17:9" id="I3n-Bs-7Lc"/>
+                                        <constraint firstAttribute="width" secondItem="pIr-XQ-tT3" secondAttribute="height" multiplier="1:1" id="I3n-Bs-7Lc"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbA-sC-wLt">
-                                    <rect key="frame" x="0.0" y="219" width="414" height="85"/>
+                                    <rect key="frame" x="0.0" y="414" width="414" height="85"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-gd-E2R">
                                             <rect key="frame" x="10" y="7" width="394" height="40"/>
@@ -83,7 +83,7 @@
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="az9-d1-zpF">
-                                    <rect key="frame" x="0.0" y="314" width="414" height="80"/>
+                                    <rect key="frame" x="0.0" y="509" width="414" height="80"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9C-oF-JhQ">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
@@ -173,7 +173,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmj-78-TyP">
-                                    <rect key="frame" x="0.0" y="404" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="599" width="414" height="50"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="标题" translatesAutoresizingMaskIntoConstraints="NO" id="jAp-Oh-QiK">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -198,7 +198,7 @@
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1oX-Vk-JyQ">
-                                    <rect key="frame" x="0.0" y="454" width="414" height="200"/>
+                                    <rect key="frame" x="0.0" y="649" width="414" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="kUZ-ax-8ga"/>

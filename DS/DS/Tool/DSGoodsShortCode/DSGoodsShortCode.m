@@ -70,7 +70,7 @@ static DSGoodsShortCode *_instance = nil;
         UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
 
         __weak UINavigationController *weakNav = nav;
-        zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"袋鼠精选口令" message:goods_name constantWidth:HX_SCREEN_WIDTH - 50*2];
+        zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"鲸品库口令" message:goods_name constantWidth:HX_SCREEN_WIDTH - 50*2];
         zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
             [weakNav.zh_popupController dismiss];
         }];

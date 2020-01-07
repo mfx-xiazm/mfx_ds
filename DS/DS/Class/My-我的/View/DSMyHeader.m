@@ -48,7 +48,7 @@
     }
     if ([MSUserManager sharedInstance].curUserInfo.ulevel != 1) {
         self.vip.hidden = NO;
-        self.vip.text = [NSString stringWithFormat:@" %@ ",[MSUserManager sharedInstance].curUserInfo.ulevel_name];
+        self.vip.text = @" VIP会员 ";
     }else{
         self.vip.hidden = YES;
     }

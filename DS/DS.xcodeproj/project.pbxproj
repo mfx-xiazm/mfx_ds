@@ -30,6 +30,8 @@
 		9028AA4123AC756F0015E06D /* DSVipUpOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA3F23AC756F0015E06D /* DSVipUpOrderVC.m */; };
 		9028AA4223AC756F0015E06D /* DSVipUpOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9028AA4023AC756F0015E06D /* DSVipUpOrderVC.xib */; };
 		9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA4423AC7A480015E06D /* DSVipConfirmOrder.m */; };
+		90359A8223C473AB0033074A /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 90359A8123C473AB0033074A /* yw_1222.jpg */; };
+		90359A8623C47B490033074A /* begin-img.png in Resources */ = {isa = PBXBuildFile; fileRef = 90359A8523C47B490033074A /* begin-img.png */; };
 		903A95C623A2123B00AD68CF /* LYEmptyBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903A95BD23A2123B00AD68CF /* LYEmptyBaseView.m */; };
 		903A95C723A2123B00AD68CF /* UIScrollView+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 903A95BF23A2123B00AD68CF /* UIScrollView+Empty.m */; };
 		903A95C823A2123B00AD68CF /* UIView+LYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 903A95C023A2123B00AD68CF /* UIView+LYExtension.m */; };
@@ -210,7 +212,6 @@
 		90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4323A4937C00CD19FB /* DSVipCard.m */; };
 		90C94C4723A4B31F00CD19FB /* DSVipCardDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4623A4B31F00CD19FB /* DSVipCardDetail.m */; };
 		90C94C4A23A4CDC000CD19FB /* DSDynamicDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4923A4CDC000CD19FB /* DSDynamicDetail.m */; };
-		90D05F2523BDEE4B002973DA /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 90D05F2423BDEE4B002973DA /* yw_1222.jpg */; };
 		90E447EB23B05ABA005BE8B9 /* DSPosterContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */; };
 		90E447ED23B05AC0005BE8B9 /* DSPosterContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */; };
 		90EC2578237A5D8C005C24C8 /* DSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2576237A5D8C005C24C8 /* DSLoginVC.m */; };
@@ -306,6 +307,7 @@
 		90FD91FD237E53AA00016EF7 /* DSMyAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD91FB237E53AA00016EF7 /* DSMyAddressVC.xib */; };
 		90FD9201237E55C500016EF7 /* DSEditAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FD91FF237E55C500016EF7 /* DSEditAddressVC.m */; };
 		90FD9202237E55C500016EF7 /* DSEditAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FD9200237E55C500016EF7 /* DSEditAddressVC.xib */; };
+		90FFDF3C23C2C58D000BF6C5 /* DSWebChatPayH5View.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FFDF3B23C2C58D000BF6C5 /* DSWebChatPayH5View.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -360,6 +362,8 @@
 		9028AA4023AC756F0015E06D /* DSVipUpOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipUpOrderVC.xib; sourceTree = "<group>"; };
 		9028AA4323AC7A480015E06D /* DSVipConfirmOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipConfirmOrder.h; sourceTree = "<group>"; };
 		9028AA4423AC7A480015E06D /* DSVipConfirmOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipConfirmOrder.m; sourceTree = "<group>"; };
+		90359A8123C473AB0033074A /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
+		90359A8523C47B490033074A /* begin-img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin-img.png"; sourceTree = "<group>"; };
 		903A95BD23A2123B00AD68CF /* LYEmptyBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYEmptyBaseView.m; sourceTree = "<group>"; };
 		903A95BE23A2123B00AD68CF /* LYEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYEmptyView.h; sourceTree = "<group>"; };
 		903A95BF23A2123B00AD68CF /* UIScrollView+Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Empty.m"; sourceTree = "<group>"; };
@@ -458,7 +462,7 @@
 		9065882A23AE1DB3001E57ED /* DSSearchDynamicVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSSearchDynamicVC.h; sourceTree = "<group>"; };
 		9065882B23AE1DB3001E57ED /* DSSearchDynamicVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSSearchDynamicVC.m; sourceTree = "<group>"; };
 		9065882C23AE1DB3001E57ED /* DSSearchDynamicVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSSearchDynamicVC.xib; sourceTree = "<group>"; };
-		906F36282378ED44000B160A /* 袋鼠精选.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "袋鼠精选.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		906F36282378ED44000B160A /* 鲸品库.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "鲸品库.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		906F362B2378ED44000B160A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		906F362C2378ED44000B160A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		906F36372378ED46000B160A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -677,7 +681,6 @@
 		90C94C4623A4B31F00CD19FB /* DSVipCardDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardDetail.m; sourceTree = "<group>"; };
 		90C94C4823A4CDC000CD19FB /* DSDynamicDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicDetail.h; sourceTree = "<group>"; };
 		90C94C4923A4CDC000CD19FB /* DSDynamicDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicDetail.m; sourceTree = "<group>"; };
-		90D05F2423BDEE4B002973DA /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
 		90E447E923B05ABA005BE8B9 /* DSPosterContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPosterContentView.h; sourceTree = "<group>"; };
 		90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPosterContentView.m; sourceTree = "<group>"; };
 		90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPosterContentView.xib; sourceTree = "<group>"; };
@@ -821,6 +824,8 @@
 		90FD91FE237E55C500016EF7 /* DSEditAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSEditAddressVC.h; sourceTree = "<group>"; };
 		90FD91FF237E55C500016EF7 /* DSEditAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSEditAddressVC.m; sourceTree = "<group>"; };
 		90FD9200237E55C500016EF7 /* DSEditAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSEditAddressVC.xib; sourceTree = "<group>"; };
+		90FFDF3A23C2C58D000BF6C5 /* DSWebChatPayH5View.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSWebChatPayH5View.h; sourceTree = "<group>"; };
+		90FFDF3B23C2C58D000BF6C5 /* DSWebChatPayH5View.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSWebChatPayH5View.m; sourceTree = "<group>"; };
 		A52BDBFE46C9C9000B61D447 /* Pods-DS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DS.release.xcconfig"; path = "Target Support Files/Pods-DS/Pods-DS.release.xcconfig"; sourceTree = "<group>"; };
 		BC4F949048AFF481665335AC /* Pods-DS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DS.debug.xcconfig"; path = "Target Support Files/Pods-DS/Pods-DS.debug.xcconfig"; sourceTree = "<group>"; };
 		F95BF23A4F0097FD6153E581 /* libPods-DS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -939,7 +944,7 @@
 		906F36292378ED44000B160A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				906F36282378ED44000B160A /* 袋鼠精选.app */,
+				906F36282378ED44000B160A /* 鲸品库.app */,
 				906F36432378ED46000B160A /* DSTests.xctest */,
 				906F364E2378ED46000B160A /* DSUITests.xctest */,
 			);
@@ -952,8 +957,8 @@
 				906F366923792F5B000B160A /* Class */,
 				906F36ED23792F64000B160A /* ThirdLib */,
 				906F36C123792F64000B160A /* Tool */,
-				90D05F2423BDEE4B002973DA /* yw_1222.jpg */,
 				90615E3923BAE9EB005FDFFC /* mtopsdk_configuration.plist */,
+				90359A8123C473AB0033074A /* yw_1222.jpg */,
 				906F362B2378ED44000B160A /* AppDelegate.h */,
 				906F362C2378ED44000B160A /* AppDelegate.m */,
 				906F366523792F50000B160A /* AppDelegate+MSAppService.h */,
@@ -961,6 +966,7 @@
 				906F366623792F50000B160A /* AppDelegate+MSPushService.h */,
 				906F366423792F50000B160A /* AppDelegate+MSPushService.m */,
 				906F379123793023000B160A /* DSPrefixHeader.pch */,
+				90359A8523C47B490033074A /* begin-img.png */,
 				906F36372378ED46000B160A /* Assets.xcassets */,
 				906F36392378ED46000B160A /* LaunchScreen.storyboard */,
 				906F363C2378ED46000B160A /* Info.plist */,
@@ -1488,6 +1494,8 @@
 		906F369F23792F5B000B160A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				90FFDF3A23C2C58D000BF6C5 /* DSWebChatPayH5View.h */,
+				90FFDF3B23C2C58D000BF6C5 /* DSWebChatPayH5View.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1908,7 +1916,7 @@
 			);
 			name = DS;
 			productName = DS;
-			productReference = 906F36282378ED44000B160A /* 袋鼠精选.app */;
+			productReference = 906F36282378ED44000B160A /* 鲸品库.app */;
 			productType = "com.apple.product-type.application";
 		};
 		906F36422378ED46000B160A /* DSTests */ = {
@@ -2076,6 +2084,7 @@
 				90FD91CB237E446300016EF7 /* DSChangeInfoVC.xib in Resources */,
 				90F74E3E2382323A003576B3 /* DSMyBalanceVC.xib in Resources */,
 				900146822383E31900275DD9 /* DSChooseClassCell.xib in Resources */,
+				90359A8623C47B490033074A /* begin-img.png in Resources */,
 				90FD91A8237E379000016EF7 /* DSMyHeader.xib in Resources */,
 				90EC2590237A7D23005C24C8 /* DSShopGoodsCell.xib in Resources */,
 				90AE52D123828C30009F4740 /* moment2.plist in Resources */,
@@ -2098,7 +2107,7 @@
 				90F74E5C23823F37003576B3 /* DSCashNoteCell.xib in Resources */,
 				900146AA2384E5A800275DD9 /* DSGoodsPosterView.xib in Resources */,
 				90F74E61238241BE003576B3 /* DSCashNoteDetailVC.xib in Resources */,
-				90D05F2523BDEE4B002973DA /* yw_1222.jpg in Resources */,
+				90359A8223C473AB0033074A /* yw_1222.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2295,6 +2304,7 @@
 				903A95CF23A220C100AD68CF /* DSShopGoods.m in Sources */,
 				90EC258F237A7D23005C24C8 /* DSShopGoodsCell.m in Sources */,
 				90FD91A6237E378800016EF7 /* DSMyHeader.m in Sources */,
+				90FFDF3C23C2C58D000BF6C5 /* DSWebChatPayH5View.m in Sources */,
 				906F376523792F64000B160A /* FSActionSheetConfig.m in Sources */,
 				906F375A23792F64000B160A /* WSDatePickerView.m in Sources */,
 				906F374C23792F64000B160A /* UIBarButtonItem+HXNExtension.m in Sources */,
@@ -2655,9 +2665,9 @@
 					"\"AdSupport\"",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = qibangbang.mfxapp.com;
-				PRODUCT_NAME = "袋鼠精选";
-				PROVISIONING_PROFILE_SPECIFIER = dev_qibangbang_0102;
+				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
+				PRODUCT_NAME = "鲸品库";
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0103;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2806,9 +2816,9 @@
 					"\"AdSupport\"",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = qibangbang.mfxapp.com;
-				PRODUCT_NAME = "袋鼠精选";
-				PROVISIONING_PROFILE_SPECIFIER = dev_qibangbang_0102;
+				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
+				PRODUCT_NAME = "鲸品库";
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0103;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

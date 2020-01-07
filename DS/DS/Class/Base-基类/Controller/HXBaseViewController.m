@@ -50,7 +50,7 @@
     [self.view addSubview:self.shimmer];
     
     UILabel *shimmerLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
-    shimmerLabel.text = @"袋鼠精选";
+    shimmerLabel.text = @"鲸品库";
     shimmerLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size: 24];
     shimmerLabel.textColor = HXControlBg;
     shimmerLabel.textAlignment = NSTextAlignmentCenter;

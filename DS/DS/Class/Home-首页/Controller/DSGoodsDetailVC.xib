@@ -35,17 +35,17 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07J-tk-JEa">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="804"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="999"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZyD-0M-RrK" customClass="TYCyclePagerView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="219"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="ZyD-0M-RrK" secondAttribute="height" multiplier="17:9" id="8ZY-ru-Cw6"/>
+                                        <constraint firstAttribute="width" secondItem="ZyD-0M-RrK" secondAttribute="height" multiplier="1:1" id="8ZY-ru-Cw6"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRV-EQ-igV">
-                                    <rect key="frame" x="0.0" y="219" width="414" height="145"/>
+                                    <rect key="frame" x="0.0" y="414" width="414" height="145"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGM-zA-KYG">
                                             <rect key="frame" x="10" y="7" width="394" height="40"/>
@@ -121,7 +121,7 @@
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceb-21-VsZ">
-                                    <rect key="frame" x="0.0" y="374" width="414" height="160"/>
+                                    <rect key="frame" x="0.0" y="569" width="414" height="160"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pi6-q4-BZN">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
@@ -307,7 +307,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4s-dF-RoL">
-                                    <rect key="frame" x="0.0" y="544" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="739" width="414" height="50"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="标题" translatesAutoresizingMaskIntoConstraints="NO" id="vSK-dM-OXg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -332,7 +332,7 @@
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1x-0P-mSj">
-                                    <rect key="frame" x="0.0" y="594" width="414" height="200"/>
+                                    <rect key="frame" x="0.0" y="789" width="414" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="7ig-vi-2L8"/>
