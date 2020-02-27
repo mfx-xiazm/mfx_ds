@@ -69,6 +69,14 @@
         [strongSelf applyCashRequest:button];
     }];
 }
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    UIView *view = [[UIView alloc] initWithFrame:self.sureBtn.bounds];
+    [view.layer addSublayer:[UIColor setGradualChangingColor:self.sureBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+    [self.sureBtn setBackgroundImage:[view imageWithUIView] forState:UIControlStateNormal];
+
+}
 -(void)setUpNavBar
 {
     [self.navigationItem setTitle:@"提现"];

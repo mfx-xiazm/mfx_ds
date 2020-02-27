@@ -13,6 +13,8 @@
 #import "DSChangeBindVC.h"
 #import "DSLoginVC.h"
 #import "HXNavigationController.h"
+#import "DSMyAddressVC.h"
+#import "DSWebContentVC.h"
 
 @interface DSMySetVC ()
 
@@ -26,12 +28,24 @@
 }
 - (IBAction)setBtnClicked:(UIButton *)sender {
     if (sender.tag == 1) {
-        DSChangeBindVC *bvc = [DSChangeBindVC new];
-        [self.navigationController pushViewController:bvc animated:YES];
-    }else if (sender.tag == 2) {
         DSChangePwdVC *pvc = [DSChangePwdVC new];
         pvc.dataType = 2;
         [self.navigationController pushViewController:pvc animated:YES];
+    }else if (sender.tag == 2) {
+        DSMyAddressVC *avc = [DSMyAddressVC new];
+        [self.navigationController pushViewController:avc animated:YES];
+    }else if (sender.tag == 3) {
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"用户协议";
+        wvc.requestType = 5;
+        wvc.isNeedRequest = YES;
+        [self.navigationController pushViewController:wvc animated:YES];
+    }else if (sender.tag == 4) {
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"隐私政策";
+        wvc.requestType = 6;
+        wvc.isNeedRequest = YES;
+        [self.navigationController pushViewController:wvc animated:YES];
     }else{
         zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录？" constantWidth:HX_SCREEN_WIDTH - 50*2];
         hx_weakify(self);

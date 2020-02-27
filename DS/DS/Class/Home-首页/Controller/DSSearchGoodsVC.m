@@ -51,8 +51,9 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
     [self.navigationItem setTitle:nil];
     
     HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
+    searchBar.searchIcon = @"search_icon";
     searchBar.backgroundColor = [UIColor whiteColor];
-    searchBar.layer.cornerRadius = 6;
+    searchBar.layer.cornerRadius = 15.f;
     searchBar.layer.masksToBounds = YES;
     searchBar.delegate = self;
     searchBar.placeholder = @"请输入商品名称查询";
@@ -174,7 +175,7 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
 }
 //如果是ClosedLayout样式的section，必须实现该代理，指定列数
 - (NSInteger)collectionView:(UICollectionView *)collectionView layout:(ZLCollectionViewBaseFlowLayout*)collectionViewLayout columnCountOfSection:(NSInteger)section {
-    return 2;
+    return 1;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DSCateGoodsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CateGoodsCell forIndexPath:indexPath];
@@ -189,18 +190,18 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
     [self.navigationController pushViewController:dvc animated:YES];
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat width = (HX_SCREEN_WIDTH-10.f*3)/2.0;
-    CGFloat height = width+85.f;
+    CGFloat width = HX_SCREEN_WIDTH;
+    CGFloat height = 120;
     return CGSizeMake(width, height);
 }
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 5.f;
-}
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 5.f;
+    return 0.f;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0.f;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return  UIEdgeInsetsMake(10.f, 5.f, 10.f, 5.f);
+    return  UIEdgeInsetsZero;
 }
 
 @end

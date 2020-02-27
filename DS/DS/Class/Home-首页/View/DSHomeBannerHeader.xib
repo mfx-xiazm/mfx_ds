@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,24 +15,13 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ved-cm-pRn" customClass="TYCyclePagerView">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner底" translatesAutoresizingMaskIntoConstraints="NO" id="z9d-zp-fZB">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="131.5"/>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="z9d-zp-fZB" firstAttribute="leading" secondItem="ved-cm-pRn" secondAttribute="leading" id="2bS-Vw-FzL"/>
-                        <constraint firstAttribute="trailing" secondItem="z9d-zp-fZB" secondAttribute="trailing" id="CU1-c8-raC"/>
-                        <constraint firstItem="z9d-zp-fZB" firstAttribute="top" secondItem="ved-cm-pRn" secondAttribute="top" id="YB0-iF-yPU"/>
-                    </constraints>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="9Gg-ye-v9C" firstAttribute="bottom" secondItem="ved-cm-pRn" secondAttribute="bottom" id="0Uy-gI-oC8"/>
-                <constraint firstItem="z9d-zp-fZB" firstAttribute="height" secondItem="U6b-Vx-4bR" secondAttribute="height" multiplier="0.7" id="UXn-7D-m8h"/>
+                <constraint firstItem="9Gg-ye-v9C" firstAttribute="bottom" secondItem="ved-cm-pRn" secondAttribute="bottom" constant="15" id="0Uy-gI-oC8"/>
                 <constraint firstItem="ved-cm-pRn" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="WLZ-ZN-MKd"/>
                 <constraint firstAttribute="trailing" secondItem="ved-cm-pRn" secondAttribute="trailing" id="k0n-2n-gFR"/>
                 <constraint firstItem="ved-cm-pRn" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="qTd-H7-csM"/>
@@ -44,7 +33,4 @@
             <point key="canvasLocation" x="-89.855072463768124" y="107.14285714285714"/>
         </collectionReusableView>
     </objects>
-    <resources>
-        <image name="banner底" width="375" height="156"/>
-    </resources>
 </document>

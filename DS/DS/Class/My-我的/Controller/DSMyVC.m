@@ -19,14 +19,28 @@
 #import "DSMyBalanceVC.h"
 #import "DSMyDynamicVC.h"
 #import "DSMyAfterOrderVC.h"
+#import "DSAllOrderVC.h"
+#import "DSCartVC.h"
+#import "UIView+WZLBadge.h"
 
-static NSString *const ProfileCell = @"ProfileCell";
-@interface DSMyVC ()<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-/* 头视图 */
-@property(nonatomic,strong) DSMyHeader *header;
-/* titles */
-@property(nonatomic,strong) NSArray *titles;
+@interface DSMyVC ()
+@property (weak, nonatomic) IBOutlet UIImageView *header_img;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIImageView *vip;
+@property (weak, nonatomic) IBOutlet UILabel *shareCode;
+@property (weak, nonatomic) IBOutlet UILabel *collectCnt;
+@property (weak, nonatomic) IBOutlet UILabel *teamCnt;
+@property (weak, nonatomic) IBOutlet UILabel *cartCnt;
+@property (weak, nonatomic) IBOutlet UILabel *cardCnt;
+@property (weak, nonatomic) IBOutlet UILabel *total;
+@property (weak, nonatomic) IBOutlet UILabel *goods_reward;
+@property (weak, nonatomic) IBOutlet UILabel *gift_reward;
+@property (weak, nonatomic) IBOutlet UILabel *dui_reward;
+@property (weak, nonatomic) IBOutlet UIImageView *noPayItem;
+@property (weak, nonatomic) IBOutlet UIImageView *noDeItem;
+@property (weak, nonatomic) IBOutlet UIImageView *noTakeItem;
+@property (weak, nonatomic) IBOutlet UIImageView *completedItem;
+@property (weak, nonatomic) IBOutlet UIImageView *refundItem;
 
 @end
 
@@ -35,7 +49,9 @@ static NSString *const ProfileCell = @"ProfileCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavBar];
-    [self setUpTableView];
+    self.header_img.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileInfoClicked:)];
+    [self.header_img addGestureRecognizer:tap];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -45,88 +61,80 @@ static NSString *const ProfileCell = @"ProfileCell";
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 320.f);
 }
--(DSMyHeader *)header
-{
-    if (_header == nil) {
-        _header = [DSMyHeader loadXibView];
-        _header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 320.f);
-        hx_weakify(self);
-        _header.myHeaderBtnClickedCall = ^(NSInteger index) {
-            hx_strongify(weakSelf);
-            if (index == 7) {
-                UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-                pasteboard.string = [MSUserManager sharedInstance].curUserInfo.share_code;
-                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"复制成功"];
-            }else if (index == 6) {
-                DSChangeInfoVC *ivc = [DSChangeInfoVC new];
-                [strongSelf.navigationController pushViewController:ivc animated:YES];
-            }else if (index == 5){
-                DSMyAfterOrderVC *dvc = [DSMyAfterOrderVC new];
-                [strongSelf.navigationController pushViewController:dvc animated:YES];
-            }else{
-                DSMyOrderVC *ovc = [DSMyOrderVC new];
-                ovc.selectIndex = index;
-                [strongSelf.navigationController pushViewController:ovc animated:YES];
-            }
-        };
-    }
-    return _header;
-}
--(NSArray *)titles
-{
-    if (_titles == nil) {
-        _titles = @[  @{@"title":@"我的团队",@"imagename":@"团队"},
-                      @{@"title":@"我的余额",@"imagename":@"余额"},
-                      @{@"title":@"我的卡包",@"imagename":@"卡包"},
-                      @{@"title":@"我的动态",@"imagename":@"动态_1"},
-                      @{@"title":@"我的收藏",@"imagename":@"收藏"},
-                      @{@"title":@"我的地址",@"imagename":@"地址"},
-                      @{@"title":@"客服消息",@"imagename":@"客服"}
-        ];
-        
-    }
-    return _titles;
-}
+
 -(void)setUpNavBar
 {
     [self.navigationItem setTitle:@"我的"];
-    
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(setClicked) image:HXGetImage(@"设 置")];
-}
--(void)setUpTableView
-{
-    // 针对 11.0 以上的iOS系统进行处理
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        // 针对 11.0 以下的iOS系统进行处理
-        // 不要自动调整inset
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
-    self.tableView.estimatedRowHeight = 0;//预估高度
-    self.tableView.estimatedSectionHeaderHeight = 0;
-    self.tableView.estimatedSectionFooterHeight = 0;
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    
-    self.tableView.showsVerticalScrollIndicator = NO;
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    // 注册cell
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DSMyCell class]) bundle:nil] forCellReuseIdentifier:ProfileCell];
-    
-    self.tableView.tableHeaderView = self.header;
+    self.hbd_barShadowHidden = YES;
+    UIBarButtonItem *kefu = [UIBarButtonItem itemWithTarget:self action:@selector(kefuClicked) image:HXGetImage(@"客服")];
+    UIBarButtonItem *set = [UIBarButtonItem itemWithTarget:self action:@selector(setClicked) image:HXGetImage(@"设 置")];
+    self.navigationItem.rightBarButtonItems = @[set,kefu];
 }
 #pragma mark -- 点击
+-(void)kefuClicked
+{
+    HXLog(@"客服");
+}
 -(void)setClicked
 {
     DSMySetVC *svc = [DSMySetVC new];
     [self.navigationController pushViewController:svc animated:YES];
+}
+-(void)profileInfoClicked:(UITapGestureRecognizer *)tap
+{
+    DSChangeInfoVC *ivc = [DSChangeInfoVC new];
+    [self.navigationController pushViewController:ivc animated:YES];
+}
+- (IBAction)myCollectBtnClicked:(UIButton *)sender {
+    DSMyCollectVC *cvc = [DSMyCollectVC new];
+    [self.navigationController pushViewController:cvc animated:YES];
+}
+- (IBAction)myCartBtnClicked:(UIButton *)sender {
+    DSCartVC *cvc = [DSCartVC new];
+    [self.navigationController pushViewController:cvc animated:YES];
+}
+
+- (IBAction)myCardBtnClicked:(UIButton *)sender {
+    DSMyCardVC *gvc = [DSMyCardVC new];
+    [self.navigationController pushViewController:gvc animated:YES];
+}
+
+- (IBAction)myBalanceBtnClicked:(UIButton *)sender {
+    DSMyBalanceVC *nvc = [DSMyBalanceVC new];
+    [self.navigationController pushViewController:nvc animated:YES];
+}
+- (IBAction)pasteBtnClicked:(UIButton *)sender {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = [MSUserManager sharedInstance].curUserInfo.share_code;
+    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"复制成功"];
+}
+- (IBAction)myOrderClicked:(UIButton *)sender {
+    if (sender.tag == 5){
+        DSMyAfterOrderVC *dvc = [DSMyAfterOrderVC new];
+        [self.navigationController pushViewController:dvc animated:YES];
+    }else{
+        if (sender.tag == 0) {
+            DSAllOrderVC *ovc = [DSAllOrderVC new];
+            [self.navigationController pushViewController:ovc animated:YES];
+        }else{
+            DSMyOrderVC *ovc = [DSMyOrderVC new];
+            ovc.selectIndex = sender.tag;
+            [self.navigationController pushViewController:ovc animated:YES];
+        }
+    }
+}
+- (IBAction)myTeamBtnClicked:(UIButton *)sender {
+    DSMyTeamVC *avc = [DSMyTeamVC new];
+    [self.navigationController pushViewController:avc animated:YES];
+}
+- (IBAction)myAddressBtnClicked:(UIButton *)sender {
+    DSMyAddressVC *avc = [DSMyAddressVC new];
+    [self.navigationController pushViewController:avc animated:YES];
+}
+- (IBAction)myDynamicBtnClicked:(UIButton *)sender {
+    DSMyDynamicVC *bvc = [DSMyDynamicVC new];
+    [self.navigationController pushViewController:bvc animated:YES];
 }
 #pragma mark -- 业务逻辑
 -(void)getUserInfoRequest
@@ -138,9 +146,7 @@ static NSString *const ProfileCell = @"ProfileCell";
             [MSUserManager sharedInstance].curUserInfo = [MSUserInfo yy_modelWithDictionary:responseObject[@"result"]];
             [[MSUserManager sharedInstance] saveUserInfo];
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (strongSelf.header) {
-                    strongSelf.header.isReload = YES;
-                }
+                [strongSelf showUserInfo];
             });
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
@@ -149,67 +155,38 @@ static NSString *const ProfileCell = @"ProfileCell";
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }
-
-#pragma mark -- UITableView数据源和代理
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(void)showUserInfo
 {
-    return self.titles.count;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DSMyCell *cell = [tableView dequeueReusableCellWithIdentifier:ProfileCell forIndexPath:indexPath];
-    //无色
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSDictionary *temp = self.titles[indexPath.row];
-    cell.name.text = temp[@"title"];
-    cell.img.image = HXGetImage(temp[@"imagename"]);
-    return cell;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 44.f;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.row) {
-        case 0:{
-            DSMyTeamVC *avc = [DSMyTeamVC new];
-            [self.navigationController pushViewController:avc animated:YES];
-        }
-            break;
-        case 1:{
-            DSMyBalanceVC *nvc = [DSMyBalanceVC new];
-            [self.navigationController pushViewController:nvc animated:YES];
-        }
-            break;
-        case 2:{
-            DSMyCardVC *gvc = [DSMyCardVC new];
-            [self.navigationController pushViewController:gvc animated:YES];
-        }
-            break;
-        case 3:{
-            DSMyDynamicVC *bvc = [DSMyDynamicVC new];
-            [self.navigationController pushViewController:bvc animated:YES];
-        }
-            break;
-        case 4:{
-            DSMyCollectVC *cvc = [DSMyCollectVC new];
-            [self.navigationController pushViewController:cvc animated:YES];
-        }
-            break;
-        case 5:{
-            DSMyAddressVC *avc = [DSMyAddressVC new];
-            [self.navigationController pushViewController:avc animated:YES];
-        }
-            break;
-            
-        case 6:{
-            //            GYMyAddressVC *avc = [GYMyAddressVC new];
-            //            [self.navigationController pushViewController:avc animated:YES];
-        }
-            break;
-        default:
-            break;
+    [self.header_img sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar] placeholderImage:HXGetImage(@"avatar")];
+    self.name.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
+    
+    if ([MSUserManager sharedInstance].curUserInfo.ulevel != 1) {
+        self.vip.hidden = NO;
+    }else{
+        self.vip.hidden = YES;
     }
-}
+    
+    self.shareCode.text = [NSString stringWithFormat:@"邀请码：%@",[MSUserManager sharedInstance].curUserInfo.share_code];
+    
+    self.collectCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.collectCnt];
+    self.teamCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.teamCnt];
+    self.cartCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.cartCnt];
+    self.cardCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.cardCnt];
 
+    [self.total setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.total] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:16]];
+    [self.goods_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.goods_reward] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.gift_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.gift_reward] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.dui_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.upgrade_reward+[MSUserManager sharedInstance].curUserInfo.share_reward] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+
+    self.noPayItem.badgeBgColor = HXControlBg;
+    [self.noPayItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.noPayCnt animationType:WBadgeAnimTypeNone];
+    self.noDeItem.badgeBgColor = HXControlBg;
+    [self.noDeItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.noDeCnt animationType:WBadgeAnimTypeNone];
+    self.noTakeItem.badgeBgColor = HXControlBg;
+    [self.noTakeItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.noTakeCnt animationType:WBadgeAnimTypeNone];
+    self.completedItem.badgeBgColor = HXControlBg;
+    [self.completedItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.completeCnt animationType:WBadgeAnimTypeNone];
+    self.refundItem.badgeBgColor = HXControlBg;
+    [self.refundItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.trfundCnt animationType:WBadgeAnimTypeNone];
+}
 @end

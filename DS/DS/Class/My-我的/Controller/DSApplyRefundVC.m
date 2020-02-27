@@ -12,11 +12,12 @@
 #import <ZLCollectionViewVerticalLayout.h>
 #import <ZLPhotoActionSheet.h>
 #import <AFNetworking.h>
+#import "HXPlaceholderTextView.h"
 
 static NSString *const ApplyRefundCell = @"ApplyRefundCell";
 @interface DSApplyRefundVC ()<UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet UITextField *refund_reason;
+@property (weak, nonatomic) IBOutlet  HXPlaceholderTextView *refund_reason;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 /** 已选择的数组 */
 @property (nonatomic,strong) NSMutableArray *selectedAssets;
@@ -24,6 +25,8 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
 @property (nonatomic,strong) NSMutableArray *selectedPhotos;
 /** 是否原图 */
 @property (nonatomic, assign) BOOL isOriginal;
+/** 是否选择了4张 */
+@property (nonatomic, assign) BOOL isSelect4;
 /** 模型数组 */
 @property (nonatomic,strong) NSMutableArray *showData;
 @end
@@ -33,6 +36,7 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"申请退款"];
+    self.refund_reason.placeholder = @"请输入退款原因";
     [self setUpCollectionView];
     hx_weakify(self);
     [self.submitBtn BindingBtnJudgeBlock:^BOOL{
@@ -41,8 +45,8 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入退款原因"];
             return NO;
         }
-        if (!strongSelf.showData.count) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请上传订单有关图片"];
+        if (strongSelf.showData.count==1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请上传订单凭证"];
             return NO;
         }
         return YES;
@@ -51,10 +55,18 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
         [strongSelf submitBtnClicked:button];
     }];
 }
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    UIView *view = [[UIView alloc] initWithFrame:self.submitBtn.bounds];
+    [view.layer addSublayer:[UIColor setGradualChangingColor:self.submitBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+    [self.submitBtn setBackgroundImage:[view imageWithUIView] forState:UIControlStateNormal];
+}
 -(NSMutableArray *)showData
 {
     if (_showData == nil) {
         _showData = [NSMutableArray array];
+        [_showData addObject:HXGetImage(@"选择照片")];
     }
     return _showData;
 }
@@ -139,6 +151,12 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
         @zl_strongify(self);
         [self.showData removeAllObjects];
         [self.showData addObjectsFromArray:images];
+        if (self.showData.count != 4) {
+            [self.showData addObject:HXGetImage(@"选择照片")];
+            self.isSelect4 = NO;
+        }else{
+            self.isSelect4 = YES;
+        }
         
         self.selectedAssets = assets.mutableCopy;
         self.isOriginal = isOriginal;
@@ -171,17 +189,23 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSApplyRefundCell class]) bundle:nil] forCellWithReuseIdentifier:ApplyRefundCell];
 }
 #pragma mark -- 点击事件
-- (IBAction)upLoadClicked:(UIButton *)sender {
-    [[self getPas] showPhotoLibrary];
-}
 -(void)submitBtnClicked:(UIButton *)btn
 {
-    if (self.showData.count > 0) {
+    if (self.showData.count >1) {
         hx_weakify(self);
-        [self runUpLoadImages:self.showData completedCall:^(NSMutableArray *result) {
-            hx_strongify(weakSelf);
-            [strongSelf submitSuggestRequest:btn imageUrls:result];
-        }];
+        if (self.isSelect4) {
+            [self runUpLoadImages:self.showData completedCall:^(NSMutableArray *result) {
+                hx_strongify(weakSelf);
+                [strongSelf submitSuggestRequest:btn imageUrls:result];
+            }];
+        }else{
+            NSMutableArray *tempImgs = [NSMutableArray arrayWithArray:self.showData];
+            [tempImgs removeLastObject];
+            [self runUpLoadImages:tempImgs completedCall:^(NSMutableArray *result) {
+                hx_strongify(weakSelf);
+                [strongSelf submitSuggestRequest:btn imageUrls:result];
+            }];
+        }
     }else{
         [self submitSuggestRequest:btn imageUrls:nil];
     }
@@ -317,8 +341,15 @@ static NSString *const ApplyRefundCell = @"ApplyRefundCell";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
-    
-    [[self getPas] previewSelectedPhotos:self.selectedPhotos assets:self.selectedAssets index:indexPath.row isOriginal:self.isOriginal];
+    if (self.isSelect4) {
+        [[self getPas] previewSelectedPhotos:self.selectedPhotos assets:self.selectedAssets index:indexPath.row isOriginal:self.isOriginal];
+    }else{
+        if (indexPath.row == self.showData.count - 1) {//最后一个
+            [[self getPas] showPhotoLibrary];
+        }else{
+            [[self getPas] previewSelectedPhotos:self.selectedPhotos assets:self.selectedAssets index:indexPath.row isOriginal:self.isOriginal];
+        }
+    }
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = (collectionView.hxn_width-10*4.f)/4.0;

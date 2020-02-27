@@ -25,6 +25,8 @@ static NSString *const CartCell = @"CartCell";
 @property (weak, nonatomic) IBOutlet UIButton *selectAllBtn;
 /* 总价 */
 @property (weak, nonatomic) IBOutlet UILabel *totalPrice;
+/* 件数 */
+@property (weak, nonatomic) IBOutlet UILabel *goodsNum;
 /** 购物车数组 */
 @property (nonatomic,strong) NSMutableArray *cartDataArr;
 /* 是否是提交订单push */
@@ -36,6 +38,7 @@ static NSString *const CartCell = @"CartCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = HXGlobalBg;
     [self setUpNavBar];
     [self setUpTableView];
     [self setUpRefresh];
@@ -91,6 +94,8 @@ static NSString *const CartCell = @"CartCell";
     self.editBtn = edit;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:edit];
+    
+    [self.handleBtn.layer addSublayer:[UIColor setGradualChangingColor:self.handleBtn fromColor:@"F9AD28" toColor:@"F95628"]];
 }
 -(void)setUpTableView
 {
@@ -114,7 +119,7 @@ static NSString *const CartCell = @"CartCell";
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 设置背景色为clear
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = HXGlobalBg;
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DSCartCell class]) bundle:nil] forCellReuseIdentifier:CartCell];
@@ -220,7 +225,7 @@ static NSString *const CartCell = @"CartCell";
         zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"删除" handler:^(zhAlertButton * _Nonnull button) {
             hx_strongify(weakSelf);
             [strongSelf.zh_popupController dismiss];
-            [strongSelf delOrderCartRequest];
+            [strongSelf delOrderCartRequest:nil compledCall:nil];
         }];
         cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
         [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
@@ -295,6 +300,7 @@ static NSString *const CartCell = @"CartCell";
 -(void)calculateGoodsPrice
 {
     __block CGFloat price = 0;
+    __block NSInteger num = 0;
     [self.cartDataArr enumerateObjectsUsingBlock:^(DSCartData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.is_checked) {
             if ([obj.is_discount isEqualToString:@"1"]) {
@@ -302,39 +308,54 @@ static NSString *const CartCell = @"CartCell";
             }else{
                 price += ([obj.price floatValue])*[obj.cart_num integerValue];
             }
+            num++;
         }
     }];
-    self.totalPrice.text = [NSString stringWithFormat:@"%.2f元",fabs(price)];
+    [self.totalPrice setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",fabs(price)] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    self.goodsNum.text = [NSString stringWithFormat:@"共%zd件",num];
 }
--(void)delOrderCartRequest
+-(void)delOrderCartRequest:(NSString *)sku_id compledCall:(void(^)(void))compledCall
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
-    NSMutableString *sku_ids = [NSMutableString string];
-    [self.cartDataArr enumerateObjectsUsingBlock:^(DSCartData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.is_checked) {
-            [sku_ids appendFormat:@"%@",sku_ids.length?[NSString stringWithFormat:@",%@",obj.sku_id]:[NSString stringWithFormat:@"%@",obj.sku_id]];
-        }
-    }];
-    parameters[@"sku_ids"] = sku_ids;//删除多个id间用逗号隔开
+    if (sku_id) {
+        parameters[@"sku_ids"] = sku_id;//删除多个id间用逗号隔开
+    }else{
+        NSMutableString *sku_ids = [NSMutableString string];
+        [self.cartDataArr enumerateObjectsUsingBlock:^(DSCartData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.is_checked) {
+                [sku_ids appendFormat:@"%@",sku_ids.length?[NSString stringWithFormat:@",%@",obj.sku_id]:[NSString stringWithFormat:@"%@",obj.sku_id]];
+            }
+        }];
+        parameters[@"sku_ids"] = sku_ids;//删除多个id间用逗号隔开
+    }
+    
 
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"cart_delete_set" parameters:parameters success:^(id responseObject) {
         hx_strongify(weakSelf);
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"删除成功"];
-
-            NSMutableArray *tempArr = [NSMutableArray arrayWithArray:strongSelf.cartDataArr];
-            [tempArr enumerateObjectsUsingBlock:^(DSCartData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if (obj.is_checked) {
-                    [strongSelf.cartDataArr removeObject:obj];
-                }
-            }];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [strongSelf checkIsAllSelect];
-                [strongSelf calculateGoodsPrice];
-                [strongSelf.tableView reloadData];
-            });
+            if (sku_id) {
+                compledCall();
+            }else{
+                NSMutableArray *tempArr = [NSMutableArray arrayWithArray:strongSelf.cartDataArr];
+                [tempArr enumerateObjectsUsingBlock:^(DSCartData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if (obj.is_checked) {
+                        [strongSelf.cartDataArr removeObject:obj];
+                    }
+                }];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [strongSelf checkIsAllSelect];
+                    [strongSelf calculateGoodsPrice];
+                    [strongSelf.tableView reloadData];
+                    if (strongSelf.cartDataArr.count) {
+                        [strongSelf.tableView ly_hideEmptyView];
+                    }else{
+                        [strongSelf.tableView ly_showEmptyView];
+                    }
+                });
+            }
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
         }
@@ -382,7 +403,8 @@ static NSString *const CartCell = @"CartCell";
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DSCartData *cart = self.cartDataArr[indexPath.row];
-    cell.flag.hidden = [cart.is_discount isEqualToString:@"1"]?NO:YES;
+    //cell.flag.hidden = [cart.is_discount isEqualToString:@"1"]?NO:YES;
+    cell.flag.hidden = YES;
     cell.cart = cart;
     hx_weakify(self);
     cell.cartHandleCall = ^(NSInteger index) {
@@ -399,11 +421,47 @@ static NSString *const CartCell = @"CartCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回这个模型对应的cell高度
-    return 115.f;
+    return 180.f+16.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
 }
-
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    hx_weakify(self);
+    DSCartData *cart = self.cartDataArr[indexPath.row];
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删\n除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        hx_strongify(weakSelf);
+        zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要删除选中商品吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
+        zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
+            [strongSelf.zh_popupController dismiss];
+        }];
+        zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"删除" handler:^(zhAlertButton * _Nonnull button) {
+            [strongSelf.zh_popupController dismiss];
+            [strongSelf delOrderCartRequest:cart.sku_id compledCall:^{
+                [strongSelf.cartDataArr removeObject:cart];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [strongSelf checkIsAllSelect];
+                    [strongSelf calculateGoodsPrice];
+                    [strongSelf.tableView reloadData];
+                    if (strongSelf.cartDataArr.count) {
+                        [strongSelf.tableView ly_hideEmptyView];
+                    }else{
+                        [strongSelf.tableView ly_showEmptyView];
+                    }
+                });
+            }];
+        }];
+        cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
+        [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+        okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+        [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+        [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
+        strongSelf.zh_popupController = [[zhPopupController alloc] init];
+        [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+    }];
+    deleteAction.backgroundColor = HXControlBg;
+    
+    return @[deleteAction];
+}
 @end

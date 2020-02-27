@@ -154,7 +154,7 @@
 
 + (CGSize)getContainerSizeWithPicPathStringsArray:(NSArray *)picPathStringsArray
 {
-    CGFloat itemW = picPathStringsArray.count == 1 ? 120 : (HX_SCREEN_WIDTH - kTodayNormalPadding - kTodayPortraitWidthAndHeight - kTodayPortraitNamePadding - kTodayNormalPadding - margin*2)/3.0;
+    CGFloat itemW = picPathStringsArray.count == 1 ? 120 : (HX_SCREEN_WIDTH - margin - kTodayPortraitWidthAndHeight - margin - margin - margin*2)/3.0;
     CGFloat itemH = 0;
     if (picPathStringsArray.count == 1) {
         itemH = itemW;

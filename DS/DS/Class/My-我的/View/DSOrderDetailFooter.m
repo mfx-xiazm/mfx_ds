@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *pay_amount;
 @property (weak, nonatomic) IBOutlet UILabel *freight_amount;
 @property (weak, nonatomic) IBOutlet UILabel *order_self_commission;
+@property (weak, nonatomic) IBOutlet UILabel *payInfo;
+@property (weak, nonatomic) IBOutlet UILabel *payInfo2;
+
 @property (weak, nonatomic) IBOutlet UILabel *remarks;
 @property (weak, nonatomic) IBOutlet UILabel *order_no;
 @property (weak, nonatomic) IBOutlet UIView *normalView;
@@ -30,19 +33,29 @@
 {
     _orderDetail = orderDetail;
     
-    if ([_orderDetail.order_type isEqualToString:@"1"]) {// 常规
-        self.normalView.hidden = NO;
-        self.normalViewHeight.constant = 80.f;
-    }else{//vip
-        self.normalView.hidden = YES;
-        self.normalViewHeight.constant = 0.f;
+//    if ([_orderDetail.order_type isEqualToString:@"1"]) {// 常规
+//        self.normalView.hidden = NO;
+//        self.normalViewHeight.constant = 80.f;
+//    }else{//vip
+//        self.normalView.hidden = YES;
+//        self.normalViewHeight.constant = 0.f;
+//    }
+    // 参考上面注释代码，根据是否付款来设置高度
+    if ([_orderDetail.status isEqualToString:@"待付款"] || [_orderDetail.status isEqualToString:@"已取消"]) {
+        [self.payInfo setTextWithLineSpace:8.f withString:@"配送" withFont:[UIFont systemFontOfSize:12]];
+        [self.payInfo2 setTextWithLineSpace:8.f withString:@"包邮" withFont:[UIFont systemFontOfSize:12]];
+    }else{
+        [self.payInfo setTextWithLineSpace:8.f withString:@"配送\n支付方式" withFont:[UIFont systemFontOfSize:12]];
+        [self.payInfo2 setTextWithLineSpace:8.f withString:[NSString stringWithFormat:@"包邮\n%@",[_orderDetail.pay_type isEqualToString:@"1"]?@"支付宝支付":@"微信支付"] withFont:[UIFont systemFontOfSize:12]];
     }
+    
     self.remarkViewHeight.constant = _orderDetail.remarkTextHeight;
     
     self.pay_amount.text = [NSString stringWithFormat:@"￥%.2f",[_orderDetail.pay_amount floatValue]];
     self.order_self_commission.text = [NSString stringWithFormat:@"￥%.2f",[_orderDetail.order_self_commission floatValue]];
-    [self.remarks setTextWithLineSpace:5.f withString:_orderDetail.remarks withFont:[UIFont systemFontOfSize:13]];
-    [self.order_no setTextWithLineSpace:5.f withString:[NSString stringWithFormat:@"订单编号：%@\n下单时间：%@",_orderDetail.order_no,_orderDetail.create_time] withFont:[UIFont systemFontOfSize:13]];
+    [self.remarks setTextWithLineSpace:5.f withString:_orderDetail.remarks withFont:[UIFont systemFontOfSize:12]];
+    
+    [self.order_no setTextWithLineSpace:8.f withString:[NSString stringWithFormat:@"订单编号：%@\n数量：x%zd\n邮费：0\n下单时间：%@",_orderDetail.order_no,_orderDetail.list_goods.count,_orderDetail.create_time] withFont:[UIFont systemFontOfSize:12]];
 }
 - (IBAction)orderNoCopy:(id)sender {
     

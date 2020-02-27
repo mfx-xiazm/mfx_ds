@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,77 +18,83 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQq-qc-wKF">
-                        <rect key="frame" x="10" y="5" width="329" height="95"/>
+                        <rect key="frame" x="12" y="5" width="325" height="95"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRC-3D-iLu" userLabel="左侧指示线">
+                                <rect key="frame" x="0.0" y="0.0" width="4" height="95"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="4" id="Ilo-EJ-K7i"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王一涵" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h7-8m-gt4">
-                                <rect key="frame" x="10" y="10" width="40" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <rect key="frame" x="14" y="10" width="43" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18827073659" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qm-ad-e6w">
-                                <rect key="frame" x="65" y="10.5" width="80" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖北省咸宁市咸安区浮山街道浮山新村63栋4号" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPc-EX-N7F">
-                                <rect key="frame" x="10" y="31" width="309" height="14.5"/>
+                                <rect key="frame" x="67" y="11" width="80" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="湖北省咸宁市咸安区浮山街道浮山新村63栋4号" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPc-EX-N7F">
+                                <rect key="frame" x="14" y="32" width="301" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  默认  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyu-Bf-7Yc">
+                                <rect key="frame" x="157" y="10.5" width="32.5" height="16"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="i3j-fd-UIR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJN-hw-dcr">
-                                <rect key="frame" x="0.0" y="60" width="329" height="35"/>
+                                <rect key="frame" x="4" y="60" width="321" height="35"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZT-aq-JhF">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="ajN-V5-jha"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
-                                        <state key="normal" title="设为默认" image="地址未选">
-                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <state key="selected" image="地址选中"/>
-                                        <connections>
-                                            <action selector="editClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cAf-gg-Ci3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkm-MW-2ND">
-                                        <rect key="frame" x="209" y="0.0" width="60" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="5U8-Dr-xFh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
-                                        <state key="normal" title="删除" image="删除">
-                                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="editClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bcs-mQ-a6F"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7r-1G-jjG">
-                                        <rect key="frame" x="269" y="0.0" width="60" height="35"/>
+                                        <rect key="frame" x="201" y="0.0" width="60" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="ES2-ff-Kd0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
-                                        <state key="normal" title="编辑" image="编辑">
+                                        <state key="normal" title="编辑">
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="editClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9cD-Ln-nga"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkm-MW-2ND">
+                                        <rect key="frame" x="261" y="0.0" width="60" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="5U8-Dr-xFh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <inset key="titleEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="3" maxY="0.0"/>
+                                        <state key="normal" title="删除">
+                                            <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bcs-mQ-a6F"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0r-Vk-fop" userLabel="分割线">
-                                        <rect key="frame" x="0.0" y="0.0" width="329" height="1"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="1"/>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="W2e-0Y-SKv"/>
@@ -99,15 +105,12 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="j7r-1G-jjG" secondAttribute="bottom" id="6Pj-19-yHI"/>
                                     <constraint firstAttribute="height" constant="35" id="8GS-UH-wAY"/>
-                                    <constraint firstItem="tZT-aq-JhF" firstAttribute="top" secondItem="CJN-hw-dcr" secondAttribute="top" id="EON-r2-iMa"/>
-                                    <constraint firstAttribute="trailing" secondItem="j7r-1G-jjG" secondAttribute="trailing" id="H2K-cP-e8s"/>
+                                    <constraint firstItem="xkm-MW-2ND" firstAttribute="leading" secondItem="j7r-1G-jjG" secondAttribute="trailing" id="Aqs-2Q-KIf"/>
                                     <constraint firstAttribute="trailing" secondItem="H0r-Vk-fop" secondAttribute="trailing" id="JBT-CT-5JE"/>
                                     <constraint firstItem="xkm-MW-2ND" firstAttribute="top" secondItem="CJN-hw-dcr" secondAttribute="top" id="RsK-rr-9DP"/>
-                                    <constraint firstItem="tZT-aq-JhF" firstAttribute="leading" secondItem="CJN-hw-dcr" secondAttribute="leading" id="Vxt-7U-iOC"/>
+                                    <constraint firstAttribute="trailing" secondItem="xkm-MW-2ND" secondAttribute="trailing" id="YjL-uc-9dJ"/>
                                     <constraint firstAttribute="bottom" secondItem="xkm-MW-2ND" secondAttribute="bottom" id="ZJv-Ti-hcB"/>
                                     <constraint firstItem="j7r-1G-jjG" firstAttribute="top" secondItem="CJN-hw-dcr" secondAttribute="top" id="cX0-nz-8qx"/>
-                                    <constraint firstAttribute="bottom" secondItem="tZT-aq-JhF" secondAttribute="bottom" id="fEy-Ru-TPR"/>
-                                    <constraint firstItem="j7r-1G-jjG" firstAttribute="leading" secondItem="xkm-MW-2ND" secondAttribute="trailing" id="mOy-vc-a52"/>
                                     <constraint firstItem="H0r-Vk-fop" firstAttribute="top" secondItem="CJN-hw-dcr" secondAttribute="top" id="qDD-ot-EBy"/>
                                     <constraint firstItem="H0r-Vk-fop" firstAttribute="leading" secondItem="CJN-hw-dcr" secondAttribute="leading" id="zRB-pd-kX5"/>
                                 </constraints>
@@ -116,15 +119,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="GPc-EX-N7F" firstAttribute="top" secondItem="8h7-8m-gt4" secondAttribute="bottom" constant="5" id="4Pm-KD-478"/>
-                            <constraint firstItem="1qm-ad-e6w" firstAttribute="leading" secondItem="8h7-8m-gt4" secondAttribute="trailing" constant="15" id="6vC-5c-S84"/>
+                            <constraint firstItem="1qm-ad-e6w" firstAttribute="leading" secondItem="8h7-8m-gt4" secondAttribute="trailing" constant="10" id="6vC-5c-S84"/>
+                            <constraint firstItem="8h7-8m-gt4" firstAttribute="leading" secondItem="xRC-3D-iLu" secondAttribute="trailing" constant="10" id="86B-2x-A2h"/>
                             <constraint firstItem="8h7-8m-gt4" firstAttribute="top" secondItem="bQq-qc-wKF" secondAttribute="top" constant="10" id="8rh-nI-zVr"/>
+                            <constraint firstItem="CJN-hw-dcr" firstAttribute="leading" secondItem="xRC-3D-iLu" secondAttribute="trailing" id="Atl-ze-Mkv"/>
                             <constraint firstAttribute="trailing" secondItem="GPc-EX-N7F" secondAttribute="trailing" constant="10" id="EPj-Tc-h2P"/>
                             <constraint firstAttribute="trailing" secondItem="CJN-hw-dcr" secondAttribute="trailing" id="Mtd-bu-4ey"/>
-                            <constraint firstItem="GPc-EX-N7F" firstAttribute="leading" secondItem="bQq-qc-wKF" secondAttribute="leading" constant="10" id="OW6-l5-9cG"/>
+                            <constraint firstAttribute="bottom" secondItem="xRC-3D-iLu" secondAttribute="bottom" id="Niy-3H-Dz9"/>
                             <constraint firstItem="1qm-ad-e6w" firstAttribute="centerY" secondItem="8h7-8m-gt4" secondAttribute="centerY" id="U2o-Dl-qba"/>
+                            <constraint firstItem="GPc-EX-N7F" firstAttribute="leading" secondItem="xRC-3D-iLu" secondAttribute="trailing" constant="10" id="Uba-em-0gX"/>
+                            <constraint firstItem="xRC-3D-iLu" firstAttribute="leading" secondItem="bQq-qc-wKF" secondAttribute="leading" id="YQR-2u-fuc"/>
+                            <constraint firstItem="Kyu-Bf-7Yc" firstAttribute="leading" secondItem="1qm-ad-e6w" secondAttribute="trailing" constant="10" id="ZIb-q3-6bb"/>
+                            <constraint firstItem="Kyu-Bf-7Yc" firstAttribute="centerY" secondItem="1qm-ad-e6w" secondAttribute="centerY" id="fgY-SP-L7A"/>
                             <constraint firstAttribute="bottom" secondItem="CJN-hw-dcr" secondAttribute="bottom" id="h5J-iV-oOg"/>
-                            <constraint firstItem="8h7-8m-gt4" firstAttribute="leading" secondItem="bQq-qc-wKF" secondAttribute="leading" constant="10" id="jJW-2Z-n5a"/>
-                            <constraint firstItem="CJN-hw-dcr" firstAttribute="leading" secondItem="bQq-qc-wKF" secondAttribute="leading" id="sak-Zr-WvG"/>
+                            <constraint firstItem="xRC-3D-iLu" firstAttribute="top" secondItem="bQq-qc-wKF" secondAttribute="top" id="xGD-v7-iiB"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
@@ -147,8 +155,8 @@
                 </subviews>
                 <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="0.98123899650000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="bQq-qc-wKF" secondAttribute="trailing" constant="10" id="7yy-wA-ddg"/>
-                    <constraint firstItem="bQq-qc-wKF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Bqj-zF-jgV"/>
+                    <constraint firstAttribute="trailing" secondItem="bQq-qc-wKF" secondAttribute="trailing" constant="12" id="7yy-wA-ddg"/>
+                    <constraint firstItem="bQq-qc-wKF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Bqj-zF-jgV"/>
                     <constraint firstItem="bQq-qc-wKF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ZVf-H7-Ihl"/>
                     <constraint firstAttribute="bottom" secondItem="bQq-qc-wKF" secondAttribute="bottom" constant="5" id="jyz-Id-YTI"/>
                 </constraints>
@@ -156,17 +164,12 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="addressLabel" destination="GPc-EX-N7F" id="j9L-KE-a1N"/>
-                <outlet property="is_defalt" destination="tZT-aq-JhF" id="aCt-wN-ITr"/>
+                <outlet property="is_defalt" destination="Kyu-Bf-7Yc" id="JHd-zK-UgY"/>
+                <outlet property="leftLine" destination="xRC-3D-iLu" id="lJF-VC-bjo"/>
                 <outlet property="receiver" destination="8h7-8m-gt4" id="nlr-3P-LVt"/>
                 <outlet property="receiver_phone" destination="1qm-ad-e6w" id="AbG-ar-a44"/>
             </connections>
             <point key="canvasLocation" x="158.69565217391306" y="134.26339285714286"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="删除" width="14.5" height="15.5"/>
-        <image name="地址未选" width="15.5" height="15.5"/>
-        <image name="地址选中" width="15" height="15"/>
-        <image name="编辑" width="12" height="15"/>
-    </resources>
 </document>

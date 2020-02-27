@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headPic;
 @property (weak, nonatomic) IBOutlet UILabel *nick;
 @property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *member_flag;
 
 @end
 @implementation DSDynamicDetailHeader
@@ -28,5 +29,6 @@
     [self.headPic sd_setImageWithURL:[NSURL URLWithString:_info.avatar] placeholderImage:HXGetImage(@"avatar")];
     self.nick.text = _info.nick_name;
     self.time.text = _info.create_time;
+    self.member_flag.text = [NSString stringWithFormat:@" %@ ",_info.member_flag];
 }
 @end

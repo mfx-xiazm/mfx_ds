@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *stock;
 @property(nonatomic,copy) NSString *cover_img;
 @property(nonatomic,copy) NSString *is_discount;
+@property(nonatomic,assign) CGFloat totalPrice;
+
 @end
 
 NS_ASSUME_NONNULL_END

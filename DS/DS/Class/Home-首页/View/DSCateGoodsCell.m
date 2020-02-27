@@ -26,10 +26,11 @@
 {
     _goods = goods;
     [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
-    self.goodName.text = _goods.goods_name;
-    self.price.text = [NSString stringWithFormat:@"￥%.2f",[_goods.discount_price floatValue]];
+    [self.goodName addFlagLabelWithName:_goods.cate_flag lineSpace:3.f titleString:_goods.goods_name withFont:[UIFont systemFontOfSize:13]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_goods.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
     [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[_goods.price floatValue]]];
-    self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_goods.cmm_price floatValue]];
+    [self.bankPrice setFontAttributedText:[NSString stringWithFormat:@"  现金补贴￥%.2f  ",[_goods.cmm_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:8]];
+
 }
 - (IBAction)collectClicked:(UIButton *)sender {
     if (self.collectActionCall) {

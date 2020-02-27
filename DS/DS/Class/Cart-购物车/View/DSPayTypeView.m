@@ -25,7 +25,7 @@
 -(void)setPay_amount:(NSString *)pay_amount
 {
     _pay_amount = pay_amount;
-    self.payPrice.text = [NSString stringWithFormat:@"%.2f",[_pay_amount floatValue]];
+    [self.payPrice setFontAttributedText:[NSString stringWithFormat:@"实付金额：￥%.2f",[_pay_amount floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:10]];
 }
 - (IBAction)payTypeClicked:(UIButton *)sender {
     if (sender.tag == 1) {
@@ -39,8 +39,14 @@
     }
 }
 - (IBAction)confirmPayClicked:(UIButton *)sender {
-    if (self.confirmPayCall) {
-        self.confirmPayCall(self.selectPay.tag);
+    if (sender.tag) {
+        if (self.confirmPayCall) {
+            self.confirmPayCall(self.selectPay.tag);
+        }
+    }else{
+        if (self.confirmPayCall) {
+            self.confirmPayCall(0);
+        }
     }
 }
 @end

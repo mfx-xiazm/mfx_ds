@@ -72,7 +72,7 @@ static NSString *const MessageCell = @"MessageCell";
 }
 -(void)setUpEmptyView
 {
-    LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
+    LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_msg" titleStr:nil detailStr:@"暂无消息"];
     emptyView.contentViewOffset = -(self.HXNavBarHeight);
     emptyView.subViewMargin = 20.f;
     emptyView.detailLabTextColor = UIColorFromRGB(0x131D2D);
@@ -146,6 +146,31 @@ static NSString *const MessageCell = @"MessageCell";
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }
+-(void)messageDeleteRequest:(DSMessage *)msg
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"msg_id"] = msg.msg_id;//第几页
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"message_delete_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if ([responseObject[@"status"] integerValue] == 1) {
+            [strongSelf.msgs removeObject:msg];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.tableView reloadData];
+                if (strongSelf.msgs.count) {
+                    [strongSelf.tableView ly_hideEmptyView];
+                }else{
+                    [strongSelf.tableView ly_showEmptyView];
+                }
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -162,7 +187,7 @@ static NSString *const MessageCell = @"MessageCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回这个模型对应的cell高度
-    return 70.f;
+    return 55.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -184,5 +209,15 @@ static NSString *const MessageCell = @"MessageCell";
     msg.is_read = @"1";
     [tableView reloadData];
 }
-
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DSMessage *msg = self.msgs[indexPath.row];
+    hx_weakify(self);
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"删\n除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        hx_strongify(weakSelf);
+        [strongSelf messageDeleteRequest:msg];
+    }];
+    deleteAction.backgroundColor = HXControlBg;
+    
+    return @[deleteAction];
+}
 @end

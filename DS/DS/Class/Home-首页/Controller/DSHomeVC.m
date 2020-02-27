@@ -7,7 +7,6 @@
 //
 
 #import "DSHomeVC.h"
-#import "HXSearchBar.h"
 #import <ZLCollectionViewVerticalLayout.h>
 #import "UIView+WZLBadge.h"
 #import "DSHomeCateCell.h"
@@ -23,26 +22,28 @@
 #import "DSWebContentVC.h"
 #import "DSSearchGoodsVC.h"
 #import "SZUpdateView.h"
+#import "HXTabBarController.h"
 
 static NSString *const HomeCateCell = @"HomeCateCell";
 static NSString *const ShopGoodsCell = @"ShopGoodsCell";
 static NSString *const HomeBannerHeader = @"HomeBannerHeader";
 static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 
-@interface DSHomeVC ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>
+@interface DSHomeVC ()<UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-/* 搜索条 */
-@property(nonatomic,strong) HXSearchBar *searchBar;
 /* 消息 */
 @property(nonatomic,strong) SPButton *msgBtn;
 /* 首页数据 */
 @property(nonatomic,strong) DSHomeData *homeData;
+/* 头部状态 */
+@property(nonatomic,assign) CGFloat gradientProgress;
 @end
 
 @implementation DSHomeVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = UIColorFromRGB(0xF9F9F9);
     [self setUpNavBar];
     [self setUpCollectionView];
     [self setUpRefresh];
@@ -57,28 +58,35 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 }
 -(void)setUpNavBar
 {
+    self.hbd_barAlpha = 0;
+    
     [self.navigationItem setTitle:nil];
     
-    HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
+    UIView *searchBg = [UIView new];
+    searchBg.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH - 60.f, 30.f);
+    searchBg.backgroundColor = [UIColor clearColor];
+  
+    SPButton *searchBar = [SPButton buttonWithType:UIButtonTypeCustom];
+    searchBar.imageTitleSpace = 5.f;
+    searchBar.frame = CGRectMake(5, 0, CGRectGetWidth(searchBg.frame)-5.f, 30.f);
     searchBar.backgroundColor = [UIColor whiteColor];
-    searchBar.layer.cornerRadius = 6;
+    searchBar.layer.cornerRadius = 15.f;
     searchBar.layer.masksToBounds = YES;
-    searchBar.delegate = self;
-    searchBar.placeholder = @"请输入商品名称查询";
-    self.searchBar = searchBar;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchBar];
+    [searchBar setTitleColor:UIColorFromRGB(0X909090) forState:UIControlStateNormal];
+    [searchBar setTitle:@"请输入商品名称查询" forState:UIControlStateNormal];
+    searchBar.titleLabel.font = [UIFont systemFontOfSize:12];
+    [searchBar setImage:HXGetImage(@"search_icon") forState:UIControlStateNormal];
+    [searchBar addTarget:self action:@selector(searchClicked) forControlEvents:UIControlEventTouchUpInside];
+    [searchBg addSubview:searchBar];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchBg];
     
     SPButton *msg = [SPButton buttonWithType:UIButtonTypeCustom];
-    msg.imagePosition = SPButtonImagePositionTop;
-    msg.imageTitleSpace = 2.f;
     msg.hxn_size = CGSizeMake(40, 40);
-    msg.titleLabel.font = [UIFont systemFontOfSize:9];
     [msg setImage:HXGetImage(@"消息") forState:UIControlStateNormal];
-    [msg setTitle:@"消息" forState:UIControlStateNormal];
     [msg addTarget:self action:@selector(msgClicked) forControlEvents:UIControlEventTouchUpInside];
     [msg setTitleColor:UIColorFromRGB(0XFFFFFF) forState:UIControlStateNormal];
     msg.badgeBgColor  = [UIColor whiteColor];
-    msg.badgeCenterOffset = CGPointMake(-10, 5);
+    msg.badgeCenterOffset = CGPointMake(-10, 10);
     self.msgBtn = msg;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:msg];
@@ -92,8 +100,8 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     self.collectionView.collectionViewLayout = flowLayout;
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    
+    self.collectionView.backgroundColor = [UIColor clearColor];
+//    self.collectionView.contentInset = UIEdgeInsetsMake(self.HXNavBarHeight, 0, 0, 0);
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSHomeCateCell class]) bundle:nil] forCellWithReuseIdentifier:HomeCateCell];
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSShopGoodsCell class]) bundle:nil] forCellWithReuseIdentifier:ShopGoodsCell];
@@ -117,11 +125,10 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     DSMessageVC *mvc = [DSMessageVC new];
     [self.navigationController pushViewController:mvc animated:YES];
 }
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+- (void)searchClicked
 {
     DSSearchGoodsVC *svc = [DSSearchGoodsVC new];
     [self.navigationController pushViewController:svc animated:YES];
-    return NO;
 }
 #pragma mark -- 接口请求
 -(void)getHomeDataRequest
@@ -212,6 +219,27 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     self.zh_popupController.dismissOnMaskTouched = NO;
     [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
 }
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat progress = scrollView.contentOffset.y + scrollView.contentInset.top;
+    CGFloat gradientProgress = MIN(1, MAX(0, progress / 180.f));
+    if (gradientProgress != _gradientProgress) {
+        _gradientProgress = gradientProgress;
+        if (_gradientProgress < 0.1) {
+//            self.hbd_barStyle = UIBarStyleBlack;
+//            self.hbd_tintColor = UIColor.whiteColor;
+//            self.hbd_titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:0] };
+            self.collectionView.backgroundColor = [UIColor clearColor];
+        } else {
+//            self.hbd_barStyle = UIBarStyleDefault;
+//            self.hbd_tintColor = UIColor.blackColor;
+//            self.hbd_titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:_gradientProgress] };
+            self.collectionView.backgroundColor = [UIColorFromRGB(0xF9F9F9) colorWithAlphaComponent:_gradientProgress];
+        }
+        self.hbd_barAlpha = _gradientProgress;
+        [self hbd_setNeedsUpdateNavigationBar];
+    }
+}
 #pragma mark -- UICollectionView 数据源和代理
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -251,9 +279,9 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return CGSizeMake(HX_SCREEN_WIDTH,(HX_SCREEN_WIDTH-12.f*2)*2/5.0+20.f);
+        return CGSizeMake(HX_SCREEN_WIDTH,(HX_SCREEN_WIDTH-12.f*2)*168/343.0+20.f+15.f);
     }else{
-        return CGSizeMake(HX_SCREEN_WIDTH,10.f);
+        return CGSizeZero;
     }
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -261,7 +289,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
         if (indexPath.section == 0) {
             DSHomeBannerHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomeBannerHeader forIndexPath:indexPath];
-            header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH,(HX_SCREEN_WIDTH-12.f*2)*2/5.0+20.f);
+            header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH,(HX_SCREEN_WIDTH-12.f*2)*168/343.0+20.f+15.f);
             header.adv = self.homeData.adv;
             hx_weakify(self);
             header.bannerClickCall = ^(NSInteger index) {
@@ -291,10 +319,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
             };
             return header;
         }else{
-            UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HomeSectionHeader forIndexPath:indexPath];
-            header.backgroundColor = HXGlobalBg;
-            header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH,10.f);
-            return header;
+            return nil;
         }
     }
     return nil;
@@ -302,17 +327,23 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {//分类
         DSHomeCate *cate = self.homeData.cate[indexPath.item];
-        if ([cate.cate_mode isEqualToString:@"2"] || [cate.cate_mode isEqualToString:@"3"]) {
-            DSWebContentVC *wvc = [DSWebContentVC new];
-            wvc.navTitle = @"商品列表";
-            wvc.isNeedRequest = YES;
-            wvc.requestType = 7;
-            [self.navigationController pushViewController:wvc animated:YES];
-        }else{
+    /**1鲸品自营商品；2京东自营商品；3精品优选：壹企通采购和金不换商品；4淘宝商品分类；5苏宁易购商品；6全球美妆商品；7库存尾货：跳转“敬请期待”；8.VIP会员*/
+        /**1和4直接跳转， 2、3、5、6调用jd_url_get返回链接， 7保留，8跳转vip会员*/
+        if ([cate.cate_mode isEqualToString:@"1"] || [cate.cate_mode isEqualToString:@"4"]) {
             DSHomeCateVC *cvc = [DSHomeCateVC new];
             cvc.cate_id = cate.cate_id;
             cvc.cate_mode = cate.cate_mode;
             [self.navigationController pushViewController:cvc animated:YES];
+        }else if ([cate.cate_mode isEqualToString:@"7"]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"敬请期待"];
+        }else if ([cate.cate_mode isEqualToString:@"8"]) {
+            HXTabBarController *tabVc = (HXTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+            tabVc.selectedIndex = 1;
+        }else{
+            DSWebContentVC *wvc = [DSWebContentVC new];
+            wvc.navTitle = cate.cate_name;
+            wvc.url = cate.cate_url;
+            [self.navigationController pushViewController:wvc animated:YES];
         }
     }else{//推荐商品分组
         DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];

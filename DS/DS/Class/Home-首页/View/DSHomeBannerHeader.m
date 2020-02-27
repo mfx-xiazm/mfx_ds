@@ -36,16 +36,16 @@
     pageControl.pageIndicatorSize = CGSizeMake(6, 6);
 //    pageControl.pageIndicatorImage = HXGetImage(@"灰色渐进器");
 //    pageControl.currentPageIndicatorImage = HXGetImage(@"当前渐进器");
-    pageControl.pageIndicatorTintColor = UIColorFromRGB(0xf2f2f2);
-    pageControl.currentPageIndicatorTintColor = HXControlBg;
-    pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 30, CGRectGetWidth(self.cyclePagerView.frame), 15);
+    pageControl.pageIndicatorTintColor = UIColorFromRGB(0xD8D8D8);
+    pageControl.currentPageIndicatorTintColor = UIColorFromRGB(0x000000);
+    pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame), CGRectGetWidth(self.cyclePagerView.frame), 15);
     self.pageControl = pageControl;
     [self.cyclePagerView addSubview:pageControl];
 }
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 30, CGRectGetWidth(self.cyclePagerView.frame), 15);
+    self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame), CGRectGetWidth(self.cyclePagerView.frame), 15);
 }
 -(void)setAdv:(NSArray<DSHomeBanner *> *)adv
 {

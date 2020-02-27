@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *create_time;
 @property (weak, nonatomic) IBOutlet UILabel *order_title;
 @property (weak, nonatomic) IBOutlet UILabel *pay_amount;
+@property (weak, nonatomic) IBOutlet UILabel *num;
 @property (weak, nonatomic) IBOutlet UILabel *amount;
 @property (weak, nonatomic) IBOutlet UILabel *receiver;
 
@@ -45,9 +46,19 @@
         }else{
             [self.order_title setTextWithLineSpace:3.f withString:_note.order_title withFont:[UIFont systemFontOfSize:13]];
         }
-        self.pay_amount.text = [NSString stringWithFormat:@"￥%.2f",[_note.pay_amount floatValue]];
-        self.amount.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
-        self.receiver.text = [NSString stringWithFormat:@"购买人：%@",_note.nick_name];
+        [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"实付:￥%.2f",[_note.pay_amount floatValue]] andChangeStr:@"实付:￥" andFont:[UIFont systemFontOfSize:10]];
+
+        [self.num setFontAttributedText:[NSString stringWithFormat:@"x%@",_note.order_num] andChangeStr:@"x" andFont:[UIFont systemFontOfSize:10]];
+        
+        if ([_note.amount floatValue] == 0) {
+            self.amount.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
+        }else{
+            if ([_note.amount containsString:@"-"]) {
+                self.amount.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
+            }else{
+                self.amount.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
+            }
+        }
     }else{
         self.orderView.hidden = YES;
         self.otherView.hidden = NO;

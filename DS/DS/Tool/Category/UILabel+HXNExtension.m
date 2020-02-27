@@ -91,7 +91,59 @@
     
     NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:str attributes:attribtDic];
     
+    NSRange range = [str rangeOfString:@"￥"];
+    if (range.length) {
+        [attribtStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10] range:range];
+    }
     // 赋值
     self.attributedText = attribtStr;
+}
+
+-(void)addFlagLabelWithName:(NSString *)tagName lineSpace:(CGFloat)lineSpace titleString:(NSString*)titleString withFont:(UIFont*)font
+{
+    //创建NSMutableAttributedString 富文本对象
+    NSMutableAttributedString *maTitleString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@",titleString]];
+    //创建一个小标签的Label
+    NSString *aa = tagName;
+    CGFloat aaW = 12*aa.length +6;
+    UILabel *aaL = [UILabel new];
+    aaL.frame = CGRectMake(0, 0, aaW*3, 16*3);
+    aaL.text = aa;
+    aaL.font = [UIFont systemFontOfSize:10*3];
+    aaL.textColor = [UIColor whiteColor];
+    aaL.backgroundColor = HXControlBg;
+    aaL.clipsToBounds = YES;
+    aaL.layer.cornerRadius = (16*3)/2.0;
+    aaL.textAlignment = NSTextAlignmentCenter;
+    //调用方法，转化成Image
+    UIImage *image = [self imageWithUIView:aaL];
+    //创建Image的富文本格式
+    NSTextAttachment *attach = [[NSTextAttachment alloc] init];
+    attach.bounds = CGRectMake(0, -2.5, aaW, 16); //这个-2.5是为了调整下标签跟文字的位置
+    attach.image = image;
+    //添加到富文本对象里
+    NSAttributedString *imageStr = [NSAttributedString attributedStringWithAttachment:attach];
+    [maTitleString insertAttributedString:imageStr atIndex:0];//加入文字前面
+    //[maTitleString appendAttributedString:imageStr];//加入文字后面
+    //[maTitleString insertAttributedString:imageStr atIndex:4];//加入文字第4的位置
+
+    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+    paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paraStyle.alignment = NSTextAlignmentLeft;
+    paraStyle.lineSpacing = lineSpace; //设置行间距
+    
+    [maTitleString addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, maTitleString.length)];
+
+    //注意 ：创建这个Label的时候，frame，font，cornerRadius要设置成所生成的图片的3倍，也就是说要生成一个三倍图，否则生成的图片会虚，同学们可以试一试。
+    self.attributedText = maTitleString;
+}
+//view转成image
+- (UIImage*) imageWithUIView:(UIView*) view{
+    UIGraphicsBeginImageContext(view.bounds.size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:ctx];
+    UIImage* tImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return tImage;
 }
 @end

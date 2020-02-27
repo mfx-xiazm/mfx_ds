@@ -27,6 +27,7 @@ static NSString *const MyAddressCell = @"MyAddressCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的地址"];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(addAddressClicked) title:@"添加" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
     [self setUpTableView];
     [self setUpEmptyView];
     [self setUpRefresh];
@@ -62,11 +63,17 @@ static NSString *const MyAddressCell = @"MyAddressCell";
 }
 -(void)setUpEmptyView
 {
-    LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
+    hx_weakify(self);
+    LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:@"no_data" titleStr:@"您还没有添加地址" detailStr:nil btnTitleStr:@"去添加" btnClickBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf addAddressClicked];
+    }];
+    emptyView.titleLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
+    emptyView.titleLabTextColor = UIColorFromRGB(0x666666);
+    emptyView.actionBtnFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
+    emptyView.actionBtnTitleColor = HXControlBg;
     emptyView.contentViewOffset = -(self.HXNavBarHeight);
     emptyView.subViewMargin = 20.f;
-    emptyView.detailLabTextColor = UIColorFromRGB(0x131D2D);
-    emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
     emptyView.autoShowEmptyView = NO;
     self.tableView.ly_emptyView = emptyView;
 }
@@ -176,7 +183,7 @@ static NSString *const MyAddressCell = @"MyAddressCell";
     }];
 }
 #pragma mark -- 点击事件
-- (IBAction)addAddressClicked:(UIButton *)sender {
+- (void)addAddressClicked {
     DSEditAddressVC *avc = [DSEditAddressVC new];
     hx_weakify(self);
     avc.editSuccessCall = ^{
@@ -205,7 +212,7 @@ static NSString *const MyAddressCell = @"MyAddressCell";
                 [weakSelf getAddressListRequest:YES];
             }];
         }else if (index == 2) {
-            zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要删除该地址吗？" constantWidth:HX_SCREEN_WIDTH - 50*2];
+            zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"是否要删除该地址？" constantWidth:HX_SCREEN_WIDTH - 50*2];
             hx_weakify(self);
             zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"取消" handler:^(zhAlertButton * _Nonnull button) {
                 hx_strongify(weakSelf);
@@ -219,7 +226,7 @@ static NSString *const MyAddressCell = @"MyAddressCell";
             cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
             [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
             okButton.lineColor = UIColorFromRGB(0xDDDDDD);
-            [okButton setTitleColor:UIColorFromRGB(0x1A1A1A) forState:UIControlStateNormal];
+            [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
             [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
             strongSelf.zh_popupController = [[zhPopupController alloc] init];
             [strongSelf.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];

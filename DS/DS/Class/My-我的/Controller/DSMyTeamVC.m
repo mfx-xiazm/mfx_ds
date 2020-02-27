@@ -28,6 +28,7 @@ static NSString *const MyTeamCell = @"MyTeamCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.hbd_barShadowHidden = YES;
     [self.navigationItem setTitle:@"我的团队"];
     [self setUpTableView];
     [self setUpEmptyView];

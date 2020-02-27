@@ -26,7 +26,7 @@
     _defaultAddress = defaultAddress;
     self.receiver.text = _defaultAddress.receiver;
     self.receiver_phone.text = _defaultAddress.receiver_phone;
-    self.address.text = [NSString stringWithFormat:@"%@%@",_defaultAddress.area_name,_defaultAddress.address_detail];
+    [self.address setTextWithLineSpace:3.f withString:[NSString stringWithFormat:@"%@%@",_defaultAddress.area_name,_defaultAddress.address_detail] withFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
     self.is_default.hidden = _defaultAddress.is_default?NO:YES;
 }
 - (IBAction)addressClicked:(UIButton *)sender {

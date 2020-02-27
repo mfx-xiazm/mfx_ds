@@ -32,13 +32,14 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"发布动态"];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(publishClicked) title:@"发布" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
     [self setUpTableView];
 }
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     self.header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 50.f);
-    self.footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 130.f);
+    self.footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 50.f);
 }
 - (ZLPhotoActionSheet *)getPas
 {
@@ -142,7 +143,7 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
 {
     if (_footer == nil) {
         _footer = [DSPublishDynamicFooter loadXibView];
-        _footer.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 130.f);
+        _footer.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 50.f);
         hx_weakify(self);
         _footer.footerHandleCall = ^(NSInteger index,UIButton *btn) {
             hx_strongify(weakSelf);
@@ -155,30 +156,30 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
                 ZLPhotoActionSheet *a = [strongSelf getPas];
                 [a showPhotoLibrary];
             }else{
-                [btn BindingBtnJudgeBlock:^BOOL{
-                    if (![strongSelf.header.dynamicTitle hasText]){
-                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入标题"];
-                        return NO;
-                    }
-                    if (!strongSelf.publishData.count) {
-                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
-                        return NO;
-                    }
-                    NSMutableArray *tempData = [NSMutableArray arrayWithArray:strongSelf.publishData];
-                    [strongSelf.publishData enumerateObjectsUsingBlock:^(DSPuslishDynamicData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        if (obj.uiStyle == DSPuslishDynamicWord && !obj.word.length) {
-                            [tempData removeObject:obj];
-                        }
-                    }];
-                    if (!tempData.count) {
-                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
-                        return NO;
-                    }
-                    return YES;
-                } ActionBlock:^(UIButton * _Nullable button) {
-                    hx_strongify(weakSelf);
-                    [strongSelf publishClicked:button];
-                }];
+//                [btn BindingBtnJudgeBlock:^BOOL{
+//                    if (![strongSelf.header.dynamicTitle hasText]){
+//                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入标题"];
+//                        return NO;
+//                    }
+//                    if (!strongSelf.publishData.count) {
+//                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
+//                        return NO;
+//                    }
+//                    NSMutableArray *tempData = [NSMutableArray arrayWithArray:strongSelf.publishData];
+//                    [strongSelf.publishData enumerateObjectsUsingBlock:^(DSPuslishDynamicData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                        if (obj.uiStyle == DSPuslishDynamicWord && !obj.word.length) {
+//                            [tempData removeObject:obj];
+//                        }
+//                    }];
+//                    if (!tempData.count) {
+//                        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
+//                        return NO;
+//                    }
+//                    return YES;
+//                } ActionBlock:^(UIButton * _Nullable button) {
+//                    hx_strongify(weakSelf);
+//                    [strongSelf publishClicked:button];
+//                }];
             }
         };
     }
@@ -226,8 +227,27 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
     self.tableView.tableFooterView = self.footer;
 }
 #pragma mark --  点击
--(void)publishClicked:(UIButton *)btn
+-(void)publishClicked
 {
+    if (![self.header.dynamicTitle hasText]){
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入标题"];
+        return;
+    }
+    if (!self.publishData.count) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
+        return;
+    }
+    NSMutableArray *tempData = [NSMutableArray arrayWithArray:self.publishData];
+    [self.publishData enumerateObjectsUsingBlock:^(DSPuslishDynamicData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.uiStyle == DSPuslishDynamicWord && !obj.word.length) {
+            [tempData removeObject:obj];
+        }
+    }];
+    if (!tempData.count) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"至少要有一条内容"];
+        return;
+    }
+    
     NSMutableArray *images = [NSMutableArray array];
     [self.publishData enumerateObjectsUsingBlock:^(DSPuslishDynamicData *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.uiStyle == DSPuslishDynamicPicture && obj.picture) {
@@ -239,7 +259,6 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
         [self runUpLoadImages:images handle:^{
             hx_strongify(weakSelf);
             [strongSelf publishRequest:^(BOOL isSuccess) {
-                [btn stopLoading:@"发布" image:nil textColor:nil backgroundColor:nil];
                 if (isSuccess) {
                     if (strongSelf.publishActionCall) {
                         strongSelf.publishActionCall();
@@ -252,7 +271,6 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
         hx_weakify(self);
         [self publishRequest:^(BOOL isSuccess) {
             hx_strongify(weakSelf);
-            [btn stopLoading:@"发布" image:nil textColor:nil backgroundColor:nil];
             if (isSuccess) {
                 if (strongSelf.publishActionCall) {
                     strongSelf.publishActionCall();

@@ -13,7 +13,6 @@
                 <outlet property="headPic" destination="6fv-Hz-DE2" id="HGP-bv-G1k"/>
                 <outlet property="nick" destination="85X-XU-PlF" id="d52-h6-SNM"/>
                 <outlet property="sex" destination="dAi-5m-Dd5" id="tve-MP-Br9"/>
-                <outlet property="sureBtn" destination="VPH-gg-FgP" id="1KH-nU-Hyi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -58,7 +57,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="are-l4-bWx" firstAttribute="leading" secondItem="fZC-pY-ZSd" secondAttribute="leading" id="6Wg-vW-Arh"/>
                         <constraint firstAttribute="trailing" secondItem="DOr-n5-jYq" secondAttribute="trailing" id="ACU-9f-rEZ"/>
@@ -75,7 +74,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3i7-BY-dMF">
-                    <rect key="frame" x="0.0" y="104" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="109" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Jw-2e-sgf">
                             <rect key="frame" x="10" y="17" width="27" height="16"/>
@@ -99,7 +98,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="85X-XU-PlF" firstAttribute="centerY" secondItem="3i7-BY-dMF" secondAttribute="centerY" id="A4J-V0-G9S"/>
                         <constraint firstItem="5Jw-2e-sgf" firstAttribute="leading" secondItem="3i7-BY-dMF" secondAttribute="leading" constant="10" id="GqG-3s-ubJ"/>
@@ -113,7 +112,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="505-I7-foB">
-                    <rect key="frame" x="0.0" y="154" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="164" width="414" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66h-Ws-qJF">
                             <rect key="frame" x="10" y="17" width="27" height="16"/>
@@ -146,7 +145,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="bpF-AJ-7tL" firstAttribute="centerY" secondItem="505-I7-foB" secondAttribute="centerY" id="13J-W7-HWE"/>
                         <constraint firstItem="dAi-5m-Dd5" firstAttribute="leading" secondItem="66h-Ws-qJF" secondAttribute="trailing" constant="10" id="5vU-LI-JOO"/>
@@ -165,37 +164,18 @@
                         <constraint firstItem="dAi-5m-Dd5" firstAttribute="centerY" secondItem="505-I7-foB" secondAttribute="centerY" id="z7r-vl-Gqj"/>
                     </constraints>
                 </view>
-                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPH-gg-FgP">
-                    <rect key="frame" x="15" y="803" width="384" height="44"/>
-                    <color key="backgroundColor" red="1" green="0.73725490199999999" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="cpL-a3-Gze"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                    <state key="normal" title="确定修改">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
-                            <real key="value" value="6"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="fZC-pY-ZSd" secondAttribute="trailing" id="4IA-Bp-e0a"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="3i7-BY-dMF" secondAttribute="trailing" id="5gy-HV-y3C"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="505-I7-foB" secondAttribute="trailing" id="Adf-tG-MYb"/>
-                <constraint firstItem="VPH-gg-FgP" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="BYA-YY-dPf"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="fZC-pY-ZSd" secondAttribute="top" id="DkB-7X-qez"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="3i7-BY-dMF" secondAttribute="leading" id="JyK-II-o5h"/>
-                <constraint firstItem="3i7-BY-dMF" firstAttribute="top" secondItem="fZC-pY-ZSd" secondAttribute="bottom" id="MCt-Cd-o2q"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="VPH-gg-FgP" secondAttribute="bottom" constant="15" id="byA-KN-vHe"/>
+                <constraint firstItem="3i7-BY-dMF" firstAttribute="top" secondItem="fZC-pY-ZSd" secondAttribute="bottom" constant="5" id="MCt-Cd-o2q"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="fZC-pY-ZSd" secondAttribute="leading" id="m89-PZ-Dwd"/>
                 <constraint firstItem="505-I7-foB" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="rW1-RW-Zja"/>
-                <constraint firstItem="505-I7-foB" firstAttribute="top" secondItem="3i7-BY-dMF" secondAttribute="bottom" id="sOv-Hv-Z1P"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="VPH-gg-FgP" secondAttribute="trailing" constant="15" id="wi5-wM-qct"/>
+                <constraint firstItem="505-I7-foB" firstAttribute="top" secondItem="3i7-BY-dMF" secondAttribute="bottom" constant="5" id="sOv-Hv-Z1P"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>

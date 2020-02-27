@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSBalanceNoteVC : HXBaseViewController
-/* 奖励类型：晋级1，礼包2，商品3，分享4 */
+/* 奖励类型：晋级1，礼包2，商品3，分享4，队长收益5为晋级1和分享4之和 */
 @property(nonatomic,assign) NSInteger reward_type;
 @end
 

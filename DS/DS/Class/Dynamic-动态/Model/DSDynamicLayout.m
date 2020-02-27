@@ -52,7 +52,7 @@
     text.yy_color = UIColorFromRGB(0x666666);
     text.yy_lineSpacing = kMomentLineSpacing;
     
-    YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(HX_SCREEN_WIDTH - 10*2, CGFLOAT_MAX) insets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(HX_SCREEN_WIDTH - kMomentMarginPadding*3-kMomentPortraitWidthAndHeight, CGFLOAT_MAX) insets:UIEdgeInsetsMake(5, 0, 5, 0)];
     // 阶段的类型，超出部分按尾部截段
     container.truncationType = YYTextTruncationTypeEnd;
     

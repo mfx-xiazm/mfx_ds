@@ -31,11 +31,13 @@
     
     self.checkBtn.selected = _cart.is_checked;
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:_cart.cover_img]];
-    [self.goods_name setTextWithLineSpace:5.f withString:_cart.goods_name withFont:[UIFont systemFontOfSize:13]];
+    [self.goods_name setTextWithLineSpace:5.f withString:_cart.goods_name withFont:[UIFont systemFontOfSize:14]];
     
-    self.price.text = [NSString stringWithFormat:@"折扣价：%.2f",[_cart.discount_price floatValue]];
-    self.market_price.text = [NSString stringWithFormat:@"原价：￥%.2f",[_cart.price floatValue]];
-    self.back_price.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_cart.cmm_price floatValue]];
+    [self.market_price setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[_cart.price floatValue]]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_cart.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+
+    [self.back_price setFontAttributedText:[NSString stringWithFormat:@"返佣金额：￥%.2f",[_cart.cmm_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:10]];
+
     if (_cart.specs_attrs && _cart.specs_attrs.length) {
         self.spec_value.text = [NSString stringWithFormat:@"规格：%@",_cart.specs_attrs];
     }else{
@@ -68,7 +70,13 @@
         self.cartHandleCall(sender.tag);
     }
 }
-
+- (void)setFrame:(CGRect)frame{
+    if (self.frame.size.height != frame.size.height) {
+        frame.origin.y += 8;
+        frame.size.height -= 16;
+    }
+    [super setFrame:frame];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

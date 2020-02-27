@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *goods_id;
 @property(nonatomic,copy) NSString *is_upgrade_ulevel;
 @property(nonatomic,copy) NSString *cover_img;
+@property(nonatomic,copy) NSString *sale_num;
+@property(nonatomic,copy) NSString *stock;
 @end
 
 NS_ASSUME_NONNULL_END

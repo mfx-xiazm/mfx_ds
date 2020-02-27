@@ -23,7 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.hbd_barStyle = UIBarStyleBlack;
+
     if ([self isiPhoneXLater]) {
         self.iPhoneXLater = YES;
         self.HXNavBarHeight = 88.f;
@@ -57,10 +58,10 @@
     shimmerLabel.backgroundColor = [UIColor whiteColor];
     self.shimmer.contentView = shimmerLabel;
 }
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
+//-(UIStatusBarStyle)preferredStatusBarStyle
+//{
+//    return UIStatusBarStyleLightContent;
+//}
 -(void)reloadDataRequest
 {
     

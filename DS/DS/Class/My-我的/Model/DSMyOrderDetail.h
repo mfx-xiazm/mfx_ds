@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *remarks;
 /** 1常规商品 100vip商品 */
 @property(nonatomic,copy) NSString *order_type;
+@property(nonatomic,copy) NSString *pay_type;
 
 @property(nonatomic,copy) NSString *receiver;
 @property(nonatomic,copy) NSString *receiver_phone;

@@ -17,16 +17,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *sex;
 /* 头像url */
 @property(nonatomic,copy) NSString *headPicUrl;
-@property (weak, nonatomic) IBOutlet UIButton *sureBtn;
-
 @end
 
 @implementation DSChangeInfoVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"完善资料"];
+    [self.navigationItem setTitle:@"个人资料"];
     
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(setUserInfoRequest) title:@"确定" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
     
     [self.headPic sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar] placeholderImage:HXGetImage(@"avatar")];
     self.nick.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
@@ -35,19 +34,6 @@
     }else{
         self.sex.text = [[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"1"]?@"男":@"女";
     }
-
-    hx_weakify(self);
-    [self.sureBtn BindingBtnJudgeBlock:^BOOL{
-        hx_strongify(weakSelf);
-        if (![strongSelf.nick hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入昵称"];
-            return NO;
-        }
-        return YES;
-    } ActionBlock:^(UIButton * _Nullable button) {
-        hx_strongify(weakSelf);
-        [strongSelf setUserInfoRequest:button];
-    }];
 }
 - (IBAction)changeHeadPic:(UIButton *)sender {
     FSActionSheet *as = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"拍照",@"从手机相册选择"]];
@@ -177,8 +163,13 @@
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }
--(void)setUserInfoRequest:(UIButton *)btn
+-(void)setUserInfoRequest
 {
+    if (![self.nick hasText]) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入昵称"];
+        return;
+    }
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
  
     parameters[@"avatar"] = (self.headPicUrl && self.headPicUrl.length)?self.headPicUrl:@"";//传空表示头像不修改。传递相对路径
@@ -188,7 +179,6 @@
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"user_info_set" parameters:parameters success:^(id responseObject) {
         hx_strongify(weakSelf);
-        [btn stopLoading:@"确定修改" image:nil textColor:nil backgroundColor:nil];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"修改成功"];
            
@@ -201,7 +191,6 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
         }
     } failure:^(NSError *error) {
-        [btn stopLoading:@"确定修改" image:nil textColor:nil backgroundColor:nil];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }

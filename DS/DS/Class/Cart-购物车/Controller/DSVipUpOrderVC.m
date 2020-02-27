@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *price_amount;
 @property (weak, nonatomic) IBOutlet HXPlaceholderTextView *remark;
 @property (weak, nonatomic) IBOutlet UILabel *pay_amount;
+@property (weak, nonatomic) IBOutlet UIButton *buyBtn;
+
 /* 订单号 */
 @property(nonatomic,copy) NSString *order_no;
 /* 订单id */
@@ -46,9 +48,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"提交订单"];
+    [self.buyBtn.layer addSublayer:[UIColor setGradualChangingColor:self.buyBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+
     //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
-    self.remark.placeholder = @"备注：";
+    self.remark.placeholder = @"备注请留言";
     [self startShimmer];
     [self getOrderDataInitRequest];
 }
@@ -96,17 +100,19 @@
 -(void)showPayTypeView
 {
     DSPayTypeView *payType = [DSPayTypeView loadXibView];
-    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 285.f);
+    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH-35*2, 205.f);
     payType.pay_amount = self.confirmOrder.pay_amount;
     hx_weakify(self);
     payType.confirmPayCall = ^(NSInteger type) {
         hx_strongify(weakSelf);
-        strongSelf.isOrderPay = YES;//调起支付
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-        [strongSelf orderPayRequest:type];
+        if (type) {
+            strongSelf.isOrderPay = YES;//调起支付
+            [strongSelf orderPayRequest:type];
+        }
     };
     self.zh_popupController = [[zhPopupController alloc] init];
-    self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
+    self.zh_popupController.layoutType = zhPopupLayoutTypeCenter;
     self.zh_popupController.didDismiss = ^(zhPopupController * _Nonnull popupController) {
         hx_strongify(weakSelf);
         if (!strongSelf.isOrderPay) {// 未吊起支付
@@ -253,12 +259,13 @@
     }
 
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:self.confirmOrder.cover_img]];
-    [self.goods_name setTextWithLineSpace:5.f withString:self.confirmOrder.goods_name withFont:[UIFont systemFontOfSize:13]];
-    self.price.text = [NSString stringWithFormat:@"￥%@",self.confirmOrder.price];
-    self.num.text = [NSString stringWithFormat:@"数量：%@",self.confirmOrder.goods_num];
+    [self.goods_name setTextWithLineSpace:5.f withString:self.confirmOrder.goods_name withFont:[UIFont systemFontOfSize:14]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.price] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.num setFontAttributedText:[NSString stringWithFormat:@"x%@",self.confirmOrder.goods_num] andChangeStr:@"x" andFont:[UIFont systemFontOfSize:12]];
 
-    self.price_amount.text = [NSString stringWithFormat:@"￥%@",self.confirmOrder.price_amount];
-    self.pay_amount.text = [NSString stringWithFormat:@"%@元",self.confirmOrder.pay_amount];
+    [self.price_amount setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.price_amount] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    
+    [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.pay_amount] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
 }
 
 @end

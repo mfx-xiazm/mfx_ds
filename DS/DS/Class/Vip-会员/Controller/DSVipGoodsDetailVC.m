@@ -17,8 +17,6 @@
 
 @interface DSVipGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cyclePagerAspect;
-
 @property (nonatomic,strong) TYPageControl *pageControl;
 @property (nonatomic, strong) WKWebView  *webView;
 @property (weak, nonatomic) IBOutlet UIView *webContentView;
@@ -28,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *saleNum;
 @property (weak, nonatomic) IBOutlet UILabel *stockNum;
 @property (weak, nonatomic) IBOutlet UILabel *freight;
+@property (weak, nonatomic) IBOutlet UILabel *buyLabel;
 /** 商品详情 */
 @property(nonatomic,strong) DSGoodsDetail *goodsDetail;
 
@@ -40,8 +39,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:self.isTaoke?@"商品详情":@"礼包详情"];
-    
+    [self setUpNavBar];
+    [self.buyLabel setFontAttributedText:@"立即购买\n(获赠365天VIP权益)" andChangeStr:@"(获赠365天VIP权益)" andFont:[UIFont systemFontOfSize:10]];
     if (self.isTaoke) {
         _onTradeSuccess = ^(AlibcTradeResult *tradeProcessResult){
             if(tradeProcessResult.result == AlibcTradeResultTypePaySuccess){
@@ -85,6 +84,11 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    UIView *view = [[UIView alloc] init];
+    view.frame = self.buyLabel.bounds;
+    [view.layer addSublayer:[UIColor setGradualChangingColor:view fromColor:@"F9AD28" toColor:@"F95628"]];
+    [self.buyLabel setBackgroundColor:[UIColor colorWithPatternImage:[view imageWithUIView]]];
+
     self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 15, CGRectGetWidth(self.cyclePagerView.frame), 15);
     self.webView.frame = self.webContentView.bounds;
 }
@@ -96,6 +100,14 @@
     }
     
     return _webView;
+}
+-(void)setUpNavBar
+{
+    //[self.navigationItem setTitle:self.isTaoke?@"商品详情":@"礼包详情"];
+    self.hbd_barAlpha = 0;
+    self.hbd_barShadowHidden = YES;
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) image:HXGetImage(@"详情返回")];
 }
 -(void)setUpCyclePagerView
 {
@@ -148,9 +160,10 @@
     self.pageControl.numberOfPages = self.goodsDetail.goods_adv.count;
     [self.cyclePagerView reloadData];
     
-    self.goodsName.text = self.goodsDetail.goods_name;
-    self.price.text = [NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]];
-    self.saleNum.text = [NSString stringWithFormat:@"销量：%@",self.goodsDetail.sale_num];
+    [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:14]];
+    self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
+
     if (self.isTaoke) {
         self.stockNum.text = @"999";
     }else{
@@ -165,6 +178,10 @@
     }
 }
 #pragma mark -- 点击事件
+-(void)backClicked
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (IBAction)buyClicked:(UIButton *)sender {
     if (self.isTaoke) {
         // 根据商品id创建一个商品详情页对象

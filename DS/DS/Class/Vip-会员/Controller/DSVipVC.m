@@ -23,6 +23,8 @@ static NSString *const VipCell = @"VipCell";
 @property (nonatomic,assign) NSInteger pagenum;
 /* 列表 */
 @property(nonatomic,strong) NSMutableArray *vipGoods;
+/* 头部状态 */
+@property(nonatomic,assign) CGFloat gradientProgress;
 @end
 
 @implementation DSVipVC
@@ -38,7 +40,7 @@ static NSString *const VipCell = @"VipCell";
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 135.f+(HX_SCREEN_WIDTH-10.f*3)/2.0*9/17.f+60.f);
+    self.header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 150.f+(HX_SCREEN_WIDTH)*170/375.f+(HX_SCREEN_WIDTH)*110/375.f);
 }
 -(NSMutableArray *)vipGoods
 {
@@ -51,34 +53,28 @@ static NSString *const VipCell = @"VipCell";
 {
     if (_header == nil) {
         _header = [DSVipHeader loadXibView];
-        _header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 135.f+(HX_SCREEN_WIDTH-10.f*3)/2.0*9/17.f+60.f);
+        _header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 150.f+(HX_SCREEN_WIDTH)*170/375.f+(HX_SCREEN_WIDTH)*110/375.f);
         hx_weakify(self);
         _header.vipHeaderBtnClickedCall = ^(NSInteger index) {
             hx_strongify(weakSelf);
-            if (index == 0) {
-                DSWebContentVC *wvc = [DSWebContentVC new];
-                wvc.navTitle = @"自购省钱";
-                wvc.isNeedRequest = YES;
-                wvc.requestType = 4;
-                [strongSelf.navigationController pushViewController:wvc animated:YES];
-            }else{
-                //DSVipCardVC *ovc = [DSVipCardVC new];
-                //[strongSelf.navigationController pushViewController:ovc animated:YES];
-                DSWebContentVC *wvc = [DSWebContentVC new];
-                wvc.navTitle = @"商品列表";
-                wvc.isNeedRequest = YES;
-                wvc.requestType = 7;
-                [strongSelf.navigationController pushViewController:wvc animated:YES];
-            }
+            DSWebContentVC *wvc = [DSWebContentVC new];
+            wvc.navTitle = @"积分时代";
+            wvc.isNeedRequest = YES;
+            wvc.requestType = 7;
+            [strongSelf.navigationController pushViewController:wvc animated:YES];
         };
     }
     return _header;
 }
 -(void)setUpNavBar
 {
+    self.hbd_barAlpha = 0.0;
+
     [self.navigationItem setTitle:@"会员"];
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(vipQestionClicked) image:HXGetImage(@"问号")];
+    self.hbd_titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor.whiteColor colorWithAlphaComponent:0]};
+
+    //self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(vipQestionClicked) image:HXGetImage(@"问号")];
 }
 -(void)setUpTableView
 {
@@ -94,7 +90,6 @@ static NSString *const VipCell = @"VipCell";
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -108,11 +103,13 @@ static NSString *const VipCell = @"VipCell";
     self.tableView.tableHeaderView = self.header;
     
     self.tableView.backgroundColor= [UIColor clearColor];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.tableView.bounds];
-    imageView.image = [UIImage imageNamed:@"会员背景"];
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    imageView.layer.masksToBounds = YES;
-    self.tableView.backgroundView = imageView;
+    
+    self.tableView.bounces = NO;
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.tableView.bounds];
+//    imageView.image = [UIImage imageNamed:@"会员背景"];
+//    imageView.contentMode = UIViewContentModeScaleAspectFill;
+//    imageView.layer.masksToBounds = YES;
+//    self.tableView.backgroundView = imageView;
 }
 /** 添加刷新控件 */
 -(void)setUpRefresh
@@ -139,6 +136,36 @@ static NSString *const VipCell = @"VipCell";
     wvc.requestType = 3;
     [self.navigationController pushViewController:wvc animated:YES];
 }
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat progress = scrollView.contentOffset.y + scrollView.contentInset.top;
+    CGFloat gradientProgress = MIN(1, MAX(0, progress / 180.f));
+    if (gradientProgress != _gradientProgress) {
+        _gradientProgress = gradientProgress;
+        if (_gradientProgress < 0.1) {
+            //self.hbd_barStyle = UIBarStyleBlack;
+            //self.hbd_tintColor = UIColor.clearColor;
+            self.hbd_titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor.whiteColor colorWithAlphaComponent:0]};
+        } else {
+            //self.hbd_barStyle = UIBarStyleDefault;
+            //self.hbd_tintColor = UIColor.whiteColor;
+            self.hbd_titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor.whiteColor colorWithAlphaComponent:_gradientProgress] };
+        }
+        self.hbd_barAlpha = _gradientProgress;
+        [self hbd_setNeedsUpdateNavigationBar];
+    }
+   
+    if (progress <= 0) {
+        self.tableView.bounces = NO;
+        
+        CGPoint offset = self.tableView.contentOffset;
+        offset.y = 0;
+        self.tableView.contentOffset = offset;
+    }else {
+        self.tableView.bounces = YES;
+    }
+}
+
 #pragma mark -- 接口请求
 /** 列表请求 */
 -(void)getMemberGoodsDataRequest:(BOOL)isRefresh
@@ -212,7 +239,7 @@ static NSString *const VipCell = @"VipCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.f;
+    return 120.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

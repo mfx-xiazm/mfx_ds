@@ -21,7 +21,7 @@
     }else{
         _remarks = @"暂无备注";
     }
-    CGFloat remarkTextHeight = [_remarks textHeightSize:CGSizeMake(HX_SCREEN_WIDTH-15.f*2, CGFLOAT_MAX) font:[UIFont systemFontOfSize:13] lineSpacing:5.f];
+    CGFloat remarkTextHeight = [_remarks textHeightSize:CGSizeMake(HX_SCREEN_WIDTH-15.f*2, CGFLOAT_MAX) font:[UIFont systemFontOfSize:12] lineSpacing:5.f];
     _remarkTextHeight = 15.f + remarkTextHeight+5.f + 15.f;
 }
 @end

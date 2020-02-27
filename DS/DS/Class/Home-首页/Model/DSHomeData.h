@@ -23,8 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface DSHomeCate : NSObject
-/**1袋鼠自营商品分类；2京东自营商品分类；3京东联盟商品分类；4淘宝商品分类*/
+/**1鲸品自营商品；2京东自营商品；3精品优选：壹企通采购和金不换商品；4淘宝商品分类；5苏宁易购商品；6全球美妆商品；7库存尾货：跳转“敬请期待”；8.VIP会员*/
 @property(nonatomic,copy) NSString *cate_mode;
+@property(nonatomic,copy) NSString *cate_url;
 @property(nonatomic,copy) NSString *cate_name;
 @property(nonatomic,copy) NSString *cate_id;
 @property(nonatomic,copy) NSString *cate_img;
@@ -41,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface DSHomeRecommend : NSObject
+@property(nonatomic,copy) NSString *cate_flag;
 @property(nonatomic,copy) NSString *goods_name;
 @property(nonatomic,copy) NSString *price;
 @property(nonatomic,copy) NSString *discount_price;

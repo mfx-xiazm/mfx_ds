@@ -155,7 +155,15 @@
     // 阴影半径，默认3
     self.layer.shadowRadius = shadowRadius;
 }
-
+//view转成image
+- (UIImage*)imageWithUIView{
+    UIGraphicsBeginImageContext(self.bounds.size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    [self.layer renderInContext:ctx];
+    UIImage* tImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return tImage;
+}
 
 -(void)setLayerBoderWidth:(CGFloat)layerBoderWidth{
     self.layer.borderWidth = layerBoderWidth;

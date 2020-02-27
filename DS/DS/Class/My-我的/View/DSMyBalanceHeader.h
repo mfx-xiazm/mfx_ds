@@ -18,7 +18,6 @@ typedef void(^balanceBtnCall)(NSInteger index);
 @property (weak, nonatomic) IBOutlet UILabel *gift_reward;
 @property (weak, nonatomic) IBOutlet UILabel *upgrade_reward;
 @property (weak, nonatomic) IBOutlet UILabel *goods_reward;
-@property (weak, nonatomic) IBOutlet UILabel *share_reward;
 
 @end
 

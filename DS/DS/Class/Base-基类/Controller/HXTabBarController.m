@@ -42,10 +42,10 @@
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
     
-    [self setupChildVc:[[DSHomeVC alloc] init] title:@"首页" image:@"首页图标" selectedImage:@"首页图标选中"];
-    [self setupChildVc:[[DSVipVC alloc] init] title:@"会员" image:@"会员图标" selectedImage:@"会员图标选中"];
-    [self setupChildVc:[[DSDynamicVC alloc] init] title:@"动态" image:@"动态图标" selectedImage:@"动态图标选中"];
-    [self setupChildVc:[[DSCartVC alloc] init] title:@"购物车" image:@"购物车图标" selectedImage:@"购物车图标选中"];
+    [self setupChildVc:[[DSHomeVC alloc] init] title:@"鲸品库" image:@"首页图标" selectedImage:@"首页图标选中"];
+    [self setupChildVc:[[DSVipVC alloc] init] title:@"VIP会员" image:@"会员图标" selectedImage:@"会员图标选中"];
+    [self setupChildVc:[[DSDynamicVC alloc] init] title:@"鲸学院" image:@"动态图标" selectedImage:@"动态图标选中"];
+    //[self setupChildVc:[[DSCartVC alloc] init] title:@"购物车" image:@"购物车图标" selectedImage:@"购物车图标选中"];
     [self setupChildVc:[[DSMyVC alloc] init] title:@"我的" image:@"我的图标" selectedImage:@"我的图标选中"];
 
     self.delegate = self;

@@ -40,6 +40,10 @@
  * 给一个视图设置阴影
  */
 -(void)setShadowWithCornerRadius:(CGFloat)cornerRadius shadowColor:(UIColor *)shadowColor shadowOffset:(CGSize)shadowOffset shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius;
+
+//view转成image
+- (UIImage*) imageWithUIView;
+
 //- (CGFloat)x;
 //- (void)setX:(CGFloat)x;
 /** 在分类中声明@property, 只会生成方法的声明, 不会生成方法的实现和带有_下划线的成员变量*/

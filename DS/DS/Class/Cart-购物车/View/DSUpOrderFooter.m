@@ -25,7 +25,7 @@
     self.remark = [[HXPlaceholderTextView alloc] initWithFrame:CGRectMake(10, 10, HX_SCREEN_WIDTH-20, self.remark_view.hxn_height-20)];
     self.remark.layer.cornerRadius = 5.f;
     self.remark.layer.masksToBounds = YES;
-    self.remark.placeholder = @"备注：";
+    self.remark.placeholder = @"备注请留言";
     self.remark.delegate = self;
     self.remark.backgroundColor = UIColorFromRGB(0xf2f2f2);
     [self.remark_view addSubview:self.remark];

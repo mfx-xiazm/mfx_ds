@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *adv_id;
 /** 消息id */
 @property(nonatomic,copy) NSString *msg_id;
+/** 京东商品类型id */
+@property(nonatomic,copy) NSString *cate_mode;
+
 
 @end
 

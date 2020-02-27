@@ -27,12 +27,10 @@
     
     if (_attrs.isSelected) {
         self.spec_name.textColor = [UIColor whiteColor];
-        self.spec_name.backgroundColor = UIColorFromRGB(0xEA4A5C);
-        self.spec_name.layer.borderColor = [UIColor clearColor].CGColor;
+        self.spec_name.backgroundColor = HXControlBg;
     }else{
         self.spec_name.textColor = [UIColor blackColor];
-        self.spec_name.backgroundColor = [UIColor whiteColor];
-        self.spec_name.layer.borderColor = [UIColor blackColor].CGColor;
+        self.spec_name.backgroundColor = UIColorFromRGB(0xEEEEEE);
     }
 }
 @end

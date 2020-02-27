@@ -18,11 +18,15 @@
 #import "DSConfirmOrder.h"
 #import "DSMyAddress.h"
 #import "DSMyOrderVC.h"
+#import "DSUpOrderSectionHeader.h"
+#import "DSUpOrderSectionFooter.h"
 
 static NSString *const UpOrderCell = @"UpOrderCell";
 @interface DSUpOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *pay_amount;
+@property (weak, nonatomic) IBOutlet UILabel *totalNum;
+@property (weak, nonatomic) IBOutlet UIButton *buyBtn;
 /* 头视图 */
 @property(nonatomic,strong) DSUpOrderHeader *header;
 /* 尾视图 */
@@ -42,6 +46,8 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"提交订单"];
+    [self.buyBtn.layer addSublayer:[UIColor setGradualChangingColor:self.buyBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+
     //注册登录状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
     [self setUpTableView];
@@ -52,7 +58,7 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 {
     [super viewDidLayoutSubviews];
     self.header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 90.f);
-    self.footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 200.f);
+    self.footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 150.f);
 }
 -(DSUpOrderHeader *)header
 {
@@ -76,7 +82,7 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 {
     if (_footer == nil) {
         _footer = [DSUpOrderFooter loadXibView];
-        _footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 200.f);
+        _footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 150.f);
     }
     return _footer;
 }
@@ -144,17 +150,19 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 -(void)showPayTypeView
 {
     DSPayTypeView *payType = [DSPayTypeView loadXibView];
-    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 285.f);
+    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH-35*2, 205.f);
     payType.pay_amount = self.confirmOrder.pay_amount;
     hx_weakify(self);
     payType.confirmPayCall = ^(NSInteger type) {
         hx_strongify(weakSelf);
-        strongSelf.isOrderPay = YES;//调起支付
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-        [strongSelf orderPayRequest:type];
+        if (type) {
+            strongSelf.isOrderPay = YES;//调起支付
+            [strongSelf orderPayRequest:type];
+        }
     };
     self.zh_popupController = [[zhPopupController alloc] init];
-    self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
+    self.zh_popupController.layoutType = zhPopupLayoutTypeCenter;
     self.zh_popupController.didDismiss = ^(zhPopupController * _Nonnull popupController) {
         hx_strongify(weakSelf);
         if (!strongSelf.isOrderPay) {// 未吊起支付
@@ -301,18 +309,23 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 
     [self.tableView reloadData];
 
-    self.pay_amount.text = [NSString stringWithFormat:@"%@元",self.confirmOrder.pay_amount];
+    self.totalNum.text = [NSString stringWithFormat:@"共%zd件",self.confirmOrder.list.count];
+    [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.pay_amount] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
 }
 #pragma mark -- UITableView数据源和代理
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.confirmOrder.list.count;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSMyOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:UpOrderCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    DSConfirmGoods *goods = self.confirmOrder.list[indexPath.row];
+    DSConfirmGoods *goods = self.confirmOrder.list[indexPath.section];
     cell.flag.hidden = [goods.is_discount isEqualToString:@"1"]?NO:YES;
     cell.goods = goods;
     return cell;
@@ -321,6 +334,28 @@ static NSString *const UpOrderCell = @"UpOrderCell";
 {
     // 返回这个模型对应的cell高度
     return 120.f;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 35.f;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    DSUpOrderSectionHeader *header = [DSUpOrderSectionHeader loadXibView];
+    header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 35.f);
+    return header;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 35.f+10.f;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    DSUpOrderSectionFooter *footer = [DSUpOrderSectionFooter loadXibView];
+    footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 45.f);
+    DSConfirmGoods *goods = self.confirmOrder.list[section];
+    footer.goods = goods;
+    return footer;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

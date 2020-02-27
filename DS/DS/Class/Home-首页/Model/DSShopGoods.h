@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *cmm_price;
 @property(nonatomic,copy) NSString *goods_id;
 @property(nonatomic,copy) NSString *cover_img;
+@property(nonatomic,copy) NSString *cate_mode;
+@property(nonatomic,copy) NSString *cate_flag;
 
 @end
 

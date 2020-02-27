@@ -15,6 +15,8 @@
 @property (nonatomic , strong) UIImageView *avatarView;
 /** 昵称 */
 @property (nonatomic , strong) YYLabel *nickName;
+/** 标签 */
+@property (nonatomic , strong) YYLabel *flag;
 /** 时间 */
 @property (nonatomic , strong) YYLabel *createTime;
 /** 文本内容 */
@@ -62,6 +64,7 @@
     self.contentView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:self.avatarView];
     [self.contentView addSubview:self.nickName];
+    [self.contentView addSubview:self.flag];
     [self.contentView addSubview:self.createTime];
     [self.contentView addSubview:self.textContent];
     [self.contentView addSubview:self.picContainerView];
@@ -96,6 +99,21 @@
     }
     return _nickName;
 }
+-(YYLabel *)flag
+{
+    if (!_flag) {
+        _flag = [YYLabel new];
+        _flag.font = [UIFont systemFontOfSize:10 weight:UIFontWeightLight];
+        _flag.textColor = [UIColor whiteColor];
+        _flag.backgroundColor = HXControlBg;
+        _flag.layer.masksToBounds = YES;
+        _flag.layer.cornerRadius = 8.f;
+        _flag.userInteractionEnabled = YES;
+        //UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(nickNameClicked)];
+        //[_nickName addGestureRecognizer:tapGR];
+    }
+    return _flag;
+}
 -(YYLabel *)createTime
 {
     if (!_createTime) {
@@ -110,7 +128,6 @@
 {
     if (!_textContent) {
         _textContent = [YYLabel new];
-        _textContent.backgroundColor = HXGlobalBg;
     }
     return _textContent;
 }
@@ -193,24 +210,24 @@
     
     //昵称
     _nickName.text = dynamic.nick;
-    _nickName.hxn_y = kMomentTopPadding + (kMomentPortraitWidthAndHeight-kMomentHandleButtonHeight)/2.0;
+    _nickName.hxn_y = kMomentTopPadding;
     _nickName.hxn_x = _avatarView.hxn_right + kMomentMarginPadding;
     CGSize nameSize = [_nickName sizeThatFits:CGSizeZero];
     _nickName.hxn_width = nameSize.width;
-    _nickName.hxn_height = kMomentHandleButtonHeight;
+    _nickName.hxn_height = 16.f;
     
-    //时间
-    _createTime.text = dynamic.creatTime;
-    _createTime.hxn_y = kMomentTopPadding + (kMomentPortraitWidthAndHeight-kMomentHandleButtonHeight)/2.0;
-    CGSize timeSize = [_createTime sizeThatFits:CGSizeZero];
-    _createTime.hxn_width = timeSize.width;
-    _createTime.hxn_x = HX_SCREEN_WIDTH - kMomentMarginPadding - timeSize.width;
-    _createTime.hxn_height = kMomentHandleButtonHeight;
+    // 标签
+    _flag.text = [NSString stringWithFormat:@" %@ ",dynamic.member_flag];
+    _flag.hxn_y = _avatarView.hxn_bottom - 16.f;
+    _flag.hxn_x = _avatarView.hxn_right + kMomentMarginPadding;
+    CGSize flagSize = [_flag sizeThatFits:CGSizeZero];
+    _flag.hxn_width = flagSize.width;
+    _flag.hxn_height = 16.f;
     
     //文本内容
-    _textContent.hxn_x = kMomentMarginPadding;
+    _textContent.hxn_x = _avatarView.hxn_right + kMomentMarginPadding;
     _textContent.hxn_y = _avatarView.hxn_bottom + kMomentMarginPadding;
-    _textContent.hxn_width = HX_SCREEN_WIDTH - kMomentMarginPadding * 2;
+    _textContent.hxn_width = HX_SCREEN_WIDTH - kMomentMarginPadding * 3 - kMomentPortraitWidthAndHeight;
     _textContent.hxn_height = _dynamicLayout.textLayout.textBoundingSize.height;
     _textContent.textLayout = _dynamicLayout.textLayout;
     lastView = _textContent;
@@ -218,7 +235,7 @@
     //图片集
     if (dynamic.photos.count != 0) {
         _picContainerView.hidden = NO;
-        _picContainerView.hxn_x = kMomentMarginPadding;
+        _picContainerView.hxn_x = _avatarView.hxn_right + kMomentMarginPadding;
         _picContainerView.hxn_y = lastView.hxn_bottom + kMomentMarginPadding;
         _picContainerView.hxn_width = _dynamicLayout.photoContainerSize.width;
         _picContainerView.hxn_height = _dynamicLayout.photoContainerSize.height;
@@ -229,24 +246,33 @@
     }else{
         _picContainerView.hidden = YES;
     }
+    
+    //时间
+    _createTime.text = dynamic.creatTime;
+    _createTime.hxn_y = lastView.hxn_bottom + kMomentMarginPadding;
+    CGSize timeSize = [_createTime sizeThatFits:CGSizeZero];
+    _createTime.hxn_width = timeSize.width;
+    _createTime.hxn_x = _avatarView.hxn_right + kMomentMarginPadding;
+    _createTime.hxn_height = kMomentHandleButtonHeight;
+    
     //分享
     _share.hxn_y = lastView.hxn_bottom + kMomentMarginPadding;
-    _share.hxn_x = HX_SCREEN_WIDTH - 70 - 10;
-    _share.hxn_width = 70;
+    _share.hxn_x = HX_SCREEN_WIDTH - 50 - 10;
+    _share.hxn_width = 50;
     _share.hxn_height = kMomentHandleButtonHeight;
     
     //点赞
     _thumb.hxn_y = lastView.hxn_bottom + kMomentMarginPadding;
-    _thumb.hxn_x = HX_SCREEN_WIDTH - 70*2 - 10*2;
-    _thumb.hxn_width = 70;
+    _thumb.hxn_x = HX_SCREEN_WIDTH - 50*2 - 10*2;
+    _thumb.hxn_width = 50;
     _thumb.hxn_height = kMomentHandleButtonHeight;
     [_thumb setTitle:dynamic.praise_num forState:UIControlStateNormal];
     _thumb.selected = dynamic.is_praise;
     
     //删除
     _delete.hxn_y = lastView.hxn_bottom + kMomentMarginPadding;
-    _delete.hxn_x = HX_SCREEN_WIDTH - 70*3 - 10*3;
-    _delete.hxn_width = 70;
+    _delete.hxn_x = HX_SCREEN_WIDTH - 50*3 - 10*3;
+    _delete.hxn_width = 50;
     _delete.hxn_height = kMomentHandleButtonHeight;
     _delete.hidden = [[MSUserManager sharedInstance].curUserInfo.uid isEqualToString:dynamic.uid]?NO:YES;
     //分割线

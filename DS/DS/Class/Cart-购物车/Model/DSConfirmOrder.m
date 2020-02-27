@@ -18,5 +18,14 @@
 @end
 
 @implementation DSConfirmGoods
-
+-(CGFloat)totalPrice
+{
+    CGFloat price = 0;
+    if ([self.is_discount isEqualToString:@"1"]) {
+        price += ([self.discount_price floatValue])*[self.goods_num integerValue];
+    }else{
+        price += ([self.price floatValue])*[self.goods_num integerValue];
+    }
+    return price;
+}
 @end

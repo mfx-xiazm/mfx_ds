@@ -28,6 +28,8 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的余额"];
+    self.hbd_barShadowHidden = YES;
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(upCashClicked) title:@"提现" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
     [self setUpTableView];
     [self startShimmer];
     [self getMyBalanceRequest];
@@ -51,9 +53,20 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
                     [strongSelf getMyBalanceRequest];
                 };
                 [strongSelf.navigationController pushViewController:cvc animated:YES];
-            }else{
+            }else if (index == 1) {
+                //奖励类型：晋级1，礼包2，商品3，分享4，队长收益5为晋级1和分享4之和
                 DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
-                nvc.reward_type = index;
+                nvc.reward_type = 3;
+                [strongSelf.navigationController pushViewController:nvc animated:YES];
+            }else if (index == 1) {
+                //奖励类型：晋级1，礼包2，商品3，分享4，队长收益5为晋级1和分享4之和
+                DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
+                nvc.reward_type = 2;
+                [strongSelf.navigationController pushViewController:nvc animated:YES];
+            }else{
+                //奖励类型：晋级1，礼包2，商品3，分享4，队长收益5为晋级1和分享4之和
+                DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
+                nvc.reward_type = 5;
                 [strongSelf.navigationController pushViewController:nvc animated:YES];
             }
         };
@@ -87,6 +100,17 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     
     self.tableView.tableHeaderView = self.header;
 }
+#pragma mark -- 点击事件
+-(void)upCashClicked
+{
+    DSUpCashVC *cvc = [DSUpCashVC new];
+    hx_weakify(self);
+    cvc.upCashActionCall = ^{
+        hx_strongify(weakSelf);
+        [strongSelf getMyBalanceRequest];
+    };
+    [self.navigationController pushViewController:cvc animated:YES];
+}
 #pragma mark -- 接口请求
 -(void)getMyBalanceRequest
 {
@@ -98,10 +122,10 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
             strongSelf.notes = [NSArray yy_modelArrayWithClass:[DSBalanceNote class] json:responseObject[@"result"][@"log_list"]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 strongSelf.header.balance.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"balance"] floatValue]);
-                strongSelf.header.upgrade_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"upgrade_reward"] floatValue]);
-                strongSelf.header.gift_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"gift_reward"] floatValue]);
                 strongSelf.header.goods_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"goods_reward"] floatValue]);
-                strongSelf.header.share_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"share_reward"] floatValue]);
+                strongSelf.header.gift_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"gift_reward"] floatValue]);
+                strongSelf.header.upgrade_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"upgrade_reward"] floatValue]+[responseObject[@"result"][@"share_reward"] floatValue]);
+
                 [strongSelf.tableView reloadData];
             });
         }else{

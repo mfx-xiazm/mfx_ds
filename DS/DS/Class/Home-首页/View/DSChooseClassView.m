@@ -23,6 +23,7 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *market_price;
 @property (weak, nonatomic) IBOutlet UILabel *stock_num;
+@property (weak, nonatomic) IBOutlet UIButton *sureBtn;
 
 @end
 @implementation DSChooseClassView
@@ -31,6 +32,8 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
 {
     [super awakeFromNib];
     
+    [self.sureBtn.layer addSublayer:[UIColor setGradualChangingColor:self.sureBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+
     ZLCollectionViewVerticalLayout *flowLayout = [[ZLCollectionViewVerticalLayout alloc] init];
     flowLayout.delegate = self;
     flowLayout.canDrag = NO;
@@ -42,18 +45,25 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSChooseClassHeader class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ChooseClassHeader];
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSChooseClassFooter class]) bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:ChooseClassFooter];
 }
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self bezierPathByRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10, 10)];
+}
 -(void)setGoodsDetail:(DSGoodsDetail *)goodsDetail
 {
     _goodsDetail = goodsDetail;
     
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:_goodsDetail.cover_img]];
     if (_goodsDetail.selectSku) {
-        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.selectSku.discount_price floatValue]];
-        self.market_price.text = [NSString stringWithFormat:@"原价：%.2f",[_goodsDetail.selectSku.price floatValue]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+        [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.selectSku.price floatValue]]];
+
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.selectSku.stock];
     }else{
-        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.discount_price floatValue]];
-        self.market_price.text = [NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.price floatValue]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+        [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.price floatValue]]];
+
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.stock];
     }
 
@@ -127,12 +137,14 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
     }
     
     if (_goodsDetail.selectSku) {
-        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.selectSku.discount_price floatValue]];
-        self.market_price.text = [NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.selectSku.price floatValue]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_goodsDetail.selectSku.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+        [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.selectSku.price floatValue]]];
+
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.selectSku.stock];
     }else{
-        self.price.text = [NSString stringWithFormat:@"折扣价%.2f",[_goodsDetail.discount_price floatValue]];
-        self.market_price.text = [NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.price floatValue]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+        [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：￥%.2f",[_goodsDetail.price floatValue]]];
+
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",@"0"];
     }
 }

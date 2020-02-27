@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.font = [UIFont systemFontOfSize:14];
+        self.font = [UIFont systemFontOfSize:12];
         self.placeholder = @"搜索感兴趣的内容";
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.returnKeyType = UIReturnKeySearch;

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HXNavigationController : UINavigationController
+@interface HXNavigationController : HBDNavigationController
 
 @end

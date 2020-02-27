@@ -22,6 +22,11 @@ static NSString *const TakeCouponCell = @"TakeCouponCell";
     [super awakeFromNib];
     [self setUpTableView];
 }
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self bezierPathByRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(10, 10)];
+}
 -(void)setUpTableView
 {
     self.tableView.rowHeight = 0;
@@ -56,7 +61,7 @@ static NSString *const TakeCouponCell = @"TakeCouponCell";
     DSTakeCouponCell *cell = [tableView dequeueReusableCellWithIdentifier:TakeCouponCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.discount.text = [NSString stringWithFormat:@"%.1f折",[self.discount floatValue]];
+    [cell.discount setFontAttributedText:[NSString stringWithFormat:@"%.1f折",[self.discount floatValue]] andChangeStr:@"折" andFont:[UIFont systemFontOfSize:14]];
     cell.discoutName.text = [NSString stringWithFormat:@"%.1f折券",[self.discount floatValue]];
     cell.validDay.text = [NSString stringWithFormat:@"有效期：%@天",self.valid_days];
     hx_weakify(self);

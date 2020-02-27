@@ -11,7 +11,7 @@
 #import <ZLCollectionViewVerticalLayout.h>
 #import "DSShopGoods.h"
 #import "DSGoodsDetailVC.h"
-#import "DSVipGoodsDetailVC.h"
+#import "DSTaoGoodsDetailVC.h"
 #import "DSWebContentVC.h"
 
 static NSString *const CateGoodsCell = @"CateGoodsCell";
@@ -144,7 +144,7 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
 }
 //如果是ClosedLayout样式的section，必须实现该代理，指定列数
 - (NSInteger)collectionView:(UICollectionView *)collectionView layout:(ZLCollectionViewBaseFlowLayout*)collectionViewLayout columnCountOfSection:(NSInteger)section {
-    return 2;
+    return 1;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DSCateGoodsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CateGoodsCell forIndexPath:indexPath];
@@ -154,10 +154,10 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     DSShopGoods *goods = self.goods[indexPath.row];
-    if ([self.cate_mode isEqualToString:@"4"]) {
-        DSVipGoodsDetailVC *dvc = [DSVipGoodsDetailVC new];
+    
+    if ([goods.cate_mode isEqualToString:@"4"]) {
+        DSTaoGoodsDetailVC *dvc = [DSTaoGoodsDetailVC new];
         dvc.goods_id = goods.goods_id;
-        dvc.isTaoke = YES;
         [self.navigationController pushViewController:dvc animated:YES];
     }else{
         DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
@@ -166,17 +166,17 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
     }
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat width = (HX_SCREEN_WIDTH-10.f*3)/2.0;
-    CGFloat height = width+85.f;
+    CGFloat width = HX_SCREEN_WIDTH;
+    CGFloat height = 120;
     return CGSizeMake(width, height);
 }
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 5.f;
-}
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 5.f;
+    return 0.f;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 0.f;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return  UIEdgeInsetsMake(10.f, 5.f, 10.f, 5.f);
+    return  UIEdgeInsetsZero;
 }
 @end

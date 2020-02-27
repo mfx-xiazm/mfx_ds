@@ -14,10 +14,10 @@
 @interface DSRegisterVC ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UITextField *pwd;
+@property (weak, nonatomic) IBOutlet UITextField *comfirmPwd;
 @property (weak, nonatomic) IBOutlet UITextField *code;
 @property (weak, nonatomic) IBOutlet UITextField *inviteCode;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UITextView *agreeMentTV;
 @property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 
@@ -30,8 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"注册"];
-    
-    [self.loginBtn setAttributedTitle:[self setColorAttributedText:@"已有账号？立即登录" andChangeStr:@"已有账号？" andColor:[UIColor blackColor]] forState:UIControlStateNormal];
+    self.hbd_barStyle = UIBarStyleBlack;
     [self setAgreeMentProtocol];
 
     hx_weakify(self);
@@ -51,16 +50,24 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"手机号格式不对"];
             return NO;
         }
-        if (![strongSelf.pwd hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请设置密码"];
-            return NO;
-        }
         if (!strongSelf.codeId) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请获取验证码"];
             return NO;
         }
         if (![strongSelf.code hasText]) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入验证码"];
+            return NO;
+        }
+        if (![strongSelf.pwd hasText]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入您的密码"];
+            return NO;
+        }
+        if (![strongSelf.comfirmPwd hasText]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请重新输入您的密码"];
+            return NO;
+        }
+        if (![strongSelf.pwd.text isEqualToString:strongSelf.comfirmPwd.text]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"您的密码前后不一致"];
             return NO;
         }
         if (!strongSelf.agreeBtn.isSelected) {
@@ -81,17 +88,13 @@
     [attributedString addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0x000000) range:NSMakeRange(0, attributedString.length)];
     
     _agreeMentTV.attributedText = attributedString;
-    _agreeMentTV.linkTextAttributes = @{NSForegroundColorAttributeName: HXControlBg,NSUnderlineColorAttributeName: HXControlBg,NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+    _agreeMentTV.linkTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x527CF8),NSUnderlineColorAttributeName: UIColorFromRGB(0x527CF8),NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
     _agreeMentTV.delegate = self;
     _agreeMentTV.editable = NO;        //必须禁止输入，否则点击将弹出输入键盘
     _agreeMentTV.scrollEnabled = NO;
 }
 - (IBAction)agreeBtnClicked:(UIButton *)sender {
     sender.selected = !sender.selected;
-}
-
-- (IBAction)backLoginVC:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)pwdStatusClicked:(UIButton *)sender {
     sender.selected = !sender.selected;

@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *treads_id;
 @property(nonatomic,strong)NSString *share_url;
 @property(nonatomic,assign) BOOL is_praise;
-
+@property(nonatomic,copy) NSString *member_flag;
 @end
 @interface DSDynamicContent : NSObject
 @property(nonatomic,copy) NSString *content_type;

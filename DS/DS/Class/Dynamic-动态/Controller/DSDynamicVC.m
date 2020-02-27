@@ -28,9 +28,19 @@
 
 @implementation DSDynamicVC
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpNavBar];
+//    [self setUpNavBar];
     [self setUpTableView];
     [self setUpEmptyView];
     [self setUpRefresh];
@@ -50,8 +60,9 @@
     [self.navigationItem setTitle:nil];
     
     HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
+    searchBar.searchIcon = @"search_icon";
     searchBar.backgroundColor = [UIColor whiteColor];
-    searchBar.layer.cornerRadius = 6;
+    searchBar.layer.cornerRadius = 15.f;
     searchBar.layer.masksToBounds = YES;
     searchBar.delegate = self;
     searchBar.placeholder = @"请输入动态标题查询";
@@ -114,12 +125,12 @@
         [strongSelf getDynamicDataRequest:NO];
     }];
 }
--(void)publishClicked
+-(IBAction)publishClicked
 {
-    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法发布动态"];
-        return;
-    }
+//    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
+//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"普通用户无法发布动态"];
+//        return;
+//    }
     DSPublishDynamicVC *pvc = [DSPublishDynamicVC new];
     hx_weakify(self);
     pvc.publishActionCall = ^{
@@ -128,11 +139,10 @@
     };
     [self.navigationController pushViewController:pvc animated:YES];
 }
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+-(IBAction)searchClicked
 {
     DSSearchDynamicVC *svc = [DSSearchDynamicVC new];
     [self.navigationController pushViewController:svc animated:YES];
-    return NO;
 }
 #pragma mark -- 接口请求
 /** 列表请求 */

@@ -245,16 +245,18 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 -(void)showPayTypeView
 {
     DSPayTypeView *payType = [DSPayTypeView loadXibView];
-    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 285.f);
+    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH-35*2, 205.f);
     payType.pay_amount = self.currentOrder.pay_amount;
     hx_weakify(self);
     payType.confirmPayCall = ^(NSInteger type) {
         hx_strongify(weakSelf);
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-        [strongSelf orderPayRequest:type];
+        if (type) {
+            [strongSelf orderPayRequest:type];
+        }
     };
     self.zh_popupController = [[zhPopupController alloc] init];
-    self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
+    self.zh_popupController.layoutType = zhPopupLayoutTypeCenter;
     [self.zh_popupController presentContentView:payType duration:0.25 springAnimated:NO];
 }
 // 拉取支付信息

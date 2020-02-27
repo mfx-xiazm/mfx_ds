@@ -84,7 +84,7 @@
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
 {
     if (color) {
-        CGRect rect = CGRectMake(0, 0, size.width, size.height);
+        CGRect rect = CGRectMake(0, 0, size.width*3, size.height*3);
         UIGraphicsBeginImageContext(rect.size);
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetFillColorWithColor(context,color.CGColor);

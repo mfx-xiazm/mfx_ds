@@ -27,9 +27,9 @@
     // 第一句只会在当前导航栏生效，第二句全部生效
     UINavigationBar *bar = [UINavigationBar appearance];
     bar.barTintColor = HXControlBg;
-    bar.translucent = NO;
-    [bar setBackgroundImage:[UIImage imageWithColor:HXControlBg size:CGSizeMake(1, 0.5)] forBarMetrics:UIBarMetricsDefault];
-    [bar setShadowImage:[UIImage imageWithColor:HXControlBg size:CGSizeMake(1, 1)]];
+//    bar.translucent = NO;
+//    [bar setBackgroundImage:[UIImage imageWithColor:HXControlBg size:CGSizeMake(1, 0.5)] forBarMetrics:UIBarMetricsDefault];
+//    [bar setShadowImage:[UIImage imageWithColor:HXControlBg size:CGSizeMake(1, 1)]];
     //    如果如下设置，则所有的导航栏控制器都会生效，并不仅仅限于本导航栏控制器
     //    UINavigationBar *bar = [UINavigationBar appearance];
     //    [bar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
@@ -98,12 +98,12 @@
     // 这句super的push要放在后面, 让viewController可以覆盖上面设置的leftBarButtonItem
     [super pushViewController:viewController animated:animated];
 }
-- (UIViewController *)childViewControllerForStatusBarStyle{
-    return self.topViewController;
-}
-- (UIViewController *)childViewControllerForStatusBarHidden{
-    return self.topViewController;
-}
+//- (UIViewController *)childViewControllerForStatusBarStyle{
+//    return self.topViewController;
+//}
+//- (UIViewController *)childViewControllerForStatusBarHidden{
+//    return self.topViewController;
+//}
 
 - (void)back
 {

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DSDynamic : NSObject
 /** 内容文本 */
 @property(nonatomic,copy)NSString *dsp;
+/** 会员i标签 */
+@property(nonatomic,copy)NSString *member_flag;
 /** 用户昵称 */
 @property(nonatomic,copy)NSString *nick;
 /** 用户头像 */

@@ -27,9 +27,9 @@
 {
     _recommend = recommend;
     [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_recommend.cover_img]];
-    self.goodName.text = _recommend.goods_name;
-    self.price.text = [NSString stringWithFormat:@"￥%.2f",[_recommend.discount_price floatValue]];
+    [self.goodName addFlagLabelWithName:_recommend.cate_flag lineSpace:5.f titleString:_recommend.goods_name withFont:[UIFont systemFontOfSize:14]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_recommend.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
     [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[_recommend.price floatValue]]];
-    self.bankPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[_recommend.cmm_price floatValue]];
+    [self.bankPrice setFontAttributedText:[NSString stringWithFormat:@"返佣金额：￥%.2f",[_recommend.cmm_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:8]];
 }
 @end

@@ -27,6 +27,9 @@
 		900146AA2384E5A800275DD9 /* DSGoodsPosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */; };
 		900736CF23B303EE00339BC3 /* DSShareDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900736CE23B303EE00339BC3 /* DSShareDynamicView.m */; };
 		900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900736D023B303F500339BC3 /* DSShareDynamicView.xib */; };
+		90088F3D23F28B3800F1379F /* UIViewController+HBD.m in Sources */ = {isa = PBXBuildFile; fileRef = 90088F3623F28B3800F1379F /* UIViewController+HBD.m */; };
+		90088F3E23F28B3800F1379F /* HBDNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 90088F3723F28B3800F1379F /* HBDNavigationBar.m */; };
+		90088F3F23F28B3800F1379F /* HBDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90088F3923F28B3800F1379F /* HBDNavigationController.m */; };
 		9028AA4123AC756F0015E06D /* DSVipUpOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA3F23AC756F0015E06D /* DSVipUpOrderVC.m */; };
 		9028AA4223AC756F0015E06D /* DSVipUpOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9028AA4023AC756F0015E06D /* DSVipUpOrderVC.xib */; };
 		9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA4423AC7A480015E06D /* DSVipConfirmOrder.m */; };
@@ -175,6 +178,7 @@
 		908F942D23AB53E2007E6C27 /* DSConfirmOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 908F942C23AB53E2007E6C27 /* DSConfirmOrder.m */; };
 		908F943D23AB7C19007E6C27 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 908F943C23AB7C06007E6C27 /* libz.tbd */; };
 		908F943F23AB7C3D007E6C27 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 908F943E23AB7C2E007E6C27 /* libc++.tbd */; };
+		90AB397E24075FBE0082ECE4 /* UIColor+DSGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AB397D24075FBE0082ECE4 /* UIColor+DSGradient.m */; };
 		90AE52C02382777C009F4740 /* DSVipCardDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52BE2382777C009F4740 /* DSVipCardDetailVC.m */; };
 		90AE52C12382777C009F4740 /* DSVipCardDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52BF2382777C009F4740 /* DSVipCardDetailVC.xib */; };
 		90AE52C52382802A009F4740 /* DSVipCardDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52C32382802A009F4740 /* DSVipCardDetailCell.m */; };
@@ -195,6 +199,10 @@
 		90AE52EB2382A0FE009F4740 /* DSPublishDynamicFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AE52EA2382A0FE009F4740 /* DSPublishDynamicFooter.m */; };
 		90AE52ED2382A104009F4740 /* DSPublishDynamicFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90AE52EC2382A104009F4740 /* DSPublishDynamicFooter.xib */; };
 		90B1AA6A23B4A20B00674FE1 /* DSGoodsShortCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B1AA6923B4A20B00674FE1 /* DSGoodsShortCode.m */; };
+		90B7945223FAB5AC00340CDF /* DSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B7945023FAB5AC00340CDF /* DSAllOrderVC.m */; };
+		90B7945323FAB5AC00340CDF /* DSAllOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90B7945123FAB5AC00340CDF /* DSAllOrderVC.xib */; };
+		90B7945C23FAC35600340CDF /* DSMyCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90B7945A23FAC35600340CDF /* DSMyCollectCell.m */; };
+		90B7945D23FAC35600340CDF /* DSMyCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90B7945B23FAC35600340CDF /* DSMyCollectCell.xib */; };
 		90C6C30A239E1C5F00A531CC /* UITextField+GYExpand.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C308239E1C5F00A531CC /* UITextField+GYExpand.m */; };
 		90C6C30D239E27E000A531CC /* DSHomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C30C239E27E000A531CC /* DSHomeData.m */; };
 		90C94C2223A4716400CD19FB /* DSCartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C2123A4716400CD19FB /* DSCartData.m */; };
@@ -212,6 +220,12 @@
 		90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4323A4937C00CD19FB /* DSVipCard.m */; };
 		90C94C4723A4B31F00CD19FB /* DSVipCardDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4623A4B31F00CD19FB /* DSVipCardDetail.m */; };
 		90C94C4A23A4CDC000CD19FB /* DSDynamicDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C4923A4CDC000CD19FB /* DSDynamicDetail.m */; };
+		90D11D022407AD9300957F13 /* DSTaoGoodsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D11D002407AD9300957F13 /* DSTaoGoodsDetailVC.m */; };
+		90D11D032407AD9300957F13 /* DSTaoGoodsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D11D012407AD9300957F13 /* DSTaoGoodsDetailVC.xib */; };
+		90D7E77823FC183900231D85 /* DSUpOrderSectionFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D7E77723FC183900231D85 /* DSUpOrderSectionFooter.m */; };
+		90D7E77B23FC184C00231D85 /* DSUpOrderSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D7E77A23FC184C00231D85 /* DSUpOrderSectionHeader.m */; };
+		90D7E77D23FC185200231D85 /* DSUpOrderSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D7E77C23FC185200231D85 /* DSUpOrderSectionHeader.xib */; };
+		90D7E77F23FC185D00231D85 /* DSUpOrderSectionFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D7E77E23FC185D00231D85 /* DSUpOrderSectionFooter.xib */; };
 		90E447EB23B05ABA005BE8B9 /* DSPosterContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */; };
 		90E447ED23B05AC0005BE8B9 /* DSPosterContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */; };
 		90EC2578237A5D8C005C24C8 /* DSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2576237A5D8C005C24C8 /* DSLoginVC.m */; };
@@ -357,6 +371,12 @@
 		900736CD23B303EE00339BC3 /* DSShareDynamicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSShareDynamicView.h; sourceTree = "<group>"; };
 		900736CE23B303EE00339BC3 /* DSShareDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSShareDynamicView.m; sourceTree = "<group>"; };
 		900736D023B303F500339BC3 /* DSShareDynamicView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSShareDynamicView.xib; sourceTree = "<group>"; };
+		90088F3323F28B3800F1379F /* HBDNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBDNavigationBar.h; sourceTree = "<group>"; };
+		90088F3523F28B3800F1379F /* HBDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBDNavigationController.h; sourceTree = "<group>"; };
+		90088F3623F28B3800F1379F /* UIViewController+HBD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HBD.m"; sourceTree = "<group>"; };
+		90088F3723F28B3800F1379F /* HBDNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBDNavigationBar.m; sourceTree = "<group>"; };
+		90088F3823F28B3800F1379F /* UIViewController+HBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HBD.h"; sourceTree = "<group>"; };
+		90088F3923F28B3800F1379F /* HBDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBDNavigationController.m; sourceTree = "<group>"; };
 		9028AA3E23AC756F0015E06D /* DSVipUpOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipUpOrderVC.h; sourceTree = "<group>"; };
 		9028AA3F23AC756F0015E06D /* DSVipUpOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipUpOrderVC.m; sourceTree = "<group>"; };
 		9028AA4023AC756F0015E06D /* DSVipUpOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipUpOrderVC.xib; sourceTree = "<group>"; };
@@ -618,6 +638,8 @@
 		908F942C23AB53E2007E6C27 /* DSConfirmOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSConfirmOrder.m; sourceTree = "<group>"; };
 		908F943C23AB7C06007E6C27 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		908F943E23AB7C2E007E6C27 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		90AB397C24075FBE0082ECE4 /* UIColor+DSGradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+DSGradient.h"; sourceTree = "<group>"; };
+		90AB397D24075FBE0082ECE4 /* UIColor+DSGradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DSGradient.m"; sourceTree = "<group>"; };
 		90AE52BD2382777C009F4740 /* DSVipCardDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipCardDetailVC.h; sourceTree = "<group>"; };
 		90AE52BE2382777C009F4740 /* DSVipCardDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardDetailVC.m; sourceTree = "<group>"; };
 		90AE52BF2382777C009F4740 /* DSVipCardDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSVipCardDetailVC.xib; sourceTree = "<group>"; };
@@ -650,6 +672,12 @@
 		90AE52EC2382A104009F4740 /* DSPublishDynamicFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPublishDynamicFooter.xib; sourceTree = "<group>"; };
 		90B1AA6823B4A20B00674FE1 /* DSGoodsShortCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGoodsShortCode.h; sourceTree = "<group>"; };
 		90B1AA6923B4A20B00674FE1 /* DSGoodsShortCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGoodsShortCode.m; sourceTree = "<group>"; };
+		90B7944F23FAB5AC00340CDF /* DSAllOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAllOrderVC.h; sourceTree = "<group>"; };
+		90B7945023FAB5AC00340CDF /* DSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAllOrderVC.m; sourceTree = "<group>"; };
+		90B7945123FAB5AC00340CDF /* DSAllOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSAllOrderVC.xib; sourceTree = "<group>"; };
+		90B7945923FAC35600340CDF /* DSMyCollectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyCollectCell.h; sourceTree = "<group>"; };
+		90B7945A23FAC35600340CDF /* DSMyCollectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyCollectCell.m; sourceTree = "<group>"; };
+		90B7945B23FAC35600340CDF /* DSMyCollectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSMyCollectCell.xib; sourceTree = "<group>"; };
 		90C6C308239E1C5F00A531CC /* UITextField+GYExpand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+GYExpand.m"; sourceTree = "<group>"; };
 		90C6C309239E1C5F00A531CC /* UITextField+GYExpand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+GYExpand.h"; sourceTree = "<group>"; };
 		90C6C30B239E27E000A531CC /* DSHomeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSHomeData.h; sourceTree = "<group>"; };
@@ -681,6 +709,15 @@
 		90C94C4623A4B31F00CD19FB /* DSVipCardDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipCardDetail.m; sourceTree = "<group>"; };
 		90C94C4823A4CDC000CD19FB /* DSDynamicDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDynamicDetail.h; sourceTree = "<group>"; };
 		90C94C4923A4CDC000CD19FB /* DSDynamicDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSDynamicDetail.m; sourceTree = "<group>"; };
+		90D11CFF2407AD9300957F13 /* DSTaoGoodsDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoGoodsDetailVC.h; sourceTree = "<group>"; };
+		90D11D002407AD9300957F13 /* DSTaoGoodsDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTaoGoodsDetailVC.m; sourceTree = "<group>"; };
+		90D11D012407AD9300957F13 /* DSTaoGoodsDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTaoGoodsDetailVC.xib; sourceTree = "<group>"; };
+		90D7E77623FC183900231D85 /* DSUpOrderSectionFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpOrderSectionFooter.h; sourceTree = "<group>"; };
+		90D7E77723FC183900231D85 /* DSUpOrderSectionFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpOrderSectionFooter.m; sourceTree = "<group>"; };
+		90D7E77923FC184C00231D85 /* DSUpOrderSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpOrderSectionHeader.h; sourceTree = "<group>"; };
+		90D7E77A23FC184C00231D85 /* DSUpOrderSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpOrderSectionHeader.m; sourceTree = "<group>"; };
+		90D7E77C23FC185200231D85 /* DSUpOrderSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpOrderSectionHeader.xib; sourceTree = "<group>"; };
+		90D7E77E23FC185D00231D85 /* DSUpOrderSectionFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpOrderSectionFooter.xib; sourceTree = "<group>"; };
 		90E447E923B05ABA005BE8B9 /* DSPosterContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPosterContentView.h; sourceTree = "<group>"; };
 		90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPosterContentView.m; sourceTree = "<group>"; };
 		90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPosterContentView.xib; sourceTree = "<group>"; };
@@ -894,6 +931,27 @@
 			path = GXSaveImageToPHAsset;
 			sourceTree = "<group>";
 		};
+		90088F3123F28B3800F1379F /* HBDNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				90088F3223F28B3800F1379F /* Classes */,
+			);
+			path = HBDNavigationBar;
+			sourceTree = "<group>";
+		};
+		90088F3223F28B3800F1379F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				90088F3323F28B3800F1379F /* HBDNavigationBar.h */,
+				90088F3723F28B3800F1379F /* HBDNavigationBar.m */,
+				90088F3523F28B3800F1379F /* HBDNavigationController.h */,
+				90088F3923F28B3800F1379F /* HBDNavigationController.m */,
+				90088F3823F28B3800F1379F /* UIViewController+HBD.h */,
+				90088F3623F28B3800F1379F /* UIViewController+HBD.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		903A95BC23A2123B00AD68CF /* LYEmptyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1155,12 @@
 				903D082423839A15001C2E40 /* DSUpOrderFooter.h */,
 				903D082523839A15001C2E40 /* DSUpOrderFooter.m */,
 				903D082723839A1B001C2E40 /* DSUpOrderFooter.xib */,
+				90D7E77923FC184C00231D85 /* DSUpOrderSectionHeader.h */,
+				90D7E77A23FC184C00231D85 /* DSUpOrderSectionHeader.m */,
+				90D7E77C23FC185200231D85 /* DSUpOrderSectionHeader.xib */,
+				90D7E77623FC183900231D85 /* DSUpOrderSectionFooter.h */,
+				90D7E77723FC183900231D85 /* DSUpOrderSectionFooter.m */,
+				90D7E77E23FC185D00231D85 /* DSUpOrderSectionFooter.xib */,
 				903D082923839DFA001C2E40 /* DSPayTypeView.h */,
 				903D082A23839DFA001C2E40 /* DSPayTypeView.m */,
 				903D082C23839E05001C2E40 /* DSPayTypeView.xib */,
@@ -1135,6 +1199,9 @@
 				903D082E2383C87C001C2E40 /* DSGoodsDetailVC.h */,
 				903D082F2383C87C001C2E40 /* DSGoodsDetailVC.m */,
 				903D08302383C87C001C2E40 /* DSGoodsDetailVC.xib */,
+				90D11CFF2407AD9300957F13 /* DSTaoGoodsDetailVC.h */,
+				90D11D002407AD9300957F13 /* DSTaoGoodsDetailVC.m */,
+				90D11D012407AD9300957F13 /* DSTaoGoodsDetailVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1306,6 +1373,9 @@
 				90FD91C7237E446300016EF7 /* DSChangeInfoVC.h */,
 				90FD91C8237E446300016EF7 /* DSChangeInfoVC.m */,
 				90FD91C9237E446300016EF7 /* DSChangeInfoVC.xib */,
+				90B7944F23FAB5AC00340CDF /* DSAllOrderVC.h */,
+				90B7945023FAB5AC00340CDF /* DSAllOrderVC.m */,
+				90B7945123FAB5AC00340CDF /* DSAllOrderVC.xib */,
 				90FD91AE237E3EBE00016EF7 /* DSMyOrderVC.h */,
 				90FD91AF237E3EBE00016EF7 /* DSMyOrderVC.m */,
 				90FD91B0237E3EBE00016EF7 /* DSMyOrderVC.xib */,
@@ -1443,6 +1513,9 @@
 				90FD91EA237E4F4F00016EF7 /* DSMyCardCell.h */,
 				90FD91EB237E4F4F00016EF7 /* DSMyCardCell.m */,
 				90FD91EC237E4F4F00016EF7 /* DSMyCardCell.xib */,
+				90B7945923FAC35600340CDF /* DSMyCollectCell.h */,
+				90B7945A23FAC35600340CDF /* DSMyCollectCell.m */,
+				90B7945B23FAC35600340CDF /* DSMyCollectCell.xib */,
 				90FD91F4237E539300016EF7 /* DSMyAddressCell.h */,
 				90FD91F5237E539300016EF7 /* DSMyAddressCell.m */,
 				90FD91F6237E539300016EF7 /* DSMyAddressCell.xib */,
@@ -1605,6 +1678,8 @@
 				906F36D923792F64000B160A /* UIView+HXNExtension.m */,
 				90C6C309239E1C5F00A531CC /* UITextField+GYExpand.h */,
 				90C6C308239E1C5F00A531CC /* UITextField+GYExpand.m */,
+				90AB397C24075FBE0082ECE4 /* UIColor+DSGradient.h */,
+				90AB397D24075FBE0082ECE4 /* UIColor+DSGradient.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1661,6 +1736,7 @@
 		906F36ED23792F64000B160A /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				90088F3123F28B3800F1379F /* HBDNavigationBar */,
 				90C94C2F23A47DC900CD19FB /* SPPickerView */,
 				903A95BC23A2123B00AD68CF /* LYEmptyView */,
 				906F36EE23792F64000B160A /* WXPhotoContainerView */,
@@ -2011,9 +2087,11 @@
 				90FD91C6237E40CC00016EF7 /* DSMyOrderCell.xib in Resources */,
 				906F378123792FC9000B160A /* DSVipVC.xib in Resources */,
 				90FD91DA237E48AC00016EF7 /* DSMyTeamVC.xib in Resources */,
+				90B7945323FAB5AC00340CDF /* DSAllOrderVC.xib in Resources */,
 				906F376323792F64000B160A /* FSActionSheet_cancel@3x.png in Resources */,
 				903D08322383C87C001C2E40 /* DSGoodsDetailVC.xib in Resources */,
 				90FD91F3237E525A00016EF7 /* DSMyCollectVC.xib in Resources */,
+				90D7E77D23FC185200231D85 /* DSUpOrderSectionHeader.xib in Resources */,
 				90F74E5723823F1F003576B3 /* DSCashNoteVC.xib in Resources */,
 				90FD91D5237E471000016EF7 /* DSChangeBindVC.xib in Resources */,
 				9065882323ADCF3B001E57ED /* DSMyAfterOrderVC.xib in Resources */,
@@ -2048,6 +2126,7 @@
 				903D0819238393ED001C2E40 /* DSApplyRefundCell.xib in Resources */,
 				900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */,
 				906F36382378ED46000B160A /* Assets.xcassets in Resources */,
+				90B7945D23FAC35600340CDF /* DSMyCollectCell.xib in Resources */,
 				90ED68E323BA05B60035988E /* SZUpdateView.xib in Resources */,
 				903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */,
 				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
@@ -2097,9 +2176,11 @@
 				90EC25B8237A9BDD005C24C8 /* DSMessageCell.xib in Resources */,
 				906F378623792FDA000B160A /* DSDynamicVC.xib in Resources */,
 				9065882E23AE1DB3001E57ED /* DSSearchDynamicVC.xib in Resources */,
+				90D11D032407AD9300957F13 /* DSTaoGoodsDetailVC.xib in Resources */,
 				90F74E2A2382291B003576B3 /* DSVipCell.xib in Resources */,
 				903D07EC23837A00001C2E40 /* DSDynamicDetailCell.xib in Resources */,
 				90EC2595237A8EDF005C24C8 /* DSHomeBannerHeader.xib in Resources */,
+				90D7E77F23FC185D00231D85 /* DSUpOrderSectionFooter.xib in Resources */,
 				90AE52E023829310009F4740 /* DSPublishDynamicCell.xib in Resources */,
 				900146872383E34900275DD9 /* DSChooseClassHeader.xib in Resources */,
 				90AE52E523829548009F4740 /* DSPublishDynamicHeader.xib in Resources */,
@@ -2195,6 +2276,7 @@
 				906F36AE23792F5B000B160A /* HXNavigationController.m in Sources */,
 				90FD91D9237E48AC00016EF7 /* DSMyTeamVC.m in Sources */,
 				90EC259E237A97DE005C24C8 /* DSHomeCateVC.m in Sources */,
+				90B7945C23FAC35600340CDF /* DSMyCollectCell.m in Sources */,
 				906F376C23792F64000B160A /* SGQRCodeScanView.m in Sources */,
 				9001467B2383E19300275DD9 /* DSChooseClassView.m in Sources */,
 				90AE52DF23829310009F4740 /* DSPublishDynamicCell.m in Sources */,
@@ -2211,14 +2293,17 @@
 				9086946623A729D100451D8B /* DSMyTeam.m in Sources */,
 				90FD91AC237E3B4400016EF7 /* DSMyCell.m in Sources */,
 				90EC25BC237A9E44005C24C8 /* DSCartCell.m in Sources */,
+				90088F3F23F28B3800F1379F /* HBDNavigationController.m in Sources */,
 				90AE52CC23828595009F4740 /* DSDynamicLayout.m in Sources */,
 				90C94C2223A4716400CD19FB /* DSCartData.m in Sources */,
 				90EC257D237A5D9B005C24C8 /* DSRegisterVC.m in Sources */,
 				906F374223792F64000B160A /* UIButton+HXCode.m in Sources */,
 				906F378023792FC9000B160A /* DSVipVC.m in Sources */,
 				9065882D23AE1DB3001E57ED /* DSSearchDynamicVC.m in Sources */,
+				90D11D022407AD9300957F13 /* DSTaoGoodsDetailVC.m in Sources */,
 				90F74E472382387F003576B3 /* DSMyBalanceCell.m in Sources */,
 				903CB55B23927F180053A25B /* WKWebView+TYSnapshot.m in Sources */,
+				90B7945223FAB5AC00340CDF /* DSAllOrderVC.m in Sources */,
 				906F362D2378ED44000B160A /* AppDelegate.m in Sources */,
 				908F942D23AB53E2007E6C27 /* DSConfirmOrder.m in Sources */,
 				906F374A23792F64000B160A /* UILabel+HXNExtension.m in Sources */,
@@ -2256,6 +2341,7 @@
 				906F375623792F64000B160A /* RCFilterCell.m in Sources */,
 				9086946923A72D6600451D8B /* DSMyCard.m in Sources */,
 				9086946F23A7570E00451D8B /* DSBalanceNote.m in Sources */,
+				90D7E77823FC183900231D85 /* DSUpOrderSectionFooter.m in Sources */,
 				90FD91E8237E4F0500016EF7 /* DSMyCardVC.m in Sources */,
 				90AE52E323829543009F4740 /* DSPublishDynamicHeader.m in Sources */,
 				906F376D23792F64000B160A /* HXSearchBar.m in Sources */,
@@ -2286,6 +2372,7 @@
 				903D080923838C4F001C2E40 /* DSExpressDetailVC.m in Sources */,
 				903D07EB23837A00001C2E40 /* DSDynamicDetailCell.m in Sources */,
 				906F377B23792FB7000B160A /* DSHomeVC.m in Sources */,
+				90AB397E24075FBE0082ECE4 /* UIColor+DSGradient.m in Sources */,
 				906F375123792F64000B160A /* HXTopWindow.m in Sources */,
 				903D080323838AC6001C2E40 /* DSRefundDetailFooter.m in Sources */,
 				9065882623ADECD0001E57ED /* DSMyOrderDetail.m in Sources */,
@@ -2326,6 +2413,7 @@
 				906F375323792F64000B160A /* MSUserManager.m in Sources */,
 				903D07FE2383823B001C2E40 /* DSOrderDetailFooter.m in Sources */,
 				90F74E2323822762003576B3 /* DSVipHeader.m in Sources */,
+				90088F3E23F28B3800F1379F /* HBDNavigationBar.m in Sources */,
 				9001469A2383F12900275DD9 /* DSVipGoodsDetailVC.m in Sources */,
 				90C94C3E23A4860C00CD19FB /* DSMyAddress.m in Sources */,
 				903CB55C23927F180053A25B /* UIScrollView+TYSnapshot.m in Sources */,
@@ -2339,8 +2427,10 @@
 				906F378F23792FF7000B160A /* DSMyVC.m in Sources */,
 				906F36AB23792F5B000B160A /* HXBaseViewController.m in Sources */,
 				9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */,
+				90D7E77B23FC184C00231D85 /* DSUpOrderSectionHeader.m in Sources */,
 				9065881E23ADC074001E57ED /* DSMyOrder.m in Sources */,
 				900736CF23B303EE00339BC3 /* DSShareDynamicView.m in Sources */,
+				90088F3D23F28B3800F1379F /* UIViewController+HBD.m in Sources */,
 				90F74E3D2382323A003576B3 /* DSMyBalanceVC.m in Sources */,
 				906F376E23792F64000B160A /* zhAlertView.m in Sources */,
 				900146952383EA3800275DD9 /* DSTakeCouponCell.m in Sources */,

@@ -26,6 +26,9 @@
 #import "NSString+HXNExtension.h"
 #import <YYText.h>
 #import "LYEmptyViewHeader.h"
+#import "HBDNavigationController.h"
+#import "UIViewController+HBD.h"
+#import "UIColor+DSGradient.h"
 
 /**
  调试阶段，用HXLog代替NSLog
@@ -51,7 +54,7 @@
 /**宏定义项目的视图背景色调用方式*/
 #define HXGlobalBg UIColorFromRGB(0xF2F2F2)
 /**宏定义项目的主色调调用方式*/
-#define HXControlBg UIColorFromRGB(0xFFBC66)
+#define HXControlBg UIColorFromRGB(0xF95628)
 /**设置随机颜色*/
 #define HXRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
 

@@ -38,6 +38,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *freight;
 @property (weak, nonatomic) IBOutlet UILabel *coupon;
 @property (weak, nonatomic) IBOutlet SPButton *collentBtn;
+@property (weak, nonatomic) IBOutlet UIButton *buyBtn;
+
 /** 商品规格视图 */
 @property(nonatomic,strong) DSChooseClassView *chooseClassView;
 /** 商品详情 */
@@ -89,9 +91,15 @@
 }
 -(void)setUpNavBar
 {
-    [self.navigationItem setTitle:@"商品详情"];
+    //[self.navigationItem setTitle:@"商品详情"];
+    self.hbd_barAlpha = 0;
+    self.hbd_barShadowHidden = YES;
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(shareClicked) image:HXGetImage(@"分享白")];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) image:HXGetImage(@"详情返回")];
+
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(shareClicked) image:HXGetImage(@"详情分享")];
+    
+    [self.buyBtn.layer addSublayer:[UIColor setGradualChangingColor:self.buyBtn fromColor:@"F9AD28" toColor:@"F95628"]];
 }
 -(void)setUpCyclePagerView
 {
@@ -115,6 +123,10 @@
     [self.cyclePagerView addSubview:pageControl];
 }
 #pragma mark -- 点击事件
+-(void)backClicked
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)shareClicked
 {
     if (!self.goodsDetail) {
@@ -258,18 +270,21 @@
     self.pageControl.numberOfPages = self.goodsDetail.goods_adv.count;
     [self.cyclePagerView reloadData];
     
-    self.goodsName.text = self.goodsDetail.goods_name;
-    self.price.text = [NSString stringWithFormat:@"折扣价￥%.2f",[self.goodsDetail.discount_price floatValue]];
-    self.marketPrice.text = [NSString stringWithFormat:@"原价￥%.2f",[self.goodsDetail.price floatValue]];
-    self.saleNum.text = [NSString stringWithFormat:@"销量：%@",self.goodsDetail.sale_num];
+    [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:14]];
+    self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
+
+    
+    [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]]];
     self.backPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[self.goodsDetail.cmm_price floatValue]];
-    self.provider.text = [NSString stringWithFormat:@"  供应商：%@  ",self.goodsDetail.provider];
+    self.provider.text = [NSString stringWithFormat:@"供应商：%@",self.goodsDetail.provider];
     self.stockNum.text = self.goodsDetail.stock;
     if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
         self.coupon.text = [NSString stringWithFormat:@"已领取%.1f折券",[self.goodsDetail.discount floatValue]];
     }else{
         self.coupon.text = [NSString stringWithFormat:@"可领取%.1f折券",[self.goodsDetail.discount floatValue]];
     }
+
     
     if (HX_SCREEN_WIDTH > 375.f) {
         [self.webView loadHTMLString:self.goodsDetail.goods_desc baseURL:nil];

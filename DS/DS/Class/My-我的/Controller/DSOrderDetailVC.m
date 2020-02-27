@@ -20,6 +20,8 @@
 #import "DSPayTypeView.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import <WXApi.h>
+#import "DSUpOrderSectionHeader.h"
+#import "DSUpOrderSectionFooter.h"
 
 static NSString *const MyOrderCell = @"MyOrderCell";
 @interface DSOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -55,7 +57,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 225);
+    self.header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 185);
     self.footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 110);
 }
 
@@ -63,7 +65,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 {
     if (_header == nil) {
         _header = [DSOrderDetailHeader loadXibView];
-        _header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 225);
+        _header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 185);
     }
     return _header;
 }
@@ -132,12 +134,14 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             self.secondHandleBtn.hidden = NO;
             [self.secondHandleBtn setTitle:@"取消订单" forState:UIControlStateNormal];
             self.secondHandleBtn.backgroundColor = [UIColor whiteColor];
-            self.secondHandleBtn.layer.borderColor = [UIColor blackColor].CGColor;
-            [self.secondHandleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [self.secondHandleBtn setBackgroundImage:nil forState:UIControlStateNormal];
+            self.secondHandleBtn.layer.borderColor = UIColorFromRGB(0xBBBBBB).CGColor;
+            [self.secondHandleBtn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
             
             self.thirdHandleBtn.hidden = NO;
             [self.thirdHandleBtn setTitle:@"立即支付" forState:UIControlStateNormal];
-            self.thirdHandleBtn.backgroundColor = UIColorFromRGB(0xFF4D4D);
+            self.thirdHandleBtn.backgroundColor = HXControlBg;
+            [self setBtnBackgroundImage:self.thirdHandleBtn];
             self.thirdHandleBtn.layer.borderColor = [UIColor clearColor].CGColor;
             [self.thirdHandleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }else if ([self.orderDetail.status isEqualToString:@"待发货"]) {
@@ -152,8 +156,9 @@ static NSString *const MyOrderCell = @"MyOrderCell";
                 self.thirdHandleBtn.hidden = NO;
                 [self.thirdHandleBtn setTitle:@"申请退款" forState:UIControlStateNormal];
                 self.thirdHandleBtn.backgroundColor = [UIColor whiteColor];
-                self.thirdHandleBtn.layer.borderColor = [UIColor blackColor].CGColor;
-                [self.thirdHandleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [self.thirdHandleBtn setBackgroundImage:nil forState:UIControlStateNormal];
+                self.thirdHandleBtn.layer.borderColor = UIColorFromRGB(0xBBBBBB).CGColor;
+                [self.thirdHandleBtn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
             }else{
                 self.handleView.hidden = YES;
                 self.handleViewHeight.constant = 0.f;
@@ -168,8 +173,9 @@ static NSString *const MyOrderCell = @"MyOrderCell";
                 self.firstHandleBtn.hidden = NO;
                 [self.firstHandleBtn setTitle:@"申请退款" forState:UIControlStateNormal];
                 self.firstHandleBtn.backgroundColor = [UIColor whiteColor];
-                self.firstHandleBtn.layer.borderColor = [UIColor blackColor].CGColor;
-                [self.firstHandleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [self.firstHandleBtn setBackgroundImage:nil forState:UIControlStateNormal];
+                self.firstHandleBtn.layer.borderColor = UIColorFromRGB(0xBBBBBB).CGColor;
+                [self.firstHandleBtn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
             }else{
                 self.firstHandleBtn.hidden = YES;
             }
@@ -177,12 +183,14 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             self.secondHandleBtn.hidden = NO;
             [self.secondHandleBtn setTitle:@"查看物流" forState:UIControlStateNormal];
             self.secondHandleBtn.backgroundColor = [UIColor whiteColor];
-            self.secondHandleBtn.layer.borderColor = [UIColor blackColor].CGColor;
-            [self.secondHandleBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [self.secondHandleBtn setBackgroundImage:nil forState:UIControlStateNormal];
+            self.secondHandleBtn.layer.borderColor = UIColorFromRGB(0xBBBBBB).CGColor;
+            [self.secondHandleBtn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
             
             self.thirdHandleBtn.hidden = NO;
             [self.thirdHandleBtn setTitle:@"确认收货" forState:UIControlStateNormal];
-            self.thirdHandleBtn.backgroundColor = UIColorFromRGB(0xFF4D4D);
+            self.thirdHandleBtn.backgroundColor = HXControlBg;
+            [self setBtnBackgroundImage:self.thirdHandleBtn];
             self.thirdHandleBtn.layer.borderColor = [UIColor clearColor].CGColor;
             [self.thirdHandleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }else{
@@ -204,7 +212,8 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             
             self.thirdHandleBtn.hidden = NO;
             [self.thirdHandleBtn setTitle:@"查看原因" forState:UIControlStateNormal];
-            self.thirdHandleBtn.backgroundColor = UIColorFromRGB(0xFF4D4D);
+            self.thirdHandleBtn.backgroundColor = HXControlBg;
+            [self setBtnBackgroundImage:self.thirdHandleBtn];
             self.thirdHandleBtn.layer.borderColor = [UIColor clearColor].CGColor;
             [self.thirdHandleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }else{
@@ -235,6 +244,13 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     [self.tableView reloadData];
 }
 #pragma mark -- 业务逻辑
+-(void)setBtnBackgroundImage:(UIButton *)btn
+{
+    UIView *view = [[UIView alloc] init];
+    view.frame = btn.bounds;
+    [view.layer addSublayer:[UIColor setGradualChangingColor:view fromColor:@"F9AD28" toColor:@"F95628"]];
+    [btn setBackgroundColor:[UIColor colorWithPatternImage:[view imageWithUIView]]];
+}
 /** 取消订单 */
 -(void)cancelOrderRequest
 {
@@ -281,16 +297,18 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 -(void)showPayTypeView
 {
     DSPayTypeView *payType = [DSPayTypeView loadXibView];
-    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 285.f);
+    payType.hxn_size = CGSizeMake(HX_SCREEN_WIDTH-35*2, 205.f);
     payType.pay_amount = self.orderDetail.pay_amount;
     hx_weakify(self);
     payType.confirmPayCall = ^(NSInteger type) {
         hx_strongify(weakSelf);
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-        [strongSelf orderPayRequest:type];
+        if (type) {
+            [strongSelf orderPayRequest:type];
+        }
     };
     self.zh_popupController = [[zhPopupController alloc] init];
-    self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
+    self.zh_popupController.layoutType = zhPopupLayoutTypeCenter;
     [self.zh_popupController presentContentView:payType duration:0.25 springAnimated:NO];
 }
 // 拉取支付信息
@@ -500,6 +518,10 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     }
 }
 #pragma mark -- UITableView数据源和代理
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.orderDetail.list_goods.count;
@@ -510,7 +532,8 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.order_type = self.orderDetail.order_type;
     DSMyOrderDetailGoods *detailGoods = self.orderDetail.list_goods[indexPath.row];
-    cell.flag.hidden = [detailGoods.is_discount isEqualToString:@"1"]?NO:YES;
+    //cell.flag.hidden = [detailGoods.is_discount isEqualToString:@"1"]?NO:YES;
+    cell.flag.hidden = YES;
     cell.detailGoods = detailGoods;
     return cell;
 }
@@ -521,23 +544,25 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 10.f;
+    return 35.f;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *header = [UIView new];
-    header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 10.f);
-    header.backgroundColor = HXGlobalBg;
+    DSUpOrderSectionHeader *header = [DSUpOrderSectionHeader loadXibView];
+    header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 35.f);
+    
     return header;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (self.orderDetail) {
-        if ([self.orderDetail.order_type isEqualToString:@"1"]) {//常规
-            return 10.f+120.f+self.orderDetail.remarkTextHeight+10.f+60.f;
-        }else{//vip
-            return 10.f+40.f+self.orderDetail.remarkTextHeight+10.f+60.f;
-        }
+//        if ([self.orderDetail.order_type isEqualToString:@"1"]) {//常规
+//            return 10.f+120.f+self.orderDetail.remarkTextHeight+10.f+60.f;
+//        }else{//vip
+//            return 10.f+40.f+self.orderDetail.remarkTextHeight+10.f+60.f;
+//        }
+        return 35.f+10.f+self.orderDetail.remarkTextHeight+60.f+105.f;
+
     }else{
         return CGFLOAT_MIN;
     }
@@ -546,11 +571,12 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 {
     if (self.orderDetail) {
         DSOrderDetailFooter *footer = [DSOrderDetailFooter loadXibView];
-        if ([self.orderDetail.order_type isEqualToString:@"1"]) {//常规
-            footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (10.f+120.f+self.orderDetail.remarkTextHeight+10.f+60.f));
-        }else{//vip
-            footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (10.f+40.f+self.orderDetail.remarkTextHeight+10.f+60.f));
-        }
+//        if ([self.orderDetail.order_type isEqualToString:@"1"]) {//常规
+//            footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (10.f+120.f+self.orderDetail.remarkTextHeight+10.f+60.f));
+//        }else{//vip
+//            footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (10.f+40.f+self.orderDetail.remarkTextHeight+10.f+60.f));
+//        }
+        footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (35.f+10.f+self.orderDetail.remarkTextHeight+60.f+105.f));
         footer.orderDetail = self.orderDetail;
         return footer;
     }else{

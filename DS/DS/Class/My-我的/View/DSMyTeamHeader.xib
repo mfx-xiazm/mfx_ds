@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,25 +13,19 @@
             <rect key="frame" x="0.0" y="0.0" width="430" height="185"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="团队背景" translatesAutoresizingMaskIntoConstraints="NO" id="qa3-B8-vuA">
-                    <rect key="frame" x="0.0" y="0.0" width="430" height="185"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="椭圆 3" translatesAutoresizingMaskIntoConstraints="NO" id="qa3-B8-vuA">
+                    <rect key="frame" x="0.0" y="0.0" width="430" height="155"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6979" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xeg-9P-lJe">
-                    <rect key="frame" x="188" y="35" width="54" height="33"/>
-                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="28"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的团队" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9l-1w-3nL">
-                    <rect key="frame" x="186.5" y="78" width="57.5" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <rect key="frame" x="186" y="35" width="58" height="35"/>
+                    <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDM-Pv-4qx">
                     <rect key="frame" x="10" y="130" width="410" height="55"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的团队" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6n4-W0-QkS">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的粉丝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6n4-W0-QkS">
                             <rect key="frame" x="176.5" y="19" width="57.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
@@ -72,15 +66,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="X9l-1w-3nL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="78U-Tg-zvk"/>
                 <constraint firstItem="qa3-B8-vuA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EvT-MB-bUY"/>
                 <constraint firstAttribute="bottom" secondItem="SDM-Pv-4qx" secondAttribute="bottom" id="Ke6-Dr-sDS"/>
                 <constraint firstAttribute="trailing" secondItem="SDM-Pv-4qx" secondAttribute="trailing" constant="10" id="N07-62-gd5"/>
                 <constraint firstAttribute="trailing" secondItem="qa3-B8-vuA" secondAttribute="trailing" id="NFl-ai-0MT"/>
                 <constraint firstItem="SDM-Pv-4qx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="cXE-9A-8Dn"/>
-                <constraint firstAttribute="bottom" secondItem="qa3-B8-vuA" secondAttribute="bottom" id="dkY-5y-Rvs"/>
+                <constraint firstAttribute="bottom" secondItem="qa3-B8-vuA" secondAttribute="bottom" constant="30" id="dkY-5y-Rvs"/>
                 <constraint firstItem="Xeg-9P-lJe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="fmq-Gq-P0G"/>
-                <constraint firstItem="X9l-1w-3nL" firstAttribute="top" secondItem="Xeg-9P-lJe" secondAttribute="bottom" constant="10" id="h2Z-Z2-2gn"/>
                 <constraint firstItem="Xeg-9P-lJe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iVG-TN-MBN"/>
                 <constraint firstItem="qa3-B8-vuA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oHE-1z-hBD"/>
             </constraints>
@@ -93,6 +85,6 @@
         </view>
     </objects>
     <resources>
-        <image name="团队背景" width="375" height="185"/>
+        <image name="椭圆 3" width="375" height="169"/>
     </resources>
 </document>

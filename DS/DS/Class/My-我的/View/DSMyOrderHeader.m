@@ -22,7 +22,8 @@
 -(void)setOrder:(DSMyOrder *)order
 {
     _order = order;
-    self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_order.order_no];
+    //self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_order.order_no];
+    self.order_no.text = @"自营";
     if (self.isAfterSale) {
         if ([_order.refund_status isEqualToString:@"1"]) {
             self.order_state.text = @"申请中";

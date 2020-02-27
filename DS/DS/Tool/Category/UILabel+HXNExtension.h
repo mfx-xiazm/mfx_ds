@@ -27,5 +27,7 @@
 // 添加中划线
 -(void)setLabelUnderline:(NSString *)str;
 
+// 插入一个标签
+-(void)addFlagLabelWithName:(NSString *)tagName lineSpace:(CGFloat)lineSpace titleString:(NSString*)titleString withFont:(UIFont*)font;
 
 @end
