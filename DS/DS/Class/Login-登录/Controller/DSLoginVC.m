@@ -32,7 +32,7 @@
     self.hbd_barStyle = UIBarStyleDefault;
     self.hbd_barTintColor = [UIColor whiteColor];
     self.hbd_barShadowHidden = NO;
-    self.hbd_titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
 
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(registerClicked:) title:@"注册" font:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium] titleColor:HXControlBg highlightedColor:HXControlBg titleEdgeInsets:UIEdgeInsetsZero];
     hx_weakify(self);
@@ -111,7 +111,7 @@
         hx_strongify(weakSelf);
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.codeId = NSStringFormat(@"%@",responseObject[@"result"]);
-            [sender startWithTime:59 title:@"获取验证码" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
+            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }

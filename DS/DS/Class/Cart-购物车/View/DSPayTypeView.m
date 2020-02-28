@@ -20,7 +20,7 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
-    self.selectPay = self.wxPay;
+    self.selectPay = self.aliPay;
 }
 -(void)setPay_amount:(NSString *)pay_amount
 {

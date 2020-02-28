@@ -39,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *taobao_pid;
 
 @property(nonatomic,copy) NSString *cate_flag;
+@property(nonatomic,copy) NSString *goods_flag;
+
 /** 购买的数量 */
 @property(nonatomic,assign) NSInteger buyNum;
 /** 选中的综合规格 */

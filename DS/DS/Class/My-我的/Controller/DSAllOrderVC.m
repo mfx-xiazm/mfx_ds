@@ -10,6 +10,7 @@
 #import "DSMyAfterOrderVC.h"
 #import "DSMyOrderVC.h"
 #import "UIView+WZLBadge.h"
+#import "DSWebContentVC.h"
 
 @interface DSAllOrderVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *noPayItem;
@@ -17,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *noTakeItem;
 @property (weak, nonatomic) IBOutlet UIImageView *completedItem;
 @property (weak, nonatomic) IBOutlet UIImageView *refundItem;
+/* 其他订单 */
+@property(nonatomic,strong) NSString *yqt_order_url;
+/* 会员订单 */
+@property(nonatomic,strong) NSString *member_order_url;
 @end
 
 @implementation DSAllOrderVC
@@ -41,6 +46,9 @@
     [HXNetworkTool POST:HXRC_M_URL action:@"all_order_statics_get" parameters:@{} success:^(id responseObject) {
         hx_strongify(weakSelf);
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            strongSelf.yqt_order_url = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"yqt_order_url"]];
+            strongSelf.member_order_url = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"member_order_url"]];
+            
             if ([responseObject[@"result"][@"orderCnt"] isKindOfClass:[NSArray class]]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSArray *arr = [NSArray arrayWithArray:responseObject[@"result"][@"orderCnt"]];
@@ -74,6 +82,19 @@
         DSMyOrderVC *ovc = [DSMyOrderVC new];
         ovc.selectIndex = sender.tag;
         [self.navigationController pushViewController:ovc animated:YES];
+    }
+}
+- (IBAction)otherOrderClicked:(UIButton *)sender {
+    if (sender.tag == 1) {
+        DSWebContentVC *cvc = [DSWebContentVC new];
+        cvc.navTitle = @"壹企通订单";
+        cvc.url = self.yqt_order_url;
+        [self.navigationController pushViewController:cvc animated:YES];
+    }else{
+        DSWebContentVC *cvc = [DSWebContentVC new];
+        cvc.navTitle = @"积分时代订单";
+        cvc.url = self.member_order_url;
+        [self.navigationController pushViewController:cvc animated:YES];
     }
 }
 

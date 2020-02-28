@@ -14,14 +14,16 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         self.font = [UIFont systemFontOfSize:12];
         self.placeholder = @"搜索感兴趣的内容";
+        self.textColor = [UIColor blackColor];
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.returnKeyType = UIReturnKeySearch;
         self.textAlignment = NSTextAlignmentLeft;
         
         UIImageView *searchIcon = [[UIImageView alloc] init];
-        searchIcon.image = [UIImage imageNamed:@"搜索"];
+        searchIcon.image = [UIImage imageNamed:@"search_icon"];
         searchIcon.hxn_width = 26;
         searchIcon.hxn_height = 26;
         searchIcon.contentMode = UIViewContentModeCenter;
@@ -32,11 +34,14 @@
         
 //        [self setValue:UIColorFromRGB(0xBFBFBF) forKeyPath:@"_placeholderLabel.textColor"];
 //        [self setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-
     }
     return self;
 }
-
+-(void)setPlaceholder:(NSString *)placeholder
+{
+    NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0xBBBBBB)}];
+    self.attributedPlaceholder = placeholderString;
+}
 -(void)setSearchIcon:(NSString *)searchIcon
 {
     _searchIcon = searchIcon;

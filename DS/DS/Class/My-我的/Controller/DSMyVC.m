@@ -74,7 +74,9 @@
 #pragma mark -- 点击
 -(void)kefuClicked
 {
-    HXLog(@"客服");
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = @"WL2020";
+    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"已复制客户微信号到剪切板"];
 }
 -(void)setClicked
 {

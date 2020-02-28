@@ -29,7 +29,7 @@
     bar.barTintColor = HXControlBg;
 //    bar.translucent = NO;
 //    [bar setBackgroundImage:[UIImage imageWithColor:HXControlBg size:CGSizeMake(1, 0.5)] forBarMetrics:UIBarMetricsDefault];
-//    [bar setShadowImage:[UIImage imageWithColor:HXControlBg size:CGSizeMake(1, 1)]];
+//    [bar setShadowImage:[UIImage imageWithColor:UIColorFromRGB(0xBBBBBB) size:CGSizeMake(1, 1)]];
     //    如果如下设置，则所有的导航栏控制器都会生效，并不仅仅限于本导航栏控制器
     //    UINavigationBar *bar = [UINavigationBar appearance];
     //    [bar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];

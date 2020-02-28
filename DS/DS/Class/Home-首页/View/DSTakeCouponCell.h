@@ -16,6 +16,8 @@ typedef void(^getCouponCall)(void);
 @property (weak, nonatomic) IBOutlet UILabel *discount;
 @property (weak, nonatomic) IBOutlet UILabel *discoutName;
 @property (weak, nonatomic) IBOutlet UILabel *validDay;
+@property (weak, nonatomic) IBOutlet UIButton *takeBtn;
+
 /* 点击 */
 @property(nonatomic,copy) getCouponCall getCouponCall;
 @end

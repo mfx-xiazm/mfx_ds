@@ -76,6 +76,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [searchBar setTitle:@"请输入商品名称查询" forState:UIControlStateNormal];
     searchBar.titleLabel.font = [UIFont systemFontOfSize:12];
     [searchBar setImage:HXGetImage(@"search_icon") forState:UIControlStateNormal];
+    [searchBar setImage:HXGetImage(@"search_icon") forState:UIControlStateHighlighted];
     [searchBar addTarget:self action:@selector(searchClicked) forControlEvents:UIControlEventTouchUpInside];
     [searchBg addSubview:searchBar];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchBg];
@@ -359,7 +360,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
         return CGSizeMake(width, height);
     }else{//推荐商品分组
         CGFloat width = HX_SCREEN_WIDTH;
-        CGFloat height = 120;
+        CGFloat height = 130;
         return CGSizeMake(width, height);
     }
 }

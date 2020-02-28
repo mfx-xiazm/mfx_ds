@@ -70,16 +70,22 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 -(void)setUpNavBar
 {
     [self.navigationItem setTitle:nil];
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = YES;
     
-    HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 96.f, 30.f)];
-    searchBar.searchIcon = @"search_icon";
-    searchBar.backgroundColor = [UIColor whiteColor];
+    HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
     searchBar.layer.cornerRadius = 15.f;
     searchBar.layer.masksToBounds = YES;
+    searchBar.layer.borderWidth = 1;
+    searchBar.layer.borderColor = UIColorFromRGB(0xBBBBBB).CGColor;
     searchBar.delegate = self;
     searchBar.placeholder = @"请输入关键词查询";
-    self.navigationItem.titleView = searchBar;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchBar];
     
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) title:@"取消" font:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] highlightedColor:[UIColor blackColor] titleEdgeInsets:UIEdgeInsetsZero];
+    /*
     SPButton *msg = [SPButton buttonWithType:UIButtonTypeCustom];
     msg.imagePosition = SPButtonImagePositionTop;
     msg.imageTitleSpace = 2.f;
@@ -90,6 +96,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     [msg setTitleColor:UIColorFromRGB(0XFFFFFF) forState:UIControlStateNormal];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:msg];
+     */
 }
 -(void)setUpTableView
 {
@@ -121,7 +128,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
     emptyView.contentViewOffset = -(self.HXNavBarHeight);
     emptyView.subViewMargin = 20.f;
-    emptyView.detailLabTextColor = UIColorFromRGB(0x131D2D);
+    emptyView.detailLabTextColor = UIColorFromRGB(0x909090);
     emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
     emptyView.autoShowEmptyView = NO;
     self.tableView.ly_emptyView = emptyView;
@@ -207,6 +214,11 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     }];
 }
 #pragma mark -- 点击事件
+-(void)backClicked
+{
+    [self.view endEditing:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)filterClicked
 {
     //年-月-日

@@ -64,6 +64,19 @@ static NSString *const TakeCouponCell = @"TakeCouponCell";
     [cell.discount setFontAttributedText:[NSString stringWithFormat:@"%.1f折",[self.discount floatValue]] andChangeStr:@"折" andFont:[UIFont systemFontOfSize:14]];
     cell.discoutName.text = [NSString stringWithFormat:@"%.1f折券",[self.discount floatValue]];
     cell.validDay.text = [NSString stringWithFormat:@"有效期：%@天",self.valid_days];
+    if ([self.is_discount isEqualToString:@"1"]) {// 已领
+        cell.bg_img.image = HXGetImage(@"已领优惠券");
+        cell.discount.textColor = UIColorFromRGB(0xBBBBBB);
+        cell.discoutName.textColor = UIColorFromRGB(0xBBBBBB);
+        cell.validDay.textColor = UIColorFromRGB(0xBBBBBB);
+        [cell.takeBtn setTitleColor:UIColorFromRGB(0xBBBBBB) forState:UIControlStateNormal];
+    }else{
+        cell.bg_img.image = HXGetImage(@"优惠券");
+        cell.discount.textColor = HXControlBg;
+        cell.discoutName.textColor = HXControlBg;
+        cell.validDay.textColor = HXControlBg;
+        [cell.takeBtn setTitleColor:HXControlBg forState:UIControlStateNormal];
+    }
     hx_weakify(self);
     cell.getCouponCall = ^{
         hx_strongify(weakSelf);
@@ -76,7 +89,7 @@ static NSString *const TakeCouponCell = @"TakeCouponCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回这个模型对应的cell高度
-    return 100.f;
+    return 80.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

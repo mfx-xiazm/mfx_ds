@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *saleNum;
 @property (weak, nonatomic) IBOutlet UILabel *stockNum;
-@property (weak, nonatomic) IBOutlet UILabel *freight;
+@property (weak, nonatomic) IBOutlet UIButton *buyBtn;
 /** 商品详情 */
 @property(nonatomic,strong) DSGoodsDetail *goodsDetail;
 
@@ -83,6 +83,11 @@
 {
     [super viewDidLayoutSubviews];
 
+    UIView *view = [[UIView alloc] init];
+    view.frame = self.buyBtn.bounds;
+    [view.layer addSublayer:[UIColor setGradualChangingColor:view fromColor:@"F9AD28" toColor:@"F95628"]];
+    [self.buyBtn setBackgroundImage:[view imageWithUIView] forState:UIControlStateNormal];
+    
     self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 15, CGRectGetWidth(self.cyclePagerView.frame), 15);
     self.webView.frame = self.webContentView.bounds;
 }
@@ -100,7 +105,8 @@
     //[self.navigationItem setTitle:self.isTaoke?@"商品详情":@"礼包详情"];
     self.hbd_barAlpha = 0;
     self.hbd_barShadowHidden = YES;
-    
+    self.hbd_barStyle = UIBarStyleDefault;
+
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) image:HXGetImage(@"详情返回")];
 }
 -(void)setUpCyclePagerView

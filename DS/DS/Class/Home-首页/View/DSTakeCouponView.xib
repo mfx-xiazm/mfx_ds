@@ -19,7 +19,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="领券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um5-nV-K8Y">
                             <rect key="frame" x="194" y="16" width="31" height="18"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                             <color key="textColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -35,7 +35,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Um5-nV-K8Y" firstAttribute="centerX" secondItem="063-5I-oXT" secondAttribute="centerX" id="GdL-uS-Ch2"/>
                         <constraint firstAttribute="height" constant="50" id="Kcc-OY-ZeV"/>

@@ -83,6 +83,13 @@
         [strongSelf setChangePhoneRequest:button];
     }];
 }
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    UIView *view = [[UIView alloc] initWithFrame:self.sureBtn.bounds];
+    [view.layer addSublayer:[UIColor setGradualChangingColor:self.sureBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+    [self.sureBtn setBackgroundImage:[view imageWithUIView] forState:UIControlStateNormal];
+}
 - (IBAction)getCodeRequest:(UIButton *)sender {
     if (sender.tag == 1) {
         if (![self.oldPhone hasText]) {
@@ -117,7 +124,7 @@
             }else{
                 strongSelf.nowCodeId = NSStringFormat(@"%@",responseObject[@"result"]);
             }
-            [sender startWithTime:59 title:@"获取验证码" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
+            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }

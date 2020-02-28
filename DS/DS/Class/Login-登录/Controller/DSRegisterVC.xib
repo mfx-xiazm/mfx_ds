@@ -35,7 +35,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCF-ng-OKa">
                                     <rect key="frame" x="30" y="120" width="354" height="50"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1t6-Il-zZX">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1t6-Il-zZX">
                                             <rect key="frame" x="0.0" y="5" width="354" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="kbZ-VH-5Up"/>
@@ -65,7 +65,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jq0-Cu-LTI">
                                     <rect key="frame" x="30" y="175" width="354" height="50"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BkQ-jg-rvu">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入短信验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BkQ-jg-rvu">
                                             <rect key="frame" x="0.0" y="5" width="244" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="QoE-xz-9RI"/>
@@ -115,7 +115,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-6K-St7">
                                     <rect key="frame" x="30" y="230" width="354" height="50"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qBC-PB-0bA">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qBC-PB-0bA">
                                             <rect key="frame" x="0.0" y="5" width="314" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="mVf-fE-PFf"/>
@@ -159,7 +159,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZ2-1Z-GGb">
                                     <rect key="frame" x="30" y="285" width="354" height="50"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="重新输入您的密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nwc-Cl-z2Z">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="重新输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nwc-Cl-z2Z">
                                             <rect key="frame" x="0.0" y="5" width="314" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="UbY-IA-dym"/>
@@ -167,7 +167,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q0-x3-SRX">
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4q0-x3-SRX">
                                             <rect key="frame" x="324" y="5" width="30" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="AIN-ui-ayc"/>
@@ -331,9 +331,9 @@
         </view>
     </objects>
     <resources>
-        <image name="勾选框灰" width="12" height="13"/>
-        <image name="勾选框选中" width="12" height="13"/>
-        <image name="显示" width="19" height="12"/>
-        <image name="隐藏" width="19" height="18"/>
+        <image name="勾选框灰" width="13" height="13"/>
+        <image name="勾选框选中" width="13" height="13"/>
+        <image name="显示" width="13" height="10"/>
+        <image name="隐藏" width="11" height="6"/>
     </resources>
 </document>

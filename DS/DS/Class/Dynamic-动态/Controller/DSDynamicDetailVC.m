@@ -34,6 +34,11 @@ static NSString *const DynamicDetailCell = @"DynamicDetailCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"动态详情"];
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = NO;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
     [self setUpTableView];
     [self startShimmer];
     [self getDynamicDetialRequest];

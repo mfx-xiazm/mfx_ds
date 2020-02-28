@@ -20,6 +20,8 @@ static NSString *const MyAddressCell = @"MyAddressCell";
 @property (nonatomic,assign) NSInteger pagenum;
 /* 列表 */
 @property(nonatomic,strong) NSMutableArray *addresses;
+/* 添加 */
+@property(nonatomic,strong) UIBarButtonItem *addItem;
 @end
 
 @implementation DSMyAddressVC
@@ -27,7 +29,8 @@ static NSString *const MyAddressCell = @"MyAddressCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的地址"];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(addAddressClicked) title:@"添加" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
+    UIBarButtonItem *addItem = [UIBarButtonItem itemWithTarget:self action:@selector(addAddressClicked) title:@"添加" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
+    self.addItem = addItem;
     [self setUpTableView];
     [self setUpEmptyView];
     [self setUpRefresh];
@@ -64,7 +67,7 @@ static NSString *const MyAddressCell = @"MyAddressCell";
 -(void)setUpEmptyView
 {
     hx_weakify(self);
-    LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:@"no_data" titleStr:@"您还没有添加地址" detailStr:nil btnTitleStr:@"去添加" btnClickBlock:^{
+    LYEmptyView *emptyView = [LYEmptyView emptyActionViewWithImageStr:@"no_address" titleStr:@"您还没有添加地址" detailStr:nil btnTitleStr:@"去添加" btnClickBlock:^{
         hx_strongify(weakSelf);
         [strongSelf addAddressClicked];
     }];
@@ -129,8 +132,10 @@ static NSString *const MyAddressCell = @"MyAddressCell";
                 [strongSelf.tableView reloadData];
                 if (strongSelf.addresses.count) {
                     [strongSelf.tableView ly_hideEmptyView];
+                    strongSelf.navigationItem.rightBarButtonItem = self.addItem;
                 }else{
                     [strongSelf.tableView ly_showEmptyView];
+                    strongSelf.navigationItem.rightBarButtonItem = nil;
                 }
             });
         }else{
@@ -174,6 +179,13 @@ static NSString *const MyAddressCell = @"MyAddressCell";
             strongSelf.addresses = temp;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [strongSelf.tableView reloadData];
+                if (strongSelf.addresses.count) {
+                    [strongSelf.tableView ly_hideEmptyView];
+                    strongSelf.navigationItem.rightBarButtonItem = self.addItem;
+                }else{
+                    [strongSelf.tableView ly_showEmptyView];
+                    strongSelf.navigationItem.rightBarButtonItem = nil;
+                }
             });
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];

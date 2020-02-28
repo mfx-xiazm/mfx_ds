@@ -30,7 +30,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"注册"];
-    self.hbd_barStyle = UIBarStyleBlack;
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = NO;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
     [self setAgreeMentProtocol];
 
     hx_weakify(self);
@@ -98,7 +102,11 @@
 }
 - (IBAction)pwdStatusClicked:(UIButton *)sender {
     sender.selected = !sender.selected;
-    self.pwd.secureTextEntry = !sender.isSelected;
+    if (sender.tag == 1) {
+        self.comfirmPwd.secureTextEntry = !sender.isSelected;
+    }else{
+        self.pwd.secureTextEntry = !sender.isSelected;
+    }
 }
 - (IBAction)getCodeRequest:(UIButton *)sender {
     if (![self.phone hasText]) {
@@ -119,7 +127,7 @@
         hx_strongify(weakSelf);
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.codeId = NSStringFormat(@"%@",responseObject[@"result"]);
-            [sender startWithTime:59 title:@"获取验证码" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
+            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }

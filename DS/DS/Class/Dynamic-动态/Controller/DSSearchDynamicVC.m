@@ -45,17 +45,23 @@
 {
     [self.navigationItem setTitle:nil];
     
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = NO;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
+    
     HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
-    searchBar.searchIcon = @"search_icon";
-    searchBar.backgroundColor = [UIColor whiteColor];
     searchBar.layer.cornerRadius = 15.f;
     searchBar.layer.masksToBounds = YES;
+    searchBar.layer.borderWidth = 1;
+    searchBar.layer.borderColor = UIColorFromRGB(0xBBBBBB).CGColor;
     searchBar.delegate = self;
     searchBar.placeholder = @"请输入动态标题查询";
     searchBar.text = self.keyword;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchBar];
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) title:@"取消" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) title:@"取消" font:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] highlightedColor:[UIColor blackColor] titleEdgeInsets:UIEdgeInsetsZero];
 }
 -(void)setUpTableView
 {
@@ -84,7 +90,7 @@
     LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
     emptyView.contentViewOffset = -(self.HXNavBarHeight);
     emptyView.subViewMargin = 20.f;
-    emptyView.detailLabTextColor = UIColorFromRGB(0x131D2D);
+    emptyView.detailLabTextColor = UIColorFromRGB(0x909090);
     emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
     emptyView.autoShowEmptyView = NO;
     self.tableView.ly_emptyView = emptyView;

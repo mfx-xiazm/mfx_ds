@@ -27,7 +27,10 @@
     [self.navigationItem setTitle:@"设置"];
 }
 - (IBAction)setBtnClicked:(UIButton *)sender {
-    if (sender.tag == 1) {
+    if (sender.tag == 0) {
+        DSChangeBindVC *pvc = [DSChangeBindVC new];
+        [self.navigationController pushViewController:pvc animated:YES];
+    }else if (sender.tag == 1) {
         DSChangePwdVC *pvc = [DSChangePwdVC new];
         pvc.dataType = 2;
         [self.navigationController pushViewController:pvc animated:YES];

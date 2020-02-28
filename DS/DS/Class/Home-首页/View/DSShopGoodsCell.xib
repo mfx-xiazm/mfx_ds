@@ -33,25 +33,25 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自己想象这里是商品名字自己想象这里是商品名字" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9N-ho-JKa">
-                                <rect key="frame" x="110" y="10" width="229" height="33.5"/>
+                                <rect key="frame" x="110" y="15" width="229" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥99.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoq-3t-u4n">
-                                <rect key="frame" x="110" y="54.5" width="50.5" height="23.5"/>
+                                <rect key="frame" x="110" y="49.5" width="50.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥199.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jm0-JP-Gsc">
-                                <rect key="frame" x="165.5" y="58" width="40.5" height="16.5"/>
+                                <rect key="frame" x="165.5" y="53" width="40.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                 <color key="textColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="返佣金额：10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOb-hN-uKa">
-                                <rect key="frame" x="110" y="84" width="71.5" height="16"/>
+                                <rect key="frame" x="110" y="79" width="71.5" height="16"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="5Xq-Rg-ric"/>
@@ -79,6 +79,7 @@
                             <constraint firstItem="4fB-Hg-BY6" firstAttribute="leading" secondItem="LT8-BJ-pgR" secondAttribute="leading" constant="10" id="1n8-eQ-Geq"/>
                             <constraint firstItem="4fB-Hg-BY6" firstAttribute="top" secondItem="LT8-BJ-pgR" secondAttribute="top" constant="10" id="B9x-RN-3uU"/>
                             <constraint firstAttribute="bottom" secondItem="eK0-Xv-yD1" secondAttribute="bottom" id="BZo-qE-EKK"/>
+                            <constraint firstItem="x9N-ho-JKa" firstAttribute="top" secondItem="4fB-Hg-BY6" secondAttribute="top" constant="5" id="EK3-fs-Os9"/>
                             <constraint firstItem="fOb-hN-uKa" firstAttribute="top" secondItem="Aoq-3t-u4n" secondAttribute="bottom" constant="6" id="ENj-7K-KyI"/>
                             <constraint firstItem="x9N-ho-JKa" firstAttribute="leading" secondItem="4fB-Hg-BY6" secondAttribute="trailing" constant="10" id="EyT-Ac-z9s"/>
                             <constraint firstAttribute="bottom" secondItem="4fB-Hg-BY6" secondAttribute="bottom" constant="10" id="OoP-dd-y7J"/>
@@ -87,9 +88,8 @@
                             <constraint firstItem="Aoq-3t-u4n" firstAttribute="leading" secondItem="4fB-Hg-BY6" secondAttribute="trailing" constant="10" id="X4O-lV-ch4"/>
                             <constraint firstItem="eK0-Xv-yD1" firstAttribute="leading" secondItem="LT8-BJ-pgR" secondAttribute="leading" constant="10" id="cU7-yP-UJW"/>
                             <constraint firstAttribute="trailing" secondItem="x9N-ho-JKa" secondAttribute="trailing" constant="10" id="fjU-lx-Fca"/>
-                            <constraint firstItem="fOb-hN-uKa" firstAttribute="bottom" secondItem="4fB-Hg-BY6" secondAttribute="bottom" id="lDo-1i-NlS"/>
+                            <constraint firstItem="fOb-hN-uKa" firstAttribute="bottom" secondItem="4fB-Hg-BY6" secondAttribute="bottom" constant="-5" id="lDo-1i-NlS"/>
                             <constraint firstItem="jm0-JP-Gsc" firstAttribute="leading" secondItem="Aoq-3t-u4n" secondAttribute="trailing" constant="5" id="mXj-B6-iRp"/>
-                            <constraint firstItem="x9N-ho-JKa" firstAttribute="top" secondItem="LT8-BJ-pgR" secondAttribute="top" constant="10" id="pr8-nt-nVN"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">

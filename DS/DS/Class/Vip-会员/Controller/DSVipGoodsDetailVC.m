@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *saleNum;
 @property (weak, nonatomic) IBOutlet UILabel *stockNum;
-@property (weak, nonatomic) IBOutlet UILabel *freight;
+@property (weak, nonatomic) IBOutlet UILabel *goods_flag;
 @property (weak, nonatomic) IBOutlet UILabel *buyLabel;
 /** 商品详情 */
 @property(nonatomic,strong) DSGoodsDetail *goodsDetail;
@@ -40,7 +40,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavBar];
-    [self.buyLabel setFontAttributedText:@"立即购买\n(获赠365天VIP权益)" andChangeStr:@"(获赠365天VIP权益)" andFont:[UIFont systemFontOfSize:10]];
     if (self.isTaoke) {
         _onTradeSuccess = ^(AlibcTradeResult *tradeProcessResult){
             if(tradeProcessResult.result == AlibcTradeResultTypePaySuccess){
@@ -106,7 +105,8 @@
     //[self.navigationItem setTitle:self.isTaoke?@"商品详情":@"礼包详情"];
     self.hbd_barAlpha = 0;
     self.hbd_barShadowHidden = YES;
-    
+    self.hbd_barStyle = UIBarStyleDefault;
+
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) image:HXGetImage(@"详情返回")];
 }
 -(void)setUpCyclePagerView
@@ -163,6 +163,14 @@
     [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
     [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:14]];
     self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
+    if (self.goodsDetail.goods_flag && self.goodsDetail.goods_flag.length) {
+        self.goods_flag.hidden = NO;
+        self.goods_flag.text = [NSString stringWithFormat:@" %@ ",self.goodsDetail.goods_flag];
+        [self.buyLabel setFontAttributedText:[NSString stringWithFormat:@"立即购买\n(%@)",self.goodsDetail.goods_flag] andChangeStr:[NSString stringWithFormat:@"(%@)",self.goodsDetail.goods_flag] andFont:[UIFont systemFontOfSize:10]];
+    }else{
+        self.goods_flag.hidden = YES;
+        self.buyLabel.text = @"立即购买";
+    }
 
     if (self.isTaoke) {
         self.stockNum.text = @"999";

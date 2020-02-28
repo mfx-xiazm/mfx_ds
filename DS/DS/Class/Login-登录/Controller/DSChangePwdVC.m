@@ -90,7 +90,7 @@
         hx_strongify(weakSelf);
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.codeId = NSStringFormat(@"%@",responseObject[@"result"]);
-            [sender startWithTime:59 title:@"获取验证码" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
+            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }

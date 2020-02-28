@@ -561,7 +561,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 //        }else{//vip
 //            return 10.f+40.f+self.orderDetail.remarkTextHeight+10.f+60.f;
 //        }
-        return 35.f+10.f+self.orderDetail.remarkTextHeight+60.f+105.f;
+        return 35.f+10.f+self.orderDetail.remarkTextHeight+60.f+145.f;
 
     }else{
         return CGFLOAT_MIN;
@@ -576,7 +576,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 //        }else{//vip
 //            footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (10.f+40.f+self.orderDetail.remarkTextHeight+10.f+60.f));
 //        }
-        footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (35.f+10.f+self.orderDetail.remarkTextHeight+60.f+105.f));
+        footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (35.f+10.f+self.orderDetail.remarkTextHeight+60.f+145.f));
         footer.orderDetail = self.orderDetail;
         return footer;
     }else{

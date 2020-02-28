@@ -34,6 +34,7 @@
                             <state key="normal" title="请输入动态标题查询" image="search_icon">
                                 <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <state key="highlighted" image="search_icon"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                     <real key="value" value="15"/>

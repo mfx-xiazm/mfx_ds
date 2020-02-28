@@ -108,12 +108,6 @@
                             <color key="textColor" red="0.92549019610000005" green="0.078431372550000003" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥199.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtP-A6-eaJ">
-                            <rect key="frame" x="20" y="454.5" width="47.5" height="17.5"/>
-                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
-                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="长按识别购买商品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhb-4Q-iO4">
                             <rect key="frame" x="208" y="506" width="90" height="16"/>
                             <constraints>
@@ -123,17 +117,24 @@
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥199.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtP-A6-eaJ">
+                            <rect key="frame" x="84" y="429" width="47.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="FJy-FI-ceQ" firstAttribute="top" secondItem="EGT-Fo-fka" secondAttribute="bottom" constant="10" id="2OR-Nz-Fgp"/>
+                        <constraint firstItem="jtP-A6-eaJ" firstAttribute="centerY" secondItem="YxR-se-gUW" secondAttribute="centerY" id="8tN-nW-NZH"/>
                         <constraint firstItem="EZD-Js-LXt" firstAttribute="top" secondItem="iyx-fz-mrp" secondAttribute="top" constant="15" id="Apw-YY-mtu"/>
                         <constraint firstAttribute="bottom" secondItem="Fhb-4Q-iO4" secondAttribute="bottom" constant="20" id="Eym-pA-ScI"/>
                         <constraint firstItem="EZD-Js-LXt" firstAttribute="leading" secondItem="iyx-fz-mrp" secondAttribute="leading" constant="20" id="H6b-o6-gI2"/>
                         <constraint firstItem="EGT-Fo-fka" firstAttribute="leading" secondItem="iyx-fz-mrp" secondAttribute="leading" constant="20" id="HCm-ch-6g8"/>
                         <constraint firstItem="VdL-QG-ffn" firstAttribute="leading" secondItem="iyx-fz-mrp" secondAttribute="leading" constant="20" id="HXP-0b-qvc"/>
                         <constraint firstItem="Fhb-4Q-iO4" firstAttribute="top" secondItem="FJy-FI-ceQ" secondAttribute="bottom" constant="5" id="N6z-0r-NrW"/>
-                        <constraint firstItem="jtP-A6-eaJ" firstAttribute="top" secondItem="YxR-se-gUW" secondAttribute="bottom" constant="5" id="NoX-jr-LYP"/>
+                        <constraint firstItem="jtP-A6-eaJ" firstAttribute="leading" secondItem="YxR-se-gUW" secondAttribute="trailing" constant="10" id="PFw-YL-sOH"/>
                         <constraint firstAttribute="trailing" secondItem="EGT-Fo-fka" secondAttribute="trailing" constant="20" id="QNI-L5-NHb"/>
                         <constraint firstItem="YxR-se-gUW" firstAttribute="top" secondItem="FJy-FI-ceQ" secondAttribute="top" constant="15" id="XAn-4T-afd"/>
                         <constraint firstItem="itc-qk-PfO" firstAttribute="leading" secondItem="EZD-Js-LXt" secondAttribute="trailing" constant="10" id="YIB-Vu-hrN"/>
@@ -143,7 +144,6 @@
                         <constraint firstItem="ul4-Dk-bV0" firstAttribute="leading" secondItem="EZD-Js-LXt" secondAttribute="trailing" constant="10" id="h5l-9S-Abg"/>
                         <constraint firstItem="YxR-se-gUW" firstAttribute="leading" secondItem="iyx-fz-mrp" secondAttribute="leading" constant="20" id="iv7-8R-GPg"/>
                         <constraint firstItem="ul4-Dk-bV0" firstAttribute="top" secondItem="iyx-fz-mrp" secondAttribute="top" constant="12" id="kcm-i6-IUY"/>
-                        <constraint firstItem="jtP-A6-eaJ" firstAttribute="leading" secondItem="iyx-fz-mrp" secondAttribute="leading" constant="20" id="o4i-NK-otr"/>
                         <constraint firstItem="VdL-QG-ffn" firstAttribute="top" secondItem="itc-qk-PfO" secondAttribute="bottom" constant="10" id="psw-RI-Cxa"/>
                         <constraint firstItem="EGT-Fo-fka" firstAttribute="top" secondItem="VdL-QG-ffn" secondAttribute="bottom" constant="10" id="yLn-kF-91R"/>
                         <constraint firstAttribute="trailing" secondItem="FJy-FI-ceQ" secondAttribute="trailing" constant="20" id="zN2-2n-pGE"/>

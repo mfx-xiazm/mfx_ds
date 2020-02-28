@@ -354,25 +354,37 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4s-dF-RoL">
                                     <rect key="frame" x="0.0" y="795.5" width="414" height="50"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="标题" translatesAutoresizingMaskIntoConstraints="NO" id="vSK-dM-OXg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2x-hX-UGq" userLabel="分割线">
+                                            <rect key="frame" x="12" y="25" width="154.5" height="0.5"/>
+                                            <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="0.5" id="d8e-KY-NPw"/>
+                                            </constraints>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgl-xz-KUg">
-                                            <rect key="frame" x="176" y="16" width="62" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.91764705879999997" green="0.2901960784" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <rect key="frame" x="178.5" y="16.5" width="57.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fY-VG-uYL" userLabel="分割线">
+                                            <rect key="frame" x="248" y="25" width="154" height="0.5"/>
+                                            <color key="backgroundColor" red="0.81568627449999997" green="0.81568627449999997" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="0.5" id="mNK-uz-MDw"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="tgl-xz-KUg" firstAttribute="centerX" secondItem="X4s-dF-RoL" secondAttribute="centerX" id="0d2-12-oon"/>
-                                        <constraint firstItem="vSK-dM-OXg" firstAttribute="top" secondItem="X4s-dF-RoL" secondAttribute="top" id="4WU-sZ-5AV"/>
-                                        <constraint firstAttribute="bottom" secondItem="vSK-dM-OXg" secondAttribute="bottom" id="XtT-Ru-1Gp"/>
+                                        <constraint firstItem="2fY-VG-uYL" firstAttribute="leading" secondItem="tgl-xz-KUg" secondAttribute="trailing" constant="12" id="0fC-KS-Fbk"/>
+                                        <constraint firstAttribute="trailing" secondItem="2fY-VG-uYL" secondAttribute="trailing" constant="12" id="9Ak-vX-su3"/>
+                                        <constraint firstItem="tgl-xz-KUg" firstAttribute="leading" secondItem="i2x-hX-UGq" secondAttribute="trailing" constant="12" id="SZp-op-Gpk"/>
                                         <constraint firstAttribute="height" constant="50" id="Ykc-6z-akE"/>
-                                        <constraint firstAttribute="trailing" secondItem="vSK-dM-OXg" secondAttribute="trailing" id="dAA-3M-fW2"/>
-                                        <constraint firstItem="vSK-dM-OXg" firstAttribute="leading" secondItem="X4s-dF-RoL" secondAttribute="leading" id="q42-m3-IJx"/>
+                                        <constraint firstItem="i2x-hX-UGq" firstAttribute="leading" secondItem="X4s-dF-RoL" secondAttribute="leading" constant="12" id="onu-Nj-we2"/>
+                                        <constraint firstItem="i2x-hX-UGq" firstAttribute="centerY" secondItem="X4s-dF-RoL" secondAttribute="centerY" id="sky-3U-Mq9"/>
+                                        <constraint firstItem="2fY-VG-uYL" firstAttribute="centerY" secondItem="X4s-dF-RoL" secondAttribute="centerY" id="tYZ-E5-WQ5"/>
                                         <constraint firstItem="tgl-xz-KUg" firstAttribute="centerY" secondItem="X4s-dF-RoL" secondAttribute="centerY" id="xy2-bY-2fe"/>
                                     </constraints>
                                 </view>
@@ -466,6 +478,9 @@
                                     <real key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="kefuClicked:" destination="-1" eventType="touchUpInside" id="b9k-cf-u0f"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubh-Hb-OpR" customClass="SPButton">
                             <rect key="frame" x="50" y="0.0" width="50" height="55"/>
@@ -591,11 +606,10 @@
     </objects>
     <resources>
         <image name="客服灰" width="20" height="20"/>
-        <image name="已收藏" width="20" height="19"/>
+        <image name="已收藏" width="20" height="20"/>
         <image name="星星 (1)" width="16" height="16"/>
         <image name="未收藏" width="20" height="20"/>
         <image name="权益" width="12" height="11"/>
-        <image name="标题" width="288.5" height="41"/>
         <image name="详情向右" width="6.5" height="10.5"/>
         <image name="购物车" width="20" height="20"/>
     </resources>

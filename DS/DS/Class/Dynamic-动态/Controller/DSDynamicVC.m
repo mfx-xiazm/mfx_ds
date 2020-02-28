@@ -60,8 +60,6 @@
     [self.navigationItem setTitle:nil];
     
     HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
-    searchBar.searchIcon = @"search_icon";
-    searchBar.backgroundColor = [UIColor whiteColor];
     searchBar.layer.cornerRadius = 15.f;
     searchBar.layer.masksToBounds = YES;
     searchBar.delegate = self;
@@ -104,7 +102,7 @@
     LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
     emptyView.contentViewOffset = -(self.HXNavBarHeight);
     emptyView.subViewMargin = 20.f;
-    emptyView.detailLabTextColor = UIColorFromRGB(0x131D2D);
+    emptyView.detailLabTextColor = UIColorFromRGB(0x909090);
     emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];
     emptyView.autoShowEmptyView = NO;
     self.tableView.ly_emptyView = emptyView;

@@ -94,7 +94,8 @@
     //[self.navigationItem setTitle:@"商品详情"];
     self.hbd_barAlpha = 0;
     self.hbd_barShadowHidden = YES;
-    
+    self.hbd_barStyle = UIBarStyleDefault;
+
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) image:HXGetImage(@"详情返回")];
 
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(shareClicked) image:HXGetImage(@"详情分享")];
@@ -157,6 +158,7 @@
 //    }
     DSTakeCouponView *couponView = [DSTakeCouponView loadXibView];
     couponView.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 280.f);
+    couponView.is_discount = self.goodsDetail.is_discount;
     couponView.discount = self.goodsDetail.discount;
     couponView.valid_days = self.goodsDetail.valid_days;
     hx_weakify(self);
@@ -184,6 +186,12 @@
     self.zh_popupController = [[zhPopupController alloc] init];
     [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
 }
+- (IBAction)kefuClicked:(SPButton *)sender {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = @"WL2020";
+    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"已复制客户微信号到剪切板"];
+}
+
 - (IBAction)collectGoodsClicked:(SPButton *)sender {
     [self setGoodsCollectRequest];
 }

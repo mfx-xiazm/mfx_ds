@@ -29,6 +29,11 @@
     [self.headPic sd_setImageWithURL:[NSURL URLWithString:_info.avatar] placeholderImage:HXGetImage(@"avatar")];
     self.nick.text = _info.nick_name;
     self.time.text = _info.create_time;
+    if ([_info.member_flag containsString:@"普通"]) {
+        self.member_flag.backgroundColor = UIColorFromRGB(0xBBBBBB);
+    }else{
+        self.member_flag.backgroundColor = HXControlBg;
+    }
     self.member_flag.text = [NSString stringWithFormat:@" %@ ",_info.member_flag];
 }
 @end

@@ -169,7 +169,10 @@
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入昵称"];
         return;
     }
-    
+    if (![self.sex hasText]) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择性别"];
+        return;
+    }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
  
     parameters[@"avatar"] = (self.headPicUrl && self.headPicUrl.length)?self.headPicUrl:@"";//传空表示头像不修改。传递相对路径

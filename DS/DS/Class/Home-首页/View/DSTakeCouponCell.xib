@@ -27,8 +27,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="89" height="81"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6折" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkC-qd-3qf">
-                                        <rect key="frame" x="27.5" y="28.5" width="33.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <rect key="frame" x="22.5" y="25" width="44" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="28"/>
                                         <color key="textColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -40,13 +40,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6折券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-1Q-sfq">
-                                <rect key="frame" x="104" y="20" width="37.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="89" y="20" width="35" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有效期：4天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tO-pw-jTl">
-                                <rect key="frame" x="104" y="45" width="75" height="16"/>
+                                <rect key="frame" x="89" y="45" width="75" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                     <constraint firstAttribute="height" constant="26" id="3B3-NQ-NI7"/>
                                     <constraint firstAttribute="width" constant="70" id="eXS-F1-r8c"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <state key="normal" title="点击领取">
                                     <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -68,11 +68,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0tO-pw-jTl" firstAttribute="leading" secondItem="n7h-OU-Fif" secondAttribute="trailing" constant="15" id="3SN-Pv-Wnm"/>
+                            <constraint firstItem="0tO-pw-jTl" firstAttribute="leading" secondItem="n7h-OU-Fif" secondAttribute="trailing" id="3SN-Pv-Wnm"/>
                             <constraint firstItem="LKd-SE-giw" firstAttribute="centerY" secondItem="JpG-fF-Lvm" secondAttribute="centerY" id="7Av-UD-Nl1"/>
                             <constraint firstItem="n7h-OU-Fif" firstAttribute="top" secondItem="JpG-fF-Lvm" secondAttribute="top" id="8QM-Uk-hrd"/>
                             <constraint firstItem="PYc-GP-wFC" firstAttribute="top" secondItem="JpG-fF-Lvm" secondAttribute="top" id="8Rf-99-U0p"/>
-                            <constraint firstItem="tFe-1Q-sfq" firstAttribute="leading" secondItem="n7h-OU-Fif" secondAttribute="trailing" constant="15" id="9cD-pJ-uQh"/>
+                            <constraint firstItem="tFe-1Q-sfq" firstAttribute="leading" secondItem="n7h-OU-Fif" secondAttribute="trailing" id="9cD-pJ-uQh"/>
                             <constraint firstItem="tFe-1Q-sfq" firstAttribute="top" secondItem="JpG-fF-Lvm" secondAttribute="top" constant="20" id="G0g-if-4xN"/>
                             <constraint firstItem="n7h-OU-Fif" firstAttribute="width" secondItem="JpG-fF-Lvm" secondAttribute="width" multiplier="0.27" id="K0u-AK-6tT"/>
                             <constraint firstItem="n7h-OU-Fif" firstAttribute="leading" secondItem="JpG-fF-Lvm" secondAttribute="leading" id="VYS-VT-jeb"/>
@@ -97,6 +97,7 @@
                 <outlet property="bg_img" destination="PYc-GP-wFC" id="VBY-nm-sYe"/>
                 <outlet property="discount" destination="LkC-qd-3qf" id="8Xv-Ad-llD"/>
                 <outlet property="discoutName" destination="tFe-1Q-sfq" id="mjl-wL-oUk"/>
+                <outlet property="takeBtn" destination="LKd-SE-giw" id="Llx-8g-QD6"/>
                 <outlet property="validDay" destination="0tO-pw-jTl" id="JJb-Sb-YVg"/>
             </connections>
             <point key="canvasLocation" x="-81.884057971014499" y="71.316964285714278"/>

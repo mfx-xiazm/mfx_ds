@@ -24,6 +24,7 @@
 {
     [super viewDidLoad];
     self.hbd_barStyle = UIBarStyleBlack;
+    self.hbd_tintColor = [UIColor whiteColor];
 
     if ([self isiPhoneXLater]) {
         self.iPhoneXLater = YES;

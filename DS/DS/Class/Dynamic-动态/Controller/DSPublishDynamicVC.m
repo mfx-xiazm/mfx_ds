@@ -32,7 +32,12 @@ static NSString *const PublishDynamicCell = @"PublishDynamicCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setTitle:@"发布动态"];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(publishClicked) title:@"发布" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = NO;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(publishClicked) title:@"发布" font:[UIFont systemFontOfSize:15] titleColor:HXControlBg highlightedColor:HXControlBg titleEdgeInsets:UIEdgeInsetsZero];
     [self setUpTableView];
 }
 -(void)viewDidLayoutSubviews

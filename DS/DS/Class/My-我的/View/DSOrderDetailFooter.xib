@@ -145,8 +145,24 @@ Cg
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1e-tc-yRu">
                     <rect key="frame" x="0.0" y="175" width="414" height="142"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ARQ-zm-QH6" userLabel="分割线">
+                            <rect key="frame" x="10" y="0.0" width="394" height="1"/>
+                            <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="3hm-ha-Wqb"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jb-Q2-FMJ">
+                            <rect key="frame" x="10" y="11" width="57.5" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="789-OF-Q1P"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2M-iA-esF">
-                            <rect key="frame" x="10" y="10" width="236.5" height="122"/>
+                            <rect key="frame" x="10" y="33" width="236.5" height="99"/>
                             <attributedString key="attributedText">
                                 <fragment content="订单编号：">
                                     <attributes>
@@ -214,7 +230,7 @@ Cg
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tJ-Fj-9xo">
-                            <rect key="frame" x="364" y="10" width="40" height="20"/>
+                            <rect key="frame" x="364" y="25" width="40" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="E3O-VK-vcT"/>
                                 <constraint firstAttribute="width" constant="40" id="YDO-DS-yqT"/>
@@ -231,10 +247,15 @@ Cg
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="R2M-iA-esF" firstAttribute="leading" secondItem="a1e-tc-yRu" secondAttribute="leading" constant="10" id="9lF-D3-3XU"/>
+                        <constraint firstAttribute="trailing" secondItem="ARQ-zm-QH6" secondAttribute="trailing" constant="10" id="Ag3-Yw-axo"/>
                         <constraint firstAttribute="trailing" secondItem="9tJ-Fj-9xo" secondAttribute="trailing" constant="10" id="BDz-ST-XRg"/>
+                        <constraint firstItem="7jb-Q2-FMJ" firstAttribute="top" secondItem="ARQ-zm-QH6" secondAttribute="bottom" constant="10" id="OkR-p7-GT3"/>
                         <constraint firstAttribute="bottom" secondItem="R2M-iA-esF" secondAttribute="bottom" constant="10" id="PIV-NC-wt5"/>
-                        <constraint firstItem="R2M-iA-esF" firstAttribute="top" secondItem="a1e-tc-yRu" secondAttribute="top" constant="10" id="ah9-tq-g2R"/>
-                        <constraint firstItem="9tJ-Fj-9xo" firstAttribute="top" secondItem="a1e-tc-yRu" secondAttribute="top" constant="10" id="gqs-k4-lRT"/>
+                        <constraint firstItem="ARQ-zm-QH6" firstAttribute="top" secondItem="a1e-tc-yRu" secondAttribute="top" id="c3S-ho-364"/>
+                        <constraint firstItem="ARQ-zm-QH6" firstAttribute="leading" secondItem="a1e-tc-yRu" secondAttribute="leading" constant="10" id="cX4-cb-bs1"/>
+                        <constraint firstItem="R2M-iA-esF" firstAttribute="top" secondItem="7jb-Q2-FMJ" secondAttribute="bottom" constant="5" id="gZX-8c-UQ9"/>
+                        <constraint firstItem="9tJ-Fj-9xo" firstAttribute="top" secondItem="a1e-tc-yRu" secondAttribute="top" constant="25" id="gqs-k4-lRT"/>
+                        <constraint firstItem="7jb-Q2-FMJ" firstAttribute="leading" secondItem="a1e-tc-yRu" secondAttribute="leading" constant="10" id="r0C-P3-Dh1"/>
                     </constraints>
                 </view>
             </subviews>

@@ -33,8 +33,8 @@
     self.name.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
     
     [self.goods_img sd_setImageWithURL:[NSURL URLWithString:_goodsDetail.cover_img] placeholderImage:HXGetImage(@"avatar")];
-    [self.goodsName setTextWithLineSpace:5.f withString:_goodsDetail.goods_name withFont:[UIFont systemFontOfSize:14]];
-    self.discount_price.text = [NSString stringWithFormat:@"￥%@",_goodsDetail.discount_price];
+    [self.goodsName addFlagLabelWithName:_goodsDetail.cate_flag lineSpace:5.f titleString:_goodsDetail.goods_name withFont:[UIFont systemFontOfSize:14]];
+    [self.discount_price setFontAttributedText:[NSString stringWithFormat:@"￥%@",_goodsDetail.discount_price] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
     [self.price setLabelUnderline:[NSString stringWithFormat:@"￥%@",_goodsDetail.price]];
     self.codeImg.image = [SGQRCodeObtain generateQRCodeWithData:_goodsDetail.share_url size:self.codeImg.hxn_width];
 }

@@ -217,6 +217,11 @@
     _nickName.hxn_height = 16.f;
     
     // 标签
+    if ([dynamic.member_flag containsString:@"普通"]) {
+        _flag.backgroundColor = UIColorFromRGB(0xBBBBBB);
+    }else{
+        _flag.backgroundColor = HXControlBg;
+    }
     _flag.text = [NSString stringWithFormat:@" %@ ",dynamic.member_flag];
     _flag.hxn_y = _avatarView.hxn_bottom - 16.f;
     _flag.hxn_x = _avatarView.hxn_right + kMomentMarginPadding;
