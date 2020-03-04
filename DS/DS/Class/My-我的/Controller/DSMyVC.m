@@ -65,7 +65,7 @@
 
 -(void)setUpNavBar
 {
-    [self.navigationItem setTitle:@"我的"];
+    [self.navigationItem setTitle:nil];
     self.hbd_barShadowHidden = YES;
     UIBarButtonItem *kefu = [UIBarButtonItem itemWithTarget:self action:@selector(kefuClicked) image:HXGetImage(@"客服")];
     UIBarButtonItem *set = [UIBarButtonItem itemWithTarget:self action:@selector(setClicked) image:HXGetImage(@"设 置")];

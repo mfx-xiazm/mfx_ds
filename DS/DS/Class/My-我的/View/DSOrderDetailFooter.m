@@ -48,6 +48,8 @@
         [self.payInfo setTextWithLineSpace:8.f withString:@"配送\n支付方式" withFont:[UIFont systemFontOfSize:12]];
         [self.payInfo2 setTextWithLineSpace:8.f withString:[NSString stringWithFormat:@"包邮\n%@",[_orderDetail.pay_type isEqualToString:@"1"]?@"支付宝支付":@"微信支付"] withFont:[UIFont systemFontOfSize:12]];
     }
+    self.payInfo.textAlignment = NSTextAlignmentLeft;
+    self.payInfo2.textAlignment = NSTextAlignmentRight;
     
     self.remarkViewHeight.constant = _orderDetail.remarkTextHeight;
     

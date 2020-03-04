@@ -114,7 +114,6 @@
 		906F374623792F64000B160A /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36D023792F64000B160A /* Foundation+Log.m */; };
 		906F374723792F64000B160A /* HXConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36D223792F64000B160A /* HXConst.m */; };
 		906F374823792F64000B160A /* NSDate+HXNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36D323792F64000B160A /* NSDate+HXNExtension.m */; };
-		906F374923792F64000B160A /* UINavigationBar+ChangeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36D423792F64000B160A /* UINavigationBar+ChangeColor.m */; };
 		906F374A23792F64000B160A /* UILabel+HXNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36D523792F64000B160A /* UILabel+HXNExtension.m */; };
 		906F374B23792F64000B160A /* ContactDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36D723792F64000B160A /* ContactDataHelper.m */; };
 		906F374C23792F64000B160A /* UIBarButtonItem+HXNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36D823792F64000B160A /* UIBarButtonItem+HXNExtension.m */; };
@@ -226,6 +225,7 @@
 		90D7E77B23FC184C00231D85 /* DSUpOrderSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D7E77A23FC184C00231D85 /* DSUpOrderSectionHeader.m */; };
 		90D7E77D23FC185200231D85 /* DSUpOrderSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D7E77C23FC185200231D85 /* DSUpOrderSectionHeader.xib */; };
 		90D7E77F23FC185D00231D85 /* DSUpOrderSectionFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90D7E77E23FC185D00231D85 /* DSUpOrderSectionFooter.xib */; };
+		90DCAA3D240E03C900E7CE26 /* NSURL+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 90DCAA3C240E03C900E7CE26 /* NSURL+Expand.m */; };
 		90E447EB23B05ABA005BE8B9 /* DSPosterContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */; };
 		90E447ED23B05AC0005BE8B9 /* DSPosterContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */; };
 		90EC2578237A5D8C005C24C8 /* DSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EC2576237A5D8C005C24C8 /* DSLoginVC.m */; };
@@ -511,7 +511,6 @@
 		906F36C423792F64000B160A /* UIButton+HXCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HXCode.m"; sourceTree = "<group>"; };
 		906F36C523792F64000B160A /* XTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTimer.m; sourceTree = "<group>"; };
 		906F36C623792F64000B160A /* UILabel+HXNExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+HXNExtension.h"; sourceTree = "<group>"; };
-		906F36C723792F64000B160A /* UINavigationBar+ChangeColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+ChangeColor.h"; sourceTree = "<group>"; };
 		906F36C823792F64000B160A /* NSDate+HXNExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HXNExtension.h"; sourceTree = "<group>"; };
 		906F36C923792F64000B160A /* HXConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXConst.h; sourceTree = "<group>"; };
 		906F36CA23792F64000B160A /* UIImage+HXNExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HXNExtension.m"; sourceTree = "<group>"; };
@@ -524,7 +523,6 @@
 		906F36D123792F64000B160A /* UIImage+HXNExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HXNExtension.h"; sourceTree = "<group>"; };
 		906F36D223792F64000B160A /* HXConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXConst.m; sourceTree = "<group>"; };
 		906F36D323792F64000B160A /* NSDate+HXNExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HXNExtension.m"; sourceTree = "<group>"; };
-		906F36D423792F64000B160A /* UINavigationBar+ChangeColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+ChangeColor.m"; sourceTree = "<group>"; };
 		906F36D523792F64000B160A /* UILabel+HXNExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+HXNExtension.m"; sourceTree = "<group>"; };
 		906F36D623792F64000B160A /* XTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTimer.h; sourceTree = "<group>"; };
 		906F36D723792F64000B160A /* ContactDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDataHelper.m; sourceTree = "<group>"; };
@@ -718,6 +716,8 @@
 		90D7E77A23FC184C00231D85 /* DSUpOrderSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpOrderSectionHeader.m; sourceTree = "<group>"; };
 		90D7E77C23FC185200231D85 /* DSUpOrderSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpOrderSectionHeader.xib; sourceTree = "<group>"; };
 		90D7E77E23FC185D00231D85 /* DSUpOrderSectionFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpOrderSectionFooter.xib; sourceTree = "<group>"; };
+		90DCAA3B240E03C900E7CE26 /* NSURL+Expand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+Expand.h"; sourceTree = "<group>"; };
+		90DCAA3C240E03C900E7CE26 /* NSURL+Expand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Expand.m"; sourceTree = "<group>"; };
 		90E447E923B05ABA005BE8B9 /* DSPosterContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSPosterContentView.h; sourceTree = "<group>"; };
 		90E447EA23B05ABA005BE8B9 /* DSPosterContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSPosterContentView.m; sourceTree = "<group>"; };
 		90E447EC23B05AC0005BE8B9 /* DSPosterContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSPosterContentView.xib; sourceTree = "<group>"; };
@@ -1653,33 +1653,33 @@
 		906F36C223792F64000B160A /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				906F36D023792F64000B160A /* Foundation+Log.m */,
 				906F36C323792F64000B160A /* NSString+HXNExtension.h */,
 				906F36CF23792F64000B160A /* NSString+HXNExtension.m */,
-				906F36C423792F64000B160A /* UIButton+HXCode.m */,
+				906F36D623792F64000B160A /* XTimer.h */,
 				906F36C523792F64000B160A /* XTimer.m */,
 				906F36C623792F64000B160A /* UILabel+HXNExtension.h */,
 				906F36D523792F64000B160A /* UILabel+HXNExtension.m */,
-				906F36C723792F64000B160A /* UINavigationBar+ChangeColor.h */,
-				906F36C823792F64000B160A /* NSDate+HXNExtension.h */,
 				906F36C923792F64000B160A /* HXConst.h */,
+				906F36D223792F64000B160A /* HXConst.m */,
+				906F36D123792F64000B160A /* UIImage+HXNExtension.h */,
 				906F36CA23792F64000B160A /* UIImage+HXNExtension.m */,
 				906F36CB23792F64000B160A /* UIView+HXNExtension.h */,
-				906F36CC23792F64000B160A /* UIBarButtonItem+HXNExtension.h */,
-				906F36CD23792F64000B160A /* ContactDataHelper.h */,
-				906F36CE23792F64000B160A /* UIButton+HXCode.h */,
-				906F36D023792F64000B160A /* Foundation+Log.m */,
-				906F36D123792F64000B160A /* UIImage+HXNExtension.h */,
-				906F36D223792F64000B160A /* HXConst.m */,
-				906F36D323792F64000B160A /* NSDate+HXNExtension.m */,
-				906F36D423792F64000B160A /* UINavigationBar+ChangeColor.m */,
-				906F36D623792F64000B160A /* XTimer.h */,
-				906F36D723792F64000B160A /* ContactDataHelper.m */,
-				906F36D823792F64000B160A /* UIBarButtonItem+HXNExtension.m */,
 				906F36D923792F64000B160A /* UIView+HXNExtension.m */,
+				906F36CD23792F64000B160A /* ContactDataHelper.h */,
+				906F36D723792F64000B160A /* ContactDataHelper.m */,
+				906F36CE23792F64000B160A /* UIButton+HXCode.h */,
+				906F36C423792F64000B160A /* UIButton+HXCode.m */,
+				906F36C823792F64000B160A /* NSDate+HXNExtension.h */,
+				906F36D323792F64000B160A /* NSDate+HXNExtension.m */,
+				906F36CC23792F64000B160A /* UIBarButtonItem+HXNExtension.h */,
+				906F36D823792F64000B160A /* UIBarButtonItem+HXNExtension.m */,
 				90C6C309239E1C5F00A531CC /* UITextField+GYExpand.h */,
 				90C6C308239E1C5F00A531CC /* UITextField+GYExpand.m */,
 				90AB397C24075FBE0082ECE4 /* UIColor+DSGradient.h */,
 				90AB397D24075FBE0082ECE4 /* UIColor+DSGradient.m */,
+				90DCAA3B240E03C900E7CE26 /* NSURL+Expand.h */,
+				90DCAA3C240E03C900E7CE26 /* NSURL+Expand.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2337,7 +2337,6 @@
 				90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */,
 				906F375F23792F64000B160A /* FBShimmeringView.m in Sources */,
 				906F377023792F64000B160A /* LMJVerticalScrollText.m in Sources */,
-				906F374923792F64000B160A /* UINavigationBar+ChangeColor.m in Sources */,
 				906F375623792F64000B160A /* RCFilterCell.m in Sources */,
 				9086946923A72D6600451D8B /* DSMyCard.m in Sources */,
 				9086946F23A7570E00451D8B /* DSBalanceNote.m in Sources */,
@@ -2405,6 +2404,7 @@
 				906F366823792F50000B160A /* AppDelegate+MSPushService.m in Sources */,
 				90F74E292382291B003576B3 /* DSVipCell.m in Sources */,
 				90F74E652382657A003576B3 /* DSBalanceNoteVC.m in Sources */,
+				90DCAA3D240E03C900E7CE26 /* NSURL+Expand.m in Sources */,
 				90C94C4A23A4CDC000CD19FB /* DSDynamicDetail.m in Sources */,
 				90EC258A237A7D18005C24C8 /* DSHomeCateCell.m in Sources */,
 				90EC2582237A5DB4005C24C8 /* DSChangePwdVC.m in Sources */,

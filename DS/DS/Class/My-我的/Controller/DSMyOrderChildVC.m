@@ -474,7 +474,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
                 DSWebContentVC *wvc = [DSWebContentVC new];
                 wvc.navTitle = @"物流详情";
                 wvc.isNeedRequest = NO;
-                wvc.url = order.logistics_url;
+                wvc.url = [order.logistics_url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                 [strongSelf.navigationController pushViewController:wvc animated:YES];
             }
         }else{

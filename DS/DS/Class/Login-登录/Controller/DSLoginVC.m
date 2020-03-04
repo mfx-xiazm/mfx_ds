@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIView *codeView;
 @property (weak, nonatomic) IBOutlet UITextField *code;
 @property (weak, nonatomic) IBOutlet UIButton *loginType;
+@property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
+
 /* 验证码id */
 @property(nonatomic,copy) NSString *codeId;
 @end
@@ -87,9 +89,11 @@
     if (self.loginType.isSelected) {
         self.codeView.hidden = NO;
         self.pwdView.hidden = YES;
+        self.forgetBtn.hidden = YES;
     }else{
         self.codeView.hidden = YES;
         self.pwdView.hidden = NO;
+        self.forgetBtn.hidden = NO;
     }
 }
 - (IBAction)getCodeRequest:(UIButton *)sender {

@@ -74,7 +74,14 @@
 }
 - (WKWebView *)webView {
     if (_webView == nil) {
-        _webView = [[WKWebView alloc] initWithFrame:self.webContentView.bounds configuration:[WKWebViewConfiguration new]];
+        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+        //下方代码，禁止缩放
+        WKUserContentController *userController = [WKUserContentController new];
+        NSString *js = @" $('meta[name=description]').remove(); $('head').append( '<meta name=\"viewport\" content=\"width=device-width, initial-scale=1,user-scalable=no\">' );";
+        WKUserScript *script = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+        [userController addUserScript:script];
+        config.userContentController = userController;
+        _webView = [[WKWebView alloc] initWithFrame:self.webContentView.bounds configuration:config];
         _webView.scrollView.scrollEnabled = NO;
         [_webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -174,7 +181,7 @@
     [self.zh_popupController presentContentView:couponView duration:0.25 springAnimated:NO];
 }
 - (IBAction)shareToMoneyClicked:(UIButton *)sender {
-    zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"分享赚说明" message:self.goodsDetail.share_make_money constantWidth:HX_SCREEN_WIDTH - 50*2];
+    zhAlertView *alert = [[zhAlertView alloc] initWithTitle:nil message:self.goodsDetail.share_make_money constantWidth:HX_SCREEN_WIDTH - 50*2];
     hx_weakify(self);
     zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"我知道了" handler:^(zhAlertButton * _Nonnull button) {
         hx_strongify(weakSelf);
@@ -293,13 +300,8 @@
         self.coupon.text = [NSString stringWithFormat:@"可领取%.1f折券",[self.goodsDetail.discount floatValue]];
     }
 
-    
-    if (HX_SCREEN_WIDTH > 375.f) {
-        [self.webView loadHTMLString:self.goodsDetail.goods_desc baseURL:nil];
-    }else{
-        NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
-        [self.webView loadHTMLString:h5 baseURL:nil];
-    }
+    NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
+    [self.webView loadHTMLString:h5 baseURL:nil];
     
     self.collentBtn.selected = [self.goodsDetail.is_collect isEqualToString:@"1"]?YES:NO;
 }

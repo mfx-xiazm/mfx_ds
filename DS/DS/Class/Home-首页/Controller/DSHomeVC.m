@@ -86,7 +86,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [msg setImage:HXGetImage(@"消息") forState:UIControlStateNormal];
     [msg addTarget:self action:@selector(msgClicked) forControlEvents:UIControlEventTouchUpInside];
     [msg setTitleColor:UIColorFromRGB(0XFFFFFF) forState:UIControlStateNormal];
-    msg.badgeBgColor  = [UIColor whiteColor];
+    msg.badgeBgColor  = HXControlBg;
     msg.badgeCenterOffset = CGPointMake(-10, 10);
     self.msgBtn = msg;
     
@@ -231,11 +231,13 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 //            self.hbd_tintColor = UIColor.whiteColor;
 //            self.hbd_titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:0] };
             self.collectionView.backgroundColor = [UIColor clearColor];
+            self.msgBtn.badgeBgColor  = HXControlBg;
         } else {
 //            self.hbd_barStyle = UIBarStyleDefault;
 //            self.hbd_tintColor = UIColor.blackColor;
 //            self.hbd_titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:_gradientProgress] };
             self.collectionView.backgroundColor = [UIColorFromRGB(0xF9F9F9) colorWithAlphaComponent:_gradientProgress];
+            self.msgBtn.badgeBgColor  = [[UIColor whiteColor] colorWithAlphaComponent:_gradientProgress];
         }
         self.hbd_barAlpha = _gradientProgress;
         [self hbd_setNeedsUpdateNavigationBar];

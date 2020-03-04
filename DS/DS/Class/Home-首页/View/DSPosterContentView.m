@@ -29,7 +29,7 @@
 {
     _goodsDetail = goodsDetail;
     
-    [self.advart sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar]];
+    [self.advart sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar] placeholderImage:HXGetImage(@"avatar")];
     self.name.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
     
     [self.goods_img sd_setImageWithURL:[NSURL URLWithString:_goodsDetail.cover_img] placeholderImage:HXGetImage(@"avatar")];

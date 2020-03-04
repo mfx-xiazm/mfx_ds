@@ -9,10 +9,17 @@
 #import "DSWebContentVC.h"
 #import <WebKit/WebKit.h>
 #import "DSWebChatPayH5View.h"
+#import "NSURL+Expand.h"
+
+#import <AlipaySDK/AlipaySDK.h>
+#import <WXApi.h>
+#import "DSPayTypeView.h"
+#import <zhPopupController.h>
 
 @interface DSWebContentVC ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic, strong) WKWebView     *webView;
-
+/* 订单支付信息 */
+@property(nonatomic,strong) NSDictionary *payInfo;
 @end
 
 @implementation DSWebContentVC
@@ -48,6 +55,8 @@
             [self.webView loadHTMLString:h5 baseURL:nil];
         }
     }
+    //注册支付状态监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
 }
 -(void)viewDidLayoutSubviews
 {
@@ -94,11 +103,11 @@
 }
 -(void)backActionClicked
 {
-//    if ([self.webView canGoBack]) {
-//        [self.webView goBack];
-//    }else{
+    if ([self.webView canGoBack]) {
+        [self.webView goBack];
+    }else{
         [self.navigationController popViewControllerAnimated:YES];
-//    }
+    }
 }
 -(void)loadWebDataRequest
 {
@@ -162,9 +171,9 @@
     }];
 }
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if (self.requestType == 7) {
-        NSString *urlStr = navigationAction.request.URL.absoluteString;
+    NSString *urlStr = navigationAction.request.URL.absoluteString;
 
+    if (self.requestType == 7) {
         if ([urlStr rangeOfString:@"https://wx.tenpay.com"].location != NSNotFound) {
             NSString *redirectUrl = urlStr;
             // 微信支付链接不要拼接redirect_url，如果拼接了还是会返回到浏览器的
@@ -182,7 +191,13 @@
             decisionHandler(WKNavigationActionPolicyAllow);
         }
     }else{
-        decisionHandler(WKNavigationActionPolicyAllow);
+        if ([urlStr hasPrefix:@"yqtjs://"]) {
+            self.payInfo = [navigationAction.request.URL paramerWithURL];
+            [self H5orderPayRequest];
+            decisionHandler(WKNavigationActionPolicyCancel);
+        }else{
+            decisionHandler(WKNavigationActionPolicyAllow);
+        }
     }
 }
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
@@ -264,7 +279,7 @@
     }
     return nil;
 }
-#pragma mark KVO的监听代理
+#pragma mark -- KVO的监听代理
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     //网页title
     if ([keyPath isEqualToString:@"title"]) {
@@ -277,12 +292,122 @@
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
-#pragma mark 移除观察者
+#pragma mark -- 调起网页支付
+// 拉取支付信息
+-(void)H5orderPayRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"order_no"] = [NSString stringWithFormat:@"%@",self.payInfo[@"order_no"]];//商品订单id
+    parameters[@"pay_type"] = [NSString stringWithFormat:@"%@",self.payInfo[@"pay_type"]];//支付方式：1支付宝；2微信
+    parameters[@"order_title"] = [NSString stringWithFormat:@"%@",self.payInfo[@"order_title"]];//订单标题
+    parameters[@"total_fee"] = [NSString stringWithFormat:@"%@",self.payInfo[@"total_fee"]];//支付金额
+    parameters[@"notify_url"] = [NSString stringWithFormat:@"%@",self.payInfo[@"notify_url"]];//支付结果回调地址
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"pay_yqt_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            //pay_type 支付方式：1支付宝；2微信支付；
+            NSString *pay_type = [NSString stringWithFormat:@"%@",strongSelf.payInfo[@"pay_type"]];
+            if ([pay_type isEqualToString:@"1"]) {
+                [strongSelf doAliPay:responseObject[@"result"]];
+            }else {
+                [strongSelf doWXPay:responseObject[@"result"]];
+            }
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+    
+}
+// 支付宝支付
+-(void)doAliPay:(NSDictionary *)parameters
+{
+    NSString *appScheme = @"DSAliPay";
+    NSString *orderString = parameters[@"alipay_param"];
+    // NOTE: 调用支付结果开始支付
+    [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+        if ([resultDic[@"resultStatus"] intValue] == 9000) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"支付成功"];
+        }else if ([resultDic[@"resultStatus"] intValue] == 6001){
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"用户中途取消"];
+        }else if ([resultDic[@"resultStatus"] intValue] == 6002){
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"网络连接出错"];
+        }else if ([resultDic[@"resultStatus"] intValue] == 4000){
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"订单支付失败"];
+        }
+    }];
+}
+// 微信支付
+-(void)doWXPay:(NSDictionary *)dict
+{
+    if([WXApi isWXAppInstalled]) { // 判断 用户是否安装微信
+        //需要创建这个支付对象
+        PayReq *req   = [[PayReq alloc] init];
+        //由用户微信号和AppID组成的唯一标识，用于校验微信用户
+        req.openID = dict[@"appid"];
+        
+        // 商家id，在注册的时候给的
+        req.partnerId = dict[@"partnerid"];
+        
+        // 预支付订单这个是后台跟微信服务器交互后，微信服务器传给你们服务器的，你们服务器再传给你
+        req.prepayId  = dict[@"prepayid"];
+        
+        // 根据财付通文档填写的数据和签名
+        //这个比较特殊，是固定的，只能是即req.package = Sign=WXPay
+        req.package   = dict[@"package"];
+        
+        // 随机编码，为了防止重复的，在后台生成
+        req.nonceStr  = dict[@"noncestr"];
+        
+        // 这个是时间戳，也是在后台生成的，为了验证支付的
+        req.timeStamp = [dict[@"timestamp"] intValue];
+        
+        // 这个签名也是后台做的
+        req.sign = dict[@"sign"];
+        
+        //发送请求到微信，等待微信返回onResp
+        [WXApi sendReq:req];
+    }else{
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"未安装微信"];
+    }
+}
+#pragma mark -- 支付回调处理
+-(void)doPayPush:(NSNotification *)note
+{
+    NSString *payStr = nil;
+    if ([note.userInfo[@"result"] isEqualToString:@"1"]) {//支付成功
+        //1成功 2取消支付 3支付失败
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"支付成功"];
+        // OC调用JS，iOS端调JS changeColor()是JS方法名【如果有参数就changeColor('p1','p2')】，completionHandler是异步回调block
+        payStr = [NSString stringWithFormat:@"yqt_pay_order_status_get('100','%@','%@','2')", self.payInfo[@"order_no"],self.payInfo[@"pay_type"]];
+        /**
+         yqt_pay_order_status_get(pay_status,order_no,pay_type,phone_type)
+         pay_status——>支付接口（100：支付成功，101：支付失败，102：支付取消）
+         order_no——>订单编号
+         pay_type——>支付方式（1表示支付宝支付，2表示微信支付）
+         phone_type——>手机端（1:android，2:ios）
+         */
+    }else if([note.userInfo[@"result"] isEqualToString:@"2"]){
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"取消支付"];
+        payStr = [NSString stringWithFormat:@"yqt_pay_order_status_get('102','%@','%@','2')", self.payInfo[@"order_no"],self.payInfo[@"pay_type"]];
+    }else{
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"支付失败"];
+        payStr = [NSString stringWithFormat:@"yqt_pay_order_status_get('101','%@','%@','2')", self.payInfo[@"order_no"],self.payInfo[@"pay_type"]];
+    }
+    [_webView evaluateJavaScript:payStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+        NSLog(@"结果回调网页端接收成功");
+    }];
+}
+#pragma mark -- 移除观察者
 - (void)dealloc
 {
     if (!self.navTitle) {
         [self.webView removeObserver:self forKeyPath:@"title"];
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

@@ -124,11 +124,21 @@ static NSString *const AddressCell = @"AddressCell";
         self.region.selectCity = self.region.selectRegion.city[row];
 //        self.selectedDistrict = [self.selectedCity.children firstObject];
         //[self.pickerView sp_reloadComponent:2];
-        
-        self.numerOfComponents = 3;
-        [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
-        [self setupPageMenuWithName:self.region.selectCity.alias atComponent:component];
-        
+        if (self.region.selectCity.area.count) {
+            self.numerOfComponents = 3;
+            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+            [self setupPageMenuWithName:self.region.selectCity.alias atComponent:component];
+        }else{
+            [self.pageMenu setTitle:self.region.selectCity.alias forItemAtIndex:component];
+
+            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+                   
+            self.pageMenu.selectedItemIndex = component;
+
+            if (self.lastComponentClickedBlock) {
+                self.lastComponentClickedBlock(1,self.region);
+            }
+        }
     }  else  {
         self.region.selectArea = self.region.selectCity.area[row];
         

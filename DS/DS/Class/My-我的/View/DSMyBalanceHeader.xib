@@ -15,6 +15,7 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="椭圆 3" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-hp-Alf">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                    <color key="backgroundColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6979" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ5-p0-1Zn">
                     <rect key="frame" x="178" y="45" width="58" height="35"/>
@@ -23,24 +24,24 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfe-q4-UCx">
-                    <rect key="frame" x="10" y="150" width="394" height="70"/>
+                    <rect key="frame" x="10" y="140" width="394" height="80"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpq-yT-qxq">
-                            <rect key="frame" x="0.0" y="0.0" width="131.5" height="70"/>
+                            <rect key="frame" x="0.0" y="0.0" width="131.5" height="80"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TN-xb-gYY">
-                                    <rect key="frame" x="51" y="15" width="29" height="18"/>
+                                    <rect key="frame" x="51" y="20" width="29" height="18"/>
                                     <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品奖励" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qU1-is-y4Q">
-                                    <rect key="frame" x="41" y="40.5" width="49.5" height="14.5"/>
+                                    <rect key="frame" x="41" y="45.5" width="49.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvU-Ky-USb">
-                                    <rect key="frame" x="0.0" y="0.0" width="131.5" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="131.5" height="80"/>
                                     <connections>
                                         <action selector="balanceHeaderClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="p01-iC-Uhf"/>
                                     </connections>
@@ -48,8 +49,8 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="qU1-is-y4Q" secondAttribute="bottom" constant="15" id="JS0-4a-vU5"/>
-                                <constraint firstItem="2TN-xb-gYY" firstAttribute="top" secondItem="zpq-yT-qxq" secondAttribute="top" constant="15" id="KnC-jC-4B6"/>
+                                <constraint firstAttribute="bottom" secondItem="qU1-is-y4Q" secondAttribute="bottom" constant="20" id="JS0-4a-vU5"/>
+                                <constraint firstItem="2TN-xb-gYY" firstAttribute="top" secondItem="zpq-yT-qxq" secondAttribute="top" constant="20" id="KnC-jC-4B6"/>
                                 <constraint firstItem="2TN-xb-gYY" firstAttribute="centerX" secondItem="zpq-yT-qxq" secondAttribute="centerX" id="QFs-4q-9d3"/>
                                 <constraint firstAttribute="trailing" secondItem="pvU-Ky-USb" secondAttribute="trailing" id="YvO-Xg-qaW"/>
                                 <constraint firstItem="pvU-Ky-USb" firstAttribute="leading" secondItem="zpq-yT-qxq" secondAttribute="leading" id="a3m-Bc-bcW"/>
@@ -59,21 +60,21 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buf-2O-qWK">
-                            <rect key="frame" x="131.5" y="0.0" width="131" height="70"/>
+                            <rect key="frame" x="131.5" y="0.0" width="131" height="80"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCy-IX-BcV">
-                                    <rect key="frame" x="51" y="15" width="29" height="18"/>
+                                    <rect key="frame" x="51" y="20" width="29" height="18"/>
                                     <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="礼包奖励" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNW-e7-X8l">
-                                    <rect key="frame" x="41" y="40.5" width="49.5" height="14.5"/>
+                                    <rect key="frame" x="41" y="45.5" width="49.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSW-yr-c7Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="131" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="131" height="80"/>
                                     <connections>
                                         <action selector="balanceHeaderClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="UlN-fo-6kn"/>
                                     </connections>
@@ -83,30 +84,30 @@
                             <constraints>
                                 <constraint firstItem="NCy-IX-BcV" firstAttribute="centerX" secondItem="buf-2O-qWK" secondAttribute="centerX" id="NjQ-eU-Uvc"/>
                                 <constraint firstAttribute="bottom" secondItem="uSW-yr-c7Y" secondAttribute="bottom" id="TXI-03-cyo"/>
-                                <constraint firstAttribute="bottom" secondItem="gNW-e7-X8l" secondAttribute="bottom" constant="15" id="bf6-aI-Ngy"/>
+                                <constraint firstAttribute="bottom" secondItem="gNW-e7-X8l" secondAttribute="bottom" constant="20" id="bf6-aI-Ngy"/>
                                 <constraint firstItem="gNW-e7-X8l" firstAttribute="centerX" secondItem="buf-2O-qWK" secondAttribute="centerX" id="c1a-x8-2EJ"/>
                                 <constraint firstAttribute="trailing" secondItem="uSW-yr-c7Y" secondAttribute="trailing" id="cNg-GH-pJD"/>
-                                <constraint firstItem="NCy-IX-BcV" firstAttribute="top" secondItem="buf-2O-qWK" secondAttribute="top" constant="15" id="e3a-wC-eRz"/>
+                                <constraint firstItem="NCy-IX-BcV" firstAttribute="top" secondItem="buf-2O-qWK" secondAttribute="top" constant="20" id="e3a-wC-eRz"/>
                                 <constraint firstItem="uSW-yr-c7Y" firstAttribute="top" secondItem="buf-2O-qWK" secondAttribute="top" id="jPJ-ok-n0Y"/>
                                 <constraint firstItem="uSW-yr-c7Y" firstAttribute="leading" secondItem="buf-2O-qWK" secondAttribute="leading" id="yri-ru-BkI"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1O-Tj-BQG">
-                            <rect key="frame" x="262.5" y="0.0" width="131.5" height="70"/>
+                            <rect key="frame" x="262.5" y="0.0" width="131.5" height="80"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCH-kX-d4v">
-                                    <rect key="frame" x="51.5" y="15" width="29" height="18"/>
+                                    <rect key="frame" x="51.5" y="20" width="29" height="18"/>
                                     <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="队长奖励" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnx-0l-gNg">
-                                    <rect key="frame" x="41" y="40.5" width="49.5" height="14.5"/>
+                                    <rect key="frame" x="41" y="45.5" width="49.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5U-JY-bre">
-                                    <rect key="frame" x="0.0" y="0.0" width="131.5" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="131.5" height="80"/>
                                     <connections>
                                         <action selector="balanceHeaderClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="QXV-tc-QTq"/>
                                     </connections>
@@ -115,13 +116,13 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Q5U-JY-bre" firstAttribute="leading" secondItem="K1O-Tj-BQG" secondAttribute="leading" id="93J-sf-KnE"/>
-                                <constraint firstItem="XCH-kX-d4v" firstAttribute="top" secondItem="K1O-Tj-BQG" secondAttribute="top" constant="15" id="GNQ-Zd-jgI"/>
+                                <constraint firstItem="XCH-kX-d4v" firstAttribute="top" secondItem="K1O-Tj-BQG" secondAttribute="top" constant="20" id="GNQ-Zd-jgI"/>
                                 <constraint firstAttribute="trailing" secondItem="Q5U-JY-bre" secondAttribute="trailing" id="SKK-QV-yZO"/>
                                 <constraint firstItem="Q5U-JY-bre" firstAttribute="top" secondItem="K1O-Tj-BQG" secondAttribute="top" id="Y16-ch-582"/>
                                 <constraint firstItem="qnx-0l-gNg" firstAttribute="centerX" secondItem="K1O-Tj-BQG" secondAttribute="centerX" id="aym-Bw-1gw"/>
                                 <constraint firstAttribute="bottom" secondItem="Q5U-JY-bre" secondAttribute="bottom" id="idD-aH-84N"/>
                                 <constraint firstItem="XCH-kX-d4v" firstAttribute="centerX" secondItem="K1O-Tj-BQG" secondAttribute="centerX" id="qFo-5t-f6O"/>
-                                <constraint firstAttribute="bottom" secondItem="qnx-0l-gNg" secondAttribute="bottom" constant="15" id="tSv-k1-P8A"/>
+                                <constraint firstAttribute="bottom" secondItem="qnx-0l-gNg" secondAttribute="bottom" constant="20" id="tSv-k1-P8A"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -134,7 +135,7 @@
                         <constraint firstItem="K1O-Tj-BQG" firstAttribute="width" secondItem="zpq-yT-qxq" secondAttribute="width" id="MmF-sE-Pyi"/>
                         <constraint firstAttribute="bottom" secondItem="K1O-Tj-BQG" secondAttribute="bottom" id="Ni7-kq-5sm"/>
                         <constraint firstAttribute="bottom" secondItem="buf-2O-qWK" secondAttribute="bottom" id="OXN-WT-9pl"/>
-                        <constraint firstAttribute="height" constant="70" id="S1D-Tv-tKD"/>
+                        <constraint firstAttribute="height" constant="80" id="S1D-Tv-tKD"/>
                         <constraint firstItem="K1O-Tj-BQG" firstAttribute="leading" secondItem="buf-2O-qWK" secondAttribute="trailing" id="Sy2-4d-ZRs"/>
                         <constraint firstItem="buf-2O-qWK" firstAttribute="width" secondItem="zpq-yT-qxq" secondAttribute="width" id="VSH-rG-N0M"/>
                         <constraint firstItem="buf-2O-qWK" firstAttribute="top" secondItem="Wfe-q4-UCx" secondAttribute="top" id="W1g-sS-uqn"/>
@@ -181,7 +182,7 @@
                 <outlet property="goods_reward" destination="2TN-xb-gYY" id="i00-Sz-Dhd"/>
                 <outlet property="upgrade_reward" destination="XCH-kX-d4v" id="IoW-vc-neS"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="359.93303571428572"/>
+            <point key="canvasLocation" x="137.68115942028987" y="359.59821428571428"/>
         </view>
     </objects>
     <resources>

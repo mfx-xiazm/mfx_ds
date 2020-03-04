@@ -93,7 +93,14 @@
 }
 - (WKWebView *)webView {
     if (_webView == nil) {
-        _webView = [[WKWebView alloc] initWithFrame:self.webContentView.bounds configuration:[WKWebViewConfiguration new]];
+        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+        //下方代码，禁止缩放
+        WKUserContentController *userController = [WKUserContentController new];
+        NSString *js = @" $('meta[name=description]').remove(); $('head').append( '<meta name=\"viewport\" content=\"width=device-width, initial-scale=1,user-scalable=no\">' );";
+        WKUserScript *script = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+        [userController addUserScript:script];
+        config.userContentController = userController;
+        _webView = [[WKWebView alloc] initWithFrame:self.webContentView.bounds configuration:config];
         _webView.scrollView.scrollEnabled = NO;
         [_webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -166,12 +173,8 @@
 
     self.stockNum.text = self.goodsDetail.stock;
     
-    if (HX_SCREEN_WIDTH > 375.f) {
-        [self.webView loadHTMLString:self.goodsDetail.goods_desc baseURL:nil];
-    }else{
-        NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
-        [self.webView loadHTMLString:h5 baseURL:nil];
-    }
+    NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
+    [self.webView loadHTMLString:h5 baseURL:nil];
 }
 #pragma mark -- 点击事件
 -(void)backClicked

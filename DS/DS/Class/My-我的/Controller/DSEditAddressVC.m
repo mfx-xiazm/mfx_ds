@@ -118,8 +118,13 @@
         _addressView.lastComponentClickedBlock = ^(NSInteger type, GXSelectRegion * _Nullable region) {
             [weakSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
             if (type) {
-                weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@-%@",region.selectRegion.alias,region.selectCity.alias,region.selectArea.alias];
-                weakSelf.district_id = region.selectArea.ID;
+                if (region.selectArea.alias) {
+                    weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@-%@",region.selectRegion.alias,region.selectCity.alias,region.selectArea.alias];
+                    weakSelf.district_id = region.selectArea.ID;
+                }else{
+                    weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@",region.selectRegion.alias,region.selectCity.alias];
+                    weakSelf.district_id = region.selectCity.ID;
+                }
             }
         };
     }

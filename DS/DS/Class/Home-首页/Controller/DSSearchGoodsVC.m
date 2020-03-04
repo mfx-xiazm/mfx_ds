@@ -12,6 +12,7 @@
 #import "DSShopGoods.h"
 #import "DSGoodsDetailVC.h"
 #import "HXSearchBar.h"
+#import "DSTaoGoodsDetailVC.h"
 
 static NSString *const CateGoodsCell = @"CateGoodsCell";
 @interface DSSearchGoodsVC ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>
@@ -49,16 +50,22 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
 -(void)setUpNavBar
 {
     [self.navigationItem setTitle:nil];
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = YES;
     
     HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
     searchBar.layer.cornerRadius = 15.f;
     searchBar.layer.masksToBounds = YES;
+    searchBar.layer.borderWidth = 1;
+    searchBar.layer.borderColor = UIColorFromRGB(0xBBBBBB).CGColor;
     searchBar.delegate = self;
     searchBar.placeholder = @"请输入商品名称查询";
     searchBar.text = self.keyword;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:searchBar];
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) title:@"取消" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(backClicked) title:@"取消" font:[UIFont systemFontOfSize:15] titleColor:[UIColor blackColor] highlightedColor:[UIColor blackColor] titleEdgeInsets:UIEdgeInsetsZero];
 }
 -(void)setUpCollectionView
 {
@@ -182,10 +189,16 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
     DSShopGoods *goods = self.goods[indexPath.row];
-    dvc.goods_id = goods.goods_id;
-    [self.navigationController pushViewController:dvc animated:YES];
+    if ([goods.cate_mode isEqualToString:@"4"]) {
+        DSTaoGoodsDetailVC *dvc = [DSTaoGoodsDetailVC new];
+        dvc.goods_id = goods.goods_id;
+        [self.navigationController pushViewController:dvc animated:YES];
+    }else{
+        DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
+        dvc.goods_id = goods.goods_id;
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = HX_SCREEN_WIDTH;

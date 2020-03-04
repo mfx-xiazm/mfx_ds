@@ -270,6 +270,7 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.isNotFontFit = YES;
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;

@@ -109,7 +109,7 @@ static NSString *const UpOrderCell = @"UpOrderCell";
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // 设置背景色为clear
-    self.tableView.backgroundColor = HXGlobalBg;
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DSMyOrderCell class]) bundle:nil] forCellReuseIdentifier:UpOrderCell];

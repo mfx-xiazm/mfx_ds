@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="code" destination="NBW-Jp-c6M" id="7tU-pT-yjT"/>
                 <outlet property="codeView" destination="VIX-lt-xZZ" id="nYg-UM-gMy"/>
+                <outlet property="forgetBtn" destination="9HF-7d-7ia" id="TyY-pG-4It"/>
                 <outlet property="loginBtn" destination="j4f-Uf-Bcr" id="7Hq-Ma-BDI"/>
                 <outlet property="loginType" destination="b3E-0x-Vcu" id="Drv-pB-5AO"/>
                 <outlet property="phone" destination="i7Z-7h-Ke6" id="Q77-kM-zuS"/>

@@ -30,6 +30,6 @@
     [self.goodName addFlagLabelWithName:_recommend.cate_flag lineSpace:5.f titleString:_recommend.goods_name withFont:[UIFont systemFontOfSize:14]];
     [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_recommend.discount_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
     [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[_recommend.price floatValue]]];
-    [self.bankPrice setFontAttributedText:[NSString stringWithFormat:@"返佣金额：￥%.2f",[_recommend.cmm_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:8]];
+    [self.bankPrice setFontAttributedText:[NSString stringWithFormat:@"现金补贴￥%.2f",[_recommend.cmm_price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:8]];
 }
 @end
