@@ -165,10 +165,10 @@
 }
 -(void)setUserInfoRequest
 {
-    if (![self.nick hasText]) {
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入昵称"];
-        return;
-    }
+//    if (![self.nick hasText]) {
+//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入昵称"];
+//        return;
+//    }
     if (![self.sex hasText]) {
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择性别"];
         return;
@@ -176,7 +176,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
  
     parameters[@"avatar"] = (self.headPicUrl && self.headPicUrl.length)?self.headPicUrl:@"";//传空表示头像不修改。传递相对路径
-    parameters[@"nick_name"] = self.nick.text;//昵称
+    parameters[@"nick_name"] = [self.nick hasText]?self.nick.text:@"";//昵称
     parameters[@"sex"] = [self.sex.text isEqualToString:@"男"]?@"1":@"2";//性别：1男；2女
     
     hx_weakify(self);

@@ -1,36 +1,51 @@
 //
-//  DSWebContentVC.m
+//  DSOrderWebVC.m
 //  DS
 //
-//  Created by 夏增明 on 2019/11/12.
-//  Copyright © 2019 夏增明. All rights reserved.
+//  Created by 夏增明 on 2020/3/6.
+//  Copyright © 2020 夏增明. All rights reserved.
 //
 
-#import "DSWebContentVC.h"
+#import "DSOrderWebVC.h"
 #import <WebKit/WebKit.h>
-#import "DSWebChatPayH5View.h"
 #import "NSURL+Expand.h"
 
 #import <AlipaySDK/AlipaySDK.h>
 #import <WXApi.h>
 #import <zhPopupController.h>
-#import "DSOrderWebVC.h"
+#import "DSWebContentVC.h"
+#import "DSAllOrderVC.h"
 
-@interface DSWebContentVC ()<WKNavigationDelegate,WKUIDelegate>
+@interface DSOrderWebVC ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic, strong) WKWebView     *webView;
 /* 订单支付信息 */
 @property(nonatomic,strong) NSDictionary *payInfo;
-/* 订单列表页面地址 */
-@property(nonatomic,strong) NSString *yqt_order_url;
+/** vc控制器 */
+@property (nonatomic,strong) NSMutableArray *controllers;
 /* 网页加载进度视图 */
 @property (nonatomic, strong) UIProgressView *progressView;
 @end
 
-@implementation DSWebContentVC
+@implementation DSOrderWebVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavBar];
+    
+    hx_weakify(self);
+    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[DSWebContentVC class]]) {
+            hx_strongify(weakSelf);
+            [strongSelf.controllers removeObjectAtIndex:idx];
+            *stop = YES;
+        }
+    }];
+    if (!self.isAllPush) {
+        DSAllOrderVC *avc = [DSAllOrderVC new];
+        [self.controllers insertObject:avc atIndex:1];
+    }
+    [self.navigationController setViewControllers:self.controllers];
+    
     // 针对 11.0 以上的iOS系统进行处理
     if (@available(iOS 11.0, *)) {
         self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -43,23 +58,10 @@
     [self.view addSubview:self.webView];
     [self.view addSubview:self.progressView];
     [self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:nil];
-    if (self.navTitle) {
-        [self.navigationItem setTitle:self.navTitle];
-    }else{
-        [self.webView addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
-    }
-    if (self.isNeedRequest) {
-        [self startShimmer];
-        [self loadWebDataRequest];
-    }else{
-        if (self.url && self.url.length) {
-            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
-            //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]]];
-        }else{
-            NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:0 15px;}</style></head><body>%@</body></html>",self.htmlContent];
-            [self.webView loadHTMLString:h5 baseURL:nil];
-        }
-    }
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
+    //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[self.url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]]];
+    
     //注册支付状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
 }
@@ -77,6 +79,12 @@
     }
     return _progressView;
 }
+- (NSMutableArray *)controllers {
+    if (!_controllers) {
+        _controllers = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
+    }
+    return _controllers;
+}
 - (WKWebView *)webView{
     if (_webView == nil) {
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
@@ -93,7 +101,7 @@
         _webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
         _webView.scrollView.scrollEnabled = YES;
         // UI代理
-        //_webView.UIDelegate = self;
+        _webView.UIDelegate = self;
         // 导航代理
         _webView.navigationDelegate = self;
         // 是否允许手势左滑返回上一级, 类似导航控制的左滑返回
@@ -104,6 +112,8 @@
 }
 -(void)setUpNavBar
 {
+    [self.navigationItem setTitle:@"壹企通订单"];
+
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [button setImage:[UIImage imageNamed:@"返回白色"] forState:UIControlStateNormal];
@@ -125,95 +135,14 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
--(void)loadWebDataRequest
-{
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *action = nil;
-    if (self.requestType == 1) {
-        parameters[@"adv_id"] = self.adv_id;
-        action = @"adv_detail_get";
-    }else if (self.requestType == 2) {
-        parameters[@"msg_id"] = self.msg_id;
-        action = @"message_detail_get";
-    }else if (self.requestType == 3) {
-        parameters[@"set_type"] = @"member_rights_desc";
-        action = @"license_config_get";
-    }else if (self.requestType == 4) {
-        parameters[@"set_type"] = @"member_self_buy";
-        action = @"license_config_get";
-    }else if (self.requestType == 5) {
-        parameters[@"set_type"] = @"user_license";
-        action = @"license_config_get";
-    }else if (self.requestType == 6) {
-        parameters[@"set_type"] = @"private_license";
-        action = @"license_config_get";
-    }else if (self.requestType == 7) {
-        action = @"jd_url_get";
-    }
-    
-    hx_weakify(self);
-    [HXNetworkTool POST:HXRC_M_URL action:action parameters:parameters success:^(id responseObject) {
-        hx_strongify(weakSelf);
-        [strongSelf stopShimmer];
-        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            if (strongSelf.requestType == 1) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"adv_content"]];
-                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
-            }else if (strongSelf.requestType == 2) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body><div style=\"font-size:15px;font-weight:600;\">%@</div><div style=\"font-size:12px;color:#CCCCCC\">%@</div>%@</body></html>",responseObject[@"result"][@"msg_title"],responseObject[@"result"][@"create_time"],responseObject[@"result"][@"msg_content"]];
-                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
-            }else if (strongSelf.requestType == 3) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
-                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
-            }else if (strongSelf.requestType == 4) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
-                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
-            }else if (strongSelf.requestType == 5) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
-                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
-            }else if (strongSelf.requestType == 6) {
-                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
-                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
-            }else if (strongSelf.requestType == 7) {
-                [strongSelf.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:responseObject[@"result"][@"jd_url"]]]];
-            }
-        }else{
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-        }
-    } failure:^(NSError *error) {
-        hx_strongify(weakSelf);
-        [strongSelf stopShimmer];
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-    }];
-}
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSString *urlStr = navigationAction.request.URL.absoluteString;
-
-    if (self.requestType == 7) {
-        if ([urlStr rangeOfString:@"https://wx.tenpay.com"].location != NSNotFound) {
-            NSString *redirectUrl = urlStr;
-            // 微信支付链接不要拼接redirect_url，如果拼接了还是会返回到浏览器的
-            if ([urlStr containsString:@"&redirect_url="]) {
-                NSRange redirectRange = [urlStr rangeOfString:@"&redirect_url"];
-                redirectUrl = [urlStr stringByReplacingOccurrencesOfString:[urlStr substringFromIndex:redirectRange.location] withString:@""];
-            }
-            //这里把webView设置成一个像素点，主要是不影响操作和界面，主要的作用是设置referer和调起微信
-            DSWebChatPayH5View *h5View = [[DSWebChatPayH5View alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-            //url是没有拼接redirect_url微信h5支付链接
-            [h5View loadingURL:redirectUrl withIsWebChatURL:NO];
-            [self.view addSubview:h5View];
-            decisionHandler(WKNavigationActionPolicyCancel);
-        }else{
-            decisionHandler(WKNavigationActionPolicyAllow);
-        }
+    if ([urlStr hasPrefix:@"yqtjs://"]) {
+        self.payInfo = [navigationAction.request.URL paramerWithURL];
+        [self H5orderPayRequest];
+        decisionHandler(WKNavigationActionPolicyCancel);
     }else{
-        if ([urlStr hasPrefix:@"yqtjs://"]) {
-            self.payInfo = [navigationAction.request.URL paramerWithURL];
-            [self H5orderPayRequest];
-            decisionHandler(WKNavigationActionPolicyCancel);
-        }else{
-            decisionHandler(WKNavigationActionPolicyAllow);
-        }
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
 }
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
@@ -336,7 +265,6 @@
     [HXNetworkTool POST:HXRC_M_URL action:@"pay_yqt_get" parameters:parameters success:^(id responseObject) {
         hx_strongify(weakSelf);
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            strongSelf.yqt_order_url = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"yqt_order_url"]];
             //pay_type 支付方式：1支付宝；2微信支付；
             NSString *pay_type = [NSString stringWithFormat:@"%@",strongSelf.payInfo[@"pay_type"]];
             if ([pay_type isEqualToString:@"1"]) {
@@ -430,22 +358,12 @@
     [_webView evaluateJavaScript:payStr completionHandler:^(id _Nullable data, NSError * _Nullable error) {
         NSLog(@"结果回调网页端接收成功");
     }];
-    
-    NSString *pay_source = [NSString stringWithFormat:@"%@",self.payInfo[@"pay_source"]];
-    if ([pay_source isEqualToString:@"1"]) {// 1下单页面 2订单列表或者订单详情
-        DSOrderWebVC *cvc = [DSOrderWebVC new];
-        cvc.url = self.yqt_order_url;
-        [self.navigationController pushViewController:cvc animated:YES];
-    }
 }
 #pragma mark -- 移除观察者
 - (void)dealloc
 {
-    if (!self.navTitle) {
-        [self.webView removeObserver:self forKeyPath:@"title"];
-    }
     [self.webView removeObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress))];
-    
+
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

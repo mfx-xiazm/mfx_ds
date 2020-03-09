@@ -123,8 +123,12 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 #pragma mark -- 点击事件
 -(void)msgClicked
 {
-    DSMessageVC *mvc = [DSMessageVC new];
-    [self.navigationController pushViewController:mvc animated:YES];
+//    DSMessageVC *mvc = [DSMessageVC new];
+//    [self.navigationController pushViewController:mvc animated:YES];
+    DSWebContentVC *wvc = [DSWebContentVC new];
+    wvc.navTitle = @"测试商城";
+    wvc.url = @"http://dev.wx.yqtb2b.com/?bid=321548b7caa9c19b0f1bb2cf1fba76c4&loginParams=HPIpcz0AAQsGzkWBAJi55%2B5uiHapasQjT4I77Yo1h7ILNtPLjtRlG7t%2FDuxTe0YF#/home";
+    [self.navigationController pushViewController:wvc animated:YES];
 }
 - (void)searchClicked
 {
