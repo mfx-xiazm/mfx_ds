@@ -77,8 +77,8 @@
 /**获取图片资源*/
 #define HXGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 
-#define HXRC_M_URL @"http://daishu.mfxapp.com:8180/daishupub/mfxapi/"
+#define HXRC_M_URL @"http://api.whaleupgo.com:8180/daishupub/mfxapi/"
 
-#define HXRC_URL_HEADER @"http://daishu.mfxapp.com:8180/daishupub/mfxapi/"
+#define HXRC_URL_HEADER @"http://api.whaleupgo.com:8180/daishupub/mfxapi/"
 
 #endif /* DSPrefixHeader_pch */

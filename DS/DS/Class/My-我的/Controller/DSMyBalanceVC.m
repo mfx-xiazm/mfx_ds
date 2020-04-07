@@ -48,17 +48,18 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         _header.balanceBtnCall = ^(NSInteger index) {
             hx_strongify(weakSelf);
             if (index == 0) {
-                DSUpCashVC *cvc = [DSUpCashVC new];
-                cvc.upCashActionCall = ^{
-                    [strongSelf getMyBalanceRequest];
-                };
-                [strongSelf.navigationController pushViewController:cvc animated:YES];
+//                DSUpCashVC *cvc = [DSUpCashVC new];
+//                cvc.upCashActionCall = ^{
+//                    [strongSelf getMyBalanceRequest];
+//                };
+//                [strongSelf.navigationController pushViewController:cvc animated:YES];
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"待开放"];
             }else if (index == 1) {
                 //奖励类型：晋级1，礼包2，商品3，分享4，队长收益5为晋级1和分享4之和
                 DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
                 nvc.reward_type = 3;
                 [strongSelf.navigationController pushViewController:nvc animated:YES];
-            }else if (index == 1) {
+            }else if (index == 2) {
                 //奖励类型：晋级1，礼包2，商品3，分享4，队长收益5为晋级1和分享4之和
                 DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
                 nvc.reward_type = 2;
@@ -103,13 +104,15 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 #pragma mark -- 点击事件
 -(void)upCashClicked
 {
-    DSUpCashVC *cvc = [DSUpCashVC new];
-    hx_weakify(self);
-    cvc.upCashActionCall = ^{
-        hx_strongify(weakSelf);
-        [strongSelf getMyBalanceRequest];
-    };
-    [self.navigationController pushViewController:cvc animated:YES];
+    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"待开放"];
+
+//    DSUpCashVC *cvc = [DSUpCashVC new];
+//    hx_weakify(self);
+//    cvc.upCashActionCall = ^{
+//        hx_strongify(weakSelf);
+//        [strongSelf getMyBalanceRequest];
+//    };
+//    [self.navigationController pushViewController:cvc animated:YES];
 }
 #pragma mark -- 接口请求
 -(void)getMyBalanceRequest

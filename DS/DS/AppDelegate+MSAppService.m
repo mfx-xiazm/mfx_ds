@@ -39,7 +39,7 @@
 -(void)configAlibcTradeSDK
 {
     // 百川平台基础SDK初始化，加载并初始化各个业务能力插件
-    [[AlibcTradeSDK sharedInstance] setDebugLogOpen:NO];//开发阶段打开日志开关，方便排查错误信息
+    [[AlibcTradeSDK sharedInstance] setDebugLogOpen:YES];//开发阶段打开日志开关，方便排查错误信息
     [[AlibcTradeSDK sharedInstance] setIsvAppName:@"daiShuApp"];
     [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
         HXLog(@"百川SDK初始化成功");

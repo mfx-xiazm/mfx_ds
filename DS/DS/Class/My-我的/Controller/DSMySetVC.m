@@ -15,6 +15,8 @@
 #import "HXNavigationController.h"
 #import "DSMyAddressVC.h"
 #import "DSWebContentVC.h"
+#import <AlibabaAuthSDK/ALBBSDK.h>
+#import <AlibabaAuthSDK/ALBBSession.h>
 
 @interface DSMySetVC ()
 
@@ -40,14 +42,14 @@
     }else if (sender.tag == 3) {
         DSWebContentVC *wvc = [DSWebContentVC new];
         wvc.navTitle = @"用户协议";
-        wvc.requestType = 5;
-        wvc.isNeedRequest = YES;
+        wvc.isNeedRequest = NO;
+        wvc.url = @"http://apiadmin.whaleupgo.com/webapp/page/userAgreement.html";
         [self.navigationController pushViewController:wvc animated:YES];
     }else if (sender.tag == 4) {
         DSWebContentVC *wvc = [DSWebContentVC new];
         wvc.navTitle = @"隐私政策";
         wvc.requestType = 6;
-        wvc.isNeedRequest = YES;
+        wvc.url = @"http://apiadmin.whaleupgo.com/webapp/page/privacyPolicy.html";
         [self.navigationController pushViewController:wvc animated:YES];
     }else{
         zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录？" constantWidth:HX_SCREEN_WIDTH - 50*2];
@@ -75,7 +77,7 @@
     [HXNetworkTool POST:HXRC_M_URL action:@"login_out_set" parameters:@{} success:^(id responseObject) {
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             [[MSUserManager sharedInstance] logout:nil];//清空登录数据
-            
+            [[ALBBSDK sharedInstance] logout];
             HXNavigationController *nav = [[HXNavigationController alloc] initWithRootViewController:[DSLoginVC new]];
             [UIApplication sharedApplication].keyWindow.rootViewController = nav;
             

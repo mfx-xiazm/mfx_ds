@@ -13,6 +13,7 @@
 #import "DSWebContentVC.h"
 #import "DSOrderWebVC.h"
 #import <UIImage+GIF.h>
+#import "DSTaoKeOrderVC.h"
 
 @interface DSAllOrderVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *noPayItem;
@@ -116,7 +117,8 @@
         cvc.url = self.yqt_order_url;
         [self.navigationController pushViewController:cvc animated:YES];
     }else if (sender.tag == 2){
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请打开淘宝，查看订单详情"];
+        DSTaoKeOrderVC *tvc = [DSTaoKeOrderVC new];
+        [self.navigationController pushViewController:tvc animated:YES];
     }else{
         DSWebContentVC *cvc = [DSWebContentVC new];
         cvc.navTitle = @"积分时代订单";

@@ -56,7 +56,7 @@
             if ([_note.amount containsString:@"-"]) {
                 self.amount.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
             }else{
-                self.amount.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
+                [self.amount setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_note.amount floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:10]];
             }
         }
     }else{
@@ -70,7 +70,7 @@
             if ([_note.amount containsString:@"-"]) {
                 self.amount1.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
             }else{
-                self.amount1.text = [NSString stringWithFormat:@"+%.2f",[_note.amount floatValue]];
+                [self.amount1 setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_note.amount floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:10]];
             }
         }
     }

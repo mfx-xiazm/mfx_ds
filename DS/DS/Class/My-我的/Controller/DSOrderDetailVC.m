@@ -533,8 +533,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.order_type = self.orderDetail.order_type;
     DSMyOrderDetailGoods *detailGoods = self.orderDetail.list_goods[indexPath.row];
-    //cell.flag.hidden = [detailGoods.is_discount isEqualToString:@"1"]?NO:YES;
-    cell.flag.hidden = YES;
+    cell.flag.hidden = [detailGoods.is_discount isEqualToString:@"1"]?NO:YES;
     cell.detailGoods = detailGoods;
     return cell;
 }

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49DBE4EF243C580C00F984D4 /* ALiTradeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */; };
+		49DBE4F3243C68A600F984D4 /* DSTaoKeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4F1243C68A500F984D4 /* DSTaoKeOrderVC.m */; };
+		49DBE4F4243C68A600F984D4 /* DSTaoKeOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DBE4F2243C68A500F984D4 /* DSTaoKeOrderVC.xib */; };
+		49DBE4F8243C68B200F984D4 /* DSTaoKeOrderChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4F6243C68B200F984D4 /* DSTaoKeOrderChildVC.m */; };
+		49DBE4F9243C68B200F984D4 /* DSTaoKeOrderChildVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DBE4F7243C68B200F984D4 /* DSTaoKeOrderChildVC.xib */; };
+		49DBE4FD243C68DD00F984D4 /* DSTaoKeOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4FB243C68DD00F984D4 /* DSTaoKeOrderCell.m */; };
+		49DBE4FE243C68DD00F984D4 /* DSTaoKeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DBE4FC243C68DD00F984D4 /* DSTaoKeOrderCell.xib */; };
+		49DBE501243C6C7300F984D4 /* DSTaoKeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE500243C6C7300F984D4 /* DSTaoKeOrder.m */; };
 		75201D9BC0ADF06CFC84ADF5 /* libPods-DS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F95BF23A4F0097FD6153E581 /* libPods-DS.a */; };
 		9001467B2383E19300275DD9 /* DSChooseClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9001467A2383E19300275DD9 /* DSChooseClassView.m */; };
 		9001467D2383E19A00275DD9 /* DSChooseClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9001467C2383E19A00275DD9 /* DSChooseClassView.xib */; };
@@ -27,9 +35,6 @@
 		900146AA2384E5A800275DD9 /* DSGoodsPosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900146A92384E5A800275DD9 /* DSGoodsPosterView.xib */; };
 		900736CF23B303EE00339BC3 /* DSShareDynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 900736CE23B303EE00339BC3 /* DSShareDynamicView.m */; };
 		900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 900736D023B303F500339BC3 /* DSShareDynamicView.xib */; };
-		90088F3D23F28B3800F1379F /* UIViewController+HBD.m in Sources */ = {isa = PBXBuildFile; fileRef = 90088F3623F28B3800F1379F /* UIViewController+HBD.m */; };
-		90088F3E23F28B3800F1379F /* HBDNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 90088F3723F28B3800F1379F /* HBDNavigationBar.m */; };
-		90088F3F23F28B3800F1379F /* HBDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90088F3923F28B3800F1379F /* HBDNavigationController.m */; };
 		9013FAD124123BAE00B9275C /* DSOrderWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9013FAD024123BAE00B9275C /* DSOrderWebVC.m */; };
 		9013FAD42412490800B9275C /* yqt_order_icon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9013FAD22412490700B9275C /* yqt_order_icon.gif */; };
 		9028AA4123AC756F0015E06D /* DSVipUpOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA3F23AC756F0015E06D /* DSVipUpOrderVC.m */; };
@@ -344,6 +349,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALiTradeWebViewController.m; sourceTree = "<group>"; };
+		49DBE4EE243C580C00F984D4 /* ALiTradeWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALiTradeWebViewController.h; sourceTree = "<group>"; };
+		49DBE4F0243C68A500F984D4 /* DSTaoKeOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoKeOrderVC.h; sourceTree = "<group>"; };
+		49DBE4F1243C68A500F984D4 /* DSTaoKeOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTaoKeOrderVC.m; sourceTree = "<group>"; };
+		49DBE4F2243C68A500F984D4 /* DSTaoKeOrderVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTaoKeOrderVC.xib; sourceTree = "<group>"; };
+		49DBE4F5243C68B200F984D4 /* DSTaoKeOrderChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoKeOrderChildVC.h; sourceTree = "<group>"; };
+		49DBE4F6243C68B200F984D4 /* DSTaoKeOrderChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTaoKeOrderChildVC.m; sourceTree = "<group>"; };
+		49DBE4F7243C68B200F984D4 /* DSTaoKeOrderChildVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTaoKeOrderChildVC.xib; sourceTree = "<group>"; };
+		49DBE4FA243C68DD00F984D4 /* DSTaoKeOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoKeOrderCell.h; sourceTree = "<group>"; };
+		49DBE4FB243C68DD00F984D4 /* DSTaoKeOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTaoKeOrderCell.m; sourceTree = "<group>"; };
+		49DBE4FC243C68DD00F984D4 /* DSTaoKeOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTaoKeOrderCell.xib; sourceTree = "<group>"; };
+		49DBE4FF243C6C7300F984D4 /* DSTaoKeOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoKeOrder.h; sourceTree = "<group>"; };
+		49DBE500243C6C7300F984D4 /* DSTaoKeOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTaoKeOrder.m; sourceTree = "<group>"; };
 		900146792383E19300275DD9 /* DSChooseClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChooseClassView.h; sourceTree = "<group>"; };
 		9001467A2383E19300275DD9 /* DSChooseClassView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChooseClassView.m; sourceTree = "<group>"; };
 		9001467C2383E19A00275DD9 /* DSChooseClassView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChooseClassView.xib; sourceTree = "<group>"; };
@@ -373,12 +391,6 @@
 		900736CD23B303EE00339BC3 /* DSShareDynamicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSShareDynamicView.h; sourceTree = "<group>"; };
 		900736CE23B303EE00339BC3 /* DSShareDynamicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSShareDynamicView.m; sourceTree = "<group>"; };
 		900736D023B303F500339BC3 /* DSShareDynamicView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSShareDynamicView.xib; sourceTree = "<group>"; };
-		90088F3323F28B3800F1379F /* HBDNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBDNavigationBar.h; sourceTree = "<group>"; };
-		90088F3523F28B3800F1379F /* HBDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBDNavigationController.h; sourceTree = "<group>"; };
-		90088F3623F28B3800F1379F /* UIViewController+HBD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HBD.m"; sourceTree = "<group>"; };
-		90088F3723F28B3800F1379F /* HBDNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBDNavigationBar.m; sourceTree = "<group>"; };
-		90088F3823F28B3800F1379F /* UIViewController+HBD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HBD.h"; sourceTree = "<group>"; };
-		90088F3923F28B3800F1379F /* HBDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBDNavigationController.m; sourceTree = "<group>"; };
 		9013FACF24123BAE00B9275C /* DSOrderWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSOrderWebVC.h; sourceTree = "<group>"; };
 		9013FAD024123BAE00B9275C /* DSOrderWebVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSOrderWebVC.m; sourceTree = "<group>"; };
 		9013FAD22412490700B9275C /* yqt_order_icon.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yqt_order_icon.gif; sourceTree = "<group>"; };
@@ -936,27 +948,6 @@
 			path = GXSaveImageToPHAsset;
 			sourceTree = "<group>";
 		};
-		90088F3123F28B3800F1379F /* HBDNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				90088F3223F28B3800F1379F /* Classes */,
-			);
-			path = HBDNavigationBar;
-			sourceTree = "<group>";
-		};
-		90088F3223F28B3800F1379F /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				90088F3323F28B3800F1379F /* HBDNavigationBar.h */,
-				90088F3723F28B3800F1379F /* HBDNavigationBar.m */,
-				90088F3523F28B3800F1379F /* HBDNavigationController.h */,
-				90088F3923F28B3800F1379F /* HBDNavigationController.m */,
-				90088F3823F28B3800F1379F /* UIViewController+HBD.h */,
-				90088F3623F28B3800F1379F /* UIViewController+HBD.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		903A95BC23A2123B00AD68CF /* LYEmptyView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1207,6 +1198,8 @@
 				90D11CFF2407AD9300957F13 /* DSTaoGoodsDetailVC.h */,
 				90D11D002407AD9300957F13 /* DSTaoGoodsDetailVC.m */,
 				90D11D012407AD9300957F13 /* DSTaoGoodsDetailVC.xib */,
+				49DBE4EE243C580C00F984D4 /* ALiTradeWebViewController.h */,
+				49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1392,6 +1385,12 @@
 				9065881F23ADCF3B001E57ED /* DSMyAfterOrderVC.h */,
 				9065882023ADCF3B001E57ED /* DSMyAfterOrderVC.m */,
 				9065882123ADCF3B001E57ED /* DSMyAfterOrderVC.xib */,
+				49DBE4F0243C68A500F984D4 /* DSTaoKeOrderVC.h */,
+				49DBE4F1243C68A500F984D4 /* DSTaoKeOrderVC.m */,
+				49DBE4F2243C68A500F984D4 /* DSTaoKeOrderVC.xib */,
+				49DBE4F5243C68B200F984D4 /* DSTaoKeOrderChildVC.h */,
+				49DBE4F6243C68B200F984D4 /* DSTaoKeOrderChildVC.m */,
+				49DBE4F7243C68B200F984D4 /* DSTaoKeOrderChildVC.xib */,
 				903D07F223837FD7001C2E40 /* DSOrderDetailVC.h */,
 				903D07F323837FD7001C2E40 /* DSOrderDetailVC.m */,
 				903D07F423837FD7001C2E40 /* DSOrderDetailVC.xib */,
@@ -1462,6 +1461,8 @@
 				9065881D23ADC074001E57ED /* DSMyOrder.m */,
 				9065882423ADECD0001E57ED /* DSMyOrderDetail.h */,
 				9065882523ADECD0001E57ED /* DSMyOrderDetail.m */,
+				49DBE4FF243C6C7300F984D4 /* DSTaoKeOrder.h */,
+				49DBE500243C6C7300F984D4 /* DSTaoKeOrder.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1500,6 +1501,9 @@
 				903D080B23838D03001C2E40 /* DSExpressDetailCell.h */,
 				903D080C23838D03001C2E40 /* DSExpressDetailCell.m */,
 				903D080D23838D03001C2E40 /* DSExpressDetailCell.xib */,
+				49DBE4FA243C68DD00F984D4 /* DSTaoKeOrderCell.h */,
+				49DBE4FB243C68DD00F984D4 /* DSTaoKeOrderCell.m */,
+				49DBE4FC243C68DD00F984D4 /* DSTaoKeOrderCell.xib */,
 				90FD91DB237E48BD00016EF7 /* DSMyTeamHeader.h */,
 				90FD91DC237E48BD00016EF7 /* DSMyTeamHeader.m */,
 				90FD91DE237E48C700016EF7 /* DSMyTeamHeader.xib */,
@@ -1744,7 +1748,6 @@
 		906F36ED23792F64000B160A /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
-				90088F3123F28B3800F1379F /* HBDNavigationBar */,
 				90C94C2F23A47DC900CD19FB /* SPPickerView */,
 				903A95BC23A2123B00AD68CF /* LYEmptyView */,
 				906F36EE23792F64000B160A /* WXPhotoContainerView */,
@@ -2122,6 +2125,7 @@
 				90EC25BD237A9E44005C24C8 /* DSCartCell.xib in Resources */,
 				903D081E238398F5001C2E40 /* DSUpOrderVC.xib in Resources */,
 				903D081423839166001C2E40 /* DSApplyRefundVC.xib in Resources */,
+				49DBE4FE243C68DD00F984D4 /* DSTaoKeOrderCell.xib in Resources */,
 				90FD91C1237E406600016EF7 /* DSMyOrderFooter.xib in Resources */,
 				900146962383EA3800275DD9 /* DSTakeCouponCell.xib in Resources */,
 				90EC25A9237A9806005C24C8 /* DSCateGoodsChildVC.xib in Resources */,
@@ -2132,9 +2136,11 @@
 				90615E3A23BAE9EC005FDFFC /* mtopsdk_configuration.plist in Resources */,
 				90EC259A237A9061005C24C8 /* DSBannerCell.xib in Resources */,
 				903D0819238393ED001C2E40 /* DSApplyRefundCell.xib in Resources */,
+				49DBE4F9243C68B200F984D4 /* DSTaoKeOrderChildVC.xib in Resources */,
 				900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */,
 				906F36382378ED46000B160A /* Assets.xcassets in Resources */,
 				90B7945D23FAC35600340CDF /* DSMyCollectCell.xib in Resources */,
+				49DBE4F4243C68A600F984D4 /* DSTaoKeOrderVC.xib in Resources */,
 				90ED68E323BA05B60035988E /* SZUpdateView.xib in Resources */,
 				903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */,
 				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
@@ -2302,7 +2308,6 @@
 				9086946623A729D100451D8B /* DSMyTeam.m in Sources */,
 				90FD91AC237E3B4400016EF7 /* DSMyCell.m in Sources */,
 				90EC25BC237A9E44005C24C8 /* DSCartCell.m in Sources */,
-				90088F3F23F28B3800F1379F /* HBDNavigationController.m in Sources */,
 				90AE52CC23828595009F4740 /* DSDynamicLayout.m in Sources */,
 				90C94C2223A4716400CD19FB /* DSCartData.m in Sources */,
 				90EC257D237A5D9B005C24C8 /* DSRegisterVC.m in Sources */,
@@ -2338,12 +2343,14 @@
 				90FD91BA237E3FD300016EF7 /* DSMyOrderHeader.m in Sources */,
 				906F377223792F64000B160A /* LMJHorizontalScrollText.m in Sources */,
 				906F375D23792F64000B160A /* SPButton.m in Sources */,
+				49DBE4EF243C580C00F984D4 /* ALiTradeWebViewController.m in Sources */,
 				900146812383E31900275DD9 /* DSChooseClassCell.m in Sources */,
 				903A95CC23A213E200AD68CF /* DSMessage.m in Sources */,
 				90EC2594237A8EDF005C24C8 /* DSHomeBannerHeader.m in Sources */,
 				90C94C2C23A47D9600CD19FB /* GXChooseAddressView.m in Sources */,
 				90AE52E823829B45009F4740 /* DSPuslishDynamicData.m in Sources */,
 				90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */,
+				49DBE4F8243C68B200F984D4 /* DSTaoKeOrderChildVC.m in Sources */,
 				906F375F23792F64000B160A /* FBShimmeringView.m in Sources */,
 				906F377023792F64000B160A /* LMJVerticalScrollText.m in Sources */,
 				906F375623792F64000B160A /* RCFilterCell.m in Sources */,
@@ -2423,7 +2430,6 @@
 				906F375323792F64000B160A /* MSUserManager.m in Sources */,
 				903D07FE2383823B001C2E40 /* DSOrderDetailFooter.m in Sources */,
 				90F74E2323822762003576B3 /* DSVipHeader.m in Sources */,
-				90088F3E23F28B3800F1379F /* HBDNavigationBar.m in Sources */,
 				9001469A2383F12900275DD9 /* DSVipGoodsDetailVC.m in Sources */,
 				90C94C3E23A4860C00CD19FB /* DSMyAddress.m in Sources */,
 				903CB55C23927F180053A25B /* UIScrollView+TYSnapshot.m in Sources */,
@@ -2440,14 +2446,15 @@
 				90D7E77B23FC184C00231D85 /* DSUpOrderSectionHeader.m in Sources */,
 				9065881E23ADC074001E57ED /* DSMyOrder.m in Sources */,
 				900736CF23B303EE00339BC3 /* DSShareDynamicView.m in Sources */,
-				90088F3D23F28B3800F1379F /* UIViewController+HBD.m in Sources */,
 				90F74E3D2382323A003576B3 /* DSMyBalanceVC.m in Sources */,
 				906F376E23792F64000B160A /* zhAlertView.m in Sources */,
 				900146952383EA3800275DD9 /* DSTakeCouponCell.m in Sources */,
 				903CB55E23927F180053A25B /* UIImage+TYSnapshot.m in Sources */,
+				49DBE4FD243C68DD00F984D4 /* DSTaoKeOrderCell.m in Sources */,
 				906F377123792F64000B160A /* UILabel+ForLMJVerticalScrollText.m in Sources */,
 				90ED68E223BA05B60035988E /* SZUpdateView.m in Sources */,
 				906F377523792F64000B160A /* ZJPickerView.m in Sources */,
+				49DBE501243C6C7300F984D4 /* DSTaoKeOrder.m in Sources */,
 				906F375523792F64000B160A /* SDWeiXinPhotoContainerView.m in Sources */,
 				906F376F23792F64000B160A /* UIView+ForLMJVerticalScrollText.m in Sources */,
 				906F374E23792F64000B160A /* HXLocationTool_.m in Sources */,
@@ -2459,6 +2466,7 @@
 				906F36AD23792F5B000B160A /* HXGuideViewController.m in Sources */,
 				906F375023792F64000B160A /* HXNetworkCache.m in Sources */,
 				90EC25AD237A99A8005C24C8 /* DSCateGoodsCell.m in Sources */,
+				49DBE4F3243C68A600F984D4 /* DSTaoKeOrderVC.m in Sources */,
 				906F374D23792F64000B160A /* UIView+HXNExtension.m in Sources */,
 				906F376823792F64000B160A /* FSActionSheetItem.m in Sources */,
 				90C6C30D239E27E000A531CC /* DSHomeData.m in Sources */,
@@ -2669,7 +2677,7 @@
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
+					"-all_load",
 					"-l\"AFNetworking\"",
 					"-l\"IQKeyboardManager\"",
 					"-l\"JJFontFit\"",
@@ -2767,7 +2775,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0103;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0326;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2820,7 +2828,7 @@
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-ObjC",
+					"-all_load",
 					"-l\"AFNetworking\"",
 					"-l\"IQKeyboardManager\"",
 					"-l\"JJFontFit\"",
@@ -2918,7 +2926,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0103;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0326;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -6,7 +6,7 @@ target 'DS' do
     pod "JJFontFit"
     pod "ZLPhotoBrowser"
     pod "MJRefresh"
-    pod "zhPopupController"
+    pod "zhPopupController","<2.0.0"
     pod "IQKeyboardManager"
     pod "NHHUDExtend"
     pod "YYCache"
@@ -20,6 +20,7 @@ target 'DS' do
     pod "TYCyclePagerView"
     pod "ZLCollectionViewFlowLayout"
     pod "WechatOpenSDK","<1.8.6"
+    pod 'HBDNavigationBar'
     source 'http://repo.baichuan-ios.taobao.com/baichuanSDK/AliBCSpecs.git'
     pod 'AlibcTradeSDK','4.0.0.8'
     pod 'AliAuthSDK','2.0.0.3'
@@ -28,5 +29,4 @@ target 'DS' do
     pod 'AliLinkPartnerSDK','4.0.0.24'
     pod 'BCUserTrack','5.2.0.11-appkeys'
     pod 'UTDID','1.1.0.16'
-    pod 'HBDNavigationBar'
 end

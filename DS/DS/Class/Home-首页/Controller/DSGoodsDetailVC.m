@@ -195,7 +195,7 @@
 }
 - (IBAction)kefuClicked:(SPButton *)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = @"WL2020";
+    pasteboard.string = @"LFy-122h";
     [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"已复制客户微信号到剪切板"];
 }
 
@@ -291,7 +291,7 @@
 
     
     [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]]];
-    self.backPrice.text = [NSString stringWithFormat:@"返佣金额：%.2f",[self.goodsDetail.cmm_price floatValue]];
+    self.backPrice.text = [NSString stringWithFormat:@"现金补贴：%.2f",[self.goodsDetail.cmm_price floatValue]];
     self.provider.text = [NSString stringWithFormat:@"供应商：%@",self.goodsDetail.provider];
     self.stockNum.text = self.goodsDetail.stock;
     if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {

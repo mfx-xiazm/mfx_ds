@@ -403,8 +403,7 @@ static NSString *const CartCell = @"CartCell";
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DSCartData *cart = self.cartDataArr[indexPath.row];
-    //cell.flag.hidden = [cart.is_discount isEqualToString:@"1"]?NO:YES;
-    cell.flag.hidden = YES;
+    cell.flag.hidden = [cart.is_discount isEqualToString:@"1"]?NO:YES;
     cell.cart = cart;
     hx_weakify(self);
     cell.cartHandleCall = ^(NSInteger index) {

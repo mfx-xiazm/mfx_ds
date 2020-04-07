@@ -14,6 +14,9 @@
 #import "DSGoodsDetail.h"
 #import "DSVipUpOrderVC.h"
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
+#import <AlibabaAuthSDK/ALBBSDK.h>
+#import <AlibabaAuthSDK/ALBBSession.h>
+#import "ALiTradeWebViewController.h"
 
 @interface DSTaoGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
@@ -32,7 +35,8 @@
 /** 淘宝商品详情 */
 @property (nonatomic, strong) AlibcTradeProcessSuccessCallback onTradeSuccess;
 @property (nonatomic, strong) AlibcTradeProcessFailedCallback onTradeFailure;
-
+@property (nonatomic, strong) loginSuccessCallback onLoginSuccess;
+@property (nonatomic, strong) loginFailureCallback onLoginFailure;
 @end
 
 @implementation DSTaoGoodsDetailVC
@@ -63,6 +67,17 @@
         NSString *tip = [NSString stringWithFormat:@"交易失败:\n订单号\n%@",orderid];
         HXLog(@"%@",tip);
     };
+    hx_weakify(self);
+    _onLoginSuccess = ^(ALBBSession *session) {
+        hx_strongify(weakSelf);
+        ALBBUser *user = [session getUser];
+        [strongSelf getTaoAuthRequest:user.openId];
+    };
+    _onLoginFailure = ^(ALBBSession *session,NSError *error) {
+        NSString *tip = [NSString stringWithFormat:@"授权失败:%@",error.localizedDescription];
+        HXLog(@"%@",tip);
+    };
+    
     [self setUpCyclePagerView];
     
     // 针对 11.0 以上的iOS系统进行处理
@@ -176,37 +191,83 @@
     NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
     [self.webView loadHTMLString:h5 baseURL:nil];
 }
+-(void)getTaoAuthRequest:(NSString *)openId
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"goods_id"] = self.goods_id;//商品id
+    parameters[@"baichuan_open_id"] = openId;
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"is_oauth_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if ([responseObject[@"status"] integerValue] == 1) {
+            if ([responseObject[@"result"][@"is_oauth"] integerValue] == 1) {//需要授权
+                [strongSelf openTaoKeAuth:[NSString stringWithFormat:@"%@",responseObject[@"result"][@"oauth_url"]]];
+            }else{// 不需要授权
+                [strongSelf openTaoKePush:[NSString stringWithFormat:@"%@",responseObject[@"result"][@"taobao_goods_url"]]];
+            }
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)openTaoKeAuth:(NSString *)authUrl
+{
+    ALiTradeWebViewController *webvc = [ALiTradeWebViewController new];
+    webvc.openUrl = authUrl;
+    hx_weakify(self);
+    webvc.authSuccessCall = ^(NSString *url) {
+        hx_strongify(weakSelf);
+        [strongSelf openTaoKePush:url];
+    };
+    NSInteger res = [[AlibcTradeSDK sharedInstance].tradeService openByUrl:authUrl identity:@"trade" webView:webvc.webView parentController:self showParams:nil taoKeParams:nil trackParam:nil tradeProcessSuccessCallback:nil tradeProcessFailedCallback:nil];
+    if (res == 1) {
+        [self.navigationController pushViewController:webvc animated:YES];
+    }
+}
+-(void)openTaoKePush:(NSString *)taoUrl
+{
+        // 根据商品id创建一个商品详情页对象
+        //id<AlibcTradePage> page = [AlibcTradePageFactory itemDetailPage:self.goodsDetail.taobao_item_id];
+    
+        // 阿里百川电商参数组装
+        AlibcTradeShowParams *showParam = [[AlibcTradeShowParams alloc] init];
+        // 打开页面的方式 有智能判断和强制拉端(手淘/天猫)两种方式；默认智能判断
+        showParam.openType = AlibcOpenTypeAuto;
+        // 是否为push方式打开新页面 NO:在当前view controller上present新页面/YES:在传入的UINavigationController中push新页面
+        showParam.isNeedPush = YES;
+        // 是否需要自定义处理跳手淘/天猫失败后的处理策略，默认未无需自定义
+        showParam.isNeedCustomNativeFailMode = YES;
+        // 当isNeedCustomNativeFailMode == YES时生效 跳手淘/天猫失败后的处理策略, 默认值为: AlibcNativeFailModeJumpH5
+        showParam.nativeFailMode = AlibcNativeFailModeJumpDownloadPage;
+        // 优先拉起的linkKey，手淘：@"taobao" 天猫:@"tmall"
+        showParam.linkKey = @"taobao";
+    
+        // 淘客参数
+        AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
+        taokeParams.pid = self.goodsDetail.taobao_pid;//淘宝联盟pid
+        taokeParams.extParams = @{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid};
+        // 返回值 仅一种情况需要媒体处理 即当AlibcTradeShowParams 中 isNeedPush 为YES时.此时需要媒体根据API返回值为1时（应用內H5打开），在传入的UINavigationController中push新页面。
+        AlibcWebViewController *webVC =[[AlibcWebViewController alloc] init];
+    NSInteger res = [[AlibcTradeSDK sharedInstance].tradeService openByUrl:taoUrl identity:@"trade" webView:nil parentController:self showParams:showParam taoKeParams:taokeParams trackParam:@{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid,@"isv_code":[MSUserManager sharedInstance].curUserInfo.phone} tradeProcessSuccessCallback:self.onTradeSuccess tradeProcessFailedCallback:self.onTradeFailure];
+        if (res == 1) {
+            [self.navigationController pushViewController:webVC animated:YES];
+        }
+}
 #pragma mark -- 点击事件
 -(void)backClicked
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)buyClicked:(UIButton *)sender {
-    // 根据商品id创建一个商品详情页对象
-    id<AlibcTradePage> page = [AlibcTradePageFactory itemDetailPage:self.goodsDetail.taobao_item_id];
-    
-    // 阿里百川电商参数组装
-    AlibcTradeShowParams *showParam = [[AlibcTradeShowParams alloc] init];
-    // 打开页面的方式 有智能判断和强制拉端(手淘/天猫)两种方式；默认智能判断
-    showParam.openType = AlibcOpenTypeAuto;
-    // 是否为push方式打开新页面 NO:在当前view controller上present新页面/YES:在传入的UINavigationController中push新页面
-    showParam.isNeedPush = YES;
-    // 是否需要自定义处理跳手淘/天猫失败后的处理策略，默认未无需自定义
-    showParam.isNeedCustomNativeFailMode = YES;
-    // 当isNeedCustomNativeFailMode == YES时生效 跳手淘/天猫失败后的处理策略, 默认值为: AlibcNativeFailModeJumpH5
-    showParam.nativeFailMode = AlibcNativeFailModeJumpDownloadPage;
-    // 优先拉起的linkKey，手淘：@"taobao" 天猫:@"tmall"
-    showParam.linkKey = @"taobao";
-    
-    // 淘客参数
-    AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
-    taokeParams.pid = self.goodsDetail.taobao_pid;//淘宝联盟pid
-    taokeParams.extParams = @{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid};
-    // 返回值 仅一种情况需要媒体处理 即当AlibcTradeShowParams 中 isNeedPush 为YES时.此时需要媒体根据API返回值为1时（应用內H5打开），在传入的UINavigationController中push新页面。
-    AlibcWebViewController *webVC =[[AlibcWebViewController alloc] init];
-    NSInteger res = [[AlibcTradeSDK sharedInstance].tradeService openByBizCode:@"detail" page:page webView:webVC.webView parentController:self.navigationController showParams:showParam taoKeParams:taokeParams trackParam:@{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid,@"isv_code":[MSUserManager sharedInstance].curUserInfo.phone} tradeProcessSuccessCallback:self.onTradeSuccess tradeProcessFailedCallback:self.onTradeFailure];
-    if (res == 1) {
-        [self.navigationController pushViewController:webVC animated:YES];
+    if(![[ALBBSession sharedInstance] isLogin]) {
+        [[ALBBSDK sharedInstance] auth:self successCallback:_onLoginSuccess failureCallback:_onLoginFailure];
+    } else {
+        // 已经登录
+        ALBBUser *user = [[ALBBSession sharedInstance] getUser];
+        [self getTaoAuthRequest:user.openId];
     }
 }
 #pragma mark -- 事件监听

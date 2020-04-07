@@ -75,7 +75,7 @@
 -(void)kefuClicked
 {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string = @"WL2020";
+    pasteboard.string = @"LFy-122h";
     [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"已复制客户微信号到剪切板"];
 }
 -(void)setClicked
@@ -164,8 +164,10 @@
     
     if ([MSUserManager sharedInstance].curUserInfo.ulevel != 1) {
         self.vip.hidden = NO;
+        self.vip.image = HXGetImage(@"等级");
     }else{
-        self.vip.hidden = YES;
+        self.vip.hidden = NO;
+        self.vip.image = HXGetImage(@"普通");
     }
     
     self.shareCode.text = [NSString stringWithFormat:@"邀请码：%@",[MSUserManager sharedInstance].curUserInfo.share_code];

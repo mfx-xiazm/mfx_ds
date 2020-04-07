@@ -74,6 +74,10 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"您的密码前后不一致"];
             return NO;
         }
+        if (![strongSelf.inviteCode hasText]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入邀请码"];
+            return NO;
+        }
         if (!strongSelf.agreeBtn.isSelected) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"未勾选协议"];
             return NO;
@@ -185,15 +189,15 @@
     if ([[URL scheme] isEqualToString:@"yhxy"]) {
         DSWebContentVC *wvc = [DSWebContentVC new];
         wvc.navTitle = @"用户协议";
-        wvc.requestType = 5;
-        wvc.isNeedRequest = YES;
+        wvc.isNeedRequest = NO;
+        wvc.url = @"http://apiadmin.whaleupgo.com/webapp/page/userAgreement.html";
         [self.navigationController pushViewController:wvc animated:YES];
         return NO;
     }else if ([[URL scheme] isEqualToString:@"ysxy"]) {
         DSWebContentVC *wvc = [DSWebContentVC new];
         wvc.navTitle = @"隐私政策";
         wvc.requestType = 6;
-        wvc.isNeedRequest = YES;
+        wvc.url = @"http://apiadmin.whaleupgo.com/webapp/page/privacyPolicy.html";
         [self.navigationController pushViewController:wvc animated:YES];
         return NO;
     }

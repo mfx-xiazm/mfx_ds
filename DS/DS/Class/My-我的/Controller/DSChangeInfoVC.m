@@ -28,7 +28,7 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(setUserInfoRequest) title:@"确定" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
     
     [self.headPic sd_setImageWithURL:[NSURL URLWithString:[MSUserManager sharedInstance].curUserInfo.avatar] placeholderImage:HXGetImage(@"avatar")];
-    self.nick.text = [MSUserManager sharedInstance].curUserInfo.nick_name;
+    self.nick.text = [MSUserManager sharedInstance].curUserInfo.nick_name.length ?[MSUserManager sharedInstance].curUserInfo.nick_name:@"";
     if ([[MSUserManager sharedInstance].curUserInfo.sex isEqualToString:@"0"]) {
         self.sex.text = @"";
     }else{

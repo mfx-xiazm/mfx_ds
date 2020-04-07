@@ -86,7 +86,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     [msg setImage:HXGetImage(@"消息") forState:UIControlStateNormal];
     [msg addTarget:self action:@selector(msgClicked) forControlEvents:UIControlEventTouchUpInside];
     [msg setTitleColor:UIColorFromRGB(0XFFFFFF) forState:UIControlStateNormal];
-    msg.badgeBgColor  = HXControlBg;
+    msg.badgeBgColor  = UIColorFromRGB(0xEA1C1C);
     msg.badgeCenterOffset = CGPointMake(-10, 10);
     self.msgBtn = msg;
     
@@ -123,12 +123,8 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 #pragma mark -- 点击事件
 -(void)msgClicked
 {
-//    DSMessageVC *mvc = [DSMessageVC new];
-//    [self.navigationController pushViewController:mvc animated:YES];
-    DSWebContentVC *wvc = [DSWebContentVC new];
-    wvc.navTitle = @"测试商城";
-    wvc.url = @"http://dev.wx.yqtb2b.com/?bid=321548b7caa9c19b0f1bb2cf1fba76c4&loginParams=HPIpcz0AAQsGzkWBAJi55%2B5uiHapasQjT4I77Yo1h7ILNtPLjtRlG7t%2FDuxTe0YF#/home";
-    [self.navigationController pushViewController:wvc animated:YES];
+    DSMessageVC *mvc = [DSMessageVC new];
+    [self.navigationController pushViewController:mvc animated:YES];
 }
 - (void)searchClicked
 {
@@ -235,7 +231,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 //            self.hbd_tintColor = UIColor.whiteColor;
 //            self.hbd_titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:0] };
             self.collectionView.backgroundColor = [UIColor clearColor];
-            self.msgBtn.badgeBgColor  = HXControlBg;
+            self.msgBtn.badgeBgColor  = UIColorFromRGB(0xEA1C1C);
         } else {
 //            self.hbd_barStyle = UIBarStyleDefault;
 //            self.hbd_tintColor = UIColor.blackColor;
@@ -361,8 +357,8 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {//分类
-        CGFloat width = (HX_SCREEN_WIDTH-25.0*2.0-25*3.0)/4.0;
-        CGFloat height = width+30.f;
+        CGFloat width = (HX_SCREEN_WIDTH-10.0*2.0-25*3.0)/4.0;
+        CGFloat height = width+20.f;
         return CGSizeMake(width, height);
     }else{//推荐商品分组
         CGFloat width = HX_SCREEN_WIDTH;
@@ -379,14 +375,14 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     if (section == 0) {//分类
-        return 5.f;
+        return 0.f;
     }else{//推荐商品分组
         return 0.f;
     }
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     if (section == 0) {//分类
-        return  UIEdgeInsetsMake(10.f, 25.f, 10.f, 25.f);
+        return  UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f);
     }else{//推荐商品分组
         return  UIEdgeInsetsZero;
     }

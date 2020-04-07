@@ -19,6 +19,7 @@ PODS:
   - AliLinkPartnerSDK (4.0.0.24)
   - BCUserTrack (5.2.0.11-appkeys):
     - UTDID
+  - HBDNavigationBar (1.7.5)
   - IQKeyboardManager (6.5.3)
   - JJFontFit (1.0.1)
   - JXCategoryView (1.5.2)
@@ -32,14 +33,14 @@ PODS:
   - SDWebImage/Core (5.3.1)
   - securityGuard (5.4.173)
   - TYCyclePagerView (1.2.0)
-  - UMCCommon (2.1.1)
+  - UMCCommon (2.1.4)
   - UMCSecurityPlugins (1.0.6)
-  - UMCShare/Core (6.9.6):
+  - UMCShare/Core (6.9.8):
     - UMCCommon
-  - UMCShare/Social/ReducedWeChat (6.9.6):
+  - UMCShare/Social/ReducedWeChat (6.9.8):
     - UMCCommon
     - UMCShare/Core
-  - UMCShare/UI (6.9.6):
+  - UMCShare/UI (6.9.8):
     - UMCCommon
     - UMCShare/Core
   - UTDID (1.1.0.16)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - AlibcTradeSDK (= 4.0.0.8)
   - AliLinkPartnerSDK (= 4.0.0.24)
   - BCUserTrack (= 5.2.0.11-appkeys)
+  - HBDNavigationBar
   - IQKeyboardManager
   - JJFontFit
   - JXCategoryView
@@ -75,7 +77,7 @@ DEPENDENCIES:
   - YYCache
   - YYModel
   - YYText
-  - zhPopupController
+  - zhPopupController (< 2.0.0)
   - ZLCollectionViewFlowLayout
   - ZLPhotoBrowser
 
@@ -90,6 +92,7 @@ SPEC REPOS:
     - UTDID
   trunk:
     - AFNetworking
+    - HBDNavigationBar
     - IQKeyboardManager
     - JJFontFit
     - JXCategoryView
@@ -115,6 +118,7 @@ SPEC CHECKSUMS:
   AlibcTradeSDK: 72d36e433ecfbd4c78b5199f0db4f70fd4be374b
   AliLinkPartnerSDK: c5778cdfdcee7bfe342238d39a77766184d36a46
   BCUserTrack: f267dfb52a6e67603c33668f2e9384ee01b68a88
+  HBDNavigationBar: e802e7abf53c835abe7325aca9e6cff73ebe931d
   IQKeyboardManager: c2f901164d56807a35788483584d09fa69192e8e
   JJFontFit: 1332e4bf5b5d55d335ec1d6dd585d7f4da21c348
   JXCategoryView: b284d35a7a8772eada05dd78642233e1eb763ea8
@@ -125,9 +129,9 @@ SPEC CHECKSUMS:
   SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
   securityGuard: 35d3a1b5877bb2de4698a78089eb8906fa3ad27b
   TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
-  UMCCommon: 971f324a5a99c9d662ae040a815e7e3d7ef8b2a8
+  UMCCommon: b0703b0053323f598e01670ea702b8eb1e66e611
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
-  UMCShare: e0cef55c0fd6051254c8cda1d0630eb578b27bad
+  UMCShare: a250203b34a56cde25cc4c28335449b542f0255d
   UTDID: c28855683c5ea2e77e597cb14609328f7d470d6e
   WechatOpenSDK: 9b15110aba1d502456d8e83677357e6437f2e751
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
@@ -137,6 +141,6 @@ SPEC CHECKSUMS:
   ZLCollectionViewFlowLayout: 105020fbab88e3dc66ceebc307b36f2c363a8c1f
   ZLPhotoBrowser: 7e88434918366af98f8ebbaf5b94206985812ed6
 
-PODFILE CHECKSUM: b34932ada3dd6e05af4527fbd4ed3f25650653b8
+PODFILE CHECKSUM: 3c372f2d41451a315aadc6510f67925d249eca07
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
