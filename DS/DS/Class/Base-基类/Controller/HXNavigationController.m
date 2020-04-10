@@ -27,7 +27,7 @@
     // 第一句只会在当前导航栏生效，第二句全部生效
     UINavigationBar *bar = [UINavigationBar appearance];
     bar.barTintColor = HXControlBg;
-//    bar.translucent = NO;
+    bar.translucent = NO;
 //    [bar setBackgroundImage:[UIImage imageWithColor:HXControlBg size:CGSizeMake(1, 0.5)] forBarMetrics:UIBarMetricsDefault];
     [bar setShadowImage:HXGetImage(@"nav_line")];
     //    如果如下设置，则所有的导航栏控制器都会生效，并不仅仅限于本导航栏控制器
@@ -42,7 +42,6 @@
     //    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     // 如果滑动移除控制器的功能失效，清空代理(让导航控制器重新设置这个功能)
 //    self.interactivePopGestureRecognizer.delegate = nil;
-
     //  这句很核心 稍后讲解
     id target = self.interactivePopGestureRecognizer.delegate;
     //  这句很核心 稍后讲解

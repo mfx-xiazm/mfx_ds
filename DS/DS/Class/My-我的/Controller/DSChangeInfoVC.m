@@ -102,7 +102,6 @@
                 UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
                 imagePickerController.delegate = self;
                 imagePickerController.allowsEditing = YES;
-                
                 imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 //前后摄像头是否可用
                 [UIImagePickerController isCameraDeviceAvailable:YES];

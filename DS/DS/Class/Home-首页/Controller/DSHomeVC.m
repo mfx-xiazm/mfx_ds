@@ -211,7 +211,7 @@ static NSString *const HomeSectionHeader = @"HomeSectionHeader";
     alert.updateClickedCall = ^(NSInteger index) {
         hx_strongify(weakSelf);
         if (index == 1) {// 强制更新不消失
-            //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/cn/app/id1468066838?mt=8"]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/cn/app/id1506869210?mt=8"]];
         }else{// 不强制更新消失
             [strongSelf.zh_popupController dismiss];
         }
