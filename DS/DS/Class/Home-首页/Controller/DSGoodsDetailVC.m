@@ -196,7 +196,7 @@
 - (IBAction)kefuClicked:(SPButton *)sender {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = @"LFy-122h";
-    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"已复制客户微信号到剪切板"];
+    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"已复制客服微信号到剪切板"];
 }
 
 - (IBAction)collectGoodsClicked:(SPButton *)sender {
