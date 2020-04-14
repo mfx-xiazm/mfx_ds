@@ -47,8 +47,10 @@
 - (IBAction)posterTypeClicked:(UIButton *)sender {
     if (sender.tag) {
         UIImage* image = nil;
-        UIGraphicsBeginImageContext(_contentView.contentSize);
+//        UIGraphicsBeginImageContext(_contentView.contentSize);
 
+        UIGraphicsBeginImageContextWithOptions(_contentView.contentSize, NO, 0.0);//原图
+        
         CGPoint savedContentOffset = _contentView.contentOffset;
         CGRect savedFrame = _contentView.frame;
 

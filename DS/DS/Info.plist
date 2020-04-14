@@ -170,6 +170,8 @@
 	<string>App需要您的同意,才能访问麦克风</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>访问相册，完成动态投稿或用于完善个人信息</string>
+	<key>NSPhotoLibraryAddUsageDescription - 2</key>
+	<string>访问相册，完成动态投稿或用于完善个人信息</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>访问相册，完成动态投稿或用于完善个人信息</string>
 	<key>UILaunchStoryboardName</key>
