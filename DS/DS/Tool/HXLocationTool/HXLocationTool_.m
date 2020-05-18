@@ -44,12 +44,10 @@
         
         if (placemarks.count > 0) {
             CLPlacemark * placemark = placemarks.firstObject;
-            //存储位置信息
-//            HXLog(@"--%@%@%@%@%@--",placemark.locality,placemark.subLocality,placemark.name,placemark.thoroughfare,placemark.subThoroughfare);
             //设置代理方法
-            if ([weakSelf.delegate respondsToSelector:@selector(locationDidEndUpdatingLongitude:latitude:city:)]) {
+            if ([weakSelf.delegate respondsToSelector:@selector(locationDidEndUpdatingLongitude:latitude:city:district:stree:)]) {
                 
-                [weakSelf.delegate locationDidEndUpdatingLongitude:longitude latitude:latitude city:placemark.locality];
+                [weakSelf.delegate locationDidEndUpdatingLongitude:longitude latitude:latitude city:placemark.locality district:placemark.subLocality stree:placemark.thoroughfare];
             }
         }
     }];

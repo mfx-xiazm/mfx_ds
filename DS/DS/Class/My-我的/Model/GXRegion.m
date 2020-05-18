@@ -10,28 +10,25 @@
 
 @implementation GXRegion
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"city":[GXRegionCity class]
+    return @{@"children":[GXRegionCity class]
              };
 }
-+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper
-{
-    return @{@"ID":@"id"};
-}
-
 @end
+
 @implementation GXRegionCity
 + (NSDictionary *)modelContainerPropertyGenericClass {
-    return @{@"area":[GXRegionArea class]
+    return @{@"children":[GXRegionArea class]
              };
 }
-+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper
-{
-    return @{@"ID":@"id"};
+@end
+
+@implementation GXRegionArea
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"children":[GXRegionDistrict class]
+             };
 }
 @end
-@implementation GXRegionArea
-+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper
-{
-    return @{@"ID":@"id"};
-}
+
+@implementation GXRegionDistrict
+
 @end

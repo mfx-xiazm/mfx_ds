@@ -38,7 +38,7 @@
     _goods = goods;
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
     [self.goodsName setTextWithLineSpace:5.f withString:_goods.goods_name withFont:[UIFont systemFontOfSize:14]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[_goods.price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goods.price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
     self.sale_num.text = [NSString stringWithFormat:@"已售出%@件",_goods.sale_num];
     self.stock.text = [NSString stringWithFormat:@"库存%@件",_goods.stock];
     self.progress.progress = [_goods.stock floatValue]/([_goods.sale_num integerValue] + [_goods.stock integerValue]);//进度=库存/(库存+销量)

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class GXRegion,GXRegionCity,GXRegionArea,GXRegionTown;
+@class GXRegion,GXRegionCity,GXRegionArea,GXRegionDistrict;
 @interface GXSelectRegion : NSObject
 /* 所有地区 */
 @property(nonatomic,strong) NSArray *regions;
@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) GXRegionCity *selectCity;
 /* 选中的区 */
 @property(nonatomic,strong) GXRegionArea *selectArea;
+/* 选中的街道 */
+@property(nonatomic,strong) GXRegionDistrict *selectDistrict;
 @end
 
 NS_ASSUME_NONNULL_END

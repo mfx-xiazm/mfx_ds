@@ -12,7 +12,8 @@
 + (NSDictionary *)modelContainerPropertyGenericClass {
     return @{@"cate":[DSHomeCate class],
              @"adv":[DSHomeBanner class],
-             @"recommend_goods":[DSHomeRecommend class]
+             @"recommend_goods":[DSHomeRecommend class],
+             @"taobao_cate":[DSHomeCate class]
              };
 }
 @end

@@ -9,6 +9,7 @@
 #import "HXTabBarController.h"
 #import "UIImage+HXNExtension.h"
 #import "HXNavigationController.h"
+#import "DSAfreshHomeVC.h"
 #import "DSHomeVC.h"
 #import "DSVipVC.h"
 #import "DSDynamicVC.h"
@@ -42,7 +43,8 @@
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
     
-    [self setupChildVc:[[DSHomeVC alloc] init] title:@"鲸品库" image:@"首页图标" selectedImage:@"首页图标选中"];
+    [self setupChildVc:[[DSAfreshHomeVC alloc] init] title:@"鲸品库" image:@"首页图标" selectedImage:@"首页图标选中"];
+//    [self setupChildVc:[[DSHomeVC alloc] init] title:@"鲸品库" image:@"首页图标" selectedImage:@"首页图标选中"];
     [self setupChildVc:[[DSVipVC alloc] init] title:@"VIP会员" image:@"会员图标" selectedImage:@"会员图标选中"];
     [self setupChildVc:[[DSDynamicVC alloc] init] title:@"鲸学院" image:@"动态图标" selectedImage:@"动态图标选中"];
     //[self setupChildVc:[[DSCartVC alloc] init] title:@"购物车" image:@"购物车图标" selectedImage:@"购物车图标选中"];

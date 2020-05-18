@@ -161,9 +161,9 @@
 	<key>NSContactsUsageDescription</key>
 	<string>App需要您的同意,才能访问通讯录联系人</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>App需要您的同意,才能访问您的位置信息</string>
+	<string>App需要获取您的位置信息，该位置信息作为无归属订单的收获地址分佣</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>App需要您的同意,才能访问您的位置信息</string>
+	<string>App需要获取您的位置信息，该位置信息作为无归属订单的收获地址分佣</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>App需要您的同意,才能访问麦克风</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

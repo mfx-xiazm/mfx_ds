@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *receiver;
 @property (nonatomic, copy) NSString *address_id;
 @property (nonatomic, copy) NSString *district_id;
+@property (nonatomic, copy) NSString *street_id;
 @property (nonatomic, copy) NSString *receiver_phone;
 @property(nonatomic,assign) BOOL is_default;
 

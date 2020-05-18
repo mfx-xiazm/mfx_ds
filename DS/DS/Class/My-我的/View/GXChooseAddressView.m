@@ -69,9 +69,11 @@ static NSString *const AddressCell = @"AddressCell";
     if (component == 0) {
         return self.region.regions.count;
     } else if (component == 1) {
-        return self.region.selectRegion.city.count;
-    } else {
-        return self.region.selectCity.area.count;
+        return self.region.selectRegion.children.count;
+    } else if (component == 2) {
+        return self.region.selectCity.children.count;
+    }else {
+        return self.region.selectArea.children.count;
     }
 }
 
@@ -81,18 +83,23 @@ static NSString *const AddressCell = @"AddressCell";
     GXAddressCell *cell = [pickerView sp_dequeueReusableCellAtRow:row atComponent:component];
     if (component == 0) { // 第1列
         GXRegion *province = self.region.regions[row];
-        cell.titleLabel.text = province.alias;
-        cell.titleLabel.textColor = [province.alias isEqualToString:self.region.selectRegion.alias]?HXControlBg:[UIColor blackColor];
+        cell.titleLabel.text = province.area_alias;
+        cell.titleLabel.textColor = [province.area_alias isEqualToString:self.region.selectRegion.area_alias]?HXControlBg:[UIColor blackColor];
         return cell;
     } else if (component == 1) { // 第2列直接使用系统的cell
-        GXRegionCity *city = self.region.selectRegion.city[row];
-        cell.titleLabel.text = city.alias;
-        cell.titleLabel.textColor = [city.alias isEqualToString:self.region.selectCity.alias]?HXControlBg:[UIColor blackColor];
+        GXRegionCity *city = self.region.selectRegion.children[row];
+        cell.titleLabel.text = city.area_alias;
+        cell.titleLabel.textColor = [city.area_alias isEqualToString:self.region.selectCity.area_alias]?HXControlBg:[UIColor blackColor];
         return cell;
-    }else {// 第3列的cell自定义，xib创建的cell
-        GXRegionArea *district = self.region.selectCity.area[row];
-        cell.titleLabel.text = district.alias;
-        cell.titleLabel.textColor = [district.alias isEqualToString:self.region.selectArea.alias]?HXControlBg:[UIColor blackColor];
+    }else if (component == 2){// 第3列的cell自定义，xib创建的cell
+        GXRegionArea *district = self.region.selectCity.children[row];
+        cell.titleLabel.text = district.area_alias;
+        cell.titleLabel.textColor = [district.area_alias isEqualToString:self.region.selectArea.area_alias]?HXControlBg:[UIColor blackColor];
+        return cell;
+    }else{
+        GXRegionDistrict *town = self.region.selectArea.children[row];
+        cell.titleLabel.text = town.area_alias;
+        cell.titleLabel.textColor = [town.area_alias isEqualToString:self.region.selectDistrict.area_alias]?HXControlBg:[UIColor blackColor];
         return cell;
     }
 }
@@ -118,18 +125,18 @@ static NSString *const AddressCell = @"AddressCell";
         self.numerOfComponents = 2;
         [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
         
-        [self setupPageMenuWithName:self.region.selectRegion.alias atComponent:component];
+        [self setupPageMenuWithName:self.region.selectRegion.area_alias atComponent:component];
     } else if (component == 1) {
         
-        self.region.selectCity = self.region.selectRegion.city[row];
+        self.region.selectCity = self.region.selectRegion.children[row];
 //        self.selectedDistrict = [self.selectedCity.children firstObject];
         //[self.pickerView sp_reloadComponent:2];
-        if (self.region.selectCity.area.count) {
+        if (self.region.selectCity.children.count) {
             self.numerOfComponents = 3;
             [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
-            [self setupPageMenuWithName:self.region.selectCity.alias atComponent:component];
+            [self setupPageMenuWithName:self.region.selectCity.area_alias atComponent:component];
         }else{
-            [self.pageMenu setTitle:self.region.selectCity.alias forItemAtIndex:component];
+            [self.pageMenu setTitle:self.region.selectCity.area_alias forItemAtIndex:component];
 
             [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
                    
@@ -139,13 +146,32 @@ static NSString *const AddressCell = @"AddressCell";
                 self.lastComponentClickedBlock(1,self.region);
             }
         }
-    }  else  {
-        self.region.selectArea = self.region.selectCity.area[row];
+    }else  if (component == 2){
+        self.region.selectArea = self.region.selectCity.children[row];
         
-        [self.pageMenu setTitle:self.region.selectArea.alias forItemAtIndex:component];
+        if (self.region.selectCity.children.count) {
+            self.numerOfComponents = 4;
+            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+            
+            [self setupPageMenuWithName:self.region.selectArea.area_alias atComponent:component];
+        }else{
+            [self.pageMenu setTitle:self.region.selectArea.area_alias forItemAtIndex:component];
 
-        [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
-               
+            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+                   
+            self.pageMenu.selectedItemIndex = component;
+
+            if (self.lastComponentClickedBlock) {
+                self.lastComponentClickedBlock(1,self.region);
+            }
+        }
+    }else{
+        self.region.selectDistrict = self.region.selectArea.children[row];
+        
+        [self.pageMenu setTitle:self.region.selectDistrict.area_alias forItemAtIndex:component];
+        
+        [pickerView sp_reloadComponent:component]; // 刷新当前列
+
         self.pageMenu.selectedItemIndex = component;
 
         if (self.lastComponentClickedBlock) {

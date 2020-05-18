@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sureBtn;
 /* 行政区id */
 @property(nonatomic,copy) NSString *district_id;
+/* 街道id */
+@property (nonatomic, copy) NSString *street_id;
 /* 所有地区 */
 @property(nonatomic,strong) GXSelectRegion *region;
 /* 地址 */
@@ -44,6 +46,7 @@
         self.address_detail.text = _address.address_detail;
         self.is_defalt.selected = _address.is_default;
         self.district_id = _address.district_id;
+        self.street_id = _address.street_id;
     }else{
         [self.navigationItem setTitle:@"添加地址"];
     }
@@ -58,7 +61,7 @@
     NSData *jsonData = [districtStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *district = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
     self.region = [[GXSelectRegion alloc] init];
-    self.region.regions = [NSArray yy_modelArrayWithClass:[GXRegion class] json:district[@"result"][@"list"]];
+    self.region.regions = [NSArray yy_modelArrayWithClass:[GXRegion class] json:district[@"data"]];
     
     hx_weakify(self);
     [self.receiver_phone lengthLimit:^{
@@ -118,12 +121,18 @@
         _addressView.lastComponentClickedBlock = ^(NSInteger type, GXSelectRegion * _Nullable region) {
             [weakSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
             if (type) {
-                if (region.selectArea.alias) {
-                    weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@-%@",region.selectRegion.alias,region.selectCity.alias,region.selectArea.alias];
-                    weakSelf.district_id = region.selectArea.ID;
+                if (region.selectDistrict.area_alias) {
+                    weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@-%@-%@",region.selectRegion.area_alias,region.selectCity.area_alias,region.selectArea.area_alias,region.selectDistrict.area_alias];
+                    weakSelf.district_id = region.selectArea.area_id;
+                    weakSelf.street_id = region.selectDistrict.area_id;
+                }else if (region.selectArea.area_alias) {
+                    weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@-%@",region.selectRegion.area_alias,region.selectCity.area_alias,region.selectArea.area_alias];
+                    weakSelf.district_id = region.selectArea.area_id;
+                    weakSelf.street_id = region.selectArea.area_id;
                 }else{
-                    weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@",region.selectRegion.alias,region.selectCity.alias];
-                    weakSelf.district_id = region.selectCity.ID;
+                    weakSelf.area_name.text = [NSString stringWithFormat:@"%@-%@",region.selectRegion.area_alias,region.selectCity.area_alias];
+                    weakSelf.district_id = region.selectCity.area_id;
+                    weakSelf.street_id = region.selectCity.area_id;
                 }
             }
         };
@@ -153,6 +162,7 @@
     parameters[@"receiver"] = self.receiver.text;
     parameters[@"receiver_phone"] = self.receiver_phone.text;
     parameters[@"district_id"] = self.district_id;
+    parameters[@"street_id"] = self.street_id;
     parameters[@"address_detail"] = self.address_detail.text;
     parameters[@"is_default"] = @(self.is_defalt.isSelected);
     if (self.address) {

@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49B4C0842472559100560451 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07B2472559100560451 /* JXPagerListContainerView.m */; };
+		49B4C0852472559100560451 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07C2472559100560451 /* JXPagerMainTableView.m */; };
+		49B4C0862472559100560451 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07D2472559100560451 /* JXPagerView.m */; };
+		49B4C0872472559100560451 /* JXPagerSmoothView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07F2472559100560451 /* JXPagerSmoothView.m */; };
+		49B4C0882472559100560451 /* JXPagerListRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C0832472559100560451 /* JXPagerListRefreshView.m */; };
+		49B4C08E247257CE00560451 /* DSAfreshHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C08C247257CE00560451 /* DSAfreshHomeVC.m */; };
+		49B4C09324725B1600560451 /* DSAfreshHomeChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C09124725B1600560451 /* DSAfreshHomeChildVC.m */; };
+		49B4C09424725B1600560451 /* DSAfreshHomeChildVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B4C09224725B1600560451 /* DSAfreshHomeChildVC.xib */; };
+		49B4C0972472664800560451 /* DSAfreshHomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C0962472664800560451 /* DSAfreshHomeHeader.m */; };
+		49B4C0992472665300560451 /* DSAfreshHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B4C0982472665300560451 /* DSAfreshHomeHeader.xib */; };
+		49B4C09B24728D9A00560451 /* begin-img.png in Resources */ = {isa = PBXBuildFile; fileRef = 49B4C09A24728D9900560451 /* begin-img.png */; };
 		49DBE4EF243C580C00F984D4 /* ALiTradeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */; };
 		49DBE4F3243C68A600F984D4 /* DSTaoKeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4F1243C68A500F984D4 /* DSTaoKeOrderVC.m */; };
 		49DBE4F4243C68A600F984D4 /* DSTaoKeOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DBE4F2243C68A500F984D4 /* DSTaoKeOrderVC.xib */; };
@@ -15,6 +26,8 @@
 		49DBE4FD243C68DD00F984D4 /* DSTaoKeOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4FB243C68DD00F984D4 /* DSTaoKeOrderCell.m */; };
 		49DBE4FE243C68DD00F984D4 /* DSTaoKeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DBE4FC243C68DD00F984D4 /* DSTaoKeOrderCell.xib */; };
 		49DBE501243C6C7300F984D4 /* DSTaoKeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE500243C6C7300F984D4 /* DSTaoKeOrder.m */; };
+		49E5C1852472ADAB0063001D /* AILoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E5C1832472ADAB0063001D /* AILoadingView.m */; };
+		49F31AAE2472A55100D48784 /* province.json in Resources */ = {isa = PBXBuildFile; fileRef = 49F31AAD2472A55100D48784 /* province.json */; };
 		75201D9BC0ADF06CFC84ADF5 /* libPods-DS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F95BF23A4F0097FD6153E581 /* libPods-DS.a */; };
 		9001467B2383E19300275DD9 /* DSChooseClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9001467A2383E19300275DD9 /* DSChooseClassView.m */; };
 		9001467D2383E19A00275DD9 /* DSChooseClassView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9001467C2383E19A00275DD9 /* DSChooseClassView.xib */; };
@@ -41,7 +54,6 @@
 		9028AA4223AC756F0015E06D /* DSVipUpOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9028AA4023AC756F0015E06D /* DSVipUpOrderVC.xib */; };
 		9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028AA4423AC7A480015E06D /* DSVipConfirmOrder.m */; };
 		90359A8223C473AB0033074A /* yw_1222.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 90359A8123C473AB0033074A /* yw_1222.jpg */; };
-		90359A8623C47B490033074A /* begin-img.png in Resources */ = {isa = PBXBuildFile; fileRef = 90359A8523C47B490033074A /* begin-img.png */; };
 		903A95C623A2123B00AD68CF /* LYEmptyBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 903A95BD23A2123B00AD68CF /* LYEmptyBaseView.m */; };
 		903A95C723A2123B00AD68CF /* UIScrollView+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 903A95BF23A2123B00AD68CF /* UIScrollView+Empty.m */; };
 		903A95C823A2123B00AD68CF /* UIView+LYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 903A95C023A2123B00AD68CF /* UIView+LYExtension.m */; };
@@ -141,8 +153,6 @@
 		906F375B23792F64000B160A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36FD23792F64000B160A /* NSDate+Extension.m */; };
 		906F375C23792F64000B160A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36FE23792F64000B160A /* UIView+Extension.m */; };
 		906F375D23792F64000B160A /* SPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F370123792F64000B160A /* SPButton.m */; };
-		906F375E23792F64000B160A /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F370623792F64000B160A /* FBShimmeringLayer.m */; };
-		906F375F23792F64000B160A /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F370723792F64000B160A /* FBShimmeringView.m */; };
 		906F376023792F64000B160A /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 906F370923792F64000B160A /* AlipaySDK.bundle */; };
 		906F376123792F64000B160A /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906F370A23792F64000B160A /* AlipaySDK.framework */; };
 		906F376223792F64000B160A /* HXPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F370D23792F64000B160A /* HXPlaceholderTextView.m */; };
@@ -212,7 +222,6 @@
 		90C6C30A239E1C5F00A531CC /* UITextField+GYExpand.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C308239E1C5F00A531CC /* UITextField+GYExpand.m */; };
 		90C6C30D239E27E000A531CC /* DSHomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C6C30C239E27E000A531CC /* DSHomeData.m */; };
 		90C94C2223A4716400CD19FB /* DSCartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C2123A4716400CD19FB /* DSCartData.m */; };
-		90C94C2423A47CFB00CD19FB /* province.json in Resources */ = {isa = PBXBuildFile; fileRef = 90C94C2323A47CFB00CD19FB /* province.json */; };
 		90C94C2B23A47D9600CD19FB /* GXAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C2523A47D9500CD19FB /* GXAddressCell.m */; };
 		90C94C2C23A47D9600CD19FB /* GXChooseAddressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90C94C2623A47D9500CD19FB /* GXChooseAddressView.m */; };
 		90C94C2D23A47D9600CD19FB /* GXChooseAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90C94C2723A47D9500CD19FB /* GXChooseAddressView.xib */; };
@@ -349,6 +358,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49B4C07A2472559100560451 /* JXPagerSmoothView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothView.h; sourceTree = "<group>"; };
+		49B4C07B2472559100560451 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
+		49B4C07C2472559100560451 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
+		49B4C07D2472559100560451 /* JXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerView.m; sourceTree = "<group>"; };
+		49B4C07E2472559100560451 /* JXPagerListRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerListRefreshView.h; sourceTree = "<group>"; };
+		49B4C07F2472559100560451 /* JXPagerSmoothView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerSmoothView.m; sourceTree = "<group>"; };
+		49B4C0802472559100560451 /* JXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerView.h; sourceTree = "<group>"; };
+		49B4C0812472559100560451 /* JXPagerListContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerListContainerView.h; sourceTree = "<group>"; };
+		49B4C0822472559100560451 /* JXPagerMainTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerMainTableView.h; sourceTree = "<group>"; };
+		49B4C0832472559100560451 /* JXPagerListRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListRefreshView.m; sourceTree = "<group>"; };
+		49B4C08B247257CE00560451 /* DSAfreshHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAfreshHomeVC.h; sourceTree = "<group>"; };
+		49B4C08C247257CE00560451 /* DSAfreshHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAfreshHomeVC.m; sourceTree = "<group>"; };
+		49B4C09024725B1600560451 /* DSAfreshHomeChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAfreshHomeChildVC.h; sourceTree = "<group>"; };
+		49B4C09124725B1600560451 /* DSAfreshHomeChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAfreshHomeChildVC.m; sourceTree = "<group>"; };
+		49B4C09224725B1600560451 /* DSAfreshHomeChildVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSAfreshHomeChildVC.xib; sourceTree = "<group>"; };
+		49B4C0952472664800560451 /* DSAfreshHomeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAfreshHomeHeader.h; sourceTree = "<group>"; };
+		49B4C0962472664800560451 /* DSAfreshHomeHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAfreshHomeHeader.m; sourceTree = "<group>"; };
+		49B4C0982472665300560451 /* DSAfreshHomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSAfreshHomeHeader.xib; sourceTree = "<group>"; };
+		49B4C09A24728D9900560451 /* begin-img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin-img.png"; sourceTree = "<group>"; };
 		49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALiTradeWebViewController.m; sourceTree = "<group>"; };
 		49DBE4EE243C580C00F984D4 /* ALiTradeWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALiTradeWebViewController.h; sourceTree = "<group>"; };
 		49DBE4F0243C68A500F984D4 /* DSTaoKeOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoKeOrderVC.h; sourceTree = "<group>"; };
@@ -362,6 +390,9 @@
 		49DBE4FC243C68DD00F984D4 /* DSTaoKeOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTaoKeOrderCell.xib; sourceTree = "<group>"; };
 		49DBE4FF243C6C7300F984D4 /* DSTaoKeOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoKeOrder.h; sourceTree = "<group>"; };
 		49DBE500243C6C7300F984D4 /* DSTaoKeOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTaoKeOrder.m; sourceTree = "<group>"; };
+		49E5C1832472ADAB0063001D /* AILoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AILoadingView.m; sourceTree = "<group>"; };
+		49E5C1842472ADAB0063001D /* AILoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AILoadingView.h; sourceTree = "<group>"; };
+		49F31AAD2472A55100D48784 /* province.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = province.json; sourceTree = "<group>"; };
 		900146792383E19300275DD9 /* DSChooseClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChooseClassView.h; sourceTree = "<group>"; };
 		9001467A2383E19300275DD9 /* DSChooseClassView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChooseClassView.m; sourceTree = "<group>"; };
 		9001467C2383E19A00275DD9 /* DSChooseClassView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSChooseClassView.xib; sourceTree = "<group>"; };
@@ -400,7 +431,6 @@
 		9028AA4323AC7A480015E06D /* DSVipConfirmOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSVipConfirmOrder.h; sourceTree = "<group>"; };
 		9028AA4423AC7A480015E06D /* DSVipConfirmOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSVipConfirmOrder.m; sourceTree = "<group>"; };
 		90359A8123C473AB0033074A /* yw_1222.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = yw_1222.jpg; sourceTree = "<group>"; };
-		90359A8523C47B490033074A /* begin-img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin-img.png"; sourceTree = "<group>"; };
 		903A95BD23A2123B00AD68CF /* LYEmptyBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYEmptyBaseView.m; sourceTree = "<group>"; };
 		903A95BE23A2123B00AD68CF /* LYEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYEmptyView.h; sourceTree = "<group>"; };
 		903A95BF23A2123B00AD68CF /* UIScrollView+Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Empty.m"; sourceTree = "<group>"; };
@@ -575,11 +605,6 @@
 		906F36FE23792F64000B160A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		906F370023792F64000B160A /* SPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPButton.h; sourceTree = "<group>"; };
 		906F370123792F64000B160A /* SPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPButton.m; sourceTree = "<group>"; };
-		906F370323792F64000B160A /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
-		906F370423792F64000B160A /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
-		906F370523792F64000B160A /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
-		906F370623792F64000B160A /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
-		906F370723792F64000B160A /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
 		906F370923792F64000B160A /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		906F370A23792F64000B160A /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		906F370C23792F64000B160A /* HXPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -699,7 +724,6 @@
 		90C6C30C239E27E000A531CC /* DSHomeData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSHomeData.m; sourceTree = "<group>"; };
 		90C94C2023A4716400CD19FB /* DSCartData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSCartData.h; sourceTree = "<group>"; };
 		90C94C2123A4716400CD19FB /* DSCartData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSCartData.m; sourceTree = "<group>"; };
-		90C94C2323A47CFB00CD19FB /* province.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = province.json; sourceTree = "<group>"; };
 		90C94C2523A47D9500CD19FB /* GXAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXAddressCell.m; sourceTree = "<group>"; };
 		90C94C2623A47D9500CD19FB /* GXChooseAddressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GXChooseAddressView.m; sourceTree = "<group>"; };
 		90C94C2723A47D9500CD19FB /* GXChooseAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GXChooseAddressView.xib; sourceTree = "<group>"; };
@@ -930,6 +954,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		49B4C0792472559100560451 /* JXPagerView */ = {
+			isa = PBXGroup;
+			children = (
+				49B4C0802472559100560451 /* JXPagerView.h */,
+				49B4C07D2472559100560451 /* JXPagerView.m */,
+				49B4C07A2472559100560451 /* JXPagerSmoothView.h */,
+				49B4C07F2472559100560451 /* JXPagerSmoothView.m */,
+				49B4C0812472559100560451 /* JXPagerListContainerView.h */,
+				49B4C07B2472559100560451 /* JXPagerListContainerView.m */,
+				49B4C0822472559100560451 /* JXPagerMainTableView.h */,
+				49B4C07C2472559100560451 /* JXPagerMainTableView.m */,
+				49B4C07E2472559100560451 /* JXPagerListRefreshView.h */,
+				49B4C0832472559100560451 /* JXPagerListRefreshView.m */,
+			);
+			path = JXPagerView;
+			sourceTree = "<group>";
+		};
+		49E5C1822472ADAB0063001D /* AILoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				49E5C1842472ADAB0063001D /* AILoadingView.h */,
+				49E5C1832472ADAB0063001D /* AILoadingView.m */,
+			);
+			path = AILoadingView;
+			sourceTree = "<group>";
+		};
 		7628BA4CEB7FA19C0CCF730F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,7 +1070,7 @@
 				906F366623792F50000B160A /* AppDelegate+MSPushService.h */,
 				906F366423792F50000B160A /* AppDelegate+MSPushService.m */,
 				906F379123793023000B160A /* DSPrefixHeader.pch */,
-				90359A8523C47B490033074A /* begin-img.png */,
+				49B4C09A24728D9900560451 /* begin-img.png */,
 				906F36372378ED46000B160A /* Assets.xcassets */,
 				906F36392378ED46000B160A /* LaunchScreen.storyboard */,
 				906F363C2378ED46000B160A /* Info.plist */,
@@ -1200,6 +1250,11 @@
 				90D11D012407AD9300957F13 /* DSTaoGoodsDetailVC.xib */,
 				49DBE4EE243C580C00F984D4 /* ALiTradeWebViewController.h */,
 				49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */,
+				49B4C08B247257CE00560451 /* DSAfreshHomeVC.h */,
+				49B4C08C247257CE00560451 /* DSAfreshHomeVC.m */,
+				49B4C09024725B1600560451 /* DSAfreshHomeChildVC.h */,
+				49B4C09124725B1600560451 /* DSAfreshHomeChildVC.m */,
+				49B4C09224725B1600560451 /* DSAfreshHomeChildVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1222,6 +1277,9 @@
 		906F368123792F5B000B160A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				49B4C0952472664800560451 /* DSAfreshHomeHeader.h */,
+				49B4C0962472664800560451 /* DSAfreshHomeHeader.m */,
+				49B4C0982472665300560451 /* DSAfreshHomeHeader.xib */,
 				90EC2591237A8EDF005C24C8 /* DSHomeBannerHeader.h */,
 				90EC2592237A8EDF005C24C8 /* DSHomeBannerHeader.m */,
 				90EC2593237A8EDF005C24C8 /* DSHomeBannerHeader.xib */,
@@ -1440,7 +1498,7 @@
 		906F368823792F5B000B160A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				90C94C2323A47CFB00CD19FB /* province.json */,
+				49F31AAD2472A55100D48784 /* province.json */,
 				90C94C3923A47E6E00CD19FB /* GXSelectRegion.h */,
 				90C94C3623A47E6E00CD19FB /* GXSelectRegion.m */,
 				90C94C3723A47E6E00CD19FB /* GXRegion.h */,
@@ -1699,8 +1757,8 @@
 		906F36DA23792F64000B160A /* HXLocationTool */ = {
 			isa = PBXGroup;
 			children = (
-				906F36DB23792F64000B160A /* HXLocationTool_.m */,
 				906F36DC23792F64000B160A /* HXLocationTool_.h */,
+				906F36DB23792F64000B160A /* HXLocationTool_.m */,
 			);
 			path = HXLocationTool;
 			sourceTree = "<group>";
@@ -1748,13 +1806,14 @@
 		906F36ED23792F64000B160A /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				49E5C1822472ADAB0063001D /* AILoadingView */,
+				49B4C0792472559100560451 /* JXPagerView */,
 				90C94C2F23A47DC900CD19FB /* SPPickerView */,
 				903A95BC23A2123B00AD68CF /* LYEmptyView */,
 				906F36EE23792F64000B160A /* WXPhotoContainerView */,
 				906F36F123792F64000B160A /* HXDropMenu */,
 				906F36F723792F64000B160A /* WSDatePickerView */,
 				906F36FF23792F64000B160A /* SPButton */,
-				906F370223792F64000B160A /* FBShimmering */,
 				906F370823792F64000B160A /* AlipaySDK_No_UTDID */,
 				906F370B23792F64000B160A /* HXPlaceholderTextView */,
 				906F370E23792F64000B160A /* FSActionSheet */,
@@ -1811,18 +1870,6 @@
 				906F370123792F64000B160A /* SPButton.m */,
 			);
 			path = SPButton;
-			sourceTree = "<group>";
-		};
-		906F370223792F64000B160A /* FBShimmering */ = {
-			isa = PBXGroup;
-			children = (
-				906F370323792F64000B160A /* FBShimmering.h */,
-				906F370423792F64000B160A /* FBShimmeringLayer.h */,
-				906F370523792F64000B160A /* FBShimmeringView.h */,
-				906F370623792F64000B160A /* FBShimmeringLayer.m */,
-				906F370723792F64000B160A /* FBShimmeringView.m */,
-			);
-			path = FBShimmering;
 			sourceTree = "<group>";
 		};
 		906F370823792F64000B160A /* AlipaySDK_No_UTDID */ = {
@@ -2094,6 +2141,7 @@
 				90FD91E4237E48D300016EF7 /* DSMyTeamCell.xib in Resources */,
 				906F376923792F64000B160A /* SGQRCode.bundle in Resources */,
 				90FD91B7237E3ECE00016EF7 /* DSMyOrderChildVC.xib in Resources */,
+				49B4C09424725B1600560451 /* DSAfreshHomeChildVC.xib in Resources */,
 				90EC25AE237A99A8005C24C8 /* DSCateGoodsCell.xib in Resources */,
 				90FD91C6237E40CC00016EF7 /* DSMyOrderCell.xib in Resources */,
 				906F378123792FC9000B160A /* DSVipVC.xib in Resources */,
@@ -2105,8 +2153,10 @@
 				90D7E77D23FC185200231D85 /* DSUpOrderSectionHeader.xib in Resources */,
 				90F74E5723823F1F003576B3 /* DSCashNoteVC.xib in Resources */,
 				90FD91D5237E471000016EF7 /* DSChangeBindVC.xib in Resources */,
+				49F31AAE2472A55100D48784 /* province.json in Resources */,
 				9065882323ADCF3B001E57ED /* DSMyAfterOrderVC.xib in Resources */,
 				90EC2583237A5DB4005C24C8 /* DSChangePwdVC.xib in Resources */,
+				49B4C09B24728D9A00560451 /* begin-img.png in Resources */,
 				90FD91B2237E3EBE00016EF7 /* DSMyOrderVC.xib in Resources */,
 				90EC25B3237A9BBA005C24C8 /* DSMessageVC.xib in Resources */,
 				903D07E723837937001C2E40 /* DSDynamicDetailHeader.xib in Resources */,
@@ -2146,7 +2196,7 @@
 				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
 				906F377C23792FB7000B160A /* DSHomeVC.xib in Resources */,
 				903D07F123837AEE001C2E40 /* DSDynamicDetailFooter.xib in Resources */,
-				90C94C2423A47CFB00CD19FB /* province.json in Resources */,
+				49B4C0992472665300560451 /* DSAfreshHomeHeader.xib in Resources */,
 				903D082D23839E05001C2E40 /* DSPayTypeView.xib in Resources */,
 				90FD91E9237E4F0500016EF7 /* DSMyCardVC.xib in Resources */,
 				90C94C2D23A47D9600CD19FB /* GXChooseAddressView.xib in Resources */,
@@ -2178,7 +2228,6 @@
 				90FD91CB237E446300016EF7 /* DSChangeInfoVC.xib in Resources */,
 				90F74E3E2382323A003576B3 /* DSMyBalanceVC.xib in Resources */,
 				900146822383E31900275DD9 /* DSChooseClassCell.xib in Resources */,
-				90359A8623C47B490033074A /* begin-img.png in Resources */,
 				90FD91A8237E379000016EF7 /* DSMyHeader.xib in Resources */,
 				90EC2590237A7D23005C24C8 /* DSShopGoodsCell.xib in Resources */,
 				90AE52D123828C30009F4740 /* moment2.plist in Resources */,
@@ -2346,12 +2395,12 @@
 				49DBE4EF243C580C00F984D4 /* ALiTradeWebViewController.m in Sources */,
 				900146812383E31900275DD9 /* DSChooseClassCell.m in Sources */,
 				903A95CC23A213E200AD68CF /* DSMessage.m in Sources */,
+				49B4C0852472559100560451 /* JXPagerMainTableView.m in Sources */,
 				90EC2594237A8EDF005C24C8 /* DSHomeBannerHeader.m in Sources */,
 				90C94C2C23A47D9600CD19FB /* GXChooseAddressView.m in Sources */,
 				90AE52E823829B45009F4740 /* DSPuslishDynamicData.m in Sources */,
 				90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */,
 				49DBE4F8243C68B200F984D4 /* DSTaoKeOrderChildVC.m in Sources */,
-				906F375F23792F64000B160A /* FBShimmeringView.m in Sources */,
 				906F377023792F64000B160A /* LMJVerticalScrollText.m in Sources */,
 				906F375623792F64000B160A /* RCFilterCell.m in Sources */,
 				9086946923A72D6600451D8B /* DSMyCard.m in Sources */,
@@ -2360,6 +2409,7 @@
 				90FD91E8237E4F0500016EF7 /* DSMyCardVC.m in Sources */,
 				90AE52E323829543009F4740 /* DSPublishDynamicHeader.m in Sources */,
 				906F376D23792F64000B160A /* HXSearchBar.m in Sources */,
+				49B4C09324725B1600560451 /* DSAfreshHomeChildVC.m in Sources */,
 				903D0818238393ED001C2E40 /* DSApplyRefundCell.m in Sources */,
 				90F74E5123823DE9003576B3 /* DSUpCashVC.m in Sources */,
 				903CB55D23927F180053A25B /* UIView+TYSnapshot.m in Sources */,
@@ -2370,6 +2420,7 @@
 				90C94C3B23A47E6E00CD19FB /* GXRegion.m in Sources */,
 				90EC25A8237A9806005C24C8 /* DSCateGoodsChildVC.m in Sources */,
 				90F74E5623823F1F003576B3 /* DSCashNoteVC.m in Sources */,
+				49B4C0882472559100560451 /* JXPagerListRefreshView.m in Sources */,
 				903D080E23838D03001C2E40 /* DSExpressDetailCell.m in Sources */,
 				903D082B23839DFA001C2E40 /* DSPayTypeView.m in Sources */,
 				90FD91FC237E53AA00016EF7 /* DSMyAddressVC.m in Sources */,
@@ -2388,6 +2439,7 @@
 				903D07EB23837A00001C2E40 /* DSDynamicDetailCell.m in Sources */,
 				906F377B23792FB7000B160A /* DSHomeVC.m in Sources */,
 				90AB397E24075FBE0082ECE4 /* UIColor+DSGradient.m in Sources */,
+				49B4C0862472559100560451 /* JXPagerView.m in Sources */,
 				906F375123792F64000B160A /* HXTopWindow.m in Sources */,
 				903D080323838AC6001C2E40 /* DSRefundDetailFooter.m in Sources */,
 				9065882623ADECD0001E57ED /* DSMyOrderDetail.m in Sources */,
@@ -2395,10 +2447,13 @@
 				906F376623792F64000B160A /* FSActionSheet.m in Sources */,
 				903D07F523837FD7001C2E40 /* DSOrderDetailVC.m in Sources */,
 				903A95C923A2123B00AD68CF /* LYEmptyView.m in Sources */,
+				49B4C0972472664800560451 /* DSAfreshHomeHeader.m in Sources */,
 				900146A82384E5A000275DD9 /* DSGoodsPosterView.m in Sources */,
 				903D082123839918001C2E40 /* DSUpOrderHeader.m in Sources */,
 				906F374B23792F64000B160A /* ContactDataHelper.m in Sources */,
 				90AE52C52382802A009F4740 /* DSVipCardDetailCell.m in Sources */,
+				49B4C0842472559100560451 /* JXPagerListContainerView.m in Sources */,
+				49B4C08E247257CE00560451 /* DSAfreshHomeVC.m in Sources */,
 				9028AA4123AC756F0015E06D /* DSVipUpOrderVC.m in Sources */,
 				906F366723792F50000B160A /* AppDelegate+MSAppService.m in Sources */,
 				906F374523792F64000B160A /* NSString+HXNExtension.m in Sources */,
@@ -2407,6 +2462,7 @@
 				903A95CF23A220C100AD68CF /* DSShopGoods.m in Sources */,
 				90EC258F237A7D23005C24C8 /* DSShopGoodsCell.m in Sources */,
 				90FD91A6237E378800016EF7 /* DSMyHeader.m in Sources */,
+				49E5C1852472ADAB0063001D /* AILoadingView.m in Sources */,
 				90FFDF3C23C2C58D000BF6C5 /* DSWebChatPayH5View.m in Sources */,
 				906F376523792F64000B160A /* FSActionSheetConfig.m in Sources */,
 				906F375A23792F64000B160A /* WSDatePickerView.m in Sources */,
@@ -2431,6 +2487,7 @@
 				903D07FE2383823B001C2E40 /* DSOrderDetailFooter.m in Sources */,
 				90F74E2323822762003576B3 /* DSVipHeader.m in Sources */,
 				9001469A2383F12900275DD9 /* DSVipGoodsDetailVC.m in Sources */,
+				49B4C0872472559100560451 /* JXPagerSmoothView.m in Sources */,
 				90C94C3E23A4860C00CD19FB /* DSMyAddress.m in Sources */,
 				903CB55C23927F180053A25B /* UIScrollView+TYSnapshot.m in Sources */,
 				90FD91D4237E471000016EF7 /* DSChangeBindVC.m in Sources */,
@@ -2462,7 +2519,6 @@
 				90AE52EB2382A0FE009F4740 /* DSPublishDynamicFooter.m in Sources */,
 				90EC2599237A9061005C24C8 /* DSBannerCell.m in Sources */,
 				903CB56023927F180053A25B /* UIViewController+TYSnapshot.m in Sources */,
-				906F375E23792F64000B160A /* FBShimmeringLayer.m in Sources */,
 				906F36AD23792F5B000B160A /* HXGuideViewController.m in Sources */,
 				906F375023792F64000B160A /* HXNetworkCache.m in Sources */,
 				90EC25AD237A99A8005C24C8 /* DSCateGoodsCell.m in Sources */,
@@ -2634,10 +2690,10 @@
 			baseConfigurationReference = BC4F949048AFF481665335AC /* Pods-DS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: To be selected information technology(Jiaxing) Co.,Ltd (RZ87TU58LG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = RZ87TU58LG;
+				DEVELOPMENT_TEAM = A2V85YL4T5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2776,7 +2832,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dis_daishu.mfxapp.com_0408;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0326;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2786,10 +2842,10 @@
 			baseConfigurationReference = A52BDBFE46C9C9000B61D447 /* Pods-DS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: To be selected information technology(Jiaxing) Co.,Ltd (RZ87TU58LG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = RZ87TU58LG;
+				DEVELOPMENT_TEAM = A2V85YL4T5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2928,7 +2984,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dis_daishu.mfxapp.com_0408;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0326;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

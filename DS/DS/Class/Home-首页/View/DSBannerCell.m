@@ -23,8 +23,8 @@
 -(void)setBanner:(DSHomeBanner *)banner
 {
     _banner = banner;
-    self.bannerImg.layer.cornerRadius = 5.f;
-    self.bannerImg.layer.masksToBounds = YES;
+//    self.bannerImg.layer.cornerRadius = 5.f;
+//    self.bannerImg.layer.masksToBounds = YES;
     [self.bannerImg sd_setImageWithURL:[NSURL URLWithString:_banner.adv_img]];
 }
 -(void)setAdv:(DSGoodsAdv *)adv

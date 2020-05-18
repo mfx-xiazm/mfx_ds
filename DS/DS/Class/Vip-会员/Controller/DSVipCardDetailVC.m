@@ -120,8 +120,8 @@ static NSString *const VipCardDetailCell = @"VipCardDetailCell";
     price.isSelected = YES;
     self.selectPrice = price;
     
-    self.member_price.text = [NSString stringWithFormat:@"￥%.2f",[price.member_price floatValue]];
-    self.original_price.text = [NSString stringWithFormat:@"原价￥%.2f",[price.original_price floatValue]];
+    self.member_price.text = [NSString stringWithFormat:@"¥%.2f",[price.member_price floatValue]];
+    self.original_price.text = [NSString stringWithFormat:@"原价¥%.2f",[price.original_price floatValue]];
     self.pro_name.text = self.cardDetail.card_type.product_name;
     
     [self.collectionView reloadData];

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSArray<DSHomeCate *> *cate;
 /* benner */
 @property(nonatomic,strong) NSArray<DSHomeBanner *> *adv;
+/* 分类 */
+@property(nonatomic,strong) NSArray<DSHomeCate *> *taobao_cate;
 /* 推荐商品 */
 @property(nonatomic,strong) NSArray<DSHomeRecommend *> *recommend_goods;
 /* 未读消息数 */

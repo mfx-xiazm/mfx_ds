@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *cover_img;
 @property(nonatomic,copy) NSString *cate_mode;
 @property(nonatomic,copy) NSString *cate_flag;
+@property(nonatomic,copy) NSString *coupon_amount;
 
 @end
 

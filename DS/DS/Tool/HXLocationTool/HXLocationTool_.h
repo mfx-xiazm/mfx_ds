@@ -10,7 +10,7 @@
 
 @protocol HXLocationTool_Delegate <NSObject>
 
-- (void)locationDidEndUpdatingLongitude:(CGFloat)longitude latitude:(CGFloat)latitude city:(NSString *)city;
+- (void)locationDidEndUpdatingLongitude:(CGFloat)longitude latitude:(CGFloat)latitude city:(NSString *)city district:(NSString *)district stree:(NSString *)stree;
 @end
 @interface HXLocationTool_ : NSObject
 @property (nonatomic, weak) id<HXLocationTool_Delegate> delegate;

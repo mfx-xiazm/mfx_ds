@@ -310,7 +310,7 @@ static NSString *const UpOrderCell = @"UpOrderCell";
     [self.tableView reloadData];
 
     self.totalNum.text = [NSString stringWithFormat:@"共%zd件",self.confirmOrder.list.count];
-    [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.pay_amount] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"¥%@",self.confirmOrder.pay_amount] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
 }
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

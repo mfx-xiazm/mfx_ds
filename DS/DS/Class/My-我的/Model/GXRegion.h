@@ -10,22 +10,28 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class GXRegionCity,GXRegionArea;
+@class GXRegionCity,GXRegionArea,GXRegionDistrict;
 @interface GXRegion : NSObject
-@property (nonatomic, strong) NSArray<GXRegionCity *> *city;
-@property (nonatomic, copy) NSString *ID;
-@property (nonatomic, copy) NSString *alias;
+@property (nonatomic, strong) NSArray<GXRegionCity *> *children;
+@property (nonatomic, copy) NSString *area_id;
+@property (nonatomic, copy) NSString *area_alias;
 @end
 
 @interface GXRegionCity : NSObject
-@property (nonatomic, strong) NSArray<GXRegionArea *> *area;
-@property (nonatomic, copy) NSString *ID;
-@property (nonatomic, copy) NSString *alias;
+@property (nonatomic, strong) NSArray<GXRegionArea *> *children;
+@property (nonatomic, copy) NSString *area_id;
+@property (nonatomic, copy) NSString *area_alias;
 @end
 
 @interface GXRegionArea : NSObject
-@property (nonatomic, copy) NSString *ID;
-@property (nonatomic, copy) NSString *alias;
+@property (nonatomic, strong) NSArray<GXRegionDistrict *> *children;
+@property (nonatomic, copy) NSString *area_id;
+@property (nonatomic, copy) NSString *area_alias;
+@end
+
+@interface GXRegionDistrict : NSObject
+@property (nonatomic, copy) NSString *area_id;
+@property (nonatomic, copy) NSString *area_alias;
 @end
 
 NS_ASSUME_NONNULL_END

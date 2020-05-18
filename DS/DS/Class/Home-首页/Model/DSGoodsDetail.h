@@ -35,8 +35,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *cover_img;
 @property(nonatomic,copy) NSString *is_upgrade_ulevel;
 
+@property(nonatomic,copy) NSString *is_location;
 @property(nonatomic,copy) NSString *taobao_item_id;
 @property(nonatomic,copy) NSString *taobao_pid;
+@property(nonatomic,copy) NSString *coupon_amount;
+@property(nonatomic,copy) NSString *coupon_start_time;
+@property(nonatomic,copy) NSString *coupon_end_time;
 
 @property(nonatomic,copy) NSString *cate_flag;
 @property(nonatomic,copy) NSString *goods_flag;

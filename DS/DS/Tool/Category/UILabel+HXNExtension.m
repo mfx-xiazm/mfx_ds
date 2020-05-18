@@ -91,7 +91,7 @@
     
     NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:str attributes:attribtDic];
     
-    NSRange range = [str rangeOfString:@"￥"];
+    NSRange range = [str rangeOfString:@"¥"];
     if (range.length) {
         [attribtStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10] range:range];
     }

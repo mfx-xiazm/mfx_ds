@@ -177,10 +177,10 @@
     self.cartCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.cartCnt];
     self.cardCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.cardCnt];
 
-    [self.total setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.total] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:16]];
-    [self.goods_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.goods_reward] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
-    [self.gift_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.gift_reward] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
-    [self.dui_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.upgrade_reward+[MSUserManager sharedInstance].curUserInfo.share_reward] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.total setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.total] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:16]];
+    [self.goods_reward setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.goods_reward] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.gift_reward setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.gift_reward] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.dui_reward setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.upgrade_reward+[MSUserManager sharedInstance].curUserInfo.share_reward] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
 
     self.noPayItem.badgeBgColor = HXControlBg;
     [self.noPayItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.noPayCnt animationType:WBadgeAnimTypeNone];

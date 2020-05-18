@@ -11,11 +11,11 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreLocation/CoreLocation.h>
 #import <sys/utsname.h>
-#import "FBShimmeringView.h"
+#import "AILoadingView.h"
 
 @interface HXBaseViewController ()
 /** Shimmering */
-@property (strong, nonatomic) FBShimmeringView *shimmer;
+@property(nonatomic,weak)AILoadingView *loadingView;
 @end
 
 @implementation HXBaseViewController
@@ -40,24 +40,12 @@
         self.HXStatusHeight = 20.f;
     }
 
-    self.shimmer = [[FBShimmeringView alloc] initWithFrame:self.view.bounds];
-    self.shimmer.backgroundColor = [UIColor whiteColor];
-    self.shimmer.shimmering = NO;
-    self.shimmer.shimmeringPauseDuration = 0.15;
-    self.shimmer.shimmeringBeginFadeDuration = 0.2;
-    self.shimmer.shimmeringEndFadeDuration = 0.2;
-    self.shimmer.shimmeringOpacity = 0.2;
-    self.shimmer.shimmeringSpeed = 360;
-    self.shimmer.hidden = YES;
-    [self.view addSubview:self.shimmer];
-    
-    UILabel *shimmerLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
-    shimmerLabel.text = @"鲸品库";
-    shimmerLabel.font = [UIFont fontWithName:@"Arial-BoldItalicMT" size: 24];
-    shimmerLabel.textColor = HXControlBg;
-    shimmerLabel.textAlignment = NSTextAlignmentCenter;
-    shimmerLabel.backgroundColor = [UIColor whiteColor];
-    self.shimmer.contentView = shimmerLabel;
+    AILoadingView *loadingView  = [[AILoadingView alloc] initWithFrame:self.view.bounds];
+    loadingView.backgroundColor = HXGlobalBg;
+    loadingView.strokeColor     = HXControlBg;
+    loadingView.hidden = YES;
+    self.loadingView            = loadingView;
+    [self.view addSubview:loadingView];
 }
 //-(UIStatusBarStyle)preferredStatusBarStyle
 //{
@@ -70,8 +58,7 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    
-    self.shimmer.frame = self.view.bounds;
+    self.loadingView.frame = self.view.bounds;
 }
 -(BOOL)isiPhoneXLater
 {
@@ -99,13 +86,13 @@
 }
 -(void)startShimmer
 {
-    self.shimmer.hidden = NO;
-    self.shimmer.shimmering = YES; // 开启闪烁
+    self.loadingView.hidden = NO;
+    [self.loadingView starAnimation];
 }
 -(void)stopShimmer
 {
-    self.shimmer.hidden = YES;
-    self.shimmer.shimmering = NO; // 关闭闪烁
+    [self.loadingView stopAnimation];
+    self.loadingView.hidden = YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -52,7 +52,7 @@
 /// rgb颜色转换（16进制->10进制）
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 /**宏定义项目的视图背景色调用方式*/
-#define HXGlobalBg UIColorFromRGB(0xF2F2F2)
+#define HXGlobalBg UIColorFromRGB(0xF9F9F9)
 /**宏定义项目的主色调调用方式*/
 #define HXControlBg UIColorFromRGB(0xF95628)
 /**设置随机颜色*/
@@ -77,8 +77,10 @@
 /**获取图片资源*/
 #define HXGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 
-#define HXRC_M_URL @"http://api.whaleupgo.com:8180/daishupub/mfxapi/"
+//#define HXRC_M_URL @"http://api.whaleupgo.com:8180/daishupub/mfxapi/"
+#define HXRC_M_URL @"http://daishu.mfxapp.com:8180/daishupub/mfxapi/"
 
-#define HXRC_URL_HEADER @"http://api.whaleupgo.com:8180/daishupub/mfxapi/"
+//#define HXRC_URL_HEADER @"http://api.whaleupgo.com:8180/daishupub/mfxapi/"
+#define HXRC_URL_HEADER @"http://daishu.mfxapp.com:8180/daishupub/mfxapi/"
 
 #endif /* DSPrefixHeader_pch */

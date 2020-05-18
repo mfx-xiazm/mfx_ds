@@ -17,13 +17,22 @@
 #import <AlibabaAuthSDK/ALBBSDK.h>
 #import <AlibabaAuthSDK/ALBBSession.h>
 #import "ALiTradeWebViewController.h"
+#import "HXLocationTool_.h"
+#import "zhAlertView.h"
+#import <zhPopupController.h>
 
-@interface DSTaoGoodsDetailVC ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
+@interface DSTaoGoodsDetailVC ()<TYCyclePagerViewDataSource,TYCyclePagerViewDelegate,HXLocationTool_Delegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
 @property (nonatomic,strong) TYPageControl *pageControl;
 @property (nonatomic, strong) WKWebView  *webView;
 @property (weak, nonatomic) IBOutlet UIView *webContentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webContentViewHeight;
+@property (weak, nonatomic) IBOutlet UILabel *cmm_price;
+@property (weak, nonatomic) IBOutlet UIView *coupon_view;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *coupon_view_height;
+@property (weak, nonatomic) IBOutlet UILabel *coupon_amount;
+@property (weak, nonatomic) IBOutlet UILabel *marketPrice;
+@property (weak, nonatomic) IBOutlet UILabel *coupon_time;
 @property (weak, nonatomic) IBOutlet UILabel *goodsName;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *saleNum;
@@ -31,12 +40,19 @@
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;
 /** 商品详情 */
 @property(nonatomic,strong) DSGoodsDetail *goodsDetail;
-
 /** 淘宝商品详情 */
 @property (nonatomic, strong) AlibcTradeProcessSuccessCallback onTradeSuccess;
 @property (nonatomic, strong) AlibcTradeProcessFailedCallback onTradeFailure;
 @property (nonatomic, strong) loginSuccessCallback onLoginSuccess;
 @property (nonatomic, strong) loginFailureCallback onLoginFailure;
+/** 定位  */
+@property (nonatomic, strong) HXLocationTool_ *location;
+@property (nonatomic, assign) CGFloat longitude;
+@property (nonatomic, assign) CGFloat latitude;
+@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *district;
+@property (nonatomic, copy) NSString *stree;
+
 @end
 
 @implementation DSTaoGoodsDetailVC
@@ -71,7 +87,7 @@
     _onLoginSuccess = ^(ALBBSession *session) {
         hx_strongify(weakSelf);
         ALBBUser *user = [session getUser];
-        [strongSelf getTaoAuthRequest:user.openId];
+        [strongSelf getLocationAuthRequest:user.openId];
     };
     _onLoginFailure = ^(ALBBSession *session,NSError *error) {
         NSString *tip = [NSString stringWithFormat:@"授权失败:%@",error.localizedDescription];
@@ -105,6 +121,21 @@
     
     self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 15, CGRectGetWidth(self.cyclePagerView.frame), 15);
     self.webView.frame = self.webContentView.bounds;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.goodsDetail && [self.goodsDetail.is_location isEqualToString:@"1"]) {
+        [self.location beginUpdatingLocation];
+    }
+}
+-(HXLocationTool_ *)location
+{
+    if (!_location) {
+         _location =  [[HXLocationTool_ alloc] init];// 开启定位
+        _location.delegate = self;
+    }
+    return _location;
 }
 - (WKWebView *)webView {
     if (_webView == nil) {
@@ -179,23 +210,74 @@
 }
 -(void)handleGoodsDetailData
 {
+    if ([self.goodsDetail.is_location isEqualToString:@"1"]) {
+        [self.location beginUpdatingLocation];// 开始定位
+    }
+    
     self.pageControl.numberOfPages = self.goodsDetail.goods_adv.count;
     [self.cyclePagerView reloadData];
-    
+
     [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:14]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:14]];
+    [self.cmm_price setFontAttributedText:[NSString stringWithFormat:@" 预估补贴¥%.2f ",[self.goodsDetail.cmm_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:10]];
+    [self.marketPrice setFontAttributedText:[NSString stringWithFormat:@"现价¥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:[NSString stringWithFormat:@"%.2f",[self.goodsDetail.price floatValue]] andFont:[UIFont fontWithName:@"ArialMT" size: 12]];
     self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
 
+    if ([self.goodsDetail.coupon_amount floatValue] == 0) {
+        self.coupon_view.hidden = YES;
+        self.coupon_view_height.constant = 0.f;
+    }else{
+        self.coupon_view.hidden = NO;
+        self.coupon_view_height.constant = 74.f;
+        [self.coupon_amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.coupon_amount floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:14]];
+        self.coupon_time.text = [NSString stringWithFormat:@"%@-%@",self.goodsDetail.coupon_start_time,self.goodsDetail.coupon_end_time];
+    }
+    
     self.stockNum.text = self.goodsDetail.stock;
     
     NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
     [self.webView loadHTMLString:h5 baseURL:nil];
 }
+-(void)getLocationAuthRequest:(NSString *)openId
+{
+    if ([self.goodsDetail.is_location isEqualToString:@"1"]) {
+        if (![self isCanUseLocation]) {
+            zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"需要获取您的位置信息，该位置信息作为无归属订单的收获地址分佣，若继续下单，则收益归平台所有" constantWidth:HX_SCREEN_WIDTH - 50*2];
+            hx_weakify(self);
+            zhAlertButton *cancelButton = [zhAlertButton buttonWithTitle:@"继续下单" handler:^(zhAlertButton * _Nonnull button) {
+                hx_strongify(weakSelf);
+                [strongSelf.zh_popupController dismiss];
+                [strongSelf getTaoAuthRequest:openId];
+            }];
+            zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"去设置" handler:^(zhAlertButton * _Nonnull button) {
+                hx_strongify(weakSelf);
+                [strongSelf.zh_popupController dismiss];
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];//跳转到本应用的设置页面
+                if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url];
+                }
+            }];
+            cancelButton.lineColor = UIColorFromRGB(0xDDDDDD);
+            [cancelButton setTitleColor:UIColorFromRGB(0x999999) forState:UIControlStateNormal];
+            okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+            [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+            [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
+            self.zh_popupController = [[zhPopupController alloc] init];
+            [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+        }
+    }else{
+        [self getTaoAuthRequest:openId];
+    }
+}
 -(void)getTaoAuthRequest:(NSString *)openId
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"goods_id"] = self.goods_id;//商品id
-    parameters[@"baichuan_open_id"] = openId;
+    parameters[@"city_name"] = self.city;
+    parameters[@"district_name"] = self.district;
+    parameters[@"stree_name"] = self.stree;
+    parameters[@"lng"] = @(self.longitude);
+    parameters[@"lat"] = @(self.latitude);
 
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"is_oauth_get" parameters:parameters success:^(id responseObject) {
@@ -256,6 +338,15 @@
             [self.navigationController pushViewController:webVC animated:YES];
         }
 }
+#pragma mark -- 定位代理
+- (void)locationDidEndUpdatingLongitude:(CGFloat)longitude latitude:(CGFloat)latitude city:(NSString *)city district:(NSString *)district stree:(NSString *)stree
+{
+    self.longitude = longitude;
+    self.latitude = latitude;
+    self.city = city;
+    self.district = district;
+    self.stree = stree;
+}
 #pragma mark -- 点击事件
 -(void)backClicked
 {
@@ -267,7 +358,7 @@
     } else {
         // 已经登录
         ALBBUser *user = [[ALBBSession sharedInstance] getUser];
-        [self getTaoAuthRequest:user.openId];
+        [self getLocationAuthRequest:user.openId];
     }
 }
 #pragma mark -- 事件监听

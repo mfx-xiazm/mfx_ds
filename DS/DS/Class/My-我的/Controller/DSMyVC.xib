@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-Bl-hid">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnI-B4-CLL">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
@@ -67,7 +65,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="等级" translatesAutoresizingMaskIntoConstraints="NO" id="dOZ-04-aVq">
-                                            <rect key="frame" x="163.5" y="15" width="108" height="32"/>
+                                            <rect key="frame" x="163.5" y="23" width="54" height="16"/>
                                         </imageView>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hp-wL-CCb">
                                             <rect key="frame" x="85" y="54" width="125" height="26"/>
@@ -324,13 +322,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="去提现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqk-7j-MA3">
-                                                    <rect key="frame" x="320" y="20.5" width="37" height="14.5"/>
+                                                    <rect key="frame" x="325" y="20.5" width="37" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="右小" translatesAutoresizingMaskIntoConstraints="NO" id="PI0-rA-68f">
-                                                    <rect key="frame" x="362" y="19" width="10" height="12"/>
+                                                    <rect key="frame" x="367" y="25" width="5" height="6"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -344,14 +342,14 @@
                                                 <constraint firstAttribute="bottom" secondItem="Zqk-7j-MA3" secondAttribute="bottom" id="sqM-5a-702"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥0000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvg-Ed-A1e">
-                                            <rect key="frame" x="128.5" y="45" width="127" height="36"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvg-Ed-A1e">
+                                            <rect key="frame" x="134.5" y="45" width="115.5" height="36"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="26"/>
                                             <color key="textColor" red="0.99607843137254903" green="0.84313725490196079" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="余额分割线" translatesAutoresizingMaskIntoConstraints="NO" id="kjg-EJ-o8P">
-                                            <rect key="frame" x="15" y="96" width="354" height="4"/>
+                                            <rect key="frame" x="15" y="96" width="354" height="2"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqE-EA-Gpi">
                                             <rect key="frame" x="0.0" y="100" width="384" height="70"/>
@@ -359,8 +357,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctC-yc-3wJ">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="70"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZC-Fy-czu">
-                                                            <rect key="frame" x="46" y="15" width="36" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZC-Fy-czu">
+                                                            <rect key="frame" x="49.5" y="15" width="29.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                             <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -390,8 +388,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="093-bJ-9XK">
                                                     <rect key="frame" x="128" y="0.0" width="128" height="70"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccC-0O-qAn">
-                                                            <rect key="frame" x="46" y="15" width="36" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccC-0O-qAn">
+                                                            <rect key="frame" x="49.5" y="15" width="29.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                             <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -421,8 +419,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLa-a5-Ske">
                                                     <rect key="frame" x="256" y="0.0" width="128" height="70"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04o-PV-zCJ">
-                                                            <rect key="frame" x="46" y="15" width="36" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04o-PV-zCJ">
+                                                            <rect key="frame" x="49.5" y="15" width="29.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
                                                             <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -587,7 +585,7 @@
                                             <rect key="frame" x="0.0" y="40" width="77" height="80"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="待付款" translatesAutoresizingMaskIntoConstraints="NO" id="sgN-f1-dcN">
-                                                    <rect key="frame" x="16.5" y="18" width="44" height="44"/>
+                                                    <rect key="frame" x="27.5" y="18" width="22" height="22"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                             <real key="value" value="5"/>
@@ -622,7 +620,7 @@
                                             <rect key="frame" x="77" y="40" width="76.5" height="80"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="待发货" translatesAutoresizingMaskIntoConstraints="NO" id="mXA-Se-5k3">
-                                                    <rect key="frame" x="16" y="18" width="44" height="44"/>
+                                                    <rect key="frame" x="27" y="18" width="22" height="22"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                             <real key="value" value="5"/>
@@ -657,7 +655,7 @@
                                             <rect key="frame" x="153.5" y="40" width="77" height="80"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="待收货" translatesAutoresizingMaskIntoConstraints="NO" id="uRV-KW-Xnb">
-                                                    <rect key="frame" x="16.5" y="18" width="44" height="44"/>
+                                                    <rect key="frame" x="27.5" y="18" width="22" height="22"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                             <real key="value" value="5"/>
@@ -692,7 +690,7 @@
                                             <rect key="frame" x="230.5" y="40" width="76.5" height="80"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="已完成" translatesAutoresizingMaskIntoConstraints="NO" id="mdH-wW-WMD">
-                                                    <rect key="frame" x="16.5" y="18" width="44" height="44"/>
+                                                    <rect key="frame" x="27.5" y="18" width="22" height="22"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                             <real key="value" value="5"/>
@@ -727,7 +725,7 @@
                                             <rect key="frame" x="307" y="40" width="77" height="80"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="售后退款" translatesAutoresizingMaskIntoConstraints="NO" id="sjH-X3-M4A">
-                                                    <rect key="frame" x="16.5" y="18" width="44" height="44"/>
+                                                    <rect key="frame" x="27.5" y="18" width="22" height="22"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                             <real key="value" value="5"/>
@@ -841,7 +839,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="96" height="80"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="团队" translatesAutoresizingMaskIntoConstraints="NO" id="vdF-Z0-lB2">
-                                                            <rect key="frame" x="26" y="18" width="44" height="44"/>
+                                                            <rect key="frame" x="37" y="18" width="22" height="22"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                                     <real key="value" value="5"/>
@@ -876,7 +874,7 @@
                                                     <rect key="frame" x="96" y="0.0" width="96" height="80"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="余额" translatesAutoresizingMaskIntoConstraints="NO" id="cQH-iS-K57">
-                                                            <rect key="frame" x="26" y="18" width="44" height="44"/>
+                                                            <rect key="frame" x="37" y="18" width="22" height="22"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                                     <real key="value" value="5"/>
@@ -911,7 +909,7 @@
                                                     <rect key="frame" x="192" y="0.0" width="96" height="80"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="地址" translatesAutoresizingMaskIntoConstraints="NO" id="2SI-iM-e0b">
-                                                            <rect key="frame" x="26" y="18" width="44" height="44"/>
+                                                            <rect key="frame" x="37" y="18" width="22" height="22"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                                     <real key="value" value="5"/>
@@ -946,7 +944,7 @@
                                                     <rect key="frame" x="288" y="0.0" width="96" height="80"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="鲸学院" translatesAutoresizingMaskIntoConstraints="NO" id="wb6-A5-88p">
-                                                            <rect key="frame" x="26" y="18" width="44" height="44"/>
+                                                            <rect key="frame" x="37" y="18" width="22" height="22"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
                                                                     <real key="value" value="5"/>

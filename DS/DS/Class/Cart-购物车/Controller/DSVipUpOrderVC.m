@@ -260,12 +260,12 @@
 
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:self.confirmOrder.cover_img]];
     [self.goods_name setTextWithLineSpace:5.f withString:self.confirmOrder.goods_name withFont:[UIFont systemFontOfSize:14]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.price] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%@",self.confirmOrder.price] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
     [self.num setFontAttributedText:[NSString stringWithFormat:@"x%@",self.confirmOrder.goods_num] andChangeStr:@"x" andFont:[UIFont systemFontOfSize:12]];
 
-    [self.price_amount setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.price_amount] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.price_amount setFontAttributedText:[NSString stringWithFormat:@"¥%@",self.confirmOrder.price_amount] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
     
-    [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"￥%@",self.confirmOrder.pay_amount] andChangeStr:@"￥" andFont:[UIFont systemFontOfSize:12]];
+    [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"¥%@",self.confirmOrder.pay_amount] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
 }
 
 @end

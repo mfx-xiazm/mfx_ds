@@ -51,7 +51,7 @@
 }
 -(void)showNoteDetailInfo
 {
-    self.apply_amount.text = [NSString stringWithFormat:@"提现￥%@",self.noteDetail.apply_amount];
+    self.apply_amount.text = [NSString stringWithFormat:@"提现¥%@",self.noteDetail.apply_amount];
     if ([self.noteDetail.apply_status isEqualToString:@"1"]) {
         self.apply_status.text = @"待审核";
     }else if ([self.noteDetail.apply_status isEqualToString:@"2"]) {
