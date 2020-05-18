@@ -52,7 +52,6 @@
     [self.navigationItem setTitle:@"全部订单"];
 
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     [button setImage:[UIImage imageNamed:@"返回白色"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"返回白色"] forState:UIControlStateHighlighted];
     button.hxn_size = CGSizeMake(44, 44);
