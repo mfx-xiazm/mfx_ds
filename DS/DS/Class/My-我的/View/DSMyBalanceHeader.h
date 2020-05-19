@@ -19,6 +19,10 @@ typedef void(^balanceBtnCall)(NSInteger index);
 @property (weak, nonatomic) IBOutlet UILabel *upgrade_reward;
 @property (weak, nonatomic) IBOutlet UILabel *goods_reward;
 
+@property (weak, nonatomic) IBOutlet UILabel *last_month_amount;
+@property (weak, nonatomic) IBOutlet UILabel *cur_month_amount;
+@property (weak, nonatomic) IBOutlet UILabel *dai_month_amount;
+
 @end
 
 NS_ASSUME_NONNULL_END

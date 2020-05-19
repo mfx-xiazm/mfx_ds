@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -195,7 +195,7 @@
                             <color key="textColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ri-wK-xwt">
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ri-wK-xwt">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <connections>
                                 <action selector="setBtnClicked:" destination="-1" eventType="touchUpInside" id="a0B-JZ-Qol"/>
@@ -218,6 +218,7 @@
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="9rD-sh-jgs" secondAttribute="trailing" id="0qU-jK-yrv"/>
                 <constraint firstItem="E5k-xu-7fM" firstAttribute="top" secondItem="1nM-Jg-c6e" secondAttribute="bottom" constant="5" id="51l-Ck-DVa"/>
+                <constraint firstItem="OBs-Ca-m7n" firstAttribute="top" secondItem="TpA-U1-POz" secondAttribute="bottom" constant="5" id="6vb-eJ-EmD"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="1nM-Jg-c6e" secondAttribute="leading" id="Fi2-Lu-WgC"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="1nM-Jg-c6e" secondAttribute="trailing" id="IXo-CL-vvp"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="OBs-Ca-m7n" secondAttribute="leading" id="MA9-a7-hkE"/>
@@ -228,7 +229,6 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="OBs-Ca-m7n" secondAttribute="trailing" id="Yoh-6N-QNW"/>
                 <constraint firstItem="E5k-xu-7fM" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="rH1-Ob-pnK"/>
                 <constraint firstItem="E5k-xu-7fM" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="rte-aY-EbL"/>
-                <constraint firstItem="OBs-Ca-m7n" firstAttribute="top" secondItem="TpA-U1-POz" secondAttribute="bottom" constant="5" id="sj4-nf-VUw"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="leading" secondItem="9rD-sh-jgs" secondAttribute="leading" id="xBz-xP-cvk"/>
                 <constraint firstItem="TpA-U1-POz" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="yp6-rY-N0d"/>
             </constraints>

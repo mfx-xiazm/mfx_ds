@@ -33,13 +33,11 @@
 @property (nonatomic, assign) NSInteger completeCnt;
 @property (nonatomic, assign) NSInteger trfundCnt;
 
-//rewardCnt
-@property(nonatomic,assign) CGFloat total;
-@property(nonatomic,assign) CGFloat gift_reward;
-@property(nonatomic,assign) CGFloat balance;
-@property(nonatomic,assign) CGFloat upgrade_reward;
-@property(nonatomic,assign) CGFloat goods_reward;
-@property(nonatomic,assign) CGFloat share_reward;
+//yg_amount
+@property(nonatomic,assign) CGFloat total_amount;
+@property(nonatomic,assign) CGFloat today_amount;
+@property(nonatomic,assign) CGFloat last_month_amount;
+@property(nonatomic,assign) CGFloat cur_month_amount;
 
 @end
 

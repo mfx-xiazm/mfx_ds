@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,13 +13,46 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="椭圆 3" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-hp-Alf">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banlance_header_bg" translatesAutoresizingMaskIntoConstraints="NO" id="xWc-hp-Alf">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                     <color key="backgroundColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6979" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ5-p0-1Zn">
-                    <rect key="frame" x="178" y="45" width="58" height="35"/>
+                    <rect key="frame" x="20" y="45" width="58" height="35"/>
                     <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  可提现金额  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOl-cD-LmV">
+                    <rect key="frame" x="88" y="56" width="63" height="18"/>
+                    <color key="backgroundColor" white="1" alpha="0.296599911971831" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="kew-Aa-tLX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                            <real key="value" value="9"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待结算￥10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3al-02-vbh">
+                    <rect key="frame" x="331.5" y="115" width="72.5" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月已结算￥10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlq-j8-mC1">
+                    <rect key="frame" x="158.5" y="115" width="97" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上月已结算￥10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DS-YP-Zfh">
+                    <rect key="frame" x="10" y="115" width="97" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -163,29 +196,40 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="0.98123899650000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="TZ5-p0-1Zn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="45" id="2g4-IE-jyF"/>
                 <constraint firstAttribute="bottom" secondItem="Wfe-q4-UCx" secondAttribute="bottom" id="6R5-Mb-Bap"/>
+                <constraint firstItem="Wfe-q4-UCx" firstAttribute="top" secondItem="3al-02-vbh" secondAttribute="bottom" constant="10" id="9UE-ZY-EfR"/>
+                <constraint firstItem="TZ5-p0-1Zn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="9qH-fO-wch"/>
+                <constraint firstAttribute="trailing" secondItem="3al-02-vbh" secondAttribute="trailing" constant="10" id="AaR-qR-hNA"/>
                 <constraint firstItem="xWc-hp-Alf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CeU-7r-7GI"/>
                 <constraint firstAttribute="trailing" secondItem="Wfe-q4-UCx" secondAttribute="trailing" constant="10" id="Cj0-WS-sF7"/>
+                <constraint firstItem="LOl-cD-LmV" firstAttribute="bottom" secondItem="TZ5-p0-1Zn" secondAttribute="bottom" constant="-6" id="Ecd-Bq-aMy"/>
                 <constraint firstItem="xWc-hp-Alf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EfB-G4-83q"/>
-                <constraint firstAttribute="bottom" secondItem="xWc-hp-Alf" secondAttribute="bottom" constant="40" id="Kg7-ey-3ZG"/>
+                <constraint firstAttribute="bottom" secondItem="xWc-hp-Alf" secondAttribute="bottom" constant="60" id="Kg7-ey-3ZG"/>
+                <constraint firstItem="Wfe-q4-UCx" firstAttribute="top" secondItem="Zlq-j8-mC1" secondAttribute="bottom" constant="10" id="L09-EB-6Yv"/>
+                <constraint firstItem="Wfe-q4-UCx" firstAttribute="top" secondItem="9DS-YP-Zfh" secondAttribute="bottom" constant="10" id="OT1-xc-lxy"/>
+                <constraint firstItem="LOl-cD-LmV" firstAttribute="leading" secondItem="TZ5-p0-1Zn" secondAttribute="trailing" constant="10" id="PLX-vD-1oo"/>
                 <constraint firstItem="Wfe-q4-UCx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="brj-yx-CSb"/>
-                <constraint firstItem="TZ5-p0-1Zn" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="svm-qx-psy"/>
+                <constraint firstItem="9DS-YP-Zfh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="ku4-OG-KCZ"/>
+                <constraint firstItem="Zlq-j8-mC1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="udF-ks-k2l"/>
                 <constraint firstAttribute="trailing" secondItem="xWc-hp-Alf" secondAttribute="trailing" id="xXf-wZ-c39"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="balance" destination="TZ5-p0-1Zn" id="kcW-vx-cYP"/>
+                <outlet property="cur_month_amount" destination="Zlq-j8-mC1" id="w32-4v-bme"/>
+                <outlet property="dai_month_amount" destination="3al-02-vbh" id="PVO-ef-qoh"/>
                 <outlet property="gift_reward" destination="NCy-IX-BcV" id="Wjk-kg-x8V"/>
                 <outlet property="goods_reward" destination="2TN-xb-gYY" id="i00-Sz-Dhd"/>
+                <outlet property="last_month_amount" destination="9DS-YP-Zfh" id="aUE-3a-cXy"/>
                 <outlet property="upgrade_reward" destination="XCH-kX-d4v" id="IoW-vc-neS"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="359.59821428571428"/>
         </view>
     </objects>
     <resources>
-        <image name="椭圆 3" width="375" height="169"/>
+        <image name="banlance_header_bg" width="375" height="188"/>
     </resources>
 </document>

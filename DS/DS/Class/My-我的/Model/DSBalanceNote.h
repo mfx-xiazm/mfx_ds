@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *pay_amount;
 @property (nonatomic, copy) NSString *nick_name;
 @property (nonatomic, copy) NSString *order_num;
+@property (nonatomic, copy) NSString *is_valid;// 是否有效
 /* 内容高度 */
 @property(nonatomic,assign) CGFloat textHeight;
 @end

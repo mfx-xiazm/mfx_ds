@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		496605B42473C6F1003A2652 /* DSUserSignVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B22473C6F1003A2652 /* DSUserSignVC.m */; };
+		496605B52473C6F1003A2652 /* DSUserSignVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605B32473C6F1003A2652 /* DSUserSignVC.xib */; };
+		496605B82473CD39003A2652 /* DSUserAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B72473CD39003A2652 /* DSUserAuthView.m */; };
+		496605BA2473CD41003A2652 /* DSUserAuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605B92473CD41003A2652 /* DSUserAuthView.xib */; };
+		496605BE2473DC08003A2652 /* DSBindCashMsgVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605BC2473DC08003A2652 /* DSBindCashMsgVC.m */; };
+		496605BF2473DC08003A2652 /* DSBindCashMsgVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605BD2473DC08003A2652 /* DSBindCashMsgVC.xib */; };
+		496605C22473E081003A2652 /* DSUpCashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605C12473E080003A2652 /* DSUpCashView.m */; };
+		496605C42473E11D003A2652 /* DSUpCashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605C32473E11D003A2652 /* DSUpCashView.xib */; };
 		49B4C0842472559100560451 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07B2472559100560451 /* JXPagerListContainerView.m */; };
 		49B4C0852472559100560451 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07C2472559100560451 /* JXPagerMainTableView.m */; };
 		49B4C0862472559100560451 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07D2472559100560451 /* JXPagerView.m */; };
@@ -17,7 +25,11 @@
 		49B4C09424725B1600560451 /* DSAfreshHomeChildVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B4C09224725B1600560451 /* DSAfreshHomeChildVC.xib */; };
 		49B4C0972472664800560451 /* DSAfreshHomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C0962472664800560451 /* DSAfreshHomeHeader.m */; };
 		49B4C0992472665300560451 /* DSAfreshHomeHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B4C0982472665300560451 /* DSAfreshHomeHeader.xib */; };
-		49B4C09B24728D9A00560451 /* begin-img.png in Resources */ = {isa = PBXBuildFile; fileRef = 49B4C09A24728D9900560451 /* begin-img.png */; };
+		49B4C09B24728D9A00560451 /* begin-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 49B4C09A24728D9900560451 /* begin-icon.png */; };
+		49C0CF902473705F0067C9AB /* DSAgreeAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0CF8F2473705F0067C9AB /* DSAgreeAuthView.m */; };
+		49C0CF92247370660067C9AB /* DSAgreeAuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C0CF91247370660067C9AB /* DSAgreeAuthView.xib */; };
+		49C0CF962473A9240067C9AB /* DSUserAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C0CF942473A9240067C9AB /* DSUserAuthVC.m */; };
+		49C0CF972473A9240067C9AB /* DSUserAuthVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49C0CF952473A9240067C9AB /* DSUserAuthVC.xib */; };
 		49DBE4EF243C580C00F984D4 /* ALiTradeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */; };
 		49DBE4F3243C68A600F984D4 /* DSTaoKeOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE4F1243C68A500F984D4 /* DSTaoKeOrderVC.m */; };
 		49DBE4F4243C68A600F984D4 /* DSTaoKeOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DBE4F2243C68A500F984D4 /* DSTaoKeOrderVC.xib */; };
@@ -358,6 +370,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		496605B12473C6F1003A2652 /* DSUserSignVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserSignVC.h; sourceTree = "<group>"; };
+		496605B22473C6F1003A2652 /* DSUserSignVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserSignVC.m; sourceTree = "<group>"; };
+		496605B32473C6F1003A2652 /* DSUserSignVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUserSignVC.xib; sourceTree = "<group>"; };
+		496605B62473CD39003A2652 /* DSUserAuthView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserAuthView.h; sourceTree = "<group>"; };
+		496605B72473CD39003A2652 /* DSUserAuthView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserAuthView.m; sourceTree = "<group>"; };
+		496605B92473CD41003A2652 /* DSUserAuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUserAuthView.xib; sourceTree = "<group>"; };
+		496605BB2473DC08003A2652 /* DSBindCashMsgVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSBindCashMsgVC.h; sourceTree = "<group>"; };
+		496605BC2473DC08003A2652 /* DSBindCashMsgVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSBindCashMsgVC.m; sourceTree = "<group>"; };
+		496605BD2473DC08003A2652 /* DSBindCashMsgVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSBindCashMsgVC.xib; sourceTree = "<group>"; };
+		496605C02473E080003A2652 /* DSUpCashView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpCashView.h; sourceTree = "<group>"; };
+		496605C12473E080003A2652 /* DSUpCashView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpCashView.m; sourceTree = "<group>"; };
+		496605C32473E11D003A2652 /* DSUpCashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpCashView.xib; sourceTree = "<group>"; };
 		49B4C07A2472559100560451 /* JXPagerSmoothView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothView.h; sourceTree = "<group>"; };
 		49B4C07B2472559100560451 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
 		49B4C07C2472559100560451 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
@@ -376,7 +400,13 @@
 		49B4C0952472664800560451 /* DSAfreshHomeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAfreshHomeHeader.h; sourceTree = "<group>"; };
 		49B4C0962472664800560451 /* DSAfreshHomeHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAfreshHomeHeader.m; sourceTree = "<group>"; };
 		49B4C0982472665300560451 /* DSAfreshHomeHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSAfreshHomeHeader.xib; sourceTree = "<group>"; };
-		49B4C09A24728D9900560451 /* begin-img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin-img.png"; sourceTree = "<group>"; };
+		49B4C09A24728D9900560451 /* begin-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "begin-icon.png"; sourceTree = "<group>"; };
+		49C0CF8E2473705F0067C9AB /* DSAgreeAuthView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSAgreeAuthView.h; sourceTree = "<group>"; };
+		49C0CF8F2473705F0067C9AB /* DSAgreeAuthView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSAgreeAuthView.m; sourceTree = "<group>"; };
+		49C0CF91247370660067C9AB /* DSAgreeAuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSAgreeAuthView.xib; sourceTree = "<group>"; };
+		49C0CF932473A9240067C9AB /* DSUserAuthVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserAuthVC.h; sourceTree = "<group>"; };
+		49C0CF942473A9240067C9AB /* DSUserAuthVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserAuthVC.m; sourceTree = "<group>"; };
+		49C0CF952473A9240067C9AB /* DSUserAuthVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUserAuthVC.xib; sourceTree = "<group>"; };
 		49DBE4ED243C580C00F984D4 /* ALiTradeWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALiTradeWebViewController.m; sourceTree = "<group>"; };
 		49DBE4EE243C580C00F984D4 /* ALiTradeWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALiTradeWebViewController.h; sourceTree = "<group>"; };
 		49DBE4F0243C68A500F984D4 /* DSTaoKeOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTaoKeOrderVC.h; sourceTree = "<group>"; };
@@ -1070,7 +1100,7 @@
 				906F366623792F50000B160A /* AppDelegate+MSPushService.h */,
 				906F366423792F50000B160A /* AppDelegate+MSPushService.m */,
 				906F379123793023000B160A /* DSPrefixHeader.pch */,
-				49B4C09A24728D9900560451 /* begin-img.png */,
+				49B4C09A24728D9900560451 /* begin-icon.png */,
 				906F36372378ED46000B160A /* Assets.xcassets */,
 				906F36392378ED46000B160A /* LaunchScreen.storyboard */,
 				906F363C2378ED46000B160A /* Info.plist */,
@@ -1470,6 +1500,9 @@
 				90F74E4E23823DE9003576B3 /* DSUpCashVC.h */,
 				90F74E4F23823DE9003576B3 /* DSUpCashVC.m */,
 				90F74E5023823DE9003576B3 /* DSUpCashVC.xib */,
+				496605BB2473DC08003A2652 /* DSBindCashMsgVC.h */,
+				496605BC2473DC08003A2652 /* DSBindCashMsgVC.m */,
+				496605BD2473DC08003A2652 /* DSBindCashMsgVC.xib */,
 				90F74E5323823F1F003576B3 /* DSCashNoteVC.h */,
 				90F74E5423823F1F003576B3 /* DSCashNoteVC.m */,
 				90F74E5523823F1F003576B3 /* DSCashNoteVC.xib */,
@@ -1491,6 +1524,12 @@
 				90FD91FE237E55C500016EF7 /* DSEditAddressVC.h */,
 				90FD91FF237E55C500016EF7 /* DSEditAddressVC.m */,
 				90FD9200237E55C500016EF7 /* DSEditAddressVC.xib */,
+				49C0CF932473A9240067C9AB /* DSUserAuthVC.h */,
+				49C0CF942473A9240067C9AB /* DSUserAuthVC.m */,
+				49C0CF952473A9240067C9AB /* DSUserAuthVC.xib */,
+				496605B12473C6F1003A2652 /* DSUserSignVC.h */,
+				496605B22473C6F1003A2652 /* DSUserSignVC.m */,
+				496605B32473C6F1003A2652 /* DSUserSignVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1595,6 +1634,12 @@
 				90C94C2923A47D9600CD19FB /* GXChooseAddressView.h */,
 				90C94C2623A47D9500CD19FB /* GXChooseAddressView.m */,
 				90C94C2723A47D9500CD19FB /* GXChooseAddressView.xib */,
+				496605B62473CD39003A2652 /* DSUserAuthView.h */,
+				496605B72473CD39003A2652 /* DSUserAuthView.m */,
+				496605B92473CD41003A2652 /* DSUserAuthView.xib */,
+				496605C02473E080003A2652 /* DSUpCashView.h */,
+				496605C12473E080003A2652 /* DSUpCashView.m */,
+				496605C32473E11D003A2652 /* DSUpCashView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1639,6 +1684,9 @@
 			children = (
 				90FFDF3A23C2C58D000BF6C5 /* DSWebChatPayH5View.h */,
 				90FFDF3B23C2C58D000BF6C5 /* DSWebChatPayH5View.m */,
+				49C0CF8E2473705F0067C9AB /* DSAgreeAuthView.h */,
+				49C0CF8F2473705F0067C9AB /* DSAgreeAuthView.m */,
+				49C0CF91247370660067C9AB /* DSAgreeAuthView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2138,6 +2186,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C0CF92247370660067C9AB /* DSAgreeAuthView.xib in Resources */,
 				90FD91E4237E48D300016EF7 /* DSMyTeamCell.xib in Resources */,
 				906F376923792F64000B160A /* SGQRCode.bundle in Resources */,
 				90FD91B7237E3ECE00016EF7 /* DSMyOrderChildVC.xib in Resources */,
@@ -2156,7 +2205,7 @@
 				49F31AAE2472A55100D48784 /* province.json in Resources */,
 				9065882323ADCF3B001E57ED /* DSMyAfterOrderVC.xib in Resources */,
 				90EC2583237A5DB4005C24C8 /* DSChangePwdVC.xib in Resources */,
-				49B4C09B24728D9A00560451 /* begin-img.png in Resources */,
+				49B4C09B24728D9A00560451 /* begin-icon.png in Resources */,
 				90FD91B2237E3EBE00016EF7 /* DSMyOrderVC.xib in Resources */,
 				90EC25B3237A9BBA005C24C8 /* DSMessageVC.xib in Resources */,
 				903D07E723837937001C2E40 /* DSDynamicDetailHeader.xib in Resources */,
@@ -2187,10 +2236,12 @@
 				90EC259A237A9061005C24C8 /* DSBannerCell.xib in Resources */,
 				903D0819238393ED001C2E40 /* DSApplyRefundCell.xib in Resources */,
 				49DBE4F9243C68B200F984D4 /* DSTaoKeOrderChildVC.xib in Resources */,
+				49C0CF972473A9240067C9AB /* DSUserAuthVC.xib in Resources */,
 				900736D123B303F500339BC3 /* DSShareDynamicView.xib in Resources */,
 				906F36382378ED46000B160A /* Assets.xcassets in Resources */,
 				90B7945D23FAC35600340CDF /* DSMyCollectCell.xib in Resources */,
 				49DBE4F4243C68A600F984D4 /* DSTaoKeOrderVC.xib in Resources */,
+				496605BF2473DC08003A2652 /* DSBindCashMsgVC.xib in Resources */,
 				90ED68E323BA05B60035988E /* SZUpdateView.xib in Resources */,
 				903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */,
 				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
@@ -2237,7 +2288,9 @@
 				90F74E2F23822DE6003576B3 /* DSVipCardVC.xib in Resources */,
 				906F376423792F64000B160A /* FSActionSheet_cancel@2x.png in Resources */,
 				903D08232383991F001C2E40 /* DSUpOrderHeader.xib in Resources */,
+				496605C42473E11D003A2652 /* DSUpCashView.xib in Resources */,
 				90EC25B8237A9BDD005C24C8 /* DSMessageCell.xib in Resources */,
+				496605BA2473CD41003A2652 /* DSUserAuthView.xib in Resources */,
 				906F378623792FDA000B160A /* DSDynamicVC.xib in Resources */,
 				9065882E23AE1DB3001E57ED /* DSSearchDynamicVC.xib in Resources */,
 				90D11D032407AD9300957F13 /* DSTaoGoodsDetailVC.xib in Resources */,
@@ -2249,6 +2302,7 @@
 				900146872383E34900275DD9 /* DSChooseClassHeader.xib in Resources */,
 				90AE52E523829548009F4740 /* DSPublishDynamicHeader.xib in Resources */,
 				90F74E2523822769003576B3 /* DSVipHeader.xib in Resources */,
+				496605B52473C6F1003A2652 /* DSUserSignVC.xib in Resources */,
 				90F74E5C23823F37003576B3 /* DSCashNoteCell.xib in Resources */,
 				900146AA2384E5A800275DD9 /* DSGoodsPosterView.xib in Resources */,
 				90F74E61238241BE003576B3 /* DSCashNoteDetailVC.xib in Resources */,
@@ -2351,10 +2405,12 @@
 				906F374423792F64000B160A /* UIImage+HXNExtension.m in Sources */,
 				9001468F2383E89B00275DD9 /* DSTakeCouponView.m in Sources */,
 				90FD91F2237E525A00016EF7 /* DSMyCollectVC.m in Sources */,
+				49C0CF962473A9240067C9AB /* DSUserAuthVC.m in Sources */,
 				906F376B23792F64000B160A /* SGQRCodeObtain.m in Sources */,
 				90FD91CA237E446300016EF7 /* DSChangeInfoVC.m in Sources */,
 				903A95D323A222D600AD68CF /* DSSearchGoodsVC.m in Sources */,
 				9086946623A729D100451D8B /* DSMyTeam.m in Sources */,
+				49C0CF902473705F0067C9AB /* DSAgreeAuthView.m in Sources */,
 				90FD91AC237E3B4400016EF7 /* DSMyCell.m in Sources */,
 				90EC25BC237A9E44005C24C8 /* DSCartCell.m in Sources */,
 				90AE52CC23828595009F4740 /* DSDynamicLayout.m in Sources */,
@@ -2437,6 +2493,7 @@
 				90AE52DA238292A0009F4740 /* DSPublishDynamicVC.m in Sources */,
 				903D080923838C4F001C2E40 /* DSExpressDetailVC.m in Sources */,
 				903D07EB23837A00001C2E40 /* DSDynamicDetailCell.m in Sources */,
+				496605B82473CD39003A2652 /* DSUserAuthView.m in Sources */,
 				906F377B23792FB7000B160A /* DSHomeVC.m in Sources */,
 				90AB397E24075FBE0082ECE4 /* UIColor+DSGradient.m in Sources */,
 				49B4C0862472559100560451 /* JXPagerView.m in Sources */,
@@ -2474,6 +2531,7 @@
 				903CB55F23927F180053A25B /* TYSnapshotScroll.m in Sources */,
 				90FD91B1237E3EBE00016EF7 /* DSMyOrderVC.m in Sources */,
 				906F375423792F64000B160A /* HXCacheTool.m in Sources */,
+				496605B42473C6F1003A2652 /* DSUserSignVC.m in Sources */,
 				906F366823792F50000B160A /* AppDelegate+MSPushService.m in Sources */,
 				90F74E292382291B003576B3 /* DSVipCell.m in Sources */,
 				90F74E652382657A003576B3 /* DSBalanceNoteVC.m in Sources */,
@@ -2502,6 +2560,7 @@
 				9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */,
 				90D7E77B23FC184C00231D85 /* DSUpOrderSectionHeader.m in Sources */,
 				9065881E23ADC074001E57ED /* DSMyOrder.m in Sources */,
+				496605C22473E081003A2652 /* DSUpCashView.m in Sources */,
 				900736CF23B303EE00339BC3 /* DSShareDynamicView.m in Sources */,
 				90F74E3D2382323A003576B3 /* DSMyBalanceVC.m in Sources */,
 				906F376E23792F64000B160A /* zhAlertView.m in Sources */,
@@ -2522,6 +2581,7 @@
 				906F36AD23792F5B000B160A /* HXGuideViewController.m in Sources */,
 				906F375023792F64000B160A /* HXNetworkCache.m in Sources */,
 				90EC25AD237A99A8005C24C8 /* DSCateGoodsCell.m in Sources */,
+				496605BE2473DC08003A2652 /* DSBindCashMsgVC.m in Sources */,
 				49DBE4F3243C68A600F984D4 /* DSTaoKeOrderVC.m in Sources */,
 				906F374D23792F64000B160A /* UIView+HXNExtension.m in Sources */,
 				906F376823792F64000B160A /* FSActionSheetItem.m in Sources */,

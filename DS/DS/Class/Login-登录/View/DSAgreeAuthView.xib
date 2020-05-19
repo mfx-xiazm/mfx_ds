@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="DSAgreeAuthView">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鲸品库平台用户协议及隐私协议" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ag2-Te-4kR">
+                    <rect key="frame" x="92.5" y="20" width="229" height="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qxi-ow-PWG">
+                    <rect key="frame" x="10" y="50" width="394" height="390"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyB-4M-goE">
+                    <rect key="frame" x="0.0" y="445" width="414" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ4-yB-Ige">
+                            <rect key="frame" x="15" y="11.5" width="29" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5RI-QH-CgM">
+                            <rect key="frame" x="44" y="5.5" width="86" height="29"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <state key="normal" title="《用户协议》">
+                                <color key="titleColor" red="0.32156862745098036" green="0.48627450980392156" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="authClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ihe-UR-ylD"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="和" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8W-Jf-d9S">
+                            <rect key="frame" x="130" y="11.5" width="14.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ED-FX-qdV">
+                            <rect key="frame" x="144.5" y="5.5" width="86" height="29"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <state key="normal" title="《隐私协议》">
+                                <color key="titleColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="authClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="fXt-RM-TKk"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="5RI-QH-CgM" firstAttribute="leading" secondItem="vQ4-yB-Ige" secondAttribute="trailing" id="0Ti-kr-blR"/>
+                        <constraint firstItem="2ED-FX-qdV" firstAttribute="leading" secondItem="t8W-Jf-d9S" secondAttribute="trailing" id="LVb-uO-wHN"/>
+                        <constraint firstItem="t8W-Jf-d9S" firstAttribute="centerY" secondItem="fyB-4M-goE" secondAttribute="centerY" id="Ovd-7g-TRK"/>
+                        <constraint firstItem="2ED-FX-qdV" firstAttribute="centerY" secondItem="fyB-4M-goE" secondAttribute="centerY" id="TfK-ZQ-gqe"/>
+                        <constraint firstItem="t8W-Jf-d9S" firstAttribute="leading" secondItem="5RI-QH-CgM" secondAttribute="trailing" id="VE4-35-Ds4"/>
+                        <constraint firstItem="vQ4-yB-Ige" firstAttribute="leading" secondItem="fyB-4M-goE" secondAttribute="leading" constant="15" id="ZET-bl-pZw"/>
+                        <constraint firstAttribute="height" constant="40" id="dYh-zX-VbI"/>
+                        <constraint firstItem="vQ4-yB-Ige" firstAttribute="centerY" secondItem="fyB-4M-goE" secondAttribute="centerY" id="eJ6-89-HCG"/>
+                        <constraint firstItem="5RI-QH-CgM" firstAttribute="centerY" secondItem="fyB-4M-goE" secondAttribute="centerY" id="lyQ-td-kfn"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCf-tC-XXg">
+                    <rect key="frame" x="0.0" y="485" width="414" height="65"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwW-Iu-MFC">
+                            <rect key="frame" x="120" y="10" width="174.5" height="36"/>
+                            <color key="backgroundColor" red="0.97647058823529409" green="0.33725490196078434" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="hm3-zm-Se4"/>
+                                <constraint firstAttribute="width" constant="174.5" id="nSU-zf-eNF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <state key="normal" title="同意"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                    <real key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="authClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="40E-M1-Eo6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="rwW-Iu-MFC" firstAttribute="centerX" secondItem="rCf-tC-XXg" secondAttribute="centerX" id="5sB-pQ-AFL"/>
+                        <constraint firstAttribute="height" constant="65" id="7JY-Q8-glH"/>
+                        <constraint firstItem="rwW-Iu-MFC" firstAttribute="top" secondItem="rCf-tC-XXg" secondAttribute="top" constant="10" id="xhE-gh-YiZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Qxi-ow-PWG" secondAttribute="trailing" constant="10" id="A3i-zC-fUq"/>
+                <constraint firstItem="rCf-tC-XXg" firstAttribute="top" secondItem="fyB-4M-goE" secondAttribute="bottom" id="ByY-MA-c13"/>
+                <constraint firstItem="fyB-4M-goE" firstAttribute="top" secondItem="Qxi-ow-PWG" secondAttribute="bottom" constant="5" id="CVo-0R-xrC"/>
+                <constraint firstAttribute="bottom" secondItem="rCf-tC-XXg" secondAttribute="bottom" id="Jdb-LX-Dhb"/>
+                <constraint firstItem="Qxi-ow-PWG" firstAttribute="top" secondItem="ag2-Te-4kR" secondAttribute="bottom" constant="10" id="U63-bf-4zS"/>
+                <constraint firstItem="ag2-Te-4kR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZJ8-zE-ysY"/>
+                <constraint firstItem="ag2-Te-4kR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="cHW-wJ-2OV"/>
+                <constraint firstAttribute="trailing" secondItem="fyB-4M-goE" secondAttribute="trailing" id="d2k-FW-ztv"/>
+                <constraint firstItem="rCf-tC-XXg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dNW-pr-gCb"/>
+                <constraint firstAttribute="trailing" secondItem="rCf-tC-XXg" secondAttribute="trailing" id="pc4-tY-mrt"/>
+                <constraint firstItem="fyB-4M-goE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ps2-rK-dE8"/>
+                <constraint firstItem="Qxi-ow-PWG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="sVu-Yj-vau"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="agreeBtn" destination="rwW-Iu-MFC" id="HDh-0m-y4y"/>
+                <outlet property="agreeTxt" destination="Qxi-ow-PWG" id="o2w-Wh-0IC"/>
+            </connections>
+            <point key="canvasLocation" x="-300" y="72"/>
+        </view>
+    </objects>
+</document>

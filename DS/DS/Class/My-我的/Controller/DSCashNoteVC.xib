@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,20 +19,71 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qou-O2-ymb">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQT-UJ-GAj" customClass="SPButton">
+                            <rect key="frame" x="12" y="9" width="90" height="26"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="6eW-PP-e3T"/>
+                                <constraint firstAttribute="height" constant="26" id="AAr-h1-R1f"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="2020-04" image="选择时间">
+                                <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="imagePosition">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="imageTitleSpace">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="chooseTimeClicked:" destination="-1" eventType="touchUpInside" id="5WH-bD-adm"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已提现：¥123,21.34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHv-vL-ddq">
+                            <rect key="frame" x="270.5" y="13.5" width="131.5" height="17.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Agl-8b-81k"/>
+                        <constraint firstItem="jHv-vL-ddq" firstAttribute="centerY" secondItem="Qou-O2-ymb" secondAttribute="centerY" id="EOJ-RY-Pdd"/>
+                        <constraint firstItem="oQT-UJ-GAj" firstAttribute="leading" secondItem="Qou-O2-ymb" secondAttribute="leading" constant="12" id="I3w-SF-p7T"/>
+                        <constraint firstItem="oQT-UJ-GAj" firstAttribute="centerY" secondItem="Qou-O2-ymb" secondAttribute="centerY" id="MN1-ao-Z7j"/>
+                        <constraint firstAttribute="trailing" secondItem="jHv-vL-ddq" secondAttribute="trailing" constant="12" id="muf-w1-uho"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fcN-Ts-Rhs">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fcN-Ts-Rhs" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="bln-NA-9k5"/>
+                <constraint firstItem="Qou-O2-ymb" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="0xM-fC-SSB"/>
+                <constraint firstItem="fcN-Ts-Rhs" firstAttribute="top" secondItem="Qou-O2-ymb" secondAttribute="bottom" id="PIf-DT-gDU"/>
+                <constraint firstItem="Qou-O2-ymb" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="c4O-bB-r8z"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="fcN-Ts-Rhs" secondAttribute="trailing" id="eWp-La-Es1"/>
+                <constraint firstItem="Qou-O2-ymb" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="gTd-ap-GsG"/>
                 <constraint firstItem="fcN-Ts-Rhs" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="mvK-GL-3ep"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="fcN-Ts-Rhs" secondAttribute="bottom" id="qK1-8c-VFu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="139" y="115"/>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
         </view>
     </objects>
+    <resources>
+        <image name="选择时间" width="8" height="4"/>
+    </resources>
 </document>

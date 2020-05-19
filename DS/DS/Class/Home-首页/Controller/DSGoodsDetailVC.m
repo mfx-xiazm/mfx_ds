@@ -301,7 +301,7 @@
     }
 
     NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
-    [self.webView loadHTMLString:h5 baseURL:nil];
+    [self.webView loadHTMLString:h5 baseURL:[NSURL URLWithString:HXRC_URL_HEADER]];
     
     self.collentBtn.selected = [self.goodsDetail.is_collect isEqualToString:@"1"]?YES:NO;
 }

@@ -32,10 +32,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *teamCnt;
 @property (weak, nonatomic) IBOutlet UILabel *cartCnt;
 @property (weak, nonatomic) IBOutlet UILabel *cardCnt;
-@property (weak, nonatomic) IBOutlet UILabel *total;
-@property (weak, nonatomic) IBOutlet UILabel *goods_reward;
-@property (weak, nonatomic) IBOutlet UILabel *gift_reward;
-@property (weak, nonatomic) IBOutlet UILabel *dui_reward;
+@property (weak, nonatomic) IBOutlet UILabel *total_amount;
+@property (weak, nonatomic) IBOutlet UILabel *today_amount;
+@property (weak, nonatomic) IBOutlet UILabel *cur_month_amount;
+@property (weak, nonatomic) IBOutlet UILabel *last_month_amount;
 @property (weak, nonatomic) IBOutlet UIImageView *noPayItem;
 @property (weak, nonatomic) IBOutlet UIImageView *noDeItem;
 @property (weak, nonatomic) IBOutlet UIImageView *noTakeItem;
@@ -177,10 +177,10 @@
     self.cartCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.cartCnt];
     self.cardCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.cardCnt];
 
-    [self.total setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.total] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:16]];
-    [self.goods_reward setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.goods_reward] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
-    [self.gift_reward setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.gift_reward] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
-    [self.dui_reward setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.upgrade_reward+[MSUserManager sharedInstance].curUserInfo.share_reward] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.total_amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.total_amount] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:16]];
+    [self.today_amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.today_amount] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.cur_month_amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.cur_month_amount] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.last_month_amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[MSUserManager sharedInstance].curUserInfo.last_month_amount] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
 
     self.noPayItem.badgeBgColor = HXControlBg;
     [self.noPayItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.noPayCnt animationType:WBadgeAnimTypeNone];

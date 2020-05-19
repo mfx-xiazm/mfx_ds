@@ -11,6 +11,8 @@
 #import "DSRegisterVC.h"
 #import "HXTabBarController.h"
 #import "UITextField+GYExpand.h"
+#import "DSAgreeAuthView.h"
+#import <zhPopupController.h>
 
 @interface DSLoginVC ()
 @property (weak, nonatomic) IBOutlet UITextField *phone;
@@ -75,6 +77,41 @@
         hx_strongify(weakSelf);
         [strongSelf loginClicked:button];
     }];
+    
+    [self initAgreeAuth];
+}
+-(void)initAgreeAuth
+{
+    NSString *key = @"CFBundleShortVersionString";
+    // 上一次的使用版本（存储在沙盒中的版本号）
+    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    // 当前软件的版本号（从Info.plist中获得）
+    NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
+    
+    if (![currentVersion isEqualToString:lastVersion]) {// 这次打开的版本和上一次不一样，显示用户协议
+        DSAgreeAuthView *auth = [DSAgreeAuthView loadXibView];
+        auth.hxn_width = HX_SCREEN_WIDTH - 30*2;
+        auth.hxn_height = 460.f;
+        hx_weakify(self);
+        auth.authClickedCall = ^(NSInteger type) {
+            hx_strongify(weakSelf);
+            if (type == 1) {
+                [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
+                // 将当前的版本号存进沙盒
+                [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }else if (type == 2) {
+                //在APP外部浏览器中打开指定网页（一般默认跳转苹果自带Safari浏览器）
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://apiadmin.whaleupgo.com/webapp/page/userAgreement.html"]];
+            }else{
+                //在APP外部浏览器中打开指定网页（一般默认跳转苹果自带Safari浏览器）
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://apiadmin.whaleupgo.com/webapp/page/privacyPolicy.html"]];
+            }
+        };
+        self.zh_popupController = [[zhPopupController alloc] init];
+        self.zh_popupController.dismissOnMaskTouched = NO;
+        [self.zh_popupController presentContentView:auth duration:0.25 springAnimated:NO];
+    }
 }
 - (void)registerClicked:(UIButton *)sender {
     DSRegisterVC *rvc = [DSRegisterVC new];

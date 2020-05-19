@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *apply_desc;
 @property (weak, nonatomic) IBOutlet UILabel *apply_amount;
 @property (weak, nonatomic) IBOutlet UILabel *create_time;
+@property (weak, nonatomic) IBOutlet UILabel *reject_reason;
+
 @end
 @implementation DSCashNoteCell
 
@@ -25,7 +27,7 @@
 -(void)setNote:(DSCashNote *)note
 {
     _note = note;
-    self.apply_no.text = NSStringFormat(@"申请单号：%@",_note.apply_no);
+    self.apply_no.text = NSStringFormat(@"提现编码：%@",_note.apply_no);
     if ([_note.apply_status isEqualToString:@"1"]) {
         self.apply_status.text = @"待审核";
     }else if ([_note.apply_status isEqualToString:@"2"]){

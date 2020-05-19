@@ -8,13 +8,20 @@
 
 #import "DSUpCashVC.h"
 #import "DSCashNoteVC.h"
+#import <JXCategoryTitleView.h>
+#import <JXCategoryIndicatorLineView.h>
+#import "DSBindCashMsgVC.h"
+#import "DSUpCashView.h"
+#import <zhPopupController.h>
 
-@interface DSUpCashVC ()<UITextFieldDelegate>
+@interface DSUpCashVC ()<JXCategoryViewDelegate,UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *cash_bg_img;
+@property (weak, nonatomic) IBOutlet JXCategoryTitleView *categoryView;
 @property (weak, nonatomic) IBOutlet UITextField *card_owner;
 @property (weak, nonatomic) IBOutlet UITextField *bank_name;
 @property (weak, nonatomic) IBOutlet UITextField *card_no;
 @property (weak, nonatomic) IBOutlet UITextField *apply_amount;
-@property (weak, nonatomic) IBOutlet UIButton *sureBtn;
+@property (weak, nonatomic) IBOutlet UIButton *cashBtn;
 @property (weak, nonatomic) IBOutlet UILabel *ableLabel;
 
 /* 余额 */
@@ -32,37 +39,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavBar];
-    self.apply_amount.delegate = self;
-    [self startShimmer];
-    [self getInitRequest];
+    [self setUpCategoryView];
+    [self.cash_bg_img.layer addSublayer:[UIColor setGradualChangingColor:self.cash_bg_img fromColor:@"FFBC53" toColor:@"FF926E"]];
+    [self.cashBtn.layer addSublayer:[UIColor setGradualChangingColor:self.cashBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+
+//    self.apply_amount.delegate = self;
+//    [self startShimmer];
+//    [self getInitRequest];
 
     hx_weakify(self);
-    [self.sureBtn BindingBtnJudgeBlock:^BOOL{
-        hx_strongify(weakSelf);
-        if (![strongSelf.card_owner hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入持卡人姓名"];
-            return NO;
-        }
-        if (![strongSelf.bank_name hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入银行名称"];
-            return NO;
-        }
-        if (![strongSelf.card_no hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入银行卡号"];
-            return NO;
-        }
-        if (![strongSelf.apply_amount hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入提现金额"];
-            return NO;
-        }
-        if ([strongSelf.apply_amount.text floatValue] < strongSelf.base_amount) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"起提金额%.2f元",strongSelf.base_amount]];
-            return NO;
-        }
-        if ([strongSelf.apply_amount.text floatValue] > strongSelf.balance) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"可提金额不足"];
-            return NO;
-        }
+    [self.cashBtn BindingBtnJudgeBlock:^BOOL{
+//        hx_strongify(weakSelf);
+//        if (![strongSelf.card_owner hasText]) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入持卡人姓名"];
+//            return NO;
+//        }
+//        if (![strongSelf.bank_name hasText]) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入银行名称"];
+//            return NO;
+//        }
+//        if (![strongSelf.card_no hasText]) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入银行卡号"];
+//            return NO;
+//        }
+//        if (![strongSelf.apply_amount hasText]) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入提现金额"];
+//            return NO;
+//        }
+//        if ([strongSelf.apply_amount.text floatValue] < strongSelf.base_amount) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"起提金额%.2f元",strongSelf.base_amount]];
+//            return NO;
+//        }
+//        if ([strongSelf.apply_amount.text floatValue] > strongSelf.balance) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"可提金额不足"];
+//            return NO;
+//        }
         return YES;
     } ActionBlock:^(UIButton * _Nullable button) {
         hx_strongify(weakSelf);
@@ -72,47 +83,93 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    UIView *view = [[UIView alloc] initWithFrame:self.sureBtn.bounds];
-    [view.layer addSublayer:[UIColor setGradualChangingColor:self.sureBtn fromColor:@"F9AD28" toColor:@"F95628"]];
-    [self.sureBtn setBackgroundImage:[view imageWithUIView] forState:UIControlStateNormal];
-
 }
+#pragma mark -- 视图
 -(void)setUpNavBar
 {
     [self.navigationItem setTitle:@"提现"];
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(cashNoteClicked) title:@"提现记录" font:[UIFont systemFontOfSize:14] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = YES;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(cashNoteClicked) title:@"提现记录" font:[UIFont systemFontOfSize:14] titleColor:[UIColor blackColor] highlightedColor:[UIColor blackColor] titleEdgeInsets:UIEdgeInsetsZero];
 }
+-(void)setUpCategoryView
+{
+    _categoryView.backgroundColor = [UIColor whiteColor];
+    _categoryView.titleLabelZoomEnabled = NO;
+    _categoryView.titles = @[@"支付宝提现", @"银行卡提现"];
+    _categoryView.titleFont = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
+    _categoryView.titleColor = UIColorFromRGB(0x666666);
+    _categoryView.titleSelectedColor = UIColorFromRGB(0x333333);
+    _categoryView.delegate = self;
+    
+    JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
+    lineView.verticalMargin = 5.f;
+    lineView.indicatorColor = HXControlBg;
+    _categoryView.indicators = @[lineView];
+}
+#pragma mark -- 点击事件
 -(void)cashNoteClicked
 {
     DSCashNoteVC *nvc = [DSCashNoteVC new];
     [self.navigationController pushViewController:nvc animated:YES];
 }
+
+- (IBAction)bindCashMsgClicked:(UIButton *)sender {
+    DSBindCashMsgVC *nvc = [DSBindCashMsgVC new];
+    nvc.dataType = self.categoryView.selectedIndex;
+    [self.navigationController pushViewController:nvc animated:YES];
+}
+#pragma mark - JXCategoryViewDelegate
+// 滚动和点击选中
+- (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index
+{
+    HXLog(@"切换");
+}
 -(void)applyCashRequest:(UIButton *)btn
 {
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"card_owner"] = self.card_owner.text;
-    parameters[@"bank_name"] = self.bank_name.text;
-    parameters[@"card_no"] = self.card_no.text;
-    parameters[@"apply_amount"] = self.apply_amount.text;
-
+    [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
+    DSUpCashView *cash = [DSUpCashView loadXibView];
+    cash.hxn_width = HX_SCREEN_WIDTH - 30*2;
+    cash.hxn_height = 360.f;
     hx_weakify(self);
-    [HXNetworkTool POST:HXRC_M_URL action:@"finance_apply_set" parameters:parameters success:^(id responseObject) {
-        hx_strongify(weakSelf);
-        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
-        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"提交成功，请等待审核"];
-            if (strongSelf.upCashActionCall) {
-                strongSelf.upCashActionCall();
-            }
-            [strongSelf.navigationController popViewControllerAnimated:YES];
-        }else{
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+    cash.upCashCall = ^(NSInteger index) {
+         hx_strongify(weakSelf);
+        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
+        if (index) {
+            
         }
-    } failure:^(NSError *error) {
-        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-    }];
+    };
+    self.zh_popupController = [[zhPopupController alloc] init];
+    self.zh_popupController.dismissOnMaskTouched = NO;
+    [self.zh_popupController presentContentView:cash duration:0.25 springAnimated:NO];
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    parameters[@"card_owner"] = self.card_owner.text;
+//    parameters[@"bank_name"] = self.bank_name.text;
+//    parameters[@"card_no"] = self.card_no.text;
+//    parameters[@"apply_amount"] = self.apply_amount.text;
+//
+//    hx_weakify(self);
+//    [HXNetworkTool POST:HXRC_M_URL action:@"finance_apply_set" parameters:parameters success:^(id responseObject) {
+//        hx_strongify(weakSelf);
+//        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
+//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"提交成功，请等待审核"];
+//            if (strongSelf.upCashActionCall) {
+//                strongSelf.upCashActionCall();
+//            }
+//            [strongSelf.navigationController popViewControllerAnimated:YES];
+//        }else{
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+//        }
+//    } failure:^(NSError *error) {
+//        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
+//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+//    }];
 }
 
 //参数一：range，要被替换的字符串的range，如果是新输入的，就没有字符串被替换，range.length = 0

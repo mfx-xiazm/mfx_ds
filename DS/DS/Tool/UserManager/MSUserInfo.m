@@ -11,15 +11,12 @@
 @implementation MSUserInfo
 + (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper
 {
-    return @{@"total":@"rewardCnt.total",
-             @"gift_reward":@"rewardCnt.gift_reward",
-             @"balance":@"rewardCnt.balance",
-             @"upgrade_reward":@"rewardCnt.upgrade_reward",
-             @"goods_reward":@"rewardCnt.goods_reward",
-             @"share_reward":@"rewardCnt.share_reward"
+    return @{@"total_amount":@"total",
+             @"today_amount":@"yg_amount.yg_today_amount",
+             @"last_month_amount":@"yg_amount.yg_last_month_amount",
+             @"cur_month_amount":@"yg_amount.yg_cur_month_amount"
     };
 }
-
 -(void)setOrderCnt:(NSArray *)orderCnt
 {
     _orderCnt = orderCnt;

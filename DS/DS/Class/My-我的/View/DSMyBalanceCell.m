@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pay_amount;
 @property (weak, nonatomic) IBOutlet UILabel *num;
 @property (weak, nonatomic) IBOutlet UILabel *amount;
-@property (weak, nonatomic) IBOutlet UILabel *receiver;
+@property (weak, nonatomic) IBOutlet UILabel *order_cmm;
 
 @property (weak, nonatomic) IBOutlet UIView *otherView;
 @property (weak, nonatomic) IBOutlet UILabel *finance_log_desc;
@@ -42,9 +42,9 @@
         self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_note.order_no];
         self.create_time.text = _note.create_time;
         if (_note.finance_log_desc && _note.finance_log_desc.length) {
-            [self.order_title setTextWithLineSpace:3.f withString:[NSString stringWithFormat:@"%@-%@",_note.finance_log_desc,_note.order_title] withFont:[UIFont systemFontOfSize:13]];
+            [self.order_title setTextWithLineSpace:3.f withString:[NSString stringWithFormat:@"%@-%@",_note.finance_log_desc,_note.order_title] withFont:[UIFont systemFontOfSize:14]];
         }else{
-            [self.order_title setTextWithLineSpace:3.f withString:_note.order_title withFont:[UIFont systemFontOfSize:13]];
+            [self.order_title setTextWithLineSpace:3.f withString:_note.order_title withFont:[UIFont systemFontOfSize:14]];
         }
         [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"实付:¥%.2f",[_note.pay_amount floatValue]] andChangeStr:@"实付:¥" andFont:[UIFont systemFontOfSize:10]];
 
@@ -58,6 +58,13 @@
             }else{
                 [self.amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_note.amount floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:10]];
             }
+        }
+        if ([_note.is_valid isEqualToString:@"1"]) {
+           self.order_cmm.text = @"预计返佣";
+           self.amount.textColor = HXControlBg;
+        }else{
+            self.order_cmm.text = @"订单失效";
+            self.amount.textColor = UIColorFromRGB(0x333333);
         }
     }else{
         self.orderView.hidden = YES;

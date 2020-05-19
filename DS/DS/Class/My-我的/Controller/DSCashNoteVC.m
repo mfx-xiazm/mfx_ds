@@ -10,6 +10,7 @@
 #import "DSCashNoteCell.h"
 #import "DSCashNoteDetailVC.h"
 #import "DSCashNote.h"
+#import "WSDatePickerView.h"
 
 static NSString *const CashNoteCell = @"CashNoteCell";
 @interface DSCashNoteVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -52,7 +53,9 @@ static NSString *const CashNoteCell = @"CashNoteCell";
         // 不要自动调整inset
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.tableView.estimatedRowHeight = 0;//预估高度
+    self.tableView.backgroundColor = HXGlobalBg;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 110.f;//预估高度
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
@@ -92,6 +95,21 @@ static NSString *const CashNoteCell = @"CashNoteCell";
         hx_strongify(weakSelf);
         [strongSelf getNoteListDataRequest:NO];
     }];
+}
+#pragma mark -- 点击事件
+- (IBAction)chooseTimeClicked:(SPButton *)sender {
+//    NSDate *scrollToDate = [NSDate date:sender.currentTitle WithFormat:@"yyyy-MM"];
+//
+//    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDay scrollToDate:scrollToDate CompleteBlock:^(NSString *, NSString *) {
+//        NSTimeZone *nowTimeZone = [NSTimeZone localTimeZone];
+//        NSInteger timeOffset = [nowTimeZone secondsFromGMTForDate:selectDate];
+//        NSDate *newDate = [selectDate dateByAddingTimeInterval:timeOffset];
+//        NSString *date = [newDate stringWithFormat:@"yyyy-MM-dd"];
+//        [sender setTitle:date forState:UIControlStateNormal];
+//    }];
+//    datepicker.maxLimitDate = [NSDate date];
+//       
+//    [datepicker show];
 }
 #pragma mark -- 接口请求
 /** 列表请求 */
@@ -162,10 +180,10 @@ static NSString *const CashNoteCell = @"CashNoteCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DSCashNoteDetailVC *dvc = [DSCashNoteDetailVC new];
-    DSCashNote *note = self.notes[indexPath.row];
-    dvc.finance_apply_id = note.finance_apply_id;
-    [self.navigationController pushViewController:dvc animated:YES];
+//    DSCashNoteDetailVC *dvc = [DSCashNoteDetailVC new];
+//    DSCashNote *note = self.notes[indexPath.row];
+//    dvc.finance_apply_id = note.finance_apply_id;
+//    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 @end

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,10 +14,9 @@
                 <outlet property="cartCnt" destination="qS0-Wh-PJK" id="kHz-L5-fN1"/>
                 <outlet property="collectCnt" destination="obl-ye-RO2" id="dLH-dZ-6Pv"/>
                 <outlet property="completedItem" destination="mdH-wW-WMD" id="mIk-WQ-Y5y"/>
-                <outlet property="dui_reward" destination="04o-PV-zCJ" id="26T-8u-I92"/>
-                <outlet property="gift_reward" destination="ccC-0O-qAn" id="PX8-Ix-M3y"/>
-                <outlet property="goods_reward" destination="WZC-Fy-czu" id="MXT-FB-wVR"/>
+                <outlet property="cur_month_amount" destination="ccC-0O-qAn" id="lYT-bY-vh1"/>
                 <outlet property="header_img" destination="tnT-mz-wUu" id="ZhH-7o-2dV"/>
+                <outlet property="last_month_amount" destination="04o-PV-zCJ" id="m5M-YK-aIq"/>
                 <outlet property="name" destination="PCM-nD-5kn" id="d47-Vu-CH9"/>
                 <outlet property="noDeItem" destination="mXA-Se-5k3" id="pAN-e7-NdZ"/>
                 <outlet property="noPayItem" destination="sgN-f1-dcN" id="29f-eM-mEq"/>
@@ -23,7 +24,8 @@
                 <outlet property="refundItem" destination="sjH-X3-M4A" id="3ek-fJ-jcW"/>
                 <outlet property="shareCode" destination="e0C-DD-axm" id="hH6-CN-3LJ"/>
                 <outlet property="teamCnt" destination="MCX-zH-X46" id="wqW-d3-40m"/>
-                <outlet property="total" destination="Fvg-Ed-A1e" id="2JE-Tv-YbM"/>
+                <outlet property="today_amount" destination="WZC-Fy-czu" id="aqf-ma-NID"/>
+                <outlet property="total_amount" destination="Fvg-Ed-A1e" id="l33-M6-QvN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="vip" destination="dOZ-04-aVq" id="btw-2U-xRr"/>
             </connections>
@@ -34,7 +36,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sW6-Bl-hid">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnI-B4-CLL">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="694"/>
@@ -315,8 +317,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89B-JW-AD9">
                                             <rect key="frame" x="0.0" y="0.0" width="384" height="35"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累计收益" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iov-qE-Blt">
-                                                    <rect key="frame" x="12" y="20.5" width="49.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="累计预估收益" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iov-qE-Blt">
+                                                    <rect key="frame" x="12" y="20.5" width="74" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -363,7 +365,7 @@
                                                             <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品奖励" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4m-JL-UBQ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日预估" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4m-JL-UBQ">
                                                             <rect key="frame" x="43.5" y="43" width="41" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -394,7 +396,7 @@
                                                             <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="礼包奖励" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rw-dx-RCZ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月预估" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rw-dx-RCZ">
                                                             <rect key="frame" x="43.5" y="43" width="41" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -425,7 +427,7 @@
                                                             <color key="textColor" red="0.99607843139999996" green="0.84313725490000002" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="队长补贴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCf-7B-hzY">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上月预估" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCf-7B-hzY">
                                                             <rect key="frame" x="43.5" y="43" width="41" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
