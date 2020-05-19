@@ -18,8 +18,3 @@ DerivedData
 *.xccheckout
 *.xcworkspace
 !default.xcworkspace
-
-#CocoaPods
-Pods
-!Podfile
-!Podfile.lock

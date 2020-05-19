@@ -1,0 +1,14 @@
+${PODS_ROOT}/Target Support Files/Pods-DS/Pods-DS-resources.sh
+${PODS_ROOT}/AliAuthSDK/AlibabaAuthSDK.framework/AlibabaAuthSDK.bundle
+${PODS_ROOT}/AliLinkPartnerSDK/AlibcLinkPartnerSDK.framework/SmartLink.bundle
+${PODS_ROOT}/AlibcTradeSDK/AlibcTradeBiz.framework/NBResource.bundle
+${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle
+${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle
+${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle
+${PODS_ROOT}/ZLPhotoBrowser/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoActionSheet.xib
+${PODS_ROOT}/ZLPhotoBrowser/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowserCell.xib
+${PODS_ROOT}/ZLPhotoBrowser/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowser.bundle
+${PODS_ROOT}/securityGuard/SGMiddleTier.framework/bx-cancel.png
+${PODS_ROOT}/securityGuard/SGMiddleTier.framework/bx-cancel@2x.png
+${PODS_ROOT}/securityGuard/SGMiddleTier.framework/bx-refresh.png
+${PODS_ROOT}/securityGuard/SGMiddleTier.framework/bx-refresh@2x.png
