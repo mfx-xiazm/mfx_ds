@@ -19,8 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *inviteCode;
 @property (weak, nonatomic) IBOutlet UIButton *registerBtn;
 @property (weak, nonatomic) IBOutlet UITextView *agreeMentTV;
-@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
-
 /* 验证码id */
 @property(nonatomic,copy) NSString *codeId;
 @end
@@ -31,11 +29,13 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"注册"];
     self.hbd_barStyle = UIBarStyleDefault;
-    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_barTintColor = HXGlobalBg;
     self.hbd_tintColor = [UIColor blackColor];
     self.hbd_barShadowHidden = YES;
     self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
     [self setAgreeMentProtocol];
+
+    [self.registerBtn.layer addSublayer:[UIColor setGradualChangingColor:self.registerBtn fromColor:@"F9AD28" toColor:@"F95628"]];
 
     hx_weakify(self);
     [self.phone lengthLimit:^{
@@ -54,14 +54,6 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"手机号格式不对"];
             return NO;
         }
-        if (!strongSelf.codeId) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请获取验证码"];
-            return NO;
-        }
-        if (![strongSelf.code hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入验证码"];
-            return NO;
-        }
         if (![strongSelf.pwd hasText]) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入您的密码"];
             return NO;
@@ -78,8 +70,12 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入邀请码"];
             return NO;
         }
-        if (!strongSelf.agreeBtn.isSelected) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"未勾选协议"];
+        if (!strongSelf.codeId) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请获取验证码"];
+            return NO;
+        }
+        if (![strongSelf.code hasText]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入验证码"];
             return NO;
         }
         return YES;
@@ -90,9 +86,9 @@
 }
 -(void)setAgreeMentProtocol
 {
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"我已阅读并同意《用户协议》和《隐私政策》"];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"已阅读并同意以下协议:《用户协议》和《隐私协议》"];
     [attributedString addAttribute:NSLinkAttributeName value:@"yhxy://" range:[[attributedString string] rangeOfString:@"《用户协议》"]];
-    [attributedString addAttribute:NSLinkAttributeName value:@"ysxy://" range:[[attributedString string] rangeOfString:@"《隐私政策》"]];
+    [attributedString addAttribute:NSLinkAttributeName value:@"ysxy://" range:[[attributedString string] rangeOfString:@"《隐私协议》"]];
     [attributedString addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0x000000) range:NSMakeRange(0, attributedString.length)];
     
     _agreeMentTV.attributedText = attributedString;
@@ -100,9 +96,6 @@
     _agreeMentTV.delegate = self;
     _agreeMentTV.editable = NO;        //必须禁止输入，否则点击将弹出输入键盘
     _agreeMentTV.scrollEnabled = NO;
-}
-- (IBAction)agreeBtnClicked:(UIButton *)sender {
-    sender.selected = !sender.selected;
 }
 - (IBAction)pwdStatusClicked:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -131,7 +124,7 @@
         hx_strongify(weakSelf);
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.codeId = NSStringFormat(@"%@",responseObject[@"result"]);
-            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
+            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:nil countColor:nil];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }

@@ -23,7 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = HXGlobalBg;
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = YES;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
     [self.navigationItem setTitle:(self.dataType==1)?@"忘记密码":@"修改密码"];
+    
+    [self.sureBtn.layer addSublayer:[UIColor setGradualChangingColor:self.sureBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+
     if (self.dataType == 2) {
         self.phone.text = [MSUserManager sharedInstance].curUserInfo.phone;
         self.phone.enabled = NO;
@@ -45,14 +53,6 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"手机号格式不对"];
             return NO;
         }
-        if (!strongSelf.codeId) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请获取验证码"];
-            return NO;
-        }
-        if (![strongSelf.code hasText]) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入验证码"];
-            return NO;
-        }
         if (![strongSelf.pwd hasText]) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请设置密码"];
             return NO;
@@ -63,6 +63,14 @@
         }
         if (![strongSelf.pwd.text isEqualToString:strongSelf.confirmPwd.text]) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"密码前后不一致"];
+            return NO;
+        }
+        if (!strongSelf.codeId) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请获取验证码"];
+            return NO;
+        }
+        if (![strongSelf.code hasText]) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入验证码"];
             return NO;
         }
         return YES;
@@ -110,7 +118,7 @@
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"change_pwd_set" parameters:parameters success:^(id responseObject) {
         hx_strongify(weakSelf);
-        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
+        [btn stopLoading:@"确认" image:nil textColor:nil backgroundColor:nil];
         if ([responseObject[@"status"] integerValue] == 1) {
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
             [strongSelf.navigationController popViewControllerAnimated:YES];
@@ -118,10 +126,8 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }
     } failure:^(NSError *error) {
-        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
+        [btn stopLoading:@"确认" image:nil textColor:nil backgroundColor:nil];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }
-
-
 @end

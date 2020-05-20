@@ -34,11 +34,14 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"登录"];
     self.hbd_barStyle = UIBarStyleDefault;
-    self.hbd_barTintColor = [UIColor whiteColor];
-    self.hbd_barShadowHidden = NO;
+    self.hbd_barTintColor = HXGlobalBg;
+    self.hbd_barShadowHidden = YES;
     self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
 
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(registerClicked:) title:@"注册" font:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium] titleColor:HXControlBg highlightedColor:HXControlBg titleEdgeInsets:UIEdgeInsetsZero];
+    
+    [self.loginBtn.layer addSublayer:[UIColor setGradualChangingColor:self.loginBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+
     hx_weakify(self);
     [self.phone lengthLimit:^{
         hx_strongify(weakSelf);
@@ -58,17 +61,17 @@
             return NO;
         }
         if (strongSelf.loginType.isSelected) {
+            if (![strongSelf.pwd hasText]) {
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入密码"];
+                return NO;
+            }
+        }else{
             if (!strongSelf.codeId) {
                 [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请获取验证码"];
                 return NO;
             }
             if (![strongSelf.code hasText]) {
                 [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入验证码"];
-                return NO;
-            }
-        }else{
-            if (![strongSelf.pwd hasText]) {
-                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入密码"];
                 return NO;
             }
         }
@@ -124,13 +127,13 @@
 - (IBAction)loginTypeClicked:(UIButton *)sender {
     self.loginType.selected = !self.loginType.selected;
     if (self.loginType.isSelected) {
-        self.codeView.hidden = NO;
-        self.pwdView.hidden = YES;
-        self.forgetBtn.hidden = YES;
-    }else{
         self.codeView.hidden = YES;
         self.pwdView.hidden = NO;
         self.forgetBtn.hidden = NO;
+    }else{
+        self.codeView.hidden = NO;
+        self.pwdView.hidden = YES;
+        self.forgetBtn.hidden = YES;
     }
 }
 - (IBAction)getCodeRequest:(UIButton *)sender {
@@ -152,7 +155,7 @@
         hx_strongify(weakSelf);
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.codeId = NSStringFormat(@"%@",responseObject[@"result"]);
-            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
+            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:nil countColor:nil];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }
@@ -165,16 +168,16 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (self.loginType.isSelected) {
         parameters[@"phone"] = self.phone.text;
-        parameters[@"sms_id"] = self.codeId;
-        parameters[@"sms_code"] = self.code.text;
+        parameters[@"pwd"] = self.pwd.text;
         parameters[@"device_tokens"] = @"";//设备号，不允许推送时为空
     }else{
         parameters[@"phone"] = self.phone.text;
-        parameters[@"pwd"] = self.pwd.text;
+        parameters[@"sms_id"] = self.codeId;
+        parameters[@"sms_code"] = self.code.text;
         parameters[@"device_tokens"] = @"";//设备号，不允许推送时为空
     }
     
-    [HXNetworkTool POST:HXRC_M_URL action:self.loginType.isSelected?@"login_sms_set":@"login_set" parameters:parameters success:^(id responseObject) {
+    [HXNetworkTool POST:HXRC_M_URL action:self.loginType.isSelected?@"login_set":@"login_sms_set" parameters:parameters success:^(id responseObject) {
         [sender stopLoading:@"登录" image:nil textColor:nil backgroundColor:nil];
         if ([responseObject[@"status"] integerValue] == 1) {
             [MSUserManager sharedInstance].curUserInfo = [MSUserInfo yy_modelWithDictionary:responseObject[@"result"]];
