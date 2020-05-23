@@ -218,9 +218,9 @@
     [self.cyclePagerView reloadData];
 
     [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:14]];
-    [self.cmm_price setFontAttributedText:[NSString stringWithFormat:@" 预估补贴¥%.2f ",[self.goodsDetail.cmm_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:10]];
-    [self.marketPrice setFontAttributedText:[NSString stringWithFormat:@"现价¥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:[NSString stringWithFormat:@"%.2f",[self.goodsDetail.price floatValue]] andFont:[UIFont fontWithName:@"ArialMT" size: 12]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:14]]];
+    [self.cmm_price setFontAttributedText:[NSString stringWithFormat:@"  预估补贴¥%.2f  ",[self.goodsDetail.cmm_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:10]]];
+    [self.marketPrice setFontAttributedText:[NSString stringWithFormat:@"现价¥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:@[[NSString stringWithFormat:@"%.2f",[self.goodsDetail.price floatValue]]] andFont:@[[UIFont fontWithName:@"ArialMT" size: 12]]];
     self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
 
     if ([self.goodsDetail.coupon_amount floatValue] == 0) {
@@ -229,7 +229,7 @@
     }else{
         self.coupon_view.hidden = NO;
         self.coupon_view_height.constant = 74.f;
-        [self.coupon_amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.coupon_amount floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:14]];
+        [self.coupon_amount setFontAttributedText:[NSString stringWithFormat:@"¥%.f",[self.goodsDetail.coupon_amount floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:14]]];
         self.coupon_time.text = [NSString stringWithFormat:@"%@-%@",self.goodsDetail.coupon_start_time,self.goodsDetail.coupon_end_time];
     }
     
@@ -264,6 +264,8 @@
             [alert adjoinWithLeftAction:cancelButton rightAction:okButton];
             self.zh_popupController = [[zhPopupController alloc] init];
             [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
+        }else{
+            [self getTaoAuthRequest:openId];
         }
     }else{
         [self getTaoAuthRequest:openId];
@@ -278,6 +280,7 @@
     parameters[@"stree_name"] = self.stree;
     parameters[@"lng"] = @(self.longitude);
     parameters[@"lat"] = @(self.latitude);
+    parameters[@"baichuan_open_id"] = openId;
 
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"is_oauth_get" parameters:parameters success:^(id responseObject) {

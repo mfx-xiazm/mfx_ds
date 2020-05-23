@@ -25,7 +25,7 @@
 -(void)setPay_amount:(NSString *)pay_amount
 {
     _pay_amount = pay_amount;
-    [self.payPrice setFontAttributedText:[NSString stringWithFormat:@"实付金额：¥%.2f",[_pay_amount floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:10]];
+    [self.payPrice setFontAttributedText:[NSString stringWithFormat:@"实付金额：¥%.2f",[_pay_amount floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:10]]];
 }
 - (IBAction)payTypeClicked:(UIButton *)sender {
     if (sender.tag == 1) {

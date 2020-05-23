@@ -108,7 +108,8 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         // 不要自动调整inset
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.tableView.estimatedRowHeight = 0;//预估高度
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;//预估高度
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
@@ -241,7 +242,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 {
     DSBalanceNote *note = self.notes[indexPath.row];
     if ([note.finance_log_type isEqualToString:@"2"] || [note.finance_log_type isEqualToString:@"3"] || [note.finance_log_type isEqualToString:@"4"] || [note.finance_log_type isEqualToString:@"5"]) {
-        return note.textHeight + 110.f;
+        return UITableViewAutomaticDimension;
     }else{
         return 90.f;
     }

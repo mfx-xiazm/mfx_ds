@@ -50,8 +50,8 @@
 
     [self.vipCoverImg sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
     [self.vipGoodName setTextWithLineSpace:5.f withString:_goods.goods_name withFont:[UIFont systemFontOfSize:14]];
-    [self.vipPrice setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[goods.is_discount isEqualToString:@"1"]?[_goods.discount_price floatValue]:[_goods.price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
-    [self.vip_goods_num setFontAttributedText:[NSString stringWithFormat:@"x%@",_goods.goods_num] andChangeStr:@"x" andFont:[UIFont systemFontOfSize:12]];
+    [self.vipPrice setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[goods.is_discount isEqualToString:@"1"]?[_goods.discount_price floatValue]:[_goods.price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
+    [self.vip_goods_num setFontAttributedText:[NSString stringWithFormat:@"x%@",_goods.goods_num] andChangeStr:@[@"x"] andFont:@[[UIFont systemFontOfSize:12]]];
 }
 -(void)setOrderGoods:(DSMyOrderGoods *)orderGoods
 {
@@ -74,8 +74,8 @@
         
         [self.vipCoverImg sd_setImageWithURL:[NSURL URLWithString:_orderGoods.cover_img]];
         [self.vipGoodName setTextWithLineSpace:5.f withString:_orderGoods.goods_name withFont:[UIFont systemFontOfSize:14]];
-        [self.vipPrice setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_orderGoods.is_discount isEqualToString:@"1"]?[_orderGoods.discount_price floatValue]:[_orderGoods.price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
-        [self.vip_goods_num setFontAttributedText:[NSString stringWithFormat:@"x%@",_orderGoods.goods_num] andChangeStr:@"x" andFont:[UIFont systemFontOfSize:12]];
+        [self.vipPrice setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_orderGoods.is_discount isEqualToString:@"1"]?[_orderGoods.discount_price floatValue]:[_orderGoods.price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
+        [self.vip_goods_num setFontAttributedText:[NSString stringWithFormat:@"x%@",_orderGoods.goods_num] andChangeStr:@[@"x"] andFont:@[[UIFont systemFontOfSize:12]]];
 //    }
 }
 -(void)setDetailGoods:(DSMyOrderDetailGoods *)detailGoods
@@ -98,8 +98,8 @@
         
         [self.vipCoverImg sd_setImageWithURL:[NSURL URLWithString:_detailGoods.cover_img]];
         [self.vipGoodName setTextWithLineSpace:5.f withString:_detailGoods.goods_name withFont:[UIFont systemFontOfSize:14]];
-        [self.vipPrice setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_detailGoods.is_discount isEqualToString:@"1"]?[_detailGoods.discount_price floatValue]:[_detailGoods.price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
-        [self.vip_goods_num setFontAttributedText:[NSString stringWithFormat:@"x%@",_detailGoods.goods_num] andChangeStr:@"x" andFont:[UIFont systemFontOfSize:12]];
+        [self.vipPrice setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_detailGoods.is_discount isEqualToString:@"1"]?[_detailGoods.discount_price floatValue]:[_detailGoods.price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
+        [self.vip_goods_num setFontAttributedText:[NSString stringWithFormat:@"x%@",_detailGoods.goods_num] andChangeStr:@[@"x"] andFont:@[[UIFont systemFontOfSize:12]]];
 //    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -34,9 +34,9 @@
     [self.goods_name setTextWithLineSpace:5.f withString:_cart.goods_name withFont:[UIFont systemFontOfSize:14]];
     
     [self.market_price setLabelUnderline:[NSString stringWithFormat:@"¥%.2f",[_cart.price floatValue]]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_cart.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_cart.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
 
-    [self.back_price setFontAttributedText:[NSString stringWithFormat:@"现金补贴：¥%.2f",[_cart.cmm_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:10]];
+    [self.back_price setFontAttributedText:[NSString stringWithFormat:@"现金补贴：¥%.2f",[_cart.cmm_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:10]]];
 
     if (_cart.specs_attrs && _cart.specs_attrs.length) {
         self.spec_value.text = [NSString stringWithFormat:@"规格：%@",_cart.specs_attrs];

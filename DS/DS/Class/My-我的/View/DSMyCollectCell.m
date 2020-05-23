@@ -26,7 +26,7 @@
     _goods = goods;
     [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
     [self.goodName setTextWithLineSpace:3.f withString:_goods.goods_name withFont:[UIFont systemFontOfSize:13]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goods.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goods.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
     [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"¥%.2f",[_goods.price floatValue]]];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

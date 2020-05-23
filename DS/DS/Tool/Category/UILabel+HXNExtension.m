@@ -27,12 +27,15 @@
 }
 
 // 改变某些文字大小
--(void)setFontAttributedText:(NSString *)allStr andChangeStr:(NSString *)changeStr andFont:(UIFont *)font
+-(void)setFontAttributedText:(NSString *)allStr andChangeStr:(NSArray *)changeStrs andFont:(NSArray *)fonts
 {
-    NSString *string = changeStr;//要单独改变的字体颜色
-    NSRange range = [allStr rangeOfString:string];
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:allStr];
-    [attStr addAttribute:NSFontAttributeName value:font range:range];
+    for (int i=0;i<changeStrs.count;i++) {
+        NSString *string = changeStrs[i];
+        UIFont *font = fonts[i];
+        NSRange range = [allStr rangeOfString:string];
+        [attStr addAttribute:NSFontAttributeName value:font range:range];
+    }
     self.attributedText = attStr;
 }
 
@@ -115,6 +118,14 @@
     aaL.clipsToBounds = YES;
     aaL.layer.cornerRadius = (16*3)/2.0;
     aaL.textAlignment = NSTextAlignmentCenter;
+    
+   NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+    paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    paraStyle.alignment = NSTextAlignmentLeft;
+    paraStyle.lineSpacing = lineSpace; //设置行间距
+    
+    [maTitleString addAttributes:@{NSParagraphStyleAttributeName:paraStyle,NSFontAttributeName:font} range:NSMakeRange(0, maTitleString.length)];
+
     //调用方法，转化成Image
     UIImage *image = [self imageWithUIView:aaL];
     //创建Image的富文本格式
@@ -126,14 +137,7 @@
     [maTitleString insertAttributedString:imageStr atIndex:0];//加入文字前面
     //[maTitleString appendAttributedString:imageStr];//加入文字后面
     //[maTitleString insertAttributedString:imageStr atIndex:4];//加入文字第4的位置
-
-    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
-    paraStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-    paraStyle.alignment = NSTextAlignmentLeft;
-    paraStyle.lineSpacing = lineSpace; //设置行间距
     
-    [maTitleString addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, maTitleString.length)];
-
     //注意 ：创建这个Label的时候，frame，font，cornerRadius要设置成所生成的图片的3倍，也就是说要生成一个三倍图，否则生成的图片会虚，同学们可以试一试。
     self.attributedText = maTitleString;
 }

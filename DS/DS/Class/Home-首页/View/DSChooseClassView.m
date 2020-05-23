@@ -56,12 +56,12 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
     
     [self.cover_img sd_setImageWithURL:[NSURL URLWithString:_goodsDetail.cover_img]];
     if (_goodsDetail.selectSku) {
-        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
         [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：¥%.2f",[_goodsDetail.selectSku.price floatValue]]];
 
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.selectSku.stock];
     }else{
-        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
         [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：¥%.2f",[_goodsDetail.price floatValue]]];
 
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.stock];
@@ -137,12 +137,12 @@ static NSString *const ChooseClassFooter = @"ChooseClassFooter";
     }
     
     if (_goodsDetail.selectSku) {
-        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.selectSku.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.selectSku.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
         [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：¥%.2f",[_goodsDetail.selectSku.price floatValue]]];
 
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",_goodsDetail.selectSku.stock];
     }else{
-        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+        [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
         [self.market_price setLabelUnderline:[NSString stringWithFormat:@"原价：¥%.2f",[_goodsDetail.price floatValue]]];
 
         self.stock_num.text = [NSString stringWithFormat:@"库存：%@",@"0"];

@@ -38,7 +38,7 @@
     self.hbd_barShadowHidden = YES;
     self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
 
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(registerClicked:) title:@"注册" font:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium] titleColor:HXControlBg highlightedColor:HXControlBg titleEdgeInsets:UIEdgeInsetsZero];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(registerClicked:) title:@"注册" font:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium] titleColor:HXControlBg highlightedColor:HXControlBg titleEdgeInsets:UIEdgeInsetsZero];
     
     [self.loginBtn.layer addSublayer:[UIColor setGradualChangingColor:self.loginBtn fromColor:@"F9AD28" toColor:@"F95628"]];
 

@@ -23,7 +23,7 @@
 #import "DSSearchGoodsVC.h"
 #import <zhPopupController.h>
 
-static const CGFloat JXheightForHeaderInSection = 44;
+static const CGFloat JXheightForHeaderInSection = 50;
 
 @interface DSAfreshHomeVC ()<JXPagerViewDelegate,JXPagerMainTableViewGestureDelegate,JXCategoryViewDelegate>
 @property (nonatomic, strong) JXPagerView *pagerView;
@@ -71,7 +71,8 @@ static const CGFloat JXheightForHeaderInSection = 44;
 {
     if (!_categoryView) {
         _categoryView = [[JXCategoryTitleView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, JXheightForHeaderInSection)];
-        _categoryView.titleFont = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
+        _categoryView.titleFont = [UIFont systemFontOfSize:15];
+        _categoryView.titleSelectedFont = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
         _categoryView.backgroundColor = HXGlobalBg;
         _categoryView.delegate = self;
         _categoryView.titleSelectedColor = HXControlBg;
@@ -83,6 +84,7 @@ static const CGFloat JXheightForHeaderInSection = 44;
 
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
         lineView.indicatorColor = HXControlBg;
+        lineView.verticalMargin = 2.f;
         _categoryView.indicators = @[lineView];
     }
     return _categoryView;
@@ -161,8 +163,8 @@ static const CGFloat JXheightForHeaderInSection = 44;
   
     SPButton *searchBar = [SPButton buttonWithType:UIButtonTypeCustom];
     searchBar.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    searchBar.contentEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0);
-    searchBar.imageTitleSpace = 5.f;
+    searchBar.contentEdgeInsets = UIEdgeInsetsMake(0, 14.f, 0, 0);
+    searchBar.imageTitleSpace = 8.f;
     searchBar.frame = CGRectMake(5, 0, CGRectGetWidth(searchBg.frame)-5.f, 30.f);
     searchBar.backgroundColor = [UIColor whiteColor];
     searchBar.layer.cornerRadius = 15.f;

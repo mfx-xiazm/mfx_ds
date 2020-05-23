@@ -202,7 +202,7 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = HX_SCREEN_WIDTH;
-    CGFloat height = 120;
+    CGFloat height = 140;
     return CGSizeMake(width, height);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{

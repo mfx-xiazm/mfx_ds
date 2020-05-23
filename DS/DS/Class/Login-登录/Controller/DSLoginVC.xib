@@ -33,14 +33,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="arf-sF-LRb">
-                                    <rect key="frame" x="20" y="10" width="374" height="55"/>
+                                    <rect key="frame" x="20" y="0.0" width="374" height="55"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i7Z-7h-Ke6">
                                             <rect key="frame" x="0.0" y="7.5" width="374" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="4er-It-ytH"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVw-ov-IDb" userLabel="分割线">
@@ -63,14 +63,14 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zc6-Xw-OXZ">
-                                    <rect key="frame" x="20" y="65" width="374" height="55"/>
+                                    <rect key="frame" x="20" y="55" width="374" height="55"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qkj-XE-2LP">
                                             <rect key="frame" x="0.0" y="7.5" width="334" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="YdH-VY-i8X"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhJ-MK-QfE">
@@ -107,14 +107,14 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIX-lt-xZZ">
-                                    <rect key="frame" x="20" y="65" width="374" height="55"/>
+                                    <rect key="frame" x="20" y="55" width="374" height="55"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入短信验证码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NBW-Jp-c6M">
                                             <rect key="frame" x="0.0" y="7.5" width="264" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="mf2-Tg-cqG"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BG5-Ru-Avl">
@@ -159,12 +159,12 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-Uf-Bcr">
-                                    <rect key="frame" x="20" y="240" width="374" height="48"/>
+                                    <rect key="frame" x="20" y="180" width="374" height="48"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="9ej-q2-Cw5"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                     <state key="normal" title="登录">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
@@ -175,9 +175,9 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HF-7d-7ia">
-                                    <rect key="frame" x="340" y="125" width="54" height="28"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
-                                    <state key="normal" title="忘记密码">
+                                    <rect key="frame" x="329" y="120" width="65" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="忘记密码?">
                                         <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -185,8 +185,8 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3E-0x-Vcu">
-                                    <rect key="frame" x="20" y="125" width="78" height="27"/>
-                                    <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="13"/>
+                                    <rect key="frame" x="20" y="120" width="86" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" title="账号密码登录">
                                         <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -198,8 +198,8 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="j4f-Uf-Bcr" firstAttribute="top" secondItem="zc6-Xw-OXZ" secondAttribute="bottom" constant="120" id="2Tw-HF-3UW"/>
-                                <constraint firstItem="b3E-0x-Vcu" firstAttribute="top" secondItem="zc6-Xw-OXZ" secondAttribute="bottom" constant="5" id="D55-JD-7Zj"/>
+                                <constraint firstItem="j4f-Uf-Bcr" firstAttribute="top" secondItem="zc6-Xw-OXZ" secondAttribute="bottom" constant="70" id="2Tw-HF-3UW"/>
+                                <constraint firstItem="b3E-0x-Vcu" firstAttribute="top" secondItem="zc6-Xw-OXZ" secondAttribute="bottom" constant="10" id="D55-JD-7Zj"/>
                                 <constraint firstItem="VIX-lt-xZZ" firstAttribute="leading" secondItem="6wA-fd-IN8" secondAttribute="leading" constant="20" id="FVC-oH-16p"/>
                                 <constraint firstAttribute="trailing" secondItem="j4f-Uf-Bcr" secondAttribute="trailing" constant="20" id="ITU-mV-OJw"/>
                                 <constraint firstAttribute="trailing" secondItem="arf-sF-LRb" secondAttribute="trailing" constant="20" id="Lpf-Tm-TjP"/>
@@ -209,8 +209,8 @@
                                 <constraint firstItem="zc6-Xw-OXZ" firstAttribute="leading" secondItem="6wA-fd-IN8" secondAttribute="leading" constant="20" id="eYa-kl-R5p"/>
                                 <constraint firstAttribute="trailing" secondItem="VIX-lt-xZZ" secondAttribute="trailing" constant="20" id="eYo-Md-hWT"/>
                                 <constraint firstItem="zc6-Xw-OXZ" firstAttribute="top" secondItem="arf-sF-LRb" secondAttribute="bottom" id="j2f-ky-nIs"/>
-                                <constraint firstItem="9HF-7d-7ia" firstAttribute="top" secondItem="zc6-Xw-OXZ" secondAttribute="bottom" constant="5" id="kjh-sH-Isi"/>
-                                <constraint firstItem="arf-sF-LRb" firstAttribute="top" secondItem="6wA-fd-IN8" secondAttribute="top" constant="10" id="tgA-sV-Qdg"/>
+                                <constraint firstItem="9HF-7d-7ia" firstAttribute="top" secondItem="zc6-Xw-OXZ" secondAttribute="bottom" constant="10" id="kjh-sH-Isi"/>
+                                <constraint firstItem="arf-sF-LRb" firstAttribute="top" secondItem="6wA-fd-IN8" secondAttribute="top" id="tgA-sV-Qdg"/>
                                 <constraint firstItem="b3E-0x-Vcu" firstAttribute="leading" secondItem="zc6-Xw-OXZ" secondAttribute="leading" id="uWI-Sq-iG8"/>
                                 <constraint firstItem="j4f-Uf-Bcr" firstAttribute="leading" secondItem="6wA-fd-IN8" secondAttribute="leading" constant="20" id="xub-Ck-FtX"/>
                                 <constraint firstItem="VIX-lt-xZZ" firstAttribute="top" secondItem="arf-sF-LRb" secondAttribute="bottom" id="yuk-yT-76G"/>

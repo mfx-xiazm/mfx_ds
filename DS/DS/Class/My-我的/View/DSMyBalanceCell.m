@@ -42,13 +42,13 @@
         self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_note.order_no];
         self.create_time.text = _note.create_time;
         if (_note.finance_log_desc && _note.finance_log_desc.length) {
-            [self.order_title setTextWithLineSpace:3.f withString:[NSString stringWithFormat:@"%@-%@",_note.finance_log_desc,_note.order_title] withFont:[UIFont systemFontOfSize:14]];
+            [self.order_title setTextWithLineSpace:3.f withString:[NSString stringWithFormat:@"%@-%@",_note.finance_log_desc,_note.order_title] withFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
         }else{
-            [self.order_title setTextWithLineSpace:3.f withString:_note.order_title withFont:[UIFont systemFontOfSize:14]];
+            [self.order_title setTextWithLineSpace:3.f withString:_note.order_title withFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
         }
-        [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"实付:¥%.2f",[_note.pay_amount floatValue]] andChangeStr:@"实付:¥" andFont:[UIFont systemFontOfSize:10]];
+        [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"实付：¥%.2f",[_note.pay_amount floatValue]] andChangeStr:@[@"实付：¥"] andFont:@[[UIFont systemFontOfSize:10]]];
 
-        [self.num setFontAttributedText:[NSString stringWithFormat:@"x%@",_note.order_num] andChangeStr:@"x" andFont:[UIFont systemFontOfSize:10]];
+        [self.num setFontAttributedText:[NSString stringWithFormat:@"x%@",_note.order_num] andChangeStr:@[@"x"] andFont:@[[UIFont systemFontOfSize:10]]];
         
         if ([_note.amount floatValue] == 0) {
             self.amount.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
@@ -56,7 +56,7 @@
             if ([_note.amount containsString:@"-"]) {
                 self.amount.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
             }else{
-                [self.amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_note.amount floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:10]];
+                [self.amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_note.amount floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
             }
         }
         if ([_note.is_valid isEqualToString:@"1"]) {
@@ -69,7 +69,7 @@
     }else{
         self.orderView.hidden = YES;
         self.otherView.hidden = NO;
-        self.finance_log_desc.text = _note.finance_log_desc;
+        [self.finance_log_desc setTextWithLineSpace:3.f withString:_note.finance_log_desc withFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
         self.time.text = _note.create_time;
         if ([_note.amount floatValue] == 0) {
             self.amount1.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
@@ -77,7 +77,7 @@
             if ([_note.amount containsString:@"-"]) {
                 self.amount1.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
             }else{
-                [self.amount1 setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_note.amount floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:10]];
+                [self.amount1 setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_note.amount floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
             }
         }
     }

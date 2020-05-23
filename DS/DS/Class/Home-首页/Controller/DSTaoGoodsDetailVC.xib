@@ -45,20 +45,20 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="券后价" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vd-XI-36U">
-                                    <rect key="frame" x="12" y="434.5" width="37" height="14.5"/>
+                                    <rect key="frame" x="12" y="436.5" width="37" height="14.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥99.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aly-eD-2dB">
-                                    <rect key="frame" x="49" y="424" width="60.5" height="33"/>
+                                    <rect key="frame" x="54" y="424" width="60.5" height="33"/>
                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 预估补贴￥9.80 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bX3-9c-rbA">
-                                    <rect key="frame" x="119.5" y="432.5" width="79" height="16"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 预估补贴￥9.80 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bX3-9c-rbA">
+                                    <rect key="frame" x="124.5" y="432.5" width="79" height="16"/>
                                     <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="jj4-64-HHX"/>
@@ -245,7 +245,7 @@
                                 <constraint firstAttribute="bottom" secondItem="Dwv-04-x6h" secondAttribute="bottom" constant="10" id="cbc-7K-bK4"/>
                                 <constraint firstItem="T7n-w1-J8C" firstAttribute="top" secondItem="pM1-YL-dxA" secondAttribute="bottom" constant="15" id="cou-Mr-b4s"/>
                                 <constraint firstItem="m3N-KD-Yvt" firstAttribute="leading" secondItem="bqH-xk-Vm9" secondAttribute="leading" id="dwM-eL-Jjr"/>
-                                <constraint firstItem="Aly-eD-2dB" firstAttribute="leading" secondItem="2vd-XI-36U" secondAttribute="trailing" id="ezj-HE-Flb"/>
+                                <constraint firstItem="Aly-eD-2dB" firstAttribute="leading" secondItem="2vd-XI-36U" secondAttribute="trailing" constant="5" id="ezj-HE-Flb"/>
                                 <constraint firstItem="bX3-9c-rbA" firstAttribute="centerY" secondItem="Aly-eD-2dB" secondAttribute="centerY" id="hU9-fx-1hb"/>
                                 <constraint firstItem="m3N-KD-Yvt" firstAttribute="centerY" secondItem="bqH-xk-Vm9" secondAttribute="centerY" id="j8H-ik-srv"/>
                                 <constraint firstItem="pM1-YL-dxA" firstAttribute="top" secondItem="bqH-xk-Vm9" secondAttribute="bottom" constant="8" id="kES-Jj-3dU"/>
@@ -255,7 +255,7 @@
                                 <constraint firstItem="2vd-XI-36U" firstAttribute="leading" secondItem="QMJ-LK-4r7" secondAttribute="leading" constant="12" id="omg-Wa-OYL"/>
                                 <constraint firstItem="T7n-w1-J8C" firstAttribute="leading" secondItem="QMJ-LK-4r7" secondAttribute="leading" constant="12" id="qQZ-ZR-ZtC"/>
                                 <constraint firstAttribute="trailing" secondItem="WtG-W7-aAN" secondAttribute="trailing" id="uaC-QZ-ufv"/>
-                                <constraint firstItem="2vd-XI-36U" firstAttribute="bottom" secondItem="Aly-eD-2dB" secondAttribute="bottom" constant="-8" id="xxP-eU-8bg"/>
+                                <constraint firstItem="2vd-XI-36U" firstAttribute="bottom" secondItem="Aly-eD-2dB" secondAttribute="bottom" constant="-6" id="xxP-eU-8bg"/>
                             </constraints>
                         </view>
                     </subviews>

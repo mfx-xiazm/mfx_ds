@@ -15,7 +15,7 @@
 -(void)setColorAttributedText:(NSString *)allStr andChangeRange:(NSRange )range andColor:(UIColor *)color;
 
 // 改变某些文字大小
--(void)setFontAttributedText:(NSString *)allStr andChangeStr:(NSString *)changeStr andFont:(UIFont *)font;
+-(void)setFontAttributedText:(NSString *)allStr andChangeStr:(NSArray *)changeStrs andFont:(NSArray *)fonts;
 // 改变某些文字大小
 -(void)setFontAttributedText:(NSString *)allStr andChangeRange:(NSRange )range andFont:(UIFont *)font;
 

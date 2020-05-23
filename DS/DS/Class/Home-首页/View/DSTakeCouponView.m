@@ -61,7 +61,7 @@ static NSString *const TakeCouponCell = @"TakeCouponCell";
     DSTakeCouponCell *cell = [tableView dequeueReusableCellWithIdentifier:TakeCouponCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell.discount setFontAttributedText:[NSString stringWithFormat:@"%.1f折",[self.discount floatValue]] andChangeStr:@"折" andFont:[UIFont systemFontOfSize:14]];
+    [cell.discount setFontAttributedText:[NSString stringWithFormat:@"%.1f折",[self.discount floatValue]] andChangeStr:@[@"折"] andFont:@[[UIFont systemFontOfSize:14]]];
     cell.discoutName.text = [NSString stringWithFormat:@"%.1f折券",[self.discount floatValue]];
     cell.validDay.text = [NSString stringWithFormat:@"有效期：%@天",self.valid_days];
     if ([self.is_discount isEqualToString:@"1"]) {// 已领

@@ -40,13 +40,13 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 225.f);
+    self.header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 250.f);
 }
 -(DSMyBalanceHeader *)header
 {
     if (_header == nil) {
         _header = [DSMyBalanceHeader loadXibView];
-        _header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 225.f);
+        _header.frame = CGRectMake(0, 0, HX_SCREEN_WIDTH, 250.f);
         hx_weakify(self);
         _header.balanceBtnCall = ^(NSInteger index) {
             hx_strongify(weakSelf);
@@ -88,7 +88,8 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     self.tableView.backgroundColor = HXGlobalBg;
-    self.tableView.estimatedRowHeight = 0;//预估高度
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;//预估高度
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
@@ -142,14 +143,14 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             strongSelf.notes = [NSArray yy_modelArrayWithClass:[DSBalanceNote class] json:responseObject[@"result"][@"log_list"]];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [strongSelf.header.balance setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[responseObject[@"result"][@"balance"] floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:16]];
-                strongSelf.header.goods_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"goods_reward"] floatValue]);
-                strongSelf.header.gift_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"gift_reward"] floatValue]);
-                strongSelf.header.upgrade_reward.text = NSStringFormat(@"%.2f",[responseObject[@"result"][@"upgrade_reward"] floatValue]+[responseObject[@"result"][@"share_reward"] floatValue]);
+                [strongSelf.header.balance setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"balance"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:16]]];
+                [strongSelf.header.goods_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"goods_reward"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
+                [strongSelf.header.gift_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"gift_reward"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
+                [strongSelf.header.upgrade_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"upgrade_reward"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
 
-                strongSelf.header.last_month_amount.text = NSStringFormat(@"上月已结算¥%.2f",[responseObject[@"result"][@"js_amount"][@"js_last_month_amount"] floatValue]);
-                strongSelf.header.cur_month_amount.text = NSStringFormat(@"本月已结算¥%.2f",[responseObject[@"result"][@"js_amount"][@"js_cur_month_amount"] floatValue]);
-                strongSelf.header.dai_month_amount.text = NSStringFormat(@"待结算¥%.2f",[responseObject[@"result"][@"js_amount"][@"js_dai_amount"] floatValue]);
+                strongSelf.header.last_month_amount.text = NSStringFormat(@"上月已结算￥%.2f",[responseObject[@"result"][@"js_amount"][@"js_last_month_amount"] floatValue]);
+                strongSelf.header.cur_month_amount.text = NSStringFormat(@"本月已结算￥%.2f",[responseObject[@"result"][@"js_amount"][@"js_cur_month_amount"] floatValue]);
+                strongSelf.header.dai_month_amount.text = NSStringFormat(@"待结算￥%.2f",[responseObject[@"result"][@"js_amount"][@"js_dai_amount"] floatValue]);
                 
                 [strongSelf.tableView reloadData];
             });
@@ -194,7 +195,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 {
     DSBalanceNote *note = self.notes[indexPath.row];
     if ([note.finance_log_type isEqualToString:@"2"] || [note.finance_log_type isEqualToString:@"3"] || [note.finance_log_type isEqualToString:@"4"] || [note.finance_log_type isEqualToString:@"5"]) {
-        return note.textHeight + 110.f;
+        return UITableViewAutomaticDimension;
     }else{
         return 90.f;
     }

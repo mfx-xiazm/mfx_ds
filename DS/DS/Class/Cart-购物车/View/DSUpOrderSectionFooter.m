@@ -18,7 +18,7 @@
 -(void)setGoods:(DSConfirmGoods *)goods
 {
     _goods = goods;
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",_goods.totalPrice] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:12]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",_goods.totalPrice] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
 }
 
 @end

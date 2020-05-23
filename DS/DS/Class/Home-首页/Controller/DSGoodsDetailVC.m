@@ -286,7 +286,7 @@
     [self.cyclePagerView reloadData];
     
     [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.discount_price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:14]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:14]]];
     self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
 
     

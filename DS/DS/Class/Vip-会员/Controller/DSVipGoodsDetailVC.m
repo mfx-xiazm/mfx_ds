@@ -139,12 +139,12 @@
     [self.cyclePagerView reloadData];
     
     [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:@"¥" andFont:[UIFont systemFontOfSize:14]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:14]]];
     self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
     if (self.goodsDetail.goods_flag && self.goodsDetail.goods_flag.length) {
         self.goods_flag.hidden = NO;
         self.goods_flag.text = [NSString stringWithFormat:@" %@ ",self.goodsDetail.goods_flag];
-        [self.buyLabel setFontAttributedText:[NSString stringWithFormat:@"立即购买\n(%@)",self.goodsDetail.goods_flag] andChangeStr:[NSString stringWithFormat:@"(%@)",self.goodsDetail.goods_flag] andFont:[UIFont systemFontOfSize:10]];
+        [self.buyLabel setFontAttributedText:[NSString stringWithFormat:@"立即购买\n(%@)",self.goodsDetail.goods_flag] andChangeStr:@[[NSString stringWithFormat:@"(%@)",self.goodsDetail.goods_flag]] andFont:@[[UIFont systemFontOfSize:10]]];
     }else{
         self.goods_flag.hidden = YES;
         self.buyLabel.text = @"立即购买";

@@ -18,7 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.cateName.textColor = UIColorFromRGB(0x666666);
 }
 -(void)setCate:(DSHomeCate *)cate
 {

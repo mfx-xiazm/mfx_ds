@@ -32,8 +32,8 @@
     // 通过appearance统一设置所有UITabBarItem的文字属性
     // 后面带有UI_APPEARANCE_SELECTOR的方法, 都可以通过appearance对象来统一设置
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
-    attrs[NSFontAttributeName] = [UIFont systemFontOfSize:11 weight:UIFontWeightMedium];
-    attrs[NSForegroundColorAttributeName] = UIColorFromRGB(0x999999);
+    attrs[NSFontAttributeName] = [UIFont fontWithName:@"PingFangSC-Medium" size:10];
+    attrs[NSForegroundColorAttributeName] = UIColorFromRGB(0x666666);
     
     NSMutableDictionary *selectedAttrs = [NSMutableDictionary dictionary];
     selectedAttrs[NSFontAttributeName] = attrs[NSFontAttributeName];
@@ -56,7 +56,14 @@
     [self.tabBar setBarTintColor:[UIColor whiteColor]];
     self.tabBar.translucent = NO;//这句表示取消tabBar的透明效果。
     [self.tabBar setBackgroundImage:[UIImage new]];
-    [self.tabBar setShadowImage:[UIImage imageWithColor:HXRGBAColor(235, 235, 235, 0.8) size:CGSizeMake(1, 0.5)]];
+    [self.tabBar setShadowImage:[UIImage new]];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, -0.5, HX_SCREEN_WIDTH, 0.5)];
+    view.backgroundColor = [UIColor whiteColor];
+    [[UITabBar appearance] insertSubview:view atIndex:0];
+    
+    self.tabBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.tabBar.layer.shadowOffset = CGSizeMake(0, -2);
+    self.tabBar.layer.shadowOpacity = 0.10;
 }
 /**
  * 初始化子控制器

@@ -157,7 +157,7 @@ static NSString *const ShopGoodsCell = @"ShopGoodsCell";
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = HX_SCREEN_WIDTH;
-    CGFloat height = 130;
+    CGFloat height = 146;
     return CGSizeMake(width, height);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
