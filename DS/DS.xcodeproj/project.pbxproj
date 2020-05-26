@@ -15,6 +15,7 @@
 		496605BF2473DC08003A2652 /* DSBindCashMsgVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605BD2473DC08003A2652 /* DSBindCashMsgVC.xib */; };
 		496605C22473E081003A2652 /* DSUpCashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605C12473E080003A2652 /* DSUpCashView.m */; };
 		496605C42473E11D003A2652 /* DSUpCashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605C32473E11D003A2652 /* DSUpCashView.xib */; };
+		4997A536247CFD3000605EEC /* DSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4997A535247CFD3000605EEC /* DSTextField.m */; };
 		49B4C0842472559100560451 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07B2472559100560451 /* JXPagerListContainerView.m */; };
 		49B4C0852472559100560451 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07C2472559100560451 /* JXPagerMainTableView.m */; };
 		49B4C0862472559100560451 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07D2472559100560451 /* JXPagerView.m */; };
@@ -382,6 +383,8 @@
 		496605C02473E080003A2652 /* DSUpCashView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpCashView.h; sourceTree = "<group>"; };
 		496605C12473E080003A2652 /* DSUpCashView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpCashView.m; sourceTree = "<group>"; };
 		496605C32473E11D003A2652 /* DSUpCashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpCashView.xib; sourceTree = "<group>"; };
+		4997A534247CFD3000605EEC /* DSTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTextField.h; sourceTree = "<group>"; };
+		4997A535247CFD3000605EEC /* DSTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTextField.m; sourceTree = "<group>"; };
 		49B4C07A2472559100560451 /* JXPagerSmoothView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothView.h; sourceTree = "<group>"; };
 		49B4C07B2472559100560451 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
 		49B4C07C2472559100560451 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
@@ -1934,6 +1937,8 @@
 			children = (
 				906F370C23792F64000B160A /* HXPlaceholderTextView.h */,
 				906F370D23792F64000B160A /* HXPlaceholderTextView.m */,
+				4997A534247CFD3000605EEC /* DSTextField.h */,
+				4997A535247CFD3000605EEC /* DSTextField.m */,
 			);
 			path = HXPlaceholderTextView;
 			sourceTree = "<group>";
@@ -1981,8 +1986,8 @@
 		906F372323792F64000B160A /* HXSearchBar */ = {
 			isa = PBXGroup;
 			children = (
-				906F372423792F64000B160A /* HXSearchBar.m */,
 				906F372523792F64000B160A /* HXSearchBar.h */,
+				906F372423792F64000B160A /* HXSearchBar.m */,
 			);
 			path = HXSearchBar;
 			sourceTree = "<group>";
@@ -2405,6 +2410,7 @@
 				906F374423792F64000B160A /* UIImage+HXNExtension.m in Sources */,
 				9001468F2383E89B00275DD9 /* DSTakeCouponView.m in Sources */,
 				90FD91F2237E525A00016EF7 /* DSMyCollectVC.m in Sources */,
+				4997A536247CFD3000605EEC /* DSTextField.m in Sources */,
 				49C0CF962473A9240067C9AB /* DSUserAuthVC.m in Sources */,
 				906F376B23792F64000B160A /* SGQRCodeObtain.m in Sources */,
 				90FD91CA237E446300016EF7 /* DSChangeInfoVC.m in Sources */,

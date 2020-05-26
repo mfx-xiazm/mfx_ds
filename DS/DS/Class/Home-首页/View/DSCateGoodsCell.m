@@ -29,9 +29,9 @@
     _goods = goods;
     [self.coverImg sd_setImageWithURL:[NSURL URLWithString:_goods.cover_img]];
     [self.goodName addFlagLabelWithName:_goods.cate_flag lineSpace:3.f titleString:_goods.goods_name withFont:[UIFont fontWithName:@"PingFangSC-Medium" size:15]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goods.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
-    [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"¥%.2f",[_goods.price floatValue]]];
-    [self.bankPrice setFontAttributedText:[NSString stringWithFormat:@"  现金补贴¥%.2f  ",[_goods.cmm_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:8]]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%@",[_goods.discount_price reviseString]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
+    [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"¥%@",[_goods.price reviseString]]];
+    [self.bankPrice setFontAttributedText:[NSString stringWithFormat:@"  现金补贴¥%@  ",[_goods.cmm_price reviseString]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:8]]];
     self.coupon_amount.text = [NSString stringWithFormat:@"  %@元券  ",_goods.coupon_amount];
 
 }

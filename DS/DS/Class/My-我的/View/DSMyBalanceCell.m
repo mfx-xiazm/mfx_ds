@@ -46,17 +46,17 @@
         }else{
             [self.order_title setTextWithLineSpace:3.f withString:_note.order_title withFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
         }
-        [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"实付：¥%.2f",[_note.pay_amount floatValue]] andChangeStr:@[@"实付：¥"] andFont:@[[UIFont systemFontOfSize:10]]];
+        [self.pay_amount setFontAttributedText:[NSString stringWithFormat:@"实付：¥%@",[_note.pay_amount reviseString]] andChangeStr:@[@"实付：¥"] andFont:@[[UIFont systemFontOfSize:10]]];
 
         [self.num setFontAttributedText:[NSString stringWithFormat:@"x%@",_note.order_num] andChangeStr:@[@"x"] andFont:@[[UIFont systemFontOfSize:10]]];
         
         if ([_note.amount floatValue] == 0) {
-            self.amount.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
+            self.amount.text = [NSString stringWithFormat:@"%@",[_note.amount reviseString]];
         }else{
             if ([_note.amount containsString:@"-"]) {
-                self.amount.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
+                self.amount.text = [NSString stringWithFormat:@"%@",[_note.amount reviseString]];
             }else{
-                [self.amount setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_note.amount floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
+                [self.amount setFontAttributedText:[NSString stringWithFormat:@"¥%@",[_note.amount reviseString]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
             }
         }
         if ([_note.is_valid isEqualToString:@"1"]) {
@@ -72,12 +72,12 @@
         [self.finance_log_desc setTextWithLineSpace:3.f withString:_note.finance_log_desc withFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
         self.time.text = _note.create_time;
         if ([_note.amount floatValue] == 0) {
-            self.amount1.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
+            self.amount1.text = [NSString stringWithFormat:@"%@",[_note.amount reviseString]];
         }else{
             if ([_note.amount containsString:@"-"]) {
-                self.amount1.text = [NSString stringWithFormat:@"%.2f",[_note.amount floatValue]];
+                self.amount1.text = [NSString stringWithFormat:@"%@",[_note.amount reviseString]];
             }else{
-                [self.amount1 setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_note.amount floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
+                [self.amount1 setFontAttributedText:[NSString stringWithFormat:@"¥%@",[_note.amount reviseString]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
             }
         }
     }

@@ -318,4 +318,16 @@
     [formatter setDateFormat:formatterStr];
     return [formatter dateFromString:self];
 }
+
+-(NSString *)reviseString
+{
+    //直接传入精度丢失有问题的Double类，注意这里用floatValue是不行的。
+    double conversionValue = [self doubleValue];
+    
+    NSString *doubleString = [NSString stringWithFormat:@"%.2f", conversionValue];
+    
+    NSDecimalNumber *decNumber = [NSDecimalNumber decimalNumberWithString:doubleString];
+    
+    return [decNumber stringValue];
+}
 @end

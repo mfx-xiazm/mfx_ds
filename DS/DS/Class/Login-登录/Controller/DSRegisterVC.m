@@ -86,10 +86,11 @@
 }
 -(void)setAgreeMentProtocol
 {
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"已阅读并同意以下协议:《用户协议》《隐私协议》"];
+    NSString *agreeStr = @"已阅读并同意以下协议:《用户协议》《隐私协议》";
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:agreeStr];
     [attributedString addAttribute:NSLinkAttributeName value:@"yhxy://" range:[[attributedString string] rangeOfString:@"《用户协议》"]];
     [attributedString addAttribute:NSLinkAttributeName value:@"ysxy://" range:[[attributedString string] rangeOfString:@"《隐私协议》"]];
-    [attributedString addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0x999999) range:NSMakeRange(0, attributedString.length)];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0x999999) range:NSMakeRange(0, agreeStr.length)];
     
     _agreeMentTV.attributedText = attributedString;
     _agreeMentTV.linkTextAttributes = @{NSForegroundColorAttributeName: UIColorFromRGB(0x527CF8),NSUnderlineColorAttributeName: UIColorFromRGB(0x527CF8),NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};

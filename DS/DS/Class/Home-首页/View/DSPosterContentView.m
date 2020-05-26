@@ -34,8 +34,8 @@
     
     [self.goods_img sd_setImageWithURL:[NSURL URLWithString:_goodsDetail.cover_img] placeholderImage:HXGetImage(@"avatar")];
     [self.goodsName addFlagLabelWithName:_goodsDetail.cate_flag lineSpace:5.f titleString:_goodsDetail.goods_name withFont:[UIFont systemFontOfSize:12]];
-    [self.discount_price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:10]]];
-    [self.price setLabelUnderline:[NSString stringWithFormat:@"¥%.2f",[_goodsDetail.price floatValue]]];
+    [self.discount_price setFontAttributedText:[NSString stringWithFormat:@"¥%@",[_goodsDetail.discount_price reviseString]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:10]]];
+    [self.price setLabelUnderline:[NSString stringWithFormat:@"¥%@",[_goodsDetail.price reviseString]]];
     self.codeImg.image = [SGQRCodeObtain generateQRCodeWithData:_goodsDetail.share_url size:self.codeImg.hxn_width*3];
 }
 @end

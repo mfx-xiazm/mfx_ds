@@ -37,7 +37,7 @@
     }
     self.apply_desc.text = _note.apply_desc;
     self.create_time.text = _note.create_time;
-    self.apply_amount.text = NSStringFormat(@"-¥%.2f",[_note.apply_amount floatValue]);
+    self.apply_amount.text = NSStringFormat(@"-¥%@",[_note.apply_amount reviseString]);
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

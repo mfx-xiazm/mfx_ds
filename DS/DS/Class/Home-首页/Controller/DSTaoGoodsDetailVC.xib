@@ -271,13 +271,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGu-ek-rcR">
                     <rect key="frame" x="0.0" y="807" width="414" height="55"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KM-pv-n9G" userLabel="分割线">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
-                            <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="Oor-Rd-5hr"/>
-                            </constraints>
-                        </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g61-71-y5W">
                             <rect key="frame" x="12" y="6" width="390" height="44"/>
                             <subviews>
@@ -313,15 +306,26 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="8KM-pv-n9G" firstAttribute="leading" secondItem="zGu-ek-rcR" secondAttribute="leading" id="3a6-Zm-kGX"/>
                         <constraint firstAttribute="height" constant="55" id="HLJ-hU-Eea"/>
-                        <constraint firstItem="8KM-pv-n9G" firstAttribute="top" secondItem="zGu-ek-rcR" secondAttribute="top" id="HWf-fp-Aeb"/>
                         <constraint firstItem="g61-71-y5W" firstAttribute="top" secondItem="zGu-ek-rcR" secondAttribute="top" constant="6" id="KV9-mq-zGh"/>
-                        <constraint firstAttribute="trailing" secondItem="8KM-pv-n9G" secondAttribute="trailing" id="ORN-Gk-qns"/>
                         <constraint firstAttribute="bottom" secondItem="g61-71-y5W" secondAttribute="bottom" constant="5" id="YtD-I6-jmS"/>
                         <constraint firstItem="g61-71-y5W" firstAttribute="leading" secondItem="zGu-ek-rcR" secondAttribute="leading" constant="12" id="dqC-PF-30I"/>
                         <constraint firstAttribute="trailing" secondItem="g61-71-y5W" secondAttribute="trailing" constant="12" id="tHj-Ht-pcB"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.10000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="-1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -311,7 +311,7 @@ static NSString *const CartCell = @"CartCell";
             num++;
         }
     }];
-    [self.totalPrice setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",fabs(price)] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
+    [self.totalPrice setFontAttributedText:[NSString stringWithFormat:@"¥%@",[[NSString stringWithFormat:@"%f",price] reviseString]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:12]]];
     self.goodsNum.text = [NSString stringWithFormat:@"共%zd件",num];
 }
 -(void)delOrderCartRequest:(NSString *)sku_id compledCall:(void(^)(void))compledCall

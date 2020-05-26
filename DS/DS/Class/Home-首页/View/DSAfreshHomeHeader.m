@@ -41,7 +41,7 @@ static NSString *const HomeCateCell = @"HomeCateCell";
     //    pageControl.currentPageIndicatorImage = HXGetImage(@"当前渐进器");
     pageControl.pageIndicatorTintColor = UIColorFromRGB(0xFFFFFF);
     pageControl.currentPageIndicatorTintColor = HXControlBg;
-    pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame)- 30.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
+    pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame)- 20.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
     self.pageControl = pageControl;
     [self.cyclePagerView addSubview:pageControl];
     
@@ -60,7 +60,7 @@ static NSString *const HomeCateCell = @"HomeCateCell";
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 30.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
+    self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 20.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
 }
 -(void)setHomeData:(DSHomeData *)homeData
 {

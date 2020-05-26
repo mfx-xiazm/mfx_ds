@@ -85,6 +85,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
         JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
         lineView.indicatorColor = HXControlBg;
         lineView.verticalMargin = 2.f;
+        lineView.indicatorWidthIncrement = -10.f;
         _categoryView.indicators = @[lineView];
     }
     return _categoryView;

@@ -35,4 +35,6 @@
 - (NSString *)getTimeFromTimestamp:(NSString *)formatterStr;
 
 - (NSDate *)dateWithFormatter:(NSString *)formatterStr;
+
+-(NSString *)reviseString;
 @end

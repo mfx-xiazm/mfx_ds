@@ -286,12 +286,11 @@
     [self.cyclePagerView reloadData];
     
     [self.goodsName addFlagLabelWithName:self.goodsDetail.cate_flag lineSpace:5.f titleString:self.goodsDetail.goods_name withFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium]];
-    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.discount_price floatValue]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:14]]];
+    [self.price setFontAttributedText:[NSString stringWithFormat:@"¥%@",[self.goodsDetail.discount_price reviseString]] andChangeStr:@[@"¥"] andFont:@[[UIFont systemFontOfSize:14]]];
     self.saleNum.text = [NSString stringWithFormat:@"已售出%@件",self.goodsDetail.sale_num];
 
-    
-    [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"¥%.2f",[self.goodsDetail.price floatValue]]];
-    self.backPrice.text = [NSString stringWithFormat:@"现金补贴：%.2f",[self.goodsDetail.cmm_price floatValue]];
+    [self.marketPrice setLabelUnderline:[NSString stringWithFormat:@"¥%@",[self.goodsDetail.price reviseString]]];
+    self.backPrice.text = [NSString stringWithFormat:@"现金补贴：%@",[self.goodsDetail.cmm_price reviseString]];
     self.provider.text = [NSString stringWithFormat:@"供应商：%@",self.goodsDetail.provider];
     self.stockNum.text = self.goodsDetail.stock;
     if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
