@@ -143,14 +143,17 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             strongSelf.notes = [NSArray yy_modelArrayWithClass:[DSBalanceNote class] json:responseObject[@"result"][@"log_list"]];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [strongSelf.header.balance setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"balance"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:16]]];
-                [strongSelf.header.goods_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"goods_reward"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
-                [strongSelf.header.gift_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"gift_reward"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
-                [strongSelf.header.upgrade_reward setFontAttributedText:[NSString stringWithFormat:@"￥%.2f",[responseObject[@"result"][@"upgrade_reward"] floatValue]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
+                NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+                [numberFormatter setPositiveFormat:@"#,###.##"];
 
-                strongSelf.header.last_month_amount.text = NSStringFormat(@"上月已结算￥%.2f",[responseObject[@"result"][@"js_amount"][@"js_last_month_amount"] floatValue]);
-                strongSelf.header.cur_month_amount.text = NSStringFormat(@"本月已结算￥%.2f",[responseObject[@"result"][@"js_amount"][@"js_cur_month_amount"] floatValue]);
-                strongSelf.header.dai_month_amount.text = NSStringFormat(@"待结算￥%.2f",[responseObject[@"result"][@"js_amount"][@"js_dai_amount"] floatValue]);
+                [strongSelf.header.balance setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"balance"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:16]]];
+                [strongSelf.header.goods_reward setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"goods_reward"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
+                [strongSelf.header.gift_reward setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"gift_reward"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
+                [strongSelf.header.upgrade_reward setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"upgrade_reward"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
+                
+                strongSelf.header.last_month_amount.text = NSStringFormat(@"上月已结算￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"js_amount"][@"js_last_month_amount"] floatValue]]]);
+                strongSelf.header.cur_month_amount.text = NSStringFormat(@"本月已结算￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"js_amount"][@"js_cur_month_amount"] floatValue]]]);
+                strongSelf.header.dai_month_amount.text = NSStringFormat(@"待结算￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"js_amount"][@"js_dai_amount"] floatValue]]]);
                 
                 [strongSelf.tableView reloadData];
             });

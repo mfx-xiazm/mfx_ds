@@ -178,20 +178,19 @@
     self.cardCnt.text = [NSString stringWithFormat:@"%zd",[MSUserManager sharedInstance].curUserInfo.cardCnt];
 
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        [numberFormatter setPositiveFormat:@"###,##0.00;"];
+    [numberFormatter setPositiveFormat:@"#,###.##"];
     NSString *formattedNumberString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[MSUserManager sharedInstance].curUserInfo.total_amount]];
-    //    return formattedNumberString;
-    //若用于整数改为:[numberFormatter setPositiveFormat:@"###,##0;"];
+    //若用于整数改为:[numberFormatter setPositiveFormat:@"###,##0"];
     [self.total_amount setFontAttributedText:[NSString stringWithFormat:@"￥%@",formattedNumberString] andChangeStr:@[@"￥"] andFont:@[[UIFont fontWithName:@"PingFangSC-Semibold" size: 16]]];
     
-    NSString *today_amount = [NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.today_amount];
-    [self.today_amount setFontAttributedText:today_amount andChangeStr:@[@"￥",[today_amount substringFromIndex:today_amount.length-2]] andFont:@[[UIFont fontWithName:@"PingFangSC-Medium" size: 11],[UIFont fontWithName:@"PingFangSC-Medium" size: 12]]];
+    NSString *today_amount = [NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[MSUserManager sharedInstance].curUserInfo.today_amount]]];
+    [self.today_amount setFontAttributedText:today_amount andChangeStr:@[@"￥"] andFont:@[[UIFont fontWithName:@"PingFangSC-Medium" size: 11]]];
     
-    NSString *cur_month_amount = [NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.cur_month_amount];
-    [self.cur_month_amount setFontAttributedText:cur_month_amount andChangeStr:@[@"￥",[cur_month_amount substringFromIndex:cur_month_amount.length-2]] andFont:@[[UIFont fontWithName:@"PingFangSC-Medium" size: 11],[UIFont fontWithName:@"PingFangSC-Medium" size: 12]]];
+    NSString *cur_month_amount = [NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[MSUserManager sharedInstance].curUserInfo.cur_month_amount]]];
+    [self.cur_month_amount setFontAttributedText:cur_month_amount andChangeStr:@[@"￥"] andFont:@[[UIFont fontWithName:@"PingFangSC-Medium" size: 11]]];
     
-    NSString *last_month_amount = [NSString stringWithFormat:@"￥%.2f",[MSUserManager sharedInstance].curUserInfo.last_month_amount];
-    [self.last_month_amount setFontAttributedText:last_month_amount andChangeStr:@[@"￥",[last_month_amount substringFromIndex:last_month_amount.length-2]] andFont:@[[UIFont fontWithName:@"PingFangSC-Medium" size: 11],[UIFont fontWithName:@"PingFangSC-Medium" size: 12]]];
+    NSString *last_month_amount = [NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[MSUserManager sharedInstance].curUserInfo.last_month_amount]]];
+    [self.last_month_amount setFontAttributedText:last_month_amount andChangeStr:@[@"￥"] andFont:@[[UIFont fontWithName:@"PingFangSC-Medium" size: 11]]];
 
     self.noPayItem.badgeBgColor = HXControlBg;
     [self.noPayItem showBadgeWithStyle:WBadgeStyleNumber value:[MSUserManager sharedInstance].curUserInfo.noPayCnt animationType:WBadgeAnimTypeNone];

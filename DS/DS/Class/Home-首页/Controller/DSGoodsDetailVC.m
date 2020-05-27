@@ -294,9 +294,9 @@
     self.provider.text = [NSString stringWithFormat:@"供应商：%@",self.goodsDetail.provider];
     self.stockNum.text = self.goodsDetail.stock;
     if ([self.goodsDetail.is_discount isEqualToString:@"1"]) {
-        self.coupon.text = [NSString stringWithFormat:@"已领取%.1f折券",[self.goodsDetail.discount floatValue]];
+        self.coupon.text = [NSString stringWithFormat:@"已领取%@折券",[self.goodsDetail.discount reviseString]];
     }else{
-        self.coupon.text = [NSString stringWithFormat:@"可领取%.1f折券",[self.goodsDetail.discount floatValue]];
+        self.coupon.text = [NSString stringWithFormat:@"可领取%@折券",[self.goodsDetail.discount reviseString]];
     }
 
     NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.goodsDetail.goods_desc];
@@ -318,7 +318,7 @@
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"领取成功"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 strongSelf.goodsDetail.is_discount = @"1";
-                strongSelf.coupon.text = [NSString stringWithFormat:@"已领取%@折券",strongSelf.goodsDetail.discount];
+                strongSelf.coupon.text = [NSString stringWithFormat:@"已领取%@折券",[strongSelf.goodsDetail.discount reviseString]];
             });
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];

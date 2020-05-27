@@ -53,6 +53,7 @@ static NSString *const HomeCateCell = @"HomeCateCell";
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.scrollEnabled = NO;
     //    self.collectionView.contentInset = UIEdgeInsetsMake(self.HXNavBarHeight, 0, 0, 0);
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSHomeCateCell class]) bundle:nil] forCellWithReuseIdentifier:HomeCateCell];
@@ -130,7 +131,7 @@ static NSString *const HomeCateCell = @"HomeCateCell";
     return 0.f;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return  UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f);
+    return  UIEdgeInsetsMake(15.f, 10.f, 10.f, 5.f);
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

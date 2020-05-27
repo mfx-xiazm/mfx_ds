@@ -2756,10 +2756,11 @@
 			baseConfigurationReference = BC4F949048AFF481665335AC /* Pods-DS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = A2V85YL4T5;
+				DEVELOPMENT_TEAM = RZ87TU58LG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2898,7 +2899,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0326;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0527;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2908,10 +2909,11 @@
 			baseConfigurationReference = A52BDBFE46C9C9000B61D447 /* Pods-DS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = A2V85YL4T5;
+				DEVELOPMENT_TEAM = RZ87TU58LG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3050,7 +3052,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0326;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0527;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
