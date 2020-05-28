@@ -219,6 +219,8 @@
 // 去签约
 - (IBAction)signClicked:(UIButton *)sender {
     DSUserSignVC *svc = [DSUserSignVC new];
+    svc.realName = self.authInfo.realname;
+    svc.centNo = self.authInfo.idcard;
     hx_weakify(self);
     svc.signSuccessCall = ^{
         hx_strongify(weakSelf);

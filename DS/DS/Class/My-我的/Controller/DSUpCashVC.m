@@ -14,6 +14,7 @@
 #import "DSUpCashView.h"
 #import <zhPopupController.h>
 #import "DSWebContentVC.h"
+#import "DSUserAuthVC.h"
 
 @interface DSUpCashVC ()<JXCategoryViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *cash_bg_img;
@@ -41,12 +42,26 @@
 /* 绑定支付宝 */
 @property(nonatomic,strong) NSDictionary *bind_zfb;
 
+/** vc控制器 */
+@property (nonatomic,strong) NSMutableArray *controllers;
+
 @end
 
 @implementation DSUpCashVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    hx_weakify(self);
+    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[DSUserAuthVC class]]) {
+            hx_strongify(weakSelf);
+            [strongSelf.controllers removeObjectAtIndex:idx];
+            *stop = YES;
+        }
+    }];
+    [self.navigationController setViewControllers:self.controllers];
+    
     [self setUpNavBar];
     [self setUpCategoryView];
     [self.cashBtn.layer addSublayer:[UIColor setGradualChangingColor:self.cashBtn fromColor:@"F9AD28" toColor:@"F95628"]];
@@ -56,7 +71,6 @@
     [self startShimmer];
     [self getInitRequest];
 
-    hx_weakify(self);
     [self.cashBtn BindingBtnJudgeBlock:^BOOL{
         hx_strongify(weakSelf);
         if (strongSelf.categoryView.selectedIndex == 0) {
@@ -92,6 +106,12 @@
         hx_strongify(weakSelf);
         [strongSelf applyCashAlert:button];
     }];
+}
+- (NSMutableArray *)controllers {
+    if (!_controllers) {
+        _controllers = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
+    }
+    return _controllers;
 }
 -(void)viewDidLayoutSubviews
 {

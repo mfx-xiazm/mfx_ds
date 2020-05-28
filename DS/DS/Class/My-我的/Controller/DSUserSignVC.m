@@ -8,7 +8,6 @@
 
 #import "DSUserSignVC.h"
 #import <WebKit/WebKit.h>
-#import "DSUserAuthVC.h"
 
 @interface DSUserSignVC ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic, strong) WKWebView     *webView;
@@ -17,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *signBtn;
 /* 网页加载进度视图 */
 @property (nonatomic, strong) UIProgressView *progressView;
-/** vc控制器 */
-@property (nonatomic,strong) NSMutableArray *controllers;
 @end
 
 @implementation DSUserSignVC
@@ -51,26 +48,11 @@
         [strongSelf userSignSetRequest:button];
     }];
     
-    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[DSUserAuthVC class]]) {
-            hx_strongify(weakSelf);
-            [strongSelf.controllers removeObjectAtIndex:idx];
-            *stop = YES;
-        }
-    }];
-    [self.navigationController setViewControllers:self.controllers];
-    
     [self.web_content_view addSubview:self.webView];
     [self.view addSubview:self.progressView];
     [self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:nil];
     
     [self loadAuthLicenseRequest];
-}
-- (NSMutableArray *)controllers {
-    if (!_controllers) {
-        _controllers = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
-    }
-    return _controllers;
 }
 -(void)viewDidLayoutSubviews
 {
