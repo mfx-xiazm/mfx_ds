@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^upCashCall)(NSInteger index);
 @interface DSUpCashView : UIView
 @property (nonatomic, copy) upCashCall upCashCall;
+@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *account_no;
+@property (weak, nonatomic) IBOutlet UILabel *cash_amount;
+
 @end
 
 NS_ASSUME_NONNULL_END

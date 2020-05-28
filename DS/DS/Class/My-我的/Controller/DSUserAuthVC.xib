@@ -16,6 +16,13 @@
                 <outlet property="auth_view" destination="e2b-SR-LRc" id="mUe-Jh-fZ4"/>
                 <outlet property="card_back" destination="n22-mW-irb" id="pZT-WX-XqQ"/>
                 <outlet property="card_fornt" destination="Qfy-fU-bHg" id="vmJ-Kw-bzE"/>
+                <outlet property="centNo" destination="MCF-Jx-zKn" id="wt0-EP-VDl"/>
+                <outlet property="fail_reason" destination="Icp-Rm-6Ws" id="A7P-Mw-7u2"/>
+                <outlet property="realname" destination="qsC-od-3VD" id="W5j-3W-k9X"/>
+                <outlet property="show_card_back" destination="96a-jx-lcL" id="9xF-cx-AFH"/>
+                <outlet property="show_card_fornt" destination="YWt-yP-3VK" id="AX3-2J-q8w"/>
+                <outlet property="show_centNo" destination="2xz-34-GHt" id="jff-NB-4WW"/>
+                <outlet property="show_name" destination="KDO-Fd-Kiv" id="qvo-CE-3TL"/>
                 <outlet property="signOrCashBtn" destination="4TU-xb-GWv" id="wBw-Zi-oHT"/>
                 <outlet property="sign_success_view" destination="fta-F3-bHO" id="snY-mK-Fk2"/>
                 <outlet property="submitBtn" destination="5ci-OK-KtD" id="583-Z8-P8O"/>
@@ -27,149 +34,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGk-Ae-eki">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1s-ED-KPR">
-                            <rect key="frame" x="174" y="50" width="66" height="20"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="认证成功" translatesAutoresizingMaskIntoConstraints="NO" id="Dwl-tc-mkI">
-                            <rect key="frame" x="111" y="85" width="192" height="134"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KL-lw-pQe">
-                            <rect key="frame" x="40" y="249" width="152" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="7HA-WL-dYK"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="查看认证信息">
-                                <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
-                                    <real key="value" value="15"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderWidth">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="boderColor">
-                                    <color key="value" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="lookAuthMsgClicked:" destination="-1" eventType="touchUpInside" id="wsa-9I-BYY"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOG-pJ-PyX">
-                            <rect key="frame" x="222" y="249" width="152" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="b7f-W8-yem"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="去签约">
-                                <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
-                                    <real key="value" value="15"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderWidth">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="boderColor">
-                                    <color key="value" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="signClicked:" destination="-1" eventType="touchUpInside" id="w4v-zu-tq8"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstItem="v1s-ED-KPR" firstAttribute="top" secondItem="gGk-Ae-eki" secondAttribute="top" constant="50" id="343-2p-l6I"/>
-                        <constraint firstAttribute="trailing" secondItem="zOG-pJ-PyX" secondAttribute="trailing" constant="40" id="NcV-Lv-TsC"/>
-                        <constraint firstItem="Dwl-tc-mkI" firstAttribute="centerX" secondItem="gGk-Ae-eki" secondAttribute="centerX" id="To1-Td-eFs"/>
-                        <constraint firstItem="zOG-pJ-PyX" firstAttribute="top" secondItem="Dwl-tc-mkI" secondAttribute="bottom" constant="30" id="cjt-2o-DQc"/>
-                        <constraint firstItem="zOG-pJ-PyX" firstAttribute="width" secondItem="1KL-lw-pQe" secondAttribute="width" id="dnb-QL-thD"/>
-                        <constraint firstItem="zOG-pJ-PyX" firstAttribute="leading" secondItem="1KL-lw-pQe" secondAttribute="trailing" constant="30" id="dv1-Jn-cJm"/>
-                        <constraint firstItem="Dwl-tc-mkI" firstAttribute="top" secondItem="v1s-ED-KPR" secondAttribute="bottom" constant="15" id="fla-kS-lak"/>
-                        <constraint firstItem="1KL-lw-pQe" firstAttribute="top" secondItem="Dwl-tc-mkI" secondAttribute="bottom" constant="30" id="qab-vI-hSr"/>
-                        <constraint firstItem="1KL-lw-pQe" firstAttribute="leading" secondItem="gGk-Ae-eki" secondAttribute="leading" constant="40" id="rsh-I0-cSA"/>
-                        <constraint firstItem="v1s-ED-KPR" firstAttribute="centerX" secondItem="gGk-Ae-eki" secondAttribute="centerX" id="xKk-T3-7Pb"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taV-GQ-KlU">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证失败" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJY-Py-aDB">
-                            <rect key="frame" x="174" y="50" width="66" height="20"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="认证失败" translatesAutoresizingMaskIntoConstraints="NO" id="4wj-x8-stT">
-                            <rect key="frame" x="110.5" y="85" width="193" height="134"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证模糊不能识别认证" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-Rm-6Ws">
-                            <rect key="frame" x="12" y="239" width="390" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bu-Pq-KBW">
-                            <rect key="frame" x="142" y="276" width="130" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="98B-Hr-H8v"/>
-                                <constraint firstAttribute="width" constant="130" id="cjq-aE-1ID"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <state key="normal" title="重新认证">
-                                <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
-                                    <real key="value" value="15"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderWidth">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="boderColor">
-                                    <color key="value" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="reNewToAuthClicked:" destination="-1" eventType="touchUpInside" id="8wS-a3-XoL"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstItem="4wj-x8-stT" firstAttribute="centerX" secondItem="taV-GQ-KlU" secondAttribute="centerX" id="G8A-j4-5wv"/>
-                        <constraint firstAttribute="trailing" secondItem="Icp-Rm-6Ws" secondAttribute="trailing" constant="12" id="N9a-il-VoU"/>
-                        <constraint firstItem="GJY-Py-aDB" firstAttribute="top" secondItem="taV-GQ-KlU" secondAttribute="top" constant="50" id="NhR-xg-pzB"/>
-                        <constraint firstItem="Icp-Rm-6Ws" firstAttribute="leading" secondItem="taV-GQ-KlU" secondAttribute="leading" constant="12" id="NyR-Oj-iUT"/>
-                        <constraint firstItem="Icp-Rm-6Ws" firstAttribute="top" secondItem="4wj-x8-stT" secondAttribute="bottom" constant="20" id="PjV-ve-mEF"/>
-                        <constraint firstItem="GJY-Py-aDB" firstAttribute="centerX" secondItem="taV-GQ-KlU" secondAttribute="centerX" id="W99-JU-HqH"/>
-                        <constraint firstItem="6bu-Pq-KBW" firstAttribute="top" secondItem="Icp-Rm-6Ws" secondAttribute="bottom" constant="20" id="ddo-6o-T25"/>
-                        <constraint firstItem="6bu-Pq-KBW" firstAttribute="centerX" secondItem="taV-GQ-KlU" secondAttribute="centerX" id="qTc-tm-QSa"/>
-                        <constraint firstItem="4wj-x8-stT" firstAttribute="top" secondItem="GJY-Py-aDB" secondAttribute="bottom" constant="15" id="sbK-Xp-mwa"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mv8-Rg-Dix">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签约状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uui-kt-LRc">
-                            <rect key="frame" x="162.5" y="45" width="89.5" height="26.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未签约" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uui-kt-LRc">
+                            <rect key="frame" x="173.5" y="45" width="67" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="已签约" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-7q-fLY">
-                            <rect key="frame" x="262" y="28.5" width="69" height="60"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="未签约" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-7q-fLY">
+                            <rect key="frame" x="250.5" y="28.5" width="69" height="60"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3L-Qn-icn">
                             <rect key="frame" x="0.0" y="118.5" width="414" height="55"/>
@@ -301,7 +176,7 @@
                                 <constraint firstAttribute="height" constant="48" id="6uD-PH-2VS"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                            <state key="normal" title="去提现/去签约">
+                            <state key="normal" title="去签约">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -313,7 +188,7 @@
                                 <action selector="signOrCashClicked:" destination="-1" eventType="touchUpInside" id="zJA-4Y-myn"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已签约成功，请使用用户认证信息去提现" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fi0-5F-SVX">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="签约成功后可提现" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fi0-5F-SVX">
                             <rect key="frame" x="12" y="567" width="390" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.94901960784313721" green="0.32549019607843138" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
@@ -503,14 +378,19 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入身份证号码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MCF-Jx-zKn">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入身份证号码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MCF-Jx-zKn" customClass="FCTextField">
                                             <rect key="frame" x="110" y="7.5" width="292" height="40"/>
                                             <color key="tintColor" red="0.91764705879999997" green="0.2901960784" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="DZj-qT-UlR"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="kLimitType">
+                                                    <integer key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJy-BZ-phN" userLabel="分割线">
                                             <rect key="frame" x="0.0" y="54" width="414" height="1"/>
@@ -621,9 +501,6 @@
                                             <real key="value" value="24"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="submitAuthClicked:" destination="-1" eventType="touchUpInside" id="OMR-vr-Ffi"/>
-                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -665,6 +542,138 @@
                         <constraint firstAttribute="bottom" secondItem="TCh-aW-y6a" secondAttribute="bottom" id="m3n-er-fZx"/>
                     </constraints>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGk-Ae-eki">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1s-ED-KPR">
+                            <rect key="frame" x="174" y="50" width="66" height="20"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="认证成功" translatesAutoresizingMaskIntoConstraints="NO" id="Dwl-tc-mkI">
+                            <rect key="frame" x="111" y="85" width="192" height="134"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KL-lw-pQe">
+                            <rect key="frame" x="40" y="249" width="152" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="7HA-WL-dYK"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="查看认证信息">
+                                <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="boderColor">
+                                    <color key="value" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="lookAuthMsgClicked:" destination="-1" eventType="touchUpInside" id="wsa-9I-BYY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOG-pJ-PyX">
+                            <rect key="frame" x="222" y="249" width="152" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="b7f-W8-yem"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="去签约">
+                                <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="boderColor">
+                                    <color key="value" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="signClicked:" destination="-1" eventType="touchUpInside" id="w4v-zu-tq8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="v1s-ED-KPR" firstAttribute="top" secondItem="gGk-Ae-eki" secondAttribute="top" constant="50" id="343-2p-l6I"/>
+                        <constraint firstAttribute="trailing" secondItem="zOG-pJ-PyX" secondAttribute="trailing" constant="40" id="NcV-Lv-TsC"/>
+                        <constraint firstItem="Dwl-tc-mkI" firstAttribute="centerX" secondItem="gGk-Ae-eki" secondAttribute="centerX" id="To1-Td-eFs"/>
+                        <constraint firstItem="zOG-pJ-PyX" firstAttribute="top" secondItem="Dwl-tc-mkI" secondAttribute="bottom" constant="30" id="cjt-2o-DQc"/>
+                        <constraint firstItem="zOG-pJ-PyX" firstAttribute="width" secondItem="1KL-lw-pQe" secondAttribute="width" id="dnb-QL-thD"/>
+                        <constraint firstItem="zOG-pJ-PyX" firstAttribute="leading" secondItem="1KL-lw-pQe" secondAttribute="trailing" constant="30" id="dv1-Jn-cJm"/>
+                        <constraint firstItem="Dwl-tc-mkI" firstAttribute="top" secondItem="v1s-ED-KPR" secondAttribute="bottom" constant="15" id="fla-kS-lak"/>
+                        <constraint firstItem="1KL-lw-pQe" firstAttribute="top" secondItem="Dwl-tc-mkI" secondAttribute="bottom" constant="30" id="qab-vI-hSr"/>
+                        <constraint firstItem="1KL-lw-pQe" firstAttribute="leading" secondItem="gGk-Ae-eki" secondAttribute="leading" constant="40" id="rsh-I0-cSA"/>
+                        <constraint firstItem="v1s-ED-KPR" firstAttribute="centerX" secondItem="gGk-Ae-eki" secondAttribute="centerX" id="xKk-T3-7Pb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taV-GQ-KlU">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证失败" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJY-Py-aDB">
+                            <rect key="frame" x="174" y="50" width="66" height="20"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="认证失败" translatesAutoresizingMaskIntoConstraints="NO" id="4wj-x8-stT">
+                            <rect key="frame" x="110.5" y="85" width="193" height="134"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证模糊不能识别认证" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icp-Rm-6Ws">
+                            <rect key="frame" x="12" y="239" width="390" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bu-Pq-KBW">
+                            <rect key="frame" x="142" y="276" width="130" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="98B-Hr-H8v"/>
+                                <constraint firstAttribute="width" constant="130" id="cjq-aE-1ID"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="重新认证">
+                                <color key="titleColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="boderColor">
+                                    <color key="value" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="reNewToAuthClicked:" destination="-1" eventType="touchUpInside" id="8wS-a3-XoL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="4wj-x8-stT" firstAttribute="centerX" secondItem="taV-GQ-KlU" secondAttribute="centerX" id="G8A-j4-5wv"/>
+                        <constraint firstAttribute="trailing" secondItem="Icp-Rm-6Ws" secondAttribute="trailing" constant="12" id="N9a-il-VoU"/>
+                        <constraint firstItem="GJY-Py-aDB" firstAttribute="top" secondItem="taV-GQ-KlU" secondAttribute="top" constant="50" id="NhR-xg-pzB"/>
+                        <constraint firstItem="Icp-Rm-6Ws" firstAttribute="leading" secondItem="taV-GQ-KlU" secondAttribute="leading" constant="12" id="NyR-Oj-iUT"/>
+                        <constraint firstItem="Icp-Rm-6Ws" firstAttribute="top" secondItem="4wj-x8-stT" secondAttribute="bottom" constant="20" id="PjV-ve-mEF"/>
+                        <constraint firstItem="GJY-Py-aDB" firstAttribute="centerX" secondItem="taV-GQ-KlU" secondAttribute="centerX" id="W99-JU-HqH"/>
+                        <constraint firstItem="6bu-Pq-KBW" firstAttribute="top" secondItem="Icp-Rm-6Ws" secondAttribute="bottom" constant="20" id="ddo-6o-T25"/>
+                        <constraint firstItem="6bu-Pq-KBW" firstAttribute="centerX" secondItem="taV-GQ-KlU" secondAttribute="centerX" id="qTc-tm-QSa"/>
+                        <constraint firstItem="4wj-x8-stT" firstAttribute="top" secondItem="GJY-Py-aDB" secondAttribute="bottom" constant="15" id="sbK-Xp-mwa"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -696,7 +705,7 @@
     <resources>
         <image name="人面像" width="161" height="108"/>
         <image name="国徽像" width="161" height="108"/>
-        <image name="已签约" width="69" height="60"/>
+        <image name="未签约" width="69" height="60"/>
         <image name="签约成功" width="120" height="120"/>
         <image name="认证失败" width="193" height="134"/>
         <image name="认证成功" width="192" height="134"/>

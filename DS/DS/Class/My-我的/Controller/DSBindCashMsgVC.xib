@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="account_no" destination="M4f-dM-tFd" id="5Hn-se-ZBc"/>
                 <outlet property="account_type" destination="kAj-HS-k5L" id="Kf3-MQ-ILH"/>
+                <outlet property="realName" destination="HTc-tZ-m45" id="vjf-Cb-zhe"/>
                 <outlet property="sureBtn" destination="cQb-S1-Wb7" id="Yvo-l5-Bqx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -39,7 +40,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的真实姓名" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HTc-tZ-m45">
+                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的真实姓名" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HTc-tZ-m45">
                                             <rect key="frame" x="110" y="7.5" width="292" height="40"/>
                                             <color key="tintColor" red="0.91764705879999997" green="0.2901960784" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -132,6 +133,9 @@
                                             <real key="value" value="24"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="bindAccountRequest:" destination="-1" eventType="touchUpInside" id="sWi-Ns-scN"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

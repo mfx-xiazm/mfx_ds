@@ -149,6 +149,15 @@
         action = @"license_config_get";
     }else if (self.requestType == 7) {
         action = @"jd_url_get";
+    }else if (self.requestType == 8) {
+        parameters[@"set_type"] = @"user_auth_license";
+        action = @"license_config_get";
+    }else if (self.requestType == 9) {
+        parameters[@"set_type"] = @"user_sign_license";
+        action = @"license_config_get";
+    }else if (self.requestType == 10) {
+        parameters[@"set_type"] = @"finance_apply_desc";
+        action = @"license_config_get";
     }
     
     hx_weakify(self);
@@ -176,6 +185,15 @@
                 [strongSelf.webView loadHTMLString:h5 baseURL:nil];
             }else if (strongSelf.requestType == 7) {
                 [strongSelf.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:responseObject[@"result"][@"jd_url"]]]];
+            }else if (strongSelf.requestType == 8) {
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
+            }else if (strongSelf.requestType == 9) {
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
+            }else if (self.requestType == 10) {
+                NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+                [strongSelf.webView loadHTMLString:h5 baseURL:nil];
             }
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^signSuccessCall)(void);
 @interface DSUserSignVC : HXBaseViewController
+@property (nonatomic, copy) NSString *realName;
+@property (nonatomic, copy) NSString *centNo;
 @property (nonatomic, copy) signSuccessCall signSuccessCall;
 @end
 

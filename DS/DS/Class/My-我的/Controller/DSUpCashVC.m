@@ -13,25 +13,34 @@
 #import "DSBindCashMsgVC.h"
 #import "DSUpCashView.h"
 #import <zhPopupController.h>
+#import "DSWebContentVC.h"
 
 @interface DSUpCashVC ()<JXCategoryViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *cash_bg_img;
 @property (weak, nonatomic) IBOutlet JXCategoryTitleView *categoryView;
-@property (weak, nonatomic) IBOutlet UITextField *card_owner;
-@property (weak, nonatomic) IBOutlet UITextField *bank_name;
-@property (weak, nonatomic) IBOutlet UITextField *card_no;
-@property (weak, nonatomic) IBOutlet UITextField *apply_amount;
+@property (weak, nonatomic) IBOutlet UILabel *cashAble;
+
+@property (weak, nonatomic) IBOutlet UIView *card_cash_view;
+@property (weak, nonatomic) IBOutlet UITextField *card_account_no;
+@property (weak, nonatomic) IBOutlet UITextField *card_apply_amount;
+@property (weak, nonatomic) IBOutlet UIButton *card_bind_btn;
+
+@property (weak, nonatomic) IBOutlet UIView *ali_cash_view;
+@property (weak, nonatomic) IBOutlet UITextField *ali_account_no;
+@property (weak, nonatomic) IBOutlet UITextField *ali_apply_amount;
+@property (weak, nonatomic) IBOutlet UIButton *ali_bind_btn;
+
 @property (weak, nonatomic) IBOutlet UIButton *cashBtn;
-@property (weak, nonatomic) IBOutlet UILabel *ableLabel;
 
 /* 余额 */
-@property(nonatomic,assign) CGFloat balance;
+@property(nonatomic,copy) NSString *balance;
 /* 起提金额 */
-@property(nonatomic,assign) CGFloat base_amount;
-/* 提现手续费费率 */
-@property(nonatomic,assign) CGFloat fee_percent;
-/* 免除手续费的提现金额 */
-@property(nonatomic,assign) CGFloat free_amount;
+@property(nonatomic,copy) NSString *base_amount;
+/* 绑定银行卡 */
+@property(nonatomic,strong) NSDictionary *bind_bank;
+/* 绑定支付宝 */
+@property(nonatomic,strong) NSDictionary *bind_zfb;
+
 @end
 
 @implementation DSUpCashVC
@@ -40,44 +49,48 @@
     [super viewDidLoad];
     [self setUpNavBar];
     [self setUpCategoryView];
-    [self.cash_bg_img.layer addSublayer:[UIColor setGradualChangingColor:self.cash_bg_img fromColor:@"FFBC53" toColor:@"FF926E"]];
     [self.cashBtn.layer addSublayer:[UIColor setGradualChangingColor:self.cashBtn fromColor:@"F9AD28" toColor:@"F95628"]];
 
-//    self.apply_amount.delegate = self;
-//    [self startShimmer];
-//    [self getInitRequest];
+    self.ali_apply_amount.delegate = self;
+    self.card_apply_amount.delegate = self;
+    [self startShimmer];
+    [self getInitRequest];
 
     hx_weakify(self);
     [self.cashBtn BindingBtnJudgeBlock:^BOOL{
-//        hx_strongify(weakSelf);
-//        if (![strongSelf.card_owner hasText]) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入持卡人姓名"];
-//            return NO;
-//        }
-//        if (![strongSelf.bank_name hasText]) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入银行名称"];
-//            return NO;
-//        }
-//        if (![strongSelf.card_no hasText]) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入银行卡号"];
-//            return NO;
-//        }
-//        if (![strongSelf.apply_amount hasText]) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请输入提现金额"];
-//            return NO;
-//        }
-//        if ([strongSelf.apply_amount.text floatValue] < strongSelf.base_amount) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"起提金额%.2f元",strongSelf.base_amount]];
-//            return NO;
-//        }
-//        if ([strongSelf.apply_amount.text floatValue] > strongSelf.balance) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"可提金额不足"];
-//            return NO;
-//        }
+        hx_strongify(weakSelf);
+        if (strongSelf.categoryView.selectedIndex == 0) {
+            if (![strongSelf.ali_account_no hasText]) {
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请绑定支付宝账号"];
+                return NO;
+            }
+            if ([strongSelf.ali_apply_amount.text floatValue] < [strongSelf.base_amount floatValue]) {
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"起提金额%@元",strongSelf.base_amount]];
+                return NO;
+            }
+            if ([strongSelf.ali_apply_amount.text floatValue] > [strongSelf.balance floatValue]) {
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"余额不足"];
+                return NO;
+            }
+        }
+        if (strongSelf.categoryView.selectedIndex == 1) {
+            if (![strongSelf.card_account_no hasText]) {
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请绑定银行卡账号"];
+                return NO;
+            }
+            if ([strongSelf.card_apply_amount.text floatValue] < [strongSelf.base_amount floatValue]) {
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"起提金额%@元",strongSelf.base_amount]];
+                return NO;
+            }
+            if ([strongSelf.card_apply_amount.text floatValue] > [strongSelf.balance floatValue]) {
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"余额不足"];
+                return NO;
+            }
+        }
         return YES;
     } ActionBlock:^(UIButton * _Nullable button) {
         hx_strongify(weakSelf);
-        [strongSelf applyCashRequest:button];
+        [strongSelf applyCashAlert:button];
     }];
 }
 -(void)viewDidLayoutSubviews
@@ -102,15 +115,124 @@
     _categoryView.backgroundColor = [UIColor whiteColor];
     _categoryView.titleLabelZoomEnabled = NO;
     _categoryView.titles = @[@"支付宝提现", @"银行卡提现"];
-    _categoryView.titleFont = [UIFont systemFontOfSize:15 weight:UIFontWeightMedium];
+    _categoryView.titleFont = [UIFont systemFontOfSize:16];
     _categoryView.titleColor = UIColorFromRGB(0x666666);
+    _categoryView.titleSelectedFont = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
     _categoryView.titleSelectedColor = UIColorFromRGB(0x333333);
     _categoryView.delegate = self;
     
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
-    lineView.verticalMargin = 5.f;
     lineView.indicatorColor = HXControlBg;
+    lineView.indicatorWidthIncrement = -20.f;
     _categoryView.indicators = @[lineView];
+}
+#pragma mark -- 接口
+-(void)getInitRequest
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"finance_apply_init_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            strongSelf.balance = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"balance"]];
+            strongSelf.base_amount = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"base_amount"]];
+            if (responseObject[@"result"][@"bind_bank"]) {
+                strongSelf.bind_bank = [NSDictionary dictionaryWithDictionary:responseObject[@"result"][@"bind_bank"]];
+            }
+            if (responseObject[@"result"][@"bind_zfb"]) {
+                strongSelf.bind_zfb = [NSDictionary dictionaryWithDictionary:responseObject[@"result"][@"bind_zfb"]];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // 可提现余额
+                NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+                [numberFormatter setPositiveFormat:@"#,###.##"];
+                NSString *formattedNumberString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[strongSelf.balance floatValue]]];
+                //若用于整数改为:[numberFormatter setPositiveFormat:@"###,##0"];
+                [strongSelf.cashAble setFontAttributedText:[NSString stringWithFormat:@"￥%@",formattedNumberString] andChangeStr:@[@"￥"] andFont:@[[UIFont fontWithName:@"PingFangSC-Semibold" size: 16]]];
+                // 绑定的账号信息
+                if (strongSelf.bind_zfb) {
+                    strongSelf.ali_account_no.text = strongSelf.bind_zfb[@"card_no"];
+                    strongSelf.ali_bind_btn.alpha = 0.5;// 如果已绑定就0.5，没绑定就1
+                    [strongSelf.ali_bind_btn setTitle:@"修改绑定" forState:UIControlStateNormal];
+                }
+                strongSelf.ali_apply_amount.placeholder = [NSString stringWithFormat:@"最小提现金额%@元",strongSelf.base_amount];
+                
+                if (strongSelf.bind_bank) {
+                    strongSelf.card_account_no.text = strongSelf.bind_bank[@"card_no"];
+                    strongSelf.card_bind_btn.alpha = 0.5;// 如果已绑定就0.5，没绑定就1
+                    [strongSelf.card_bind_btn setTitle:@"修改绑定" forState:UIControlStateNormal];
+                }
+                strongSelf.card_apply_amount.placeholder = [NSString stringWithFormat:@"最小提现金额%@元",strongSelf.base_amount];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)applyCashAlert:(UIButton *)btn
+{
+    DSUpCashView *cash = [DSUpCashView loadXibView];
+    cash.hxn_width = HX_SCREEN_WIDTH - 30*2;
+    cash.hxn_height = 340.f;
+    [cash.name setColorAttributedText:[NSString stringWithFormat:@"姓名：%@",self.realNameTxt] andChangeStr:self.realNameTxt andColor:UIColorFromRGB(0x333333)];
+    if (self.categoryView.selectedIndex == 0) {
+        [cash.account_no setColorAttributedText:[NSString stringWithFormat:@"支付宝账号：%@",self.ali_account_no.text] andChangeStr:self.ali_account_no.text andColor:UIColorFromRGB(0x333333)];
+        [cash.cash_amount setColorAttributedText:[NSString stringWithFormat:@"提现金额：%@",self.ali_apply_amount.text] andChangeStr:self.ali_apply_amount.text andColor:UIColorFromRGB(0x333333)];
+    }else{
+        [cash.account_no setColorAttributedText:[NSString stringWithFormat:@"银行卡账号：%@",self.card_account_no.text] andChangeStr:self.card_account_no.text andColor:UIColorFromRGB(0x333333)];
+        [cash.cash_amount setColorAttributedText:[NSString stringWithFormat:@"提现金额：%@",self.card_apply_amount.text] andChangeStr:self.card_apply_amount.text andColor:UIColorFromRGB(0x333333)];
+    }
+    hx_weakify(self);
+    cash.upCashCall = ^(NSInteger index) {
+         hx_strongify(weakSelf);
+        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
+        if (index) {
+            [strongSelf applyCashRequest:btn];
+        }else{
+            [btn stopLoading:@"提现" image:nil textColor:nil backgroundColor:nil];
+        }
+    };
+    self.zh_popupController = [[zhPopupController alloc] init];
+    self.zh_popupController.dismissOnMaskTouched = NO;
+    [self.zh_popupController presentContentView:cash duration:0.25 springAnimated:NO];
+}
+-(void)applyCashRequest:(UIButton *)btn
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    if (self.categoryView.selectedIndex == 0) {
+        parameters[@"card_owner"] = self.realNameTxt;
+        parameters[@"acct_type"] = @"2";//账号类型：1银行账号；2支付宝账号
+        parameters[@"card_no"] = self.ali_account_no.text;
+        parameters[@"apply_amount"] = self.ali_apply_amount.text;
+    }else{
+        parameters[@"card_owner"] = self.realNameTxt;
+        parameters[@"acct_type"] = @"1";//账号类型：1银行账号；2支付宝账号
+        parameters[@"card_no"] = self.card_account_no.text;
+        parameters[@"apply_amount"] = self.card_apply_amount.text;
+    }
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"finance_apply_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [btn stopLoading:@"提现" image:nil textColor:nil backgroundColor:nil];
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"提交成功"];
+            if (strongSelf.upCashActionCall) {
+                strongSelf.upCashActionCall();
+            }
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [btn stopLoading:@"提现" image:nil textColor:nil backgroundColor:nil];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
 }
 #pragma mark -- 点击事件
 -(void)cashNoteClicked
@@ -118,60 +240,44 @@
     DSCashNoteVC *nvc = [DSCashNoteVC new];
     [self.navigationController pushViewController:nvc animated:YES];
 }
-
+- (IBAction)cashNoticeClicked:(UIButton *)sender {
+    DSWebContentVC *wvc = [DSWebContentVC new];
+    wvc.navTitle = @"提现说明";
+    wvc.requestType = 10;
+    wvc.isNeedRequest = YES;
+    [self.navigationController pushViewController:wvc animated:YES];
+}
 - (IBAction)bindCashMsgClicked:(UIButton *)sender {
     DSBindCashMsgVC *nvc = [DSBindCashMsgVC new];
+    nvc.realNameTxt = self.realNameTxt;
     nvc.dataType = self.categoryView.selectedIndex;
+    hx_weakify(self);
+    nvc.bindSuccessCall = ^(NSString * _Nonnull account_no) {
+        hx_strongify(weakSelf);
+        if (strongSelf.categoryView.selectedIndex == 0) {
+            strongSelf.ali_account_no.text = account_no;
+            strongSelf.ali_bind_btn.alpha = 0.5;// 如果已绑定就0.5，没绑定就1
+            [strongSelf.ali_bind_btn setTitle:@"修改绑定" forState:UIControlStateNormal];
+        }else{
+            strongSelf.card_account_no.text = account_no;
+            strongSelf.card_bind_btn.alpha = 0.5;// 如果已绑定就0.5，没绑定就1
+            [strongSelf.card_bind_btn setTitle:@"修改绑定" forState:UIControlStateNormal];
+        }
+    };
     [self.navigationController pushViewController:nvc animated:YES];
 }
 #pragma mark - JXCategoryViewDelegate
 // 滚动和点击选中
 - (void)categoryView:(JXCategoryBaseView *)categoryView didSelectedItemAtIndex:(NSInteger)index
 {
-    HXLog(@"切换");
+    if (index == 0) {
+        self.ali_cash_view.hidden = NO;
+        self.card_cash_view.hidden = YES;
+    }else{
+        self.ali_cash_view.hidden = YES;
+        self.card_cash_view.hidden = NO;
+    }
 }
--(void)applyCashRequest:(UIButton *)btn
-{
-    [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
-    DSUpCashView *cash = [DSUpCashView loadXibView];
-    cash.hxn_width = HX_SCREEN_WIDTH - 30*2;
-    cash.hxn_height = 360.f;
-    hx_weakify(self);
-    cash.upCashCall = ^(NSInteger index) {
-         hx_strongify(weakSelf);
-        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-        if (index) {
-            
-        }
-    };
-    self.zh_popupController = [[zhPopupController alloc] init];
-    self.zh_popupController.dismissOnMaskTouched = NO;
-    [self.zh_popupController presentContentView:cash duration:0.25 springAnimated:NO];
-//    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    parameters[@"card_owner"] = self.card_owner.text;
-//    parameters[@"bank_name"] = self.bank_name.text;
-//    parameters[@"card_no"] = self.card_no.text;
-//    parameters[@"apply_amount"] = self.apply_amount.text;
-//
-//    hx_weakify(self);
-//    [HXNetworkTool POST:HXRC_M_URL action:@"finance_apply_set" parameters:parameters success:^(id responseObject) {
-//        hx_strongify(weakSelf);
-//        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
-//        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"提交成功，请等待审核"];
-//            if (strongSelf.upCashActionCall) {
-//                strongSelf.upCashActionCall();
-//            }
-//            [strongSelf.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-//        }
-//    } failure:^(NSError *error) {
-//        [btn stopLoading:@"确定" image:nil textColor:nil backgroundColor:nil];
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-//    }];
-}
-
 //参数一：range，要被替换的字符串的range，如果是新输入的，就没有字符串被替换，range.length = 0
 //参数二：替换的字符串，即键盘即将输入或者即将粘贴到textField的string
 //返回值为BOOL类型，YES表示允许替换，NO表示不允许
@@ -200,30 +306,5 @@ replacementString:(NSString *)string
 {
     NSPredicate *predicte = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     return [predicte evaluateWithObject:checkStr];
-}
-
--(void)getInitRequest
-{
-    hx_weakify(self);
-    [HXNetworkTool POST:HXRC_M_URL action:@"finance_apply_init_get" parameters:@{} success:^(id responseObject) {
-        hx_strongify(weakSelf);
-        [strongSelf stopShimmer];
-        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            strongSelf.balance = [responseObject[@"result"][@"balance"] floatValue];
-            strongSelf.base_amount = [responseObject[@"result"][@"base_amount"] floatValue];
-            strongSelf.fee_percent = [responseObject[@"result"][@"fee_percent"] floatValue];
-            strongSelf.free_amount = [responseObject[@"result"][@"free_amount"] floatValue];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf.ableLabel.text = [NSString stringWithFormat:@"可提现金额：%.2f元，起提金额：%.2f元，提现服务费率：%.2f‰，免除手续费的提现金额：%.2f元",strongSelf.balance,strongSelf.base_amount,strongSelf.fee_percent,strongSelf.free_amount];
-            });
-        }else{
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
-        }
-    } failure:^(NSError *error) {
-        hx_strongify(weakSelf);
-        [strongSelf stopShimmer];
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
-    }];
 }
 @end

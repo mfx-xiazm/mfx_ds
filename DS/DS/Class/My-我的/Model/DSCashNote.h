@@ -15,10 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *apply_no;
 /**1待审核；2已通过；3未通过*/
 @property (nonatomic, copy) NSString *apply_status;
-@property (nonatomic, copy) NSString *reject_reason;
 @property (nonatomic, copy) NSString *apply_amount;
 @property (nonatomic, copy) NSString *apply_desc;
 @property (nonatomic, copy) NSString *finance_apply_id;
+@property (nonatomic, copy) NSString *card_no;
+@property (nonatomic, copy) NSString *acct_type;
+@property (nonatomic, copy) NSString *reject_reason;
 
 @end
 

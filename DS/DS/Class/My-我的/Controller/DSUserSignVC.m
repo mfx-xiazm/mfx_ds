@@ -8,13 +8,17 @@
 
 #import "DSUserSignVC.h"
 #import <WebKit/WebKit.h>
+#import "DSUserAuthVC.h"
 
 @interface DSUserSignVC ()<WKNavigationDelegate,WKUIDelegate>
 @property (nonatomic, strong) WKWebView     *webView;
 @property (weak, nonatomic) IBOutlet UIView *web_content_view;
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *signBtn;
 /* 网页加载进度视图 */
 @property (nonatomic, strong) UIProgressView *progressView;
+/** vc控制器 */
+@property (nonatomic,strong) NSMutableArray *controllers;
 @end
 
 @implementation DSUserSignVC
@@ -22,6 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavBar];
+    
+    self.signBtn.alpha = 0.4;
+    [self.signBtn.layer addSublayer:[UIColor setGradualChangingColor:self.signBtn fromColor:@"F9AD28" toColor:@"F95628"]];
+
     // 针对 11.0 以上的iOS系统进行处理
     if (@available(iOS 11.0, *)) {
         self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -30,11 +38,39 @@
         // 不要自动调整inset
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    hx_weakify(self);
+    [self.signBtn BindingBtnJudgeBlock:^BOOL{
+        hx_strongify(weakSelf);
+        if (!strongSelf.agreeBtn.isSelected) {
+//            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请勾选服务协议"];
+            return NO;
+        }
+        return YES;
+    } ActionBlock:^(UIButton * _Nullable button) {
+        hx_strongify(weakSelf);
+        [strongSelf userSignSetRequest:button];
+    }];
+    
+    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[DSUserAuthVC class]]) {
+            hx_strongify(weakSelf);
+            [strongSelf.controllers removeObjectAtIndex:idx];
+            *stop = YES;
+        }
+    }];
+    [self.navigationController setViewControllers:self.controllers];
     
     [self.web_content_view addSubview:self.webView];
     [self.view addSubview:self.progressView];
     [self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:nil];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com/"]]];
+    
+    [self loadAuthLicenseRequest];
+}
+- (NSMutableArray *)controllers {
+    if (!_controllers) {
+        _controllers = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
+    }
+    return _controllers;
 }
 -(void)viewDidLayoutSubviews
 {
@@ -78,22 +114,63 @@
 #pragma mark -- 视图
 -(void)setUpNavBar
 {
-    [self.navigationItem setTitle:@"电子签约"];
+    [self.navigationItem setTitle:@"用户电子签约服务协议"];
     self.hbd_barStyle = UIBarStyleDefault;
     self.hbd_barTintColor = [UIColor whiteColor];
     self.hbd_tintColor = [UIColor blackColor];
     self.hbd_barShadowHidden = NO;
     self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
 }
+#pragma mark -- 接口
+-(void)loadAuthLicenseRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"set_type"] = @"user_sign_license";
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"license_config_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:15px 15px;}</style></head><body>%@</body></html>",responseObject[@"result"][@"config_data"]];
+            [strongSelf.webView loadHTMLString:h5 baseURL:nil];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
+-(void)userSignSetRequest:(UIButton *)btn
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"realname"] = self.realName;
+    parameters[@"centNo"] = self.centNo;
+    
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"xinbao_user_sign_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [btn stopLoading:@"确认签约" image:nil textColor:nil backgroundColor:nil];
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            if (strongSelf.signSuccessCall) {
+                strongSelf.signSuccessCall();
+            }
+            [strongSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [btn stopLoading:@"确认签约" image:nil textColor:nil backgroundColor:nil];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- 点击事件
 - (IBAction)agreeClicked:(UIButton *)sender {
     sender.selected = !sender.isSelected;
-}
-- (IBAction)signClicked:(UIButton *)sender {
-    if (self.signSuccessCall) {
-        self.signSuccessCall();
+    if (sender.isSelected) {
+        self.signBtn.alpha = 1.0;
+    }else{
+        self.signBtn.alpha = 0.4;
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark -- KVO的监听代理
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

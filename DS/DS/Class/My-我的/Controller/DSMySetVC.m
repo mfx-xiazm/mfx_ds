@@ -52,9 +52,17 @@
         wvc.url = @"http://apiadmin.whaleupgo.com/webapp/page/privacyPolicy.html";
         [self.navigationController pushViewController:wvc animated:YES];
     }else if (sender.tag == 5) {
-        HXLog(@"用户认证协议");
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"用户认证协议";
+        wvc.requestType = 8;
+        wvc.isNeedRequest = YES;
+        [self.navigationController pushViewController:wvc animated:YES];
     }else if (sender.tag == 6) {
-        HXLog(@"用户签约协议");
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"用户签约协议";
+        wvc.requestType = 9;
+        wvc.isNeedRequest = YES;
+        [self.navigationController pushViewController:wvc animated:YES];
     }else{
         zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"提示" message:@"确定要退出登录？" constantWidth:HX_SCREEN_WIDTH - 50*2];
         hx_weakify(self);

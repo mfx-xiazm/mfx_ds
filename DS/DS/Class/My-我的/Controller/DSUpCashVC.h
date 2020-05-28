@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^upCashActionCall)(void);
 @interface DSUpCashVC : HXBaseViewController
+@property (nonatomic, copy) NSString *realNameTxt;
 /* 点击 */
 @property(nonatomic,copy) upCashActionCall upCashActionCall;
 @end

@@ -14,8 +14,9 @@
 #import "DSBalanceNoteVC.h"
 #import "DSBalanceNote.h"
 #import "DSUserAuthVC.h"
-#import "DSUserAuthView.h"
+#import "DSUserSignVC.h"
 #import <zhPopupController.h>
+#import "DSUserAuthInfo.h"
 
 static NSString *const MyBalanceCell = @"MyBalanceCell";
 @interface DSMyBalanceVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -24,6 +25,8 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 @property(nonatomic,strong) DSMyBalanceHeader *header;
 /* 最近记录 */
 @property(nonatomic,strong) NSArray *notes;
+/* 用户认证信息 */
+@property (nonatomic, strong) DSUserAuthInfo *authInfo;
 @end
 
 @implementation DSMyBalanceVC
@@ -35,6 +38,10 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(upCashClicked) title:@"提现" font:[UIFont systemFontOfSize:15] titleColor:[UIColor whiteColor] highlightedColor:[UIColor whiteColor] titleEdgeInsets:UIEdgeInsetsZero];
     [self setUpTableView];
     [self startShimmer];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self getMyBalanceRequest];
 }
 - (void)viewDidLayoutSubviews
@@ -109,31 +116,50 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 #pragma mark -- 点击事件
 -(void)upCashClicked
 {
-    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"待开放"];
-//    DSUserAuthView *auth = [DSUserAuthView loadXibView];
-//    auth.hxn_width = HX_SCREEN_WIDTH - 30*2;
-//    auth.hxn_height = 460.f;
-//    hx_weakify(self);
-//    auth.userAuthCall = ^(NSInteger index) {
-//         hx_strongify(weakSelf);
-//        [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
-//        if (index) {
-//            DSUserAuthVC *avc = [DSUserAuthVC new];
-//            [strongSelf.navigationController pushViewController:avc animated:YES];
-//        }
-//    };
-//    self.zh_popupController = [[zhPopupController alloc] init];
-//    self.zh_popupController.dismissOnMaskTouched = NO;
-//    [self.zh_popupController presentContentView:auth duration:0.25 springAnimated:NO];
-//    DSUpCashVC *cvc = [DSUpCashVC new];
-//    hx_weakify(self);
-//    cvc.upCashActionCall = ^{
-//        hx_strongify(weakSelf);
-//        [strongSelf getMyBalanceRequest];
-//    };
-//    [self.navigationController pushViewController:cvc animated:YES];
+    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"升级VIP会员可提现"];
+        return;
+    }
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;// 放置重复点击
+    hx_weakify(self);
+    [self getAutoInfoRequest:^{
+        hx_strongify(weakSelf);
+        //is_auth为0未认证，需要显示认证协议，用户同意后进入认证信息输入界面，然后提交认证信息。is_auth返回1则表示已认证，相关认证信息同时返回，显示在认证界面。 is_sign为0未签约；为1已签约
+        if ([strongSelf.authInfo.is_auth isEqualToString:@"0"] && [strongSelf.authInfo.is_sign isEqualToString:@"0"]) {//未认证、未签约
+            DSUserAuthVC *avc = [DSUserAuthVC new];
+            avc.authInfo = strongSelf.authInfo;
+            [strongSelf.navigationController pushViewController:avc animated:YES];
+        }else if ([strongSelf.authInfo.is_auth isEqualToString:@"1"] && [strongSelf.authInfo.is_sign isEqualToString:@"0"]){//已认证、未签约
+            DSUserAuthVC *avc = [DSUserAuthVC new];
+            avc.authInfo = strongSelf.authInfo;
+            [strongSelf.navigationController pushViewController:avc animated:YES];
+        }else{// 已认证、已签约
+            DSUpCashVC *cvc = [DSUpCashVC new];
+            cvc.realNameTxt = strongSelf.authInfo.realname;
+            [self.navigationController pushViewController:cvc animated:YES];
+        }
+    }];
 }
 #pragma mark -- 接口请求
+-(void)getAutoInfoRequest:(void(^)(void))completedCall
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"user_auth_info_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        strongSelf.navigationItem.rightBarButtonItem.enabled = YES;// 放置重复点击
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            strongSelf.authInfo = [DSUserAuthInfo yy_modelWithDictionary:responseObject[@"result"]];
+            completedCall();
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        strongSelf.navigationItem.rightBarButtonItem.enabled = YES;// 放置重复点击
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 -(void)getMyBalanceRequest
 {
     hx_weakify(self);

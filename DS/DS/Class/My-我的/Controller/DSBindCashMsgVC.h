@@ -10,8 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^bindSuccessCall)(NSString *account_no);
 @interface DSBindCashMsgVC : HXBaseViewController
 @property (nonatomic, assign) NSInteger dataType;
+@property (nonatomic, copy) NSString *realNameTxt;
+@property (nonatomic, copy) bindSuccessCall bindSuccessCall;
 @end
 
 NS_ASSUME_NONNULL_END

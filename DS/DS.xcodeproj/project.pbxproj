@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49305BE0247F4BF200C26C79 /* DSUserAuthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BDF247F4BF200C26C79 /* DSUserAuthInfo.m */; };
+		49305BE3247F5AA000C26C79 /* FCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BE2247F5AA000C26C79 /* FCTextField.m */; };
+		49305BE7247FB97100C26C79 /* DSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BE4247FB97000C26C79 /* DSDatePickerView.m */; };
+		49305BE8247FB97100C26C79 /* DSDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49305BE6247FB97100C26C79 /* DSDatePickerView.xib */; };
 		496605B42473C6F1003A2652 /* DSUserSignVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B22473C6F1003A2652 /* DSUserSignVC.m */; };
 		496605B52473C6F1003A2652 /* DSUserSignVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605B32473C6F1003A2652 /* DSUserSignVC.xib */; };
 		496605B82473CD39003A2652 /* DSUserAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B72473CD39003A2652 /* DSUserAuthView.m */; };
@@ -371,6 +375,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49305BDE247F4BF200C26C79 /* DSUserAuthInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserAuthInfo.h; sourceTree = "<group>"; };
+		49305BDF247F4BF200C26C79 /* DSUserAuthInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserAuthInfo.m; sourceTree = "<group>"; };
+		49305BE1247F5AA000C26C79 /* FCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCTextField.h; sourceTree = "<group>"; };
+		49305BE2247F5AA000C26C79 /* FCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCTextField.m; sourceTree = "<group>"; };
+		49305BE4247FB97000C26C79 /* DSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDatePickerView.m; sourceTree = "<group>"; };
+		49305BE5247FB97000C26C79 /* DSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDatePickerView.h; sourceTree = "<group>"; };
+		49305BE6247FB97100C26C79 /* DSDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSDatePickerView.xib; sourceTree = "<group>"; };
 		496605B12473C6F1003A2652 /* DSUserSignVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserSignVC.h; sourceTree = "<group>"; };
 		496605B22473C6F1003A2652 /* DSUserSignVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserSignVC.m; sourceTree = "<group>"; };
 		496605B32473C6F1003A2652 /* DSUserSignVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUserSignVC.xib; sourceTree = "<group>"; };
@@ -1497,6 +1508,12 @@
 				90F74E3A2382323A003576B3 /* DSMyBalanceVC.h */,
 				90F74E3B2382323A003576B3 /* DSMyBalanceVC.m */,
 				90F74E3C2382323A003576B3 /* DSMyBalanceVC.xib */,
+				49C0CF932473A9240067C9AB /* DSUserAuthVC.h */,
+				49C0CF942473A9240067C9AB /* DSUserAuthVC.m */,
+				49C0CF952473A9240067C9AB /* DSUserAuthVC.xib */,
+				496605B12473C6F1003A2652 /* DSUserSignVC.h */,
+				496605B22473C6F1003A2652 /* DSUserSignVC.m */,
+				496605B32473C6F1003A2652 /* DSUserSignVC.xib */,
 				90F74E622382657A003576B3 /* DSBalanceNoteVC.h */,
 				90F74E632382657A003576B3 /* DSBalanceNoteVC.m */,
 				90F74E642382657A003576B3 /* DSBalanceNoteVC.xib */,
@@ -1527,12 +1544,6 @@
 				90FD91FE237E55C500016EF7 /* DSEditAddressVC.h */,
 				90FD91FF237E55C500016EF7 /* DSEditAddressVC.m */,
 				90FD9200237E55C500016EF7 /* DSEditAddressVC.xib */,
-				49C0CF932473A9240067C9AB /* DSUserAuthVC.h */,
-				49C0CF942473A9240067C9AB /* DSUserAuthVC.m */,
-				49C0CF952473A9240067C9AB /* DSUserAuthVC.xib */,
-				496605B12473C6F1003A2652 /* DSUserSignVC.h */,
-				496605B22473C6F1003A2652 /* DSUserSignVC.m */,
-				496605B32473C6F1003A2652 /* DSUserSignVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1551,6 +1562,8 @@
 				9086946523A729D100451D8B /* DSMyTeam.m */,
 				9086946723A72D6600451D8B /* DSMyCard.h */,
 				9086946823A72D6600451D8B /* DSMyCard.m */,
+				49305BDE247F4BF200C26C79 /* DSUserAuthInfo.h */,
+				49305BDF247F4BF200C26C79 /* DSUserAuthInfo.m */,
 				9086946D23A7570E00451D8B /* DSBalanceNote.h */,
 				9086946E23A7570E00451D8B /* DSBalanceNote.m */,
 				9086947023A7656E00451D8B /* DSCashNote.h */,
@@ -1801,6 +1814,8 @@
 				90AB397D24075FBE0082ECE4 /* UIColor+DSGradient.m */,
 				90DCAA3B240E03C900E7CE26 /* NSURL+Expand.h */,
 				90DCAA3C240E03C900E7CE26 /* NSURL+Expand.m */,
+				49305BE1247F5AA000C26C79 /* FCTextField.h */,
+				49305BE2247F5AA000C26C79 /* FCTextField.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1904,12 +1919,15 @@
 			isa = PBXGroup;
 			children = (
 				906F36F823792F64000B160A /* NSDate+Extension.h */,
-				906F36F923792F64000B160A /* WSDatePickerView.h */,
-				906F36FA23792F64000B160A /* UIView+Extension.h */,
-				906F36FB23792F64000B160A /* WSDatePickerView.xib */,
-				906F36FC23792F64000B160A /* WSDatePickerView.m */,
 				906F36FD23792F64000B160A /* NSDate+Extension.m */,
+				906F36F923792F64000B160A /* WSDatePickerView.h */,
+				906F36FC23792F64000B160A /* WSDatePickerView.m */,
+				906F36FB23792F64000B160A /* WSDatePickerView.xib */,
+				906F36FA23792F64000B160A /* UIView+Extension.h */,
 				906F36FE23792F64000B160A /* UIView+Extension.m */,
+				49305BE5247FB97000C26C79 /* DSDatePickerView.h */,
+				49305BE4247FB97000C26C79 /* DSDatePickerView.m */,
+				49305BE6247FB97100C26C79 /* DSDatePickerView.xib */,
 			);
 			path = WSDatePickerView;
 			sourceTree = "<group>";
@@ -2270,6 +2288,7 @@
 				903D080023838242001C2E40 /* DSOrderDetailFooter.xib in Resources */,
 				90F74E482382387F003576B3 /* DSMyBalanceCell.xib in Resources */,
 				903A95D423A222D600AD68CF /* DSSearchGoodsVC.xib in Resources */,
+				49305BE8247FB97100C26C79 /* DSDatePickerView.xib in Resources */,
 				9001468C2383E38800275DD9 /* DSChooseClassFooter.xib in Resources */,
 				9001467D2383E19A00275DD9 /* DSChooseClassView.xib in Resources */,
 				90EC259F237A97DE005C24C8 /* DSHomeCateVC.xib in Resources */,
@@ -2460,6 +2479,7 @@
 				49B4C0852472559100560451 /* JXPagerMainTableView.m in Sources */,
 				90EC2594237A8EDF005C24C8 /* DSHomeBannerHeader.m in Sources */,
 				90C94C2C23A47D9600CD19FB /* GXChooseAddressView.m in Sources */,
+				49305BE0247F4BF200C26C79 /* DSUserAuthInfo.m in Sources */,
 				90AE52E823829B45009F4740 /* DSPuslishDynamicData.m in Sources */,
 				90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */,
 				49DBE4F8243C68B200F984D4 /* DSTaoKeOrderChildVC.m in Sources */,
@@ -2571,7 +2591,9 @@
 				90F74E3D2382323A003576B3 /* DSMyBalanceVC.m in Sources */,
 				906F376E23792F64000B160A /* zhAlertView.m in Sources */,
 				900146952383EA3800275DD9 /* DSTakeCouponCell.m in Sources */,
+				49305BE3247F5AA000C26C79 /* FCTextField.m in Sources */,
 				903CB55E23927F180053A25B /* UIImage+TYSnapshot.m in Sources */,
+				49305BE7247FB97100C26C79 /* DSDatePickerView.m in Sources */,
 				49DBE4FD243C68DD00F984D4 /* DSTaoKeOrderCell.m in Sources */,
 				906F377123792F64000B160A /* UILabel+ForLMJVerticalScrollText.m in Sources */,
 				90ED68E223BA05B60035988E /* SZUpdateView.m in Sources */,
@@ -2759,7 +2781,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RZ87TU58LG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2798,7 +2820,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -2912,7 +2934,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = RZ87TU58LG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2951,7 +2973,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",

@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSUserAuthInfo;
 @interface DSUserAuthVC : HXBaseViewController
-
+/* 用户认证信息 */
+@property (nonatomic, strong) DSUserAuthInfo *authInfo;
 @end
 
 NS_ASSUME_NONNULL_END

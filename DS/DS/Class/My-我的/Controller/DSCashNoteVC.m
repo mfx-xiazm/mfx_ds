@@ -10,15 +10,18 @@
 #import "DSCashNoteCell.h"
 #import "DSCashNoteDetailVC.h"
 #import "DSCashNote.h"
-#import "WSDatePickerView.h"
+#import "DSDatePickerView.h"
 
 static NSString *const CashNoteCell = @"CashNoteCell";
 @interface DSCashNoteVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *cash_total;
 /* 页码 */
 @property (nonatomic,assign) NSInteger pagenum;
 /* 列表 */
 @property(nonatomic,strong) NSMutableArray *notes;
+/* 时间 */
+@property (nonatomic, copy) NSString *time_region;
 @end
 
 @implementation DSCashNoteVC
@@ -53,13 +56,13 @@ static NSString *const CashNoteCell = @"CashNoteCell";
         // 不要自动调整inset
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.tableView.backgroundColor = HXGlobalBg;
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 110.f;//预估高度
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 15.f, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -98,18 +101,21 @@ static NSString *const CashNoteCell = @"CashNoteCell";
 }
 #pragma mark -- 点击事件
 - (IBAction)chooseTimeClicked:(SPButton *)sender {
-//    NSDate *scrollToDate = [NSDate date:sender.currentTitle WithFormat:@"yyyy-MM"];
-//
-//    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDay scrollToDate:scrollToDate CompleteBlock:^(NSString *, NSString *) {
-//        NSTimeZone *nowTimeZone = [NSTimeZone localTimeZone];
-//        NSInteger timeOffset = [nowTimeZone secondsFromGMTForDate:selectDate];
-//        NSDate *newDate = [selectDate dateByAddingTimeInterval:timeOffset];
-//        NSString *date = [newDate stringWithFormat:@"yyyy-MM-dd"];
-//        [sender setTitle:date forState:UIControlStateNormal];
-//    }];
-//    datepicker.maxLimitDate = [NSDate date];
-//       
-//    [datepicker show];
+    NSDate *scrollToDate = [sender.currentTitle isEqualToString:@"全部"]?[NSDate date]:[NSDate date:sender.currentTitle WithFormat:@"yyyy-MM"];
+    hx_weakify(self);
+    DSDatePickerView *datepicker = [[DSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonth scrollToDate:scrollToDate CompleteBlock:^(NSDate *selectDate) {
+        hx_strongify(weakSelf);
+        NSTimeZone *nowTimeZone = [NSTimeZone localTimeZone];
+        NSInteger timeOffset = [nowTimeZone secondsFromGMTForDate:selectDate];
+        NSDate *newDate = [selectDate dateByAddingTimeInterval:timeOffset];
+        NSString *date = [newDate stringWithFormat:@"yyyy-MM"];
+        [sender setTitle:date forState:UIControlStateNormal];
+        
+        strongSelf.time_region = date;
+    }];
+    datepicker.maxLimitDate = [NSDate date];
+       
+    [datepicker show];
 }
 #pragma mark -- 接口请求
 /** 列表请求 */
@@ -122,6 +128,7 @@ static NSString *const CashNoteCell = @"CashNoteCell";
         NSInteger pagenum = self.pagenum+1;
         parameters[@"page"] = @(pagenum);//第几页
     }
+    parameters[@"time_region"] = self.time_region?self.time_region:@"";
 
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"apply_log_get" parameters:parameters success:^(id responseObject) {
@@ -145,6 +152,7 @@ static NSString *const CashNoteCell = @"CashNoteCell";
                 }
             }
             dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.cash_total.text = [NSString stringWithFormat:@"已提现：¥%@",[[NSString stringWithFormat:@"%@",responseObject[@"result"][@"total_amount"]] reviseString]];
                 [strongSelf.tableView reloadData];
                 if (strongSelf.notes.count) {
                     [strongSelf.tableView ly_hideEmptyView];
@@ -173,10 +181,6 @@ static NSString *const CashNoteCell = @"CashNoteCell";
     DSCashNote *note = self.notes[indexPath.row];
     cell.note = note;
     return cell;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 110.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

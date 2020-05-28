@@ -8,11 +8,18 @@
 
 #import "DSUpCashView.h"
 
+@interface DSUpCashView ()
+
+@property (weak, nonatomic) IBOutlet UIButton *sureBtn;
+
+@end
 @implementation DSUpCashView
 
 -(void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    [self.sureBtn.layer addSublayer:[UIColor setGradualChangingColor:self.sureBtn fromColor:@"F9AD28" toColor:@"F95628"]];
 }
 - (IBAction)upCashClicked:(UIButton *)sender {
     if (self.upCashCall) {
