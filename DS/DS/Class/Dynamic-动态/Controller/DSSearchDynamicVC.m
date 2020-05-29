@@ -49,7 +49,6 @@
     self.hbd_barTintColor = [UIColor whiteColor];
     self.hbd_tintColor = [UIColor blackColor];
     self.hbd_barShadowHidden = YES;
-    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
     
     HXSearchBar *searchBar = [[HXSearchBar alloc] initWithFrame:CGRectMake(0, 0, HX_SCREEN_WIDTH - 70.f, 30.f)];
     searchBar.layer.cornerRadius = 15.f;

@@ -15,12 +15,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        self.tintColor = HXControlBg;
         self.font = [UIFont systemFontOfSize:12];
         self.placeholder = @"搜索感兴趣的内容";
         self.textColor = [UIColor blackColor];
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.returnKeyType = UIReturnKeySearch;
         self.textAlignment = NSTextAlignmentLeft;
+        self.keyboardAppearance = UIKeyboardAppearanceLight;
         
         UIImageView *searchIcon = [[UIImageView alloc] init];
         searchIcon.image = [UIImage imageNamed:@"search_icon"];

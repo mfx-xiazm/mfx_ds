@@ -34,6 +34,7 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.tintColor = HXControlBg;
         // 垂直方向上永远有弹簧效果
         self.alwaysBounceVertical = YES;
         // 默认字体
@@ -51,6 +52,7 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
+    self.tintColor = HXControlBg;
     // 垂直方向上永远有弹簧效果
     self.alwaysBounceVertical = YES;
     // 默认字体

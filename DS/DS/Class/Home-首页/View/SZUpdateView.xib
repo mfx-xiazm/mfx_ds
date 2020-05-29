@@ -64,7 +64,7 @@
                     <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="这里是更新内容这里是更新内容这里是更新内容" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ldo-Yu-XnH">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="这里是更新内容这里是更新内容这里是更新内容" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldo-Yu-XnH">
                     <rect key="frame" x="15" y="156.5" width="278" height="133.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="textColor" red="0.56470588239999997" green="0.57254901960000004" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -123,6 +123,7 @@
             <connections>
                 <outlet property="bankPrice" destination="fOb-hN-uKa" id="aIG-ZH-qa5"/>
                 <outlet property="coupon_amount" destination="4MR-mF-D2w" id="bZS-NZ-gYs"/>
+                <outlet property="coupon_img" destination="NQF-mO-4Za" id="4Ab-99-kdZ"/>
                 <outlet property="coverImg" destination="4fB-Hg-BY6" id="vaW-So-bAV"/>
                 <outlet property="goodName" destination="x9N-ho-JKa" id="pEV-RT-1No"/>
                 <outlet property="marketPrice" destination="jm0-JP-Gsc" id="wgP-R8-ymp"/>

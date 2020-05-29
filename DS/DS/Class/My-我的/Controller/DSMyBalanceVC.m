@@ -116,30 +116,31 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 #pragma mark -- 点击事件
 -(void)upCashClicked
 {
-    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"升级VIP会员可提现"];
-        return;
-    }
-    
-    self.navigationItem.rightBarButtonItem.enabled = NO;// 放置重复点击
-    hx_weakify(self);
-    [self getAutoInfoRequest:^{
-        hx_strongify(weakSelf);
-        //is_auth为0未认证，需要显示认证协议，用户同意后进入认证信息输入界面，然后提交认证信息。is_auth返回1则表示已认证，相关认证信息同时返回，显示在认证界面。 is_sign为0未签约；为1已签约
-        if ([strongSelf.authInfo.is_auth isEqualToString:@"0"] && [strongSelf.authInfo.is_sign isEqualToString:@"0"]) {//未认证、未签约
-            DSUserAuthVC *avc = [DSUserAuthVC new];
-            avc.authInfo = strongSelf.authInfo;
-            [strongSelf.navigationController pushViewController:avc animated:YES];
-        }else if ([strongSelf.authInfo.is_auth isEqualToString:@"1"] && [strongSelf.authInfo.is_sign isEqualToString:@"0"]){//已认证、未签约
-            DSUserAuthVC *avc = [DSUserAuthVC new];
-            avc.authInfo = strongSelf.authInfo;
-            [strongSelf.navigationController pushViewController:avc animated:YES];
-        }else{// 已认证、已签约
-            DSUpCashVC *cvc = [DSUpCashVC new];
-            cvc.realNameTxt = strongSelf.authInfo.realname;
-            [self.navigationController pushViewController:cvc animated:YES];
-        }
-    }];
+    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"待开放"];
+//    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
+//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"升级VIP会员可提现"];
+//        return;
+//    }
+//    
+//    self.navigationItem.rightBarButtonItem.enabled = NO;// 放置重复点击
+//    hx_weakify(self);
+//    [self getAutoInfoRequest:^{
+//        hx_strongify(weakSelf);
+//        //is_auth为0未认证，需要显示认证协议，用户同意后进入认证信息输入界面，然后提交认证信息。is_auth返回1则表示已认证，相关认证信息同时返回，显示在认证界面。 is_sign为0未签约；为1已签约
+//        if ([strongSelf.authInfo.is_auth isEqualToString:@"0"] && [strongSelf.authInfo.is_sign isEqualToString:@"0"]) {//未认证、未签约
+//            DSUserAuthVC *avc = [DSUserAuthVC new];
+//            avc.authInfo = strongSelf.authInfo;
+//            [strongSelf.navigationController pushViewController:avc animated:YES];
+//        }else if ([strongSelf.authInfo.is_auth isEqualToString:@"1"] && [strongSelf.authInfo.is_sign isEqualToString:@"0"]){//已认证、未签约
+//            DSUserAuthVC *avc = [DSUserAuthVC new];
+//            avc.authInfo = strongSelf.authInfo;
+//            [strongSelf.navigationController pushViewController:avc animated:YES];
+//        }else{// 已认证、已签约
+//            DSUpCashVC *cvc = [DSUpCashVC new];
+//            cvc.realNameTxt = strongSelf.authInfo.realname;
+//            [self.navigationController pushViewController:cvc animated:YES];
+//        }
+//    }];
 }
 #pragma mark -- 接口请求
 -(void)getAutoInfoRequest:(void(^)(void))completedCall

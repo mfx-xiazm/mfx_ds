@@ -133,6 +133,7 @@
             <connections>
                 <outlet property="bankPrice" destination="RDM-Zv-vYa" id="LZW-PV-CS8"/>
                 <outlet property="coupon_amount" destination="DqS-0J-GxF" id="YLw-uK-gcs"/>
+                <outlet property="coupon_img" destination="iy9-qS-SZb" id="4JO-t4-gnZ"/>
                 <outlet property="coverImg" destination="bXJ-s2-bpA" id="bor-6x-ikx"/>
                 <outlet property="goodName" destination="P4E-4s-uda" id="oed-b7-dWv"/>
                 <outlet property="marketPrice" destination="4ri-w6-me7" id="CWJ-os-cyu"/>
@@ -142,6 +143,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="可领券" width="44" height="18"/>
+        <image name="可领券" width="40.5" height="17.5"/>
     </resources>
 </document>

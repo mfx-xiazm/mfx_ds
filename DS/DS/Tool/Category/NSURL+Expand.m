@@ -27,6 +27,9 @@
     //遍历所有参数，添加入字典
     [urlComponents.queryItems enumerateObjectsUsingBlock:^(NSURLQueryItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [paramer setObject:obj.value forKey:obj.name];
+        if ([obj.name isEqualToString:@"taobao_goods_url"]) {
+            *stop = YES;
+        }
     }];
 
     return paramer;

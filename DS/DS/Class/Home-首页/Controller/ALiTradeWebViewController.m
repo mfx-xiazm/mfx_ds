@@ -26,7 +26,6 @@
         _webView.scrollView.scrollEnabled = YES;
         _webView.delegate = self;
         [self.view addSubview:_webView];
-
     }
     return self;
 }
@@ -58,7 +57,7 @@
     if ([request.URL.absoluteString containsString:@"jpk_taobao://"]) {
         NSDictionary *info = [request.URL paramerWithURL];
         if (self.authSuccessCall) {
-            self.authSuccessCall(info[@"aobao_goods_url"]);
+            self.authSuccessCall(info[@"taobao_goods_url"]);
             [self.navigationController popViewControllerAnimated:YES];
         }
         return NO;
