@@ -11,6 +11,9 @@
 		49305BE3247F5AA000C26C79 /* FCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BE2247F5AA000C26C79 /* FCTextField.m */; };
 		49305BE7247FB97100C26C79 /* DSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BE4247FB97000C26C79 /* DSDatePickerView.m */; };
 		49305BE8247FB97100C26C79 /* DSDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49305BE6247FB97100C26C79 /* DSDatePickerView.xib */; };
+		49565F342488975600C9D43E /* UMPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49565F332488975600C9D43E /* UMPush.framework */; };
+		49565F362488980400C9D43E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49565F352488980400C9D43E /* SystemConfiguration.framework */; };
+		49565F382488984B00C9D43E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49565F372488984B00C9D43E /* UserNotifications.framework */; };
 		496605B42473C6F1003A2652 /* DSUserSignVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B22473C6F1003A2652 /* DSUserSignVC.m */; };
 		496605B52473C6F1003A2652 /* DSUserSignVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605B32473C6F1003A2652 /* DSUserSignVC.xib */; };
 		496605B82473CD39003A2652 /* DSUserAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B72473CD39003A2652 /* DSUserAuthView.m */; };
@@ -382,6 +385,9 @@
 		49305BE4247FB97000C26C79 /* DSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDatePickerView.m; sourceTree = "<group>"; };
 		49305BE5247FB97000C26C79 /* DSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDatePickerView.h; sourceTree = "<group>"; };
 		49305BE6247FB97100C26C79 /* DSDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DSDatePickerView.xib; sourceTree = "<group>"; };
+		49565F332488975600C9D43E /* UMPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMPush.framework; sourceTree = "<group>"; };
+		49565F352488980400C9D43E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		49565F372488984B00C9D43E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		496605B12473C6F1003A2652 /* DSUserSignVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserSignVC.h; sourceTree = "<group>"; };
 		496605B22473C6F1003A2652 /* DSUserSignVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserSignVC.m; sourceTree = "<group>"; };
 		496605B32473C6F1003A2652 /* DSUserSignVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUserSignVC.xib; sourceTree = "<group>"; };
@@ -394,6 +400,7 @@
 		496605C02473E080003A2652 /* DSUpCashView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpCashView.h; sourceTree = "<group>"; };
 		496605C12473E080003A2652 /* DSUpCashView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpCashView.m; sourceTree = "<group>"; };
 		496605C32473E11D003A2652 /* DSUpCashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpCashView.xib; sourceTree = "<group>"; };
+		498318352488932C004AA787 /* 鲸品库.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "鲸品库.entitlements"; sourceTree = "<group>"; };
 		4997A534247CFD3000605EEC /* DSTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTextField.h; sourceTree = "<group>"; };
 		4997A535247CFD3000605EEC /* DSTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTextField.m; sourceTree = "<group>"; };
 		49B4C07A2472559100560451 /* JXPagerSmoothView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothView.h; sourceTree = "<group>"; };
@@ -958,12 +965,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49565F382488984B00C9D43E /* UserNotifications.framework in Frameworks */,
 				908F943F23AB7C3D007E6C27 /* libc++.tbd in Frameworks */,
+				49565F362488980400C9D43E /* SystemConfiguration.framework in Frameworks */,
 				90615E3623BAE855005FDFFC /* CoreMotion.framework in Frameworks */,
 				90615E3223BAE83A005FDFFC /* libsqlite3.tbd in Frameworks */,
 				75201D9BC0ADF06CFC84ADF5 /* libPods-DS.a in Frameworks */,
 				90615E3423BAE848005FDFFC /* CoreTelephony.framework in Frameworks */,
 				906F376123792F64000B160A /* AlipaySDK.framework in Frameworks */,
+				49565F342488975600C9D43E /* UMPush.framework in Frameworks */,
 				908F943D23AB7C19007E6C27 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -988,6 +998,8 @@
 		019C88C3DC59121C86D75F9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49565F372488984B00C9D43E /* UserNotifications.framework */,
+				49565F352488980400C9D43E /* SystemConfiguration.framework */,
 				90615E3523BAE854005FDFFC /* CoreMotion.framework */,
 				90615E3323BAE848005FDFFC /* CoreTelephony.framework */,
 				90615E3123BAE829005FDFFC /* libsqlite3.tbd */,
@@ -996,6 +1008,14 @@
 				F95BF23A4F0097FD6153E581 /* libPods-DS.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49565F322488974A00C9D43E /* UMPush */ = {
+			isa = PBXGroup;
+			children = (
+				49565F332488975600C9D43E /* UMPush.framework */,
+			);
+			path = UMPush;
 			sourceTree = "<group>";
 		};
 		49B4C0792472559100560451 /* JXPagerView */ = {
@@ -1102,6 +1122,7 @@
 		906F362A2378ED44000B160A /* DS */ = {
 			isa = PBXGroup;
 			children = (
+				498318352488932C004AA787 /* 鲸品库.entitlements */,
 				906F366923792F5B000B160A /* Class */,
 				906F36ED23792F64000B160A /* ThirdLib */,
 				906F36C123792F64000B160A /* Tool */,
@@ -1833,8 +1854,8 @@
 			isa = PBXGroup;
 			children = (
 				906F36DE23792F64000B160A /* HXNetworkTool.h */,
-				906F36DF23792F64000B160A /* HXNetworkCache.h */,
 				906F36E023792F64000B160A /* HXNetworkTool.m */,
+				906F36DF23792F64000B160A /* HXNetworkCache.h */,
 				906F36E123792F64000B160A /* HXNetworkCache.m */,
 			);
 			path = Network;
@@ -1872,6 +1893,7 @@
 		906F36ED23792F64000B160A /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				49565F322488974A00C9D43E /* UMPush */,
 				49E5C1822472ADAB0063001D /* AILoadingView */,
 				49B4C0792472559100560451 /* JXPagerView */,
 				90C94C2F23A47DC900CD19FB /* SPPickerView */,
@@ -2779,14 +2801,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "DS/鲸品库.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: cong Chen (XPTN3B9H5W)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RZ87TU58LG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
+					"$(PROJECT_DIR)/DS/ThirdLib",
+					"$(PROJECT_DIR)/DS/ThirdLib/UMPush",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DS/DSPrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2820,7 +2845,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -2921,7 +2946,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0527;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0604;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2932,14 +2957,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "DS/鲸品库.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: cong Chen (XPTN3B9H5W)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = RZ87TU58LG;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
+					"$(PROJECT_DIR)/DS/ThirdLib",
+					"$(PROJECT_DIR)/DS/ThirdLib/UMPush",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DS/DSPrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2973,7 +3001,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DS/ThirdLib/AlipaySDK_No_UTDID",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -3074,7 +3102,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0527;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0604;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

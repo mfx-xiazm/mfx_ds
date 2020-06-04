@@ -166,15 +166,17 @@
 - (void)loginClicked:(UIButton *)sender {
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    NSString *device_tokens = [[NSUserDefaults standardUserDefaults] objectForKey:HXDeviceTokens];
     if (self.loginType.isSelected) {
         parameters[@"phone"] = self.phone.text;
         parameters[@"pwd"] = self.pwd.text;
-        parameters[@"device_tokens"] = @"";//设备号，不允许推送时为空
+        parameters[@"device_tokens"] = (device_tokens && device_tokens.length)?device_tokens:@"";//设备号，不允许推送时为空
     }else{
         parameters[@"phone"] = self.phone.text;
         parameters[@"sms_id"] = self.codeId;
         parameters[@"sms_code"] = self.code.text;
-        parameters[@"device_tokens"] = @"";//设备号，不允许推送时为空
+        parameters[@"device_tokens"] = (device_tokens && device_tokens.length)?device_tokens:@"";//设备号，不允许推送时为空
     }
     
     [HXNetworkTool POST:HXRC_M_URL action:self.loginType.isSelected?@"login_set":@"login_sms_set" parameters:parameters success:^(id responseObject) {

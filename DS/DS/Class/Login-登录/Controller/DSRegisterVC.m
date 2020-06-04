@@ -142,7 +142,8 @@
     parameters[@"sms_id"] = self.codeId;
     parameters[@"sms_code"] = self.code.text;
     parameters[@"share_code"] = [self.inviteCode hasText]?self.inviteCode.text:@"";
-    parameters[@"device_tokens"] = @"";//设备号，不允许推送时为空
+    NSString *device_tokens = [[NSUserDefaults standardUserDefaults] objectForKey:HXDeviceTokens];
+    parameters[@"device_tokens"] = (device_tokens && device_tokens.length)?device_tokens:@"";//设备号，不允许推送时为空
     
     [HXNetworkTool POST:HXRC_M_URL action:@"register_set" parameters:parameters success:^(id responseObject) {
         [btn stopLoading:@"注册" image:nil textColor:nil backgroundColor:nil];

@@ -29,6 +29,7 @@ static NSString *const MessageCell = @"MessageCell";
     [self setUpTableView];
     [self setUpEmptyView];
     [self setUpRefresh];
+    [self startShimmer];
     [self getMsgListDataRequest:YES];
 }
 -(void)viewDidLayoutSubviews

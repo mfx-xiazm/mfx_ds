@@ -32,10 +32,10 @@
     [self initUserManager];
     
     // 注册推送
-    //[self initPushService:launchOptions];
+    [self initPushService:launchOptions];
     
     // 通知点击检测
-    //[self checkPushNotification:launchOptions];
+    [self checkPushNotification:launchOptions];
     
     // 检查有没有获取的袋鼠分享口令
     [[DSGoodsShortCode sharedInstance] checkShortCodePush];

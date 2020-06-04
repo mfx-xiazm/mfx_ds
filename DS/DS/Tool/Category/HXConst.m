@@ -20,6 +20,11 @@ NSString * const HXQQKey = @"1109317246";
 NSString * const HXQQSecret = @"LUnSzt4k8qCvzwwg";
 // 友盟分享的key
 NSString * const HXUMengKey = @"5e006533570df3215500020a";
+// 友盟推送的key
+NSString * const HXUMengPushKey = @"5ed85e35167edd528d00021d";
+// 友盟推送的Secret
+NSString * const HXUMengPushSecret = @"gl6ptydg5vyj0qqmvhppcozwms5g6las";
+
 // 腾讯Bugly的Key
 NSString * const HXBuglyKey = @"e9c8b0e044";
 

@@ -20,6 +20,10 @@ UIKIT_EXTERN NSString * const HXQQKey;
 UIKIT_EXTERN NSString * const HXQQSecret;
 // 友盟分享的key
 UIKIT_EXTERN NSString * const HXUMengKey;
+// 友盟推送的key
+UIKIT_EXTERN NSString * const HXUMengPushKey;
+// 友盟推送的Secret
+UIKIT_EXTERN NSString * const HXUMengPushSecret;
 
 // 腾讯Bugly的Key
 UIKIT_EXTERN NSString * const HXBuglyKey;
