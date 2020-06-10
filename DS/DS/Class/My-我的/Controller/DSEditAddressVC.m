@@ -13,6 +13,7 @@
 #import "GXSelectRegion.h"
 #import <zhPopupController.h>
 #import "DSMyAddress.h"
+#import <YYCache.h>
 
 @interface DSEditAddressVC ()
 @property (weak, nonatomic) IBOutlet UIView *addressDetailView;
@@ -53,15 +54,27 @@
     
     [self.addressDetailView addSubview:self.address_detail];
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"province" ofType:@"json"];
-    NSString *districtStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
-    if (districtStr == nil) {
-        return ;
-    }
-    NSData *jsonData = [districtStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *district = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+//    NSDictionary *districtCache = (NSDictionary *)[[[YYCache alloc] initWithName:@"kDistrictCacheName"] objectForKey:@"kDistrictModelCache"];
     self.region = [[GXSelectRegion alloc] init];
-    self.region.regions = [NSArray yy_modelArrayWithClass:[GXRegion class] json:district[@"data"]];
+
+//    if (!districtCache) {
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"province" ofType:@"json"];
+//        NSString *districtStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+//        if (districtStr == nil) {
+//            return ;
+//        }
+//        NSData *jsonData = [districtStr dataUsingEncoding:NSUTF8StringEncoding];
+//        NSDictionary *district = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+//
+//        self.region.regions = [NSArray yy_modelArrayWithClass:[GXRegion class] json:district[@"data"]];
+//
+//        // 将省市区数据保存进沙盒
+//        YYCache *cache = [[YYCache alloc] initWithName:@"kDistrictCacheName"];
+//        [cache setObject:district forKey:@"kDistrictModelCache"];
+//    }else{
+//        self.region.regions = [NSArray yy_modelArrayWithClass:[GXRegion class] json:district[@"data"]];
+//
+//    }
     
     hx_weakify(self);
     [self.receiver_phone lengthLimit:^{
@@ -146,16 +159,42 @@
 
 - (IBAction)addressClicked:(UIButton *)sender {
     if (!self.region || !self.region.regions.count) {
-        return;
+        hx_weakify(self);
+        [self getRegionRequest:^{
+            hx_strongify(weakSelf);
+            [strongSelf showAddressView];
+        }];
+    }else{
+        [self showAddressView];
     }
     [self.view endEditing:YES];
-    
+}
+-(void)showAddressView
+{
     self.addressView.region = self.region;
     self.zh_popupController = [[zhPopupController alloc] init];
     self.zh_popupController.layoutType = zhPopupLayoutTypeBottom;
     [self.zh_popupController presentContentView:self.addressView duration:0.25 springAnimated:NO];
 }
 #pragma mark -- 业务逻辑
+-(void)getRegionRequest:(void(^)(void))completedCall
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"pid"] = @"0";
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"address_region_list_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            strongSelf.region.regions = [NSArray yy_modelArrayWithClass:[GXRegion class] json:responseObject[@"result"][@"list"]];
+            completedCall();
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 -(void)addEditAddressRequest:(UIButton *)btn
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

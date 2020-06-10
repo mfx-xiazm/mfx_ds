@@ -14,6 +14,7 @@ typedef void(^bindSuccessCall)(NSString *account_no);
 @interface DSBindCashMsgVC : HXBaseViewController
 @property (nonatomic, assign) NSInteger dataType;
 @property (nonatomic, copy) NSString *realNameTxt;
+@property (nonatomic, copy) NSString *accountNoTxt;
 @property (nonatomic, copy) bindSuccessCall bindSuccessCall;
 @end
 

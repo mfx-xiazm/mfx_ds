@@ -21,7 +21,6 @@
 #pragma mark ————— 初始化服务 —————
 -(void)initService{
     /* ————— 友盟 初始化 ————— */
-    [[UMSocialManager defaultManager] openLog:NO];
     [UMConfigure initWithAppkey:HXUMengKey channel:@"App Store"];
     
     [self configUSharePlatforms];

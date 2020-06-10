@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *is_read;
 @property(nonatomic,copy) NSString *create_time;
 @property(nonatomic,copy) NSString *msg_title;
+@property(nonatomic,copy) NSString *msg_content;
 @property(nonatomic,copy) NSString *msg_type;
 @property(nonatomic,copy) NSString *msg_id;
 @property(nonatomic,copy) NSString *ref_id;

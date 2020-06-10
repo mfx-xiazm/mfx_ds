@@ -93,7 +93,8 @@ static NSString *const HomeCateCell = @"HomeCateCell";
 
 - (void)pagerView:(TYCyclePagerView *)pageView didScrollFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
     self.pageControl.currentPage = toIndex;
-    //[_pageControl setCurrentPage:newIndex animate:YES];
+    // [_pageControl setCurrentPage:newIndex animate:YES];
+    // 超过50%的滚动机会触发此代理
 }
 
 - (void)pagerView:(TYCyclePagerView *)pageView didSelectedItemCell:(__kindof UICollectionViewCell *)cell atIndex:(NSInteger)index

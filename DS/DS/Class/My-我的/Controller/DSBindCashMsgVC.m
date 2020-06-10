@@ -24,6 +24,9 @@
     self.realName.text = self.realNameTxt;
     self.account_type.text = self.dataType==1?@"代发账号":@"支付宝账号";
     self.account_no.placeholder = self.dataType==1?[NSString stringWithFormat:@"请输入%@的银行卡号",self.realNameTxt]:@"请输入支付宝账号";
+    if (self.accountNoTxt && self.accountNoTxt.length) {
+        self.account_no.text = self.accountNoTxt;
+    }
     [self.sureBtn.layer addSublayer:[UIColor setGradualChangingColor:self.sureBtn fromColor:@"F9AD28" toColor:@"F95628"]];
 }
 #pragma mark -- 视图
@@ -50,9 +53,30 @@
             return;
         }
     }
-    if (self.bindSuccessCall) {
-        self.bindSuccessCall(self.account_no.text);
+    if (self.dataType == 1) {// 银行卡
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        parameters[@"realname"] = self.realNameTxt;
+        parameters[@"bankNo"] = self.account_no.text;//银行账号
+        
+        hx_weakify(self);
+        [HXNetworkTool POST:HXRC_M_URL action:@"finance_check_bankno_get" parameters:parameters success:^(id responseObject) {
+            hx_strongify(weakSelf);
+            if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+                if (strongSelf.bindSuccessCall) {
+                    strongSelf.bindSuccessCall(strongSelf.account_no.text);
+                }
+                [strongSelf.navigationController popViewControllerAnimated:YES];
+            }else{
+                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+            }
+        } failure:^(NSError *error) {
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+        }];
+    }else{// 支付宝
+        if (self.bindSuccessCall) {
+            self.bindSuccessCall(self.account_no.text);
+        }
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

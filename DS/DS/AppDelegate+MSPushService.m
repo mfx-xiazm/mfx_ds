@@ -8,14 +8,25 @@
 
 #import "AppDelegate+MSPushService.h"
 #import <UMPush/UMessage.h>
-//#import "BBSetDetailVC.h"
-//#import "BBRemindDetailVC.h"
+#import "DSWebContentVC.h"
+#import "DSDynamicDetailVC.h"
+#import "DSCashNoteVC.h"
+#import "DSMessageVC.h"
+#import <UMCommon/UMCommon.h>
 
 @implementation AppDelegate (MSPushService)
 -(void)initPushService:(NSDictionary *)launchOptions
 {
+    /* ————— 友盟 初始化 ————— */
+    [UMConfigure initWithAppkey:HXUMengKey channel:@"App Store"];
     //注册通知
-    [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:nil completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
+       //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
+    entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;
+    if (@available(iOS 10.0, *)) {
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+    }
+    [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
             //点击允许
             //这里可以添加一些自己的逻辑
@@ -24,26 +35,6 @@
             //这里可以添加一些自己的逻辑
         }
     }];
-    //iOS10必须加下面这段代码。
-    if (@available(iOS 10.0, *)){
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-        UNAuthorizationOptions types10=UNAuthorizationOptionBadge|  UNAuthorizationOptionAlert | UNAuthorizationOptionSound;
-        [center requestAuthorizationWithOptions:types10     completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            if (granted) {
-                //点击允许
-                //这里可以添加一些自己的逻辑
-            } else {
-                //点击不允许
-                //这里可以添加一些自己的逻辑
-            }
-        }];
-    }else if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f) {
-        if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]){
-            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge|UIUserNotificationTypeAlert|UIUserNotificationTypeSound) categories:nil];
-            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        }
-    }
 }
 -(void)checkPushNotification:(NSDictionary *)launchOptions
 {
@@ -63,13 +54,13 @@
                           ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                           ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                           ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
-
+    // HXLog(@"token--%@",hexToken);
     // 保存tokenString
     [[NSUserDefaults standardUserDefaults] setObject:hexToken forKey:HXDeviceTokens];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     // 1.2.7版本开始不需要用户再手动注册devicetoken，SDK会自动注册
-    [UMessage registerDeviceToken:deviceToken];
+    // [UMessage registerDeviceToken:deviceToken];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
@@ -131,8 +122,34 @@
 #pragma mark -- 处理通知点击事件
 -(void)doHandleRemoteNotification:(NSDictionary *)userInfo
 {
-//    UITabBarController *tab = (UITabBarController *)self.window.rootViewController;
-//    UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+    if (![MSUserManager sharedInstance].isLogined) {
+        return;
+    }
+    UITabBarController *tab = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nav = tab.viewControllers[tab.selectedIndex];
+    
+    NSInteger push_type = [userInfo[@"push_type"] integerValue];
+    NSString *msg_id = [NSString stringWithFormat:@"%@",userInfo[@"msg_id"]];
+
+    // 1系统消息(后台发送)；2业务消息(动态)；3邀请好友通知；4提现通知
+    if (push_type == 1) {
+        DSWebContentVC *wvc = [DSWebContentVC new];
+        wvc.navTitle = @"消息详情";
+        wvc.isNeedRequest = YES;
+        wvc.requestType = 2;
+        wvc.msg_id = msg_id;
+        [nav pushViewController:wvc animated:YES];
+    }else if (push_type == 2) {
+        DSDynamicDetailVC *dvc = [DSDynamicDetailVC new];
+        dvc.msg_id = msg_id;
+        [nav pushViewController:dvc animated:YES];
+    }else if (push_type == 3) {
+        DSMessageVC *mvc = [DSMessageVC new];
+        [nav pushViewController:mvc animated:YES];
+    }else {
+        DSCashNoteVC *nvc = [DSCashNoteVC new];
+        [nav pushViewController:nvc animated:YES];
+    }
 }
 //#pragma mark -- 程序进入活跃 角标清零
 //-(void)applicationDidBecomeActive:(UIApplication *)application

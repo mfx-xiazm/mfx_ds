@@ -11,6 +11,7 @@
 #import "DSMessage.h"
 #import "DSWebContentVC.h"
 #import "DSDynamicDetailVC.h"
+#import "DSCashNoteVC.h"
 
 static NSString *const MessageCell = @"MessageCell";
 @interface DSMessageVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -172,6 +173,21 @@ static NSString *const MessageCell = @"MessageCell";
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }
+-(void)readMsgRequest:(NSString *)msg_id
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"msg_id"] = msg_id;
+    
+    [HXNetworkTool POST:HXRC_M_URL action:@"message_detail_get" parameters:parameters success:^(id responseObject) {
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -188,12 +204,13 @@ static NSString *const MessageCell = @"MessageCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回这个模型对应的cell高度
-    return 55.f;
+    return 75.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 要判断消息类型进行跳转
     DSMessage *msg = self.msgs[indexPath.row];
+    // 1系统消息(后台发送)；2业务消息(动态)；3邀请好友通知；4提现通知
     if ([msg.msg_type isEqualToString:@"1"]) {
         DSWebContentVC *wvc = [DSWebContentVC new];
         wvc.navTitle = @"消息详情";
@@ -201,11 +218,16 @@ static NSString *const MessageCell = @"MessageCell";
         wvc.requestType = 2;
         wvc.msg_id = msg.msg_id;
         [self.navigationController pushViewController:wvc animated:YES];
-    }else{
+    }else if ([msg.msg_type isEqualToString:@"2"]){
         DSDynamicDetailVC *dvc = [DSDynamicDetailVC new];
         dvc.msg_id = msg.msg_id;
         dvc.treads_id = msg.ref_id;
         [self.navigationController pushViewController:dvc animated:YES];
+    }else if ([msg.msg_type isEqualToString:@"3"]){
+        [self readMsgRequest:msg.msg_id];
+    }else{
+        DSCashNoteVC *nvc = [DSCashNoteVC new];
+        [self.navigationController pushViewController:nvc animated:YES];
     }
     msg.is_read = @"1";
     [tableView reloadData];

@@ -51,7 +51,30 @@ static NSString *const AddressCell = @"AddressCell";
         self.lastComponentClickedBlock(0,nil);
     }
 }
+-(void)getRegionRequestWithPid:(NSString *)pid pIndex:(NSInteger)pindex completedCall:(void(^)(void))completedCall
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    parameters[@"pid"] = pid;
 
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"address_region_list_get" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            if (pindex == 0) {
+                strongSelf.region.selectRegion.children = [NSArray yy_modelArrayWithClass:[GXRegionCity class] json:responseObject[@"result"][@"list"]];
+            } else if (pindex == 1) {
+                strongSelf.region.selectCity.children = [NSArray yy_modelArrayWithClass:[GXRegionArea class] json:responseObject[@"result"][@"list"]];;
+            }else {
+                strongSelf.region.selectArea.children = [NSArray yy_modelArrayWithClass:[GXRegionDistrict class] json:responseObject[@"result"][@"list"]];;
+            }
+            completedCall();
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark - SPPageMenuDelegate
 
 - (void)pageMenu:(SPPageMenu *)pageMenu itemSelectedAtIndex:(NSInteger)index {
@@ -123,48 +146,83 @@ static NSString *const AddressCell = @"AddressCell";
         //[self.pickerView sp_reloadComponent:2];
         
         self.numerOfComponents = 2;
-        [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+        if (self.region.selectRegion.children.count) {
+            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+            [self setupPageMenuWithName:self.region.selectRegion.area_alias atComponent:component];
+        }else {
+            hx_weakify(self);
+            [self getRegionRequestWithPid:self.region.selectRegion.area_id pIndex:component completedCall:^{
+                hx_strongify(weakSelf);
+                [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+                [strongSelf setupPageMenuWithName:strongSelf.region.selectRegion.area_alias atComponent:component];
+            }];
+        }
         
-        [self setupPageMenuWithName:self.region.selectRegion.area_alias atComponent:component];
     } else if (component == 1) {
         
         self.region.selectCity = self.region.selectRegion.children[row];
 //        self.selectedDistrict = [self.selectedCity.children firstObject];
         //[self.pickerView sp_reloadComponent:2];
+        self.numerOfComponents = 3;
         if (self.region.selectCity.children.count) {
-            self.numerOfComponents = 3;
             [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
             [self setupPageMenuWithName:self.region.selectCity.area_alias atComponent:component];
-        }else{
-            [self.pageMenu setTitle:self.region.selectCity.area_alias forItemAtIndex:component];
-
-            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
-                   
-            self.pageMenu.selectedItemIndex = component;
-
-            if (self.lastComponentClickedBlock) {
-                self.lastComponentClickedBlock(1,self.region);
-            }
+        }else {
+            hx_weakify(self);
+            [self getRegionRequestWithPid:self.region.selectCity.area_id pIndex:component completedCall:^{
+                hx_strongify(weakSelf);
+                [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+                [strongSelf setupPageMenuWithName:strongSelf.region.selectCity.area_alias atComponent:component];
+            }];
         }
+
+//        if (self.region.selectCity.children.count) {
+//            self.numerOfComponents = 3;
+//            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+//            [self setupPageMenuWithName:self.region.selectCity.area_alias atComponent:component];
+//        }else{
+//            [self.pageMenu setTitle:self.region.selectCity.area_alias forItemAtIndex:component];
+//
+//            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+//
+//            self.pageMenu.selectedItemIndex = component;
+//
+//            if (self.lastComponentClickedBlock) {
+//                self.lastComponentClickedBlock(1,self.region);
+//            }
+//        }
     }else  if (component == 2){
         self.region.selectArea = self.region.selectCity.children[row];
         
-        if (self.region.selectCity.children.count) {
-            self.numerOfComponents = 4;
+        self.numerOfComponents = 4;
+        if (self.region.selectArea.children.count) {
             [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
-            
             [self setupPageMenuWithName:self.region.selectArea.area_alias atComponent:component];
-        }else{
-            [self.pageMenu setTitle:self.region.selectArea.area_alias forItemAtIndex:component];
-
-            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
-                   
-            self.pageMenu.selectedItemIndex = component;
-
-            if (self.lastComponentClickedBlock) {
-                self.lastComponentClickedBlock(1,self.region);
-            }
+        }else {
+            hx_weakify(self);
+            [self getRegionRequestWithPid:self.region.selectArea.area_id pIndex:component completedCall:^{
+                hx_strongify(weakSelf);
+                [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+                [strongSelf setupPageMenuWithName:strongSelf.region.selectArea.area_alias atComponent:component];
+            }];
         }
+        
+//        if (self.region.selectCity.children.count) {
+//            self.numerOfComponents = 4;
+//            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+//
+//            [self setupPageMenuWithName:self.region.selectArea.area_alias atComponent:component];
+//        }else{
+//            [self.pageMenu setTitle:self.region.selectArea.area_alias forItemAtIndex:component];
+//
+//            [pickerView sp_reloadAllComponents]; // 列数改变一定要刷新所有列才生效
+//
+//            self.pageMenu.selectedItemIndex = component;
+//
+//            if (self.lastComponentClickedBlock) {
+//                self.lastComponentClickedBlock(1,self.region);
+//            }
+//        }
     }else{
         self.region.selectDistrict = self.region.selectArea.children[row];
         

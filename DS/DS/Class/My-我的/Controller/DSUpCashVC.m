@@ -271,6 +271,17 @@
     DSBindCashMsgVC *nvc = [DSBindCashMsgVC new];
     nvc.realNameTxt = self.realNameTxt;
     nvc.dataType = self.categoryView.selectedIndex;
+    // 绑定的账号信息
+    if (self.categoryView.selectedIndex == 0) {
+        if (self.bind_zfb) {
+            nvc.accountNoTxt = self.bind_zfb[@"card_no"];
+        }
+    }else{
+        if (self.bind_bank) {
+            nvc.accountNoTxt = self.bind_bank[@"card_no"];
+        }
+    }
+    
     hx_weakify(self);
     nvc.bindSuccessCall = ^(NSString * _Nonnull account_no) {
         hx_strongify(weakSelf);

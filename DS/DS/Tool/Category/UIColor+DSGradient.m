@@ -8,6 +8,32 @@
 
 #import "UIColor+DSGradient.h"
 
+static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
+{
+    float min, max, delta;
+    min = MIN( r, MIN( g, b ));
+    max = MAX( r, MAX( g, b ));
+    *v = max;               // v
+    delta = max - min;
+    if( max != 0 )
+        *s = delta / max;       // s
+    else {
+        // r = g = b = 0        // s = 0, v is undefined
+        *s = 0;
+        *h = -1;
+        return;
+    }
+    if( r == max )
+        *h = ( g - b ) / delta;     // between yellow & magenta
+    else if( g == max )
+        *h = 2 + ( b - r ) / delta; // between cyan & yellow
+    else
+        *h = 4 + ( r - g ) / delta; // between magenta & cyan
+    *h *= 60;               // degrees
+    if( *h < 0 )
+        *h += 360;
+}
+
 @implementation UIColor (DSGradient)
 //绘制渐变色颜色的方法
 + (CAGradientLayer *)setGradualChangingColor:(UIView *)view fromColor:(NSString *)fromHexColorStr toColor:(NSString *)toHexColorStr{
@@ -58,5 +84,153 @@
         a = 255;
     }
     return [UIColor colorWithRed:((float)r / 255.0f) green:((float)g / 255.0f) blue:((float)b / 255.0f) alpha:((float)a / 255.0f)];
+}
+
+// 获取一张图片的主色调
++ (UIColor*)mostColor:(UIImage*)image{
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+    int bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
+#else
+    int bitmapInfo = kCGImageAlphaPremultipliedLast;
+#endif
+    
+    //第一步 先把图片缩小 加快计算速度. 但越小结果误差可能越大
+    CGSize thumbSize=CGSizeMake(40, 40);
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(NULL,
+                                                 thumbSize.width,
+                                                 thumbSize.height,
+                                                 8,//bits per component
+                                                 thumbSize.width*4,
+                                                 colorSpace,
+                                                 bitmapInfo);
+    
+    CGRect drawRect = CGRectMake(0, 0, thumbSize.width, thumbSize.height);
+    CGContextDrawImage(context, drawRect, image.CGImage);
+    CGColorSpaceRelease(colorSpace);
+    
+    //第二步 取每个点的像素值
+    unsigned char* data = CGBitmapContextGetData (context);
+    
+    if (data == NULL) return nil;
+    NSArray *MaxColor=nil;
+    // NSCountedSet *cls=[NSCountedSet setWithCapacity:thumbSize.width*thumbSize.height];
+    float maxScore=0;
+    for (int x=0; x<thumbSize.width*thumbSize.height; x++) {
+        
+        int offset = 4*x;
+        int red = data[offset];
+        int green = data[offset+1];
+        int blue = data[offset+2];
+        int alpha =  data[offset+3];
+        
+        if (alpha<25)continue;
+        
+        float h,s,v;
+        
+        RGBtoHSV(red, green, blue, &h, &s, &v);
+        
+        float y = MIN(abs(red*2104+green*4130+blue*802+4096+131072)>>13, 235);
+        y= (y-16)/(235-16);
+        if (y>0.9) continue;
+        
+        float score = (s+0.1)*x;
+        if (score>maxScore) {
+            maxScore = score;
+        }
+        MaxColor=@[@(red),@(green),@(blue),@(alpha)];
+        
+    }
+    
+    CGContextRelease(context);
+    return [UIColor colorWithRed:([MaxColor[0] intValue]/255.0f) green:([MaxColor[1] intValue]/255.0f) blue:([MaxColor[2] intValue]/255.0f) alpha:([MaxColor[3] intValue]/255.0f)];
+}
+
+///十六进制字符串获取颜色
+/// @param color 16进制色值  支持@“#123456”、 @“0X123456”、 @“123456”三种格式
++ (UIColor *)colorWithHexString:(NSString *)color{
+    return [self colorWithHexString:color alpha:1.0f];
+}
+
+
+/// 十六进制字符串获取颜色
+/// @param color 16进制色值  支持@“#123456”、 @“0X123456”、 @“123456”三种格式
+/// @param alpha 透明度
++ (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha{
+    //删除字符串中的空格
+    NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    // String should be 6 or 8 characters
+    if ([cString length] < 6){
+        return [UIColor clearColor];
+    }
+    // strip 0X if it appears
+    //如果是0x开头的，那么截取字符串，字符串从索引为2的位置开始，一直到末尾
+    if ([cString hasPrefix:@"0X"]){
+        cString = [cString substringFromIndex:2];
+    }
+    //如果是#开头的，那么截取字符串，字符串从索引为1的位置开始，一直到末尾
+    if ([cString hasPrefix:@"#"]){
+        cString = [cString substringFromIndex:1];
+    }
+    if ([cString length] != 6){
+        return [UIColor clearColor];
+    }
+    
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    //r
+    NSString *rString = [cString substringWithRange:range];
+    //g
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    //b
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    return [UIColor colorWithRed:((float)r / 255.0f) green:((float)g / 255.0f) blue:((float)b / 255.0f) alpha:alpha];
+}
+
+
+/// 适配暗黑模式颜色   传入的UIColor对象
+/// @param lightColor 普通模式颜色
+/// @param darkColor 暗黑模式颜色
++ (UIColor *)colorWithLightColor:(UIColor *)lightColor DarkColor:(UIColor *)darkColor {
+    if (@available(iOS 13.0, *)) {
+        return [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull trainCollection) {
+            if ([trainCollection userInterfaceStyle] == UIUserInterfaceStyleLight) {
+                return lightColor;
+            } else {
+                return darkColor;
+            }
+        }];
+    } else {
+        return lightColor ? lightColor : (darkColor ? darkColor : [UIColor clearColor]);
+    }
+}
+
+/// 适配暗黑模式颜色   颜色传入的是16进制字符串
+/// @param lightColor 普通模式颜色
+/// @param darkColor 暗黑模式颜色
++ (UIColor *)colorWithLightColorStr:(NSString *)lightColor DarkColor:(NSString *)darkColor{
+    return [UIColor colorWithLightColor:[UIColor colorWithHexString:lightColor] DarkColor:[UIColor colorWithHexString:darkColor]];
+}
+
+
+/// 适配暗黑模式颜色   颜色传入的是16进制字符串 还有颜色的透明度
+/// @param lightColor 普通模式颜色
+/// @param lightAlpha 普通模式颜色透明度
+/// @param darkColor 暗黑模式颜色透明度
+/// @param darkAlpha 暗黑模式颜色
++ (UIColor *)colorWithLightColorStr:(NSString *)lightColor WithLightColorAlpha:(CGFloat)lightAlpha DarkColor:(NSString *)darkColor WithDarkColorAlpha:(CGFloat)darkAlpha{
+    return [UIColor colorWithLightColor:[UIColor colorWithHexString:lightColor alpha:lightAlpha] DarkColor:[UIColor colorWithHexString:darkColor alpha:darkAlpha]];
 }
 @end
