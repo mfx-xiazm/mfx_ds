@@ -134,12 +134,14 @@
         [btn stopLoading:@"确认签约" image:nil textColor:nil backgroundColor:nil];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             if (strongSelf.signSuccessCall) {
-                strongSelf.signSuccessCall();
+                strongSelf.signSuccessCall(YES,@"");
             }
-            [strongSelf.navigationController popViewControllerAnimated:YES];
         }else{
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+            if (strongSelf.signSuccessCall) {
+                strongSelf.signSuccessCall(NO,[responseObject objectForKey:@"message"]);
+            }
         }
+        [strongSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         [btn stopLoading:@"确认签约" image:nil textColor:nil backgroundColor:nil];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];

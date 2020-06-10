@@ -47,6 +47,7 @@
 		49DBE4FE243C68DD00F984D4 /* DSTaoKeOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DBE4FC243C68DD00F984D4 /* DSTaoKeOrderCell.xib */; };
 		49DBE501243C6C7300F984D4 /* DSTaoKeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 49DBE500243C6C7300F984D4 /* DSTaoKeOrder.m */; };
 		49E5C1852472ADAB0063001D /* AILoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E5C1832472ADAB0063001D /* AILoadingView.m */; };
+		49F0E5432490E32B00082CBD /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F0E5412490E32B00082CBD /* LEEAlert.m */; };
 		49F31AAE2472A55100D48784 /* province.json in Resources */ = {isa = PBXBuildFile; fileRef = 49F31AAD2472A55100D48784 /* province.json */; };
 		75201D9BC0ADF06CFC84ADF5 /* libPods-DS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F95BF23A4F0097FD6153E581 /* libPods-DS.a */; };
 		9001467B2383E19300275DD9 /* DSChooseClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9001467A2383E19300275DD9 /* DSChooseClassView.m */; };
@@ -176,12 +177,6 @@
 		906F376023792F64000B160A /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 906F370923792F64000B160A /* AlipaySDK.bundle */; };
 		906F376123792F64000B160A /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 906F370A23792F64000B160A /* AlipaySDK.framework */; };
 		906F376223792F64000B160A /* HXPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F370D23792F64000B160A /* HXPlaceholderTextView.m */; };
-		906F376323792F64000B160A /* FSActionSheet_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 906F371223792F64000B160A /* FSActionSheet_cancel@3x.png */; };
-		906F376423792F64000B160A /* FSActionSheet_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 906F371323792F64000B160A /* FSActionSheet_cancel@2x.png */; };
-		906F376523792F64000B160A /* FSActionSheetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F371423792F64000B160A /* FSActionSheetConfig.m */; };
-		906F376623792F64000B160A /* FSActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F371523792F64000B160A /* FSActionSheet.m */; };
-		906F376723792F64000B160A /* FSActionSheetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F371623792F64000B160A /* FSActionSheetCell.m */; };
-		906F376823792F64000B160A /* FSActionSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F371723792F64000B160A /* FSActionSheetItem.m */; };
 		906F376923792F64000B160A /* SGQRCode.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 906F371C23792F64000B160A /* SGQRCode.bundle */; };
 		906F376A23792F64000B160A /* SGQRCodeObtainConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F371D23792F64000B160A /* SGQRCodeObtainConfigure.m */; };
 		906F376B23792F64000B160A /* SGQRCodeObtain.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F372123792F64000B160A /* SGQRCodeObtain.m */; };
@@ -443,6 +438,9 @@
 		49DBE500243C6C7300F984D4 /* DSTaoKeOrder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTaoKeOrder.m; sourceTree = "<group>"; };
 		49E5C1832472ADAB0063001D /* AILoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AILoadingView.m; sourceTree = "<group>"; };
 		49E5C1842472ADAB0063001D /* AILoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AILoadingView.h; sourceTree = "<group>"; };
+		49F0E5402490E32B00082CBD /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
+		49F0E5412490E32B00082CBD /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
+		49F0E5422490E32B00082CBD /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
 		49F31AAD2472A55100D48784 /* province.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = province.json; sourceTree = "<group>"; };
 		900146792383E19300275DD9 /* DSChooseClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSChooseClassView.h; sourceTree = "<group>"; };
 		9001467A2383E19300275DD9 /* DSChooseClassView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSChooseClassView.m; sourceTree = "<group>"; };
@@ -660,16 +658,6 @@
 		906F370A23792F64000B160A /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		906F370C23792F64000B160A /* HXPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPlaceholderTextView.h; sourceTree = "<group>"; };
 		906F370D23792F64000B160A /* HXPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPlaceholderTextView.m; sourceTree = "<group>"; };
-		906F370F23792F64000B160A /* FSActionSheetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetItem.h; sourceTree = "<group>"; };
-		906F371023792F64000B160A /* FSActionSheetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetCell.h; sourceTree = "<group>"; };
-		906F371223792F64000B160A /* FSActionSheet_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@3x.png"; sourceTree = "<group>"; };
-		906F371323792F64000B160A /* FSActionSheet_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FSActionSheet_cancel@2x.png"; sourceTree = "<group>"; };
-		906F371423792F64000B160A /* FSActionSheetConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetConfig.m; sourceTree = "<group>"; };
-		906F371523792F64000B160A /* FSActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheet.m; sourceTree = "<group>"; };
-		906F371623792F64000B160A /* FSActionSheetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetCell.m; sourceTree = "<group>"; };
-		906F371723792F64000B160A /* FSActionSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSActionSheetItem.m; sourceTree = "<group>"; };
-		906F371823792F64000B160A /* FSActionSheetConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheetConfig.h; sourceTree = "<group>"; };
-		906F371923792F64000B160A /* FSActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSActionSheet.h; sourceTree = "<group>"; };
 		906F371B23792F64000B160A /* SGQRCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
 		906F371C23792F64000B160A /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
 		906F371D23792F64000B160A /* SGQRCodeObtainConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeObtainConfigure.m; sourceTree = "<group>"; };
@@ -1042,6 +1030,16 @@
 				49E5C1832472ADAB0063001D /* AILoadingView.m */,
 			);
 			path = AILoadingView;
+			sourceTree = "<group>";
+		};
+		49F0E53F2490E32B00082CBD /* LEEAlert */ = {
+			isa = PBXGroup;
+			children = (
+				49F0E5402490E32B00082CBD /* LEEAlertHelper.h */,
+				49F0E5412490E32B00082CBD /* LEEAlert.m */,
+				49F0E5422490E32B00082CBD /* LEEAlert.h */,
+			);
+			path = LEEAlert;
 			sourceTree = "<group>";
 		};
 		7628BA4CEB7FA19C0CCF730F /* Pods */ = {
@@ -1893,6 +1891,7 @@
 		906F36ED23792F64000B160A /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				49F0E53F2490E32B00082CBD /* LEEAlert */,
 				49565F322488974A00C9D43E /* UMPush */,
 				49E5C1822472ADAB0063001D /* AILoadingView */,
 				49B4C0792472559100560451 /* JXPagerView */,
@@ -1904,7 +1903,6 @@
 				906F36FF23792F64000B160A /* SPButton */,
 				906F370823792F64000B160A /* AlipaySDK_No_UTDID */,
 				906F370B23792F64000B160A /* HXPlaceholderTextView */,
-				906F370E23792F64000B160A /* FSActionSheet */,
 				906F371A23792F64000B160A /* SGQRCode */,
 				906F372323792F64000B160A /* HXSearchBar */,
 				906F372623792F64000B160A /* zhAlertView */,
@@ -1981,31 +1979,6 @@
 				4997A535247CFD3000605EEC /* DSTextField.m */,
 			);
 			path = HXPlaceholderTextView;
-			sourceTree = "<group>";
-		};
-		906F370E23792F64000B160A /* FSActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				906F370F23792F64000B160A /* FSActionSheetItem.h */,
-				906F371023792F64000B160A /* FSActionSheetCell.h */,
-				906F371123792F64000B160A /* FSActionSheetResources */,
-				906F371423792F64000B160A /* FSActionSheetConfig.m */,
-				906F371523792F64000B160A /* FSActionSheet.m */,
-				906F371623792F64000B160A /* FSActionSheetCell.m */,
-				906F371723792F64000B160A /* FSActionSheetItem.m */,
-				906F371823792F64000B160A /* FSActionSheetConfig.h */,
-				906F371923792F64000B160A /* FSActionSheet.h */,
-			);
-			path = FSActionSheet;
-			sourceTree = "<group>";
-		};
-		906F371123792F64000B160A /* FSActionSheetResources */ = {
-			isa = PBXGroup;
-			children = (
-				906F371223792F64000B160A /* FSActionSheet_cancel@3x.png */,
-				906F371323792F64000B160A /* FSActionSheet_cancel@2x.png */,
-			);
-			path = FSActionSheetResources;
 			sourceTree = "<group>";
 		};
 		906F371A23792F64000B160A /* SGQRCode */ = {
@@ -2241,7 +2214,6 @@
 				906F378123792FC9000B160A /* DSVipVC.xib in Resources */,
 				90FD91DA237E48AC00016EF7 /* DSMyTeamVC.xib in Resources */,
 				90B7945323FAB5AC00340CDF /* DSAllOrderVC.xib in Resources */,
-				906F376323792F64000B160A /* FSActionSheet_cancel@3x.png in Resources */,
 				903D08322383C87C001C2E40 /* DSGoodsDetailVC.xib in Resources */,
 				90FD91F3237E525A00016EF7 /* DSMyCollectVC.xib in Resources */,
 				90D7E77D23FC185200231D85 /* DSUpOrderSectionHeader.xib in Resources */,
@@ -2332,7 +2304,6 @@
 				90EC2579237A5D8C005C24C8 /* DSLoginVC.xib in Resources */,
 				90F74E662382657A003576B3 /* DSBalanceNoteVC.xib in Resources */,
 				90F74E2F23822DE6003576B3 /* DSVipCardVC.xib in Resources */,
-				906F376423792F64000B160A /* FSActionSheet_cancel@2x.png in Resources */,
 				903D08232383991F001C2E40 /* DSUpOrderHeader.xib in Resources */,
 				496605C42473E11D003A2652 /* DSUpCashView.xib in Resources */,
 				90EC25B8237A9BDD005C24C8 /* DSMessageCell.xib in Resources */,
@@ -2535,7 +2506,6 @@
 				90FD9201237E55C500016EF7 /* DSEditAddressVC.m in Sources */,
 				903D081323839166001C2E40 /* DSApplyRefundVC.m in Sources */,
 				906F375823792F64000B160A /* HXDropMenuView.m in Sources */,
-				906F376723792F64000B160A /* FSActionSheetCell.m in Sources */,
 				90C94C2B23A47D9600CD19FB /* GXAddressCell.m in Sources */,
 				906F377423792F64000B160A /* UIView+WZLBadge.m in Sources */,
 				90AE52DA238292A0009F4740 /* DSPublishDynamicVC.m in Sources */,
@@ -2549,7 +2519,6 @@
 				903D080323838AC6001C2E40 /* DSRefundDetailFooter.m in Sources */,
 				9065882623ADECD0001E57ED /* DSMyOrderDetail.m in Sources */,
 				906F375B23792F64000B160A /* NSDate+Extension.m in Sources */,
-				906F376623792F64000B160A /* FSActionSheet.m in Sources */,
 				903D07F523837FD7001C2E40 /* DSOrderDetailVC.m in Sources */,
 				903A95C923A2123B00AD68CF /* LYEmptyView.m in Sources */,
 				49B4C0972472664800560451 /* DSAfreshHomeHeader.m in Sources */,
@@ -2568,8 +2537,8 @@
 				90EC258F237A7D23005C24C8 /* DSShopGoodsCell.m in Sources */,
 				90FD91A6237E378800016EF7 /* DSMyHeader.m in Sources */,
 				49E5C1852472ADAB0063001D /* AILoadingView.m in Sources */,
+				49F0E5432490E32B00082CBD /* LEEAlert.m in Sources */,
 				90FFDF3C23C2C58D000BF6C5 /* DSWebChatPayH5View.m in Sources */,
-				906F376523792F64000B160A /* FSActionSheetConfig.m in Sources */,
 				906F375A23792F64000B160A /* WSDatePickerView.m in Sources */,
 				906F374C23792F64000B160A /* UIBarButtonItem+HXNExtension.m in Sources */,
 				906F374F23792F64000B160A /* HXNetworkTool.m in Sources */,
@@ -2634,7 +2603,6 @@
 				496605BE2473DC08003A2652 /* DSBindCashMsgVC.m in Sources */,
 				49DBE4F3243C68A600F984D4 /* DSTaoKeOrderVC.m in Sources */,
 				906F374D23792F64000B160A /* UIView+HXNExtension.m in Sources */,
-				906F376823792F64000B160A /* FSActionSheetItem.m in Sources */,
 				90C6C30D239E27E000A531CC /* DSHomeData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

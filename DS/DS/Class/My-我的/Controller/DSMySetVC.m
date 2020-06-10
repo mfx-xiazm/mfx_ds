@@ -53,12 +53,6 @@
         [self.navigationController pushViewController:wvc animated:YES];
     }else if (sender.tag == 5) {
         DSWebContentVC *wvc = [DSWebContentVC new];
-        wvc.navTitle = @"用户认证协议";
-        wvc.requestType = 8;
-        wvc.isNeedRequest = YES;
-        [self.navigationController pushViewController:wvc animated:YES];
-    }else if (sender.tag == 6) {
-        DSWebContentVC *wvc = [DSWebContentVC new];
         wvc.navTitle = @"用户签约协议";
         wvc.requestType = 9;
         wvc.isNeedRequest = YES;

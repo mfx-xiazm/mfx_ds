@@ -18,6 +18,9 @@ typedef void(^LimitBlock)(void);
 
 - (void)lengthLimit:(void (^)(void))limit;
 
+- (NSRange)selectedRange;
+
+- (void)setSelectedRange:(NSRange)range;
 @end
 
 NS_ASSUME_NONNULL_END

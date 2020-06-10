@@ -7,7 +7,7 @@
 //
 
 #import "DSChangeInfoVC.h"
-#import "FSActionSheet.h"
+#import "LEEAlert.h"
 #import "zhAlertView.h"
 #import <zhPopupController.h>
 
@@ -36,28 +36,92 @@
     }
 }
 - (IBAction)changeHeadPic:(UIButton *)sender {
-    FSActionSheet *as = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"拍照",@"从手机相册选择"]];
     hx_weakify(self);
-    [as showWithSelectedCompletion:^(NSInteger selectedIndex) {
-        hx_strongify(weakSelf);
-        if (selectedIndex == 0) {
+    [LEEAlert actionsheet].config
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeDefault;
+        action.title = @"拍照";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+        action.clickBlock = ^{
+            // 点击事件Block
+            hx_strongify(weakSelf);
             [strongSelf awakeImagePickerController:@"1"];
-        }else{
+        };
+    })
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeDefault;
+        action.title = @"从手机相册选择";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+        action.clickBlock = ^{
+            // 点击事件Block
+            hx_strongify(weakSelf);
             [strongSelf awakeImagePickerController:@"2"];
-        }
-    }];
+        };
+    })
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeCancel;
+        action.title = @"取消";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+    })
+    .LeeActionSheetCancelActionSpaceColor(UIColorFromRGB(0xF6F7F8)) // 设置取消按钮间隔的颜色
+    .LeeActionSheetBottomMargin(0.0f) // 设置底部距离屏幕的边距为0
+    .LeeBackgroundStyleTranslucent(0.50)
+    .LeeCornerRadii(CornerRadiiMake(0, 0, 0, 0))   // 指定整体圆角半径
+    .LeeActionSheetHeaderCornerRadii(CornerRadiiZero()) // 指定头部圆角半径
+    .LeeActionSheetCancelActionCornerRadii(CornerRadiiZero()) // 指定取消按钮圆角半径
+    .LeeConfigMaxWidth(^CGFloat(LEEScreenOrientationType type) {
+        // 这是最大宽度为屏幕宽度 (横屏和竖屏)
+        return CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    })
+    .LeeActionSheetBackgroundColor([UIColor whiteColor]) // 通过设置背景颜色来填充底部间隙
+    .LeeShow();
 }
 - (IBAction)changeSex:(UIButton *)sender {
-    FSActionSheet *as = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"男",@"女"]];
     hx_weakify(self);
-    [as showWithSelectedCompletion:^(NSInteger selectedIndex) {
-        hx_strongify(weakSelf);
-        if (selectedIndex == 0) {
+    [LEEAlert actionsheet].config
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeDefault;
+        action.title = @"男";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+        action.clickBlock = ^{
+            // 点击事件Block
+            hx_strongify(weakSelf);
             strongSelf.sex.text = @"男";
-        }else{
+        };
+    })
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeDefault;
+        action.title = @"女";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+        action.clickBlock = ^{
+            // 点击事件Block
+            hx_strongify(weakSelf);
             strongSelf.sex.text = @"女";
-        }
-    }];
+        };
+    })
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeCancel;
+        action.title = @"取消";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+    })
+    .LeeActionSheetCancelActionSpaceColor(UIColorFromRGB(0xF6F7F8)) // 设置取消按钮间隔的颜色
+    .LeeActionSheetBottomMargin(0.0f) // 设置底部距离屏幕的边距为0
+    .LeeBackgroundStyleTranslucent(0.50)
+    .LeeCornerRadii(CornerRadiiMake(0, 0, 0, 0))   // 指定整体圆角半径
+    .LeeActionSheetHeaderCornerRadii(CornerRadiiZero()) // 指定头部圆角半径
+    .LeeActionSheetCancelActionCornerRadii(CornerRadiiZero()) // 指定取消按钮圆角半径
+    .LeeConfigMaxWidth(^CGFloat(LEEScreenOrientationType type) {
+        // 这是最大宽度为屏幕宽度 (横屏和竖屏)
+        return CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    })
+    .LeeActionSheetBackgroundColor([UIColor whiteColor]) // 通过设置背景颜色来填充底部间隙
+    .LeeShow();
 }
 #pragma mark -- 唤起相机
 - (void)awakeImagePickerController:(NSString *)pickerType {

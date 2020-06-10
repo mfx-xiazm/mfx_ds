@@ -143,7 +143,7 @@
     
     JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
     lineView.indicatorColor = HXControlBg;
-    lineView.indicatorWidthIncrement = -20.f;
+    lineView.indicatorWidth = 45.f;
     _categoryView.indicators = @[lineView];
 }
 #pragma mark -- 接口
@@ -179,7 +179,7 @@
                 strongSelf.ali_apply_amount.placeholder = [NSString stringWithFormat:@"最小提现金额%@元",strongSelf.base_amount];
                 
                 if (strongSelf.bind_bank) {
-                    strongSelf.card_account_no.text = strongSelf.bind_bank[@"card_no"];
+                    strongSelf.card_account_no.text = [strongSelf groupedString:strongSelf.bind_bank[@"card_no"]];
                     strongSelf.card_bind_btn.alpha = 0.5;// 如果已绑定就0.5，没绑定就1
                     [strongSelf.card_bind_btn setTitle:@"修改绑定" forState:UIControlStateNormal];
                 }
@@ -232,7 +232,7 @@
     }else{
         parameters[@"card_owner"] = self.realNameTxt;
         parameters[@"acct_type"] = @"1";//账号类型：1银行账号；2支付宝账号
-        parameters[@"card_no"] = self.card_account_no.text;
+        parameters[@"card_no"] = [self removingSapceString:self.card_account_no.text];
         parameters[@"apply_amount"] = self.card_apply_amount.text;
     }
     
@@ -337,5 +337,51 @@ replacementString:(NSString *)string
 {
     NSPredicate *predicte = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     return [predicte evaluateWithObject:checkStr];
+}
+
+static NSInteger const kGroupSize = 4;
+
+/**
+ *  去除字符串中包含的空格
+ *
+ *  @param str 字符串
+ *
+ *  @return 去除空格后的字符串
+ */
+- (NSString *)removingSapceString:(NSString *)str {
+    return [str stringByReplacingOccurrencesOfString:@" " withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, str.length)];
+}
+
+/**
+ *  根据长度计算分组的个数
+ *
+ *  @param length 长度
+ *
+ *  @return 分组的个数
+ */
+- (NSInteger)groupCountWithLength:(NSInteger)length {
+    return (NSInteger)ceilf((CGFloat)length /kGroupSize);
+}
+
+/**
+ *  给定字符串根据指定的个数进行分组，每一组用空格分隔
+ *
+ *  @param string 字符串
+ *
+ *  @return 分组后的字符串
+ */
+- (NSString *)groupedString:(NSString *)string {
+    NSString *str = [self removingSapceString:string];
+    NSInteger groupCount = [self groupCountWithLength:str.length];
+    NSMutableArray *components = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < groupCount; i++) {
+        if (i*kGroupSize + kGroupSize > str.length) {
+            [components addObject:[str substringFromIndex:i*kGroupSize]];
+        } else {
+            [components addObject:[str substringWithRange:NSMakeRange(i*kGroupSize, kGroupSize)]];
+        }
+    }
+    NSString *groupedString = [components componentsJoinedByString:@" "];
+    return groupedString;
 }
 @end

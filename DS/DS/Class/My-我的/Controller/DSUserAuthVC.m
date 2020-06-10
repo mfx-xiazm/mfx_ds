@@ -7,7 +7,7 @@
 //
 
 #import "DSUserAuthVC.h"
-#import "FSActionSheet.h"
+#import "LEEAlert.h"
 #import "zhAlertView.h"
 #import <zhPopupController.h>
 #import "DSUserSignVC.h"
@@ -38,9 +38,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *show_centNo;
 @property (weak, nonatomic) IBOutlet UIImageView *show_card_fornt;
 @property (weak, nonatomic) IBOutlet UIImageView *show_card_back;
-
+/** 签约成功页面  */
 @property (weak, nonatomic) IBOutlet UIButton *signOrCashBtn;
 @property (weak, nonatomic) IBOutlet UIView *sign_success_view;
+/** 签约失败页面  */
+@property (weak, nonatomic) IBOutlet UIView *sign_fail_view;
+@property (weak, nonatomic) IBOutlet UILabel *sign_fail_reason;
 
 @end
 
@@ -60,7 +63,8 @@
         self.auth_success_view.hidden = YES;
         self.auth_msg_view.hidden = YES;
         self.sign_success_view.hidden = YES;
-        [self showUserAuthView];
+        self.sign_fail_view.hidden = YES;
+        // [self showUserAuthView];认证信息弹出框
         hx_weakify(self);
         [self.submitBtn BindingBtnJudgeBlock:^BOOL{
             hx_strongify(weakSelf);
@@ -91,17 +95,19 @@
         self.auth_success_view.hidden = YES;
         self.auth_msg_view.hidden = NO;
         self.sign_success_view.hidden = YES;
+        self.sign_fail_view.hidden = YES;
         
         self.show_name.text = self.authInfo.realname;
         self.show_centNo.text = self.authInfo.idcard;
         [self.show_card_fornt sd_setImageWithURL:[NSURL URLWithString:self.authInfo.idcard_front_img]];
-        [self.show_card_fornt sd_setImageWithURL:[NSURL URLWithString:self.authInfo.idcard_back_img]];
+        [self.show_card_back sd_setImageWithURL:[NSURL URLWithString:self.authInfo.idcard_back_img]];
     }else{// 已认证、已签约
         self.auth_view.hidden = YES;
         self.auth_fail_view.hidden = YES;
         self.auth_success_view.hidden = YES;
         self.auth_msg_view.hidden = YES;
         self.sign_success_view.hidden = NO;
+        self.sign_fail_view.hidden = YES;
     }
 }
 #pragma mark -- 视图
@@ -160,19 +166,21 @@
             strongSelf.auth_success_view.hidden = NO;
             strongSelf.auth_msg_view.hidden = YES;
             strongSelf.sign_success_view.hidden = YES;
+            strongSelf.sign_fail_view.hidden = YES;
             
             strongSelf.authInfo.realname = strongSelf.realname.text;
             strongSelf.authInfo.idcard = strongSelf.centNo.text;
             strongSelf.authInfo.idcard_front_img = strongSelf.card_fornt_url;
             strongSelf.authInfo.idcard_back_img = strongSelf.card_back_url;
         }else{
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+            //[MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
             strongSelf.auth_view.hidden = YES;
             strongSelf.auth_fail_view.hidden = NO;
             strongSelf.fail_reason.text = responseObject[@"message"];
             strongSelf.auth_success_view.hidden = YES;
             strongSelf.auth_msg_view.hidden = YES;
             strongSelf.sign_success_view.hidden = YES;
+            strongSelf.sign_fail_view.hidden = YES;
         }
     } failure:^(NSError *error) {
         [btn stopLoading:@"提交认证" image:nil textColor:nil backgroundColor:nil];
@@ -183,17 +191,50 @@
 // 身份证点击
 -(void)cardTapClicked:(UITapGestureRecognizer *)tap
 {
-    FSActionSheet *as = [[FSActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" highlightedButtonTitle:nil otherButtonTitles:@[@"拍照",@"从手机相册选择"]];
     hx_weakify(self);
-    [as showWithSelectedCompletion:^(NSInteger selectedIndex) {
-        hx_strongify(weakSelf);
-        strongSelf.current_card_index = tap.view.tag;
-        if (selectedIndex == 0) {
+    [LEEAlert actionsheet].config
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeDefault;
+        action.title = @"拍照";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+        action.clickBlock = ^{
+            // 点击事件Block
+            hx_strongify(weakSelf);
+            strongSelf.current_card_index = tap.view.tag;
             [strongSelf awakeImagePickerController:@"1"];
-        }else{
+        };
+    })
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeDefault;
+        action.title = @"从手机相册选择";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+        action.clickBlock = ^{
+            // 点击事件Block
+            hx_strongify(weakSelf);
+            strongSelf.current_card_index = tap.view.tag;
             [strongSelf awakeImagePickerController:@"2"];
-        }
-    }];
+        };
+    })
+    .LeeAddAction(^(LEEAction *action) {
+        action.type = LEEActionTypeCancel;
+        action.title = @"取消";
+        action.titleColor = UIColorFromRGB(0x333333);
+        action.font = [UIFont systemFontOfSize:17.0f];
+    })
+    .LeeActionSheetCancelActionSpaceColor(UIColorFromRGB(0xF6F7F8)) // 设置取消按钮间隔的颜色
+    .LeeActionSheetBottomMargin(0.0f) // 设置底部距离屏幕的边距为0
+    .LeeBackgroundStyleTranslucent(0.50)
+    .LeeCornerRadii(CornerRadiiMake(12, 12, 0, 0))   // 指定整体圆角半径
+    .LeeActionSheetHeaderCornerRadii(CornerRadiiZero()) // 指定头部圆角半径
+    .LeeActionSheetCancelActionCornerRadii(CornerRadiiZero()) // 指定取消按钮圆角半径
+    .LeeConfigMaxWidth(^CGFloat(LEEScreenOrientationType type) {
+        // 这是最大宽度为屏幕宽度 (横屏和竖屏)
+        return CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    })
+    .LeeActionSheetBackgroundColor([UIColor whiteColor]) // 通过设置背景颜色来填充底部间隙
+    .LeeShow();
 }
 // 认证失败重新认证
 - (IBAction)reNewToAuthClicked:(UIButton *)sender {
@@ -202,6 +243,7 @@
     self.auth_success_view.hidden = YES;
     self.auth_msg_view.hidden = YES;
     self.sign_success_view.hidden = YES;
+    self.sign_fail_view.hidden = YES;
 }
 // 认证成功查看认证信息
 - (IBAction)lookAuthMsgClicked:(UIButton *)sender {
@@ -210,11 +252,12 @@
     self.auth_success_view.hidden = YES;
     self.auth_msg_view.hidden = NO;
     self.sign_success_view.hidden = YES;
+    self.sign_fail_view.hidden = YES;
     
     self.show_name.text = self.authInfo.realname;
     self.show_centNo.text = self.authInfo.idcard;
     [self.show_card_fornt sd_setImageWithURL:[NSURL URLWithString:self.authInfo.idcard_front_img]];
-    [self.show_card_fornt sd_setImageWithURL:[NSURL URLWithString:self.authInfo.idcard_back_img]];
+    [self.show_card_back sd_setImageWithURL:[NSURL URLWithString:self.authInfo.idcard_back_img]];
 }
 // 去签约
 - (IBAction)signClicked:(UIButton *)sender {
@@ -222,28 +265,20 @@
     svc.realName = self.authInfo.realname;
     svc.centNo = self.authInfo.idcard;
     hx_weakify(self);
-    svc.signSuccessCall = ^{
+    svc.signSuccessCall = ^(BOOL isSuccess, NSString * _Nonnull failReason) {
         hx_strongify(weakSelf);
         strongSelf.auth_view.hidden = YES;
         strongSelf.auth_fail_view.hidden = YES;
         strongSelf.auth_success_view.hidden = YES;
         strongSelf.auth_msg_view.hidden = YES;
-        strongSelf.sign_success_view.hidden = NO;
-    };
-    [self.navigationController pushViewController:svc animated:YES];
-}
-- (IBAction)signOrCashClicked:(UIButton *)sender {
-    DSUserSignVC *svc = [DSUserSignVC new];
-    svc.realName = self.authInfo.realname;
-    svc.centNo = self.authInfo.idcard;
-    hx_weakify(self);
-    svc.signSuccessCall = ^{
-        hx_strongify(weakSelf);
-        strongSelf.auth_view.hidden = YES;
-        strongSelf.auth_fail_view.hidden = YES;
-        strongSelf.auth_success_view.hidden = YES;
-        strongSelf.auth_msg_view.hidden = YES;
-        strongSelf.sign_success_view.hidden = NO;
+        if (isSuccess) {
+            strongSelf.sign_success_view.hidden = NO;
+            strongSelf.sign_fail_view.hidden = YES;
+        }else{
+            strongSelf.sign_success_view.hidden = YES;
+            strongSelf.sign_fail_view.hidden = NO;
+            strongSelf.sign_fail_reason.text = failReason;
+        }
     };
     [self.navigationController pushViewController:svc animated:YES];
 }
