@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49053C972491C441004B4A62 /* ONTailoringPictureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49053C8F2491C441004B4A62 /* ONTailoringPictureController.m */; };
+		49053C982491C441004B4A62 /* ONPictureCropperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49053C912491C441004B4A62 /* ONPictureCropperView.m */; };
+		49053C992491C441004B4A62 /* UIImage-Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 49053C932491C441004B4A62 /* UIImage-Extension.m */; };
+		49053C9A2491C441004B4A62 /* ONImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49053C962491C441004B4A62 /* ONImagePickerController.m */; };
 		49305BE0247F4BF200C26C79 /* DSUserAuthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BDF247F4BF200C26C79 /* DSUserAuthInfo.m */; };
 		49305BE3247F5AA000C26C79 /* FCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BE2247F5AA000C26C79 /* FCTextField.m */; };
 		49305BE7247FB97100C26C79 /* DSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49305BE4247FB97000C26C79 /* DSDatePickerView.m */; };
@@ -166,9 +170,6 @@
 		906F375323792F64000B160A /* MSUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36E723792F64000B160A /* MSUserManager.m */; };
 		906F375423792F64000B160A /* HXCacheTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36EC23792F64000B160A /* HXCacheTool.m */; };
 		906F375523792F64000B160A /* SDWeiXinPhotoContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36EF23792F64000B160A /* SDWeiXinPhotoContainerView.m */; };
-		906F375623792F64000B160A /* RCFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36F223792F64000B160A /* RCFilterCell.m */; };
-		906F375723792F64000B160A /* RCFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906F36F323792F64000B160A /* RCFilterCell.xib */; };
-		906F375823792F64000B160A /* HXDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36F423792F64000B160A /* HXDropMenuView.m */; };
 		906F375923792F64000B160A /* WSDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906F36FB23792F64000B160A /* WSDatePickerView.xib */; };
 		906F375A23792F64000B160A /* WSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36FC23792F64000B160A /* WSDatePickerView.m */; };
 		906F375B23792F64000B160A /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F36FD23792F64000B160A /* NSDate+Extension.m */; };
@@ -189,7 +190,6 @@
 		906F377223792F64000B160A /* LMJHorizontalScrollText.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F373323792F64000B160A /* LMJHorizontalScrollText.m */; };
 		906F377323792F64000B160A /* CAAnimation+WAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F373623792F64000B160A /* CAAnimation+WAnimation.m */; };
 		906F377423792F64000B160A /* UIView+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F373823792F64000B160A /* UIView+WZLBadge.m */; };
-		906F377523792F64000B160A /* ZJPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F373B23792F64000B160A /* ZJPickerView.m */; };
 		906F377623792F64000B160A /* NSObject+LMRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F374023792F64000B160A /* NSObject+LMRuntime.m */; };
 		906F377723792F64000B160A /* UINavigation+SXFixSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F374123792F64000B160A /* UINavigation+SXFixSpace.m */; };
 		906F377B23792FB7000B160A /* DSHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 906F377923792FB7000B160A /* DSHomeVC.m */; };
@@ -373,6 +373,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49053C8F2491C441004B4A62 /* ONTailoringPictureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONTailoringPictureController.m; sourceTree = "<group>"; };
+		49053C902491C441004B4A62 /* UIImage-Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extension.h"; sourceTree = "<group>"; };
+		49053C912491C441004B4A62 /* ONPictureCropperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONPictureCropperView.m; sourceTree = "<group>"; };
+		49053C922491C441004B4A62 /* ONImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONImagePickerController.h; sourceTree = "<group>"; };
+		49053C932491C441004B4A62 /* UIImage-Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extension.m"; sourceTree = "<group>"; };
+		49053C942491C441004B4A62 /* ONTailoringPictureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONTailoringPictureController.h; sourceTree = "<group>"; };
+		49053C952491C441004B4A62 /* ONPictureCropperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ONPictureCropperView.h; sourceTree = "<group>"; };
+		49053C962491C441004B4A62 /* ONImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ONImagePickerController.m; sourceTree = "<group>"; };
 		49305BDE247F4BF200C26C79 /* DSUserAuthInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserAuthInfo.h; sourceTree = "<group>"; };
 		49305BDF247F4BF200C26C79 /* DSUserAuthInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserAuthInfo.m; sourceTree = "<group>"; };
 		49305BE1247F5AA000C26C79 /* FCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCTextField.h; sourceTree = "<group>"; };
@@ -640,11 +648,6 @@
 		906F36EC23792F64000B160A /* HXCacheTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXCacheTool.m; sourceTree = "<group>"; };
 		906F36EF23792F64000B160A /* SDWeiXinPhotoContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWeiXinPhotoContainerView.m; sourceTree = "<group>"; };
 		906F36F023792F64000B160A /* SDWeiXinPhotoContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWeiXinPhotoContainerView.h; sourceTree = "<group>"; };
-		906F36F223792F64000B160A /* RCFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCFilterCell.m; sourceTree = "<group>"; };
-		906F36F323792F64000B160A /* RCFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCFilterCell.xib; sourceTree = "<group>"; };
-		906F36F423792F64000B160A /* HXDropMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXDropMenuView.m; sourceTree = "<group>"; };
-		906F36F523792F64000B160A /* RCFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCFilterCell.h; sourceTree = "<group>"; };
-		906F36F623792F64000B160A /* HXDropMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXDropMenuView.h; sourceTree = "<group>"; };
 		906F36F823792F64000B160A /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		906F36F923792F64000B160A /* WSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSDatePickerView.h; sourceTree = "<group>"; };
 		906F36FA23792F64000B160A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -683,8 +686,6 @@
 		906F373723792F64000B160A /* WZLBadgeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZLBadgeProtocol.h; sourceTree = "<group>"; };
 		906F373823792F64000B160A /* UIView+WZLBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WZLBadge.m"; sourceTree = "<group>"; };
 		906F373923792F64000B160A /* CAAnimation+WAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+WAnimation.h"; sourceTree = "<group>"; };
-		906F373B23792F64000B160A /* ZJPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPickerView.m; sourceTree = "<group>"; };
-		906F373C23792F64000B160A /* ZJPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPickerView.h; sourceTree = "<group>"; };
 		906F373E23792F64000B160A /* NSObject+LMRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LMRuntime.h"; sourceTree = "<group>"; };
 		906F373F23792F64000B160A /* UINavigation+SXFixSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigation+SXFixSpace.h"; sourceTree = "<group>"; };
 		906F374023792F64000B160A /* NSObject+LMRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LMRuntime.m"; sourceTree = "<group>"; };
@@ -996,6 +997,21 @@
 				F95BF23A4F0097FD6153E581 /* libPods-DS.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49053C8E2491C441004B4A62 /* ONImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				49053C922491C441004B4A62 /* ONImagePickerController.h */,
+				49053C962491C441004B4A62 /* ONImagePickerController.m */,
+				49053C942491C441004B4A62 /* ONTailoringPictureController.h */,
+				49053C8F2491C441004B4A62 /* ONTailoringPictureController.m */,
+				49053C952491C441004B4A62 /* ONPictureCropperView.h */,
+				49053C912491C441004B4A62 /* ONPictureCropperView.m */,
+				49053C902491C441004B4A62 /* UIImage-Extension.h */,
+				49053C932491C441004B4A62 /* UIImage-Extension.m */,
+			);
+			path = ONImagePicker;
 			sourceTree = "<group>";
 		};
 		49565F322488974A00C9D43E /* UMPush */ = {
@@ -1891,6 +1907,7 @@
 		906F36ED23792F64000B160A /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				49053C8E2491C441004B4A62 /* ONImagePicker */,
 				49F0E53F2490E32B00082CBD /* LEEAlert */,
 				49565F322488974A00C9D43E /* UMPush */,
 				49E5C1822472ADAB0063001D /* AILoadingView */,
@@ -1898,7 +1915,6 @@
 				90C94C2F23A47DC900CD19FB /* SPPickerView */,
 				903A95BC23A2123B00AD68CF /* LYEmptyView */,
 				906F36EE23792F64000B160A /* WXPhotoContainerView */,
-				906F36F123792F64000B160A /* HXDropMenu */,
 				906F36F723792F64000B160A /* WSDatePickerView */,
 				906F36FF23792F64000B160A /* SPButton */,
 				906F370823792F64000B160A /* AlipaySDK_No_UTDID */,
@@ -1908,7 +1924,6 @@
 				906F372623792F64000B160A /* zhAlertView */,
 				906F372923792F64000B160A /* LMJScrollText */,
 				906F373423792F64000B160A /* UIViewBadge */,
-				906F373A23792F64000B160A /* ZJPickerView */,
 				906F373D23792F64000B160A /* UINavigationFix */,
 			);
 			path = ThirdLib;
@@ -1921,18 +1936,6 @@
 				906F36F023792F64000B160A /* SDWeiXinPhotoContainerView.h */,
 			);
 			path = WXPhotoContainerView;
-			sourceTree = "<group>";
-		};
-		906F36F123792F64000B160A /* HXDropMenu */ = {
-			isa = PBXGroup;
-			children = (
-				906F36F223792F64000B160A /* RCFilterCell.m */,
-				906F36F323792F64000B160A /* RCFilterCell.xib */,
-				906F36F423792F64000B160A /* HXDropMenuView.m */,
-				906F36F523792F64000B160A /* RCFilterCell.h */,
-				906F36F623792F64000B160A /* HXDropMenuView.h */,
-			);
-			path = HXDropMenu;
 			sourceTree = "<group>";
 		};
 		906F36F723792F64000B160A /* WSDatePickerView */ = {
@@ -2055,15 +2058,6 @@
 				906F373923792F64000B160A /* CAAnimation+WAnimation.h */,
 			);
 			path = UIViewBadge;
-			sourceTree = "<group>";
-		};
-		906F373A23792F64000B160A /* ZJPickerView */ = {
-			isa = PBXGroup;
-			children = (
-				906F373B23792F64000B160A /* ZJPickerView.m */,
-				906F373C23792F64000B160A /* ZJPickerView.h */,
-			);
-			path = ZJPickerView;
 			sourceTree = "<group>";
 		};
 		906F373D23792F64000B160A /* UINavigationFix */ = {
@@ -2274,7 +2268,6 @@
 				90F74E5223823DE9003576B3 /* DSUpCashVC.xib in Resources */,
 				90FD91EE237E4F4F00016EF7 /* DSMyCardCell.xib in Resources */,
 				90F74E3923822E11003576B3 /* DSVipCardCell.xib in Resources */,
-				906F375723792F64000B160A /* RCFilterCell.xib in Resources */,
 				906F378B23792FEA000B160A /* DSCartVC.xib in Resources */,
 				906F376023792F64000B160A /* AlipaySDK.bundle in Resources */,
 				90EC258B237A7D18005C24C8 /* DSHomeCateCell.xib in Resources */,
@@ -2406,6 +2399,8 @@
 				90AE52D523829109009F4740 /* DSMyDynamicVC.m in Sources */,
 				906F374623792F64000B160A /* Foundation+Log.m in Sources */,
 				90F74E3823822E11003576B3 /* DSVipCardCell.m in Sources */,
+				49053C982491C441004B4A62 /* ONPictureCropperView.m in Sources */,
+				49053C9A2491C441004B4A62 /* ONImagePickerController.m in Sources */,
 				90FD91BF237E405F00016EF7 /* DSMyOrderFooter.m in Sources */,
 				90F74E5B23823F37003576B3 /* DSCashNoteCell.m in Sources */,
 				906F36AE23792F5B000B160A /* HXNavigationController.m in Sources */,
@@ -2425,6 +2420,7 @@
 				4997A536247CFD3000605EEC /* DSTextField.m in Sources */,
 				49C0CF962473A9240067C9AB /* DSUserAuthVC.m in Sources */,
 				906F376B23792F64000B160A /* SGQRCodeObtain.m in Sources */,
+				49053C972491C441004B4A62 /* ONTailoringPictureController.m in Sources */,
 				90FD91CA237E446300016EF7 /* DSChangeInfoVC.m in Sources */,
 				903A95D323A222D600AD68CF /* DSSearchGoodsVC.m in Sources */,
 				9086946623A729D100451D8B /* DSMyTeam.m in Sources */,
@@ -2443,6 +2439,7 @@
 				90B7945223FAB5AC00340CDF /* DSAllOrderVC.m in Sources */,
 				906F362D2378ED44000B160A /* AppDelegate.m in Sources */,
 				908F942D23AB53E2007E6C27 /* DSConfirmOrder.m in Sources */,
+				49053C992491C441004B4A62 /* UIImage-Extension.m in Sources */,
 				906F374A23792F64000B160A /* UILabel+HXNExtension.m in Sources */,
 				906F374723792F64000B160A /* HXConst.m in Sources */,
 				906F378523792FDA000B160A /* DSDynamicVC.m in Sources */,
@@ -2477,7 +2474,6 @@
 				90C94C4423A4937C00CD19FB /* DSVipCard.m in Sources */,
 				49DBE4F8243C68B200F984D4 /* DSTaoKeOrderChildVC.m in Sources */,
 				906F377023792F64000B160A /* LMJVerticalScrollText.m in Sources */,
-				906F375623792F64000B160A /* RCFilterCell.m in Sources */,
 				9086946923A72D6600451D8B /* DSMyCard.m in Sources */,
 				9086946F23A7570E00451D8B /* DSBalanceNote.m in Sources */,
 				90D7E77823FC183900231D85 /* DSUpOrderSectionFooter.m in Sources */,
@@ -2505,7 +2501,6 @@
 				90FD91B6237E3ECE00016EF7 /* DSMyOrderChildVC.m in Sources */,
 				90FD9201237E55C500016EF7 /* DSEditAddressVC.m in Sources */,
 				903D081323839166001C2E40 /* DSApplyRefundVC.m in Sources */,
-				906F375823792F64000B160A /* HXDropMenuView.m in Sources */,
 				90C94C2B23A47D9600CD19FB /* GXAddressCell.m in Sources */,
 				906F377423792F64000B160A /* UIView+WZLBadge.m in Sources */,
 				90AE52DA238292A0009F4740 /* DSPublishDynamicVC.m in Sources */,
@@ -2588,7 +2583,6 @@
 				49DBE4FD243C68DD00F984D4 /* DSTaoKeOrderCell.m in Sources */,
 				906F377123792F64000B160A /* UILabel+ForLMJVerticalScrollText.m in Sources */,
 				90ED68E223BA05B60035988E /* SZUpdateView.m in Sources */,
-				906F377523792F64000B160A /* ZJPickerView.m in Sources */,
 				49DBE501243C6C7300F984D4 /* DSTaoKeOrder.m in Sources */,
 				906F375523792F64000B160A /* SDWeiXinPhotoContainerView.m in Sources */,
 				906F376F23792F64000B160A /* UIView+ForLMJVerticalScrollText.m in Sources */,

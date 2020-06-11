@@ -10,8 +10,9 @@
 #import "LEEAlert.h"
 #import "zhAlertView.h"
 #import <zhPopupController.h>
+#import "ONImagePickerController.h"
 
-@interface DSChangeInfoVC ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface DSChangeInfoVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *headPic;
 @property (weak, nonatomic) IBOutlet UITextField *nick;
 @property (weak, nonatomic) IBOutlet UITextField *sex;
@@ -46,7 +47,7 @@
         action.clickBlock = ^{
             // 点击事件Block
             hx_strongify(weakSelf);
-            [strongSelf awakeImagePickerController:@"1"];
+            [strongSelf showImagePicker:UIImagePickerControllerSourceTypeCamera];
         };
     })
     .LeeAddAction(^(LEEAction *action) {
@@ -57,7 +58,7 @@
         action.clickBlock = ^{
             // 点击事件Block
             hx_strongify(weakSelf);
-            [strongSelf awakeImagePickerController:@"2"];
+            [strongSelf showImagePicker:UIImagePickerControllerSourceTypePhotoLibrary];
         };
     })
     .LeeAddAction(^(LEEAction *action) {
@@ -124,90 +125,47 @@
     .LeeShow();
 }
 #pragma mark -- 唤起相机
-- (void)awakeImagePickerController:(NSString *)pickerType {
-    if ([pickerType isEqualToString:@"1"]) {
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
-            if ([self isCanUseCamera]) {
-                UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-                imagePickerController.delegate = self;
-                imagePickerController.allowsEditing = YES;
-                
-                imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-                //前后摄像头是否可用
-                [UIImagePickerController isCameraDeviceAvailable:YES];
-                //相机闪光灯是否OK
-                [UIImagePickerController isFlashAvailableForCameraDevice:YES];
-                if (@available(iOS 13.0, *)) {
-                    imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
-                    /*当该属性为 false 时，用户下拉可以 dismiss 控制器，为 true 时，下拉不可以 dismiss控制器*/
-                    imagePickerController.modalInPresentation = YES;
-                }
-                [self presentViewController:imagePickerController animated:YES completion:nil];
-            }else{
-                hx_weakify(self);
-                zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"请打开相机权限" message:@"设置-隐私-相机" constantWidth:HX_SCREEN_WIDTH - 50*2];
-                zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"知道了" handler:^(zhAlertButton * _Nonnull button) {
-                    hx_strongify(weakSelf);
-                    [strongSelf.zh_popupController dismiss];
-                }];
-                okButton.lineColor = UIColorFromRGB(0xDDDDDD);
-                [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
-                [alert addAction:okButton];
-                self.zh_popupController = [[zhPopupController alloc] init];
-                [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
-            }
+- (void)showImagePicker:(UIImagePickerControllerSourceType)sourcetype {
+    ONImagePickerController *imagePicker = [ONImagePickerController sharedInstance];
+    if (sourcetype == UIImagePickerControllerSourceTypeCamera) {
+        if ([self isCanUseCamera]) {
+            [imagePicker showImagePickerWithPresentController:self sourceType:sourcetype allowEdit:YES cutSize:CGSizeMake(kScreenWidth, kScreenWidth)];
         }else{
-            [MBProgressHUD showTitleToView:self.view postion:NHHUDPostionTop title:@"相机不可用"];
-            return;
+            hx_weakify(self);
+            zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"请打开相机权限" message:@"设置-隐私-相机" constantWidth:HX_SCREEN_WIDTH - 50*2];
+            zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"知道了" handler:^(zhAlertButton * _Nonnull button) {
+                hx_strongify(weakSelf);
+                [strongSelf.zh_popupController dismiss];
+            }];
+            okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+            [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+            [alert addAction:okButton];
+            self.zh_popupController = [[zhPopupController alloc] init];
+            [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
         }
     }else{
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
-            if ([self isCanUsePhotos]) {
-                UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-                imagePickerController.delegate = self;
-                imagePickerController.allowsEditing = YES;
-                imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                //前后摄像头是否可用
-                [UIImagePickerController isCameraDeviceAvailable:YES];
-                //相机闪光灯是否OK
-                [UIImagePickerController isFlashAvailableForCameraDevice:YES];
-                if (@available(iOS 13.0, *)) {
-                    imagePickerController.modalPresentationStyle = UIModalPresentationFullScreen;
-                    /*当该属性为 false 时，用户下拉可以 dismiss 控制器，为 true 时，下拉不可以 dismiss控制器*/
-                    imagePickerController.modalInPresentation = YES;
-                }
-                [self presentViewController:imagePickerController animated:YES completion:nil];
-            }else{
-                hx_weakify(self);
-                zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"请打开相册权限" message:@"设置-隐私-相册" constantWidth:HX_SCREEN_WIDTH - 50*2];
-                zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"知道了" handler:^(zhAlertButton * _Nonnull button) {
-                    hx_strongify(weakSelf);
-                    [strongSelf.zh_popupController dismiss];
-                }];
-                okButton.lineColor = UIColorFromRGB(0xDDDDDD);
-                [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
-                [alert addAction:okButton];
-                self.zh_popupController = [[zhPopupController alloc] init];
-                [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
-            }
+        if ([self isCanUsePhotos]) {
+            [imagePicker showImagePickerWithPresentController:self sourceType:sourcetype allowEdit:YES cutSize:CGSizeMake(kScreenWidth, kScreenWidth)];
         }else{
-            [MBProgressHUD showTitleToView:self.view postion:NHHUDPostionTop title:@"相册不可用"];
-            return;
+            hx_weakify(self);
+            zhAlertView *alert = [[zhAlertView alloc] initWithTitle:@"请打开相册权限" message:@"设置-隐私-相册" constantWidth:HX_SCREEN_WIDTH - 50*2];
+            zhAlertButton *okButton = [zhAlertButton buttonWithTitle:@"知道了" handler:^(zhAlertButton * _Nonnull button) {
+                hx_strongify(weakSelf);
+                [strongSelf.zh_popupController dismiss];
+            }];
+            okButton.lineColor = UIColorFromRGB(0xDDDDDD);
+            [okButton setTitleColor:HXControlBg forState:UIControlStateNormal];
+            [alert addAction:okButton];
+            self.zh_popupController = [[zhPopupController alloc] init];
+            [self.zh_popupController presentContentView:alert duration:0.25 springAnimated:NO];
         }
     }
-}
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
-}
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-{
     hx_weakify(self);
-    [picker dismissViewControllerAnimated:YES completion:^{
+    [imagePicker setChooseImageBlock:^(UIImage * _Nonnull image) {
         hx_strongify(weakSelf);
         // 显示保存图片
-        [strongSelf upImageRequestWithImage:info[UIImagePickerControllerEditedImage] completedCall:^(NSString *imageUrl) {
-            strongSelf.headPic.image = info[UIImagePickerControllerEditedImage];
+        [strongSelf upImageRequestWithImage:image completedCall:^(NSString *imageUrl) {
+            strongSelf.headPic.image = image;
             strongSelf.headPicUrl = imageUrl;
         }];
     }];

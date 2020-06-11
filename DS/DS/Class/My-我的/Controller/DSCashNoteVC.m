@@ -112,6 +112,7 @@ static NSString *const CashNoteCell = @"CashNoteCell";
         [sender setTitle:date forState:UIControlStateNormal];
         
         strongSelf.time_region = date;
+        [strongSelf getNoteListDataRequest:YES];
     }];
     datepicker.maxLimitDate = [NSDate date];
        

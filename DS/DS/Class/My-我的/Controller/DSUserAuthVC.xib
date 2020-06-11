@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -228,7 +228,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="身份证" placeholder="请输入证件类型" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SpH-zL-B1O">
+                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="身份证" placeholder="请输入证件类型" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SpH-zL-B1O" customClass="FCTextField">
                                             <rect key="frame" x="135" y="7.5" width="267" height="40"/>
                                             <color key="tintColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -236,6 +236,11 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="kLimitType">
+                                                    <integer key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjF-ax-lBm" userLabel="分割线">
                                             <rect key="frame" x="0.0" y="54" width="414" height="1"/>
@@ -306,52 +311,24 @@
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uL4-MW-GXx">
-                                    <rect key="frame" x="12" y="181" width="390" height="99.5"/>
+                                    <rect key="frame" x="12" y="181" width="390" height="101"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fey-3u-gjf">
-                                            <rect key="frame" x="15" y="15" width="360" height="69.5"/>
+                                            <rect key="frame" x="15" y="15" width="360" height="71"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="完善是身份信息以享受更全面的支付服务">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="12" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
+                                                <fragment content="完善是身份信息以享受更全面的支付服务 ">
                                                     <attributes>
                                                         <color key="NSColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="12" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="1. ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.97647058823529409" green="0.33725490196078434" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="12" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="请上传真实的身份证照片">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.97647058823529409" green="0.33725490196078434" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="12" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                                 <fragment>
-                                                    <string key="content">
-2. </string>
+                                                    <string key="content">1. 请上传真实的身份证照片
+2. 拍照时请确保身份证边框完整、图像清晰、光线均匀</string>
                                                     <attributes>
                                                         <color key="NSColor" red="0.97647058823529409" green="0.33725490196078434" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
                                                         <font key="NSFont" metaFont="system"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="12" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="拍照时请确保身份证边框完整、图像清晰、光线均匀">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.97647058823529409" green="0.33725490196078434" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name=".PingFangSC-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="12" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -373,7 +350,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <imageView clipsSubviews="YES" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="人面像" translatesAutoresizingMaskIntoConstraints="NO" id="Qfy-fU-bHg">
-                                    <rect key="frame" x="12" y="296.5" width="181" height="122"/>
+                                    <rect key="frame" x="12" y="298" width="181" height="122"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Qfy-fU-bHg" secondAttribute="height" multiplier="160:108" id="WMb-7r-VBW"/>
                                     </constraints>
@@ -384,13 +361,13 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人像面照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPm-9Z-v6K">
-                                    <rect key="frame" x="64.5" y="424.5" width="76.5" height="18"/>
+                                    <rect key="frame" x="64.5" y="426" width="76.5" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" tag="2" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="国徽像" translatesAutoresizingMaskIntoConstraints="NO" id="n22-mW-irb">
-                                    <rect key="frame" x="221" y="296.5" width="181" height="122"/>
+                                    <rect key="frame" x="221" y="298" width="181" height="122"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="n22-mW-irb" secondAttribute="height" multiplier="160:108" id="Ud9-WK-QTk"/>
                                     </constraints>
@@ -401,13 +378,13 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="国徽面照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DvI-w2-ZNI">
-                                    <rect key="frame" x="273.5" y="424.5" width="76.5" height="18"/>
+                                    <rect key="frame" x="273.5" y="426" width="76.5" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ci-OK-KtD">
-                                    <rect key="frame" x="12" y="511.5" width="390" height="48"/>
+                                    <rect key="frame" x="12" y="513" width="390" height="48"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="deW-6i-Kfy"/>

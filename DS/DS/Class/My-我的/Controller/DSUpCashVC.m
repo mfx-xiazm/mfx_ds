@@ -38,9 +38,9 @@
 /* 起提金额 */
 @property(nonatomic,copy) NSString *base_amount;
 /* 绑定银行卡 */
-@property(nonatomic,strong) NSDictionary *bind_bank;
+@property(nonatomic,strong) NSString *bind_bank;
 /* 绑定支付宝 */
-@property(nonatomic,strong) NSDictionary *bind_zfb;
+@property(nonatomic,strong) NSString *bind_zfb;
 
 /** vc控制器 */
 @property (nonatomic,strong) NSMutableArray *controllers;
@@ -156,12 +156,8 @@
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             strongSelf.balance = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"balance"]];
             strongSelf.base_amount = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"base_amount"]];
-            if (responseObject[@"result"][@"bind_bank"]) {
-                strongSelf.bind_bank = [NSDictionary dictionaryWithDictionary:responseObject[@"result"][@"bind_bank"]];
-            }
-            if (responseObject[@"result"][@"bind_zfb"]) {
-                strongSelf.bind_zfb = [NSDictionary dictionaryWithDictionary:responseObject[@"result"][@"bind_zfb"]];
-            }
+            strongSelf.bind_bank = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"bind_bank"]];
+            strongSelf.bind_zfb = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"zfbAccount"]];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 // 可提现余额
@@ -171,15 +167,15 @@
                 //若用于整数改为:[numberFormatter setPositiveFormat:@"###,##0"];
                 [strongSelf.cashAble setFontAttributedText:[NSString stringWithFormat:@"￥%@",formattedNumberString] andChangeStr:@[@"￥"] andFont:@[[UIFont fontWithName:@"PingFangSC-Semibold" size: 16]]];
                 // 绑定的账号信息
-                if (strongSelf.bind_zfb) {
-                    strongSelf.ali_account_no.text = strongSelf.bind_zfb[@"card_no"];
+                if (strongSelf.bind_zfb.length) {
+                    strongSelf.ali_account_no.text = strongSelf.bind_zfb;
                     strongSelf.ali_bind_btn.alpha = 0.5;// 如果已绑定就0.5，没绑定就1
                     [strongSelf.ali_bind_btn setTitle:@"修改绑定" forState:UIControlStateNormal];
                 }
                 strongSelf.ali_apply_amount.placeholder = [NSString stringWithFormat:@"最小提现金额%@元",strongSelf.base_amount];
                 
-                if (strongSelf.bind_bank) {
-                    strongSelf.card_account_no.text = [strongSelf groupedString:strongSelf.bind_bank[@"card_no"]];
+                if (strongSelf.bind_bank.length) {
+                    strongSelf.card_account_no.text = [strongSelf groupedString:strongSelf.bind_bank];
                     strongSelf.card_bind_btn.alpha = 0.5;// 如果已绑定就0.5，没绑定就1
                     [strongSelf.card_bind_btn setTitle:@"修改绑定" forState:UIControlStateNormal];
                 }
@@ -273,12 +269,12 @@
     nvc.dataType = self.categoryView.selectedIndex;
     // 绑定的账号信息
     if (self.categoryView.selectedIndex == 0) {
-        if (self.bind_zfb) {
-            nvc.accountNoTxt = self.bind_zfb[@"card_no"];
+        if (self.bind_zfb.length) {
+            nvc.accountNoTxt = self.bind_zfb;
         }
     }else{
-        if (self.bind_bank) {
-            nvc.accountNoTxt = self.bind_bank[@"card_no"];
+        if (self.bind_bank.length) {
+            nvc.accountNoTxt = self.bind_bank;
         }
     }
     
