@@ -26,7 +26,7 @@ static NSString *const MessageCell = @"MessageCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"消息"];
+    [self setUpNavBar];
     [self setUpTableView];
     [self setUpEmptyView];
     [self setUpRefresh];
@@ -45,6 +45,15 @@ static NSString *const MessageCell = @"MessageCell";
     return _msgs;
 }
 #pragma mark -- 视图相关
+-(void)setUpNavBar
+{
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = NO;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
+    [self.navigationItem setTitle:@"消息"];
+}
 -(void)setUpTableView
 {
     // 针对 11.0 以上的iOS系统进行处理
@@ -204,7 +213,7 @@ static NSString *const MessageCell = @"MessageCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 返回这个模型对应的cell高度
-    return 75.f;
+    return 80.f;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

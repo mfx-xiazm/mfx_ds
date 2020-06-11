@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nlv-55-PHS">
-                                <rect key="frame" x="326" y="55" width="4" height="4"/>
+                                <rect key="frame" x="326" y="54" width="4" height="4"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.33725490200000002" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="4" id="Syj-sA-UV2"/>
@@ -52,7 +52,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单通知" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQ5-Vx-e0j">
-                                <rect key="frame" x="59" y="49" width="269" height="16"/>
+                                <rect key="frame" x="59" y="48" width="269" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                             <constraint firstAttribute="trailing" secondItem="0iK-bJ-EWq" secondAttribute="trailing" constant="10" id="BGH-et-vwn"/>
                             <constraint firstItem="TQ5-Vx-e0j" firstAttribute="leading" secondItem="aYQ-DP-Ji6" secondAttribute="trailing" constant="15" id="D9l-uN-7L2"/>
                             <constraint firstAttribute="trailing" secondItem="TQ5-Vx-e0j" secondAttribute="trailing" constant="12" id="N2N-Dp-fLU"/>
-                            <constraint firstAttribute="bottom" secondItem="TQ5-Vx-e0j" secondAttribute="bottom" constant="15" id="Nuy-Rk-V1x"/>
+                            <constraint firstAttribute="bottom" secondItem="TQ5-Vx-e0j" secondAttribute="bottom" constant="16" id="Nuy-Rk-V1x"/>
                             <constraint firstItem="0iK-bJ-EWq" firstAttribute="centerY" secondItem="VwU-7z-aKN" secondAttribute="centerY" id="eYz-6L-aVF"/>
                             <constraint firstItem="0iK-bJ-EWq" firstAttribute="leading" secondItem="VwU-7z-aKN" secondAttribute="trailing" constant="10" id="hUb-Id-RHC"/>
                             <constraint firstItem="VwU-7z-aKN" firstAttribute="leading" secondItem="aYQ-DP-Ji6" secondAttribute="trailing" constant="15" id="hpm-Ne-ef3"/>

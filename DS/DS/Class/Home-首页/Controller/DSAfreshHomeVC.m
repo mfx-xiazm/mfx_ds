@@ -183,8 +183,8 @@ static const CGFloat JXheightForHeaderInSection = 50;
     msg.hxn_size = CGSizeMake(40, 40);
     [msg setImage:HXGetImage(@"消息") forState:UIControlStateNormal];
     [msg addTarget:self action:@selector(msgClicked) forControlEvents:UIControlEventTouchUpInside];
-    msg.badgeBgColor  = UIColorFromRGB(0XFFFFFF);
-    msg.badgeCenterOffset = CGPointMake(-10, 10);
+    msg.badgeBgColor  = UIColorFromRGB(0XEF0F00);
+    msg.badgeCenterOffset = CGPointMake(-12, 14);
     self.msgBtn = msg;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:msg];
@@ -195,9 +195,13 @@ static const CGFloat JXheightForHeaderInSection = 50;
     self.pagerView.mainTableView.mj_header.automaticallyChangeAlpha = YES;
     self.pagerView.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         hx_strongify(weakSelf);
-        DSAfreshHomeChildVC *cvc = (DSAfreshHomeChildVC *)[strongSelf.pagerView.validListDict objectForKey:@(strongSelf.categoryView.selectedIndex)];
-        
-        [cvc getGoodsListDataRequest:YES contentScrollView:strongSelf.pagerView.mainTableView];
+        if (strongSelf.homeData) {
+            DSAfreshHomeChildVC *cvc = (DSAfreshHomeChildVC *)[strongSelf.pagerView.validListDict objectForKey:@(strongSelf.categoryView.selectedIndex)];
+            
+            [cvc getGoodsListDataRequest:YES contentScrollView:strongSelf.pagerView.mainTableView];
+        }else{
+            [strongSelf getHomeDataRequest];
+        }
     }];
 }
 #pragma mark -- 接口请求
@@ -208,6 +212,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
         strongSelf.pagerView.hidden = NO;
+        [strongSelf.pagerView.mainTableView.mj_header endRefreshing];
         if ([responseObject[@"status"] integerValue] == 1) {
             strongSelf.homeData = [DSHomeData yy_modelWithDictionary:responseObject[@"result"]];
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -228,6 +233,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
         strongSelf.pagerView.hidden = NO;
+        [strongSelf.pagerView.mainTableView.mj_header endRefreshing];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }

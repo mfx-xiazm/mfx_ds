@@ -28,7 +28,7 @@ static NSString *const CashNoteCell = @"CashNoteCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"提现记录"];
+    [self setUpNavBar];
     [self setUpTableView];
     [self setUpEmptyView];
     [self setUpRefresh];
@@ -45,6 +45,15 @@ static NSString *const CashNoteCell = @"CashNoteCell";
         _notes = [NSMutableArray array];
     }
     return _notes;
+}
+-(void)setUpNavBar
+{
+    self.hbd_barStyle = UIBarStyleDefault;
+    self.hbd_barTintColor = [UIColor whiteColor];
+    self.hbd_tintColor = [UIColor blackColor];
+    self.hbd_barShadowHidden = YES;
+    self.hbd_titleTextAttributes = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:1.0]};
+    [self.navigationItem setTitle:@"提现记录"];
 }
 -(void)setUpTableView
 {

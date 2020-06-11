@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *apply_amount;
 @property (weak, nonatomic) IBOutlet UILabel *create_time;
 @property (weak, nonatomic) IBOutlet UILabel *reject_reason;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *reject_reason_bottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *reject_reason_top;
 
 @end
 @implementation DSCashNoteCell
@@ -36,6 +38,8 @@
         self.apply_amount.textColor = HXControlBg;
         self.reject_reason.textAlignment = NSTextAlignmentRight;
         self.reject_reason.text = @"到账延迟请耐心等待";
+        self.reject_reason_top.constant = 10.f;
+        self.reject_reason_bottom.constant = 15.f;
     }else if ([_note.apply_status isEqualToString:@"2"]){
         self.apply_status.text = @"已提现";
         self.apply_status.textColor = HXControlBg;
@@ -43,6 +47,8 @@
         self.apply_amount.textColor = HXControlBg;
         self.reject_reason.textAlignment = NSTextAlignmentRight;
         self.reject_reason.text = @"";
+        self.reject_reason_top.constant = 5.f;
+        self.reject_reason_bottom.constant = CGFLOAT_MIN;
     }else{
         self.apply_status.text = @"提现失败";
         self.apply_status.textColor = UIColorFromRGB(0x333333);
@@ -50,6 +56,8 @@
         self.apply_amount.textColor = UIColorFromRGB(0x333333);
         self.reject_reason.textAlignment = NSTextAlignmentLeft;
         self.reject_reason.text = [NSString stringWithFormat:@"失败原因：%@",_note.reject_reason];
+        self.reject_reason_top.constant = 10.f;
+        self.reject_reason_bottom.constant = 15.f;
     }
     self.apply_desc.text = [_note.acct_type isEqualToString:@"1"]?[NSString stringWithFormat:@"%@-银行卡",_note.apply_desc]:[NSString stringWithFormat:@"%@-支付宝",_note.apply_desc];
     self.card_no.text = _note.card_no;
