@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *account_type;
 @property (weak, nonatomic) IBOutlet UITextField *realName;
 @property (weak, nonatomic) IBOutlet UITextField *account_no;
+@property (weak, nonatomic) IBOutlet UILabel *notice_tip;
 
 @end
 
@@ -26,6 +27,13 @@
     self.account_no.delegate = self;
     self.account_type.text = self.dataType==1?@"代发账号":@"支付宝账号";
     self.account_no.placeholder = self.dataType==1?[NSString stringWithFormat:@"请输入%@的银行卡号",self.realNameTxt]:@"请输入支付宝账号";
+    if (self.dataType == 0) {
+        self.notice_tip.hidden = NO;
+        self.notice_tip.text = @"*请仔细核对支付宝账号，避免造成不必要的损失";
+    }else{
+        self.notice_tip.hidden = YES;
+        self.notice_tip.text = @"*代发账号和真实姓名不匹配";
+    }
     if (self.accountNoTxt && self.accountNoTxt.length) {
         self.account_no.text = self.dataType==1?[self groupedString:self.accountNoTxt]:self.accountNoTxt;
     }
@@ -55,6 +63,9 @@
             return;
         }
     }
+    
+    [self.view endEditing:YES];
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"uid"] = [MSUserManager sharedInstance].curUserInfo.uid;
     parameters[@"acct_type"] = (self.dataType == 0)?@"2":@"1";// 1银行卡 2支付宝
@@ -70,7 +81,12 @@
             }
             [strongSelf.navigationController popViewControllerAnimated:YES];
         }else{
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+            if (strongSelf.dataType == 0) {//支付宝
+                
+            }else{
+                strongSelf.notice_tip.hidden = NO;
+            }
+            //[MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
         }
     } failure:^(NSError *error) {
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
@@ -115,6 +131,12 @@ static NSInteger const kGroupSize = 4;
         return NO;
     }
     return YES;
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == self.account_no) {
+        self.notice_tip.hidden = YES;
+    }
 }
 #pragma mark - Helper
 /**

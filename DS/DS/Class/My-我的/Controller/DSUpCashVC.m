@@ -237,11 +237,13 @@
         hx_strongify(weakSelf);
         [btn stopLoading:@"提现" image:nil textColor:nil backgroundColor:nil];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"提交成功"];
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+            strongSelf.ali_apply_amount.text = @"";
+            strongSelf.card_apply_amount.text = @"";
             if (strongSelf.upCashActionCall) {
                 strongSelf.upCashActionCall();
             }
-            [strongSelf.navigationController popViewControllerAnimated:YES];
+            [strongSelf getInitRequest];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
         }
@@ -269,12 +271,12 @@
     nvc.dataType = self.categoryView.selectedIndex;
     // 绑定的账号信息
     if (self.categoryView.selectedIndex == 0) {
-        if (self.bind_zfb.length) {
-            nvc.accountNoTxt = self.bind_zfb;
+        if ([self.ali_account_no hasText]) {
+            nvc.accountNoTxt = self.ali_account_no.text;
         }
     }else{
-        if (self.bind_bank.length) {
-            nvc.accountNoTxt = self.bind_bank;
+        if ([self.card_account_no hasText]) {
+            nvc.accountNoTxt = [self removingSapceString:self.card_account_no.text];
         }
     }
     
