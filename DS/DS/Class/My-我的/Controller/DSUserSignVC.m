@@ -51,8 +51,8 @@
     [self.web_content_view addSubview:self.webView];
     [self.view addSubview:self.progressView];
     [self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:nil];
-    
-    [self loadAuthLicenseRequest];
+//    [self loadAuthLicenseRequest];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://apiadmin.whaleupgo.com/webapp/page/signAgreement.html"]]];
 }
 -(void)viewDidLayoutSubviews
 {

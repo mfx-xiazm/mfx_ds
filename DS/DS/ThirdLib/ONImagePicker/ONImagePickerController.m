@@ -41,7 +41,7 @@
 	self.picker = [[UIImagePickerController alloc] init];
 	self.picker.delegate = self;
 	self.picker.sourceType = sourceType;
-	
+    self.picker.navigationBar.translucent = NO;
 	[self.picker setAllowsEditing:NO];
 	
 	if (self.titleColor){
@@ -54,6 +54,9 @@
 			item.tintColor = self.pickerCancelColor;
 		});
 	}
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+    }
     if (@available(iOS 13.0, *)) {
         self.picker.modalPresentationStyle = UIModalPresentationFullScreen;
         /*当该属性为 false 时，用户下拉可以 dismiss 控制器，为 true 时，下拉不可以 dismiss控制器*/
@@ -63,6 +66,9 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 	UIImage *image = nil;
 	image = info[UIImagePickerControllerOriginalImage];
 	image = [ONImagePickerController fixOriginalImage:image];
@@ -80,6 +86,9 @@
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 	[picker dismissViewControllerAnimated:YES completion:^{
 		if (self.cancelBlock) {
 			self.cancelBlock();
