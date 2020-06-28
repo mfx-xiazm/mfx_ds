@@ -62,25 +62,19 @@
 }
 -(BOOL)isiPhoneXLater
 {
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString*phoneType = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
-    /*
-     if([phoneType  isEqualToString:@"iPhone10,3"]) return@"iPhone X";
-     
-     if([phoneType  isEqualToString:@"iPhone10,6"]) return@"iPhone X";
-     
-     if([phoneType  isEqualToString:@"iPhone11,8"]) return@"iPhone XR";
-     
-     if([phoneType  isEqualToString:@"iPhone11,2"]) return@"iPhone XS";
-     
-     if([phoneType  isEqualToString:@"iPhone11,4"]) return@"iPhone XS Max";
-     
-     if([phoneType  isEqualToString:@"iPhone11,6"]) return@"iPhone XS Max";
-     */
-    if([phoneType  isEqualToString:@"iPhone10,3"] || [phoneType  isEqualToString:@"iPhone10,6"] || [phoneType  isEqualToString:@"iPhone11,8"] || [phoneType  isEqualToString:@"iPhone11,2"] || [phoneType  isEqualToString:@"iPhone11,4"] || [phoneType  isEqualToString:@"iPhone11,6"] || [phoneType  isEqualToString:@"iPhone12,1"] || [phoneType  isEqualToString:@"iPhone12,3"] || [phoneType  isEqualToString:@"iPhone12,5"]) {
-        return YES;
-    }else{
+//    struct utsname systemInfo;
+//    uname(&systemInfo);
+//    NSString*phoneType = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
+//    if([phoneType  isEqualToString:@"iPhone10,3"] || [phoneType  isEqualToString:@"iPhone10,6"] || [phoneType  isEqualToString:@"iPhone11,8"] || [phoneType  isEqualToString:@"iPhone11,2"] || [phoneType  isEqualToString:@"iPhone11,4"] || [phoneType  isEqualToString:@"iPhone11,6"] || [phoneType  isEqualToString:@"iPhone12,1"] || [phoneType  isEqualToString:@"iPhone12,3"] || [phoneType  isEqualToString:@"iPhone12,5"]) {
+//        return YES;
+//    }else{
+//        return NO;
+//    }
+    // 根据安全区域判断
+    if (@available(iOS 11.0, *)) {
+        CGFloat safeTop = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.top;
+        return (safeTop>0)?YES:NO;
+    } else {
         return NO;
     }
 }

@@ -117,10 +117,10 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 -(void)upCashClicked
 {
 //    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"待开放"];
-//    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
-//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"升级VIP会员可提现"];
-//        return;
-//    }
+    if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"升级VIP会员可提现"];
+        return;
+    }
     
     self.navigationItem.rightBarButtonItem.enabled = NO;// 放置重复点击
     hx_weakify(self);

@@ -124,7 +124,7 @@
             }else{
                 strongSelf.nowCodeId = NSStringFormat(@"%@",responseObject[@"result"]);
             }
-            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:HXControlBg countColor:HXControlBg];
+            [sender startWithTime:59 title:@"再次发送" countDownTitle:@"s" mainColor:nil countColor:nil];
         }else{
             [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
         }
