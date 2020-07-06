@@ -70,7 +70,7 @@ static NSString *const MyTeamCell = @"MyTeamCell";
     self.tableView.estimatedSectionHeaderHeight = 0;
     self.tableView.estimatedSectionFooterHeight = 0;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 15.f, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -86,7 +86,6 @@ static NSString *const MyTeamCell = @"MyTeamCell";
 -(void)setUpEmptyView
 {
     LYEmptyView *emptyView = [LYEmptyView emptyViewWithImageStr:@"no_data" titleStr:nil detailStr:@"暂无内容"];
-    emptyView.contentViewOffset = -(self.HXNavBarHeight);
     emptyView.subViewMargin = 20.f;
     emptyView.detailLabTextColor = UIColorFromRGB(0x909090);
     emptyView.detailLabFont = [UIFont fontWithName:@"PingFangSC-Semibold" size: 16];

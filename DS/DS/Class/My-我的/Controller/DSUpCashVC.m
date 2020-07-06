@@ -197,10 +197,12 @@
     cash.hxn_height = 340.f;
     [cash.name setColorAttributedText:[NSString stringWithFormat:@"姓名：%@",self.realNameTxt] andChangeStr:self.realNameTxt andColor:UIColorFromRGB(0x333333)];
     if (self.categoryView.selectedIndex == 0) {
-        [cash.account_no setColorAttributedText:[NSString stringWithFormat:@"支付宝账号：%@",self.ali_account_no.text] andChangeStr:self.ali_account_no.text andColor:UIColorFromRGB(0x333333)];
+        cash.account_no_type.text = @"支付宝账号：";
+        cash.account_no.text = self.ali_account_no.text;
         [cash.cash_amount setColorAttributedText:[NSString stringWithFormat:@"提现金额：%@",self.ali_apply_amount.text] andChangeStr:self.ali_apply_amount.text andColor:UIColorFromRGB(0x333333)];
     }else{
-        [cash.account_no setColorAttributedText:[NSString stringWithFormat:@"银行卡账号：%@",self.card_account_no.text] andChangeStr:self.card_account_no.text andColor:UIColorFromRGB(0x333333)];
+        cash.account_no_type.text = @"银行卡账号：";
+        cash.account_no.text = self.card_account_no.text;
         [cash.cash_amount setColorAttributedText:[NSString stringWithFormat:@"提现金额：%@",self.card_apply_amount.text] andChangeStr:self.card_apply_amount.text andColor:UIColorFromRGB(0x333333)];
     }
     hx_weakify(self);
@@ -237,7 +239,7 @@
         hx_strongify(weakSelf);
         [btn stopLoading:@"提现" image:nil textColor:nil backgroundColor:nil];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"提交成功"];
             strongSelf.ali_apply_amount.text = @"";
             strongSelf.card_apply_amount.text = @"";
             if (strongSelf.upCashActionCall) {

@@ -12,6 +12,7 @@
 #import "DSWebContentVC.h"
 #import "DSDynamicDetailVC.h"
 #import "DSCashNoteVC.h"
+#import "DSMyTeamVC.h"
 
 static NSString *const MessageCell = @"MessageCell";
 @interface DSMessageVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -234,7 +235,10 @@ static NSString *const MessageCell = @"MessageCell";
         [self.navigationController pushViewController:dvc animated:YES];
     }else if ([msg.msg_type isEqualToString:@"3"]){
         [self readMsgRequest:msg.msg_id];
+        DSMyTeamVC *tvc = [DSMyTeamVC new];
+        [self.navigationController pushViewController:tvc animated:YES];
     }else{
+        [self readMsgRequest:msg.msg_id];
         DSCashNoteVC *nvc = [DSCashNoteVC new];
         [self.navigationController pushViewController:nvc animated:YES];
     }

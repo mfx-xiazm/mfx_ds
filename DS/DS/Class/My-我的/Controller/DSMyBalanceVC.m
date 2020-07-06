@@ -58,12 +58,7 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
         _header.balanceBtnCall = ^(NSInteger index) {
             hx_strongify(weakSelf);
             if (index == 0) {
-//                DSUpCashVC *cvc = [DSUpCashVC new];
-//                cvc.upCashActionCall = ^{
-//                    [strongSelf getMyBalanceRequest];
-//                };
-//                [strongSelf.navigationController pushViewController:cvc animated:YES];
-                [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"待开放"];
+
             }else if (index == 1) {
                 //奖励类型：晋级1，礼包2，商品3，分享4，队长收益5为晋级1和分享4之和
                 DSBalanceNoteVC *nvc = [DSBalanceNoteVC new];
@@ -116,7 +111,6 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
 #pragma mark -- 点击事件
 -(void)upCashClicked
 {
-//    [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"待开放"];
     if ([MSUserManager sharedInstance].curUserInfo.ulevel == 1) {
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"升级VIP会员可提现"];
         return;

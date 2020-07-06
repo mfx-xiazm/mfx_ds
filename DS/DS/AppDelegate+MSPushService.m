@@ -11,7 +11,7 @@
 #import "DSWebContentVC.h"
 #import "DSDynamicDetailVC.h"
 #import "DSCashNoteVC.h"
-#import "DSMessageVC.h"
+#import "DSMyTeamVC.h"
 #import <UMCommon/UMCommon.h>
 
 @implementation AppDelegate (MSPushService)
@@ -144,8 +144,8 @@
         dvc.msg_id = msg_id;
         [nav pushViewController:dvc animated:YES];
     }else if (push_type == 3) {
-        DSMessageVC *mvc = [DSMessageVC new];
-        [nav pushViewController:mvc animated:YES];
+        DSMyTeamVC *tvc = [DSMyTeamVC new];
+        [nav pushViewController:tvc animated:YES];
     }else {
         DSCashNoteVC *nvc = [DSCashNoteVC new];
         [nav pushViewController:nvc animated:YES];
