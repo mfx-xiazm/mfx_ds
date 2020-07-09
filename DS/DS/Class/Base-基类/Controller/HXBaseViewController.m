@@ -72,8 +72,8 @@
 //    }
     // 根据安全区域判断
     if (@available(iOS 11.0, *)) {
-        CGFloat safeTop = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.top;
-        return (safeTop>0)?YES:NO;
+        CGFloat safeBottom = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom;
+        return (safeBottom>0)?YES:NO;
     } else {
         return NO;
     }
