@@ -275,9 +275,9 @@
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"goods_id"] = self.goods_id;//商品id
-    parameters[@"city_name"] = self.city;
-    parameters[@"district_name"] = self.district;
-    parameters[@"stree_name"] = self.stree;
+    parameters[@"city_name"] = (self.city&&self.city.length)?self.city:@"";
+    parameters[@"district_name"] = (self.district&&self.district.length)?self.district:@"";
+    parameters[@"stree_name"] = (self.stree&&self.stree.length)?self.stree:@"";
     parameters[@"lng"] = @(self.longitude);
     parameters[@"lat"] = @(self.latitude);
     parameters[@"baichuan_open_id"] = openId;
@@ -314,32 +314,32 @@
 }
 -(void)openTaoKePush:(NSString *)taoUrl
 {
-        // 根据商品id创建一个商品详情页对象
-        //id<AlibcTradePage> page = [AlibcTradePageFactory itemDetailPage:self.goodsDetail.taobao_item_id];
+    // 根据商品id创建一个商品详情页对象
+    //id<AlibcTradePage> page = [AlibcTradePageFactory itemDetailPage:self.goodsDetail.taobao_item_id];
     
-        // 阿里百川电商参数组装
-        AlibcTradeShowParams *showParam = [[AlibcTradeShowParams alloc] init];
-        // 打开页面的方式 有智能判断和强制拉端(手淘/天猫)两种方式；默认智能判断
-        showParam.openType = AlibcOpenTypeAuto;
-        // 是否为push方式打开新页面 NO:在当前view controller上present新页面/YES:在传入的UINavigationController中push新页面
-        showParam.isNeedPush = YES;
-        // 是否需要自定义处理跳手淘/天猫失败后的处理策略，默认未无需自定义
-        showParam.isNeedCustomNativeFailMode = YES;
-        // 当isNeedCustomNativeFailMode == YES时生效 跳手淘/天猫失败后的处理策略, 默认值为: AlibcNativeFailModeJumpH5
-        showParam.nativeFailMode = AlibcNativeFailModeJumpDownloadPage;
-        // 优先拉起的linkKey，手淘：@"taobao" 天猫:@"tmall"
-        showParam.linkKey = @"taobao";
+    // 阿里百川电商参数组装
+    AlibcTradeShowParams *showParam = [[AlibcTradeShowParams alloc] init];
+    // 打开页面的方式 有智能判断和强制拉端(手淘/天猫)两种方式；默认智能判断
+    showParam.openType = AlibcOpenTypeAuto;
+    // 是否为push方式打开新页面 NO:在当前view controller上present新页面/YES:在传入的UINavigationController中push新页面
+    showParam.isNeedPush = YES;
+    // 是否需要自定义处理跳手淘/天猫失败后的处理策略，默认未无需自定义
+    showParam.isNeedCustomNativeFailMode = YES;
+    // 当isNeedCustomNativeFailMode == YES时生效 跳手淘/天猫失败后的处理策略, 默认值为: AlibcNativeFailModeJumpH5
+    showParam.nativeFailMode = AlibcNativeFailModeJumpDownloadPage;
+    // 优先拉起的linkKey，手淘：@"taobao" 天猫:@"tmall"
+    showParam.linkKey = @"taobao";
     
-        // 淘客参数
-        AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
-        taokeParams.pid = self.goodsDetail.taobao_pid;//淘宝联盟pid
-        taokeParams.extParams = @{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid};
-        // 返回值 仅一种情况需要媒体处理 即当AlibcTradeShowParams 中 isNeedPush 为YES时.此时需要媒体根据API返回值为1时（应用內H5打开），在传入的UINavigationController中push新页面。
-        AlibcWebViewController *webVC =[[AlibcWebViewController alloc] init];
+    // 淘客参数
+    AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
+    taokeParams.pid = self.goodsDetail.taobao_pid;//淘宝联盟pid
+    taokeParams.extParams = @{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid};
+    // 返回值 仅一种情况需要媒体处理 即当AlibcTradeShowParams 中 isNeedPush 为YES时.此时需要媒体根据API返回值为1时（应用內H5打开），在传入的UINavigationController中push新页面。
+    AlibcWebViewController *webVC =[[AlibcWebViewController alloc] init];
     NSInteger res = [[AlibcTradeSDK sharedInstance].tradeService openByUrl:taoUrl identity:@"trade" webView:nil parentController:self showParams:showParam taoKeParams:taokeParams trackParam:@{@"DSUserPhone":[MSUserManager sharedInstance].curUserInfo.phone,@"DSUserUid":[MSUserManager sharedInstance].curUserInfo.uid,@"isv_code":[MSUserManager sharedInstance].curUserInfo.phone} tradeProcessSuccessCallback:self.onTradeSuccess tradeProcessFailedCallback:self.onTradeFailure];
-        if (res == 1) {
-            [self.navigationController pushViewController:webVC animated:YES];
-        }
+    if (res == 1) {
+        [self.navigationController pushViewController:webVC animated:YES];
+    }
 }
 #pragma mark -- 定位代理
 - (void)locationDidEndUpdatingLongitude:(CGFloat)longitude latitude:(CGFloat)latitude city:(NSString *)city district:(NSString *)district stree:(NSString *)stree
