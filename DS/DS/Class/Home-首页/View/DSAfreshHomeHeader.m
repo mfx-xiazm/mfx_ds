@@ -67,6 +67,7 @@ static NSString *const HomeCateCell = @"HomeCateCell";
 {
     _homeData = homeData;
     self.pageControl.numberOfPages = _homeData.adv.count;
+    self.cyclePagerView.isInfiniteLoop = _homeData.adv.count>1?YES:NO;
     [self.cyclePagerView reloadData];
     
     [self.collectionView reloadData];

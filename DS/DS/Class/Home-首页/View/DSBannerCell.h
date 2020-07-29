@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) DSHomeBanner *banner;
 /* 商品图 */
 @property(nonatomic,strong) DSGoodsAdv *adv;
+/* 一亩地 */
+@property(nonatomic,strong) UIImage *landImg;
 @end
 
 NS_ASSUME_NONNULL_END

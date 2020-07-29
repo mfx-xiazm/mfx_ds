@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSFetchRiceResultVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzB-Ze-dTH">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提粮成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ta-Ui-VKu">
+                            <rect key="frame" x="170.5" y="70" width="73.5" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="B4z-z9-GUx">
+                            <rect key="frame" x="162" y="119.5" width="90" height="102"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9x-vV-OQq">
+                            <rect key="frame" x="135" y="271.5" width="144" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Hiq-2A-gzT"/>
+                                <constraint firstAttribute="width" constant="144" id="eeY-NA-QpV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="查看订单">
+                                <color key="titleColor" red="0.28235294119999998" green="0.71372549019999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layerBoderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="boderColor">
+                                    <color key="value" red="0.28235294119999998" green="0.71372549019999998" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="lookOrderClicked:" destination="-1" eventType="touchUpInside" id="8Al-Df-yEs"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="j9x-vV-OQq" firstAttribute="top" secondItem="B4z-z9-GUx" secondAttribute="bottom" constant="50" id="0tj-hH-Plc"/>
+                        <constraint firstItem="j9x-vV-OQq" firstAttribute="centerX" secondItem="vzB-Ze-dTH" secondAttribute="centerX" id="Dw2-4a-noV"/>
+                        <constraint firstItem="9ta-Ui-VKu" firstAttribute="centerX" secondItem="vzB-Ze-dTH" secondAttribute="centerX" id="EWT-Sy-iEm"/>
+                        <constraint firstItem="B4z-z9-GUx" firstAttribute="centerX" secondItem="vzB-Ze-dTH" secondAttribute="centerX" id="Kda-gW-RzZ"/>
+                        <constraint firstItem="9ta-Ui-VKu" firstAttribute="top" secondItem="vzB-Ze-dTH" secondAttribute="top" constant="70" id="Oev-ar-aQ9"/>
+                        <constraint firstItem="B4z-z9-GUx" firstAttribute="top" secondItem="9ta-Ui-VKu" secondAttribute="bottom" constant="28" id="Om5-QT-8EE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="vzB-Ze-dTH" secondAttribute="bottom" id="Odt-Js-26P"/>
+                <constraint firstItem="vzB-Ze-dTH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e8P-Xs-REf"/>
+                <constraint firstItem="vzB-Ze-dTH" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="ff6-jI-Igq"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="vzB-Ze-dTH" secondAttribute="trailing" id="fn3-BR-L2m"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="139" y="114"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="success" width="90" height="102"/>
+    </resources>
+</document>

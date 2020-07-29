@@ -22,6 +22,7 @@
 #import "DSAllOrderVC.h"
 #import "DSCartVC.h"
 #import "UIView+WZLBadge.h"
+#import "DSGranaryVC.h"
 
 @interface DSMyVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *header_img;
@@ -125,6 +126,10 @@
             [self.navigationController pushViewController:ovc animated:YES];
         }
     }
+}
+- (IBAction)myGranaryBtnClicked:(UIButton *)sender {
+    DSGranaryVC *gvc = [DSGranaryVC new];
+    [self.navigationController pushViewController:gvc animated:YES];
 }
 - (IBAction)myTeamBtnClicked:(UIButton *)sender {
     DSMyTeamVC *avc = [DSMyTeamVC new];

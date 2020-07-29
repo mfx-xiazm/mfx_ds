@@ -42,6 +42,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param darkAlpha 暗黑模式颜色
 + (UIColor *)colorWithLightColorStr:(NSString *)lightColor WithLightColorAlpha:(CGFloat)lightAlpha DarkColor:(NSString *)darkColor WithDarkColorAlpha:(CGFloat)darkAlpha;
 
+/// 渐变颜色
+/// @param c1 颜色1
+/// @param c2 颜色2
+/// @param height 高度
++ (UIColor*)mfx_gradientFromColor:(UIColor*)c1 toColor:(UIColor*)c2 withHeight:(int)height;
 @end
 
 NS_ASSUME_NONNULL_END

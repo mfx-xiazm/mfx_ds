@@ -1,28 +1,29 @@
-
 //
-//  DSHomeBannerHeader.m
+//  DSLandHeader.m
 //  DS
 //
-//  Created by 夏增明 on 2019/11/12.
-//  Copyright © 2019 夏增明. All rights reserved.
+//  Created by huaxin-01 on 2020/7/29.
+//  Copyright © 2020 夏增明. All rights reserved.
 //
 
-#import "DSHomeBannerHeader.h"
+#import "DSLandHeader.h"
 #import "DSBannerCell.h"
 #import <TYCyclePagerView.h>
 #import <TYPageControl.h>
-#import "DSHomeData.h"
 
-@interface DSHomeBannerHeader ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
+static NSString *const LandCateCell = @"LandCateCell";
+@interface DSLandHeader ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
 @property (nonatomic,strong) TYPageControl *pageControl;
 
 @end
-@implementation DSHomeBannerHeader
 
-- (void)awakeFromNib {
+@implementation DSLandHeader
+
+-(void)awakeFromNib
+{
     [super awakeFromNib];
-   
+    
     self.cyclePagerView.isInfiniteLoop = YES;
     self.cyclePagerView.autoScrollInterval = 3.0;
     self.cyclePagerView.dataSource = self;
@@ -31,57 +32,64 @@
     [self.cyclePagerView registerNib:[UINib nibWithNibName:NSStringFromClass([DSBannerCell class]) bundle:nil] forCellWithReuseIdentifier:@"TopBannerCell"];
     
     TYPageControl *pageControl = [[TYPageControl alloc]init];
-    pageControl.numberOfPages = 4;
+    pageControl.numberOfPages = 3;
     pageControl.currentPageIndicatorSize = CGSizeMake(12, 6);
     pageControl.pageIndicatorSize = CGSizeMake(6, 6);
-//    pageControl.pageIndicatorImage = HXGetImage(@"灰色渐进器");
-//    pageControl.currentPageIndicatorImage = HXGetImage(@"当前渐进器");
-    pageControl.pageIndicatorTintColor = UIColorFromRGB(0xD8D8D8);
-    pageControl.currentPageIndicatorTintColor = UIColorFromRGB(0x000000);
-    pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame), CGRectGetWidth(self.cyclePagerView.frame), 15);
+    pageControl.pageIndicatorTintColor = UIColorFromRGB(0xFFFFFF);
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithHexString:@"#48B664"];
+    pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame)- 20.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
     self.pageControl = pageControl;
     [self.cyclePagerView addSubview:pageControl];
+    
+    [self.cyclePagerView reloadData];
 }
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame), CGRectGetWidth(self.cyclePagerView.frame), 15);
+    self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 20.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
+    self.backgroundColor = [UIColor mfx_gradientFromColor:UIColorFromRGB(0xFFFFFF) toColor:UIColorFromRGB(0xF5F6F7) withHeight:self.hxn_height];
 }
--(void)setAdv:(NSArray<DSHomeBanner *> *)adv
-{
-    _adv = adv;
-    self.pageControl.numberOfPages = _adv.count;
-    [self.cyclePagerView reloadData];
+- (IBAction)landCateClicked:(UIButton *)sender {
+    if (self.landHeaderClickCall) {
+        self.landHeaderClickCall(1,sender.tag);
+    }
 }
+
+//-(void)setHomeData:(DSHomeData *)homeData
+//{
+//    _homeData = homeData;
+//    self.pageControl.numberOfPages = _homeData.adv.count;
+//    [self.cyclePagerView reloadData];
+//
+//}
 #pragma mark -- TYCyclePagerView代理
 - (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView {
-    return self.adv.count;
+    return 3;
 }
 
 - (UICollectionViewCell *)pagerView:(TYCyclePagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
     DSBannerCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"TopBannerCell" forIndex:index];
-    DSHomeBanner *banner = self.adv[index];
-    cell.banner = banner;
     return cell;
 }
 
 - (TYCyclePagerViewLayout *)layoutForPagerView:(TYCyclePagerView *)pageView {
     TYCyclePagerViewLayout *layout = [[TYCyclePagerViewLayout alloc] init];
-    layout.itemSize = CGSizeMake(CGRectGetWidth(pageView.frame)-12*2, CGRectGetHeight(pageView.frame)-10*2);
-    layout.itemSpacing = 12;
+    layout.itemSize = CGSizeMake(CGRectGetWidth(pageView.frame), CGRectGetHeight(pageView.frame));
+    layout.itemSpacing = 0;
     layout.itemHorizontalCenter = YES;
     return layout;
 }
 
 - (void)pagerView:(TYCyclePagerView *)pageView didScrollFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
     self.pageControl.currentPage = toIndex;
-    //[_pageControl setCurrentPage:newIndex animate:YES];
+    // [_pageControl setCurrentPage:newIndex animate:YES];
+    // 超过50%的滚动机会触发此代理
 }
 
 - (void)pagerView:(TYCyclePagerView *)pageView didSelectedItemCell:(__kindof UICollectionViewCell *)cell atIndex:(NSInteger)index
 {
-    if (self.bannerClickCall) {
-        self.bannerClickCall(index);
+    if (self.landHeaderClickCall) {
+        self.landHeaderClickCall(0,index);
     }
 }
 @end
