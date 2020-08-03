@@ -10,9 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSLand;
 typedef void(^landHeaderClickCall)(NSInteger type,NSInteger index);
 @interface DSLandHeader : UIView
 @property (nonatomic, copy) landHeaderClickCall landHeaderClickCall;
+@property (nonatomic, strong) DSLand *land;
 
 @end
 

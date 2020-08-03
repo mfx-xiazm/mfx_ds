@@ -30,6 +30,11 @@
 		496605BF2473DC08003A2652 /* DSBindCashMsgVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605BD2473DC08003A2652 /* DSBindCashMsgVC.xib */; };
 		496605C22473E081003A2652 /* DSUpCashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605C12473E080003A2652 /* DSUpCashView.m */; };
 		496605C42473E11D003A2652 /* DSUpCashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605C32473E11D003A2652 /* DSUpCashView.xib */; };
+		496D402E24D7A5FB005B3CA5 /* DSLandCateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D402C24D7A5FB005B3CA5 /* DSLandCateCell.m */; };
+		496D402F24D7A5FB005B3CA5 /* DSLandCateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496D402D24D7A5FB005B3CA5 /* DSLandCateCell.xib */; };
+		496D403224D7AA02005B3CA5 /* DSLand.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D403124D7AA02005B3CA5 /* DSLand.m */; };
+		496D403524D7B54A005B3CA5 /* DSLandDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D403424D7B54A005B3CA5 /* DSLandDetail.m */; };
+		496D403924D7BF31005B3CA5 /* TTTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D403724D7BF30005B3CA5 /* TTTagView.m */; };
 		4997A536247CFD3000605EEC /* DSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4997A535247CFD3000605EEC /* DSTextField.m */; };
 		49B4C0842472559100560451 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07B2472559100560451 /* JXPagerListContainerView.m */; };
 		49B4C0852472559100560451 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07C2472559100560451 /* JXPagerMainTableView.m */; };
@@ -424,6 +429,15 @@
 		496605C02473E080003A2652 /* DSUpCashView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUpCashView.h; sourceTree = "<group>"; };
 		496605C12473E080003A2652 /* DSUpCashView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUpCashView.m; sourceTree = "<group>"; };
 		496605C32473E11D003A2652 /* DSUpCashView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUpCashView.xib; sourceTree = "<group>"; };
+		496D402B24D7A5FB005B3CA5 /* DSLandCateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLandCateCell.h; sourceTree = "<group>"; };
+		496D402C24D7A5FB005B3CA5 /* DSLandCateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLandCateCell.m; sourceTree = "<group>"; };
+		496D402D24D7A5FB005B3CA5 /* DSLandCateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSLandCateCell.xib; sourceTree = "<group>"; };
+		496D403024D7AA02005B3CA5 /* DSLand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLand.h; sourceTree = "<group>"; };
+		496D403124D7AA02005B3CA5 /* DSLand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLand.m; sourceTree = "<group>"; };
+		496D403324D7B54A005B3CA5 /* DSLandDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLandDetail.h; sourceTree = "<group>"; };
+		496D403424D7B54A005B3CA5 /* DSLandDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLandDetail.m; sourceTree = "<group>"; };
+		496D403724D7BF30005B3CA5 /* TTTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTagView.m; sourceTree = "<group>"; };
+		496D403824D7BF31005B3CA5 /* TTTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTagView.h; sourceTree = "<group>"; };
 		498318352488932C004AA787 /* 鲸品库.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "鲸品库.entitlements"; sourceTree = "<group>"; };
 		4997A534247CFD3000605EEC /* DSTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTextField.h; sourceTree = "<group>"; };
 		4997A535247CFD3000605EEC /* DSTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTextField.m; sourceTree = "<group>"; };
@@ -1060,6 +1074,15 @@
 			path = UMPush;
 			sourceTree = "<group>";
 		};
+		496D403624D7BF21005B3CA5 /* TTTagView */ = {
+			isa = PBXGroup;
+			children = (
+				496D403824D7BF31005B3CA5 /* TTTagView.h */,
+				496D403724D7BF30005B3CA5 /* TTTagView.m */,
+			);
+			path = TTTagView;
+			sourceTree = "<group>";
+		};
 		49B4C0792472559100560451 /* JXPagerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1131,6 +1154,10 @@
 		49F88B3F24D10391004F136A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				496D403024D7AA02005B3CA5 /* DSLand.h */,
+				496D403124D7AA02005B3CA5 /* DSLand.m */,
+				496D403324D7B54A005B3CA5 /* DSLandDetail.h */,
+				496D403424D7B54A005B3CA5 /* DSLandDetail.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1144,6 +1171,9 @@
 				49F88B4B24D10FCA004F136A /* DSLandCell.h */,
 				49F88B4C24D10FCA004F136A /* DSLandCell.m */,
 				49F88B4D24D10FCA004F136A /* DSLandCell.xib */,
+				496D402B24D7A5FB005B3CA5 /* DSLandCateCell.h */,
+				496D402C24D7A5FB005B3CA5 /* DSLandCateCell.m */,
+				496D402D24D7A5FB005B3CA5 /* DSLandCateCell.xib */,
 				49F88B6424D14BD2004F136A /* DSFetchRiceHeader.h */,
 				49F88B6524D14BD2004F136A /* DSFetchRiceHeader.m */,
 				49F88B6724D14BDC004F136A /* DSFetchRiceHeader.xib */,
@@ -2000,6 +2030,7 @@
 		906F36ED23792F64000B160A /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				496D403624D7BF21005B3CA5 /* TTTagView */,
 				49053C8E2491C441004B4A62 /* ONImagePicker */,
 				49F0E53F2490E32B00082CBD /* LEEAlert */,
 				49565F322488974A00C9D43E /* UMPush */,
@@ -2381,6 +2412,7 @@
 				906F375923792F64000B160A /* WSDatePickerView.xib in Resources */,
 				9028AA4223AC756F0015E06D /* DSVipUpOrderVC.xib in Resources */,
 				903D07E2238378BA001C2E40 /* DSDynamicDetailVC.xib in Resources */,
+				496D402F24D7A5FB005B3CA5 /* DSLandCateCell.xib in Resources */,
 				90FD91FD237E53AA00016EF7 /* DSMyAddressVC.xib in Resources */,
 				90C94C2E23A47D9600CD19FB /* GXAddressCell.xib in Resources */,
 				90AE52C62382802A009F4740 /* DSVipCardDetailCell.xib in Resources */,
@@ -2493,6 +2525,7 @@
 				906F375C23792F64000B160A /* UIView+Extension.m in Sources */,
 				906F376223792F64000B160A /* HXPlaceholderTextView.m in Sources */,
 				90C6C30A239E1C5F00A531CC /* UITextField+GYExpand.m in Sources */,
+				496D403524D7B54A005B3CA5 /* DSLandDetail.m in Sources */,
 				90F74E60238241BE003576B3 /* DSCashNoteDetailVC.m in Sources */,
 				90C94C4123A48EB700CD19FB /* DSVipGoods.m in Sources */,
 				903D082623839A15001C2E40 /* DSUpOrderFooter.m in Sources */,
@@ -2594,6 +2627,7 @@
 				903D07E1238378BA001C2E40 /* DSDynamicDetailVC.m in Sources */,
 				90AE52C923828576009F4740 /* DSDynamic.m in Sources */,
 				90C94C3B23A47E6E00CD19FB /* GXRegion.m in Sources */,
+				496D403224D7AA02005B3CA5 /* DSLand.m in Sources */,
 				90EC25A8237A9806005C24C8 /* DSCateGoodsChildVC.m in Sources */,
 				90F74E5623823F1F003576B3 /* DSCashNoteVC.m in Sources */,
 				49B4C0882472559100560451 /* JXPagerListRefreshView.m in Sources */,
@@ -2668,11 +2702,13 @@
 				903CB55C23927F180053A25B /* UIScrollView+TYSnapshot.m in Sources */,
 				90FD91D4237E471000016EF7 /* DSChangeBindVC.m in Sources */,
 				90C94C3523A47DC900CD19FB /* SPPickerView.m in Sources */,
+				496D403924D7BF31005B3CA5 /* TTTagView.m in Sources */,
 				903A95C623A2123B00AD68CF /* LYEmptyBaseView.m in Sources */,
 				9001468B2383E38800275DD9 /* DSChooseClassFooter.m in Sources */,
 				90C94C3A23A47E6E00CD19FB /* GXSelectRegion.m in Sources */,
 				906F363E2378ED46000B160A /* main.m in Sources */,
 				906F376A23792F64000B160A /* SGQRCodeObtainConfigure.m in Sources */,
+				496D402E24D7A5FB005B3CA5 /* DSLandCateCell.m in Sources */,
 				906F378F23792FF7000B160A /* DSMyVC.m in Sources */,
 				906F36AB23792F5B000B160A /* HXBaseViewController.m in Sources */,
 				9028AA4523AC7A480015E06D /* DSVipConfirmOrder.m in Sources */,

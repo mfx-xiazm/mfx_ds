@@ -10,14 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DSHomeBanner,DSGoodsAdv;
+@class DSHomeBanner,DSGoodsAdv,DSLandAdv,DSLandGoodsAdv;
 @interface DSBannerCell : UICollectionViewCell
 /* banner */
 @property(nonatomic,strong) DSHomeBanner *banner;
 /* 商品图 */
 @property(nonatomic,strong) DSGoodsAdv *adv;
 /* 一亩地 */
-@property(nonatomic,strong) UIImage *landImg;
+@property(nonatomic,strong) DSLandAdv *landAdv;
+/* 一亩地详情 */
+@property (nonatomic, strong) DSLandGoodsAdv *landGoodsAdv;
 @end
 
 NS_ASSUME_NONNULL_END

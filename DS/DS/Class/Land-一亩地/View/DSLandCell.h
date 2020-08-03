@@ -10,8 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSLandGoods;
 @interface DSLandCell : UITableViewCell
-
+@property (nonatomic, strong) DSLandGoods *landGood;
 @end
 
 NS_ASSUME_NONNULL_END

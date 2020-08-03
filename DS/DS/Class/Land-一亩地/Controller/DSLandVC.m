@@ -10,13 +10,15 @@
 #import "DSLandHeader.h"
 #import "DSLandCell.h"
 #import "DSLandDetailVC.h"
+#import "DSLand.h"
 
 static NSString *const LandCell = @"LandCell";
 @interface DSLandVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 /* 头视图 */
 @property(nonatomic,strong) DSLandHeader *header;
-
+/* 一亩地数据 */
+@property (nonatomic, strong) DSLand *land;
 @end
 
 @implementation DSLandVC
@@ -26,6 +28,9 @@ static NSString *const LandCell = @"LandCell";
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F5F6F7"];
     [self setUpNavBar];
     [self setUpTableView];
+    [self setUpRefresh];
+    [self startShimmer];
+    [self getLandHomeDataRequest:YES];
 }
 - (void)viewDidLayoutSubviews
 {
@@ -107,28 +112,52 @@ static NSString *const LandCell = @"LandCell";
 /** 添加刷新控件 */
 -(void)setUpRefresh
 {
-//    hx_weakify(self);
-//    self.tableView.mj_header.automaticallyChangeAlpha = YES;
-//    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        hx_strongify(weakSelf);
-//        [strongSelf.tableView.mj_footer resetNoMoreData];
-//        [strongSelf getMemberGoodsDataRequest:YES];
-//    }];
+    hx_weakify(self);
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        hx_strongify(weakSelf);
+        [strongSelf.tableView.mj_footer resetNoMoreData];
+        [strongSelf getLandHomeDataRequest:YES];
+    }];
 //    //追加尾部刷新
 //    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
 //        hx_strongify(weakSelf);
 //        [strongSelf getMemberGoodsDataRequest:NO];
 //    }];
 }
+-(void)getLandHomeDataRequest:(BOOL)isRefresh
+{
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"land_home_get" parameters:@{} success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        if ([responseObject[@"status"] integerValue] == 1) {
+            [strongSelf.tableView.mj_header endRefreshing];
+            strongSelf.land = [DSLand yy_modelWithDictionary:responseObject[@"result"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                strongSelf.header.land = strongSelf.land;
+                [strongSelf.tableView reloadData];
+            });
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:responseObject[@"message"]];
+        }
+    } failure:^(NSError *error) {
+        hx_strongify(weakSelf);
+        [strongSelf stopShimmer];
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 6;
+    return self.land.land_goods.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSLandCell *cell = [tableView dequeueReusableCellWithIdentifier:LandCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    DSLandGoods *landGood = self.land.land_goods[indexPath.row];
+    cell.landGood = landGood;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,6 +167,8 @@ static NSString *const LandCell = @"LandCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DSLandDetailVC *dvc = [DSLandDetailVC new];
+    DSLandGoods *landGood = self.land.land_goods[indexPath.row];
+    dvc.goods_id = landGood.goods_id;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 @end

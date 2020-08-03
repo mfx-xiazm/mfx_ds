@@ -23,6 +23,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landimage" translatesAutoresizingMaskIntoConstraints="NO" id="baq-Ch-TT4">
                                 <rect key="frame" x="0.0" y="0.0" width="336" height="144"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  ¥200起  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAh-TH-2YS">
+                                <rect key="frame" x="0.0" y="110" width="88.5" height="34"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.33333333333333331" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="D86-gf-v6q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WvD-TO-wsd">
                                 <rect key="frame" x="0.0" y="144" width="336" height="50"/>
                                 <subviews>
@@ -66,6 +76,8 @@
                             <constraint firstAttribute="trailing" secondItem="WvD-TO-wsd" secondAttribute="trailing" id="Ndz-yT-Pnr"/>
                             <constraint firstItem="WvD-TO-wsd" firstAttribute="top" secondItem="baq-Ch-TT4" secondAttribute="bottom" id="P8W-40-yPz"/>
                             <constraint firstItem="baq-Ch-TT4" firstAttribute="leading" secondItem="5kS-Eu-qhz" secondAttribute="leading" id="Pp6-Kg-u8V"/>
+                            <constraint firstItem="WvD-TO-wsd" firstAttribute="top" secondItem="gAh-TH-2YS" secondAttribute="bottom" id="Rfy-3A-ZdM"/>
+                            <constraint firstItem="gAh-TH-2YS" firstAttribute="leading" secondItem="5kS-Eu-qhz" secondAttribute="leading" id="SSr-4t-4Nh"/>
                             <constraint firstAttribute="trailing" secondItem="baq-Ch-TT4" secondAttribute="trailing" id="eIZ-Sj-eSS"/>
                             <constraint firstItem="WvD-TO-wsd" firstAttribute="leading" secondItem="5kS-Eu-qhz" secondAttribute="leading" id="uEB-Et-xDo"/>
                         </constraints>
@@ -86,6 +98,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="cover_img" destination="baq-Ch-TT4" id="jpF-rf-cCm"/>
+                <outlet property="goods_name" destination="rIu-2d-bfc" id="Fz8-jG-2pA"/>
+                <outlet property="price" destination="gAh-TH-2YS" id="zO0-I6-dok"/>
+            </connections>
             <point key="canvasLocation" x="244.92753623188409" y="139.28571428571428"/>
         </tableViewCell>
     </objects>

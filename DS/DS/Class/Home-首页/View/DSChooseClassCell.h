@@ -10,10 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DSGoodsAttrs;
+@class DSGoodsAttrs,DSLandGoodsSku;
 @interface DSChooseClassCell : UICollectionViewCell
 /* 规则 */
 @property(nonatomic,strong) DSGoodsAttrs *attrs;
+/* 一亩地 */
+@property (nonatomic, strong) DSLandGoodsSku *landSku;
 @end
 
 NS_ASSUME_NONNULL_END

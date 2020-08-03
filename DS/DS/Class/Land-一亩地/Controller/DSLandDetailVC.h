@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DSLandDetailVC : HXBaseViewController
-
+@property (nonatomic, copy) NSString *goods_id;
 @end
 
 NS_ASSUME_NONNULL_END

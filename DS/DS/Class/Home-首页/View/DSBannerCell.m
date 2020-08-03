@@ -9,6 +9,8 @@
 #import "DSBannerCell.h"
 #import "DSHomeData.h"
 #import "DSGoodsDetail.h"
+#import "DSLand.h"
+#import "DSLandDetail.h"
 
 @interface DSBannerCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *bannerImg;
@@ -33,5 +35,20 @@
     self.bannerImg.layer.cornerRadius = 0.f;
     self.bannerImg.layer.masksToBounds = YES;
     [self.bannerImg sd_setImageWithURL:[NSURL URLWithString:_adv.adv_img]];
+}
+-(void)setLandAdv:(DSLandAdv *)landAdv
+{
+    _landAdv = landAdv;
+    self.bannerImg.layer.cornerRadius = 0.f;
+    self.bannerImg.layer.masksToBounds = YES;
+    [self.bannerImg sd_setImageWithURL:[NSURL URLWithString:_landAdv.adv_img]];
+}
+
+-(void)setLandGoodsAdv:(DSLandGoodsAdv *)landGoodsAdv
+{
+    _landGoodsAdv = landGoodsAdv;
+    self.bannerImg.layer.cornerRadius = 0.f;
+    self.bannerImg.layer.masksToBounds = YES;
+    [self.bannerImg sd_setImageWithURL:[NSURL URLWithString:_landGoodsAdv.adv_img]];
 }
 @end

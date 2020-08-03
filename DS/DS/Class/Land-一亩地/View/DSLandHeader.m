@@ -10,12 +10,15 @@
 #import "DSBannerCell.h"
 #import <TYCyclePagerView.h>
 #import <TYPageControl.h>
+#import "DSLandCateCell.h"
+#import <ZLCollectionViewHorzontalLayout.h>
+#import "DSLand.h"
 
 static NSString *const LandCateCell = @"LandCateCell";
-@interface DSLandHeader ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
+@interface DSLandHeader ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,ZLCollectionViewBaseFlowLayoutDelegate>
 @property (weak, nonatomic) IBOutlet TYCyclePagerView *cyclePagerView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic,strong) TYPageControl *pageControl;
-
 @end
 
 @implementation DSLandHeader
@@ -40,8 +43,19 @@ static NSString *const LandCateCell = @"LandCateCell";
     pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame)- 20.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
     self.pageControl = pageControl;
     [self.cyclePagerView addSubview:pageControl];
+        
+    ZLCollectionViewHorzontalLayout *flowLayout = [[ZLCollectionViewHorzontalLayout alloc] init];
+    flowLayout.delegate = self;
+    flowLayout.canDrag = NO;
+    flowLayout.header_suspension = NO;
+    self.collectionView.collectionViewLayout = flowLayout;
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.scrollEnabled = YES;
+    //    self.collectionView.contentInset = UIEdgeInsetsMake(self.HXNavBarHeight, 0, 0, 0);
     
-    [self.cyclePagerView reloadData];
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DSLandCateCell class]) bundle:nil] forCellWithReuseIdentifier:LandCateCell];
 }
 -(void)layoutSubviews
 {
@@ -49,26 +63,24 @@ static NSString *const LandCateCell = @"LandCateCell";
     self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 20.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
     self.backgroundColor = [UIColor mfx_gradientFromColor:UIColorFromRGB(0xFFFFFF) toColor:UIColorFromRGB(0xF5F6F7) withHeight:self.hxn_height];
 }
-- (IBAction)landCateClicked:(UIButton *)sender {
-    if (self.landHeaderClickCall) {
-        self.landHeaderClickCall(1,sender.tag);
-    }
-}
+-(void)setLand:(DSLand *)land
+{
+    _land = land;
+    self.pageControl.numberOfPages = _land.adv.count;
+    self.cyclePagerView.isInfiniteLoop = _land.adv.count>1?YES:NO;
+    [self.cyclePagerView reloadData];
 
-//-(void)setHomeData:(DSHomeData *)homeData
-//{
-//    _homeData = homeData;
-//    self.pageControl.numberOfPages = _homeData.adv.count;
-//    [self.cyclePagerView reloadData];
-//
-//}
+    [self.collectionView reloadData];
+}
 #pragma mark -- TYCyclePagerView代理
 - (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView {
-    return 3;
+    return self.land.adv.count;
 }
 
 - (UICollectionViewCell *)pagerView:(TYCyclePagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
     DSBannerCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"TopBannerCell" forIndex:index];
+    DSLandAdv *adv = self.land.adv[index];
+    cell.landAdv = adv;
     return cell;
 }
 
@@ -90,6 +102,43 @@ static NSString *const LandCateCell = @"LandCateCell";
 {
     if (self.landHeaderClickCall) {
         self.landHeaderClickCall(0,index);
+    }
+}
+#pragma mark -- UICollectionView 数据源和代理
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.land.jgq.count;
+}
+- (ZLLayoutType)collectionView:(UICollectionView *)collectionView layout:(ZLCollectionViewBaseFlowLayout *)collectionViewLayout typeOfLayout:(NSInteger)section {
+    return ClosedLayout;
+}
+//如果是ClosedLayout样式的section，必须实现该代理，指定列数
+- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(ZLCollectionViewBaseFlowLayout*)collectionViewLayout columnCountOfSection:(NSInteger)section {
+    return 1;
+}
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    DSLandCateCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:LandCateCell forIndexPath:indexPath];
+    DSLandAdv *cate = self.land.jgq[indexPath.item];
+    cell.cate = cate;
+    return cell;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat width = (HX_SCREEN_WIDTH-12.0*2.0-32*3.0)/4.0;
+    CGFloat height = 115.f;
+    return CGSizeMake(width, height);
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 0.f;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 32.f;
+}
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return  UIEdgeInsetsMake(0.f, 12.f, 0.f, 12.f);
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+   if (self.landHeaderClickCall) {
+       self.landHeaderClickCall(1,indexPath.item);
     }
 }
 @end
