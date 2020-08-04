@@ -189,7 +189,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="addressView" destination="2B8-b1-nge" id="BuQ-vh-Mfj"/>
+                <outlet property="address_detail" destination="cHc-gT-w7k" id="Bzy-I2-ANm"/>
+                <outlet property="millet" destination="7rY-4N-CRJ" id="ljK-S6-Xqs"/>
+                <outlet property="min_pick_num" destination="sg9-gc-Eji" id="PF9-3a-cbI"/>
                 <outlet property="noAddressView" destination="7ng-cW-0EP" id="XYa-0X-ODx"/>
+                <outlet property="receiver" destination="vfW-HE-laT" id="TRc-tf-yjG"/>
+                <outlet property="receiver_phone" destination="50I-10-dWu" id="JtX-wH-p12"/>
             </connections>
             <point key="canvasLocation" x="21.739130434782609" y="229.6875"/>
         </view>

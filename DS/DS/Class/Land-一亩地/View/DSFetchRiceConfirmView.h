@@ -10,9 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSGranary;
 typedef void(^confirmBtnClickedCall)(NSInteger index);
 @interface DSFetchRiceConfirmView : UIView
 @property (nonatomic, copy) confirmBtnClickedCall confirmBtnClickedCall;
+@property (nonatomic, strong) DSGranary *granary;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -153,7 +153,6 @@ static NSString *const ChooseClassCell = @"ChooseClassCell";
     if ([self.landDetail.is_nmj isEqualToString:@"1"]) {//碾米机商品
         self.collectionViewHeight.constant = 20.f;
         self.collectionView.hidden = YES;
-        self.price.text = [NSString stringWithFormat:@"¥%@",self.landDetail.price];
     }else{// 一亩地
         self.collectionView.hidden = NO;
         [self.collectionView reloadData];
@@ -162,12 +161,11 @@ static NSString *const ChooseClassCell = @"ChooseClassCell";
             hx_strongify(weakSelf);
             strongSelf.collectionViewHeight.constant = strongSelf.collectionView.contentSize.height;
         });
-        
-        DSLandGoodsSku *sku = self.landDetail.goods_sku.firstObject;
-        sku.isSelected = YES;
-        self.landDetail.selectSku = sku;
-        self.price.text = [NSString stringWithFormat:@"¥%@",sku.price];
     }
+    DSLandGoodsSku *sku = self.landDetail.goods_sku.firstObject;
+    sku.isSelected = YES;
+    self.landDetail.selectSku = sku;
+    self.price.text = [NSString stringWithFormat:@"¥%@",sku.price];
     
     NSString *h5 = [NSString stringWithFormat:@"<html><head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\"><style>img{width:100%%; height:auto;}body{margin:10px 10px;}</style></head><body>%@</body></html>",self.landDetail.goods_desc];
     [self.webView loadHTMLString:h5 baseURL:[NSURL URLWithString:HXRC_URL_HEADER]];

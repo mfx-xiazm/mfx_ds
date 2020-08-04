@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *adv_id;
 @property(nonatomic,copy) NSString *adv_img;
 @property(nonatomic,copy) NSString *adv_name;
+@property(nonatomic,copy) NSString *font_color;
 
 @end
 

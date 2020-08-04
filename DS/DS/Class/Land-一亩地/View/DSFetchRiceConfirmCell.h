@@ -1,8 +1,8 @@
 //
-//  DSFetchRiceCell.h
+//  DSFetchRiceConfirmCell.h
 //  DS
 //
-//  Created by huaxin-01 on 2020/7/29.
+//  Created by huaxin-01 on 2020/8/4.
 //  Copyright © 2020 夏增明. All rights reserved.
 //
 
@@ -11,10 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class DSGranaryGoods;
-typedef void(^fetchRiceNumCall)(void);
-@interface DSFetchRiceCell : UITableViewCell
+@interface DSFetchRiceConfirmCell : UITableViewCell
 @property (nonatomic, strong) DSGranaryGoods *goods;
-@property (nonatomic, copy) fetchRiceNumCall fetchRiceNumCall;
 @end
 
 NS_ASSUME_NONNULL_END

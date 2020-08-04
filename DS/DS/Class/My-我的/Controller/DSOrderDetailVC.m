@@ -110,6 +110,8 @@ static NSString *const MyOrderCell = @"MyOrderCell";
         [strongSelf stopShimmer];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
             strongSelf.orderDetail = [DSMyOrderDetail yy_modelWithDictionary:responseObject[@"result"]];
+            strongSelf.orderDetail.ymd_send_member = strongSelf.ymd_send_member;
+            strongSelf.orderDetail.ymd_type = strongSelf.ymd_type;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [strongSelf handleOrderDetailData];
             });
@@ -149,7 +151,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             
             self.secondHandleBtn.hidden = YES;
             
-            if ([self.orderDetail.order_type isEqualToString:@"1"]) {
+            if ([self.orderDetail.order_type isEqualToString:@"1"] || [self.orderDetail.ymd_type isEqualToString:@"2"]) {
                 self.handleView.hidden = NO;
                 self.handleViewHeight.constant = 50.f;
                 
@@ -169,7 +171,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             self.handleView.hidden = NO;
             self.handleViewHeight.constant = 50.f;
             
-            if ([self.orderDetail.order_type isEqualToString:@"1"]) {
+            if ([self.orderDetail.order_type isEqualToString:@"1"] || [self.orderDetail.ymd_type isEqualToString:@"2"]) {
                 self.firstHandleBtn.hidden = NO;
                 [self.firstHandleBtn setTitle:@"申请退款" forState:UIControlStateNormal];
                 self.firstHandleBtn.backgroundColor = [UIColor whiteColor];
@@ -532,8 +534,10 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.order_type = self.orderDetail.order_type;
+    cell.ymd_send_member = self.orderDetail.ymd_send_member;
+    cell.ymd_type = self.orderDetail.ymd_type;
     DSMyOrderDetailGoods *detailGoods = self.orderDetail.list_goods[indexPath.row];
-    cell.flag.hidden = [detailGoods.is_discount isEqualToString:@"1"]?NO:YES;
+    cell.flag.hidden = [self.orderDetail.order_type isEqualToString:@"10"]?YES:[detailGoods.is_discount isEqualToString:@"1"]?NO:YES;
     cell.detailGoods = detailGoods;
     return cell;
 }
@@ -550,7 +554,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 {
     DSUpOrderSectionHeader *header = [DSUpOrderSectionHeader loadXibView];
     header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 35.f);
-    
+    header.order_type.text = [self.orderDetail.order_type isEqualToString:@"10"]?@"鲸宇粮仓":@"自营";
     return header;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

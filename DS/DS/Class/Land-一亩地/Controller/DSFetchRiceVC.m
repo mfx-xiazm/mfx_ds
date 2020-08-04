@@ -13,10 +13,14 @@
 #import <zhPopupController.h>
 #import "DSFetchRiceResultVC.h"
 #import "DSMyAddressVC.h"
+#import "DSGranary.h"
+#import "DSMyAddress.h"
 
 static NSString *const FetchRiceCell = @"FetchRiceCell";
 @interface DSFetchRiceVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *fetch_num;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 /* 头视图 */
 @property(nonatomic,strong) DSFetchRiceHeader *header;
 
@@ -28,6 +32,7 @@ static NSString *const FetchRiceCell = @"FetchRiceCell";
     [super viewDidLoad];
     [self setUpNavBar];
     [self setUpTableView];
+    [self handleFetchData];
 }
 - (void)viewDidLayoutSubviews
 {
@@ -43,10 +48,10 @@ static NSString *const FetchRiceCell = @"FetchRiceCell";
         _header.addressClickedCall = ^{
             hx_strongify(weakSelf);
             DSMyAddressVC *avc = [DSMyAddressVC new];
-//            avc.getAddressCall = ^(DSMyAddress * _Nonnull address) {
-//                strongSelf.confirmOrder.address = address;
-//                [strongSelf handleConfirmOrderData];
-//            };
+            avc.getAddressCall = ^(DSMyAddress * _Nonnull address) {
+                strongSelf.granary.address = address;
+                [strongSelf handleFetchData];
+            };
             [strongSelf.navigationController pushViewController:avc animated:YES];
         };
     }
@@ -88,15 +93,27 @@ static NSString *const FetchRiceCell = @"FetchRiceCell";
 }
 #pragma mark -- 点击事件
 - (IBAction)fetchClicked:(UIButton *)sender {
+    if (!self.granary.address) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择地址"];
+        return;
+    }
+    if (self.granary.pick_num < [self.granary.min_pick_num floatValue]) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"每次提粮总重量不能低于%@kg",self.granary.min_pick_num]];
+        return;
+    }
+    if (self.granary.pick_num > [self.granary.millet floatValue]) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"稻谷不足"];
+        return;
+    }
     DSFetchRiceConfirmView *pv = [DSFetchRiceConfirmView loadXibView];
     pv.hxn_size = CGSizeMake(HX_SCREEN_WIDTH-36*2, 410);
+    pv.granary = self.granary;
     hx_weakify(self);
     pv.confirmBtnClickedCall = ^(NSInteger index) {
         hx_strongify(weakSelf);
         [strongSelf.zh_popupController dismissWithDuration:0.25 springAnimated:NO];
         if (index) {
-            DSFetchRiceResultVC *rvc = [DSFetchRiceResultVC new];
-            [strongSelf.navigationController pushViewController:rvc animated:YES];
+            [strongSelf landPickMilletSetRequest];
         }
     };
     self.zh_popupController = [[zhPopupController alloc] init];
@@ -104,20 +121,96 @@ static NSString *const FetchRiceCell = @"FetchRiceCell";
     self.zh_popupController.dismissOnMaskTouched = NO;
     [self.zh_popupController presentContentView:pv duration:0.25 springAnimated:NO];
 }
+#pragma mark -- 业务逻辑
+-(void)handleFetchData
+{
+    self.header.granary = self.granary;
+
+    hx_weakify(self);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        hx_strongify(weakSelf);
+        [strongSelf.tableView reloadData];
+    });
+}
+-(void)handleFetchRiceNumData
+{
+    __block CGFloat pick_num = 0;
+    [self.granary.goods enumerateObjectsUsingBlock:^(DSGranaryGoods * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj.sku enumerateObjectsUsingBlock:^(DSGranaryGoodSku * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            pick_num += obj.fetch_num * obj.millet;
+        }];
+    }];
+    
+    self.fetch_num.text = [NSString stringWithFormat:@"%.1fkg",pick_num];
+    if (pick_num > 0) {
+        self.submitBtn.enabled = YES;
+        self.submitBtn.backgroundColor = UIColorFromRGB(0x48B664);
+    }else{
+        self.submitBtn.enabled = NO;
+        self.submitBtn.backgroundColor = UIColorFromRGB(0xEDEDED);
+    }
+    
+    self.granary.pick_num = pick_num;
+}
+-(void)landPickMilletSetRequest
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSMutableString *goods_data = [NSMutableString string];
+    [goods_data appendString:@"["];
+    [self.granary.goods enumerateObjectsUsingBlock:^(DSGranaryGoods * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj.sku enumerateObjectsUsingBlock:^(DSGranaryGoodSku * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.fetch_num != 0) {
+                if (goods_data.length == 1) {
+                    [goods_data appendFormat:@"{\"goods_id\":\"%@\",\"sku_id\":\"%@\",\"num\":\"%@\",\"share_uid\":\"%@\"}",obj.goods_id,obj.sku_id,@(obj.fetch_num),@(0)];
+                }else{
+                    [goods_data appendFormat:@",{\"goods_id\":\"%@\",\"sku_id\":\"%@\",\"num\":\"%@\",\"share_uid\":\"%@\"}",obj.goods_id,obj.sku_id,@(obj.fetch_num),@(0)];
+                }
+            }
+        }];
+    }];
+    [goods_data appendString:@"]"];
+    parameters[@"goods_data"] = goods_data;
+    parameters[@"address_id"] = self.granary.address.address_id;
+    parameters[@"pick_millet"] = [NSString stringWithFormat:@"%.1f",self.granary.pick_num];
+
+    hx_weakify(self);
+    [HXNetworkTool POST:HXRC_M_URL action:@"land_pick_millet_set" parameters:parameters success:^(id responseObject) {
+        hx_strongify(weakSelf);
+        if([[responseObject objectForKey:@"status"] integerValue] == 1) {
+            if (strongSelf.fetchRiceCall) {
+                strongSelf.fetchRiceCall();
+            }
+            DSFetchRiceResultVC *rvc = [DSFetchRiceResultVC new];
+            [strongSelf.navigationController pushViewController:rvc animated:YES];
+        }else{
+            [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[responseObject objectForKey:@"message"]];
+        }
+    } failure:^(NSError *error) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
+    }];
+}
 #pragma mark -- UITableView数据源和代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.granary.goods.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DSFetchRiceCell *cell = [tableView dequeueReusableCellWithIdentifier:FetchRiceCell forIndexPath:indexPath];
     //无色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    DSGranaryGoods *goods = self.granary.goods[indexPath.row];
+    cell.goods = goods;
+    hx_weakify(self);
+    cell.fetchRiceNumCall = ^{
+        hx_strongify(weakSelf);
+        [strongSelf handleFetchRiceNumData];
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 135.f;
+    DSGranaryGoods *goods = self.granary.goods[indexPath.row];
+    return 30.f + (goods.row_num * 105.f);
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

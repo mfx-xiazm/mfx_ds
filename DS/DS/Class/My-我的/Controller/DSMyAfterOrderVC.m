@@ -161,6 +161,8 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DSMyOrder *order = self.orders[indexPath.section];
     cell.order_type = order.order_type;
+    cell.ymd_send_member = order.ymd_send_member;
+    cell.ymd_type = order.ymd_type;
     DSMyOrderGoods *goods = order.list_goods[indexPath.row];
     cell.flag.hidden = [goods.is_discount isEqualToString:@"1"]?NO:YES;
     cell.orderGoods = goods;
@@ -207,6 +209,8 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     DSOrderDetailVC *dvc = [DSOrderDetailVC new];
     dvc.isAfterSale = YES;
     dvc.oid = order.oid;
+    dvc.ymd_send_member = order.ymd_send_member;
+    dvc.ymd_type = order.ymd_type;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 

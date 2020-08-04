@@ -19,8 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) DSMyOrderGoods *orderGoods;
 /* 商品 */
 @property(nonatomic,strong) DSMyOrderDetailGoods *detailGoods;
-/* 1常规商品 100会员商品*/
+/* 1常规商品 10一亩地订单 100会员商品*/
 @property(nonatomic,copy) NSString *order_type;
+/* 一亩地订单是否赠送会员 */
+@property(nonatomic,copy) NSString *ymd_send_member;
+/* 订单类型 */
+@property(nonatomic,copy) NSString *ymd_type;
 
 @end
 

@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSGranaryVC">
             <connections>
+                <outlet property="fetchBtn" destination="O3D-zE-Ewa" id="hJp-gw-nOP"/>
+                <outlet property="millet" destination="M3l-ua-Dmp" id="gzs-0w-YDq"/>
+                <outlet property="time" destination="x6t-2t-P6W" id="fPk-qE-59S"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

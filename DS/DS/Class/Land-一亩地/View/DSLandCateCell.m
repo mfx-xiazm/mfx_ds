@@ -25,5 +25,6 @@
     _cate = cate;
     [self.cateImg sd_setImageWithURL:[NSURL URLWithString:_cate.adv_img]];
     self.cateName.text = _cate.adv_name;
+    self.cateName.textColor = (_cate.font_color && _cate.font_color.length)?[UIColor colorWithHexString:_cate.font_color]:UIColorFromRGB(0x666666);
 }
 @end

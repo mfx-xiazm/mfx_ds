@@ -12,6 +12,9 @@
 #import <JXCategoryIndicatorLineView.h>
 #import "DSUpOrderVC.h"
 #import "DSVipUpOrderVC.h"
+#import "DSGranaryVC.h"
+#import "DSFetchRiceVC.h"
+#import "DSFetchRiceResultVC.h"
 
 @interface DSMyOrderVC ()<JXCategoryViewDelegate,UIScrollViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet JXCategoryTitleView *categoryView;
@@ -29,10 +32,9 @@
     [self.navigationItem setTitle:@"我的订单"];
     hx_weakify(self);
     [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[DSUpOrderVC class]] || [obj isKindOfClass:[DSVipUpOrderVC class]]) {
+        if ([obj isKindOfClass:[DSUpOrderVC class]] || [obj isKindOfClass:[DSVipUpOrderVC class]] || [obj isKindOfClass:[DSGranaryVC class]] || [obj isKindOfClass:[DSFetchRiceVC class]] || [obj isKindOfClass:[DSFetchRiceResultVC class]]) {
             hx_strongify(weakSelf);
             [strongSelf.controllers removeObjectAtIndex:idx];
-            *stop = YES;
         }
     }];
     [self.navigationController setViewControllers:self.controllers];

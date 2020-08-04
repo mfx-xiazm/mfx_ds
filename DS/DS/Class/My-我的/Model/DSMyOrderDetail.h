@@ -19,8 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy) NSString *status;
 @property(nonatomic,copy) NSString *order_self_commission;
 @property(nonatomic,copy) NSString *remarks;
-/** 1常规商品 100vip商品 */
+/** 1常规商品  10 一亩地订单 100vip商品 */
 @property(nonatomic,copy) NSString *order_type;
+/** 一亩地订单是否赠送会员  */
+@property(nonatomic,copy) NSString *ymd_send_member;
+/** 一亩地订单类型：0非一亩地订单；1土地订单；2购买的碾米机订单；3赠送的碾米机订单；4提米订单  */
+@property(nonatomic,copy) NSString *ymd_type;
 @property(nonatomic,copy) NSString *pay_type;
 
 @property(nonatomic,copy) NSString *receiver;

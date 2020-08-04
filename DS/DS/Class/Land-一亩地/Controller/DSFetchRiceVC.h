@@ -10,8 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DSGranary;
+typedef void(^fetchRiceCall)(void);
 @interface DSFetchRiceVC : HXBaseViewController
-
+@property (nonatomic, strong) DSGranary *granary;
+@property (nonatomic, copy) fetchRiceCall fetchRiceCall;
 @end
 
 NS_ASSUME_NONNULL_END

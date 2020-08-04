@@ -48,7 +48,7 @@
         
         self.secondHandleBtn.hidden = YES;
         
-        if ([_order.order_type isEqualToString:@"1"]) {
+        if ([_order.order_type isEqualToString:@"1"] || [_order.ymd_type isEqualToString:@"2"]) {
             self.thirdHandleBtn.hidden = NO;
             [self.thirdHandleBtn setTitle:@"申请退款" forState:UIControlStateNormal];
             self.thirdHandleBtn.backgroundColor = [UIColor whiteColor];
@@ -59,7 +59,7 @@
             self.thirdHandleBtn.hidden = YES;
         }
     }else if ([_order.status isEqualToString:@"待收货"]) {
-        if ([_order.order_type isEqualToString:@"1"]) {
+        if ([_order.order_type isEqualToString:@"1"] || [_order.ymd_type isEqualToString:@"2"]) {
             self.firstHandleBtn.hidden = NO;
             [self.firstHandleBtn setTitle:@"申请退款" forState:UIControlStateNormal];
             self.firstHandleBtn.backgroundColor = [UIColor whiteColor];

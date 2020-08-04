@@ -10,10 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DSMyOrderGoods;
 @interface DSUpOrderSectionHeader : UIView
-/* 商品 */
-@property(nonatomic,strong) DSMyOrderGoods *orderGoods;
+@property (weak, nonatomic) IBOutlet UILabel *order_type;
 @end
 
 NS_ASSUME_NONNULL_END

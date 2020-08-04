@@ -10,13 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DSMyAddress;
+@class DSGranary;
 typedef void(^addressClickedCall)(void);
 @interface DSFetchRiceHeader : UIView
 @property (weak, nonatomic) IBOutlet UIView *noAddressView;
 @property (weak, nonatomic) IBOutlet UIView *addressView;
-/* 地址 */
-@property(nonatomic,strong) DSMyAddress *defaultAddress;
+/* 余量 */
+@property (nonatomic, strong) DSGranary *granary;
 /* 点击 */
 @property(nonatomic,copy) addressClickedCall addressClickedCall;
 @end

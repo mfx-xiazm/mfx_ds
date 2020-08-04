@@ -22,6 +22,13 @@
 		49565F342488975600C9D43E /* UMPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49565F332488975600C9D43E /* UMPush.framework */; };
 		49565F362488980400C9D43E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49565F352488980400C9D43E /* SystemConfiguration.framework */; };
 		49565F382488984B00C9D43E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49565F372488984B00C9D43E /* UserNotifications.framework */; };
+		49635D1324D90B17009915CC /* DSGranary.m in Sources */ = {isa = PBXBuildFile; fileRef = 49635D1224D90B17009915CC /* DSGranary.m */; };
+		49635D1724D912BA009915CC /* DSFetchRiceSkuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49635D1524D912BA009915CC /* DSFetchRiceSkuCell.m */; };
+		49635D1824D912BA009915CC /* DSFetchRiceSkuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49635D1624D912BA009915CC /* DSFetchRiceSkuCell.xib */; };
+		49635D1C24D94002009915CC /* DSFetchRiceConfirmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49635D1A24D94002009915CC /* DSFetchRiceConfirmCell.m */; };
+		49635D1D24D94002009915CC /* DSFetchRiceConfirmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49635D1B24D94002009915CC /* DSFetchRiceConfirmCell.xib */; };
+		49635D2124D96D46009915CC /* DSLandOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49635D1F24D96D46009915CC /* DSLandOrderDetailVC.m */; };
+		49635D2224D96D46009915CC /* DSLandOrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49635D2024D96D46009915CC /* DSLandOrderDetailVC.xib */; };
 		496605B42473C6F1003A2652 /* DSUserSignVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B22473C6F1003A2652 /* DSUserSignVC.m */; };
 		496605B52473C6F1003A2652 /* DSUserSignVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496605B32473C6F1003A2652 /* DSUserSignVC.xib */; };
 		496605B82473CD39003A2652 /* DSUserAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496605B72473CD39003A2652 /* DSUserAuthView.m */; };
@@ -417,6 +424,17 @@
 		49565F332488975600C9D43E /* UMPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMPush.framework; sourceTree = "<group>"; };
 		49565F352488980400C9D43E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49565F372488984B00C9D43E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		49635D1124D90B17009915CC /* DSGranary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGranary.h; sourceTree = "<group>"; };
+		49635D1224D90B17009915CC /* DSGranary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGranary.m; sourceTree = "<group>"; };
+		49635D1424D912BA009915CC /* DSFetchRiceSkuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSFetchRiceSkuCell.h; sourceTree = "<group>"; };
+		49635D1524D912BA009915CC /* DSFetchRiceSkuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSFetchRiceSkuCell.m; sourceTree = "<group>"; };
+		49635D1624D912BA009915CC /* DSFetchRiceSkuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSFetchRiceSkuCell.xib; sourceTree = "<group>"; };
+		49635D1924D94002009915CC /* DSFetchRiceConfirmCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSFetchRiceConfirmCell.h; sourceTree = "<group>"; };
+		49635D1A24D94002009915CC /* DSFetchRiceConfirmCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSFetchRiceConfirmCell.m; sourceTree = "<group>"; };
+		49635D1B24D94002009915CC /* DSFetchRiceConfirmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSFetchRiceConfirmCell.xib; sourceTree = "<group>"; };
+		49635D1E24D96D46009915CC /* DSLandOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLandOrderDetailVC.h; sourceTree = "<group>"; };
+		49635D1F24D96D46009915CC /* DSLandOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLandOrderDetailVC.m; sourceTree = "<group>"; };
+		49635D2024D96D46009915CC /* DSLandOrderDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSLandOrderDetailVC.xib; sourceTree = "<group>"; };
 		496605B12473C6F1003A2652 /* DSUserSignVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSUserSignVC.h; sourceTree = "<group>"; };
 		496605B22473C6F1003A2652 /* DSUserSignVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSUserSignVC.m; sourceTree = "<group>"; };
 		496605B32473C6F1003A2652 /* DSUserSignVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSUserSignVC.xib; sourceTree = "<group>"; };
@@ -1158,6 +1176,8 @@
 				496D403124D7AA02005B3CA5 /* DSLand.m */,
 				496D403324D7B54A005B3CA5 /* DSLandDetail.h */,
 				496D403424D7B54A005B3CA5 /* DSLandDetail.m */,
+				49635D1124D90B17009915CC /* DSGranary.h */,
+				49635D1224D90B17009915CC /* DSGranary.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1180,9 +1200,15 @@
 				49F88B5F24D14BB9004F136A /* DSFetchRiceCell.h */,
 				49F88B6024D14BB9004F136A /* DSFetchRiceCell.m */,
 				49F88B6124D14BB9004F136A /* DSFetchRiceCell.xib */,
+				49635D1424D912BA009915CC /* DSFetchRiceSkuCell.h */,
+				49635D1524D912BA009915CC /* DSFetchRiceSkuCell.m */,
+				49635D1624D912BA009915CC /* DSFetchRiceSkuCell.xib */,
 				49018C1724D1575300E9F0E1 /* DSFetchRiceConfirmView.h */,
 				49018C1824D1575300E9F0E1 /* DSFetchRiceConfirmView.m */,
 				49018C1A24D1575B00E9F0E1 /* DSFetchRiceConfirmView.xib */,
+				49635D1924D94002009915CC /* DSFetchRiceConfirmCell.h */,
+				49635D1A24D94002009915CC /* DSFetchRiceConfirmCell.m */,
+				49635D1B24D94002009915CC /* DSFetchRiceConfirmCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1654,6 +1680,9 @@
 				903D07F223837FD7001C2E40 /* DSOrderDetailVC.h */,
 				903D07F323837FD7001C2E40 /* DSOrderDetailVC.m */,
 				903D07F423837FD7001C2E40 /* DSOrderDetailVC.xib */,
+				49635D1E24D96D46009915CC /* DSLandOrderDetailVC.h */,
+				49635D1F24D96D46009915CC /* DSLandOrderDetailVC.m */,
+				49635D2024D96D46009915CC /* DSLandOrderDetailVC.xib */,
 				903D080623838C4F001C2E40 /* DSExpressDetailVC.h */,
 				903D080723838C4F001C2E40 /* DSExpressDetailVC.m */,
 				903D080823838C4F001C2E40 /* DSExpressDetailVC.xib */,
@@ -2344,6 +2373,7 @@
 				9065882323ADCF3B001E57ED /* DSMyAfterOrderVC.xib in Resources */,
 				90EC2583237A5DB4005C24C8 /* DSChangePwdVC.xib in Resources */,
 				90FD91B2237E3EBE00016EF7 /* DSMyOrderVC.xib in Resources */,
+				49635D2224D96D46009915CC /* DSLandOrderDetailVC.xib in Resources */,
 				90EC25B3237A9BBA005C24C8 /* DSMessageVC.xib in Resources */,
 				903D07E723837937001C2E40 /* DSDynamicDetailHeader.xib in Resources */,
 				903D07F623837FD7001C2E40 /* DSOrderDetailVC.xib in Resources */,
@@ -2384,6 +2414,7 @@
 				496605BF2473DC08003A2652 /* DSBindCashMsgVC.xib in Resources */,
 				90ED68E323BA05B60035988E /* SZUpdateView.xib in Resources */,
 				903D080A23838C4F001C2E40 /* DSExpressDetailVC.xib in Resources */,
+				49635D1824D912BA009915CC /* DSFetchRiceSkuCell.xib in Resources */,
 				90FD91F8237E539300016EF7 /* DSMyAddressCell.xib in Resources */,
 				903D07F123837AEE001C2E40 /* DSDynamicDetailFooter.xib in Resources */,
 				49B4C0992472665300560451 /* DSAfreshHomeHeader.xib in Resources */,
@@ -2394,6 +2425,7 @@
 				90AE52C12382777C009F4740 /* DSVipCardDetailVC.xib in Resources */,
 				9013FAD42412490800B9275C /* yqt_order_icon.gif in Resources */,
 				90F74E5223823DE9003576B3 /* DSUpCashVC.xib in Resources */,
+				49635D1D24D94002009915CC /* DSFetchRiceConfirmCell.xib in Resources */,
 				90FD91EE237E4F4F00016EF7 /* DSMyCardCell.xib in Resources */,
 				90F74E3923822E11003576B3 /* DSVipCardCell.xib in Resources */,
 				906F378B23792FEA000B160A /* DSCartVC.xib in Resources */,
@@ -2618,12 +2650,14 @@
 				90FD91E8237E4F0500016EF7 /* DSMyCardVC.m in Sources */,
 				90AE52E323829543009F4740 /* DSPublishDynamicHeader.m in Sources */,
 				906F376D23792F64000B160A /* HXSearchBar.m in Sources */,
+				49635D1C24D94002009915CC /* DSFetchRiceConfirmCell.m in Sources */,
 				49B4C09324725B1600560451 /* DSAfreshHomeChildVC.m in Sources */,
 				903D0818238393ED001C2E40 /* DSApplyRefundCell.m in Sources */,
 				90F74E5123823DE9003576B3 /* DSUpCashVC.m in Sources */,
 				903CB55D23927F180053A25B /* UIView+TYSnapshot.m in Sources */,
 				90F74E4B23823B7D003576B3 /* DSMyBalanceSectionHeader.m in Sources */,
 				90FD91C5237E40CC00016EF7 /* DSMyOrderCell.m in Sources */,
+				49635D2124D96D46009915CC /* DSLandOrderDetailVC.m in Sources */,
 				903D07E1238378BA001C2E40 /* DSDynamicDetailVC.m in Sources */,
 				90AE52C923828576009F4740 /* DSDynamic.m in Sources */,
 				90C94C3B23A47E6E00CD19FB /* GXRegion.m in Sources */,
@@ -2648,6 +2682,7 @@
 				496605B82473CD39003A2652 /* DSUserAuthView.m in Sources */,
 				90AB397E24075FBE0082ECE4 /* UIColor+DSGradient.m in Sources */,
 				49B4C0862472559100560451 /* JXPagerView.m in Sources */,
+				49635D1324D90B17009915CC /* DSGranary.m in Sources */,
 				906F375123792F64000B160A /* HXTopWindow.m in Sources */,
 				903D080323838AC6001C2E40 /* DSRefundDetailFooter.m in Sources */,
 				9065882623ADECD0001E57ED /* DSMyOrderDetail.m in Sources */,
@@ -2735,6 +2770,7 @@
 				90AE52EB2382A0FE009F4740 /* DSPublishDynamicFooter.m in Sources */,
 				90EC2599237A9061005C24C8 /* DSBannerCell.m in Sources */,
 				903CB56023927F180053A25B /* UIViewController+TYSnapshot.m in Sources */,
+				49635D1724D912BA009915CC /* DSFetchRiceSkuCell.m in Sources */,
 				906F36AD23792F5B000B160A /* HXGuideViewController.m in Sources */,
 				906F375023792F64000B160A /* HXNetworkCache.m in Sources */,
 				90EC25AD237A99A8005C24C8 /* DSCateGoodsCell.m in Sources */,

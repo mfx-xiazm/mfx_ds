@@ -139,10 +139,12 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="flag" destination="JiX-0z-Ke9" id="YVh-Ub-Nee"/>
+                <outlet property="specs_attrs" destination="h0o-cD-OHl" id="LEw-cg-gI8"/>
                 <outlet property="vipCoverImg" destination="I2U-Bg-pN3" id="etQ-W5-JCz"/>
                 <outlet property="vipGoodName" destination="gtq-3P-DLs" id="sQf-YP-7AL"/>
                 <outlet property="vipGoodsView" destination="KSm-PY-kF5" id="PLx-mF-Fup"/>
                 <outlet property="vipPrice" destination="tBX-1B-hql" id="f5H-Ni-4fY"/>
+                <outlet property="vip_flag" destination="vw8-cc-5aa" id="6i6-e9-7hY"/>
                 <outlet property="vip_goods_num" destination="bvH-75-dm8" id="VCi-Pw-8is"/>
             </connections>
             <point key="canvasLocation" x="185.50724637681162" y="140.625"/>

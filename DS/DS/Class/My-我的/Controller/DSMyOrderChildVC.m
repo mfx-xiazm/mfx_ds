@@ -20,6 +20,7 @@
 #import "DSPayTypeView.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import <WXApi.h>
+#import "DSLandOrderDetailVC.h"
 
 static NSString *const MyOrderCell = @"MyOrderCell";
 @interface DSMyOrderChildVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -369,8 +370,10 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DSMyOrder *order = self.orders[indexPath.section];
     cell.order_type = order.order_type;
+    cell.ymd_send_member = order.ymd_send_member;
+    cell.ymd_type = order.ymd_type;
     DSMyOrderGoods *goods = order.list_goods[indexPath.row];
-    cell.flag.hidden = [goods.is_discount isEqualToString:@"1"]?NO:YES;
+    cell.flag.hidden = [order.order_type isEqualToString:@"10"]?YES:[goods.is_discount isEqualToString:@"1"]?NO:YES;
     cell.orderGoods = goods;
     return cell;
 }
@@ -420,7 +423,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
         footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 40.f);
         footer.handleView.hidden = YES;
     }else if ([order.status isEqualToString:@"待发货"]){
-        if ([order.order_type isEqualToString:@"1"]) {// 常规商品
+        if ([order.order_type isEqualToString:@"1"]  || [order.ymd_type isEqualToString:@"2"]) {// 常规商品
             footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 90.f);
             footer.handleView.hidden = NO;
         }else{// VIP商品
@@ -524,9 +527,32 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DSMyOrder *order = self.orders[indexPath.section];
+    if ([order.order_type isEqualToString:@"10"] && [order.ymd_type isEqualToString:@"1"]) {
+        // 跳转另外一个土地订单详情
+        DSLandOrderDetailVC *dvc = [DSLandOrderDetailVC new];
+        dvc.oid = order.oid;
+        dvc.ymd_send_member = order.ymd_send_member;
+        dvc.ymd_type = order.ymd_type;
+        hx_weakify(self);
+        dvc.orderHandleCall = ^(NSInteger type) {
+            hx_strongify(weakSelf);
+            /* 订单操作  0取消订单 1支付订单 */
+            if (type == 0) {
+                order.status = @"已取消";
+                [tableView reloadData];
+            }else {
+                order.status = @"待发货";
+                [strongSelf getOrderDataRequest:YES];
+            }
+        };
+        [self.navigationController pushViewController:dvc animated:YES];
+        return;
+    }
     DSOrderDetailVC *dvc = [DSOrderDetailVC new];
     dvc.isAfterSale = NO;
     dvc.oid = order.oid;
+    dvc.ymd_send_member = order.ymd_send_member;
+    dvc.ymd_type = order.ymd_type;
     hx_weakify(self);
     dvc.orderHandleCall = ^(NSInteger type) {
         hx_strongify(weakSelf);
@@ -537,7 +563,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
             }else if (type == 1) {
                 order.status = @"待发货";
             }else if (type == 2) {
-//                [strongSelf.orders removeObject:order];
+                //                [strongSelf.orders removeObject:order];
             }else{
                 order.status = @"已完成";
             }
@@ -550,7 +576,4 @@ static NSString *const MyOrderCell = @"MyOrderCell";
     };
     [self.navigationController pushViewController:dvc animated:YES];
 }
-
-
-
 @end

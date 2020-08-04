@@ -23,7 +23,7 @@
 {
     _order = order;
     //self.order_no.text = [NSString stringWithFormat:@"订单编号：%@",_order.order_no];
-    self.order_no.text = @"自营";
+    self.order_no.text = [order.order_type isEqualToString:@"10"]?@"鲸宇粮仓":@"自营";
     if (self.isAfterSale) {
         if ([_order.refund_status isEqualToString:@"1"]) {
             self.order_state.text = @"申请中";
