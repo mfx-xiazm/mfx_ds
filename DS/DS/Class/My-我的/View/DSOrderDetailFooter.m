@@ -41,12 +41,17 @@
 //        self.normalViewHeight.constant = 0.f;
 //    }
     // 参考上面注释代码，根据是否付款来设置高度
-    if ([_orderDetail.status isEqualToString:@"待付款"] || [_orderDetail.status isEqualToString:@"已取消"]) {
+    if ([_orderDetail.order_type isEqualToString:@"10"] && [_orderDetail.ymd_type isEqualToString:@"4"]) {
         [self.payInfo setTextWithLineSpace:8.f withString:@"配送" withFont:[UIFont systemFontOfSize:12]];
         [self.payInfo2 setTextWithLineSpace:8.f withString:@"包邮" withFont:[UIFont systemFontOfSize:12]];
     }else{
-        [self.payInfo setTextWithLineSpace:8.f withString:@"配送\n支付方式" withFont:[UIFont systemFontOfSize:12]];
-        [self.payInfo2 setTextWithLineSpace:8.f withString:[NSString stringWithFormat:@"包邮\n%@",[_orderDetail.pay_type isEqualToString:@"1"]?@"支付宝支付":@"微信支付"] withFont:[UIFont systemFontOfSize:12]];
+        if ([_orderDetail.status isEqualToString:@"待付款"] || [_orderDetail.status isEqualToString:@"已取消"]) {
+            [self.payInfo setTextWithLineSpace:8.f withString:@"配送" withFont:[UIFont systemFontOfSize:12]];
+            [self.payInfo2 setTextWithLineSpace:8.f withString:@"包邮" withFont:[UIFont systemFontOfSize:12]];
+        }else{
+            [self.payInfo setTextWithLineSpace:8.f withString:@"配送\n支付方式" withFont:[UIFont systemFontOfSize:12]];
+            [self.payInfo2 setTextWithLineSpace:8.f withString:[NSString stringWithFormat:@"包邮\n%@",[_orderDetail.pay_type isEqualToString:@"1"]?@"支付宝支付":@"微信支付"] withFont:[UIFont systemFontOfSize:12]];
+        }
     }
     self.payInfo.textAlignment = NSTextAlignmentLeft;
     self.payInfo2.textAlignment = NSTextAlignmentRight;

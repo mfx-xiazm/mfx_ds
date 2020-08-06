@@ -31,12 +31,18 @@
     [super viewDidLoad];
     [self.navigationItem setTitle:@"我的订单"];
     hx_weakify(self);
-    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.navigationController.viewControllers enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        hx_strongify(weakSelf);
         if ([obj isKindOfClass:[DSUpOrderVC class]] || [obj isKindOfClass:[DSVipUpOrderVC class]] || [obj isKindOfClass:[DSGranaryVC class]] || [obj isKindOfClass:[DSFetchRiceVC class]] || [obj isKindOfClass:[DSFetchRiceResultVC class]]) {
-            hx_strongify(weakSelf);
             [strongSelf.controllers removeObjectAtIndex:idx];
         }
     }];
+//    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([obj isKindOfClass:[DSUpOrderVC class]] || [obj isKindOfClass:[DSVipUpOrderVC class]] || [obj isKindOfClass:[DSGranaryVC class]] || [obj isKindOfClass:[DSFetchRiceVC class]] || [obj isKindOfClass:[DSFetchRiceResultVC class]]) {
+//            hx_strongify(weakSelf);
+//            [strongSelf.controllers removeObjectAtIndex:idx];
+//        }
+//    }];
     [self.navigationController setViewControllers:self.controllers];
     [self setUpCategoryView];
 }

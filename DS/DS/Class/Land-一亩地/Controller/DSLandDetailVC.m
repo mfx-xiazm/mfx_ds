@@ -46,7 +46,6 @@ static NSString *const ChooseClassCell = @"ChooseClassCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
     [self setUpNavBar];
     [self setUpCyclePagerView];
     [self setUpCollectionView];
@@ -63,6 +62,16 @@ static NSString *const ChooseClassCell = @"ChooseClassCell";
     [self.webContentView addSubview:self.webView];
     [self startShimmer];
     [self getGoodsDetailRequest];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doPayPush:) name:HXPayPushNotification object:nil];
+}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 -(void)viewDidLayoutSubviews
 {
@@ -345,7 +354,6 @@ static NSString *const ChooseClassCell = @"ChooseClassCell";
 }
 -(void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     @try {
         [self.webView.scrollView removeObserver:self forKeyPath:@"contentSize"];
     }

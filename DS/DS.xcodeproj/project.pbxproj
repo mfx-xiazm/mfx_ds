@@ -3088,7 +3088,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0605;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0628;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3244,7 +3244,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daishu.mfxapp.com;
 				PRODUCT_NAME = "鲸品库";
-				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0605;
+				PROVISIONING_PROFILE_SPECIFIER = dev_daishu.mfxapp.com_0628;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

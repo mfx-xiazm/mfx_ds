@@ -11,6 +11,8 @@
 #import "DSLandCell.h"
 #import "DSLandDetailVC.h"
 #import "DSLand.h"
+#import "DSWebContentVC.h"
+#import "DSGoodsDetailVC.h"
 
 static NSString *const LandCell = @"LandCell";
 @interface DSLandVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -42,33 +44,35 @@ static NSString *const LandCell = @"LandCell";
     if (!_header) {
         _header = [DSLandHeader loadXibView];
         _header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, (HX_SCREEN_WIDTH)*140/375.0 + 115);
-//        hx_weakify(self);
+        hx_weakify(self);
         _header.landHeaderClickCall = ^(NSInteger type, NSInteger index) {
-//            hx_strongify(weakSelf);
+            hx_strongify(weakSelf);
+            DSLandAdv *adv = nil;
             if (type == 1) {
-                switch (index) {
-                    case 0:{
-                        HXLog(@"环境简介");
-                    }
-                        break;
-                    case 1:{
-                        HXLog(@"种养案例");
-                    }
-                        break;
-                    case 2:{
-                        HXLog(@"扶贫计划");
-                    }
-                        break;
-                    case 3:{
-                        HXLog(@"政府政策");
-                    }
-                        break;
-                    default:
-                        break;
-                }
-                
+                adv = strongSelf.land.jgq[index];
             }else{
-                HXLog(@"banner点击");
+                adv = strongSelf.land.adv[index];
+            }
+            /**1仅图片；2链接；3html内容；4商品详情，类型未html时不返回adv_content，通过详情接口获取*/
+            if ([adv.adv_type isEqualToString:@"1"]) {
+                
+            }else if ([adv.adv_type isEqualToString:@"2"]) {
+                DSWebContentVC *wvc = [DSWebContentVC new];
+                wvc.navTitle = adv.adv_name;
+                wvc.isNeedRequest = NO;
+                wvc.url = adv.adv_content;
+                [strongSelf.navigationController pushViewController:wvc animated:YES];
+            }else if ([adv.adv_type isEqualToString:@"3"]) {
+                DSWebContentVC *wvc = [DSWebContentVC new];
+                wvc.navTitle = adv.adv_name;
+                wvc.isNeedRequest = YES;
+                wvc.requestType = 1;
+                wvc.adv_id = adv.adv_id;
+                [strongSelf.navigationController pushViewController:wvc animated:YES];
+            }else{
+                DSGoodsDetailVC *dvc = [DSGoodsDetailVC new];
+                dvc.goods_id = adv.adv_content;
+                [strongSelf.navigationController pushViewController:dvc animated:YES];
             }
         };
     }
