@@ -21,18 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="95" height="152"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landicon1" translatesAutoresizingMaskIntoConstraints="NO" id="wcH-xR-wJX">
-                                <rect key="frame" x="0.0" y="14" width="95" height="95"/>
+                                <rect key="frame" x="0.0" y="13" width="95" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wcH-xR-wJX" secondAttribute="height" multiplier="1:1" id="eFp-EN-RF5"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layerBoderCorner">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="环境简介" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfp-Wg-TRY">
-                                <rect key="frame" x="0.0" y="114" width="95" height="16"/>
+                                <rect key="frame" x="0.0" y="113" width="95" height="16"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +35,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wcH-xR-wJX" firstAttribute="top" secondItem="cNY-5F-04V" secondAttribute="top" constant="14" id="0iH-Fn-4Z6"/>
+                            <constraint firstItem="wcH-xR-wJX" firstAttribute="top" secondItem="cNY-5F-04V" secondAttribute="top" constant="13" id="0iH-Fn-4Z6"/>
                             <constraint firstAttribute="trailing" secondItem="wcH-xR-wJX" secondAttribute="trailing" id="4sw-9C-5aX"/>
                             <constraint firstItem="pfp-Wg-TRY" firstAttribute="leading" secondItem="cNY-5F-04V" secondAttribute="leading" id="Dak-Kf-uaw"/>
                             <constraint firstItem="pfp-Wg-TRY" firstAttribute="top" secondItem="wcH-xR-wJX" secondAttribute="bottom" constant="5" id="IlT-TC-aGb"/>
@@ -50,6 +45,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="cNY-5F-04V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BVJ-lH-cnR"/>
                 <constraint firstItem="cNY-5F-04V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="JTe-oV-XOi"/>

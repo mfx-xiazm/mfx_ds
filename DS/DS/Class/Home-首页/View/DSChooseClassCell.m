@@ -23,10 +23,10 @@
 -(void)setAttrs:(DSGoodsAttrs *)attrs
 {
     _attrs = attrs;
+    self.spec_name.layer.borderWidth = 1/[UIScreen mainScreen].scale;
     self.spec_name.layer.cornerRadius = 15.f;
     self.spec_name.layer.masksToBounds = YES;
     self.spec_name.text = _attrs.attr_name;
-    
     if (_attrs.isSelected) {
         self.spec_name.textColor = [UIColor whiteColor];
         self.spec_name.backgroundColor = HXControlBg;
@@ -41,7 +41,7 @@
     
     self.spec_name.layer.cornerRadius = 5.f;
     self.spec_name.layer.masksToBounds = YES;
-    self.spec_name.layer.borderWidth = 1;
+    self.spec_name.layer.borderWidth = 1/[UIScreen mainScreen].scale;
 
     self.spec_name.text = _landSku.specs_attrs;
     

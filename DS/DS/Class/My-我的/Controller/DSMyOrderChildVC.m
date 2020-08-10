@@ -403,7 +403,7 @@ static NSString *const MyOrderCell = @"MyOrderCell";
         if ([order.status isEqualToString:@"已完成"] || [order.status isEqualToString:@"已取消"]) {
             return 40.f;
         }else if ([order.status isEqualToString:@"待发货"]){
-            if ([order.order_type isEqualToString:@"1"]) {// 常规商品
+            if ([order.order_type isEqualToString:@"1"] || [order.ymd_type isEqualToString:@"2"]) {// 常规商品
                 return 90.f;
             }else{// VIP商品
                 return 40.f;

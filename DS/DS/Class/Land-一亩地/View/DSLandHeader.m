@@ -61,7 +61,7 @@ static NSString *const LandCateCell = @"LandCateCell";
 {
     [super layoutSubviews];
     self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.cyclePagerView.frame) - 20.f, CGRectGetWidth(self.cyclePagerView.frame), 15.f);
-    self.backgroundColor = [UIColor mfx_gradientFromColor:UIColorFromRGB(0xFFFFFF) toColor:UIColorFromRGB(0xF5F6F7) withHeight:self.hxn_height];
+    self.collectionView.backgroundColor = [UIColor mfx_gradientFromColor:UIColorFromRGB(0xFFFFFF) toColor:UIColorFromRGB(0xF5F6F7) withHeight:self.collectionView.hxn_height];
 }
 -(void)setLand:(DSLand *)land
 {

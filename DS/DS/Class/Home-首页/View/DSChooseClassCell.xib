@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1箱/6瓶" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPf-Pe-fWC">
-                        <rect key="frame" x="0.0" y="0.0" width="186" height="59"/>
+                        <rect key="frame" x="1" y="1" width="184" height="57"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
@@ -31,10 +31,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="KPf-Pe-fWC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1hT-LL-uWU"/>
-                <constraint firstAttribute="trailing" secondItem="KPf-Pe-fWC" secondAttribute="trailing" id="9DY-vi-zLh"/>
-                <constraint firstItem="KPf-Pe-fWC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="a0L-gM-dil"/>
-                <constraint firstAttribute="bottom" secondItem="KPf-Pe-fWC" secondAttribute="bottom" id="wOC-62-QGR"/>
+                <constraint firstItem="KPf-Pe-fWC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="1hT-LL-uWU"/>
+                <constraint firstAttribute="trailing" secondItem="KPf-Pe-fWC" secondAttribute="trailing" constant="1" id="9DY-vi-zLh"/>
+                <constraint firstItem="KPf-Pe-fWC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="a0L-gM-dil"/>
+                <constraint firstAttribute="bottom" secondItem="KPf-Pe-fWC" secondAttribute="bottom" constant="1" id="wOC-62-QGR"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="186" height="59"/>
