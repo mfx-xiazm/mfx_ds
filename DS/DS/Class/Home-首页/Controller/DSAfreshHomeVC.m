@@ -134,7 +134,7 @@ static const CGFloat JXheightForHeaderInSection = 50;
                     [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"敬请期待"];
                 }else if ([cate.cate_mode isEqualToString:@"8"]) {
                     HXTabBarController *tabVc = (HXTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-                    tabVc.selectedIndex = 1;
+                    tabVc.selectedIndex = 2;
                 }else{
                     DSWebContentVC *wvc = [DSWebContentVC new];
                     wvc.navTitle = cate.cate_name;

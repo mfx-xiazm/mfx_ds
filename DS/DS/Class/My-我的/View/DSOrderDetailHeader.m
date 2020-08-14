@@ -82,7 +82,7 @@
     }
     
     self.receiver.text = [NSString stringWithFormat:@"%@  %@",_orderDetail.receiver,_orderDetail.receiver_phone];
-    self.receive_address.text = [NSString stringWithFormat:@"%@%@",_orderDetail.area_name,_orderDetail.address_detail];
+    [self.receive_address setTextWithLineSpace:2.f withString:[NSString stringWithFormat:@"%@%@",_orderDetail.area_name,_orderDetail.address_detail] withFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium]];
 }
 - (IBAction)lookLogisClicked:(UIButton *)sender {
     if (self.isAfterSale) {

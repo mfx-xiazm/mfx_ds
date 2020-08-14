@@ -132,6 +132,8 @@ static NSString *const CateGoodsCell = @"CateGoodsCell";
     } failure:^(NSError *error) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [strongSelf.collectionView.mj_header endRefreshing];
+        [strongSelf.collectionView.mj_footer endRefreshing];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }

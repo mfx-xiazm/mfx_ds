@@ -97,12 +97,12 @@ static NSString *const FetchRiceCell = @"FetchRiceCell";
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"请选择地址"];
         return;
     }
-    if (self.granary.pick_num < [self.granary.min_pick_num floatValue]) {
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"每次提粮总重量不能低于%@kg",self.granary.min_pick_num]];
-        return;
-    }
-    if (self.granary.pick_num > [self.granary.millet floatValue]) {
-        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"稻谷不足"];
+//    if (self.granary.pick_num < [self.granary.min_pick_num floatValue]) {
+//        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:[NSString stringWithFormat:@"每次提粮总重量不能低于%@kg",self.granary.min_pick_num]];
+//        return;
+//    }
+    if (self.granary.pick_num > self.granary.millet) {
+        [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:@"粮票不足"];
         return;
     }
     DSFetchRiceConfirmView *pv = [DSFetchRiceConfirmView loadXibView];
@@ -134,14 +134,14 @@ static NSString *const FetchRiceCell = @"FetchRiceCell";
 }
 -(void)handleFetchRiceNumData
 {
-    __block CGFloat pick_num = 0;
+    __block NSInteger pick_num = 0;
     [self.granary.goods enumerateObjectsUsingBlock:^(DSGranaryGoods * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj.sku enumerateObjectsUsingBlock:^(DSGranaryGoodSku * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             pick_num += obj.fetch_num * obj.millet;
         }];
     }];
     
-    self.fetch_num.text = [NSString stringWithFormat:@"%.1fkg",pick_num];
+    self.fetch_num.text = [NSString stringWithFormat:@"%zd张",pick_num];
     if (pick_num > 0) {
         self.submitBtn.enabled = YES;
         self.submitBtn.backgroundColor = UIColorFromRGB(0x48B664);
@@ -171,7 +171,7 @@ static NSString *const FetchRiceCell = @"FetchRiceCell";
     [goods_data appendString:@"]"];
     parameters[@"goods_data"] = goods_data;
     parameters[@"address_id"] = self.granary.address.address_id;
-    parameters[@"pick_millet"] = [NSString stringWithFormat:@"%.1f",self.granary.pick_num];
+    parameters[@"pick_millet"] = @(self.granary.pick_num);
 
     hx_weakify(self);
     [HXNetworkTool POST:HXRC_M_URL action:@"land_pick_millet_set" parameters:parameters success:^(id responseObject) {

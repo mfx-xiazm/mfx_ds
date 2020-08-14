@@ -109,7 +109,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M67-NR-CwF">
-                    <rect key="frame" x="0.0" y="105" width="414" height="70"/>
+                    <rect key="frame" x="0.0" y="105" width="414" height="66.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0NM-t4-CTc" userLabel="分割线">
                             <rect key="frame" x="14" y="0.0" width="386" height="1"/>
@@ -133,6 +133,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="QOx-y7-pP4" secondAttribute="bottom" constant="15" id="840-Mq-SC0"/>
                         <constraint firstItem="0NM-t4-CTc" firstAttribute="leading" secondItem="M67-NR-CwF" secondAttribute="leading" constant="14" id="Aci-g0-Old"/>
                         <constraint firstItem="Aqj-yN-QaQ" firstAttribute="leading" secondItem="M67-NR-CwF" secondAttribute="leading" constant="15" id="EUL-pD-Cdg"/>
                         <constraint firstAttribute="trailing" secondItem="0NM-t4-CTc" secondAttribute="trailing" constant="14" id="IER-Qb-DhX"/>
@@ -140,7 +141,6 @@
                         <constraint firstItem="QOx-y7-pP4" firstAttribute="top" secondItem="Aqj-yN-QaQ" secondAttribute="bottom" constant="5" id="Wwb-N6-vDl"/>
                         <constraint firstItem="QOx-y7-pP4" firstAttribute="leading" secondItem="M67-NR-CwF" secondAttribute="leading" constant="15" id="eZn-l5-cp6"/>
                         <constraint firstItem="0NM-t4-CTc" firstAttribute="top" secondItem="M67-NR-CwF" secondAttribute="top" id="hVd-wD-a1M"/>
-                        <constraint firstAttribute="height" constant="70" id="jwB-XR-EVM"/>
                         <constraint firstAttribute="trailing" secondItem="Aqj-yN-QaQ" secondAttribute="trailing" constant="15" id="sUX-TW-nij"/>
                     </constraints>
                 </view>

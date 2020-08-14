@@ -25,6 +25,10 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"#F5F6F7"];
     [self setUpNavBar];
     [self startShimmer];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self getLandMilletRequest];
 }
 -(void)setUpNavBar
@@ -66,8 +70,8 @@
 }
 -(void)handleGranaryData
 {
-    self.millet.text = [NSString stringWithFormat:@"%@kg",self.granary.millet];
-    if ([self.granary.millet floatValue] == 0) {
+    self.millet.text = [NSString stringWithFormat:@"%zd张",self.granary.millet];
+    if (self.granary.millet == 0){
         self.fetchBtn.userInteractionEnabled = NO;
         self.fetchBtn.backgroundColor = UIColorFromRGB(0xEDEDED);
         [self.fetchBtn setTitleColor:UIColorFromRGB(0xCCCCCC) forState:UIControlStateNormal];

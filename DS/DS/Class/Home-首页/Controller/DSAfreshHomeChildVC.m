@@ -123,6 +123,8 @@ static NSString *const ShopGoodsCell = @"ShopGoodsCell";
     } failure:^(NSError *error) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [contentScrollView.mj_header endRefreshing];
+        [contentScrollView.mj_footer endRefreshing];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }

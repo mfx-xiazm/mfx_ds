@@ -57,7 +57,13 @@ static NSString *const MyOrderCell = @"MyOrderCell";
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.header.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 185);
+    if (self.orderDetail) {
+        NSString *addressTxt = [NSString stringWithFormat:@"%@%@",_orderDetail.area_name,_orderDetail.address_detail];
+        CGFloat addressHeight = [addressTxt textHeightSize:CGSizeMake(HX_SCREEN_WIDTH-15*2, CGFLOAT_MAX) font:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium] lineSpacing:2];
+        self.header.hxn_size =  CGSizeMake(HX_SCREEN_WIDTH, addressHeight>25.f?200:182);
+    }else{
+        self.header.hxn_size =  CGSizeMake(HX_SCREEN_WIDTH, 182);
+    }
     self.footer.hxn_size = CGSizeMake(HX_SCREEN_WIDTH, 110);
 }
 
@@ -242,7 +248,8 @@ static NSString *const MyOrderCell = @"MyOrderCell";
         wvc.url = [strongSelf.orderDetail.logistics_url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         [strongSelf.navigationController pushViewController:wvc animated:YES];
     };
-
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
     [self.tableView reloadData];
 }
 #pragma mark -- 业务逻辑

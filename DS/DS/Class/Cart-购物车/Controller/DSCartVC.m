@@ -152,9 +152,8 @@ static NSString *const CartCell = @"CartCell";
     [HXNetworkTool POST:HXRC_M_URL action:@"cart_list_get" parameters:@{} success:^(id responseObject) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [strongSelf.tableView.mj_header endRefreshing];
         if([[responseObject objectForKey:@"status"] integerValue] == 1) {
-            [strongSelf.tableView.mj_header endRefreshing];
-            
             [strongSelf.cartDataArr removeAllObjects];
             NSArray *arrt = [NSArray yy_modelArrayWithClass:[DSCartData class] json:responseObject[@"result"][@"list"]];
             [strongSelf.cartDataArr addObjectsFromArray:arrt];

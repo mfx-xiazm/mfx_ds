@@ -80,7 +80,7 @@ static NSString *const LandCell = @"LandCell";
 }
 -(void)setUpNavBar
 {
-    [self.navigationItem setTitle:@"一亩地"];
+    [self.navigationItem setTitle:@"鲸宇粮仓"];
     
     self.hbd_barStyle = UIBarStyleDefault;
     self.hbd_barTintColor = [UIColor whiteColor];
@@ -135,8 +135,8 @@ static NSString *const LandCell = @"LandCell";
     [HXNetworkTool POST:HXRC_M_URL action:@"land_home_get" parameters:@{} success:^(id responseObject) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [strongSelf.tableView.mj_header endRefreshing];
         if ([responseObject[@"status"] integerValue] == 1) {
-            [strongSelf.tableView.mj_header endRefreshing];
             strongSelf.land = [DSLand yy_modelWithDictionary:responseObject[@"result"]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 strongSelf.header.land = strongSelf.land;
@@ -148,6 +148,7 @@ static NSString *const LandCell = @"LandCell";
     } failure:^(NSError *error) {
         hx_strongify(weakSelf);
         [strongSelf stopShimmer];
+        [strongSelf.tableView.mj_header endRefreshing];
         [MBProgressHUD showTitleToView:nil postion:NHHUDPostionCenten title:error.localizedDescription];
     }];
 }

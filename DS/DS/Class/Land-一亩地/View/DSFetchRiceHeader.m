@@ -27,7 +27,7 @@
 -(void)setGranary:(DSGranary *)granary
 {
     _granary = granary;
-    self.millet.text = [NSString stringWithFormat:@"稻谷(kg): %@",_granary.millet];
+    self.millet.text = [NSString stringWithFormat:@"粮票(张): %zd",_granary.millet];
     if (_granary.address) {
         self.noAddressView.hidden = YES;
         self.addressView.hidden = NO;
@@ -38,7 +38,8 @@
         self.noAddressView.hidden = NO;
         self.addressView.hidden = YES;
     }
-    self.min_pick_num.text = [NSString stringWithFormat:@"（每次提粮总重量不能低于%@kg）",_granary.min_pick_num];
+//    self.min_pick_num.text = [NSString stringWithFormat:@"（每次提粮总重量不能低于%@kg）",_granary.min_pick_num];
+    self.min_pick_num.text = @"";
 }
 - (IBAction)addressClicked:(UIButton *)sender {
     if (self.addressClickedCall) {

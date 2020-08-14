@@ -12,11 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class DSGranaryGoods,DSGranaryGoodSku,DSMyAddress;
 @interface DSGranary : NSObject
-@property (nonatomic, copy) NSString *millet;
+@property (nonatomic, assign) NSInteger millet;
 @property (nonatomic, copy) NSString *start_time;
 @property (nonatomic, copy) NSString *end_time;
 @property (nonatomic, copy) NSString *min_pick_num;
-@property (nonatomic, assign) CGFloat pick_num;// 提米数量
+@property (nonatomic, assign) NSInteger pick_num;// 提米数量
 @property (nonatomic, strong) DSMyAddress *address;
 @property (nonatomic, strong) NSArray<DSGranaryGoods *> *goods;
 @end
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface DSGranaryGoodSku : NSObject
-@property (nonatomic, assign) CGFloat millet;
+@property (nonatomic, assign) NSInteger millet;
 @property (nonatomic, copy) NSString *specs_attrs;
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) NSString *specs_attr_ids;

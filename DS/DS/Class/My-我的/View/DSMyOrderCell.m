@@ -46,7 +46,7 @@
     [self.vipCoverImg sd_setImageWithURL:[NSURL URLWithString:_orderGoods.cover_img]];
     if ([_order_type isEqualToString:@"10"]) {
         self.vipGoodName.numberOfLines = [_ymd_send_member isEqualToString:@"1"]?1:2;
-        self.specs_attrs.hidden = [_ymd_type isEqualToString:@"1"]?NO:YES;
+        self.specs_attrs.hidden = ([_ymd_type isEqualToString:@"1"] || [_ymd_type isEqualToString:@"4"])?NO:YES;
         self.specs_attrs.text = _orderGoods.specs_attrs;
         self.vip_flag.hidden = [_ymd_send_member isEqualToString:@"1"]?NO:YES;
     }else{
@@ -67,7 +67,7 @@
     [self.vipCoverImg sd_setImageWithURL:[NSURL URLWithString:_detailGoods.cover_img]];
     if ([_order_type isEqualToString:@"10"]) {
         self.vipGoodName.numberOfLines = [_ymd_send_member isEqualToString:@"1"]?1:2;
-        self.specs_attrs.hidden = [_ymd_type isEqualToString:@"1"]?NO:YES;
+        self.specs_attrs.hidden = ([_ymd_type isEqualToString:@"1"] || [_ymd_type isEqualToString:@"4"])?NO:YES;
         self.specs_attrs.text = _detailGoods.specs_attrs;
         self.vip_flag.hidden = [_ymd_send_member isEqualToString:@"1"]?NO:YES;
     }else{

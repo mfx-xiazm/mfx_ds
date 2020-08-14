@@ -40,7 +40,7 @@ static NSString *const FetchRiceConfirmCell = @"FetchRiceConfirmCell";
 -(void)setGranary:(DSGranary *)granary
 {
     _granary = granary;
-    self.fetch_num.text = [NSString stringWithFormat:@"%.1fkg",_granary.pick_num];
+    self.fetch_num.text = [NSString stringWithFormat:@"%zd张",_granary.pick_num];
     [self.tableView reloadData];
 }
 - (IBAction)confirmBtnClicked:(UIButton *)sender {
