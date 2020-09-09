@@ -235,23 +235,50 @@ static void RGBtoHSV( float r, float g, float b, float *h, float *s, float *v )
 }
 
 /// 渐变颜色
-/// @param c1 颜色1
-/// @param c2 颜色2
-/// @param height 高度
-+ (UIColor*)mfx_gradientFromColor:(UIColor*)c1 toColor:(UIColor*)c2 withHeight:(int)height
+/// @param colors 颜色数组
+/// @param gradientType 渐变方向
+/// @param imgSize 图片大小
++ (UIColor*)mfx_gradientFromColors:(NSArray*)colors gradientType:(GradientType)gradientType imgSize:(CGSize)imgSize;
 {
-    CGSize size = CGSizeMake(1, height);
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    UIGraphicsBeginImageContextWithOptions(imgSize, NO, 0);
+    
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+
+    NSMutableArray *cgArr = [NSMutableArray array];
+    for(UIColor *c in colors) {
+        [cgArr addObject:(id)c.CGColor];
+    }
+    CGGradientRef gradient = CGGradientCreateWithColors(colorspace, (__bridge CFArrayRef)cgArr, NULL);
     
-    NSArray* colors = [NSArray arrayWithObjects:(id)c1.CGColor, (id)c2.CGColor, nil];
-    CGGradientRef gradient = CGGradientCreateWithColors(colorspace, (__bridge CFArrayRef)colors, NULL);
-    CGContextDrawLinearGradient(context, gradient, CGPointMake(0, 0), CGPointMake(0, size.height), 0);
+    CGPoint start;
+    CGPoint end;
+    switch (gradientType) {
+        case GradientTypeTopToBottom:
+            start = CGPointMake(0.0, 0.0);
+            end = CGPointMake(0.0, imgSize.height);
+            break;
+        case GradientTypeLeftToRight:
+            start = CGPointMake(0.0, 0.0);
+            end = CGPointMake(imgSize.width, 0.0);
+            break;
+        case GradientTypeUpleftToLowright:
+            start = CGPointMake(0.0, 0.0);
+            end = CGPointMake(imgSize.width, imgSize.height);
+            break;
+        case GradientTypeUprightToLowleft:
+            start = CGPointMake(imgSize.width, 0.0);
+            end = CGPointMake(0.0, imgSize.height);
+            break;
+        default:
+            break;
+    }
+    CGContextDrawLinearGradient(context, gradient, start, end, 0);
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     
     CGGradientRelease(gradient);
+    CGContextRestoreGState(context);
     CGColorSpaceRelease(colorspace);
     UIGraphicsEndImageContext();
     

@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param presentController 调出控制器的ViewController
  @param sourceType        类型（相机，图片）
  @param allowEdit         是否允许编辑
- @param cutFrame          自定义裁剪位置
+ @param cutSize         自定义裁剪位置
  */
 
 - (void)showImagePickerWithPresentController:(UIViewController *)presentController

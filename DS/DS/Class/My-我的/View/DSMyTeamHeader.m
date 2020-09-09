@@ -17,10 +17,11 @@
 -(void)awakeFromNib
 {
     [super awakeFromNib];
+    self.backgroundColor = UIColorFromRGB(0xF9F9F9);
 }
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    [self.topTitleView bezierPathByRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(5.f, 5.f)];
+    [self.topTitleView bezierPathByRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(8.f, 8.f)];
 }
 @end

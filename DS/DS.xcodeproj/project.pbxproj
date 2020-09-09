@@ -43,6 +43,8 @@
 		496D403524D7B54A005B3CA5 /* DSLandDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D403424D7B54A005B3CA5 /* DSLandDetail.m */; };
 		496D403924D7BF31005B3CA5 /* TTTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D403724D7BF30005B3CA5 /* TTTagView.m */; };
 		4997A536247CFD3000605EEC /* DSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4997A535247CFD3000605EEC /* DSTextField.m */; };
+		49A64B0E2508B62400F30041 /* DSTeamRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A64B0C2508B62400F30041 /* DSTeamRecordVC.m */; };
+		49A64B0F2508B62400F30041 /* DSTeamRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A64B0D2508B62400F30041 /* DSTeamRecordVC.xib */; };
 		49B4C0842472559100560451 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07B2472559100560451 /* JXPagerListContainerView.m */; };
 		49B4C0852472559100560451 /* JXPagerMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07C2472559100560451 /* JXPagerMainTableView.m */; };
 		49B4C0862472559100560451 /* JXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07D2472559100560451 /* JXPagerView.m */; };
@@ -459,6 +461,9 @@
 		498318352488932C004AA787 /* 鲸品库.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "鲸品库.entitlements"; sourceTree = "<group>"; };
 		4997A534247CFD3000605EEC /* DSTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTextField.h; sourceTree = "<group>"; };
 		4997A535247CFD3000605EEC /* DSTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTextField.m; sourceTree = "<group>"; };
+		49A64B0B2508B62400F30041 /* DSTeamRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTeamRecordVC.h; sourceTree = "<group>"; };
+		49A64B0C2508B62400F30041 /* DSTeamRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTeamRecordVC.m; sourceTree = "<group>"; };
+		49A64B0D2508B62400F30041 /* DSTeamRecordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTeamRecordVC.xib; sourceTree = "<group>"; };
 		49B4C07A2472559100560451 /* JXPagerSmoothView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPagerSmoothView.h; sourceTree = "<group>"; };
 		49B4C07B2472559100560451 /* JXPagerListContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerListContainerView.m; sourceTree = "<group>"; };
 		49B4C07C2472559100560451 /* JXPagerMainTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPagerMainTableView.m; sourceTree = "<group>"; };
@@ -1692,6 +1697,9 @@
 				90FD91D6237E48AC00016EF7 /* DSMyTeamVC.h */,
 				90FD91D7237E48AC00016EF7 /* DSMyTeamVC.m */,
 				90FD91D8237E48AC00016EF7 /* DSMyTeamVC.xib */,
+				49A64B0B2508B62400F30041 /* DSTeamRecordVC.h */,
+				49A64B0C2508B62400F30041 /* DSTeamRecordVC.m */,
+				49A64B0D2508B62400F30041 /* DSTeamRecordVC.xib */,
 				90F74E3A2382323A003576B3 /* DSMyBalanceVC.h */,
 				90F74E3B2382323A003576B3 /* DSMyBalanceVC.m */,
 				90F74E3C2382323A003576B3 /* DSMyBalanceVC.xib */,
@@ -2447,6 +2455,7 @@
 				496D402F24D7A5FB005B3CA5 /* DSLandCateCell.xib in Resources */,
 				90FD91FD237E53AA00016EF7 /* DSMyAddressVC.xib in Resources */,
 				90C94C2E23A47D9600CD19FB /* GXAddressCell.xib in Resources */,
+				49A64B0F2508B62400F30041 /* DSTeamRecordVC.xib in Resources */,
 				90AE52C62382802A009F4740 /* DSVipCardDetailCell.xib in Resources */,
 				90FD91CB237E446300016EF7 /* DSChangeInfoVC.xib in Resources */,
 				90F74E3E2382323A003576B3 /* DSMyBalanceVC.xib in Resources */,
@@ -2676,6 +2685,7 @@
 				903D081323839166001C2E40 /* DSApplyRefundVC.m in Sources */,
 				90C94C2B23A47D9600CD19FB /* GXAddressCell.m in Sources */,
 				906F377423792F64000B160A /* UIView+WZLBadge.m in Sources */,
+				49A64B0E2508B62400F30041 /* DSTeamRecordVC.m in Sources */,
 				90AE52DA238292A0009F4740 /* DSPublishDynamicVC.m in Sources */,
 				903D080923838C4F001C2E40 /* DSExpressDetailVC.m in Sources */,
 				903D07EB23837A00001C2E40 /* DSDynamicDetailCell.m in Sources */,

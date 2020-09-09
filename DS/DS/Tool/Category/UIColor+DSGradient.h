@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSUInteger, GradientType) {// 渐变方向
+    GradientTypeTopToBottom      = 0,//从上到下
+    GradientTypeLeftToRight      = 1,//从左到右
+    GradientTypeUpleftToLowright = 2,//左上到右下
+    GradientTypeUprightToLowleft = 3,//右上到左下
+};
 // 渐变色
 @interface UIColor (DSGradient)
 + (CAGradientLayer *)setGradualChangingColor:(UIView *)view fromColor:(NSString *)fromHexColorStr toColor:(NSString *)toHexColorStr;
@@ -43,10 +50,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)colorWithLightColorStr:(NSString *)lightColor WithLightColorAlpha:(CGFloat)lightAlpha DarkColor:(NSString *)darkColor WithDarkColorAlpha:(CGFloat)darkAlpha;
 
 /// 渐变颜色
-/// @param c1 颜色1
-/// @param c2 颜色2
-/// @param height 高度
-+ (UIColor*)mfx_gradientFromColor:(UIColor*)c1 toColor:(UIColor*)c2 withHeight:(int)height;
+/// @param colors 颜色数组
+/// @param gradientType 渐变方向
+/// @param imgSize 图片大小
++ (UIColor*)mfx_gradientFromColors:(NSArray *)colors gradientType:(GradientType)gradientType imgSize:(CGSize)imgSize;
 @end
 
 NS_ASSUME_NONNULL_END

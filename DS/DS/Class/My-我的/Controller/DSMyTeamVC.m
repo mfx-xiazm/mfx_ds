@@ -10,6 +10,7 @@
 #import "DSMyTeamHeader.h"
 #import "DSMyTeamCell.h"
 #import "DSMyTeam.h"
+#import "DSTeamRecordVC.h"
 
 static NSString *const MyTeamCell = @"MyTeamCell";
 @interface DSMyTeamVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -77,7 +78,7 @@ static NSString *const MyTeamCell = @"MyTeamCell";
     self.tableView.showsVerticalScrollIndicator = NO;
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    self.tableView.backgroundColor = UIColorFromRGB(0xF9F9F9);
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([DSMyTeamCell class]) bundle:nil] forCellReuseIdentifier:MyTeamCell];
     
@@ -181,6 +182,7 @@ static NSString *const MyTeamCell = @"MyTeamCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    DSTeamRecordVC *rvc = [DSTeamRecordVC new];
+    [self.navigationController pushViewController:rvc animated:YES];
 }
 @end
