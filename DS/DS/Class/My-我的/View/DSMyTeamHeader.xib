@@ -103,6 +103,7 @@
             <connections>
                 <outlet property="teamNum" destination="Xeg-9P-lJe" id="0uj-TW-cHE"/>
                 <outlet property="topTitleView" destination="SDM-Pv-4qx" id="Npj-1a-eky"/>
+                <outlet property="ymd_leader_level" destination="hRQ-aN-Zgx" id="VnM-1m-0XY"/>
             </connections>
             <point key="canvasLocation" x="-76.08695652173914" y="192.85714285714286"/>
         </view>

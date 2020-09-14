@@ -10,7 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DSTeamRecordVC">
             <connections>
+                <outlet property="lj_ymd_amount" destination="d5T-tZ-E7a" id="l3q-ju-6Tv"/>
+                <outlet property="name" destination="MyY-Wn-p1X" id="hOd-Mz-GZq"/>
+                <outlet property="time" destination="R2x-Lw-bvG" id="O2f-0N-9Qn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="xz_ymd_amount" destination="gcb-WN-WUV" id="CJS-ZL-TQT"/>
+                <outlet property="ymd_leader_level" destination="vlD-GU-EQy" id="fdf-6H-lf7"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

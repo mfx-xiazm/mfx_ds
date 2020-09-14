@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DSMyTeamHeader : UIView
 @property (weak, nonatomic) IBOutlet UILabel *teamNum;
+@property (weak, nonatomic) IBOutlet UILabel *ymd_leader_level;
 @end
 
 NS_ASSUME_NONNULL_END

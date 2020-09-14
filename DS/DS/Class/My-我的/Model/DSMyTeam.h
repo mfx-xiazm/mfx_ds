@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, copy) NSString *nick_name;
 @property (nonatomic, copy) NSString *avatar;
-
+@property (nonatomic, copy) NSString *ymd_leader_level;
 @end
 
 NS_ASSUME_NONNULL_END

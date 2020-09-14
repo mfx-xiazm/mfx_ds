@@ -43,6 +43,7 @@
 		496D403524D7B54A005B3CA5 /* DSLandDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D403424D7B54A005B3CA5 /* DSLandDetail.m */; };
 		496D403924D7BF31005B3CA5 /* TTTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 496D403724D7BF30005B3CA5 /* TTTagView.m */; };
 		4997A536247CFD3000605EEC /* DSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4997A535247CFD3000605EEC /* DSTextField.m */; };
+		499CEF84250F0E7800112573 /* DSTeamRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 499CEF83250F0E7800112573 /* DSTeamRecord.m */; };
 		49A64B0E2508B62400F30041 /* DSTeamRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A64B0C2508B62400F30041 /* DSTeamRecordVC.m */; };
 		49A64B0F2508B62400F30041 /* DSTeamRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A64B0D2508B62400F30041 /* DSTeamRecordVC.xib */; };
 		49B4C0842472559100560451 /* JXPagerListContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4C07B2472559100560451 /* JXPagerListContainerView.m */; };
@@ -461,6 +462,8 @@
 		498318352488932C004AA787 /* 鲸品库.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "鲸品库.entitlements"; sourceTree = "<group>"; };
 		4997A534247CFD3000605EEC /* DSTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTextField.h; sourceTree = "<group>"; };
 		4997A535247CFD3000605EEC /* DSTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTextField.m; sourceTree = "<group>"; };
+		499CEF82250F0E7800112573 /* DSTeamRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTeamRecord.h; sourceTree = "<group>"; };
+		499CEF83250F0E7800112573 /* DSTeamRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTeamRecord.m; sourceTree = "<group>"; };
 		49A64B0B2508B62400F30041 /* DSTeamRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSTeamRecordVC.h; sourceTree = "<group>"; };
 		49A64B0C2508B62400F30041 /* DSTeamRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSTeamRecordVC.m; sourceTree = "<group>"; };
 		49A64B0D2508B62400F30041 /* DSTeamRecordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DSTeamRecordVC.xib; sourceTree = "<group>"; };
@@ -1755,6 +1758,8 @@
 				90C94C3D23A4860C00CD19FB /* DSMyAddress.m */,
 				9086946423A729D100451D8B /* DSMyTeam.h */,
 				9086946523A729D100451D8B /* DSMyTeam.m */,
+				499CEF82250F0E7800112573 /* DSTeamRecord.h */,
+				499CEF83250F0E7800112573 /* DSTeamRecord.m */,
 				9086946723A72D6600451D8B /* DSMyCard.h */,
 				9086946823A72D6600451D8B /* DSMyCard.m */,
 				49305BDE247F4BF200C26C79 /* DSUserAuthInfo.h */,
@@ -2749,6 +2754,7 @@
 				90C94C3523A47DC900CD19FB /* SPPickerView.m in Sources */,
 				496D403924D7BF31005B3CA5 /* TTTagView.m in Sources */,
 				903A95C623A2123B00AD68CF /* LYEmptyBaseView.m in Sources */,
+				499CEF84250F0E7800112573 /* DSTeamRecord.m in Sources */,
 				9001468B2383E38800275DD9 /* DSChooseClassFooter.m in Sources */,
 				90C94C3A23A47E6E00CD19FB /* GXSelectRegion.m in Sources */,
 				906F363E2378ED46000B160A /* main.m in Sources */,

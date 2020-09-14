@@ -23,6 +23,8 @@ static NSString *const MyTeamCell = @"MyTeamCell";
 @property(nonatomic,strong) NSMutableArray *teams;
 /* 团队总数 */
 @property(nonatomic,strong) NSString *teamNum;
+/* 级别 */
+@property(nonatomic,strong) NSString *ymd_leader_level;
 @end
 
 @implementation DSMyTeamVC
@@ -128,6 +130,7 @@ static NSString *const MyTeamCell = @"MyTeamCell";
         if ([responseObject[@"status"] integerValue] == 1) {
             if (isRefresh) {
                 strongSelf.teamNum = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"num"]];
+                strongSelf.ymd_leader_level = [NSString stringWithFormat:@"%@",responseObject[@"result"][@"ymd_leader_level"]];
                 [strongSelf.tableView.mj_header endRefreshing];
                 strongSelf.pagenum = 1;
                 [strongSelf.teams removeAllObjects];
@@ -145,6 +148,8 @@ static NSString *const MyTeamCell = @"MyTeamCell";
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 strongSelf.header.teamNum.text = strongSelf.teamNum;
+                strongSelf.header.ymd_leader_level.hidden = strongSelf.ymd_leader_level.length?NO:YES;
+                strongSelf.header.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",strongSelf.ymd_leader_level];
                 [strongSelf.tableView reloadData];
                 if (strongSelf.teams.count) {
                     [strongSelf.tableView ly_hideEmptyView];
@@ -182,7 +187,12 @@ static NSString *const MyTeamCell = @"MyTeamCell";
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DSTeamRecordVC *rvc = [DSTeamRecordVC new];
-    [self.navigationController pushViewController:rvc animated:YES];
+    DSMyTeam *team = self.teams[indexPath.row];
+
+    if (team.ymd_leader_level.length) {
+        DSTeamRecordVC *rvc = [DSTeamRecordVC new];
+        rvc.parent_uid = team.uid;
+        [self.navigationController pushViewController:rvc animated:YES];
+    }
 }
 @end
