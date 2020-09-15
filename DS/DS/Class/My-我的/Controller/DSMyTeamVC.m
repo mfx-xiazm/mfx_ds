@@ -179,6 +179,13 @@ static NSString *const MyTeamCell = @"MyTeamCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     DSMyTeam *team = self.teams[indexPath.row];
     cell.team = team;
+    if (team.ymd_leader_level.length) {
+        cell.ymd_leader_level.hidden = NO;
+        cell.right_img.hidden = self.ymd_leader_level.length?([self.ymd_leader_level isEqualToString:team.ymd_leader_level]?YES:NO):NO;
+    }else{
+        cell.ymd_leader_level.hidden = YES;
+        cell.right_img.hidden = NO;
+    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -189,10 +196,12 @@ static NSString *const MyTeamCell = @"MyTeamCell";
 {
     DSMyTeam *team = self.teams[indexPath.row];
 
-    if (team.ymd_leader_level.length) {
-        DSTeamRecordVC *rvc = [DSTeamRecordVC new];
-        rvc.parent_uid = team.uid;
-        [self.navigationController pushViewController:rvc animated:YES];
+    if (team.ymd_leader_level.length && self.ymd_leader_level.length && [self.ymd_leader_level isEqualToString:team.ymd_leader_level]) {
+        return;
     }
+    
+    DSTeamRecordVC *rvc = [DSTeamRecordVC new];
+    rvc.parent_uid = team.uid;
+    [self.navigationController pushViewController:rvc animated:YES];
 }
 @end

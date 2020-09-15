@@ -12,8 +12,6 @@
 @interface DSMyTeamCell ()
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *time;
-@property (weak, nonatomic) IBOutlet UILabel *ymd_leader_level;
-@property (weak, nonatomic) IBOutlet UIImageView *right_img;
 @end
 @implementation DSMyTeamCell
 
@@ -26,8 +24,6 @@
     _team = team;
     self.name.text = _team.nick_name;
     self.time.text = _team.create_time;
-    self.ymd_leader_level.hidden = _team.ymd_leader_level.length?NO:YES;
-    self.right_img.hidden = _team.ymd_leader_level.length?NO:YES;
     self.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",_team.ymd_leader_level];
 }
 -(void)layoutSubviews

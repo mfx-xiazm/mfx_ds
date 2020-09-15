@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DSMyTeamCell : UITableViewCell
 /* 团队 */
 @property(nonatomic,strong) DSMyTeam *team;
+@property (weak, nonatomic) IBOutlet UILabel *ymd_leader_level;
+@property (weak, nonatomic) IBOutlet UIImageView *right_img;
 @end
 
 NS_ASSUME_NONNULL_END
