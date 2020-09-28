@@ -166,11 +166,11 @@ static NSString *const MyBalanceCell = @"MyBalanceCell";
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
                 [numberFormatter setPositiveFormat:@"#,###.##"];
-
+                
                 [strongSelf.header.balance setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"balance"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:16]]];
                 [strongSelf.header.goods_reward setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"goods_reward"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
                 [strongSelf.header.gift_reward setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"gift_reward"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
-                [strongSelf.header.upgrade_reward setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"upgrade_reward"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
+                [strongSelf.header.upgrade_reward setFontAttributedText:[NSString stringWithFormat:@"￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"upgrade_reward"] floatValue] + [responseObject[@"result"][@"share_reward"] floatValue]]]] andChangeStr:@[@"￥"] andFont:@[[UIFont systemFontOfSize:10]]];
                 
                 strongSelf.header.last_month_amount.text = NSStringFormat(@"上月已结算￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"js_amount"][@"js_last_month_amount"] floatValue]]]);
                 strongSelf.header.cur_month_amount.text = NSStringFormat(@"本月已结算￥%@",[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[responseObject[@"result"][@"js_amount"][@"js_cur_month_amount"] floatValue]]]);

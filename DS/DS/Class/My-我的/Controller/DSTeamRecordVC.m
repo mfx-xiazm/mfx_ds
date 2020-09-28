@@ -63,8 +63,8 @@
 {
     self.name.text = self.teamRecord.ymd_parent.nick_name;
     self.time.text = self.teamRecord.ymd_parent.create_time;
-    self.ymd_leader_level.hidden = self.teamRecord.ymd_parent.ymd_leader_level.length?NO:YES;
-    self.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",self.teamRecord.ymd_parent.ymd_leader_level];
+//    self.ymd_leader_level.hidden = self.teamRecord.ymd_parent.ymd_leader_level.length?NO:YES;
+//    self.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",self.teamRecord.ymd_parent.ymd_leader_level];
     self.lj_ymd_amount.text = [NSString stringWithFormat:@"¥%@",self.teamRecord.lj_ymd_amount];
     self.xz_ymd_amount.text = [NSString stringWithFormat:@"¥%@",self.teamRecord.xz_ymd_amount];
 }

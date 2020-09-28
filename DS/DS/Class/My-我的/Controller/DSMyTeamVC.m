@@ -148,8 +148,8 @@ static NSString *const MyTeamCell = @"MyTeamCell";
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 strongSelf.header.teamNum.text = strongSelf.teamNum;
-                strongSelf.header.ymd_leader_level.hidden = strongSelf.ymd_leader_level.length?NO:YES;
-                strongSelf.header.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",strongSelf.ymd_leader_level];
+//                strongSelf.header.ymd_leader_level.hidden = strongSelf.ymd_leader_level.length?NO:YES;
+//                strongSelf.header.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",strongSelf.ymd_leader_level];
                 [strongSelf.tableView reloadData];
                 if (strongSelf.teams.count) {
                     [strongSelf.tableView ly_hideEmptyView];
@@ -180,10 +180,10 @@ static NSString *const MyTeamCell = @"MyTeamCell";
     DSMyTeam *team = self.teams[indexPath.row];
     cell.team = team;
     if (team.ymd_leader_level.length) {
-        cell.ymd_leader_level.hidden = NO;
+//        cell.ymd_leader_level.hidden = NO;
         cell.right_img.hidden = self.ymd_leader_level.length?([self.ymd_leader_level isEqualToString:team.ymd_leader_level]?YES:NO):NO;
     }else{
-        cell.ymd_leader_level.hidden = YES;
+//        cell.ymd_leader_level.hidden = YES;
         cell.right_img.hidden = NO;
     }
     return cell;

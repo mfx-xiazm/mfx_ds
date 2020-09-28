@@ -24,7 +24,7 @@
     _team = team;
     self.name.text = _team.nick_name;
     self.time.text = _team.create_time;
-    self.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",_team.ymd_leader_level];
+//    self.ymd_leader_level.text = [NSString stringWithFormat:@"  %@  ",_team.ymd_leader_level];
 }
 -(void)layoutSubviews
 {
