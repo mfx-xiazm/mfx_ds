@@ -35,7 +35,8 @@
     if ([_landGood.is_nmj isEqualToString:@"1"]) {
         self.price.text = [NSString stringWithFormat:@"  ¥%@  ",_landGood.price];
     }else{
-        [self.price setFontAttributedText:[NSString stringWithFormat:@"  ¥%@起  ",_landGood.price] andChangeStr:@[@"起"] andFont:@[[UIFont systemFontOfSize:14 weight:UIFontWeightLight]]];
+        self.price.text = [NSString stringWithFormat:@"  ¥%@  ",_landGood.price];
+//        [self.price setFontAttributedText:[NSString stringWithFormat:@"  ¥%@起  ",_landGood.price] andChangeStr:@[@"起"] andFont:@[[UIFont systemFontOfSize:14 weight:UIFontWeightLight]]];
     }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
